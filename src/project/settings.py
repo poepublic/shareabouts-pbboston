@@ -178,6 +178,9 @@ INSTALLED_APPS = (
     'sa_web',
     'sa_login',
     'proxy',
+
+    # Instance-specific app
+    'pbboston',
 )
 
 # Use a test runner that does not use a database.
