@@ -1,0 +1,141 @@
+/*
+ * This CSS file follows the default Shareabouts style.css.
+ * All rules herein will override the default Shareabouts styles.
+ * NOTE: "With great power comes great responsibility."
+ */
+
+:root {
+  --charles-blue: #091f2f;
+  --freedom-trail-red: #fb4d42;
+  --supporting-red-1: #d22d23;
+
+  --banner-height: 65px;
+
+  --header-font: 'Montserrat', 'Mada', sans-serif;
+  --body-font: 'Lora', 'Markazi', serif;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--charles-blue);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--header-font);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* =Header
+-------------------------------------------------------------- */
+#site-header {
+  box-sizing: border-box;
+  height: var(--banner-height);
+  background-color: white;
+}
+
+#site-title {
+  font-family: var(--header-font);
+  color: var(--charles-blue);
+  text-shadow: none;
+}
+
+.has-pages #site-title {
+  padding-left: var(--banner-height);
+}
+
+#site-title a {
+  display: flex;
+}
+
+#site-title a:link, #site-title a:visited {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--charles-blue);
+}
+
+#site-title .boston-icon {
+  /* intrinsic size of the boston icon is 54px x 84px */
+  --aspect-ratio: calc(54 / 84);
+  --icon-height: 2rem;
+
+  display: block;
+  height: var(--icon-height);
+  margin: -0.5rem 0.5rem -0.5rem -0.5rem;
+  padding:
+    calc(var(--banner-height) / 2 - var(--icon-height) / 2)
+    calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
+  background-color: var(--charles-blue);
+}
+
+#site-title .pb-icon {
+  /* intrinsic size of the boston icon is 182px x 174px */
+  --aspect-ratio: calc(182 / 174);
+  --icon-height: 2.5rem;
+
+  display: block;
+  /* width: var(--banner-height); */
+  height: var(--icon-height);
+  margin: -0.5rem 0 -0.5rem -0.5rem;
+  padding:
+    calc(var(--banner-height) / 2 - var(--icon-height) / 2)
+    calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
+  background-color: white;
+}
+
+#site-title .boston-logo {
+  display: none;
+}
+
+#nav-btn {
+  left: 0;
+  top: 0;
+  width: var(--banner-height);
+  height: var(--banner-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--supporting-red-1);
+
+  font-size: 3rem;
+  color: white;
+  text-shadow: none;
+}
+
+.user-menu {
+  display: none;
+}
+
+/* =Media Queries
+-------------------------------------------------------------- */
+
+@media only screen and (min-width: 768px) {
+  #site-title{
+    height: 100%;
+  }
+
+  #site-title a:link, #site-title a:visited {
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  #site-title .boston-icon {
+    display: none;
+  }
+
+  #site-title .boston-logo {
+    display: block;
+    height: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (min-width: 1300px) {
+}
