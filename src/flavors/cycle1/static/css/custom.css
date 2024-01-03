@@ -74,8 +74,7 @@ h1, h2, h3, h4, h5, h6 {
   --aspect-ratio: calc(182 / 174);
   --icon-height: 2.5rem;
 
-  display: block;
-  /* width: var(--banner-height); */
+  display: none;
   height: var(--icon-height);
   margin: -0.5rem 0 -0.5rem -0.5rem;
   padding:
@@ -112,15 +111,26 @@ h1, h2, h3, h4, h5, h6 {
 -------------------------------------------------------------- */
 
 @media only screen and (min-width: 768px) {
-  #site-title{
+  #site-title .pb-icon {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .has-pages #site-title{
     height: 100%;
+    padding-left: 50px;
+  }
+
+  #nav-btn {
+    display: none;
   }
 
   #site-title a:link, #site-title a:visited {
     height: 100%;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-end;
     font-size: 1.2rem;
   }
 
@@ -128,13 +138,17 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 
+  #site-title .pb-icon {
+    position: absolute;
+    left: calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
+    top: calc(var(--banner-height) / 2 - var(--icon-height) / 2 - 1px);
+    --icon-height: 3rem;
+  }
+
   #site-title .boston-logo {
     display: block;
     height: 1.2rem;
   }
-}
-
-@media only screen and (min-width: 1024px) {
 }
 
 @media only screen and (min-width: 1300px) {
