@@ -6,8 +6,21 @@
 
 :root {
   --charles-blue: #091f2f;
+  --optimistic-blue: #288be4;
   --freedom-trail-red: #fb4d42;
-  --supporting-red-1: #d22d23;
+
+  --supporting-red-1: #d22d23; /* This is not in the style guide, but is the bg color of the menu button on boston.gov */
+
+  --supporting-blue-1: #061622;
+  --supporting-blue-2: #0C2639;
+  --supporting-blue-3: #45789C;
+  --supporting-blue-4: #51ACFF;
+  --supporting-blue-5: #1871bd; /* This is not in the style guide, but is the bg color for buttons on boston.gov */
+
+  --supporting-gray-1: #58585B;
+  --supporting-gray-2: #D2D2D2;
+  --supporting-gray-3: #E0E0E0;
+  --supporting-gray-4: #F2F2F2;
 
   --banner-height: 65px;
 
@@ -18,6 +31,7 @@
 body {
   font-family: var(--body-font);
   color: var(--charles-blue);
+  background-color: var(--charles-blue);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,18 +40,64 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
+p {
+  font-size: 1.125rem;
+  line-height: 2.166667em;
+}
+
+.btn {
+  padding: 1.275em 1.5em;
+  background-color: var(--supporting-blue-5);
+  font-family: var(--header-font);
+  font-size: 0.77778rem;
+  color: white;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 /* =Header
 -------------------------------------------------------------- */
 #site-header {
   box-sizing: border-box;
+  padding: 0.5rem;
   height: var(--banner-height);
   background-color: white;
 }
 
 #site-title {
+  float: none;
   font-family: var(--header-font);
   color: var(--charles-blue);
   text-shadow: none;
+}
+
+.menu .btn-block {
+  padding: 1.275em 1.5em;
+  background-color: var(--supporting-blue-5);
+  color: white;
+}
+
+.access {
+  float: none;
+  margin: 0.5rem -0.5rem;
+  width: calc(100% + 1rem);
+  background-color: var(--charles-blue);
+}
+
+.access .btn {
+  text-align: left;
+  padding: 1.75rem 1.25rem;
+}
+
+.access li {
+  padding-bottom: 2px;
+}
+
+.access li li {
+  padding-bottom: 0;
+  padding-top: 2px;
+  padding-left: 1.5rem;
 }
 
 .has-pages #site-title {
@@ -101,6 +161,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 3rem;
   color: white;
   text-shadow: none;
+}
+
+.menu-item-filter-type > .btn::after {
+  content: '…';
+}
+
+.menu-item-filter-type li .btn::before {
+  content: '›\a0\a0\a0';  /* U+00a0 is non-breaking space */
 }
 
 .user-menu {
