@@ -88,6 +88,8 @@ p {
 .access .btn {
   text-align: left;
   padding: 1.75rem 1.25rem;
+  border: none;
+  box-shadow: none;
 }
 
 .access li {
@@ -182,12 +184,29 @@ p {
   #site-title .pb-icon {
     display: block;
   }
+
+  #pages-nav-container, #language-picker {
+    float: none;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
+  #site-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #site-header::before {
+    content: none;
+  }
+
+  #site-header::after {
+    content: none;
+  }
+
   .has-pages #site-title{
     height: 100%;
-    padding-left: 50px;
+    padding-left: 0;
   }
 
   #nav-btn {
@@ -196,26 +215,62 @@ p {
 
   #site-title a:link, #site-title a:visited {
     height: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-areas:
+      "boston-icon pb-icon boston-logo"
+      "boston-icon pb-icon pb-label";
+    grid-template-columns: max-content max-content max-content;
     font-size: 1.2rem;
   }
 
   #site-title .boston-icon {
-    display: none;
+    /* display: none; */
+    grid-area: boston-icon;
   }
 
   #site-title .pb-icon {
-    position: absolute;
-    left: calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
-    top: calc(var(--banner-height) / 2 - var(--icon-height) / 2 - 1px);
+    /* position: absolute; */
     --icon-height: 3rem;
+    grid-area: pb-icon;
+    /* left: calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
+    top: calc(var(--banner-height) / 2 - var(--icon-height) / 2 - 1px); */
   }
 
   #site-title .boston-logo {
+    grid-area: boston-logo;
     display: block;
     height: 1.2rem;
+  }
+
+  .access {
+    top: 0;
+    margin: 0;
+    background: none;
+    height: 100%;
+  }
+
+  .access .menu {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  .access li {
+    float: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .access .btn {
+    padding: 0;
+    margin-left: 1.25rem;
+    background: none;
+    color: var(--charles-blue);
+    font-weight: normal;
+  }
+
+  .access .btn:hover {
+    color: var(--supporting-red-1);
   }
 }
 
