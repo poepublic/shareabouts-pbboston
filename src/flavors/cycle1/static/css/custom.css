@@ -177,6 +177,47 @@ p {
   display: none;
 }
 
+/* =Ticker
+-------------------------------------------------------------- */
+
+#ticker {
+  background-color: var(--charles-blue);
+}
+
+/* =Colophon
+-------------------------------------------------------------- */
+
+#colophon {
+  background-color: var(--charles-blue);
+}
+
+/* =List view
+-------------------------------------------------------------- */
+
+.list-toggle-btn, .list-toggle-btn:visited, .list-toggle-btn:link {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--charles-blue);
+  font-weight: normal;
+}
+
+.show-the-map {
+  padding: 0;
+  padding-left: 1.25rem;
+  background-image: url("/static/css/images/show-map-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.show-the-list {
+  padding: 0;
+  padding-left: 1.25rem;
+  background-image: url("/static/css/images/show-list-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 /* =Media Queries
 -------------------------------------------------------------- */
 
@@ -373,7 +414,7 @@ p {
     margin: 0;
   }
 
-  #map-container, #content, #ticker {
+  #map-container, #content, #ticker, #list-container {
     top: calc(var(--banner-height) + 2px);
   }
 
