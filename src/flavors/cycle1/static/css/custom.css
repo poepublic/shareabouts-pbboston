@@ -185,8 +185,63 @@ p {
     display: block;
   }
 
-  #pages-nav-container, #language-picker {
+  .menu {
+    border: 2px solid var(--charles-blue);
+    min-width: 20rem;
+  }
+
+  .menu-item {
+    border-bottom: 2px solid var(--charles-blue);
+  }
+
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+
+  .menu .btn {
+    border-radius: 0;
+  }
+
+  /* The remainder of the rules in this media query are overriding the 60rem
+   * min-width media query in the default stylesheet (at a base font size of
+   * 16px, 60rem is 960px, and so falls between the 768 and 1024 breakpoints).
+   */
+  .access {
+    font-size: 0.875em;
+    display: none;
+    position: static;
+  }
+
+  .access li {
     float: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .access li ul {
+    display: block;
+    padding-top: 2px;
+  }
+
+  .access li:hover > ul, .access li:hover > form > ul {
+    display: block;
+    background: var(--charles-blue);
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    position: static;
+  }
+
+  .access li li {
+    padding-top: 2px;
+  }
+
+  .access li li .btn {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
@@ -217,23 +272,19 @@ p {
     height: 100%;
     display: grid;
     grid-template-areas:
-      "boston-icon pb-icon boston-logo"
-      "boston-icon pb-icon pb-label";
-    grid-template-columns: max-content max-content max-content;
+      "pb-icon boston-logo"
+      "pb-icon pb-label";
+    grid-template-columns: max-content max-content;
     font-size: 1.2rem;
   }
 
   #site-title .boston-icon {
-    /* display: none; */
-    grid-area: boston-icon;
+    display: none;
   }
 
   #site-title .pb-icon {
-    /* position: absolute; */
     --icon-height: 3rem;
     grid-area: pb-icon;
-    /* left: calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
-    top: calc(var(--banner-height) / 2 - var(--icon-height) / 2 - 1px); */
   }
 
   #site-title .boston-logo {
@@ -243,6 +294,7 @@ p {
   }
 
   .access {
+    display: block;
     top: 0;
     margin: 0;
     background: none;
@@ -252,16 +304,25 @@ p {
   .access .menu {
     display: flex;
     height: 100%;
+    border: none;
     align-items: center;
   }
 
-  .access li {
+  .access .menu-item {
+    border: none;
+  }
+
+  .access li ul {
+    display: none;
+  }
+
+  .access .menu > li {
     float: none;
     margin: 0;
     padding: 0;
   }
 
-  .access .btn {
+  .access .menu > li > .btn {
     padding: 0;
     margin-left: 1.25rem;
     background: none;
@@ -269,9 +330,53 @@ p {
     font-weight: normal;
   }
 
-  .access .btn:hover {
+  .access .menu > li > .btn:hover {
     color: var(--supporting-red-1);
   }
+
+  .access li:hover > ul, .access li:hover > form > ul {
+    position: absolute;
+    left: 1.25rem;
+    border: none;
+    box-shadow: none;
+    background-color: var(--charles-blue);
+    top: 215%;
+  }
+
+  .access li:hover > #current-filter-type {
+    /* Ensure a minimum size for the current filter type so that the
+     * filter menu stays open for the mouse.
+     */
+    min-height: 2rem;
+    min-width: 100%;
+  }
+
+  #current-filter-type {
+    position: absolute;
+    left: 1.25rem;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--supporting-blue-3);
+  }
+
+  .access li li {
+    padding: 0 2px 2px 2px;
+  }
+
+  .access li li:first-child {
+    padding-top: 2px;
+  }
+
+  .access li li .btn {
+    margin: 0;
+  }
+
+  #map-container, #content, #ticker {
+    top: calc(var(--banner-height) + 2px);
+  }
+
 }
 
 @media only screen and (min-width: 1300px) {
