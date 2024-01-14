@@ -32,9 +32,9 @@ map:
 
   options:
     center:
-      lat: 42.362449677432835
-      lng: -71.06299384284621
-    zoom: 12
+      lat: 42.3189
+      lng: -71.0689
+    zoom: 11
     minZoom: 10
     maxZoom: 17
     scrollWheelZoom: false
@@ -53,17 +53,22 @@ map:
         url: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
         attribution: '&copy; OpenStreetMap contributors, CC-BY-SA. <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>. Geocoding Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">.'
 
+    - type: mapbox
+      style: mapbox://styles/poepublic/clrdv1o5u008101me4xizhobh
+      accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
+      fallback: null
+
     # GeoJSON Layers
     # ==============
-    - url: /static/data/philadelphia.geojson
+    - url: /static/data/City_of_Boston_Boundary.geojson
       type: json
       rules:
         - condition: 'true'
           style:
-            color: "#444"
-            opacity: 0.6
-            fillOpacity: 0.1
-            weight: 1
+            color: "#fb4d42"  # Freedom red
+            opacity: 1
+            fillOpacity: 0
+            weight: 2
 
 # The keys show up in the dropdown list when you are adding a new place
 # The values map the place type to map icons (defined below).
