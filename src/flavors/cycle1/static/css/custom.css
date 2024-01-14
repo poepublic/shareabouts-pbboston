@@ -194,6 +194,10 @@ p {
 /* =List view
 -------------------------------------------------------------- */
 
+#list-container {
+  padding: 0 1rem 1rem 1rem;
+}
+
 .list-toggle-btn, .list-toggle-btn:visited, .list-toggle-btn:link {
   background-color: transparent;
   border: none;
@@ -216,6 +220,43 @@ p {
   background-image: url("/static/css/images/show-list-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.place-list-header {
+  background-color: var(--charles-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 -1rem;
+  padding: 1rem;
+}
+
+.list-search-form {
+  display: flex;
+}
+
+.list-search-form input, .list-sort-menu {
+  float: none;
+}
+
+.list-sort-menu {
+  padding: 0;
+}
+
+.list-sort-menu a {
+  color: white;
+  font-weight: normal;
+  font-family: var(--header-font);
+}
+
+.list-sort-menu a.is-selected {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.list-sort-menu a:hover {
+  color: var(--supporting-red-1);
 }
 
 /* =Media Queries
@@ -390,6 +431,10 @@ p {
      */
     min-height: 2rem;
     min-width: 100%;
+  }
+
+  .list-toggle-btn:hover {
+    color: var(--supporting-red-1);
   }
 
   #current-filter-type {
