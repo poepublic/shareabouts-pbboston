@@ -47,16 +47,11 @@ map:
     # Mapbox GL Layers
     # ================
     - type: mapbox
-      style: mapbox://styles/mapbox/streets-v8
-      accessToken: pk.eyJ1Ijoib3BlbnBsYW5zIiwiYSI6ImZRQzRPYnMifQ.f75KI3Q9rFXRY2Zciz6DKw
-      fallback:
-        url: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
-        attribution: '&copy; OpenStreetMap contributors, CC-BY-SA. <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>. Geocoding Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">.'
-
-    - type: mapbox
-      style: mapbox://styles/poepublic/clrdv1o5u008101me4xizhobh
+      style: mapbox://styles/poepublic/clrgpjg9h00bz01mef8atgnpl
       accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
-      fallback: null
+      fallback:
+        url: https://api.mapbox.com/styles/v1/poepublic/clrgpjg9h00bz01mef8atgnpl/tiles/256/{z}/{x}/{y}@2x
+        attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
 
     # GeoJSON Layers
     # ==============
