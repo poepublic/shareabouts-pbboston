@@ -45,9 +45,13 @@ p {
   line-height: 2.166667em;
 }
 
-.btn {
+#map {
+  background-color: var(--charles-blue);
+}
+
+.btn, .btn:visited, .btn:link {
   padding: 1.275em 1.5em;
-  background-color: var(--supporting-blue-5);
+  background-color: var(--optimistic-blue);
   font-family: var(--header-font);
   font-size: 0.77778rem;
   color: white;
@@ -55,6 +59,14 @@ p {
   border-radius: 0;
   box-shadow: none;
 }
+
+.btn:hover {
+  background-color: var(--freedom-trail-red);
+}
+
+/* .btn-primary, .btn-primary:visited, .btn-primary:link {
+  font-size: 1rem;
+} */
 
 /* =Header
 -------------------------------------------------------------- */
@@ -199,6 +211,8 @@ p {
 }
 
 .list-toggle-btn, .list-toggle-btn:visited, .list-toggle-btn:link {
+  margin-left: 1.25rem;
+  padding: 0;
   background-color: transparent;
   border: none;
   box-shadow: none;
@@ -325,12 +339,16 @@ p {
     border-radius: 0;
     box-shadow: none;
   }
+
+  .access li li .btn:hover {
+    background-color: var(--freedom-trail-red);
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   #site-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
   }
 
   #site-header::before {
@@ -344,6 +362,7 @@ p {
   .has-pages #site-title{
     height: 100%;
     padding-left: 0;
+    flex-grow: 1;
   }
 
   #nav-btn {
@@ -465,6 +484,15 @@ p {
 
   .place-list-header {
     max-width: none;
+  }
+
+  .list-toggle-nav {
+    float: none;
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin: 0;
+    position: static;
   }
 }
 

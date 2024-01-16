@@ -26,7 +26,7 @@ map:
   geocoding_enabled: true
   # The default geocoding engine is MapQuest. You can set an override below.
   # Make sure to provide the appropriate keys for whatever you set.
-  # geocoding_engine: Mapbox
+  geocoding_engine: Mapbox
   geocode_field_label: _(Enter an address...)
   geocode_bounding_box: [39.830159, -75.478821, 40.167331, -74.781189]  # top, left, bottom, right
 
@@ -34,7 +34,8 @@ map:
     center:
       lat: 42.3189
       lng: -71.0689
-    zoom: 11
+    zoom: 11.5
+    zoomSnap: 0
     minZoom: 10
     maxZoom: 17
     scrollWheelZoom: false
