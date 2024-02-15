@@ -54,18 +54,6 @@ map:
         url: https://api.mapbox.com/styles/v1/poepublic/clrgpjg9h00bz01mef8atgnpl/tiles/256/{z}/{x}/{y}@2x
         attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
 
-    # GeoJSON Layers
-    # ==============
-    - url: /static/data/City_of_Boston_Boundary.geojson
-      type: json
-      rules:
-        - condition: 'true'
-          style:
-            color: "#fb4d42"  # Freedom red
-            opacity: 1
-            fillOpacity: 0
-            weight: 2
-
 # The keys show up in the dropdown list when you are adding a new place
 # The values map the place type to map icons (defined below).
 place_types:
