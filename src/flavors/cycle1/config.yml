@@ -57,106 +57,316 @@ map:
 # The keys show up in the dropdown list when you are adding a new place
 # The values map the place type to map icons (defined below).
 place_types:
-  landmark:
-    label: _(Landmark)
+  arts_culture:
+    label: _(Arts & Culture)
     rules:
-      - condition: '"{{location_type}}" === "landmark" && {{map.zoom}} < 13 && {{layer.focused}} === false'
-        # Display landmarks as circles (vectors) when zoomed out
-
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} < 13 && {{layer.focused}} === false'
         style:
-          color: '#0d85e9'
+          color: '#fb4d42'
           radius: 3
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-
-      - condition: '"{{location_type}}" === "landmark" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
-        # Display landmarks as icons when zoomed in
-
-        icon:
-          iconUrl: /static/css/images/markers/dot-0d85e9.png
-          iconSize: [17, 18]
-          iconAnchor: [9, 9]
-
-      - condition: '"{{location_type}}" === "landmark" && {{layer.focused}} === true'
-        # Display landmarks as icons when focused/selected
-
-        icon:
-          iconUrl: /static/css/images/markers/marker-0d85e9.png
-          shadowUrl: /static/css/images/marker-shadow.png
-          iconSize: [25, 41]
-          shadowSize: [41, 41]
-          iconAnchor: [12, 41]
-
-  park:
-    label: _(Park)
-    rules:
-      - condition: '"{{location_type}}" === "park" && {{layer.focused}}'
-        # Show parks that are points as icons...
-
-        icon:
-          iconUrl: /static/css/images/markers/marker-4bbd45.png
-          shadowUrl: /static/css/images/marker-shadow.png
-          iconSize: [25, 41]
-          shadowSize: [41, 41]
-          iconAnchor: [12, 41]
-
-        # ...and parks that are polygons as shapes.
-
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
         style:
-          color: '#4bbd45'
+          color: '#fb4d42'
+          radius: 6
           weight: 3
-          opacity: 0.9
-          fillOpacity: 0.7
-
-      - condition: '"{{location_type}}" === "park"'
-        # Show parks that are points as icons...
-
-        icon:
-          iconUrl: /static/css/images/markers/dot-4bbd45.png
-          iconSize: [17, 18]
-          iconAnchor: [9, 9]
-
-        # ...and parks that are polygons as shapes.
-
-        style:
-          color: '#4bbd45'
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 0.4
-
-  school:
-    label: _(School)
+          opacity: 0.7
+          fillOpacity: 1
+  community:
+    label: _(Community Resources)
     rules:
-      - condition: '"{{location_type}}" === "school" && {{submission_sets.comments.length}} > 0'
-        # Display schools as circles
-
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "community" && {{map.zoom}} < 13 && {{layer.focused}} === false'
         style:
-          color: '#f95016'
-          radius: 8
-          weight: 4
-          opacity: 0.9
-          fillOpacity: 0.4
-        focus_style:
-          color: '#f95016'
-          radius: 16
-          weight: 4
-          opacity: 0.9
-          fillOpacity: 0.4
-
-      - condition: '"{{location_type}}" === "school"'
-        style:
-          color: '#f95016'
-          radius: 8
+          color: '#fa8b41'
+          radius: 3
           weight: 1
           opacity: 0.9
-          fillOpacity: 0.4
-        focus_style:
-          color: '#f95016'
-          radius: 16
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "community" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#fa8b41'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  economy_workers:
+    label: _(Local Economy & Worker Empowerment)
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#fac241'
+          radius: 3
           weight: 1
           opacity: 0.9
-          fillOpacity: 0.4
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#fac241'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  education_youth:
+    label: _(Education, Youth & Families)
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#faee41'
+          radius: 3
+          weight: 1
+          opacity: 0.9
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#faee41'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  sustainability:
+    label: _(Environment, Sustainability, and Food Access)
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#b6fa41'
+          radius: 3
+          weight: 1
+          opacity: 0.9
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#b6fa41'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  facilities:
+    label: _(Facilities, Parks & Recreation  )
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#75fa41'
+          radius: 3
+          weight: 1
+          opacity: 0.9
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#75fa41'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  human_services:
+    label: _(Human Services / Public Health)
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#41eafa'
+          radius: 3
+          weight: 1
+          opacity: 0.9
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#41eafa'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  public_safety:
+    label: _(Public Safety)
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#4185fa'
+          radius: 3
+          weight: 1
+          opacity: 0.9
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#4185fa'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  streets_sidewalks:
+    label: _(Streets & Sidewalks)
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#4441fa'
+          radius: 3
+          weight: 1
+          opacity: 0.9
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#4441fa'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  transportation:
+    label: _(Transportation )
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "transportation" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#8b41fa'
+          radius: 3
+          weight: 1
+          opacity: 0.9
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "transportation" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#8b41fa'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+  other:
+    label: _(Other / Not Sure)
+    rules:
+      # Draw small circles when zoomed out to see a lot of the ideas...
+      - condition: '"{{location_type}}" === "other" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+        style:
+          color: '#e441fa'
+          radius: 3
+          weight: 1
+          opacity: 0.9
+          fillOpacity: 1
+      # Draw larger circles when fewer ideas visible...
+      - condition: '"{{location_type}}" === "other" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+        style:
+          color: '#e441fa'
+          radius: 6
+          weight: 3
+          opacity: 0.7
+          fillOpacity: 1
+
+  # landmark:
+  #   label: _(Landmark)
+  #   rules:
+  #     - condition: '"{{location_type}}" === "landmark" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+  #       # Display landmarks as circles (vectors) when zoomed out
+
+  #       style:
+  #         color: '#0d85e9'
+  #         radius: 3
+  #         weight: 1
+  #         opacity: 0.9
+  #         fillOpacity: 1
+
+  #     - condition: '"{{location_type}}" === "landmark" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+  #       # Display landmarks as icons when zoomed in
+
+  #       icon:
+  #         iconUrl: /static/css/images/markers/dot-0d85e9.png
+  #         iconSize: [17, 18]
+  #         iconAnchor: [9, 9]
+
+  #     - condition: '"{{location_type}}" === "landmark" && {{layer.focused}} === true'
+  #       # Display landmarks as icons when focused/selected
+
+  #       icon:
+  #         iconUrl: /static/css/images/markers/marker-0d85e9.png
+  #         shadowUrl: /static/css/images/marker-shadow.png
+  #         iconSize: [25, 41]
+  #         shadowSize: [41, 41]
+  #         iconAnchor: [12, 41]
+
+  # park:
+  #   label: _(Park)
+  #   rules:
+  #     - condition: '"{{location_type}}" === "park" && {{layer.focused}}'
+  #       # Show parks that are points as icons...
+
+  #       icon:
+  #         iconUrl: /static/css/images/markers/marker-4bbd45.png
+  #         shadowUrl: /static/css/images/marker-shadow.png
+  #         iconSize: [25, 41]
+  #         shadowSize: [41, 41]
+  #         iconAnchor: [12, 41]
+
+  #       # ...and parks that are polygons as shapes.
+
+  #       style:
+  #         color: '#4bbd45'
+  #         weight: 3
+  #         opacity: 0.9
+  #         fillOpacity: 0.7
+
+  #     - condition: '"{{location_type}}" === "park"'
+  #       # Show parks that are points as icons...
+
+  #       icon:
+  #         iconUrl: /static/css/images/markers/dot-4bbd45.png
+  #         iconSize: [17, 18]
+  #         iconAnchor: [9, 9]
+
+  #       # ...and parks that are polygons as shapes.
+
+  #       style:
+  #         color: '#4bbd45'
+  #         weight: 1
+  #         opacity: 0.9
+  #         fillOpacity: 0.4
+
+  # school:
+  #   label: _(School)
+  #   rules:
+  #     - condition: '"{{location_type}}" === "school" && {{submission_sets.comments.length}} > 0'
+  #       # Display schools as circles
+
+  #       style:
+  #         color: '#f95016'
+  #         radius: 8
+  #         weight: 4
+  #         opacity: 0.9
+  #         fillOpacity: 0.4
+  #       focus_style:
+  #         color: '#f95016'
+  #         radius: 16
+  #         weight: 4
+  #         opacity: 0.9
+  #         fillOpacity: 0.4
+
+  #     - condition: '"{{location_type}}" === "school"'
+  #       style:
+  #         color: '#f95016'
+  #         radius: 8
+  #         weight: 1
+  #         opacity: 0.9
+  #         fillOpacity: 0.4
+  #       focus_style:
+  #         color: '#f95016'
+  #         radius: 16
+  #         weight: 1
+  #         opacity: 0.9
+  #         fillOpacity: 0.4
 
 
 activity:
@@ -171,11 +381,11 @@ place:
     until: '2099-04-07 00:00 -0400'  # and ends mid-October.
   editors: place-editors
   moderators: place-editors
-  response_name: _(place)
-  response_plural_name: _(places)
-  add_button_label: _(Add a Place)
+  response_name: _(idea)
+  response_plural_name: _(ideas)
+  add_button_label: _(Suggest an Idea)
   # Labels for the buttons that toggle the map and list views
-  show_list_button_label: _(List All Places)
+  show_list_button_label: _(List All Ideas)
   show_map_button_label: _(Show the Map)
   action_text: _(added)
   title: _(Tell us more...)
@@ -184,18 +394,91 @@ place:
   submit_button_label: _(Submit)
 
   location_item_name: location
+  city_wide_location_label: _(Multiple locations throughout the city)
+  city_wide_location_center:  [-71.05804664749975, 42.36058038175507]  # <- Boston City Hall
+  city_wide_location_offset: 50  # Within 50 meters of City Hall
+  unset_location_label: _(Drag the map to set the location.)
 
   items:
+    - prompt: _(What do you call your idea?)
+      type: text
+      name: title
+    - prompt: _(Please share a short (less than 100 words) description of the project idea?)
+      type: textarea
+      name: description
+
+    - prompt: _(Is your idea...)
+      type: radiogroup
+      name: city_wide
+      options:
+        - label: _(Location-specific)
+          value: no
+        - label: _(City-wide)
+          value: yes
+      attrs:
+        - key: required
+          value: true
+    - prompt: _(Approximately where would your idea go?)
+      type: location
+      name: address
+      placeholder: _(Drag the map to set the location.)
+
+    - prompt: _(Please describe the positive impact of your project idea to the community.)
+      type: textarea
+      name: description
+    - prompt: _(Which category does your idea fall into?)
+      help_text: _(Choose the category that most closely describes your project.)
+      type: radiogroup
+      name: location_type
+      options:
+        - label: _(Arts & Culture)
+          value: arts_culture
+        - label: _(Community Resources)
+          value: community
+        - label: _(Local Economy & Worker Empowerment)
+          value: economy_workers
+        - label: _(Education, Youth & Families)
+          value: education_youth
+        - label: _(Environment, Sustainability, and Food Access)
+          value: sustainability
+        - label: _(Facilities, Parks & Recreation  )
+          value: facilities
+        - label: _(Human Services / Public Health)
+          value: human_services
+        - label: _(Public Safety)
+          value: public_safety
+        - label: _(Streets & Sidewalks)
+          value: streets_sidewalks
+        - label: _(Transportation )
+          value: transportation
+        - label: _(Other / Not Sure)
+          value: other
+      attrs:
+        - key: required
+
+    # Personal info
     - prompt: _(Your Name)
       type: text
       name: submitter_name
+      sticky: true
+      attrs:
+        - key: size
+          value: 30
+    - prompt: _(Your Neighborhood)
+      type: text
+      name: submitter_neighborhood
+      sticky: true
+      attrs:
+        - key: size
+          value: 30
+    - prompt: _(Your Zip Code)
+      type: text
+      name: private-submitter_zipcode
       optional: true
       sticky: true
       attrs:
-        - key: placeholder
-          value: _(Name)
         - key: size
-          value: 30
+          value: 10
     - prompt: _(Your Email)
       type: text
       name: private-submitter_email
@@ -206,82 +489,10 @@ place:
           value: _(Email address)
         - key: size
           value: 30
-    - prompt: _(Location Address)
-      type: location
-      name: address
-      placeholder: _(Drag the map to set the location.)
-    - prompt: _(Location Name)
-      type: text
-      name: name
-      optional: true
-      attrs:
-        - key: placeholder
-          value: _(Location Name)
-        - key: size
-          value: 30
-    - prompt: _(Location Type)
-      type: select
-      options:
-        - label: _(Choose One)
-          value: ''
-        - label: _(Landmark)
-          value: landmark
-        - label: _(Park)
-          value: park
-        - label: _(School)
-          value: school
-      name: location_type
-      attrs:
-        - key: required
-    - prompt: _(Yes or no question)
-      type: radiogroup
-      sticky: true
-      options:
-        - label: _(Indeed)
-          value: yeah
-        - label: _(I don't think so)
-          value: nah
-      name: y_or_n
-      attrs:
-        - key: required
-    - prompt: _(All that apply questiion)
-      type: checkboxgroup
-      sticky: true
-      options:
-        - label: _(First)
-          value: option1
-        - label: _(Second)
-          value: option2
-        - label: _(Third)
-          value: option3
-        - label: _(Fourth)
-          value: option4
-      name: all_that_apply
-      attrs:
-        - key: required
-    - prompt: _(Description)
-      type: textarea
-      name: description
-      optional: true
-      attrs:
-        - key: placeholder
-          value: _(Description...)
-    - prompt: _(Image)
-      inputfile_label: _(Add an Image)
-      type: file
-      name: my_image
-      optional: true
-      attrs:
-        - key: accept
-          value: image/*
-        - key: data-max-width
-          value: 1000
-        - key: data-max-height
-          value: 1000
 
 survey:
   submission_type: comments
-  adding_supported: true
+  adding_supported: false
 
   # Response config
   show_responses: true
@@ -297,44 +508,10 @@ survey:
   form_link_text: _(Leave a Comment)
   submit_btn_text: _(Comment)
   items:
-    - prompt: _(Comment)
-      label: _(Comment)
-      type: textarea
-      name: comment
-      attrs:
-        - key: required
-    - prompt: _(Yes or no question)
-      type: radiogroup
-      options:
-        - label: _(Indeed)
-          value: yeah
-        - label: _(I don't think so)
-          value: nah
-      name: y_or_n
-      attrs:
-        - key: required
-    - prompt: _(All that apply questiion)
-      type: checkboxgroup
-      options:
-        - label: _(First)
-          value: option1
-        - label: _(Second)
-          value: option2
-        - label: _(Third)
-          value: option3
-        - label: _(Fourth)
-          value: option4
-      name: all_that_apply
-      attrs:
-        - key: required
-    - prompt: _(Your Name)
-      type: text
-      name: submitter_name
-      sticky: true
 
 support:
   submission_type: support
-  adding_supported: true
+  adding_supported: false
   submit_btn_text: _(Support)
   response_name: _(support)
   response_plural_name: _(supports)

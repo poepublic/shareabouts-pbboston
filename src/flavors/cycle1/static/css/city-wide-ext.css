@@ -1,0 +1,10 @@
+/* =City-wide toggle
+-------------------------------------------------------------- */
+
+.drag-marker-instructions { display: none; }
+.approx-address { display: none; }
+#centerpoint.newpin { display: none; }
+
+body[data-city_wide="false"] .drag-marker-instructions { display: block; }
+body[data-city_wide="false"] .approx-address { display: block; }
+body[data-city_wide="false"] #centerpoint.newpin { display: inline; }
