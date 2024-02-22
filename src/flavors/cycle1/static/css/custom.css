@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-size: 1.125rem;
-  line-height: 2.166667em;
+  line-height: 1.5em;
 }
 
 #map {
@@ -290,6 +290,46 @@ label {
 }
 
 /* Location type buttons */
+[name="location_type"] + .label-text {
+  background-size: 4rem;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+}
+
+[name="location_type"][value="arts_culture"] + .label-text {
+  background-image: url("/static/img/categories/arts_culture.svg");
+}
+[name="location_type"][value="community"] + .label-text {
+  background-image: url("/static/img/categories/community.svg");
+}
+[name="location_type"][value="economy_workers"] + .label-text {
+  background-image: url("/static/img/categories/economy_workers.svg");
+}
+[name="location_type"][value="education_youth"] + .label-text {
+  background-image: url("/static/img/categories/education_youth.svg");
+}
+[name="location_type"][value="sustainability"] + .label-text {
+  background-image: url("/static/img/categories/sustainability.svg");
+}
+[name="location_type"][value="facilities"] + .label-text {
+  background-image: url("/static/img/categories/facilities.svg");
+}
+[name="location_type"][value="human_services"] + .label-text {
+  background-image: url("/static/img/categories/human_services.svg");
+}
+[name="location_type"][value="public_safety"] + .label-text {
+  background-image: url("/static/img/categories/public_safety.svg");
+}
+[name="location_type"][value="streets_sidewalks"] + .label-text {
+  background-image: url("/static/img/categories/streets_sidewalks.svg");
+}
+[name="location_type"][value="transportation"] + .label-text {
+  background-image: url("/static/img/categories/transportation.svg");
+}
+[name="location_type"][value="other"] + .label-text {
+  background-image: url("/static/img/categories/other.svg");
+}
+
 [name="location_type"] + .label-text:hover {
   background-color: var(--supporting-gray-4);
   border-color: var(--charles-blue);
@@ -384,6 +424,16 @@ label {
   background-color: var(--icon-color-11);
   border-color: var(--icon-color-11);
   color: white;
+}
+
+/* =Place detail
+-------------------------------------------------------------- */
+
+.place-label {
+  font-family: var(--header-font);
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
 }
 
 /* =Ticker

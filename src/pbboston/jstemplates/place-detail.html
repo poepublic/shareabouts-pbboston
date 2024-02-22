@@ -6,8 +6,6 @@
           {{> place-moderation-bar }}
         {{/can_moderate_places}}
 
-        {{> place-detail-promotion-bar }}
-
         <header class="place-header clearfix">
           <h1>{{#if title }}{{ title }}{{^}}{{>location-string .}}{{/if}}</h1>
           <span class="place-submission-details">
@@ -15,7 +13,7 @@
               {{#if submitter.avatar_url }}
                 <img src="{{ submitter.avatar_url }}" class="avatar" />
               {{^}}
-                <img src="{{ STATIC_URL }}css/images/user-50.png" class="avatar" />
+                <img src="{{ STATIC_URL }}img/categories/{{ location_type }}.svg" class="avatar" />
               {{/if}}
               {{#if submitter.name }}
                 {{ submitter.name }}
@@ -26,7 +24,7 @@
                   {{ anonymous_name }}
                 {{/if}}
               {{/if}}
-            </strong> {{ action_text }} this {{ place_type_label location_type}}
+            </strong> {{ action_text }} this {{ place_type_label location_type}} idea
 
             {{#if region}}
               in {{ region }}
@@ -49,7 +47,7 @@
             <img src="{{ file }}" class="place-value place-value-{{ name }}" alt="{{ name }}">
           </div>
           {{/ attachments }}
-          {{#each_place_item "submitter_name" "title" "location_type"}}
+          {{#each_place_item "submitter_name" "title" "location_type" "city_wide" "address"}}
           <div class="place-item place-item-{{ name }}">
             <span class="place-label place-label-{{ name }}">{{ label }}</span>
             <p class="place-value place-value-{{ name }}">{{nlToBr value }}</p>

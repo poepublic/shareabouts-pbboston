@@ -387,9 +387,8 @@ place:
   # Labels for the buttons that toggle the map and list views
   show_list_button_label: _(List All Ideas)
   show_map_button_label: _(Show the Map)
-  action_text: _(added)
+  action_text: _(submitted)
   title: _(Tell us more...)
-  action_text: _(created)
   anonymous_name: _(Someone)
   submit_button_label: _(Submit)
 
@@ -401,13 +400,16 @@ place:
 
   items:
     - prompt: _(What do you call your idea?)
+      label: _(Idea title)
       type: text
       name: title
     - prompt: _(Please share a short (less than 100 words) description of the project idea?)
+      label: _(My idea is to...)
       type: textarea
       name: description
 
     - prompt: _(Is your idea...)
+      label: _(City wide?)
       type: radiogroup
       name: city_wide
       options:
@@ -419,14 +421,17 @@ place:
         - key: required
           value: true
     - prompt: _(Approximately where would your idea go?)
+      label: _(Approximate location...)
       type: location
       name: address
       placeholder: _(Drag the map to set the location.)
 
     - prompt: _(Please describe the positive impact of your project idea to the community.)
+      label: _(This idea would benefit the community by...)
       type: textarea
-      name: description
+      name: benefit
     - prompt: _(Which category does your idea fall into?)
+      label: _(Category)
       help_text: _(Choose the category that most closely describes your project.)
       type: radiogroup
       name: location_type
@@ -458,6 +463,7 @@ place:
 
     # Personal info
     - prompt: _(Your Name)
+      label: _(Submitter's Name)
       type: text
       name: submitter_name
       sticky: true
@@ -465,6 +471,7 @@ place:
         - key: size
           value: 30
     - prompt: _(Your Neighborhood)
+      label: _(Submitter's Neighborhood)
       type: text
       name: submitter_neighborhood
       sticky: true
@@ -472,6 +479,7 @@ place:
         - key: size
           value: 30
     - prompt: _(Your Zip Code)
+      label: _(Your Zip Code)
       type: text
       name: private-submitter_zipcode
       optional: true
@@ -480,6 +488,7 @@ place:
         - key: size
           value: 10
     - prompt: _(Your Email)
+      label: _(Your Email)
       type: text
       name: private-submitter_email
       optional: true
