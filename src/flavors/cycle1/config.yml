@@ -599,6 +599,44 @@ pages:
         url: /filter/other
         external: true
 
+languages:
+  # English
+  - code: 'en'
+    label: 'English'
+  # Spanish
+  - code: 'es'
+    label: 'Español'
+  # Haitian Creole
+  - code: 'ht'
+    label: 'Kreyòl Ayisyen'
+  # Traditional Chinese
+  - code: 'zh-hant'
+    label: '繁體中文'
+  # Simplified Chinese
+  - code: 'zh-hans'
+    label: '简体中文'
+  # Vietnamese
+  - code: 'vi'
+    label: 'Tiếng Việt'
+  # Cabo Verdean Creole
+  - code: 'kea'
+    label: 'Kabuverdianu'
+  # Russian
+  - code: 'ru'
+    label: 'Русский'
+  # Arabic
+  - code: 'ar'
+    label: 'العربية'
+  # Brazilian Portuguese
+  - code: 'pt-br'
+    label: 'Português'
+  # French
+  - code: 'fr'
+    label: 'Français'
+  # Somali
+  - code: 'so'
+    label: 'Soomaali'
+
 notifications:
   on_new_place: true
   submitter_email_field: private-submitter_email

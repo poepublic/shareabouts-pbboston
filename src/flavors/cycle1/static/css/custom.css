@@ -1,4 +1,5 @@
 @import url('/static/css/city-wide-ext.css');
+@import url('/static/css/language-picker.css');
 
 /*
  * This CSS file follows the default Shareabouts style.css.
@@ -49,6 +50,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  color: var(--charles-blue);
   font-family: var(--header-font);
   font-weight: bold;
   text-transform: uppercase;
@@ -93,6 +95,7 @@ p {
 
 #site-title {
   float: none;
+  margin-right: var(--banner-height);
   font-family: var(--header-font);
   color: var(--charles-blue);
   text-shadow: none;
@@ -452,6 +455,58 @@ label {
 
 #colophon {
   background-color: var(--charles-blue);
+}
+
+/* =Language picker
+-------------------------------------------------------------- */
+
+#show-language-picker-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: var(--banner-height);
+  margin: 0;
+  padding: 0;
+  padding-left: var(--banner-height);
+  overflow: hidden;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Translate_logo.svg');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 2rem;
+  background-position: center;
+}
+
+@media only screen and (min-width: 768px) {
+  #show-language-picker-btn {
+    padding: 1.275em 1.5em;
+    padding-left: 1.75rem;
+    overflow: visible;
+    width: auto;
+    background-size: 1.5rem;
+    background-position: left center;
+    color: var(--charles-blue);
+    font-weight: normal;
+  }
+
+  #show-language-picker-btn:hover {
+    color: var(--supporting-red-1);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #show-language-picker-btn {
+    position: static;
+    margin-left: 1.25rem;
+    padding-left: 1.75rem;
+    height: auto;
+    background-color: transparent;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Translate_logo.svg');
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    color: var(--charles-blue);
+    font-weight: normal;
+  }
 }
 
 /* =List view

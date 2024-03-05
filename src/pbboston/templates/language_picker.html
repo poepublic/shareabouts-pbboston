@@ -1,0 +1,30 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<button id="show-language-picker-btn" type="button" class="btn btn-language" aria-haspopup="dialog" aria-expanded="false" aria-controls="language-picker-wrapper">
+  <span class="btn-language__label">Languages</span>
+</button>
+
+<div id="language-picker-wrapper" class="hidden">
+  <div class="language-picker__overlay"></div>
+  <div class="language-picker__dialog" role="dialog" aria-labelledby="language-picker__dialog-title" aria-modal="true">
+    <header class="language-picker__dialog-header">
+      <h2 id="language-picker__dialog-title" class="language-picker__dialog-title">{{ _('Select a language') }}</h2>
+
+      <button id="hide-language-picker-btn" type="button" class="btn btn-language language-picker__hide-btn" aria-label="{{ _('Close language picker') }}">
+        <span class="btn-language__label">×</span>
+        <span class="btn-language__icon" aria-hidden="true"></span>
+      </button>
+    </header>
+
+      <div class="language-picker__dialog-content">
+      <ul class="language-picker__options">
+        {% for language in config.languages %}
+        <li class="language-picker__option">
+          <button type="button" data-language="{{ language.code }}" class="{{ language.code }} btn-language btn btn-block language-picker__option-btn">{{ language.label }}</button>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+</div>
+
