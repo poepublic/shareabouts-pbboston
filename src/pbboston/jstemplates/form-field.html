@@ -1,0 +1,13 @@
+{{#if is_first_personal_info_field}}
+  <h3>{{ form_config.place_config.personal_info_title }}</h3>
+  <p>{{ form_config.place_config.personal_info_intro }}</p>
+{{/if}}
+
+<div class="field {{ type }}-field {{ default submission_type 'place' }}-{{ name }}-field">
+  {{> form-field-label }}
+  {{#if help_text }}
+  <div class="help-text {{ default submission_type 'place' }}-{{ name }}-help-text">{{ help_text }}</div>
+  {{/if}}
+
+  {{> form-field-widget }}
+</div>
