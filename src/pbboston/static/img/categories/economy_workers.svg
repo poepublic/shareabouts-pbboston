@@ -1,21 +1,157 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    viewBox="0 0 144 144"
-   xmlns="http://www.w3.org/2000/svg">
-  <path
-     style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
-     d="M 68,97 V 61 a 4,4 0 1 0 -4,4 h 16 a 4,4 0 1 0 -4,-4 v 36"
-     id="filament" />
-  <path
-     style="fill:#ffffff;fill-opacity:0.496052;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
-     d="m 54,97 h 36 v 7 a 7,7 0 0 1 -7,7 H 61 a 7,7 0 0 1 -7,-7 z m 10,14 a 8,8 0 0 0 16,0 z"
-     id="screw" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
-     d="M 54,104 H 90"
-     id="screw-mid" />
-  <path
-     style="fill:#ffffff;fill-opacity:0.496052;stroke:#000000;stroke-width:3px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
-     d="m 54,97 v -8 a 36,36 0 1 1 36,0 v 8 z"
-     id="path1787" />
+   version="1.1"
+   id="svg14698"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="coin-and-bill-templates">
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 4,42 44,67 109,27 69,2 Z"
+       id="bill-template" />
+    <path
+       id="coin-template"
+       style="fill:#ffffff;fill-opacity:1;stroke:#0d202e;stroke-width:3;stroke-linecap:round;stroke-linejoin:round"
+       d="M 30,7 A 14,5 0 0 1 16,12 14,5 0 0 1 2,7 14,5 0 0 1 16,2 14,5 0 0 1 30,7 Z m 0,0 v 5 A 14,5 0 0 1 16,17 14,5 0 0 1 2,12 V 7" />
+  </defs>
+  <g
+     id="coin-stack-3"
+     style="display:inline">
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16509"
+       transform="translate(27.319963,45.227761)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16511"
+       transform="translate(27.319963,39.227761)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16513"
+       transform="translate(25.319963,33.227761)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16515"
+       transform="translate(21.319963,27.227761)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16517"
+       transform="translate(27.319963,21.227761)" />
+  </g>
+  <g
+     id="bill-stack">
+    <path
+       id="bill-stack-buffer"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+       d="M 81.990234 30.208984 L 62.310547 42.318359 L 61 41.5 L 39 54.5 L 40.744141 55.589844 L 40.208984 55.919922 L 39 54.5 L 39 56.664062 L 16.990234 70.208984 L 21.828125 73.232422 L 16.990234 76.208984 L 21.828125 79.232422 L 16.990234 82.208984 L 21.828125 85.232422 L 16.990234 88.208984 L 56.990234 113.20898 L 77.519531 100.57422 L 79 101.5 L 77.974609 100.29492 L 79 99.664062 L 79 101.5 L 101 88.5 L 101 86.126953 L 121.99023 73.208984 L 117.15234 70.185547 L 121.99023 67.208984 L 117.15234 64.185547 L 121.99023 61.208984 L 117.15234 58.185547 L 121.99023 55.208984 L 81.990234 30.208984 z " />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:3px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 39,54.5 v 22 l 40,25"
+       id="bill-stack-wrapper-back" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#bill-template"
+       id="use16402"
+       transform="translate(12.9894,46.209571)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#bill-template"
+       id="use16404"
+       transform="translate(12.9894,40.209571)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#bill-template"
+       id="use16406"
+       transform="translate(12.9894,34.209571)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#bill-template"
+       id="use16408"
+       transform="translate(12.9894,28.209571)" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:3px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+       d="m 39,54.5 40,25 v 22 l 22,-13 v -22 l -40,-25 z"
+       id="bill-stack-wrapper-front" />
+  </g>
+  <g
+     id="coin-stack-2"
+     style="display:inline">
+    <path
+       id="coin-stack-2-buffer"
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 112.35742,63.132812 a 14,5 0 0 0 -13.999998,5 v 5 a 14,5 0 0 0 1.999998,2.566407 v 3.433593 a 14,5 0 0 0 0.0918,0.5 14,5 0 0 0 -0.0918,0.5 v 3.433594 a 14,5 0 0 0 -1.999998,2.566406 v 5 a 14,5 0 0 0 0.0918,0.5 14,5 0 0 0 -0.0918,0.5 v 5 a 14,5 0 0 0 13.999998,4.999998 14,5 0 0 0 14,-4.999998 v -5 a 14,5 0 0 0 -0.0859,-0.541015 14,5 0 0 0 0.0859,-0.458985 v -3.433593 a 14,5 0 0 0 2,-2.566407 v -5 a 14,5 0 0 0 -0.0859,-0.541015 14,5 0 0 0 0.0859,-0.458985 v -5 a 14,5 0 0 0 -2,-2.574218 v -3.425782 a 14,5 0 0 0 -14,-5 z" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16362-3-6"
+       transform="translate(96.356605,85.132517)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16462"
+       transform="translate(96.356605,79.132517)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16464"
+       transform="translate(98.356605,73.132517)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16466"
+       transform="translate(98.356605,67.132517)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16477"
+       transform="translate(96.356605,61.132517)" />
+  </g>
+  <g
+     id="coin-stack-1"
+     style="display:inline">
+    <path
+       id="coin-stack-1-buffer"
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 89.892578,87.054688 a 14,5 0 0 0 -14,5 v 3.433593 a 14,5 0 0 0 -2,2.566407 v 5.000002 a 14,5 0 0 0 2,2.5664 v 3.4336 a 14,5 0 0 0 14,5 14,5 0 0 0 14.000002,-5 v -5 a 14,5 0 0 0 -2,-2.57617 v -1.857426 a 14,5 0 0 0 2,-2.566406 v -5 a 14,5 0 0 0 -14.000002,-5 z" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16362-3"
+       transform="translate(73.893374,97.05547)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16423"
+       transform="translate(71.893374,91.05547)" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#coin-template"
+       id="use16425"
+       transform="translate(73.893374,85.05547)" />
+  </g>
 </svg>
