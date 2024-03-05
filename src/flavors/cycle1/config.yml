@@ -398,15 +398,26 @@ place:
   city_wide_location_offset: 50  # Within 50 meters of City Hall
   unset_location_label: _(Drag the map to set the location.)
 
+  personal_info_title: _(Thank you!)
+  personal_info_intro: |
+    Thank you for sharing your idea with us! We'd like to know a little bit
+    about you so we can follow up with you if we have any questions. Please
+    take a moment to fill out the questions below.
+
   items:
     - prompt: _(What do you call your idea?)
       label: _(Idea title)
       type: text
       name: title
-    - prompt: _(Please share a short (less than 100 words) description of the project idea?)
+    - prompt: _(Please share a short description of the project idea?)
       label: _(My idea is to...)
       type: textarea
       name: description
+      attrs:
+        - key: placeholder
+          value: _(Describe your idea in a few sentences. Make sure your description is short and clear.)
+        - key: maxlength
+          value: 250  # Limiting to around 50 words, assuming most languages are just around 5 characters per word on average.
 
     - prompt: _(Is your idea...)
       label: _(City wide?)
@@ -464,6 +475,7 @@ place:
     # Personal info
     - prompt: _(Your Name)
       label: _(Submitter's Name)
+      is_first_personal_info_field: true
       type: text
       name: submitter_name
       sticky: true
@@ -482,7 +494,6 @@ place:
       label: _(Your Zip Code)
       type: text
       name: private-submitter_zipcode
-      optional: true
       sticky: true
       attrs:
         - key: size
@@ -496,6 +507,17 @@ place:
       attrs:
         - key: placeholder
           value: _(Email address)
+        - key: size
+          value: 30
+    - prompt: _(Your Preferred Language)
+      label: _(Your Preferred Language)
+      type: text
+      name: private-submitter_language
+      optional: true
+      sticky: true
+      attrs:
+        - key: placeholder
+          value: _(Preferred language)
         - key: size
           value: 30
 
@@ -541,16 +563,40 @@ pages:
     slug: filter-type
     pages:
       - title: All
-        external: true
         url: /filter/all
-      - title: _(Landmark)
-        url: /filter/landmark
         external: true
-      - title: _(Park)
-        url: /filter/park
+      - title: _(Arts & Culture)
+        url: /filter/arts_culture
         external: true
-      - title: _(School)
-        url: /filter/school
+      - title: _(Community Resources)
+        url: /filter/community
+        external: true
+      - title: _(Local Economy & Worker Empowerment)
+        url: /filter/economy_workers
+        external: true
+      - title: _(Education, Youth & Families)
+        url: /filter/education_youth
+        external: true
+      - title: _(Environment, Sustainability, and Food Access)
+        url: /filter/sustainability
+        external: true
+      - title: _(Facilities, Parks & Recreation  )
+        url: /filter/facilities
+        external: true
+      - title: _(Human Services / Public Health)
+        url: /filter/human_services
+        external: true
+      - title: _(Public Safety)
+        url: /filter/public_safety
+        external: true
+      - title: _(Streets & Sidewalks)
+        url: /filter/streets_sidewalks
+        external: true
+      - title: _(Transportation )
+        url: /filter/transportation
+        external: true
+      - title: _(Other / Not Sure)
+        url: /filter/other
         external: true
 
 notifications:

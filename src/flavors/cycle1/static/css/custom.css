@@ -65,7 +65,7 @@ p {
 
 .btn, .btn:visited, .btn:link {
   padding: 1.275em 1.5em;
-  background-color: var(--optimistic-blue);
+  background-color: var(--supporting-red-1);
   font-family: var(--header-font);
   font-size: 0.77778rem;
   color: white;
@@ -263,6 +263,10 @@ label {
 
 .help-text {
   font-style: italic;
+}
+
+.place-location_type-field {
+  margin-bottom: 4rem;
 }
 
 /* City-wide toggle buttons */
@@ -703,10 +707,22 @@ label {
     color: var(--supporting-red-1);
   }
 
+  .menu-item-filter-type ul {
+    width: 200%;
+    transform: translateX(-25%);
+  }
+
+  .menu-item-filter-type .btn-block {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
   #current-filter-type {
     position: absolute;
-    left: 1.25rem;
-    text-align: left;
+    width: 250%;
+    transform: translateX(-30%);
+    left: 0.5rem;
+    text-align: center;
     font-size: 0.8rem;
     font-weight: normal;
     font-style: italic;
