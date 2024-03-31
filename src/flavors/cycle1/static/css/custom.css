@@ -298,43 +298,43 @@ label {
 
 /* Location type buttons */
 [name="location_type"] + .label-text {
-  background-size: 4rem;
+  background-size: 5rem;
   background-repeat: no-repeat;
   background-position-x: 50%;
 }
 
 [name="location_type"][value="arts_culture"] + .label-text {
-  background-image: url("/static/img/categories/arts_culture.svg");
+  background-image: url("/static/img/categories/raster/arts_culture.png");
 }
 [name="location_type"][value="community"] + .label-text {
-  background-image: url("/static/img/categories/community.svg");
+  background-image: url("/static/img/categories/raster/community.png");
 }
 [name="location_type"][value="economy_workers"] + .label-text {
-  background-image: url("/static/img/categories/economy_workers.svg");
+  background-image: url("/static/img/categories/raster/economy_workers.png");
 }
 [name="location_type"][value="education_youth"] + .label-text {
-  background-image: url("/static/img/categories/education_youth.svg");
+  background-image: url("/static/img/categories/raster/education_youth.png");
 }
 [name="location_type"][value="sustainability"] + .label-text {
-  background-image: url("/static/img/categories/sustainability.svg");
+  background-image: url("/static/img/categories/raster/sustainability.png");
 }
 [name="location_type"][value="facilities"] + .label-text {
-  background-image: url("/static/img/categories/facilities.svg");
+  background-image: url("/static/img/categories/raster/facilities.png");
 }
 [name="location_type"][value="human_services"] + .label-text {
-  background-image: url("/static/img/categories/human_services.svg");
+  background-image: url("/static/img/categories/raster/human_services.png");
 }
 [name="location_type"][value="public_safety"] + .label-text {
-  background-image: url("/static/img/categories/public_safety.svg");
+  background-image: url("/static/img/categories/raster/public_safety.png");
 }
 [name="location_type"][value="streets_sidewalks"] + .label-text {
-  background-image: url("/static/img/categories/streets_sidewalks.svg");
+  background-image: url("/static/img/categories/raster/streets_sidewalks.png");
 }
 [name="location_type"][value="transportation"] + .label-text {
-  background-image: url("/static/img/categories/transportation.svg");
+  background-image: url("/static/img/categories/raster/transportation.png");
 }
 [name="location_type"][value="other"] + .label-text {
-  background-image: url("/static/img/categories/other.svg");
+  background-image: url("/static/img/categories/raster/other.png");
 }
 
 [name="location_type"] + .label-text:hover {
@@ -441,6 +441,10 @@ label {
   font-weight: bold;
   font-size: 0.75rem;
   text-transform: uppercase;
+}
+
+.point-submitter .avatar {
+  height: auto;
 }
 
 /* =Ticker
@@ -551,6 +555,10 @@ label {
   padding: 1rem;
 }
 
+.place-list .point-submitter .avatar {
+  height: auto;
+}
+
 .list-search-form {
   display: flex;
 }
@@ -577,6 +585,33 @@ label {
 
 .list-sort-menu a:hover {
   color: var(--supporting-red-1);
+}
+
+/* =Project Info Pages
+-------------------------------------------------------------- */
+
+.campaign-calendar-list dt {
+  font-style: italic;
+}
+
+.campaign-calendar-list dt::after {
+  content: ':';
+}
+
+.page h3 {
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+}
+
+.page dl, .page ol, .page ul, .page li, .page p {
+  padding-bottom: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.page .btn {
+  padding-bottom: 1.275em;
 }
 
 /* =Media Queries
@@ -811,6 +846,12 @@ label {
     width: auto;
     margin: 0;
     position: static;
+  }
+}
+
+@media only screen and (1024px < width < 1280px) {
+  .leaflet-control-geocoder-form input {
+    width: 144px;
   }
 }
 
