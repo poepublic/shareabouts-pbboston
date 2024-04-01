@@ -411,11 +411,12 @@ place:
       name: title
     - prompt: _(Please share a short description of the project idea?)
       label: _(My idea is to...)
+      help_text: _(Describe your idea in a few sentences. Make sure your description is short and clear.)
       type: textarea
       name: description
       attrs:
         - key: placeholder
-          value: _(Describe your idea in a few sentences. Make sure your description is short and clear.)
+          value: _(Try to keep it to 50 words or less...)
         - key: maxlength
           value: 250  # Limiting to around 50 words, assuming most languages are just around 5 characters per word on average.
 
@@ -439,8 +440,12 @@ place:
 
     - prompt: _(Please describe the positive impact of your project idea to the community.)
       label: _(This idea would benefit the community by...)
+      help_text: _(Describe the impact in a few sentences. Make sure you keep it short and clear.)
       type: textarea
       name: benefit
+      attrs:
+        - key: placeholder
+          value: _(Try to keep it to 50 words or less...)
     - prompt: _(Which category does your idea fall into?)
       label: _(Category)
       help_text: _(Choose the category that most closely describes your project.)
