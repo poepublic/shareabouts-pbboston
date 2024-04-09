@@ -8,6 +8,14 @@
  */
 
 :root {
+  --icon-purple-1: #49157e;
+  --icon-purple-2: #e9d3ff;
+  --icon-purple-3: #925dc8;
+
+  --icon-blue-1: #091f2f;
+  --icon-blue-2: #98b3cb;
+  --icon-blue-3: #3c7297;
+
   --charles-blue: #091f2f;
   --optimistic-blue: #288be4;
   --freedom-trail-red: #fb4d42;
@@ -298,43 +306,44 @@ label {
 
 /* Location type buttons */
 [name="location_type"] + .label-text {
-  background-size: 5rem;
+  background-size: 3.5rem;
   background-repeat: no-repeat;
   background-position-x: 50%;
+  background-position-y: 10%;
 }
 
 [name="location_type"][value="arts_culture"] + .label-text {
-  background-image: url("/static/img/categories/raster/arts_culture.png");
+  background-image: url("/static/img/categories/arts_culture-button.svg");
 }
 [name="location_type"][value="community"] + .label-text {
-  background-image: url("/static/img/categories/raster/community.png");
+  background-image: url("/static/img/categories/community-button.svg");
 }
 [name="location_type"][value="economy_workers"] + .label-text {
-  background-image: url("/static/img/categories/raster/economy_workers.png");
+  background-image: url("/static/img/categories/economy_workers-button.svg");
 }
 [name="location_type"][value="education_youth"] + .label-text {
-  background-image: url("/static/img/categories/raster/education_youth.png");
+  background-image: url("/static/img/categories/education_youth-button.svg");
 }
 [name="location_type"][value="sustainability"] + .label-text {
-  background-image: url("/static/img/categories/raster/sustainability.png");
+  background-image: url("/static/img/categories/sustainability-button.svg");
 }
 [name="location_type"][value="facilities"] + .label-text {
-  background-image: url("/static/img/categories/raster/facilities.png");
+  background-image: url("/static/img/categories/facilities-button.svg");
 }
 [name="location_type"][value="human_services"] + .label-text {
-  background-image: url("/static/img/categories/raster/human_services.png");
+  background-image: url("/static/img/categories/human_services-button.svg");
 }
 [name="location_type"][value="public_safety"] + .label-text {
-  background-image: url("/static/img/categories/raster/public_safety.png");
+  background-image: url("/static/img/categories/public_safety-button.svg");
 }
 [name="location_type"][value="streets_sidewalks"] + .label-text {
-  background-image: url("/static/img/categories/raster/streets_sidewalks.png");
+  background-image: url("/static/img/categories/streets_sidewalks-button.svg");
 }
 [name="location_type"][value="transportation"] + .label-text {
-  background-image: url("/static/img/categories/raster/transportation.png");
+  background-image: url("/static/img/categories/transportation-button.svg");
 }
 [name="location_type"][value="other"] + .label-text {
-  background-image: url("/static/img/categories/raster/other.png");
+  background-image: url("/static/img/categories/other-button.svg");
 }
 
 [name="location_type"] + .label-text:hover {

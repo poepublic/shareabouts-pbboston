@@ -13,7 +13,7 @@
               {{#if submitter.avatar_url }}
                 <img src="{{ submitter.avatar_url }}" class="avatar" />
               {{^}}
-                <img src="{{ STATIC_URL }}img/categories/raster/{{ location_type }}.png" class="avatar" />
+                <img src="{{ STATIC_URL }}img/categories/{{ location_type }}.svg" class="avatar" />
               {{/if}}
               {{#if submitter.name }}
                 {{ submitter.name }}
@@ -47,7 +47,7 @@
             <img src="{{ file }}" class="place-value place-value-{{ name }}" alt="{{ name }}">
           </div>
           {{/ attachments }}
-          {{#each_place_item "submitter_name" "title" "location_type" "city_wide" "address"}}
+          {{#each_place_item "submitter_name" "submitter_neighborhood" "title" "location_type" "city_wide" "address"}}
           <div class="place-item place-item-{{ name }}">
             <span class="place-label place-label-{{ name }}">{{ label }}</span>
             <p class="place-value place-value-{{ name }}">{{nlToBr value }}</p>
