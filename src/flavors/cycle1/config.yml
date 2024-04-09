@@ -438,7 +438,7 @@ place:
       name: address
       placeholder: _(Drag the map to set the location.)
 
-    - prompt: _(Please describe the positive impact of your project idea to the community.)
+    - prompt: _(Please describe how the project positively impacts the community and/or advances social and racial equity.)
       label: _(This idea would benefit the community by...)
       help_text: _(Describe the impact in a few sentences. Make sure you keep it short and clear.)
       type: textarea
