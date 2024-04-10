@@ -13,7 +13,7 @@
               {{#if submitter.avatar_url }}
                 <img src="{{ submitter.avatar_url }}" class="avatar" />
               {{^}}
-                <img src="{{ STATIC_URL }}img/categories/{{ location_type }}.svg" class="avatar" />
+                <img src="{{ STATIC_URL }}img/categories/{{ location_type }}-blueish.svg" class="avatar" />
               {{/if}}
               {{#if submitter.name }}
                 {{ submitter.name }}
@@ -31,8 +31,6 @@
             {{/if}}{{/_}}
 
             <time datetime="{{ created_datetime }}" class="response-date"><a href="/place/{{ id }}">{{ fromnow created_datetime }}</a></time>
-
-            <span class="survey-count">{{ survey_count }} {{ survey_label_by_count }}</span>
 
             {{^if survey_config}}
             <a href="/place/{{ id }}" class="view-on-map-btn btn btn-small">{{#_}}View On Map{{/_}}</a>
