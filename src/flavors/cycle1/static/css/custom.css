@@ -13,7 +13,7 @@
   --icon-purple-3: #925dc8;
 
   --icon-blue-1: #091f2f;
-  --icon-blue-2: #98b3cb;
+  --icon-blue-2: #c2d9ed;
   --icon-blue-3: #3c7297;
 
   --charles-blue: #091f2f;
@@ -313,37 +313,34 @@ label {
 }
 
 [name="location_type"][value="arts_culture"] + .label-text {
-  background-image: url("/static/img/categories/arts_culture-button.svg");
+  background-image: url("/static/img/categories/arts_culture-dark-square.svg");
 }
 [name="location_type"][value="community"] + .label-text {
-  background-image: url("/static/img/categories/community-button.svg");
+  background-image: url("/static/img/categories/community-dark-square.svg");
 }
 [name="location_type"][value="economy_workers"] + .label-text {
-  background-image: url("/static/img/categories/economy_workers-button.svg");
+  background-image: url("/static/img/categories/economy_workers-dark-square.svg");
 }
 [name="location_type"][value="education_youth"] + .label-text {
-  background-image: url("/static/img/categories/education_youth-button.svg");
+  background-image: url("/static/img/categories/education_youth-dark-square.svg");
 }
 [name="location_type"][value="sustainability"] + .label-text {
-  background-image: url("/static/img/categories/sustainability-button.svg");
+  background-image: url("/static/img/categories/sustainability-dark-square.svg");
 }
 [name="location_type"][value="facilities"] + .label-text {
-  background-image: url("/static/img/categories/facilities-button.svg");
+  background-image: url("/static/img/categories/facilities-dark-square.svg");
 }
 [name="location_type"][value="human_services"] + .label-text {
-  background-image: url("/static/img/categories/human_services-button.svg");
+  background-image: url("/static/img/categories/human_services-dark-square.svg");
 }
 [name="location_type"][value="public_safety"] + .label-text {
-  background-image: url("/static/img/categories/public_safety-button.svg");
+  background-image: url("/static/img/categories/public_safety-dark-square.svg");
 }
 [name="location_type"][value="streets_sidewalks"] + .label-text {
-  background-image: url("/static/img/categories/streets_sidewalks-button.svg");
-}
-[name="location_type"][value="transportation"] + .label-text {
-  background-image: url("/static/img/categories/transportation-button.svg");
+  background-image: url("/static/img/categories/streets_sidewalks-dark-square.svg");
 }
 [name="location_type"][value="other"] + .label-text {
-  background-image: url("/static/img/categories/other-button.svg");
+  background-image: url("/static/img/categories/other-dark-square.svg");
 }
 
 [name="location_type"] + .label-text:hover {
@@ -378,9 +375,6 @@ label {
 }
 [name="location_type"][value="streets_sidewalks"] + .label-text:hover {
   border-color: var(--icon-color-09);
-}
-[name="location_type"][value="transportation"] + .label-text:hover {
-  border-color: var(--icon-color-10);
 }
 [name="location_type"][value="other"] + .label-text:hover {
   border-color: var(--icon-color-11);
@@ -461,6 +455,16 @@ label {
 
 #ticker {
   background-color: var(--charles-blue);
+}
+
+.recent-points .avatar {
+  width: 3rem;
+  height: 3rem;
+  margin-left: -3.5rem;
+}
+
+.recent-points a {
+  padding-left: 4rem;
 }
 
 /* =Colophon

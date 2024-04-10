@@ -69,13 +69,29 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#fb4d42'
           radius: 6
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/arts_culture-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "arts_culture" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/arts_culture-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   community:
     label: _(Community Resources)
     rules:
@@ -95,6 +111,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "community" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/community-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "community" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/community-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   economy_workers:
     label: _(Local Economy & Worker Empowerment)
     rules:
@@ -114,6 +146,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/economy_workers-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "economy_workers" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/economy_workers-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   education_youth:
     label: _(Education, Youth & Families)
     rules:
@@ -133,6 +181,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/education_youth-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "education_youth" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/education_youth-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   sustainability:
     label: _(Environment, Sustainability, and Food Access)
     rules:
@@ -152,6 +216,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/sustainability-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "sustainability" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/sustainability-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   facilities:
     label: _(Facilities, Parks & Recreation  )
     rules:
@@ -171,6 +251,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/facilities-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "facilities" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/facilities-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   human_services:
     label: _(Human Services / Public Health)
     rules:
@@ -190,6 +286,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/human_services-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "human_services" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/human_services-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   public_safety:
     label: _(Public Safety)
     rules:
@@ -209,6 +321,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/public_safety-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "public_safety" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/public_safety-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   streets_sidewalks:
     label: _(Streets & Sidewalks)
     rules:
@@ -228,25 +356,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-  transportation:
-    label: _(Transportation )
-    rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "transportation" && {{map.zoom}} < 13 && {{layer.focused}} === false'
-        style:
-          color: '#8b41fa'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "transportation" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
-        style:
-          color: '#8b41fa'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/streets_sidewalks-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "streets_sidewalks" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/streets_sidewalks-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
   other:
     label: _(Other / Not Sure)
     rules:
@@ -266,6 +391,22 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
+      # Draw even larger circles when super zoomed in...
+      - condition: '"{{location_type}}" === "other" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
+        icon:
+          iconUrl: /static/img/categories/other-dot.svg
+          shadowUrl: null
+          iconSize: [32, 32]
+          shadowSize: null
+          iconAnchor: [16, 16]
+      # Draw biggest circle when focused...
+      - condition: '"{{location_type}}" === "other" && {{layer.focused}} === true'
+        icon:
+          iconUrl: /static/img/categories/other-dot.svg
+          shadowUrl: null
+          iconSize: [64, 64]
+          shadowSize: null
+          iconAnchor: [32, 32]
 
   # landmark:
   #   label: _(Landmark)
@@ -470,8 +611,6 @@ place:
           value: public_safety
         - label: _(Streets & Sidewalks)
           value: streets_sidewalks
-        - label: _(Transportation )
-          value: transportation
         - label: _(Other / Not Sure)
           value: other
       attrs:
@@ -596,9 +735,6 @@ pages:
         external: true
       - title: _(Streets & Sidewalks)
         url: /filter/streets_sidewalks
-        external: true
-      - title: _(Transportation )
-        url: /filter/transportation
         external: true
       - title: _(Other / Not Sure)
         url: /filter/other
