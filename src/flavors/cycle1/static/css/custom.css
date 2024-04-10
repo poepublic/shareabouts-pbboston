@@ -574,7 +574,13 @@ label {
 }
 
 .place-list .point-submitter .avatar {
+  width: 5rem;
   height: auto;
+  margin-left: -5.5rem;
+}
+
+.place-list .place-submission-details {
+  padding-left: 5rem;
 }
 
 .list-search-form {
