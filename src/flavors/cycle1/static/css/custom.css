@@ -382,56 +382,61 @@ label {
 
 [name="location_type"][value="arts_culture"]:checked + .label-text {
   background-color: var(--icon-color-01);
+  background-image: url("/static/img/categories/arts_culture-light-square.svg");
   border-color: var(--icon-color-01);
   color: white;
 }
 [name="location_type"][value="community"]:checked + .label-text {
   background-color: var(--icon-color-02);
+  background-image: url("/static/img/categories/community-dark-square.svg");
   border-color: var(--icon-color-02);
   color: var(--charles-blue);
 }
 [name="location_type"][value="economy_workers"]:checked + .label-text {
   background-color: var(--icon-color-03);
+  background-image: url("/static/img/categories/economy_workers-dark-square.svg");
   border-color: var(--icon-color-03);
   color: var(--charles-blue);
 }
 [name="location_type"][value="education_youth"]:checked + .label-text {
   background-color: var(--icon-color-04);
+  background-image: url("/static/img/categories/education_youth-dark-square.svg");
   border-color: var(--icon-color-04);
   color: var(--charles-blue);
 }
 [name="location_type"][value="sustainability"]:checked + .label-text {
   background-color: var(--icon-color-05);
+  background-image: url("/static/img/categories/sustainability-dark-square.svg");
   border-color: var(--icon-color-05);
   color: var(--charles-blue);
 }
 [name="location_type"][value="facilities"]:checked + .label-text {
   background-color: var(--icon-color-06);
+  background-image: url("/static/img/categories/facilities-dark-square.svg");
   border-color: var(--icon-color-06);
   color: var(--charles-blue);
 }
 [name="location_type"][value="human_services"]:checked + .label-text {
   background-color: var(--icon-color-07);
+  background-image: url("/static/img/categories/human_services-dark-square.svg");
   border-color: var(--icon-color-07);
   color: var(--charles-blue);
 }
 [name="location_type"][value="public_safety"]:checked + .label-text {
   background-color: var(--icon-color-08);
+  background-image: url("/static/img/categories/public_safety-light-square.svg");
   border-color: var(--icon-color-08);
   color: white;
 }
 [name="location_type"][value="streets_sidewalks"]:checked + .label-text {
   background-color: var(--icon-color-09);
+  background-image: url("/static/img/categories/streets_sidewalks-light-square.svg");
   border-color: var(--icon-color-09);
-  color: white;
-}
-[name="location_type"][value="transportation"]:checked + .label-text {
-  background-color: var(--icon-color-10);
-  border-color: var(--icon-color-10);
   color: white;
 }
 [name="location_type"][value="other"]:checked + .label-text {
   background-color: var(--icon-color-11);
+  background-image: url("/static/img/categories/other-light-square.svg");
   border-color: var(--icon-color-11);
   color: white;
 }
