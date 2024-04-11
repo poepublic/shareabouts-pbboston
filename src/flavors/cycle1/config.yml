@@ -632,6 +632,8 @@ place:
       name: submitter_neighborhood
       sticky: true
       options:
+        - label: _(Select a neighborhood)
+          value: ''
         - label: _(Allston)
           value: Allston
         - label: _(Back Bay)
