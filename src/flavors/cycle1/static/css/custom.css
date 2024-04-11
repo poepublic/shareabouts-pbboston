@@ -227,6 +227,18 @@ p {
   display: none;
 }
 
+.navbar-suggest-btn, .navbar-suggest-btn:visited, .navbar-suggest-btn:link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .navbar-suggest-btn, .navbar-suggest-btn:visited, .navbar-suggest-btn:link {
+    display: none;
+  }
+}
+
 /* =Form
 -------------------------------------------------------------- */
 
