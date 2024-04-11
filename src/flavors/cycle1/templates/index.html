@@ -61,8 +61,12 @@
   Analytics, custom JS, and such go here
  -->
 {% block includes %}
-<script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+<link rel="stylesheet" href="https://unpkg.com/select2@4.1.0-rc.0/dist/css/select2.min.css">
+
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+<script src="https://unpkg.com/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script src="{% static 'js/language-picker.js' %}"></script>
 <script src="{% static 'js/place-form-view-city-wide-ext.js' %}"></script>
+<script src="{% static 'js/place-form-view-select2-ext.js' %}"></script>
 {% endblock %}

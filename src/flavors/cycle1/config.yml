@@ -628,12 +628,58 @@ place:
           value: 30
     - prompt: _(Your Neighborhood)
       label: _(Submitter's Neighborhood)
-      type: text
+      type: select
       name: submitter_neighborhood
       sticky: true
-      attrs:
-        - key: size
-          value: 30
+      options:
+        - label: _(Allston)
+          value: Allston
+        - label: _(Back Bay)
+          value: Back Bay
+        - label: _(Bay Village)
+          value: Bay Village
+        - label: _(Beacon Hill)
+          value: Beacon Hill
+        - label: _(Brighton)
+          value: Brighton
+        - label: _(Charlestown)
+          value: Charlestown
+        - label: _(Chinatown-Leather District)
+          value: Chinatown-Leather District
+        - label: _(Dorchester)
+          value: Dorchester
+        - label: _(Downtown)
+          value: Downtown
+        - label: _(East Boston)
+          value: East Boston
+        - label: _(Fenway-Kenmore)
+          value: Fenway-Kenmore
+        - label: _(Hyde Park)
+          value: Hyde Park
+        - label: _(Jamaica Plain)
+          value: Jamaica Plain
+        - label: _(Mattapan)
+          value: Mattapan
+        - label: _(Mid-Dorchester)
+          value: Mid-Dorchester
+        - label: _(Mission Hill)
+          value: Mission Hill
+        - label: _(North End)
+          value: North End
+        - label: _(Roslindale)
+          value: Roslindale
+        - label: _(Roxbury)
+          value: Roxbury
+        - label: _(South Boston)
+          value: South Boston
+        - label: _(South End)
+          value: South End
+        - label: _(West End)
+          value: West End
+        - label: _(West Roxbury)
+          value: West Roxbury
+        - label: _(Wharf District)
+          value: Wharf District
     - prompt: _(Your Zip Code)
       label: _(Your Zip Code)
       type: text
