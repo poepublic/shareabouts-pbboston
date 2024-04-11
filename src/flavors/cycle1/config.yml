@@ -104,7 +104,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "community" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "community" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#fa8b41'
           radius: 6
@@ -139,7 +139,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#fac241'
           radius: 6
@@ -174,7 +174,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#faee41'
           radius: 6
@@ -209,7 +209,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#b6fa41'
           radius: 6
@@ -244,7 +244,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#75fa41'
           radius: 6
@@ -279,7 +279,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#41eafa'
           radius: 6
@@ -314,7 +314,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#4185fa'
           radius: 6
@@ -349,7 +349,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#4441fa'
           radius: 6
@@ -384,7 +384,7 @@ place_types:
           opacity: 0.9
           fillOpacity: 1
       # Draw larger circles when fewer ideas visible...
-      - condition: '"{{location_type}}" === "other" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "other" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#e441fa'
           radius: 6
@@ -421,7 +421,7 @@ place_types:
   #         opacity: 0.9
   #         fillOpacity: 1
 
-  #     - condition: '"{{location_type}}" === "landmark" && {{map.zoom}} >= 13 && {{layer.focused}} === false'
+  #     - condition: '"{{location_type}}" === "landmark" && {{map.zoom}} < 15 && {{layer.focused}} === false'
   #       # Display landmarks as icons when zoomed in
 
   #       icon:
@@ -552,7 +552,7 @@ place:
       name: title
     - prompt: _(Please share a short description of the project idea?)
       label: _(My idea is to...)
-      help_text: _(Describe your idea in a few sentences. Make sure your description is short and clear.)
+      help_text: _(Make sure your description is short and clear.)
       type: textarea
       name: description
       attrs:
@@ -581,7 +581,7 @@ place:
 
     - prompt: _(Please describe how the project positively impacts the community and/or advances social and racial equity.)
       label: _(This idea would benefit the community by...)
-      help_text: _(Describe the impact in a few sentences. Make sure you keep it short and clear.)
+      help_text: _(Make sure you keep it short and clear.)
       type: textarea
       name: benefit
       attrs:
