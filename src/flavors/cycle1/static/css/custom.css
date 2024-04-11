@@ -88,7 +88,7 @@ p {
   background-color: var(--freedom-trail-red);
 }
 
-.btn-small {
+.btn-small:visited, .btn-small:link {
   padding: 0.5em 0.75em;
 }
 
