@@ -694,14 +694,14 @@ support:
   anonymous_name: _(Someone)
 
 pages:
+  - title: _(Boston PB Home)
+    external: true
+    url: https://www.boston.gov/departments/participatory-budgeting
+
   - title: _(About)
     slug: about
     name: overview
     start_page: true
-
-  - title: _(Boston PB Home)
-    external: true
-    url: https://www.boston.gov/departments/participatory-budgeting
 
   - title: Filter Places
     slug: filter-type
