@@ -14,7 +14,7 @@
 
   --icon-blue-1: #091f2f;
   --icon-blue-2: #c2d9ed;
-  --icon-blue-3: #3c7297;
+  --icon-blue-3: #288be4;
 
   --charles-blue: #091f2f;
   --optimistic-blue: #288be4;
@@ -86,6 +86,15 @@ p {
 
 .btn:hover {
   background-color: var(--freedom-trail-red);
+}
+
+@media only screen and (min-width: 60em) {
+  #add-place {
+    font-size: 1.25rem;
+  }
+  .content-visible #add-place {
+    font-size: 0.77778rem;
+  }
 }
 
 /* .btn-primary, .btn-primary:visited, .btn-primary:link {
