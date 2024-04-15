@@ -47,12 +47,20 @@ Shareabouts.PlaceFormView.prototype.resetCityWide = function(isCityWide) {
   }
 }
 
+var Shareabouts_PlaceFormView_setLocation = Shareabouts.PlaceFormView.prototype.setLocation;
+Shareabouts.PlaceFormView.prototype.setLocation = function(location) {
+  Shareabouts_PlaceFormView_setLocation.call(this, location);
+  if (this.location) {
+    this.$('.location-receiver').removeClass('awaiting-location');
+  }
+}
+
 // Use a custom version of the form view's setLocation function when city-wide
 // is set to true:
 var original_PlaceFormView_setLocation = Shareabouts.PlaceFormView.prototype.setLocation;
 function cityWide_PlaceFormView_setLocation() {
-  const location = null;
-  this.$('.location-receiver').html(this.options.placeConfig.city_wide_location_label);
+  this.location = null;
+  this.$('.location-receiver').removeClass('awaiting-location').html(this.options.placeConfig.city_wide_location_label);
 }
 
 // Save the original version of the form view's setLatLng function so that we
@@ -89,7 +97,7 @@ Shareabouts.PlaceFormView.prototype.unsetLatLng = function() {
   Shareabouts.PlaceFormView.prototype.setLatLng = original_PlaceFormView_setLatLng;
   Shareabouts.PlaceFormView.prototype.setLocation = original_PlaceFormView_setLocation;
   this.location = null;
-  this.$('.location-receiver').html(this.options.placeConfig.unset_location_label);
+  this.$('.location-receiver').addClass('awaiting-location').html(this.options.placeConfig.unset_location_label);
 }
 
 // After the user submits their idea, revert the body and the place form back

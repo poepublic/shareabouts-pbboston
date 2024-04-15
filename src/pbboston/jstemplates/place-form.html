@@ -1,5 +1,5 @@
-        <p class="drag-marker-instructions">{{#_}}Drag the map to your location.{{/_}}</p>
-        <p class="drag-marker-warning is-visuallyhidden">{{#_}}It looks like you didn't set your location yet. Please drag the map to your location.{{/_}}</p>
+        <p class="drag-marker-instructions">{{ place_config.unset_location_label }}</p>
+        <p class="drag-marker-warning is-visuallyhidden">{{#_}}It looks like you didn't set your location yet.{{/_}} {{ place_config.unset_location_label }}</p>
 
         <h4 class="">{{ place_config.title }}</h4>
 

@@ -537,7 +537,7 @@ place:
   city_wide_location_label: _(Multiple locations throughout the city)
   city_wide_location_center:  [-71.05804664749975, 42.36058038175507]  # <- Boston City Hall
   city_wide_location_offset: 50  # Within 50 meters of City Hall
-  unset_location_label: _(Drag the map to set the location.)
+  unset_location_label: _(Please use the map's search box or drag the map to set the location.)
 
   personal_info_title: _(Thank you!)
   personal_info_intro: |

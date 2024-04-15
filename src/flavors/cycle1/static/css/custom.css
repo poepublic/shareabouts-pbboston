@@ -524,6 +524,11 @@ label {
   background-color: var(--instructions-bg);
 }
 
+.awaiting-location {
+  padding: 0.5rem;
+  background-color: var(--instructions-bg);
+}
+
 /* =Place detail
 -------------------------------------------------------------- */
 
