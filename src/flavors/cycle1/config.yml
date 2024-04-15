@@ -530,7 +530,7 @@ place:
   show_map_button_label: _(Show the Map)
   action_text: _(submitted)
   title: _(Tell us more...)
-  anonymous_name: _(Someone)
+  anonymous_name: _(Your neighbor)
   submit_button_label: _(Submit)
 
   location_item_name: location
@@ -638,6 +638,16 @@ place:
           value: true
         - key: placeholder
           value: _(Last name...)
+    - prompt: _(How should we display your name next to your idea?)
+      name: submitter_name_display_style
+      type: radiogroup
+      options:
+        - label: _(Use my full name)
+          value: full_name
+        - label: _(Only use my first name)
+          value: first_name
+        - label: _(Do not display my name)
+          value: no_name
     - prompt: _(Your Neighborhood)
       label: _(Submitter's Neighborhood)
       type: select
