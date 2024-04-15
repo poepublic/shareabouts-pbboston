@@ -315,6 +315,7 @@ label {
 
 .help-text {
   font-style: italic;
+  margin-bottom: 0.25rem;
 }
 
 .place-location_type-field {
@@ -480,6 +481,11 @@ label {
   background-image: url("/static/img/categories/other-light-square.svg");
   border-color: var(--icon-color-11);
   color: white;
+}
+
+.fullname-field-wrapper {
+  display: flex;
+  gap: 0.5rem;
 }
 
 /* =Place detail

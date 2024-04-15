@@ -27,7 +27,7 @@ map:
   # The default geocoding engine is MapQuest. You can set an override below.
   # Make sure to provide the appropriate keys for whatever you set.
   geocoding_engine: Mapbox
-  geocode_field_label: _(Enter an address...)
+  geocode_field_label: _(Enter a location...)
   geocode_bounding_box: [39.830159, -75.478821, 40.167331, -74.781189]  # top, left, bottom, right
 
   options:
@@ -621,11 +621,23 @@ place:
       label: _(Submitter's Name)
       is_first_personal_info_field: true
       type: text
-      name: submitter_name
+      name: submitter_name_first
       sticky: true
       attrs:
-        - key: size
-          value: 30
+        - key: required
+          value: true
+        - key: placeholder
+          value: _(First name...)
+    - prompt: _(Your Name)
+      label: _(Submitter's Name)
+      type: text
+      name: submitter_name_last
+      sticky: true
+      attrs:
+        - key: required
+          value: true
+        - key: placeholder
+          value: _(Last name...)
     - prompt: _(Your Neighborhood)
       label: _(Submitter's Neighborhood)
       type: select
@@ -682,14 +694,17 @@ place:
           value: West Roxbury
         - label: _(Wharf District)
           value: Wharf District
+      attrs:
+        - key: required
+          value: true
     - prompt: _(Your Zip Code)
       label: _(Your Zip Code)
       type: text
       name: private-submitter_zipcode
       sticky: true
       attrs:
-        - key: size
-          value: 10
+        - key: required
+          value: true
     - prompt: _(Your Email)
       label: _(Your Email)
       type: text
@@ -699,8 +714,6 @@ place:
       attrs:
         - key: placeholder
           value: _(Email address)
-        - key: size
-          value: 30
     - prompt: _(Your Preferred Language)
       label: _(Your Preferred Language)
       type: text
@@ -710,8 +723,6 @@ place:
       attrs:
         - key: placeholder
           value: _(Preferred language)
-        - key: size
-          value: 30
 
 survey:
   submission_type: comments
@@ -751,7 +762,7 @@ pages:
     name: overview
     start_page: true
 
-  - title: Filter Places
+  - title: Filter Ideas
     slug: filter-type
     pages:
       - title: All
