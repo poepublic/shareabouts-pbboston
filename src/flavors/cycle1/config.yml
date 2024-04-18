@@ -617,11 +617,14 @@ place:
         - key: required
 
     # Personal info
+    - name: submitter_name
+      type: hidden  # The submitter display name is set according to the user's choices in the next fields.
+      sticky: true
+      is_first_personal_info_field: true
     - prompt: _(Your Name)
       label: _(Submitter's Name)
-      is_first_personal_info_field: true
       type: text
-      name: submitter_name_first
+      name: private-submitter_name_first
       sticky: true
       attrs:
         - key: required
@@ -631,7 +634,7 @@ place:
     - prompt: _(Your Name)
       label: _(Submitter's Name)
       type: text
-      name: submitter_name_last
+      name: private-submitter_name_last
       sticky: true
       attrs:
         - key: required
@@ -639,7 +642,7 @@ place:
         - key: placeholder
           value: _(Last name...)
     - prompt: _(How should we display your name next to your idea?)
-      name: submitter_name_display_style
+      name: private-submitter_name_display_style
       type: radiogroup
       options:
         - label: _(Use my full name)

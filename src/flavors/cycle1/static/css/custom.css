@@ -320,6 +320,10 @@ label {
   margin-bottom: 0.25rem;
 }
 
+.hidden-field {
+  display: none;
+}
+
 .place-location_type-field {
   margin-bottom: 4rem;
 }
@@ -490,12 +494,12 @@ label {
   gap: 0.5rem;
 }
 
-.place-submitter_name_display_style-field .radio-group {
+.place-private-submitter_name_display_style-field .radio-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
-[name="submitter_name_display_style"] + .radio-label-text {
+[name="private-submitter_name_display_style"] + .radio-label-text {
   display: flex;
   justify-content: center;
   flex-direction: column;

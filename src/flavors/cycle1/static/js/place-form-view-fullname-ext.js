@@ -1,34 +1,70 @@
 (function() {
 
+  const firstNameFieldName = 'private-submitter_name_first';
+  const lastNameFieldName = 'private-submitter_name_last';
+  const displayedNameFieldName = 'submitter_name';
+  const nameDisplayStyleFieldName = 'private-submitter_name_display_style';
+
   Shareabouts.PlaceFormView.prototype.events = {
     ...Shareabouts.PlaceFormView.prototype.events,
-    'change input[name="title"]': 'onTitleChange',
+    'input input[name="title"]': 'onTitleChange',
     'change input[name="location_type"]': 'onLocationTypeChange',
-    'change input[name="submitter_name_display_style"]': 'onSubmitterNameDisplayStyleChange',
-    'input input[name="submitter_name_first"]': 'onSubmitterNameFirstChange',
-    'input input[name="submitter_name_last"]': 'onSubmitterNameLastChange',
+    [`change input[name="${nameDisplayStyleFieldName}"]`]: 'onSubmitterNameDisplayStyleChange',
+    [`input input[name="${firstNameFieldName}"]`]: 'onSubmitterNameFirstChange',
+    [`input input[name="${lastNameFieldName}"]`]: 'onSubmitterNameLastChange',
   };
 
-  Shareabouts.PlaceFormView.prototype.initNameDisplaySample = function() {
-    const nameDisplayStyleWrapper = this.el.querySelector('.place-submitter_name_display_style-field');
-    const nameDisplayStyleRadioGroup = this.el.querySelector('.place-submitter_name_display_style-field .radio-group');
+  Shareabouts.PlaceFormView.prototype.initNameDisplayValue = function() {
+    const nameDisplayStyleWrapper = this.el.querySelector(`.place-${nameDisplayStyleFieldName}-field`);
+    const nameDisplayStyleRadioGroup = this.el.querySelector(`.place-${nameDisplayStyleFieldName}-field .radio-group`);
+
+    if (!nameDisplayStyleWrapper || !nameDisplayStyleRadioGroup) {
+      console.warn('Could not find name display style radio group.');
+      return;
+    }
 
     const nameDisplaySampleDiv = document.createElement('div');
     nameDisplaySampleDiv.classList.add('submitter_name-display-sample');
     nameDisplayStyleWrapper.appendChild(nameDisplaySampleDiv);
 
-    this.updateNameDisplaySample();
+    this.updateNameDisplayValue();
   }
 
-  Shareabouts.PlaceFormView.prototype.updateNameDisplaySample = function() {
-    const nameDisplayStyleInput = this.el.querySelector('[name="submitter_name_display_style"]:checked');
+  Shareabouts.PlaceFormView.prototype.updateNameDisplayValue = function() {
+    const nameDisplayStyleInput = this.el.querySelector(`[name="${nameDisplayStyleFieldName}"]:checked`);
     if (!nameDisplayStyleInput) {
       return;
     }
     const displayStyle = nameDisplayStyleInput.value;
 
-    const firstNameInput = this.el.querySelector('[name="submitter_name_first"]');
-    const lastNameInput = this.el.querySelector('[name="submitter_name_last"]');
+    const firstNameInput = this.el.querySelector(`[name="${firstNameFieldName}"]`);
+    const lastNameInput = this.el.querySelector(`[name="${lastNameFieldName}"]`);
+    const displayedNameInput = this.el.querySelector(`[name="${displayedNameFieldName}"]`);
+
+    let displayedName = null;
+    let message = null;
+
+    if (displayStyle === 'full_name') {
+      if (!firstNameInput.value.trim() || !lastNameInput.value.trim()) {
+        message = 'Enter your first and last name above to see how your idea will be displayed.';
+      } else {
+        displayedName = `${firstNameInput.value} ${lastNameInput.value}`;
+      }
+    } else if (displayStyle === 'first_name') {
+      if (!firstNameInput.value.trim()) {
+        message = 'Enter your first name above to see how your idea will be displayed.';
+      } else {
+        displayedName = firstNameInput.value;
+      }
+    } else if (displayStyle === 'no_name') {
+      displayedName = '';
+    }
+
+    displayedNameInput.value = displayedName || '';
+    this.updateNameDisplaySample(displayedName, displayStyle, message);
+  }
+
+  Shareabouts.PlaceFormView.prototype.updateNameDisplaySample = function(displayedName, displayStyle, message) {
     const titleInput = this.el.querySelector('[name="title"]');
     const placeTypeInput = this.el.querySelector('[name="location_type"]:checked');
     const nameDisplaySampleDiv = this.el.querySelector('.submitter_name-display-sample');
@@ -38,12 +74,19 @@
     }
 
     function showIdeaDisplaySample(displayedName, category, title) {
-      const sample = `${displayedName} submitted ${'aeiou'.includes(category[0].toLowerCase()) ? 'an' : 'a'} ${category} idea titled ${title}`;
+      const sample = `
+        <strong>${displayedName || Shareabouts.Config.place.anonymous_name}</strong>
+        submitted ${'aeiou'.includes(category[0].toLowerCase()) ? 'an' : 'a'}
+        ${category} idea titled ${title}
+      `;
       nameDisplaySampleDiv.innerHTML = `<label>Display sample:</label> <div class="sample">${sample}</div>`;
     }
 
     if (placeTypeInput === null || !placeTypeInput.value.trim()) {
       showInstructions('Enter a title and choose an idea category above to to see how your idea will be displayed.');
+      return;
+    } else if (message) {
+      showInstructions(message);
       return;
     }
 
@@ -51,64 +94,49 @@
     const category = placeType ? (placeType.label || placeTypeInput.value) : '';
     const title = titleInput.value.trim();
 
-    if (displayStyle === 'full_name') {
-      if (!firstNameInput.value.trim() || !lastNameInput.value.trim()) {
-        showInstructions('Enter your first and last name above to see how your idea will be displayed.');
-        return;
-      }
-
-      showIdeaDisplaySample(`${firstNameInput.value} ${lastNameInput.value}`, category, title);
-
-    } else if (displayStyle === 'first_name') {
-      if (!firstNameInput.value.trim()) {
-        showInstructions('Enter your first name above to see how your idea will be displayed.');
-        return;
-      }
-
-      showIdeaDisplaySample(firstNameInput.value, category, title);
-
-    } else if (displayStyle === 'no_name') {
-
-      showIdeaDisplaySample(Shareabouts.Config.place.anonymous_name, category, title);
-
-    }
+    showIdeaDisplaySample(displayedName, category, title);
   }
 
   Shareabouts.PlaceFormView.prototype.onSubmitterNameDisplayStyleChange = function(evt) {
-    this.updateNameDisplaySample();
+    this.updateNameDisplayValue();
   }
 
   Shareabouts.PlaceFormView.prototype.onTitleChange = function() {
-    this.updateNameDisplaySample();
+    this.updateNameDisplayValue();
   }
 
   Shareabouts.PlaceFormView.prototype.onLocationTypeChange = function() {
-    this.updateNameDisplaySample();
+    this.updateNameDisplayValue();
   }
 
   Shareabouts.PlaceFormView.prototype.onSubmitterNameFirstChange = function() {
-    this.updateNameDisplaySample();
+    this.updateNameDisplayValue();
   }
 
   Shareabouts.PlaceFormView.prototype.onSubmitterNameLastChange = function() {
-    this.updateNameDisplaySample();
+    this.updateNameDisplayValue();
   }
 
   Shareabouts.PlaceFormView.prototype.rearrangeFullNameFields = function() {
     // Get the existing first and last name fields
-    const firstNameInput = this.el.querySelector('[name="submitter_name_first"]');
-    const lastNameInput = this.el.querySelector('[name="submitter_name_last"]');
+    const firstNameInput = this.el.querySelector(`[name="${firstNameFieldName}"]`);
+    const lastNameInput = this.el.querySelector(`[name="${lastNameFieldName}"]`);
+
+    if (!firstNameInput || !lastNameInput) {
+      console.warn('Could not find first and last name fields to rearrange.');
+      return;
+    }
 
     // Create a new wrapper for to contain the first and last name fields.
     const fullNameFieldWrapper = document.createElement('div')
     fullNameFieldWrapper.classList.add(
       'field',
       'text-field',
-      'place-submitter_name_first-field',
-      'place-submitter_name_last-field',
+      `place-${firstNameFieldName}-field`,
+      `place-${lastNameFieldName}-field`,
     );
     fullNameFieldWrapper.innerHTML = `
-      <label class="field-label text-field-label" for="place-submitter_name_first">Your Full Name</label>
+      <label class="field-label text-field-label" for="place-${firstNameFieldName}">Your Full Name</label>
       <div class="fullname-field-wrapper">
         ${firstNameInput.outerHTML}
         ${lastNameInput.outerHTML}
@@ -117,8 +145,8 @@
 
     // Insert the new wrapper before the first name field, then remove the first
     // and last name fields.
-    const firstNameFieldWrapper = this.el.querySelector('.place-submitter_name_first-field');
-    const lastNameFieldWrapper = this.el.querySelector('.place-submitter_name_last-field');
+    const firstNameFieldWrapper = this.el.querySelector(`.place-${firstNameFieldName}-field`);
+    const lastNameFieldWrapper = this.el.querySelector(`.place-${lastNameFieldName}-field`);
     const fieldsParent = firstNameFieldWrapper.parentElement;
     fieldsParent.insertBefore(fullNameFieldWrapper, firstNameFieldWrapper);
     fieldsParent.removeChild(firstNameFieldWrapper);
@@ -135,7 +163,7 @@
 
     // Set up an element after the name display style radio group to show the
     // user how their name will be displayed.
-    this.initNameDisplaySample();
+    this.initNameDisplayValue();
 
     return this;
   }
