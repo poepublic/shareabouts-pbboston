@@ -485,6 +485,13 @@ def api(request, path):
     # Clear cookies from the current domain, so that they don't interfere with
     # our settings here.
     request.META.pop('HTTP_COOKIE', None)
+
+    # Ignore requests for text/html, and assume the client wants
+    # application/json instead. This is so that other proxies that don't
+    # request JSON still get it back.
+    if not request.META.get('HTTP_ACCEPT', '').startswith('application/'):
+        headers['ACCEPT'] = 'application/json'
+
     response = proxy_view(request, url, requests_args={
         'headers': headers,
         'cookies': cookies
