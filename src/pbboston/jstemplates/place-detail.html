@@ -26,7 +26,12 @@
                   {{ anonymous_name }}
                 {{/if}}
               {{/if}}
-            </strong> {{ action_text }} this {{ place_type_label location_type}} idea
+            </strong>
+            {{#is city_wide "true" }}
+              {{ action_text }} this city-wide {{ place_type_label location_type}} idea
+            {{^}}
+              {{ action_text }} this {{ place_type_label location_type}} idea {{#if location }} near {{ location }}{{/if}}
+            {{/is}}
 
             {{#if region}}
               in {{ region }}
