@@ -1,0 +1,14 @@
+Hello, {{ requested_place.properties.private_submitter_name_first }} {{ requested_place.properties.private_submitter_name_last }}!
+
+Thank you for sharing your Participatory Budgeting idea for the City of Boston!
+
+Here is what you suggested: {{ place.properties.title }} ({{ site_root }}place/{{ place.id }})
+
+To stay informed and involved in Boston’s Participatory Budgeting process, please click the link below to sign up!
+
+[Link TBD]
+
+To learn more information about the PB in Boston, please visit http://boston.gov/Participate
+
+Thanks!
+The Office of Participatory Budgeting

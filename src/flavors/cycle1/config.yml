@@ -627,7 +627,7 @@ place:
     - prompt: _(Your Name)
       label: _(Submitter's Name)
       type: text
-      name: private-submitter_name_first
+      name: private_submitter_name_first
       sticky: true
       attrs:
         - key: required
@@ -636,14 +636,14 @@ place:
     - prompt: _(Your Name)
       label: _(Submitter's Name)
       type: text
-      name: private-submitter_name_last
+      name: private_submitter_name_last
       sticky: true
       attrs:
         - key: required
         - key: placeholder
           value: _(Last name...)
     - prompt: _(How should we display your name next to your idea?)
-      name: private-submitter_name_display_style
+      name: private_submitter_name_display_style
       type: radiogroup
       sticky: true
       options:
@@ -714,14 +714,14 @@ place:
     - prompt: _(Your Zip Code)
       label: _(Your Zip Code)
       type: text
-      name: private-submitter_zipcode
+      name: private_submitter_zipcode
       sticky: true
       attrs:
         - key: required
     - prompt: _(Your Email)
       label: _(Your Email)
       type: text
-      name: private-submitter_email
+      name: private_submitter_email
       optional: true
       sticky: true
       attrs:
@@ -730,7 +730,7 @@ place:
     - prompt: _(Your Preferred Language)
       label: _(Your Preferred Language)
       type: text
-      name: private-submitter_language
+      name: private_submitter_language
       optional: true
       sticky: true
       attrs:
@@ -852,4 +852,4 @@ languages:
 
 notifications:
   on_new_place: true
-  submitter_email_field: private-submitter_email
+  submitter_email_field: private_submitter_email

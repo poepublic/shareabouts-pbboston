@@ -1,9 +1,9 @@
 (function() {
 
-  const firstNameFieldName = 'private-submitter_name_first';
-  const lastNameFieldName = 'private-submitter_name_last';
+  const firstNameFieldName = 'private_submitter_name_first';
+  const lastNameFieldName = 'private_submitter_name_last';
   const displayedNameFieldName = 'submitter_name';
-  const nameDisplayStyleFieldName = 'private-submitter_name_display_style';
+  const nameDisplayStyleFieldName = 'private_submitter_name_display_style';
 
   Shareabouts.PlaceFormView.prototype.events = {
     ...Shareabouts.PlaceFormView.prototype.events,

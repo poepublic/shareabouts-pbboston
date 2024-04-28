@@ -290,6 +290,7 @@ def send_place_created_notifications(request, response):
 
     # If we didn't find any errors, then render the email and send.
     context_data = {
+        'requested_place': requested_place,
         'place': place,
         'email': recipient_email,
         'config': config,
