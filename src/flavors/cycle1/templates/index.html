@@ -66,13 +66,16 @@
  -->
 {% block includes %}
 <link rel="stylesheet" href="https://unpkg.com/select2@4.1.0-rc.0/dist/css/select2.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
 
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 <script src="https://unpkg.com/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
 <script src="{% static 'js/language-picker.js' %}"></script>
 <script src="{% static 'js/place-form-view-city-wide-ext.js' %}"></script>
 <script src="{% static 'js/place-form-view-select2-ext.js' %}"></script>
 <script src="{% static 'js/place-form-view-fullname-ext.js' %}"></script>
 <script src="{% static 'js/place-list-view-filters-ext.js' %}"></script>
+<script src="{% static 'js/map-view-clusters-ext.js' %}"></script>
 {% endblock %}
