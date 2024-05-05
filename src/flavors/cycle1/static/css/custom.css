@@ -717,6 +717,29 @@ label {
   color: var(--supporting-red-1);
 }
 
+/* =Map Clustering
+-------------------------------------------------------------- */
+
+body .marker-cluster {
+  background-color: rgb(from var(--optimistic-blue) r g b / 0.5);
+  color: white;
+  /* border-radius: 50%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer; */
+}
+
+body .marker-cluster div {
+  background-color: rgb(from var(--optimistic-blue) r g b / 0.5);
+}
+
+.leaflet-container .leaflet-focused-pane img {
+  max-width: none !important;
+  max-height: none !important;
+}
+
 /* =Project Info Pages
 -------------------------------------------------------------- */
 

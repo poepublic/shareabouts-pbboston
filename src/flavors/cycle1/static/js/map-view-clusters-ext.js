@@ -15,25 +15,22 @@
   Shareabouts.MapView.prototype.initialize = function() {
     Shareabouts_MapView_initialize.apply(this, arguments);
 
+    const optimisticBlue = '#288be4'; // This should match the --optimistic-blue color in the CSS
     this.map.removeLayer(this.placeLayers);
     this.oldPlaceLayersGroup = this.placeLayers;
     this.placeLayers = new L.MarkerClusterGroup({
-      iconCreateFunction: function(cluster) {
-        return L.divIcon({ html: '<b>' + cluster.getChildCount() + ' ideas</b>' });
-      }
+      spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75 }
     });
     this.map.addLayer(this.placeLayers);
 
     this.focusedPlaceLayers = new L.LayerGroup();
     this.map.addLayer(this.focusedPlaceLayers);
-  }
 
-  // Override the map view's render method to bring the focused place layer to
-  // the front.
-  var Shareabouts_MapView_render = Shareabouts.MapView.prototype.render;
-  Shareabouts.MapView.prototype.render = function() {
-    Shareabouts_MapView_render.apply(this, arguments);
-    this.focusedPlaceLayers.bringToFront();
+    // Create a new pane on top of the default marker pane for the focused
+    // place markers.
+    const focusedPane = this.map.createPane('focusedPane');
+    focusedPane.style.zIndex = 610;
+    focusedPane.style.pointerEvents = 'none';
   }
 
   // Override the map view's addLayerView method to include the focused place
@@ -60,8 +57,10 @@
     if (!locationTypeFilter || locationTypeFilter.toUpperCase() === locationType.toUpperCase()) {
       if (this.layer) {
         if (this.isFocused) {
+          this.layer.options.pane = 'focusedPane';
           this.options.focusedPlaceLayers.addLayer(this.layer);
         } else {
+          this.layer.options.pane = 'markerPane';
           this.options.placeLayers.addLayer(this.layer);
         }
       }
