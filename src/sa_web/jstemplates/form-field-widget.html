@@ -1,3 +1,14 @@
+{{#is name 'location_type'}}
+  <div class="place-location_type-option-description-hover-wrapper if-hoverable">
+    <p class="category-description category-description-hovered hidden"></p>
+  </div>
+  <div class="place-location_type-option-description">
+    <p class="instructions if-hoverable">Hover over a category to see a description of the types of projects that fit within that category.</p>
+    <p class="instructions if-not-hoverable">Select a category to see a description of the types of projects that fit within that category.</p>
+    <p class="category-description category-description-selected if-not-hoverable hidden"></p>
+  </div>
+{{/is}}
+
 {{#if is_input}}
   {{> form-field-input }}
 {{/if}}
