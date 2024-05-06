@@ -470,9 +470,9 @@ place:
 
   personal_info_title: _(Thank you!)
   personal_info_intro: |
-    Thank you for sharing your idea with us! We'd like to know a little bit
-    about you so we can follow up with you if we have any questions. Please
-    take a moment to fill out the questions below.
+    Thank you for sharing your idea with us! Please take a moment to fill out
+    the questions below. None of this information will be displayed on the
+    site.
 
   items:
     - prompt: _(What do you call your idea?)
