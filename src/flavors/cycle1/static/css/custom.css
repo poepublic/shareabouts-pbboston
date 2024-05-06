@@ -324,8 +324,8 @@ label {
   display: none;
 }
 
-.place-location_type-field {
-  margin-bottom: 4rem;
+.personal-info-title {
+  margin-top: 4rem;
 }
 
 /* City-wide toggle buttons */
@@ -494,6 +494,20 @@ label {
   gap: 0.5rem;
 }
 
+.place-submission_event_type-field .radio-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+[name="submission_event_type"] + .radio-label-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
 .place-private_submitter_name_display_style-field .radio-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -539,12 +553,13 @@ label {
   z-index: 10000;
 }
 
-.place-location_type-option-description {
-  position: sticky;
-  top: 0;
-  z-index: 10000;
-  /* margin-bottom: 0.5rem; */
-  background-color: white;
+@media (hover: none) {
+  .place-location_type-option-description {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background-color: white;
+  }
 }
 
 .place-location_type-option-description .instructions {

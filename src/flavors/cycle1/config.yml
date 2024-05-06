@@ -547,6 +547,18 @@ place:
           value: other
       attrs:
         - key: required
+    - prompt: _(Are you submitting this idea as part of a community event?)
+      type: radiogroup
+      name: submission_event_type
+      options:
+        - label: _(Yes, at a City-sponsored event)
+          value: city_sponsored
+        - label: _(Yes, at an independent community meeting)
+          value: community
+        - label: _(No event; I am submitting this idea on my own)
+          value: no_event
+      attrs:
+        - key: required
 
     # Personal info
     - name: submitter_name
