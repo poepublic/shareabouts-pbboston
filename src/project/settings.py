@@ -133,6 +133,7 @@ TEMPLATES = [
 
 MIDDLEWARE = (
     'sa_web.middleware.CacheRequestBody',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -173,6 +174,7 @@ INSTALLED_APPS = (
     'jstemplate',
     'compressor',
     'django_extensions',
+    'corsheaders',
 
     # Instance-specific app
     'pbboston',
@@ -259,6 +261,10 @@ if 'REDIS_URL' in env:
 
 if 'SITE_ROOT' in env:
     SITE_ROOT = env.get('SITE_ROOT')
+    CORS_ALLOWED_ORIGINS = [
+        SITE_ROOT.rstrip('/'),
+        SITE_ROOT.rstrip('/').replace('-', '--').replace('.', '-') + '.translate.goog',
+    ]
 
 SHAREABOUTS = {}
 if 'SHAREABOUTS_FLAVOR' in env:
