@@ -32,12 +32,22 @@ function handleLanguageOptionClick(event) {
   const currentLanguage = params.get('_x_tr_tl') || 'en';
   const selectedLanguage = event.target.dataset.language;
 
+  // If the selected language is the same as the current language, do nothing
   if (currentLanguage === selectedLanguage) {
     hideLanguagePicker();
     return;
   }
 
   const pageUrl = Shareabouts.bootstrapped.site_root.replace(/\/$/, '') + window.location.pathname;
+
+  // If the current language is English, redirect to the original site
+  if (selectedLanguage === 'en') {
+    window.location = pageUrl;
+    return;
+  }
+
+  // Otherwise, if we're selecting a different, non-English language, then
+  // redirect to Google Translate
   const encodedPageUrl = encodeURIComponent(pageUrl);
   const translatedUrl = `https://translate.google.com/translate?hl=en&sl=en&u=${encodedPageUrl}&tl=${selectedLanguage}`
   window.location = translatedUrl;
