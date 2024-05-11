@@ -148,7 +148,11 @@
           </table>
         </td>
       </tr>
+
+      <!-- ============ -->
       <!-- Message body -->
+      <!-- ============ -->
+
       <tr>
         <td align="center" valign="top">
           <table style="border-collapse:collapse;width:640px;border:none;background:#ffffff;table-layout:fixed">
@@ -158,16 +162,15 @@
                   <div style="min-height:0;font-weight:400!important;color:#1a1a1a;line-height:20px!important;font-family:'Lora',Arial,sans-serif;text-align:left;font-size:14px">
                     <strong>Hello, {{ requested_place.properties.private_submitter_name_first }} {{ requested_place.properties.private_submitter_name_last }}!</strong><br>
                     <br>
-                    Thank you for sharing your Participatory Budgeting idea for the City of Boston!<br>
+                    Thank you for sharing your idea for the City of Boston's Participatory Budgeting process!<br>
                     <br>
                     Here is what you suggested: <strong><a href="{{ site_root }}place/{{ place.id }}">{{ place.properties.title }}</a></strong><br>
                     <br>
-                    To stay informed and involved in Boston’s Participatory Budgeting process, please click the link below to
-                    sign up!<br>
+                    To stay informed and involved in Boston’s PB process, please click the link below to sign up!<br>
                     <br>
                     <a href="...">[Link TBD]</a><br>
                     <br>
-                    To learn more information about the PB in Boston, please visit <a
+                    To learn more, visit <a
                       href="http://boston.gov/Participate">Boston.gov/Participate</a>.<br>
                     <br>
                     Thanks!<br>
