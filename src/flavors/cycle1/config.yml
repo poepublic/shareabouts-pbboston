@@ -509,6 +509,8 @@ place:
       type: location
       name: address
       placeholder: _(Drag the map to set the location.)
+    - name: neighborhood
+      type: hidden
 
     - prompt: _(Please describe how the project positively impacts the community and/or advances social and racial equity.)
       label: _(This idea would benefit the community by...)

@@ -63,6 +63,28 @@ function cityWide_PlaceFormView_setLocation() {
   this.$('.location-receiver').removeClass('awaiting-location').html(this.options.placeConfig.city_wide_location_label);
 }
 
+// Use a custom version of the form view's setLatLng function that will set the
+// neighborhood that the point falls in.
+var Shareabouts_PlaceFormView_setLatLng = Shareabouts.PlaceFormView.prototype.setLatLng;
+Shareabouts.PlaceFormView.prototype.setLatLng = function(latLng) {
+  Shareabouts_PlaceFormView_setLatLng.call(this, latLng);
+
+  const point = turf.point([latLng.lng, latLng.lat]);
+  findNeighborhood: {
+    const neighborhoodField = this.el.querySelector('input[name="neighborhood"]');
+
+    for (const neighborhood of Shareabouts.bootstrapped.neighborhoods.features) {
+      if (turf.booleanPointInPolygon(point, neighborhood.geometry)) {
+        neighborhoodField.value = neighborhood.properties.name;
+        break findNeighborhood;
+      }
+    }
+
+    // If the point is not in any neighborhood, clear the neighborhood field.
+    neighborhoodField.value = '';
+  }
+}
+
 // Save the original version of the form view's setLatLng function so that we
 // can set it to no-op when city-wide is set to true:
 var original_PlaceFormView_setLatLng = Shareabouts.PlaceFormView.prototype.setLatLng;
@@ -85,6 +107,10 @@ Shareabouts.PlaceFormView.prototype.setCityWideLatLng = function(latLng) {
   // Update the reverse geocoded label too.
   Shareabouts.PlaceFormView.prototype.setLocation = cityWide_PlaceFormView_setLocation;
   this.setLocation();
+
+  // Unset any neighborhood that may have been set.
+  const neighborhoodField = this.el.querySelector('input[name="neighborhood"]');
+  neighborhoodField.value = '';
 }
 
 // Return the form to the state of needing to select a location:

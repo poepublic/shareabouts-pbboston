@@ -1,5 +1,11 @@
 <div class="place-list-header">
   <form class="list-search-form">
+    <select id="list-neighborhood" name="list_neighborhood">
+      <option value="">{{#_}}All neighborhoods{{/_}}</option>
+      {{#each neighborhoods}}
+      <option value="{{properties.name}}">{{properties.name}}</option>
+      {{/each}}
+    </select>
     <input id="list-search" name="list_search" type="text" placeholder="Search...">
     <input name="search" type="submit" value="Search" class="btn btn-primary submit-btn">
   </form>

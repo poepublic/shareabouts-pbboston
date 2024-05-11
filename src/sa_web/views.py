@@ -8,6 +8,7 @@ import time
 import hashlib
 from urllib.parse import urlparse
 from .config import get_shareabouts_config
+from pbboston.geodata import load_neighborhoods
 from django.shortcuts import render
 from django.conf import settings
 from django.core.cache import cache
@@ -205,6 +206,8 @@ def index(request, place_id=None):
     except KeyError:
         uses_mapbox_layers = False
 
+    neighborhoods = load_neighborhoods()
+
     context = {'config': config,
 
                'user_token_json': user_token_json,
@@ -219,6 +222,8 @@ def index(request, place_id=None):
                'api_user': api.current_user(default=None),
                'api_sessionid': api.sessionid,
                'uses_mapbox_layers': uses_mapbox_layers,
+
+               'neighborhoods': neighborhoods,
                }
 
     return render(request, 'index.html', context)
