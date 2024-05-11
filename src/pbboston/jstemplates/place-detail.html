@@ -52,7 +52,7 @@
             <img src="{{ file }}" class="place-value place-value-{{ name }}" alt="{{ name }}">
           </div>
           {{/ attachments }}
-          {{#each_place_item "submitter_name" "submitter_neighborhood" "title" "location_type" "city_wide" "address" "event_type"}}
+          {{#each_place_item "submitter_name" "submitter_neighborhood" "title" "location_type" "city_wide" "address" "neighborhood" "submission_event_type"}}
           <div class="place-item place-item-{{ name }}">
             <span class="place-label place-label-{{ name }}">{{ label }}</span>
             <p class="place-value place-value-{{ name }}">{{nlToBr value }}</p>
