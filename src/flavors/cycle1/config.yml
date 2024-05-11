@@ -38,6 +38,7 @@ map:
     zoomSnap: 0
     minZoom: 10
     maxZoom: 17
+    preferCanvas: true
     scrollWheelZoom: false
   layers:
     # Raster Tile Layers
