@@ -27,8 +27,17 @@ function hideLanguagePicker() {
 }
 
 function handleLanguageOptionClick(event) {
+  let params = new URLSearchParams(window.location.search);
+
+  const currentLanguage = params.get('_x_tr_tl') || 'en';
   const selectedLanguage = event.target.dataset.language;
-  const pageUrl = window.location.href;
+
+  if (currentLanguage === selectedLanguage) {
+    hideLanguagePicker();
+    return;
+  }
+
+  const pageUrl = Shareabouts.bootstrapped.site_root.replace(/\/$/, '') + window.location.pathname;
   const encodedPageUrl = encodeURIComponent(pageUrl);
   const translatedUrl = `https://translate.google.com/translate?hl=en&sl=en&u=${encodedPageUrl}&tl=${selectedLanguage}`
   window.location = translatedUrl;

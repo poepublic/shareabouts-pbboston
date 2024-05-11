@@ -257,6 +257,9 @@ if 'REDIS_URL' in env:
     # Django sessions
     SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
+if 'SITE_ROOT' in env:
+    SITE_ROOT = env.get('SITE_ROOT')
+
 SHAREABOUTS = {}
 if 'SHAREABOUTS_FLAVOR' in env:
     SHAREABOUTS['FLAVOR'] = env.get('SHAREABOUTS_FLAVOR')

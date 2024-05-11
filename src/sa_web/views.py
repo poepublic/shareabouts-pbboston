@@ -223,7 +223,11 @@ def index(request, place_id=None):
                'api_sessionid': api.sessionid,
                'uses_mapbox_layers': uses_mapbox_layers,
 
+                # Geo-data for Boston
                'neighborhoods': neighborhoods,
+
+               # Site root useful for automatic translation
+                'site_root': settings.SITE_ROOT,
                }
 
     return render(request, 'index.html', context)

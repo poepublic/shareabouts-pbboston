@@ -18,7 +18,7 @@
     </header>
 
       <div class="language-picker__dialog-content">
-      <ul class="language-picker__options">
+      <ul class="language-picker__options" translate="no">
         {% for language in config.languages %}
         <li class="language-picker__option">
           <button type="button" data-language="{{ language.code }}" class="{{ language.code }} btn-language btn btn-block language-picker__option-btn">{{ language.label }}</button>
