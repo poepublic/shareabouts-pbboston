@@ -602,6 +602,15 @@ label {
   display: none;
 }
 
+.place-submission-confirmation {
+  background-color: var(--instructions-bg);
+  text-align: left;
+}
+
+.place-submission-confirmation h3 {
+  font-size: 1em;
+}
+
 /* =Place detail
 -------------------------------------------------------------- */
 
@@ -1090,9 +1099,15 @@ body .marker-cluster div {
   }
 }
 
-@media only screen and (1024px < width < 1280px) {
-  .leaflet-control-geocoder-form input {
+@media only screen and (width < 1024px) {
+  body .leaflet-control-geocoder-form input {
     width: 144px;
+  }
+}
+
+@media only screen and (1024px <= width < 1280px) {
+  .content-visible .leaflet-control-geocoder-form input {
+    width: 120px;
   }
 }
 
