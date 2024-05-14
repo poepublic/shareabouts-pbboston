@@ -24,6 +24,7 @@
     evt.preventDefault();
     console.log('handleAllIdeasFilter');
     this.removeFilter('city_wide');
+    this.removeFilter('neighborhood');
 
     this.updateFilterLinks();
   };
@@ -47,10 +48,12 @@
   };
 
   Shareabouts.PlaceListView.prototype.updateFilterLinks = function() {
-    this.ui.allIdeasFilter.toggleClass('is-selected', !this.collectionFilters.city_wide);
+    this.ui.allIdeasFilter.toggleClass('is-selected', !this.collectionFilters.city_wide && !this.collectionFilters.neighborhood);
     this.ui.cityWideFilter.toggleClass('is-selected', this.collectionFilters.city_wide === 'true');
     this.ui.locationSpecificFilter.toggleClass('is-selected', this.collectionFilters.city_wide === 'false');
-    this.ui.neighborhoodField.val(this.collectionFilters.neighborhood ? this.collectionFilters.neighborhood : '');
+    this.ui.neighborhoodField
+      .val(this.collectionFilters.neighborhood ? this.collectionFilters.neighborhood : '')
+      .toggleClass('is-selected', !!this.collectionFilters.neighborhood);
   };
 
   Shareabouts.PlaceListView.prototype.handleNeighborhoodChange = function(evt) {

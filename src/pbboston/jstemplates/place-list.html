@@ -1,15 +1,20 @@
 <div class="place-list-header">
   <form class="list-search-form">
-    <select id="list-neighborhood" name="list_neighborhood">
-      <option value="">{{#_}}All neighborhoods{{/_}}</option>
+    <input id="list-search" name="list_search" type="text" placeholder="Search...">
+    <input name="search" type="submit" value="Search" class="btn btn-primary submit-btn">
+  </form>
+  <nav class="list-filter-menu">
+    <span class="list-filter-prompt"></span>
+    <a href="#" class="all-ideas-filter is-selected">{{#_}}All Ideas{{/_}}</a> |
+    <a href="#" class="city-wide-filter">{{#_}}City-wide Ideas{{/_}}</a> |
+    <a href="#" class="location-specific-filter">{{#_}}Location-specific Ideas{{/_}}</a> |
+    <select id="list-neighborhood" class="neighborhood-filter" name="list_neighborhood">
+      <option value="">{{#_}}Choose a neighborhood...{{/_}}</option>
       {{#each neighborhoods}}
       <option value="{{properties.name}}">{{properties.name}}</option>
       {{/each}}
     </select>
-    <input id="list-search" name="list_search" type="text" placeholder="Search...">
-    <input name="search" type="submit" value="Search" class="btn btn-primary submit-btn">
-  </form>
-  <nav class="list-filter-menu"><span class="list-filter-prompt"></span> <a href="#" class="all-ideas-filter is-selected">{{#_}}All Ideas{{/_}}</a> | <a href="#" class="city-wide-filter">{{#_}}City-wide Ideas{{/_}}</a> | <a href="#" class="location-specific-filter">{{#_}}Location-specific Ideas{{/_}}</a></nav>
+  </nav>
 </div>
 
 <ul class="place-list unstyled-list"></ul>

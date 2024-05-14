@@ -766,7 +766,22 @@ label {
   text-transform: uppercase;
 }
 
-.list-filter-menu a {
+.neighborhood-filter {
+  display: inline;
+  width: auto;
+  padding: 0;
+  border: none;
+  background-color: var(--charles-blue);
+  text-transform: inherit;
+}
+
+.neighborhood-filter option {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.list-filter-menu a,
+.list-filter-menu select {
   font-size: 0.75em;
   text-decoration: none;
 }
@@ -777,22 +792,34 @@ label {
 }
 
 .list-sort-menu a,
-.list-filter-menu a {
+.list-filter-menu a,
+.list-sort-menu select,
+.list-filter-menu select {
   color: white;
   font-weight: normal;
   font-family: var(--header-font);
 }
 
 .list-sort-menu a.is-selected,
-.list-filter-menu a.is-selected {
+.list-filter-menu a.is-selected,
+.list-sort-menu select.is-selected,
+.list-filter-menu select.is-selected {
   color: inherit;
   font-weight: bold;
   text-decoration: underline;
 }
 
 .list-sort-menu a:hover,
-.list-filter-menu a:hover {
+.list-filter-menu a:hover,
+.list-sort-menu select:hover,
+.list-filter-menu select:hover {
   color: var(--supporting-red-1);
+  cursor: pointer;
+}
+
+.list-sort-menu select:focus,
+.list-filter-menu select:focus {
+  color: white;
 }
 
 /* =Map Clustering
