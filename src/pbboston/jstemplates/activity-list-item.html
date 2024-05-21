@@ -10,14 +10,20 @@
         </strong>
 
         {{#if is_place }}
-          {{ action }} a{{#if place.type_starts_with_vowel }}n{{/if }} <span class="place-type">{{ place.place_type_label }}</span> idea
-          {{#if place.title }}
-            titled <span class="place-name">{{ place.title }}</span>
+          {{ action }}
+
+          {{#is place.city_wide "true"}}
+            a city-wide
           {{^}}
-            {{#if place.location }}
-              at <span class="place-name">{{>location-string place}}</span>
-            {{/if }}
-          {{/if }}
+            a{{#if place.type_starts_with_vowel }}n{{/if }}
+          {{/is }}
+          <span class="place-type">{{ place.place_type_label }}</span> idea
+
+          titled <span class="place-title">{{ place.title }}</span>
+
+          {{#is place.city_wide "false"}}
+            near <span class="place-location">{{>location-string place}}</span>
+          {{/is }}
         {{else}}
           {{ action }}
 

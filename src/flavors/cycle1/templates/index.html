@@ -52,6 +52,16 @@
   This will place content at the top of the side bar
  -->
 {% block sidebar %}
+<form class="activity-filters">
+  <div class="display-choice">
+    <input type="radio" name="activity_display_choice" value="all-ideas" id="activity-show-all-ideas" checked>
+    <label for="activity-show-all-ideas">All Ideas</label>
+  </div>
+  <div class="display-choice">
+    <input type="radio" name="activity_display_choice" value="city-wide" id="activity-show-city-wide">
+    <label for="activity-show-city-wide">City-wide Only</label>
+  </div>
+</form>
 {% endblock %}
 
 <!--
@@ -84,4 +94,5 @@
 <script src="{% static 'js/place-form-view-fullname-ext.js' %}"></script>
 <script src="{% static 'js/place-form-view-category-ext.js' %}"></script>
 <script src="{% static 'js/place-list-view-filters-ext.js' %}"></script>
+<script src="{% static 'js/activity-view-filters-ext.js' %}"></script>
 {% endblock %}
