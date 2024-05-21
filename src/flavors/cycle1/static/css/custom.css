@@ -861,6 +861,7 @@ label {
 
 .place-list .place-submission-details {
   padding-left: 5rem;
+  font-style: italic;
 }
 
 .list-search-form {
