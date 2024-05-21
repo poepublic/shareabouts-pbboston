@@ -68,7 +68,7 @@ place_types:
     icon: /static/img/categories/arts_culture.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#fb4d42'
           radius: 3
@@ -106,7 +106,7 @@ place_types:
     icon: /static/img/categories/community.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "community" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "community" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#fa8b41'
           radius: 3
@@ -144,7 +144,7 @@ place_types:
     icon: /static/img/categories/economy_workers.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#fac241'
           radius: 3
@@ -182,7 +182,7 @@ place_types:
     icon: /static/img/categories/education_youth.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#faee41'
           radius: 3
@@ -220,7 +220,7 @@ place_types:
     icon: /static/img/categories/sustainability.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#b6fa41'
           radius: 3
@@ -258,7 +258,7 @@ place_types:
     icon: /static/img/categories/facilities.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#75fa41'
           radius: 3
@@ -296,7 +296,7 @@ place_types:
     icon: /static/img/categories/human_services.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#41eafa'
           radius: 3
@@ -334,7 +334,7 @@ place_types:
     icon: /static/img/categories/public_safety.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#4185fa'
           radius: 3
@@ -372,7 +372,7 @@ place_types:
     icon: /static/img/categories/streets_sidewalks.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#4441fa'
           radius: 3
@@ -410,7 +410,7 @@ place_types:
     icon: /static/img/categories/other.svg
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas...
-      - condition: '"{{location_type}}" === "other" && {{map.zoom}} < 13 && {{layer.focused}} === false'
+      - condition: '"{{location_type}}" === "other" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#e441fa'
           radius: 3
