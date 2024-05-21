@@ -519,6 +519,7 @@ place:
     - prompt: _(Please describe how the project positively impacts the community and/or advances social and racial equity.)
       label: _(This idea would benefit the community by...)
       help_text: _(Make sure you keep it short and clear.)
+      tooltip: _("Social and racial equity" is defined as the just and fair inclusion of people of any social and racial background into society, so they can participate, prosper, and reach their full potential.)
       type: textarea
       name: benefit
       attrs:
