@@ -474,9 +474,8 @@ place:
 
   personal_info_title: _(Thank you!)
   personal_info_intro: |
-    Thank you for sharing your idea with us! Please take a moment to fill out
-    the questions below. None of this information will be displayed on the
-    site.
+    Thank you for sharing your idea with us! Please fill out the short form
+    below. Only the information you choose to display will be made public.
 
   items:
     - prompt: _(What do you call your idea?)
@@ -485,7 +484,7 @@ place:
       name: title
       attrs:
         - key: required
-    - prompt: _(Please share a short description of the project idea?)
+    - prompt: _(Please share a short description of the project idea.)
       label: _(My idea is to...)
       help_text: _(Make sure your description is short and clear.)
       type: textarea
@@ -607,7 +606,7 @@ place:
       name: submitter_neighborhood
       sticky: true
       options:
-        - label: _(Select a neighborhood)
+        - label: _(Select a neighborhood...)
           value: ''
         - label: _(Allston)
           value: Allston
@@ -670,21 +669,59 @@ place:
       sticky: true
       attrs:
         - key: required
+        - key: placeholder
+          value: _(Zip code...)
     - prompt: _(Your Email)
       label: _(Your Email)
       type: text
       name: private_submitter_email
       optional: true
       sticky: true
-      attrs:
-        - key: placeholder
-          value: _(Email address)
     - prompt: _(Your Preferred Language)
       label: _(Your Preferred Language)
-      type: text
+      type: select
       name: private_submitter_language
       optional: true
       sticky: true
+      options:
+        - value: ''
+          label: ' '
+        # English
+        - value: 'en'
+          label: 'English'
+        # Spanish
+        - value: 'es'
+          label: 'Español'
+        # Haitian Creole
+        - value: 'ht'
+          label: 'Kreyòl Ayisyen'
+        # Traditional Chinese
+        - value: 'zh-hant'
+          label: '繁體中文'
+        # Simplified Chinese
+        - value: 'zh-hans'
+          label: '简体中文'
+        # Vietnamese
+        - value: 'vi'
+          label: 'Tiếng Việt'
+        # Cabo Verdean Creole
+        - value: 'kea'
+          label: 'Kabuverdianu'
+        # Russian
+        - value: 'ru'
+          label: 'Русский'
+        # Arabic
+        - value: 'ar'
+          label: 'العربية'
+        # Brazilian Portuguese
+        - value: 'pt-br'
+          label: 'Português'
+        # French
+        - value: 'fr'
+          label: 'Français'
+        # Somali
+        - value: 'so'
+          label: 'Soomaali'
       attrs:
         - key: placeholder
           value: _(Preferred language)
