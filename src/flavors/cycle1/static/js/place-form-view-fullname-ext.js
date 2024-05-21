@@ -82,7 +82,7 @@
       nameDisplaySampleDiv.innerHTML = `<label>Display sample:</label> <div class="sample">${sample}</div>`;
     }
 
-    if (placeTypeInput === null || !placeTypeInput.value.trim()) {
+    if (placeTypeInput === null || !titleInput.value.trim()) {
       showInstructions('Enter a title and choose an idea category above to to see how your idea will be displayed.');
       return;
     } else if (message) {
