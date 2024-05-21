@@ -684,47 +684,37 @@ place:
       optional: true
       sticky: true
       options:
-        - value: ''
-          label: ' '
-        # English
-        - value: 'en'
-          label: 'English'
-        # Spanish
-        - value: 'es'
-          label: 'Español'
-        # Haitian Creole
-        - value: 'ht'
-          label: 'Kreyòl Ayisyen'
-        # Traditional Chinese
-        - value: 'zh-hant'
-          label: '繁體中文'
-        # Simplified Chinese
-        - value: 'zh-hans'
-          label: '简体中文'
-        # Vietnamese
-        - value: 'vi'
-          label: 'Tiếng Việt'
-        # Cabo Verdean Creole
-        - value: 'kea'
-          label: 'Kabuverdianu'
-        # Russian
-        - value: 'ru'
-          label: 'Русский'
-        # Arabic
-        - value: 'ar'
-          label: 'العربية'
-        # Brazilian Portuguese
-        - value: 'pt-br'
-          label: 'Português'
-        # French
-        - value: 'fr'
-          label: 'Français'
-        # Somali
-        - value: 'so'
-          label: 'Soomaali'
+        - label: ' '
+          value: ''
+        - label: 'English'
+          value: 'English'
+        - label: 'Español'
+          value: 'Spanish'
+        - label: 'Kreyòl Ayisyen'
+          value: 'Haitian Creole'
+        - label: '繁體中文'
+          value: 'Traditional Chinese'
+        - label: '简体中文'
+          value: 'Simplified Chinese'
+        - label: 'Tiếng Việt'
+          value: 'Vietnamese'
+        - label: 'Kabuverdianu'
+          value: 'Cabo Verdean Creole'
+        - label: 'Русский'
+          value: 'Russian'
+        - label: 'العربية'
+          value: 'Arabic'
+        - label: 'Português'
+          value: 'Brazilian Portuguese'
+        - label: 'Français'
+          value: 'French'
+        - label: 'Soomaali'
+          value: 'Somali'
       attrs:
         - key: placeholder
           value: _(Preferred language)
+        - key: translate
+          value: no
 
 survey:
   submission_type: comments
