@@ -6,7 +6,7 @@ Here is what you suggested: {{ place.properties.title }} ({{ site_root }}place/{
 
 To stay informed and involved in Boston’s PB process, please click the link below to sign up!
 
-[Link TBD]
+https://www.boston.gov/departments/participatory-budgeting#newsletter
 
 To learn more, visit http://boston.gov/Participate
 
