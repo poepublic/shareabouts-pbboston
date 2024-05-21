@@ -1100,6 +1100,7 @@ body .marker-cluster div {
 
   #site-title a:link, #site-title a:visited {
     height: 100%;
+    width: fit-content;
     display: grid;
     grid-template-areas:
       "pb-icon boston-logo"
