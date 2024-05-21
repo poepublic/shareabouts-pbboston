@@ -20,6 +20,8 @@
 //   place a city-wide idea marker from the city-wide location center
 // - Set the place.unset_location_label to something like:
 //   "Drag the map to set the location."
+// - Set the map.show_city_wide_ideas to false if you don't want to show
+//   city-wide idea markers on the map. This will default to true.
 // - Add turf.js (as well as this script) to the includes block in index.html
 //   <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
 // - Include the city-wide CSS extensions in your custom CSS
@@ -135,4 +137,17 @@ Shareabouts.AppView.prototype.newPlace = function() {
   Shareabouts.PlaceFormView.prototype.setLocation = original_PlaceFormView_setLocation;
 
   original_AppView_newPlace.call(this, ...arguments);
+}
+
+// If we don't want to show city-wide ideas on the map, then don't create
+// LayerViews for them.
+var original_MapView_addLayerView = Shareabouts.MapView.prototype.addLayerView;
+Shareabouts.MapView.prototype.addLayerView = function(model) {
+  const showCityWideIdeas = this.options.mapConfig.show_city_wide_ideas;
+
+  if (showCityWideIdeas === false && model.get('city_wide') === 'true') {
+    return;
+  }
+
+  original_MapView_addLayerView.call(this, model);
 }

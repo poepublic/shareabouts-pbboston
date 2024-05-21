@@ -30,6 +30,9 @@ map:
   geocode_field_label: _(Enter a location...)
   geocode_bounding_box: [39.830159, -75.478821, 40.167331, -74.781189]  # top, left, bottom, right
 
+  # Optional. Set to true to show the city-wide ideas on the map.
+  show_city_wide_ideas: false
+
   options:
     center:
       lat: 42.3189

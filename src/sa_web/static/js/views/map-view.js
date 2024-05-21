@@ -247,7 +247,10 @@ var Shareabouts = Shareabouts || {};
       });
     },
     removeLayerView: function(model) {
-      this.layerViews[model.cid].remove();
+      var layerView = this.layerViews[model.cid];
+      if (layerView && layerView.remove) {
+        layerView.remove();
+      }
       delete this.layerViews[model.cid];
     },
     zoomInOn: function(latLng) {
@@ -259,13 +262,18 @@ var Shareabouts = Shareabouts || {};
       console.log('filter the map', arguments);
       this.locationTypeFilter = locationType;
       this.collection.each(function(model) {
-        var modelLocationType = model.get('location_type');
+        var modelLocationType = model.get('location_type'),
+            layerView = self.layerViews[model.cid];
+
+        if (!layerView) {
+          return;
+        }
 
         if (modelLocationType &&
             modelLocationType.toUpperCase() === locationType.toUpperCase()) {
-          self.layerViews[model.cid].show();
+          layerView.show();
         } else {
-          self.layerViews[model.cid].hide();
+          layerView.hide();
         }
       });
     },
@@ -274,7 +282,10 @@ var Shareabouts = Shareabouts || {};
       var self = this;
       this.locationTypeFilter = null;
       this.collection.each(function(model) {
-        self.layerViews[model.cid].render();
+        var layerView = self.layerViews[model.cid];
+        if (layerView) {
+          layerView.render();
+        }
       });
     }
   });
