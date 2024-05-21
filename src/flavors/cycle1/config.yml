@@ -621,24 +621,28 @@ place:
           value: Brighton
         - label: _(Charlestown)
           value: Charlestown
-        - label: _(Chinatown-Leather District)
-          value: Chinatown-Leather District
+        - label: _(Chinatown)
+          value: Chinatown
         - label: _(Dorchester)
           value: Dorchester
         - label: _(Downtown)
           value: Downtown
         - label: _(East Boston)
           value: East Boston
-        - label: _(Fenway-Kenmore)
-          value: Fenway-Kenmore
+        - label: _(Fenway)
+          value: Fenway
+        - label: _(Harbor Islands)
+          value: Harbor Islands
         - label: _(Hyde Park)
           value: Hyde Park
         - label: _(Jamaica Plain)
           value: Jamaica Plain
+        - label: _(Leather District)
+          value: Leather District
+        - label: _(Longwood)
+          value: Longwood
         - label: _(Mattapan)
           value: Mattapan
-        - label: _(Mid-Dorchester)
-          value: Mid-Dorchester
         - label: _(Mission Hill)
           value: Mission Hill
         - label: _(North End)
@@ -647,6 +651,8 @@ place:
           value: Roslindale
         - label: _(Roxbury)
           value: Roxbury
+        - label: _(South Boston Waterfront)
+          value: South Boston Waterfront
         - label: _(South Boston)
           value: South Boston
         - label: _(South End)
@@ -655,8 +661,6 @@ place:
           value: West End
         - label: _(West Roxbury)
           value: West Roxbury
-        - label: _(Wharf District)
-          value: Wharf District
       attrs:
         - key: required
     - prompt: _(Your Zip Code)
