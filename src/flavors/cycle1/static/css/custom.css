@@ -326,6 +326,7 @@ label {
   background-color: var(--supporting-gray-4);
   color: var(--charles-blue);
   border-color: var(--charles-blue);
+  cursor: pointer;
 }
 
 :checked + .radio-label-text,
