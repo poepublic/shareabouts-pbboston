@@ -81,13 +81,19 @@ p {
 
 .btn, .btn:visited, .btn:link {
   padding: 1.275em 1.5em;
-  background-color: var(--supporting-red-1);
+  background-color: var(--optimistic-blue);
   font-family: var(--header-font);
   font-size: 0.77778rem;
   color: white;
   border: none;
   border-radius: 0;
   box-shadow: none;
+
+  transition: background-color 0.1s;
+}
+
+.btn-primary, .btn-primary:visited, .btn-primary:link {
+  background-color: var(--supporting-red-1);
 }
 
 .btn:hover {
@@ -315,6 +321,22 @@ label {
   font-size: 0.8rem;
 }
 
+.radio-label-text:hover,
+.checkbox-label-text:hover {
+  background-color: var(--supporting-gray-4);
+  color: var(--charles-blue);
+  border-color: var(--charles-blue);
+}
+
+:checked + .radio-label-text,
+.radio-label-text.checked,
+:checked + .checkbox-label-text,
+.checkbox-label-text.checked {
+  background-color: var(--optimistic-blue);
+  color: #fff;
+  border-color: rgba(0 0 0 / 0.05);
+}
+
 .location-receiver {
   font-weight: normal;
 }
@@ -337,16 +359,6 @@ label {
   background-size: 4rem;
   background-repeat: no-repeat;
   background-position-x: 50%;
-}
-[name="city_wide"] + .label-text:hover {
-  background-color: var(--supporting-gray-4);
-  color: var(--charles-blue);
-  border-color: var(--charles-blue);
-}
-[name="city_wide"]:checked + .label-text {
-  background-color: var(--optimistic-blue);
-  color: white;
-  border-color: var(--optimistic-blue);
 }
 
 [name="city_wide"][value="false"] + .label-text {
@@ -680,6 +692,17 @@ label {
 
 #ticker {
   background-color: var(--charles-blue);
+}
+
+.recent-points a {
+  border-color: white;
+  transition: background-color 0.1s, border-color 0.1s;
+}
+
+.recent-points a:hover {
+  color: #fff;
+  background: var(--optimistic-blue);
+  border-color: var(--optimistic-blue);
 }
 
 .recent-points .avatar {
