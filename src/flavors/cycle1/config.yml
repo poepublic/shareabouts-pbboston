@@ -714,7 +714,7 @@ place:
         - key: placeholder
           value: _(Preferred language)
         - key: translate
-          value: no
+          value: "no"
 
 survey:
   submission_type: comments
