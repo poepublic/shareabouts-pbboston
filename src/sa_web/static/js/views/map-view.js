@@ -18,7 +18,7 @@ var Shareabouts = Shareabouts || {};
           };
 
       // Init the map
-      self.map = L.map(self.el, self.options.mapConfig.options);
+      self.map = self.constructMap();
       self.placeLayers = L.layerGroup();
 
       // Add layers defined in the config file
@@ -102,6 +102,9 @@ var Shareabouts = Shareabouts || {};
       self.collection.on('reset', self.render, self);
       self.collection.on('add', self.addLayerView, self);
       self.collection.on('remove', self.removeLayerView, self);
+    },
+    constructMap: function() {
+      return L.map(this.el, this.options.mapConfig.options);
     },
     reverseGeocodeMapCenter: _.debounce(function() {
       var center = this.map.getCenter();
