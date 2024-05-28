@@ -496,7 +496,7 @@ place:
         - key: maxlength
           value: 250  # Limiting to around 50 words, assuming most languages are just around 5 characters per word on average.
 
-    - prompt: _(Is your idea...)
+    - prompt: _(Is your idea for a specific location or for the entire city?)
       label: _(City wide?)
       type: radiogroup
       name: city_wide
@@ -507,7 +507,7 @@ place:
           value: yes
       attrs:
         - key: required
-    - prompt: _(Approximately where would your idea go?)
+    - prompt: _(Approximately where would your idea be?)
       label: _(Approximate location...)
       type: location
       name: address
@@ -610,56 +610,134 @@ place:
           value: ''
         - label: _(Allston)
           value: Allston
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Back Bay)
           value: Back Bay
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Bay Village)
           value: Bay Village
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Beacon Hill)
           value: Beacon Hill
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Brighton)
           value: Brighton
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Charlestown)
           value: Charlestown
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Chinatown)
           value: Chinatown
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Dorchester)
           value: Dorchester
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Downtown)
           value: Downtown
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(East Boston)
           value: East Boston
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Fenway)
           value: Fenway
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Harbor Islands)
           value: Harbor Islands
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Hyde Park)
           value: Hyde Park
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Jamaica Plain)
           value: Jamaica Plain
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Leather District)
           value: Leather District
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Longwood)
           value: Longwood
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Mattapan)
           value: Mattapan
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Mission Hill)
           value: Mission Hill
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(North End)
           value: North End
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Roslindale)
           value: Roslindale
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(Roxbury)
           value: Roxbury
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(South Boston Waterfront)
           value: South Boston Waterfront
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(South Boston)
           value: South Boston
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(South End)
           value: South End
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(West End)
           value: West End
+          attrs:
+            - key: translate
+              value: "no"
         - label: _(West Roxbury)
           value: West Roxbury
+          attrs:
+            - key: translate
+              value: "no"
       attrs:
         - key: required
     - prompt: _(Your Zip Code)
