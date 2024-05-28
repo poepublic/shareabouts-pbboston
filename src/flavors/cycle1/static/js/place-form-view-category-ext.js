@@ -13,6 +13,30 @@
     'mouseleave .place-location_type-field .radio-group label': 'onCategoryMouseLeave',
   };
 
+  const Shareabouts_PlaceFormView_render = Shareabouts.PlaceFormView.prototype.render;
+  Shareabouts.PlaceFormView.prototype.render = function() {
+    Shareabouts_PlaceFormView_render.apply(this, arguments);
+
+    // Create invisible descriptions for each of the category radio button options.
+    const categoryInputs = this.el.querySelectorAll('.place-location_type-field .radio-group input');
+    for (const input of categoryInputs) {
+      const category = input.value;
+      const description = `${this.options.placeTypes[category].label}: ${this.options.placeTypes[category].description}`;
+
+      const descriptionEl = document.createElement('span');
+      descriptionEl.classList.add('hidden');
+      descriptionEl.id = `category-description-${category}`;
+      descriptionEl.innerHTML = description;
+      this.el.appendChild(descriptionEl);
+
+      input.setAttribute('aria-describedby', `category-description-${category}`);
+      console.log(input)
+      console.log(descriptionEl)
+    }
+
+    return this;
+  };
+
   Shareabouts.PlaceFormView.prototype.onCategoryChange = function(evt) {
     this.selectCategoryDescription(evt.currentTarget.value);
   };
@@ -42,8 +66,8 @@
 
   Shareabouts.PlaceFormView.prototype.hoverCategoryDescription = function(category, label) {
     const description = `
-      <span class="category-description-label">${this.options.placeTypes[category].label}</span>
-      <span class="categoty-description-text">${this.options.placeTypes[category].description}</span>
+    <span class="category-description-label" aria-hidden="true">${this.options.placeTypes[category].label}</span>
+    <span class="categoty-description-text" aria-hidden="true">${this.options.placeTypes[category].description}</span>
     `;
 
     const labelRect = label.getBoundingClientRect();
