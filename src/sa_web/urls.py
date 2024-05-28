@@ -6,6 +6,19 @@ from sa_login import views as login_views
 # from django.contrib import admin
 # admin.autodiscover()
 
+
+def users_complete(request):
+    # Send an email with the request body to the admin. Add the request path to
+    # the subject.
+    from django.core.mail import send_mail
+    from django.conf import settings
+
+    send_mail(f'User Complete Request - ({request.method}) {request.path}', request.body, settings.EMAIL_ADDRESS, [settings.EMAIL_ADDRESS])
+
+    from django.http import HttpResponse
+    return HttpResponse('Sent the email.')
+
+
 urlpatterns = [
     # Examples:
     # url(r'^$', 'project.views.home', name='home'),
@@ -18,6 +31,7 @@ urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
 
     url(r'^api/(.*)$', views.api, name='api_proxy'),
+    url(r'^users/complete/', users_complete, name='users_complete'),
     url(r'^users/(.*)$', views.users, name='auth_proxy'),
     url(r'^download/(.*).csv$', views.csv_download, name='csv_proxy'),
     url(r'^place/(?P<place_id>[^/]+)$', views.index, name='place'),
