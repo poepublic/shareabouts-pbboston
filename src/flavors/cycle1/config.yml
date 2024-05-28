@@ -27,7 +27,7 @@ map:
   # The default geocoding engine is MapQuest. You can set an override below.
   # Make sure to provide the appropriate keys for whatever you set.
   geocoding_engine: Mapbox
-  geocode_field_label: _(Enter a location...)
+  geocode_field_label: _(Enter a location…)
   geocode_bounding_box: [39.830159, -75.478821, 40.167331, -74.781189]  # top, left, bottom, right
 
   # Optional. Set to true to show the city-wide ideas on the map.
@@ -67,7 +67,7 @@ place_types:
     color: '#fb4d42'
     icon: /static/img/categories/arts_culture.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#fb4d42'
@@ -75,7 +75,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#fb4d42'
@@ -83,7 +83,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/arts_culture-dot.svg
@@ -91,7 +91,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "arts_culture" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/arts_culture-dot.svg
@@ -105,7 +105,7 @@ place_types:
     color: '#fa8b41'
     icon: /static/img/categories/community.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "community" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#fa8b41'
@@ -113,7 +113,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "community" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#fa8b41'
@@ -121,7 +121,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "community" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/community-dot.svg
@@ -129,7 +129,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "community" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/community-dot.svg
@@ -143,7 +143,7 @@ place_types:
     color: '#fac241'
     icon: /static/img/categories/economy_workers.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#fac241'
@@ -151,7 +151,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#fac241'
@@ -159,7 +159,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/economy_workers-dot.svg
@@ -167,7 +167,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "economy_workers" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/economy_workers-dot.svg
@@ -181,7 +181,7 @@ place_types:
     color: '#faee41'
     icon: /static/img/categories/education_youth.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#faee41'
@@ -189,7 +189,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#faee41'
@@ -197,7 +197,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/education_youth-dot.svg
@@ -205,7 +205,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "education_youth" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/education_youth-dot.svg
@@ -219,7 +219,7 @@ place_types:
     color: '#b6fa41'
     icon: /static/img/categories/sustainability.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#b6fa41'
@@ -227,7 +227,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#b6fa41'
@@ -235,7 +235,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/sustainability-dot.svg
@@ -243,7 +243,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "sustainability" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/sustainability-dot.svg
@@ -257,7 +257,7 @@ place_types:
     color: '#75fa41'
     icon: /static/img/categories/facilities.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#75fa41'
@@ -265,7 +265,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#75fa41'
@@ -273,7 +273,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/facilities-dot.svg
@@ -281,7 +281,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "facilities" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/facilities-dot.svg
@@ -295,7 +295,7 @@ place_types:
     color: '#41eafa'
     icon: /static/img/categories/human_services.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#41eafa'
@@ -303,7 +303,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#41eafa'
@@ -311,7 +311,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/human_services-dot.svg
@@ -319,7 +319,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "human_services" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/human_services-dot.svg
@@ -333,7 +333,7 @@ place_types:
     color: '#4185fa'
     icon: /static/img/categories/public_safety.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#4185fa'
@@ -341,7 +341,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#4185fa'
@@ -349,7 +349,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/public_safety-dot.svg
@@ -357,7 +357,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "public_safety" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/public_safety-dot.svg
@@ -371,7 +371,7 @@ place_types:
     color: '#4441fa'
     icon: /static/img/categories/streets_sidewalks.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#4441fa'
@@ -379,7 +379,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#4441fa'
@@ -387,7 +387,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/streets_sidewalks-dot.svg
@@ -395,7 +395,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "streets_sidewalks" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/streets_sidewalks-dot.svg
@@ -409,7 +409,7 @@ place_types:
     color: '#e441fa'
     icon: /static/img/categories/other.svg
     rules:
-      # Draw small circles when zoomed out to see a lot of the ideas...
+      # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "other" && {{map.zoom}} < 12 && {{layer.focused}} === false'
         style:
           color: '#e441fa'
@@ -417,7 +417,7 @@ place_types:
           weight: 1
           opacity: 0.9
           fillOpacity: 1
-      # Draw larger circles when fewer ideas visible...
+      # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "other" && {{map.zoom}} < 15 && {{layer.focused}} === false'
         style:
           color: '#e441fa'
@@ -425,7 +425,7 @@ place_types:
           weight: 3
           opacity: 0.7
           fillOpacity: 1
-      # Draw even larger circles when super zoomed in...
+      # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "other" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/other-dot.svg
@@ -433,7 +433,7 @@ place_types:
           iconSize: [32, 32]
           shadowSize: null
           iconAnchor: [16, 16]
-      # Draw biggest circle when focused...
+      # Draw biggest circle when focused…
       - condition: '"{{location_type}}" === "other" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/other-dot.svg
@@ -462,7 +462,7 @@ place:
   show_list_button_label: _(List All Ideas)
   show_map_button_label: _(Show the Map)
   action_text: _(submitted)
-  title: _(Tell us more...)
+  title: _(Tell us more…)
   anonymous_name: _(Your neighbor)
   submit_button_label: _(Submit)
 
@@ -485,14 +485,14 @@ place:
       attrs:
         - key: required
     - prompt: _(Please share a short description of the project idea.)
-      label: _(My idea is to...)
+      label: _(My idea is to…)
       help_text: _(Make sure your description is short and clear.)
       type: textarea
       name: description
       attrs:
         - key: required
         - key: placeholder
-          value: _(Try to keep it to 50 words or less...)
+          value: _(Try to keep it to 50 words or less…)
         - key: maxlength
           value: 250  # Limiting to around 50 words, assuming most languages are just around 5 characters per word on average.
 
@@ -508,7 +508,7 @@ place:
       attrs:
         - key: required
     - prompt: _(Approximately where would your idea be?)
-      label: _(Approximate location...)
+      label: _(Approximate location…)
       type: location
       name: address
       placeholder: _(Drag the map to set the location.)
@@ -516,7 +516,7 @@ place:
       type: hidden
 
     - prompt: _(Please describe how the project positively impacts the community and/or advances social and racial equity.)
-      label: _(This idea would benefit the community by...)
+      label: _(This idea would benefit the community by…)
       help_text: _(Make sure you keep it short and clear.)
       tooltip: _("Social and racial equity" is defined as the just and fair inclusion of people of any social and racial background into society, so they can participate, prosper, and reach their full potential.)
       type: textarea
@@ -524,7 +524,7 @@ place:
       attrs:
         - key: required
         - key: placeholder
-          value: _(Try to keep it to 50 words or less...)
+          value: _(Try to keep it to 50 words or less…)
     - prompt: _(Which category does your idea fall into?)
       label: _(Category)
       help_text: _(Choose the category that most closely describes your project.)
@@ -579,7 +579,7 @@ place:
       attrs:
         - key: required
         - key: placeholder
-          value: _(First name...)
+          value: _(Your first name…)
     - prompt: _(Your Name)
       label: _(Submitter's Name)
       type: text
@@ -588,7 +588,7 @@ place:
       attrs:
         - key: required
         - key: placeholder
-          value: _(Last name...)
+          value: _(Your last name…)
     - prompt: _(How should we display your name next to your idea?)
       name: private_submitter_name_display_style
       type: radiogroup
@@ -606,7 +606,7 @@ place:
       name: submitter_neighborhood
       sticky: true
       options:
-        - label: _(Select a neighborhood...)
+        - label: _(Select a neighborhood…)
           value: ''
         - label: _(Allston)
           value: Allston
@@ -748,7 +748,7 @@ place:
       attrs:
         - key: required
         - key: placeholder
-          value: _(Zip code...)
+          value: _(Zip code…)
     - prompt: _(Your Email)
       label: _(Your Email)
       type: text
