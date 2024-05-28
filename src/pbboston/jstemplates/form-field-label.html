@@ -1,9 +1,9 @@
 {{#is_authenticated}}
   {{^is_submitter_name}}
-    <label {{#if tooltip}}aria-describedby="{{name}}-tooltip"{{/if}} class="field-label {{ type }}-field-label" for="{{ default submission_type 'place' }}-{{ name }}">{{ prompt }} {{# optional }}<small>({{#_}}optional{{/_}})</small>{{/ optional }}</label>
+    <label {{#if tooltip}}aria-describedby="{{name}}-tooltip"{{/if}} class="field-label {{ type }}-field-label" id="{{ default submission_type 'place' }}-{{ name }}-label" for="{{ default submission_type 'place' }}-{{ name }}">{{ prompt }} {{# optional }}<small>({{#_}}optional{{/_}})</small>{{/ optional }}</label>
   {{/is_submitter_name}}
 {{^}}
-  <label {{#if tooltip}}aria-describedby="{{name}}-tooltip"{{/if}} class="field-label {{ type }}-field-label" for="{{ default submission_type 'place' }}-{{ name }}">{{ prompt }} {{# optional }}<small>({{#_}}optional{{/_}})</small>{{/ optional }}</label>
+  <label {{#if tooltip}}aria-describedby="{{name}}-tooltip"{{/if}} class="field-label {{ type }}-field-label" id="{{ default submission_type 'place' }}-{{ name }}-label" for="{{ default submission_type 'place' }}-{{ name }}">{{ prompt }} {{# optional }}<small>({{#_}}optional{{/_}})</small>{{/ optional }}</label>
 {{/is_authenticated}}
 
 {{#if tooltip}}
