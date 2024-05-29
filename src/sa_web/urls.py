@@ -13,7 +13,12 @@ def users_complete(request):
     from django.core.mail import send_mail
     from django.conf import settings
 
-    send_mail(f'User Complete Request - ({request.method}) {request.path}', request.body, settings.EMAIL_ADDRESS, [settings.EMAIL_ADDRESS])
+    send_mail(
+        f'User Complete Request - ({request.method}) {request.path}',
+        request.body,
+        settings.EMAIL_ADDRESS,
+        ['mjumbewu@gmail.com'],
+    )
 
     from django.http import HttpResponse
     return HttpResponse('Sent the email.')
