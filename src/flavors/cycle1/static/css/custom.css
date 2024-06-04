@@ -591,13 +591,13 @@ label {
   background-color: var(--supporting-gray-4);
 }
 
-@media (hover: none) {
+@media (hover: none) or (max-width: 1023px) {
   .hidden-if-no-hover {
     display: none;
   }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (min-width: 1024px) {
   .tooltip-content {
     position: absolute;
     display: none;
@@ -616,7 +616,7 @@ label {
   z-index: 10000;
 }
 
-@media (hover: none) {
+@media (hover: none) or (max-width: 1023px) {
   .place-location_type-option-description {
     position: sticky;
     top: 0;
@@ -655,7 +655,7 @@ label {
 
 .if-hoverable { display: none; }
 
-@media (hover: hover) {
+@media (hover: hover) and (min-width: 1024px) {
   .if-hoverable { display: block; }
   .if-not-hoverable { display: none; }
 }
