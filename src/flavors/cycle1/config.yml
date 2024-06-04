@@ -481,24 +481,6 @@ place:
     below. Only the information you choose to display will be made public.
 
   items:
-    - prompt: _(What do you call your idea?)
-      label: _(Idea title)
-      type: text
-      name: title
-      attrs:
-        - key: required
-    - prompt: _(Please share a short description of the project idea.)
-      label: _(My idea is to…)
-      help_text: _(Make sure your description is short and clear.)
-      type: textarea
-      name: description
-      attrs:
-        - key: required
-        - key: placeholder
-          value: _(Try to keep it to 50 words or less…)
-        - key: maxlength
-          value: 250  # Limiting to around 50 words, assuming most languages are just around 5 characters per word on average.
-
     - prompt: _(Is your idea for a specific location or for the entire city?)
       label: _(City wide?)
       type: radiogroup
@@ -517,6 +499,24 @@ place:
       placeholder: _(Drag the map to set the location.)
     - name: neighborhood
       type: hidden
+
+    - prompt: _(What do you call your idea?)
+      label: _(Idea title)
+      type: text
+      name: title
+      attrs:
+        - key: required
+    - prompt: _(Please share a short description of the project idea.)
+      label: _(My idea is to…)
+      help_text: _(Make sure your description is short and clear.)
+      type: textarea
+      name: description
+      attrs:
+        - key: required
+        - key: placeholder
+          value: _(Try to keep it to 50 words or less…)
+        - key: maxlength
+          value: 250  # Limiting to around 50 words, assuming most languages are just around 5 characters per word on average.
 
     - prompt: _(Please describe how the project positively impacts the community and/or advances social and racial equity.)
       label: _(This idea would benefit the community by…)
