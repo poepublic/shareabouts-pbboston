@@ -13,9 +13,17 @@ def users_complete(request):
     from django.core.mail import send_mail
     from django.conf import settings
 
+    response_body = f'''
+    Request Method: {request.method}
+    Request Path: {request.path}
+    Request Query Params: {request.GET.dict()}
+    Request Headers: {request.headers}
+    Request Body: {request.body}
+    '''
+
     send_mail(
         f'User Complete Request - ({request.method}) {request.path}',
-        request.body,
+        response_body,
         settings.EMAIL_ADDRESS,
         ['mjumbewu@gmail.com'],
     )
