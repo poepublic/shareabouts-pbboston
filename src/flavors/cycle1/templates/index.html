@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block site-title %}
-<a href="/page/about" data-internal="true">
+<a href="/{{ config.app.home_path }}" data-internal="true">
   <img class="boston-icon" alt="" src="{% static 'css/images/boston-icon-light.svg' %}">
   <img class="pb-icon" alt="" src="{% static 'css/images/pbboston-icon.svg' %}">
   <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo.svg' %}">
