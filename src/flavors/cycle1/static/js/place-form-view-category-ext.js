@@ -61,7 +61,7 @@
       .html(description)
       .removeClass('hidden');
 
-    this.$('.instructions').addClass('hidden');
+    this.$('.place-location_type-field .instructions').addClass('hidden');
   };
 
   Shareabouts.PlaceFormView.prototype.hoverCategoryDescription = function(category, label) {

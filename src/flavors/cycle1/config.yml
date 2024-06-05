@@ -500,12 +500,6 @@ place:
     - name: neighborhood
       type: hidden
 
-    - prompt: _(What do you call your idea?)
-      label: _(Idea title)
-      type: text
-      name: title
-      attrs:
-        - key: required
     - prompt: _(Please share a short description of the project idea.)
       label: _(My idea is to…)
       help_text: _(Make sure your description is short and clear.)

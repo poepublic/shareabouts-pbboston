@@ -7,7 +7,6 @@
 
   Shareabouts.PlaceFormView.prototype.events = {
     ...Shareabouts.PlaceFormView.prototype.events,
-    'input input[name="title"]': 'onTitleChange',
     'change input[name="location_type"]': 'onLocationTypeChange',
     [`change input[name="${nameDisplayStyleFieldName}"]`]: 'onSubmitterNameDisplayStyleChange',
     [`input input[name="${firstNameFieldName}"]`]: 'onSubmitterNameFirstChange',
@@ -65,7 +64,6 @@
   }
 
   Shareabouts.PlaceFormView.prototype.updateNameDisplaySample = function(displayedName, displayStyle, message) {
-    const titleInput = this.el.querySelector('[name="title"]');
     const placeTypeInput = this.el.querySelector('[name="location_type"]:checked');
     const nameDisplaySampleDiv = this.el.querySelector('.submitter_name-display-sample');
 
@@ -73,17 +71,17 @@
       nameDisplaySampleDiv.innerHTML = `<div class="instructions">${instructions}</div>`;
     }
 
-    function showIdeaDisplaySample(displayedName, category, title) {
+    function showIdeaDisplaySample(displayedName, category) {
       const sample = `
         <strong>${displayedName || Shareabouts.Config.place.anonymous_name}</strong>
         submitted ${'aeiou'.includes(category[0].toLowerCase()) ? 'an' : 'a'}
-        ${category} idea titled ${title}
+        ${category} idea
       `;
       nameDisplaySampleDiv.innerHTML = `<label>Display sample:</label> <div class="sample">${sample}</div>`;
     }
 
-    if (placeTypeInput === null || !titleInput.value.trim()) {
-      showInstructions('Enter a title and choose an idea category above to to see how your idea will be displayed.');
+    if (placeTypeInput === null) {
+      showInstructions('Choose an idea category above to to see how your idea will be displayed.');
       return;
     } else if (message) {
       showInstructions(message);
@@ -92,16 +90,11 @@
 
     const placeType = Shareabouts.Config.placeTypes[placeTypeInput.value];
     const category = placeType ? (placeType.label || placeTypeInput.value) : '';
-    const title = titleInput.value.trim();
 
-    showIdeaDisplaySample(displayedName, category, title);
+    showIdeaDisplaySample(displayedName, category);
   }
 
   Shareabouts.PlaceFormView.prototype.onSubmitterNameDisplayStyleChange = function(evt) {
-    this.updateNameDisplayValue();
-  }
-
-  Shareabouts.PlaceFormView.prototype.onTitleChange = function() {
     this.updateNameDisplayValue();
   }
 
