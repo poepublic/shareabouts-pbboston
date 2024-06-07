@@ -512,14 +512,14 @@ place:
         - key: maxlength
           value: 250  # Limiting to around 50 words, assuming most languages are just around 5 characters per word on average.
 
-    - prompt: _(Please describe how the project positively impacts the community and/or advances social and racial equity.)
-      label: _(This idea would benefit the community by…)
+    - prompt: _(How does your project advance social and racial equity?)
+      label: _(This idea would advance social and racial equity by…)
       help_text: _(Make sure you keep it short and clear.)
       tooltip: _("Social and racial equity" is defined as the just and fair inclusion of people of any social and racial background into society, so they can participate, prosper, and reach their full potential.)
       type: textarea
       name: benefit
+      optional: true
       attrs:
-        - key: required
         - key: placeholder
           value: _(Try to keep it to 50 words or less…)
     - prompt: _(Which category does your idea fall into?)
@@ -742,10 +742,7 @@ place:
       type: text
       name: private_submitter_zipcode
       sticky: true
-      attrs:
-        - key: required
-        - key: placeholder
-          value: _(Zip code…)
+      optional: true
     - prompt: _(Your Email)
       label: _(Your Email)
       type: text
@@ -786,8 +783,6 @@ place:
         - label: 'Soomaali'
           value: 'Somali'
       attrs:
-        - key: placeholder
-          value: _(Preferred language)
         - key: translate
           value: "no"
 
