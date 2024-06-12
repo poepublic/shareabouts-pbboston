@@ -57,6 +57,8 @@
   {% endblock %}
 
   <header id="site-header" class="clearfix{% if pages_config %} has-pages{% endif %}">
+    {% block header_intro %}{% endblock %}
+
     <h1 id="site-title">{% block site-title %}{% endblock %}</h1>
 
     {% block pre_auth_nav %}{% endblock %}

@@ -2,6 +2,13 @@
 {% load i18n %}
 {% load static %}
 
+{% block header_intro %}
+<div id="boston-small-screen-lead-in" class="boston-small-screen-lead-in">
+  <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo-white.png' %}"><br>
+  <span class="pb-label">Participatory Budgeting</span>
+</div>
+{% endblock %}
+
 {% block site-title %}
 <a href="/{{ config.app.home_path }}" data-internal="true">
   <img class="boston-icon" alt="" src="{% static 'css/images/boston-icon-light.svg' %}">
