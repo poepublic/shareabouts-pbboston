@@ -2,7 +2,11 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <button id="show-language-picker-btn" type="button" class="btn btn-language" aria-haspopup="dialog" aria-expanded="false" aria-controls="language-picker-wrapper">
-  <span class="btn-language__label">Languages</span>
+  <div class="btn-language__carousel" translate="no">
+    {% for language in config.languages %}
+    <span data-language="{{ language.code }}" class="btn-language__label">{{ language.label }}</span>
+    {% endfor %}
+  </div>
 </button>
 
 <div id="language-picker-wrapper" class="hidden">
