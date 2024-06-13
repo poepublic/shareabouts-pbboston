@@ -17,7 +17,7 @@ from django.http import HttpResponse, Http404
 from django.template import TemplateDoesNotExist
 from django.template.loader import render_to_string
 from django.utils.timezone import now
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from django.urls import resolve, reverse
 from proxy.views import proxy_view as remote_proxy_view
 
@@ -468,6 +468,7 @@ def readonly_file_api(request, path, datafilename='data.json'):
             raise Http404
 
 
+@csrf_exempt
 def api(request, path):
     """
     A small proxy for a Shareabouts API server, exposing only
