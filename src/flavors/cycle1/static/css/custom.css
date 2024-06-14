@@ -53,6 +53,7 @@
   --landscape-limit: 480px;
 
   --banner-height: 65px;
+  --pre-banner-height: 60px;
 
   --header-font: 'Montserrat', 'Mada', sans-serif;
   --body-font: 'Lora', 'Markazi', serif;
@@ -133,14 +134,17 @@ p {
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(var(--banner-height) + 1px);
+  height: var(--pre-banner-height);
   background-color: var(--charles-blue);
   color: white;
   font-family: var(--header-font);
+  font-size: 0.9rem;
+  line-height: 0.7rem;
   text-align: center;
 }
 
 .boston-small-screen-lead-in .boston-logo {
+  margin-top: 0.5rem;
   height: 1.6rem;
 }
 
@@ -162,8 +166,8 @@ p {
   position: relative;
   box-sizing: border-box;
   padding: 0.5rem;
-  padding-top: calc(var(--banner-height) + 0.5rem);
-  height: calc(var(--banner-height) + var(--banner-height));
+  padding-top: calc(var(--pre-banner-height) + 0.5rem);
+  height: calc(var(--pre-banner-height) + var(--banner-height));
   background-color: white;
 }
 
@@ -261,7 +265,7 @@ p {
 
 #nav-btn {
   left: 0;
-  top: var(--banner-height);
+  top: var(--pre-banner-height);
   width: var(--banner-height);
   height: var(--banner-height);
   display: flex;
@@ -907,7 +911,7 @@ label {
 #show-language-picker-btn {
   position: absolute;
   right: 0.25rem;
-  top: var(--banner-height);
+  top: var(--pre-banner-height);
   height: var(--banner-height);
   margin: 0;
   padding: 0;
