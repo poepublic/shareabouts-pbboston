@@ -362,7 +362,9 @@ label {
 }
 
 .radio-label-text, .checkbox-label-text {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 8rem;
   height: 8rem;
   box-sizing: border-box;
@@ -412,6 +414,7 @@ label {
   background-size: 4rem;
   background-repeat: no-repeat;
   background-position-x: 50%;
+  background-position-y: 16.67%;
 }
 
 [name="city_wide"][value="false"] + .label-text {
