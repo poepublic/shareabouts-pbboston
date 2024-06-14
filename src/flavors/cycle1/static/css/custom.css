@@ -80,6 +80,10 @@ p {
   background-color: var(--charles-blue);
 }
 
+#centerpoint.newpin .x {
+  background-image: url(images/marker-x-light.png);
+}
+
 #add-place-btn-container {
   background-color: var(--charles-blue);
 }
