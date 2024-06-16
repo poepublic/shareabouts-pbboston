@@ -26,6 +26,7 @@ urlpatterns = staticfiles_urlpatterns() + [
 
     url(r'^admin/', admin.site.urls),
     url(r'^choose-language$', set_language, name='set_language'),
+    url(r'^login/', include('sa_login.urls')),
     url(r'^', include('sa_web.urls')),
 ]
 
