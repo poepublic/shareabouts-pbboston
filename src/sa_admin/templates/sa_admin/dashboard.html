@@ -1,0 +1,173 @@
+{% extends 'sa_admin/base.html' %}
+{% load static %}
+
+{% block title %}Shareabouts Admin{% endblock %}
+
+{% block heading %}Shareabouts Admin{% endblock %}
+
+{% block content %}
+  <h2>Admin Dashboard</h2>
+  <p>Welcome to the Shareabouts admin dashboard. From here you can manage your ideas submitted from the map UI.</p>
+
+  <div class="table-wrapper">
+    <table id="places-table">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+
+  <script type="module">
+    import { PlacesTable } from '{% static 'sa_admin/js/places_table.js' %}';
+
+    function formatExact(value) { return value === undefined ? '' : value; }
+    function formatDatetime(value) { return value === undefined ? '' : new Date(value).toLocaleString(); }
+    function formatBoolean(value) { return value === true ? '✅' : '❌'; }
+
+    function filterSubstring(value, filterEl) {
+      const substring = filterEl.value.toLowerCase();
+      return substring === '' || value.toLowerCase().includes(substring);
+    }
+    function filterDatetime(value, filterEl) {
+      const fromDatetime = filterEl.querySelector('.from').value;
+      const toDatetime = filterEl.querySelector('.to').value;
+      return (fromDatetime === '' || new Date(value) >= new Date(fromDatetime)) &&
+             (toDatetime === '' || new Date(value) <= new Date(toDatetime));
+    }
+    function filterBoolean(value, filterEl) {
+      const trueOrFalse = filterEl.value === 'true';
+      return filterEl.value === '' || value === trueOrFalse;
+    }
+    function filterChoice(value, filterEl) {
+      const choices = Array.from(filterEl.querySelectorAll('option'))
+        .filter(o => o.selected)
+        .map(o => o.value);
+      return choices.length === 0 || choices.includes(value);
+    }
+
+    const places = window.places = new Shareabouts.PlaceCollection();
+    const fields = [
+      {
+        attr: 'id',
+        label: 'id',
+        format: (value) => `<a target="_blank" href="/place/${value}">${value}</a>`,
+        filter: null,
+      },
+      {
+        attr: 'created_datetime',
+        label: 'created_datetime',
+        format: formatDatetime,
+        filter: filterDatetime,
+      },
+      {
+        attr: 'description',
+        label: 'description',
+        format: formatExact,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'benefit',
+        label: 'benefit',
+        format: formatExact,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'city_wide',
+        label: 'city_wide',
+        format: formatBoolean,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'location_type',
+        label: 'location_type',
+        format: formatExact,
+        filter: filterChoice,
+      },
+      {
+        attr: 'neighborhood',
+        label: 'neighborhood',
+        format: formatExact,
+        filter: filterChoice,
+      },
+      {
+        attr: 'private_submitter_email',
+        label: 'private_submitter_email',
+        format: formatExact,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'private_submitter_language',
+        label: 'private_submitter_language',
+        format: formatExact,
+        filter: filterChoice,
+      },
+      {
+        attr: 'private_submitter_name_first',
+        label: 'private_submitter_name_first',
+        format: formatExact,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'private_submitter_name_last',
+        label: 'private_submitter_name_last',
+        format: formatExact,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'private_submitter_zipcode',
+        label: 'private_submitter_zipcode',
+        format: formatExact,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'submission_event_type',
+        label: 'submission_event_type',
+        format: formatExact,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'submitter_neighborhood',
+        label: 'submitter_neighborhood',
+        format: formatExact,
+        filter: filterChoice,
+      },
+      {
+        attr: 'user_token',
+        label: 'user_token',
+        format: formatExact,
+        filter: filterSubstring,
+      },
+      {
+        attr: 'visible',
+        label: 'visible',
+        format: formatExact,
+        filter: filterBoolean,
+      },
+    ];
+    const placesTable = new PlacesTable(places, fields);
+
+    function onPlacesPageSuccess(page) {
+      console.log(`Fetched ${page.length} places`)
+      placesTable.render();
+    }
+
+    function onPlacesPageError(page, error) {
+      if (error.status === 401 || error.status === 403) {
+        console.error('Authentication error while fetching places:', error.responseText);
+        return;
+      }
+      console.error('Error fetching places:', error.status, error.responseText);
+    }
+
+    places.fetchAllPages({
+      pageSuccess: onPlacesPageSuccess,
+      pageError: onPlacesPageError,
+      data: {
+        include_private: true
+      },
+    });
+  </script>
+{% endblock %}
