@@ -1,5 +1,3 @@
-/* global Shareabouts */
-
 import { Component } from './component.js';
 
 class PlacesTableHeaderCell extends Component {
@@ -83,7 +81,7 @@ class PlacesTableBodyRow extends Component {
   fill() {
     this.el.dataset.placeId = this.place.get('id');
     this.el.innerHTML = `
-      ${this.columns.map((column) => `<td>${column.format(this.place.get(column.attr))}</td>`).join('')}
+      ${this.columns.map((column) => `<td class="${column.attr}-column">${column.format(this.place.get(column.attr))}</td>`).join('')}
     `;
 
     return this;
@@ -96,8 +94,8 @@ class PlacesTableBodyRow extends Component {
 
 
 class PlacesTable extends Component {
-  constructor(places, columns) {
-    super(document.getElementById('places-table'));
+  constructor(el, places, columns) {
+    super(el);
 
     this.places = places;
     this.columns = columns;
@@ -107,8 +105,10 @@ class PlacesTable extends Component {
   }
 
   fill() {
-    this.head = new PlacesTableHeaderRow(document.createElement('thead'), this.places, this.columns);
-    this.el.appendChild(this.head.render().el);
+    this.headEl = document.createElement('thead');
+    this.head = new PlacesTableHeaderRow(document.createElement('tr'), this.places, this.columns);
+    this.headEl.appendChild(this.head.render().el);
+    this.el.appendChild(this.headEl);
 
     this.bodyEl = document.createElement('tbody');
     for (const place of this.places.models) {

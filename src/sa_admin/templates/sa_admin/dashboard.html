@@ -3,11 +3,14 @@
 
 {% block title %}Shareabouts Admin{% endblock %}
 
+{% block body_classes %}dashboard{% endblock %}
+
 {% block heading %}Shareabouts Admin{% endblock %}
 
 {% block content %}
-  <h2>Admin Dashboard</h2>
-  <p>Welcome to the Shareabouts admin dashboard. From here you can manage your ideas submitted from the map UI.</p>
+  <div class="map-wrapper">
+    <div class="map" id="places-map"></div>
+  </div>
 
   <div class="table-wrapper">
     <table id="places-table">
@@ -22,6 +25,7 @@
 
   <script type="module">
     import { PlacesTable } from '{% static 'sa_admin/js/places_table.js' %}';
+    import { PlacesMap } from '{% static 'sa_admin/js/places_map.js' %}';
 
     function formatExact(value) { return value === undefined ? '' : value; }
     function formatDatetime(value) { return value === undefined ? '' : new Date(value).toLocaleString(); }
@@ -147,11 +151,13 @@
         filter: filterBoolean,
       },
     ];
-    const placesTable = new PlacesTable(places, fields);
+    const placesTable = new PlacesTable(document.getElementById('places-table'), places, fields);
+    const placesMap = new PlacesMap(document.getElementById('places-map'), places);
 
     function onPlacesPageSuccess(page) {
       console.log(`Fetched ${page.length} places`)
       placesTable.render();
+      placesMap.render();
     }
 
     function onPlacesPageError(page, error) {
