@@ -24,8 +24,7 @@
   {{ block.super }}
 
   <script type="module">
-    import { PlacesTable } from '{% static 'sa_admin/js/places_table.js' %}';
-    import { PlacesMap } from '{% static 'sa_admin/js/places_map.js' %}';
+    import { PlacesDashboard } from '{% static 'sa_admin/js/places_dashboard.js' %}';
 
     function formatExact(value) { return value === undefined ? '' : value; }
     function formatDatetime(value) { return value === undefined ? '' : new Date(value).toLocaleString(); }
@@ -151,13 +150,12 @@
         filter: filterBoolean,
       },
     ];
-    const placesTable = new PlacesTable(document.getElementById('places-table'), places, fields);
-    const placesMap = new PlacesMap(document.getElementById('places-map'), places);
+
+    const placesDashboard = new PlacesDashboard(document.getElementsByTagName('main')[0], places, fields);
 
     function onPlacesPageSuccess(page) {
       console.log(`Fetched ${page.length} places`)
-      placesTable.render();
-      placesMap.render();
+      placesDashboard.render();
     }
 
     function onPlacesPageError(page, error) {

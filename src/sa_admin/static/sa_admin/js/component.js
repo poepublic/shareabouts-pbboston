@@ -5,28 +5,28 @@ function htmlToElement(html) {
 }
 
 
-class EventTracker {
+class EventListenerTracker {
   constructor() {
-    this.eventListeners = [];
+    this.cache = [];
   }
 
   add(event, el, callback) {
     el.addEventListener(event, callback);
-    this.eventListeners.push({ event, el, callback });
+    this.cache.push({ event, el, callback });
   }
 
   remove(event, el, callback) {
     el.removeEventListener(event, callback);
-    this.eventListeners = this.eventListeners.filter((listener) => {
+    this.cache = this.cache.filter((listener) => {
       return listener.event !== event || listener.el !== el || listener.callback !== callback;
     });
   }
 
   clear() {
-    this.eventListeners.forEach(({ event, el, callback }) => {
+    this.cache.forEach(({ event, el, callback }) => {
       el.removeEventListener(event, callback);
     });
-    this.eventListeners = [];
+    this.cache = [];
   }
 }
 
@@ -34,7 +34,8 @@ class EventTracker {
 class Component {
   constructor(el) {
     this.el = el;
-    this.events = new EventTracker();
+    this.listeners = new EventListenerTracker();
+    this.dispatcher = new EventTarget();
   }
 
   fill() {
@@ -51,7 +52,7 @@ class Component {
   }
 
   unbind() {
-    this.events.clear();
+    this.listeners.clear();
     return this;
   }
 
@@ -68,5 +69,5 @@ class Component {
 export {
   htmlToElement,
   Component,
-  EventTracker,
+  EventListenerTracker,
 };

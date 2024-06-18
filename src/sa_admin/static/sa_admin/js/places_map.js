@@ -10,6 +10,8 @@ class PlacesMap extends Component {
     this.places = places;
     this.map = null;
     this.placesLayer = L.featureGroup();
+
+    this._placeIdToMarker = {};
   }
 
   fill() {
@@ -17,7 +19,7 @@ class PlacesMap extends Component {
       this.map = L.map(this.el).setView([0, 0], 1);
       L.mapboxGL({
         accessToken: 'pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNseGpqbzk5ODAwZTMyam9heGp0amYxY3cifQ.z8HXEZq5rvWgg97PzPlBKA',
-        style: 'mapbox://styles/mapbox/light-v11',
+        style: 'mapbox://styles/mapbox/dark-v11',
       }).addTo(this.map);
       this.placesLayer.addTo(this.map);
     }
@@ -27,7 +29,15 @@ class PlacesMap extends Component {
       if (geometry === null) {
         console.warn(`Place ${place.get('id')} has no geometry`);
       }
-      L.marker([geometry.coordinates[1], geometry.coordinates[0]]).addTo(this.placesLayer);
+
+      const marker = L.circleMarker(
+        [geometry.coordinates[1], geometry.coordinates[0]],
+        this.normalMarkerStyle(place),
+      ).addTo(this.placesLayer);
+
+      marker.place = place;
+      marker.placeId = place.get('id');
+      this._placeIdToMarker[place.get('id')] = marker;
     }
 
     if (this.places.models.length > 0) {
@@ -39,7 +49,59 @@ class PlacesMap extends Component {
 
   empty() {
     this.placesLayer.clearLayers();
+    this._placeIdToMarker = {};
     return this;
+  }
+
+  bind() {
+    this.placesLayer.eachLayer((marker) => {
+      const placeId = marker.placeId;
+      this.listeners.add('mouseover', marker, () => {
+        this.highlightMarker(placeId, marker);
+        this.dispatcher.dispatchEvent(new CustomEvent('place:mouseover', { detail: { placeId } }));
+      });
+      this.listeners.add('mouseout', marker, () => {
+        this.unhighlightMarker(placeId, marker);
+        this.dispatcher.dispatchEvent(new CustomEvent('place:mouseout', { detail: { placeId } }));
+      });
+    });
+    return this;
+  }
+
+  normalMarkerStyle(place) {
+    return {
+      radius: 5,
+      color: Shareabouts.Config.place_types[place.get('location_type')].color,
+      fillOpacity: 0.5,
+      opacity: 1,
+      weight: 1,
+    };
+  }
+
+  hoverMarkerStyle(place) {
+    return {
+      radius: 5,
+      color: 'white',
+      fillColor: Shareabouts.Config.place_types[place.get('location_type')].color,
+      fillOpacity: 1,
+      opacity: 1,
+      weight: 1,
+    };
+  }
+
+  highlightMarker(placeId, marker = null) {
+    marker ||= this._placeIdToMarker[placeId];
+    if (marker) {
+      marker.setStyle(this.hoverMarkerStyle(marker.place));
+      marker.bringToFront();
+    }
+  }
+
+  unhighlightMarker(placeId, marker = null) {
+    marker ||= this._placeIdToMarker[placeId];
+    if (marker) {
+      marker.setStyle(this.normalMarkerStyle(marker.place));
+    }
   }
 }
 

@@ -55,6 +55,14 @@ th {
   height: 100%;
 }
 
+tbody tr.highlight {
+  background-color: yellow;
+}
+
+tbody tr::hover {
+  cursor: pointer;
+}
+
 @media screen and (width >= 768px) {
   .dashboard {
     display: flex;
@@ -80,7 +88,6 @@ th {
     width: 50%;
     height: 100%;
   }
-
 }
 
 

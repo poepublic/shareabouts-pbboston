@@ -39,7 +39,7 @@ class PlacesTableHeaderCell extends Component {
     if (this.column.filter) {
       const filterButton = this.el.querySelector('button.filter');
       const filterDialog = this.el.querySelector('dialog.filter');
-      this.events.add('click', filterButton, () => {
+      this.listeners.add('click', filterButton, () => {
         filterDialog.showModal();
       });
     }
@@ -87,6 +87,12 @@ class PlacesTableBodyRow extends Component {
     return this;
   }
 
+  empty() {
+    Component.prototype.empty.call(this);
+    delete this.el.dataset.placeId;
+    return this;
+  }
+
   bind() {
     return this;
   }
@@ -122,14 +128,50 @@ class PlacesTable extends Component {
       }
     }
     this.el.appendChild(this.bodyEl);
+
+    return this;
+  }
+
+  bind() {
+    if (this.head) { this.head.bind(); }
+    for (const row of Object.values(this.rows)) { row.bind(); }
+
+    for (const tr of this.el.querySelectorAll('tbody tr')) {
+      this.listeners.add('mouseover', tr, (e) => {
+        const placeId = e.currentTarget.dataset.placeId;
+        this.highlightRow(placeId, e.currentTarget);
+        this.dispatcher.dispatchEvent(new CustomEvent('place:mouseover', { detail: { placeId } }));
+      });
+
+      this.listeners.add('mouseout', tr, (e) => {
+        const placeId = e.currentTarget.dataset.placeId;
+        this.unhighlightRow(placeId, e.currentTarget);
+        this.dispatcher.dispatchEvent(new CustomEvent('place:mouseout', { detail: { placeId } }));
+      });
+    }
+
+    return Component.prototype.bind.call(this);
   }
 
   unbind() {
     if (this.head) { this.head.unbind(); }
     for (const row of Object.values(this.rows)) { row.unbind(); }
 
-    Component.prototype.unbind.call(this);
-    return this;
+    return Component.prototype.unbind.call(this);
+  }
+
+  highlightRow(placeId, tr = null) {
+    tr ||= this.el.querySelector(`tr[data-place-id="${placeId}"]`);
+    if (tr) {
+      tr.classList.add('highlight');
+    }
+  }
+
+  unhighlightRow(placeId, tr = null) {
+    tr ||= this.el.querySelector(`tr[data-place-id="${placeId}"]`);
+    if (tr) {
+      tr.classList.remove('highlight');
+    }
   }
 };
 
