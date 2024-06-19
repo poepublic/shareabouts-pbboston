@@ -465,7 +465,7 @@ place:
   show_list_button_label: _(List All Ideas)
   show_map_button_label: _(Show the Map)
   action_text: _(submitted)
-  title: _(How would you spend $2 million dollars to benefit your community?)
+  title: _(How would you spend $2 million to benefit your community?)
   anonymous_name: _(Your neighbor)
   submit_button_label: _(Submit)
 
