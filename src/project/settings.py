@@ -424,6 +424,7 @@ if 'DATASET_ROOT' in SHAREABOUTS and SHAREABOUTS['DATASET_ROOT'].startswith('/')
         'sa_api_v2.apikey',
         'sa_api_v2.cors',
         'remote_client_user',
+        'mapbox_proxy',
     )
 
 

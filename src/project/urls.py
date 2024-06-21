@@ -27,6 +27,7 @@ urlpatterns = staticfiles_urlpatterns() + [
     url(r'^choose-language$', set_language, name='set_language'),
     url(r'^login/', include('sa_login.urls')),
     url(r'^admin/', include('sa_admin.urls')),
+    url(r'^mapbox/', include('mapbox_proxy.urls')),
     url(r'^', include('sa_web.urls')),
 ]
 
