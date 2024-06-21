@@ -1157,6 +1157,50 @@ body .marker-cluster div {
   padding-bottom: 1.275em;
 }
 
+/* =Pre-launch
+-------------------------------------------------------------- */
+
+.prelaunch {
+  color: white;
+}
+
+.prelaunch main {
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto;
+  padding: 18px 36px 54px 36px;
+}
+
+.prelaunch h2 {
+  font-size: 30px;
+  color: white;
+}
+
+.prelaunch p {
+  font-size: 18px;
+  font-style: italic;
+}
+
+@media screen and (width > 768px) {
+  .prelaunch main {
+    width: 768px;
+    margin: auto;
+    padding: 30px 60px 90px 60px;
+  }
+
+  .prelaunch h2 {
+    font-size: 75px;
+  }
+
+  .prelaunch p {
+    font-size: 30px;
+  }
+
+  .prelaunch .menu {
+    min-width: 0;
+  }
+}
+
 /* =Media Queries
 -------------------------------------------------------------- */
 
