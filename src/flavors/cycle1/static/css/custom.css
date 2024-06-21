@@ -1168,7 +1168,7 @@ body .marker-cluster div {
   box-sizing: border-box;
   width: 100%;
   margin: auto;
-  padding: 18px 36px 54px 36px;
+  padding: 54px 36px 54px 36px;
 }
 
 .prelaunch h2 {
@@ -1185,7 +1185,7 @@ body .marker-cluster div {
   .prelaunch main {
     width: 768px;
     margin: auto;
-    padding: 30px 60px 90px 60px;
+    padding: 90px 60px 90px 60px;
   }
 
   .prelaunch h2 {
