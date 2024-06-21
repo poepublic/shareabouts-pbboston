@@ -1171,12 +1171,12 @@ body .marker-cluster div {
   padding: 54px 36px 54px 36px;
 }
 
-.prelaunch h2 {
+.prelaunch main h2 {
   font-size: 30px;
   color: white;
 }
 
-.prelaunch p {
+.prelaunch main p {
   font-size: 18px;
   font-style: italic;
 }
@@ -1188,11 +1188,11 @@ body .marker-cluster div {
     padding: 90px 60px 90px 60px;
   }
 
-  .prelaunch h2 {
+  .prelaunch main h2 {
     font-size: 75px;
   }
 
-  .prelaunch p {
+  .prelaunch main p {
     font-size: 30px;
   }
 

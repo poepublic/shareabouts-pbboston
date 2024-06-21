@@ -120,6 +120,12 @@
     <p><strong>Come back on {{ go_live_date|date:"F j, Y" }} to submit your project ideas!</strong></p>
   </main><!-- end #main -->
 
+  <script>
+    Shareabouts = { bootstrapped: {} };
+    Shareabouts.bootstrapped.site_root = '{{ site_root }}';
+  </script>
+  <script src="{% static 'js/language-picker.js' %}"></script>
+
   {% if settings.GOOGLE_ANALYTICS_ID %}
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MC3WBKNWZ"></script>

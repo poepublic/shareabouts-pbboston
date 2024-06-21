@@ -68,7 +68,11 @@ def index(request, place_id=None):
             raise ImproperlyConfigured(f'Invalid go_live_date: {go_live_date} -- {e}')
 
         if go_live_date > now():
-            return render(request, 'prelaunch.html', {'config': config, 'go_live_date': go_live_date})
+            return render(request, 'prelaunch.html', {
+                'config': config,
+                'go_live_date': go_live_date,
+                'site_root': settings.SITE_ROOT,
+            })
 
     # Get the content of the static pages linked in the menu.
     pages_config = config.get('pages', [])
