@@ -605,132 +605,132 @@ place:
       options:
         - label: _(Select a neighborhood…)
           value: ''
-        - label: _(Allston)
+        - label: Allston
           value: Allston
           attrs:
             - key: translate
               value: "no"
-        - label: _(Back Bay)
+        - label: Back Bay
           value: Back Bay
           attrs:
             - key: translate
               value: "no"
-        - label: _(Bay Village)
+        - label: Bay Village
           value: Bay Village
           attrs:
             - key: translate
               value: "no"
-        - label: _(Beacon Hill)
+        - label: Beacon Hill
           value: Beacon Hill
           attrs:
             - key: translate
               value: "no"
-        - label: _(Brighton)
+        - label: Brighton
           value: Brighton
           attrs:
             - key: translate
               value: "no"
-        - label: _(Charlestown)
+        - label: Charlestown
           value: Charlestown
           attrs:
             - key: translate
               value: "no"
-        - label: _(Chinatown)
+        - label: Chinatown
           value: Chinatown
           attrs:
             - key: translate
               value: "no"
-        - label: _(Dorchester)
+        - label: Dorchester
           value: Dorchester
           attrs:
             - key: translate
               value: "no"
-        - label: _(Downtown)
+        - label: Downtown
           value: Downtown
           attrs:
             - key: translate
               value: "no"
-        - label: _(East Boston)
+        - label: East Boston
           value: East Boston
           attrs:
             - key: translate
               value: "no"
-        - label: _(Fenway)
+        - label: Fenway
           value: Fenway
           attrs:
             - key: translate
               value: "no"
-        - label: _(Harbor Islands)
+        - label: Harbor Islands
           value: Harbor Islands
           attrs:
             - key: translate
               value: "no"
-        - label: _(Hyde Park)
+        - label: Hyde Park
           value: Hyde Park
           attrs:
             - key: translate
               value: "no"
-        - label: _(Jamaica Plain)
+        - label: Jamaica Plain
           value: Jamaica Plain
           attrs:
             - key: translate
               value: "no"
-        - label: _(Leather District)
+        - label: Leather District
           value: Leather District
           attrs:
             - key: translate
               value: "no"
-        - label: _(Longwood)
+        - label: Longwood
           value: Longwood
           attrs:
             - key: translate
               value: "no"
-        - label: _(Mattapan)
+        - label: Mattapan
           value: Mattapan
           attrs:
             - key: translate
               value: "no"
-        - label: _(Mission Hill)
+        - label: Mission Hill
           value: Mission Hill
           attrs:
             - key: translate
               value: "no"
-        - label: _(North End)
+        - label: North End
           value: North End
           attrs:
             - key: translate
               value: "no"
-        - label: _(Roslindale)
+        - label: Roslindale
           value: Roslindale
           attrs:
             - key: translate
               value: "no"
-        - label: _(Roxbury)
+        - label: Roxbury
           value: Roxbury
           attrs:
             - key: translate
               value: "no"
-        - label: _(South Boston Waterfront)
+        - label: South Boston Waterfront
           value: South Boston Waterfront
           attrs:
             - key: translate
               value: "no"
-        - label: _(South Boston)
+        - label: South Boston
           value: South Boston
           attrs:
             - key: translate
               value: "no"
-        - label: _(South End)
+        - label: South End
           value: South End
           attrs:
             - key: translate
               value: "no"
-        - label: _(West End)
+        - label: West End
           value: West End
           attrs:
             - key: translate
               value: "no"
-        - label: _(West Roxbury)
+        - label: West Roxbury
           value: West Roxbury
           attrs:
             - key: translate
@@ -871,10 +871,10 @@ languages:
   - code: 'ht'
     label: 'Kreyòl Ayisyen'
   # Traditional Chinese
-  - code: 'zh-hant'
+  - code: 'zh_hant'
     label: '繁體中文'
   # Simplified Chinese
-  - code: 'zh-hans'
+  - code: 'zh_hans'
     label: '简体中文'
   # Vietnamese
   - code: 'vi'

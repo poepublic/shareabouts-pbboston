@@ -8,7 +8,7 @@
 
         <header class="place-header clearfix">
           <span class="place-submission-details">
-            {{#_}}<strong class="point-submitter">
+            <strong class="point-submitter">
               {{#if submitter.avatar_url }}
                 <img src="{{ submitter.avatar_url }}" class="avatar" />
               {{^}}
@@ -27,14 +27,14 @@
               {{/if}}
             </strong>
             {{#is city_wide "true" }}
-              {{ action_text }} this city-wide {{ place_type_label location_type}} idea
+              {{#_}}submitted this city-wide {{ place_type_label location_type}} idea{{/_}}
             {{^}}
-              {{ action_text }} this {{ place_type_label location_type}} idea {{#if location }} near {{ location }}{{/if}}
+              {{#_}}submitted this {{ place_type_label location_type}} idea near {{ location }}{{/_}}
             {{/is}}
 
             {{#if region}}
               in {{ region }}
-            {{/if}}{{/_}}
+            {{/if}}
 
             <time datetime="{{ created_datetime }}" class="response-date"><a href="/place/{{ id }}">{{ fromnow created_datetime }}</a></time>
 
