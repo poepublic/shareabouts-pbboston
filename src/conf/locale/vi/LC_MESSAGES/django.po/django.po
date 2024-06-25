@@ -1,0 +1,454 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Mjumbe Poe <mjumbewu@gmail.com>, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-23 13:40-0500\n"
+"PO-Revision-Date: 2024-06-23 20:22+0000\n"
+"Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
+"Language-Team: Vietnamese (https://app.transifex.com/mjumbewu/teams/189006/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:1
+msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
+msgstr ""
+"TẤT CẢ cư dân Thành phố Boston, bất kể tuổi tác, đều có thể gửi ý tưởng!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:2
+msgid ""
+"By engaging in\n"
+"Participatory Budgeting, Bostonians of all ages and backgrounds can help inform\n"
+"priorities and future investments for the City’s larger budget process."
+msgstr ""
+"Bằng cách tham gia vào\n"
+" Lập ngân sách có sự tham gia, người dân Boston ở mọi lứa tuổi và hoàn cảnh có thể giúp cung cấp thông tin\n"
+" các ưu tiên và đầu tư trong tương lai cho quy trình ngân sách lớn hơn của Thành phố."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:5
+msgid "Examples of Eligible Ideas"
+msgstr "Ví dụ về các ý tưởng đủ điều kiện"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:6
+msgid "Examples of Ineligible Ideas"
+msgstr "Ví dụ về các ý tưởng không đủ điều kiện"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:7
+msgid "February 2025 and Onward"
+msgstr "Tháng 2 năm 2025 trở đi"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:8
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
+msgid ""
+"For more information on Participatory Budgeting, please visit <a "
+"href=\"http://boston.gov/participate\">http://boston.gov/participate</a> or "
+"email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgstr ""
+"Để biết thêm thông tin về Lập ngân sách có sự tham gia, vui lòng truy cập <a"
+" href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
+"hoặc gửi email cho chúng tôi theo địa chỉ <a "
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:9
+msgid "Fund and Implement Project Proposals"
+msgstr "Cấp kinh phí và thực hiện các đề xuất dự án"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:10
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
+msgid "How to Stay Involved?"
+msgstr "Làm thế nào để duy trì sự tham gia?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:11
+msgid "How to submit a project idea..."
+msgstr "Cách gửi ý tưởng dự án..."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:12
+msgid "Idea Collection Campaign: Submit Your Ideas!"
+msgstr "Chiến dịch thu thập ý tưởng: Gửi ý tưởng của bạn!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:13
+msgid ""
+"Ideas may include programs and services, as well as physical infrastructure,"
+" technological improvements, and community enhancements."
+msgstr ""
+"Ý tưởng có thể bao gồm các chương trình và dịch vụ cũng như cơ sở hạ tầng "
+"vật chất, cải tiến công nghệ và cải tiến cộng đồng."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:14
+msgid ""
+"Infrastructure projects on private, state, or federal property are not "
+"eligible, such as projects concerning the Department of Conservation & "
+"Recreation (DCR) or the Massachusetts Bay Transit Authority (MBTA). "
+msgstr ""
+"Các dự án cơ sở hạ tầng trên tài sản tư nhân, tiểu bang hoặc liên bang không"
+" đủ điều kiện, chẳng hạn như các dự án liên quan đến Bộ Bảo tồn &amp; Giải "
+"trí (DCR) hoặc Cơ quan Vận tải Vịnh Massachusetts (MBTA). "
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+msgid "January 2025"
+msgstr "tháng 1 năm 2025"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:16
+msgid "July 1 – July 31, 2024"
+msgstr "Ngày 1 tháng 7 – ngày 31 tháng 7 năm 2024"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:17
+msgid "October – November 2024"
+msgstr "Tháng 10 – tháng 11 năm 2024"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:18
+msgid ""
+"Participatory Budgeting (PB) is a democratic process where community members\n"
+"directly decide how to spend part of a public budget. The goal of Participatory\n"
+"Budgeting in Boston is to empower residents to elevate community centered\n"
+"project ideas with an emphasis on social and racial equity."
+msgstr ""
+"Lập ngân sách có sự tham gia (PB) là một quá trình dân chủ trong đó các thành viên cộng đồng\n"
+" trực tiếp quyết định việc chi tiêu một phần ngân sách công. Mục tiêu của sự tham gia\n"
+" Việc lập ngân sách ở Boston là để trao quyền cho người dân nâng cao khả năng lấy cộng đồng làm trung tâm\n"
+" ý tưởng dự án tập trung vào công bằng xã hội và chủng tộc."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:22
+msgid ""
+"Paying for the salary of a public employee to provide services; Repairing a "
+"privately owned building; Helping an organization renovate a space that it "
+"rents from a private landlord; Helping a religious institution repair its "
+"sanctuary; Increase the frequency of MBTA buses or trains."
+msgstr ""
+"Trả lương cho viên chức cung cấp dịch vụ; Sửa chữa tòa nhà thuộc sở hữu tư "
+"nhân; Giúp một tổ chức cải tạo không gian mà họ thuê từ chủ nhà tư nhân; "
+"Giúp một tổ chức tôn giáo sửa chữa thánh đường của nó; Tăng tần suất xe buýt"
+" hoặc tàu MBTA."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:23
+msgid ""
+"Programming to strengthen mental health among Boston youth; Expand the "
+"City’s Wicked Free WiFi network to reach more low-income areas; Digital "
+"literacy classes for senior citizens to learn new skills and promote social "
+"connections; Enhance public spaces through infrastructure projects (public "
+"art, street trees, benches, etc.)"
+msgstr ""
+"Lập trình để tăng cường sức khỏe tâm thần cho thanh thiếu niên Boston; Mở "
+"rộng mạng WiFi miễn phí độc ác của Thành phố để tiếp cận nhiều khu vực có "
+"thu nhập thấp hơn; Các lớp học kỹ thuật số dành cho người cao tuổi để học "
+"các kỹ năng mới và thúc đẩy kết nối xã hội; Tăng cường không gian công cộng "
+"thông qua các dự án cơ sở hạ tầng (nghệ thuật công cộng, cây xanh đường phố,"
+" ghế dài, v.v.)"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:24
+msgid ""
+"Project ideas must be feasible to implement, and be consistent with existing"
+" City policies, laws, regulations, and the Participatory Budgeting "
+"Ordinance; and"
+msgstr ""
+"Ý tưởng dự án phải khả thi để thực hiện và nhất quán với các chính sách, "
+"luật, quy định hiện hành của Thành phố và Pháp lệnh Ngân sách có sự tham "
+"gia; Và"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:25
+msgid ""
+"Project ideas related to programs and services in non-City owned facilities "
+"are eligible."
+msgstr ""
+"Các ý tưởng dự án liên quan đến các chương trình và dịch vụ tại các cơ sở "
+"không thuộc sở hữu của Thành phố đều đủ điều kiện."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:26
+msgid ""
+"Project proposals may include programs and services as well as physical "
+"infrastructure"
+msgstr ""
+"Đề xuất dự án có thể bao gồm các chương trình và dịch vụ cũng như cơ sở hạ "
+"tầng vật chất"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:27
+msgid ""
+"Projects are limited to a one-time expense, and do not create new permanent "
+"positions;"
+msgstr ""
+"Các dự án được giới hạn ở mức chi phí một lần và không tạo ra các vị trí cố "
+"định mới;"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:28
+msgid ""
+"Projects must be implemented or managed by the appropriate City Department "
+"or agency receiving direct budget appropriations."
+msgstr ""
+"Các dự án phải được thực hiện hoặc quản lý bởi Sở hoặc cơ quan Thành phố phù"
+" hợp nhận phân bổ ngân sách trực tiếp."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:29
+msgid "Public Voting Period"
+msgstr "Thời gian bỏ phiếu công khai"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:30
+msgid "Select \"Subtitles/CC\" from the gear"
+msgstr "Chọn &quot;Phụ đề/CC&quot; từ bánh răng"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:31
+msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
+msgstr "Đăng ký để được thông tin về Ngân sách có sự tham gia ở Boston!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:32
+msgid "Visioning Forums & Online Engagement"
+msgstr "Diễn đàn Tầm nhìn &amp; Tương tác Trực tuyến"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:33
+msgid "Welcome to Participatory Budgeting in Boston!"
+msgstr "Chào mừng bạn đến với Lập ngân sách có sự tham gia ở Boston!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:34
+msgid "What Type of Ideas Can You Propose?"
+msgstr "Bạn có thể đề xuất loại ý tưởng nào?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:35
+msgid "What are Some Examples of Ideas?"
+msgstr "Một số ví dụ về ý tưởng là gì?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:36
+msgid "What is the Timeline?"
+msgstr "Dòng thời gian là gì?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:37
+msgid "Who can submit project ideas?"
+msgstr "Ai có thể gửi ý tưởng dự án?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:38
+msgid "icon to see captions in a different language."
+msgstr "biểu tượng để xem chú thích bằng ngôn ngữ khác."
+
+#: src/flavors/cycle1/templates/index.html:56
+msgid "Suggest an Idea"
+msgstr "Đề xuất một ý tưởng"
+
+#: src/flavors/cycle1/templates/index.html:79
+msgid "Powered by"
+msgstr "Được cung cấp bởi"
+
+#: src/flavors/cycle1/templates/prelaunch.html:121
+#, python-format
+msgid ""
+"Come back on %(go_live_date|date:\"F j, Y\")s to submit your project ideas!"
+msgstr ""
+"Hãy quay lại vào %(go_live_date|date:&quot;F j, Y&quot;) để gửi ý tưởng dự "
+"án của bạn!"
+
+#: src/pbboston/jstemplates/activity-list-item.html:1
+msgid ""
+"<strong>{{ target.submitter_name }}</strong> submitted a city-wide {{ "
+"target.place_type_label }} idea"
+msgstr ""
+"<strong>{{ target.submitter_name }}</strong> đã gửi ý tưởng {{ "
+"target.place_type_label }} trên toàn thành phố"
+
+#: src/pbboston/jstemplates/activity-list-item.html:2
+msgid ""
+"<strong>{{ target.submitter_name }}</strong> submitted a{{#if "
+"target.type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} idea"
+" near <span class=\"place-location\">{{>location-string place}}</span>"
+msgstr ""
+"<strong>{{ target.submitter_name }}</strong> đã gửi ý tưởng{{#if "
+"target.type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} gần "
+"<span class=\"place-location\">{{&gt;location-string place}}</span>"
+
+#: src/pbboston/jstemplates/form-field-label.html:1
+msgid "optional"
+msgstr "không bắt buộc"
+
+#: src/pbboston/jstemplates/place-detail.html:1
+msgid "View On Map"
+msgstr "Xem trên bản đồ"
+
+#: src/pbboston/jstemplates/place-detail.html:2
+msgid "submitted this city-wide {{ place_type_label location_type}} idea"
+msgstr "đã gửi ý tưởng {{ place_type_label location_type}} toàn thành phố này"
+
+#: src/pbboston/jstemplates/place-detail.html:3
+msgid ""
+"submitted this {{ place_type_label location_type}} idea near {{ location }}"
+msgstr ""
+"đã gửi ý tưởng {{ place_type_label location_type}} này gần {{ location }}"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:1
+msgid ""
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
+"budgeting#newsletter\">Sign up</a> to stay informed about Participatory "
+"Budgeting in Boston!"
+msgstr ""
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
+"budgeting#newsletter\">Đăng ký</a> để được thông tin về Ngân sách có sự tham"
+" gia ở Boston!"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
+msgid ""
+"Please help us by answering <a href=\"...\" target=\"_blank\">this optional "
+"survey</a>."
+msgstr ""
+"Hãy giúp chúng tôi bằng cách trả lời <a href=\"...\" target=\"_blank\">khảo "
+"sát tùy chọn này</a> ."
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:5
+msgid "Thank you for your submission!"
+msgstr "Cảm ơn bạn đã gửi!"
+
+#: src/pbboston/jstemplates/place-form.html:1
+msgid "It looks like you didn't set your location yet."
+msgstr "Có vẻ như bạn chưa đặt vị trí của mình."
+
+#: src/pbboston/jstemplates/place-form.html:2
+#: src/sa_web/jstemplates/auth-nav.html:1
+msgid "Log Out"
+msgstr "Đăng xuất"
+
+#: src/pbboston/jstemplates/place-list.html:1
+msgid "All Ideas"
+msgstr "Tất cả ý tưởng"
+
+#: src/pbboston/jstemplates/place-list.html:2
+msgid "Choose a neighborhood..."
+msgstr "Chọn một khu phố..."
+
+#: src/pbboston/jstemplates/place-list.html:3
+msgid "City-wide Ideas"
+msgstr "Ý tưởng toàn thành phố"
+
+#: src/pbboston/jstemplates/place-list.html:4
+msgid "Location-specific Ideas"
+msgstr "Ý tưởng dành riêng cho vị trí"
+
+#: src/pbboston/templates/language_picker.html:16
+msgid "Select a language"
+msgstr "Chọn một ngôn ngữ"
+
+#: src/pbboston/templates/language_picker.html:18
+msgid "Close language picker"
+msgstr "Đóng bộ chọn ngôn ngữ"
+
+#: src/sa_web/jstemplates/auth-nav.html:2
+msgid "Sign In"
+msgstr "Đăng nhập"
+
+#: src/sa_web/jstemplates/auth-nav.html:3
+msgid "Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
+msgstr ""
+"Đã đăng nhập bằng <span class=\"current-user\">{{ current_user "
+"&quot;name&quot; }}</span>"
+
+#: src/sa_web/jstemplates/form-field-file.html:1
+msgid "Sorry, your browser doesn't support file uploads."
+msgstr "Rất tiếc, trình duyệt của bạn không hỗ trợ tải tập tin lên."
+
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:1
+msgid "Recommend on Facebook"
+msgstr "Đề xuất trên Facebook"
+
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:2
+msgid "Tweet This"
+msgstr "Tweet cái này đi"
+
+#: src/sa_web/jstemplates/place-detail-survey.html:1
+msgid ""
+"<strong class=\"response-submitter\">\n"
+"                    {{#if submitter}}\n"
+"                      <img src=\"{{ submitter.avatar_url }}\" class=\"avatar\" /> {{ submitter.name }}\n"
+"                    {{^}}\n"
+"                      <!-- TODO: FIXME: don't hardcode image URL -->\n"
+"                      <img src=\"{{ STATIC_URL }}css/images/user-50.png\" class=\"avatar\" /> {{ submitter_name }}\n"
+"                    {{/if}}\n"
+"                  </strong>\n"
+"                  <span class=\"response-date\">\n"
+"                    around {{ pretty_created_datetime }}\n"
+"                  </span>\n"
+"                  "
+msgstr ""
+"<strong class=\"response-submitter\">\n"
+"{{#if người gửi}}\n"
+"<img src=\"{{ submitter.avatar_url }}\" class=\"avatar\" /> {{người gửi.name }}\n"
+" {{^}} \n"
+"<!-- TODO: FIXME: don't hardcode image URL -->\n"
+"<img src=\"{{ STATIC_URL }}css/images/user-50.png\" class=\"avatar\" /> {{ tên_người gửi }}\n"
+" {{/nếu như}}\n"
+"</strong>\n"
+" <span class=\"response-date\">\n"
+"vào khoảng {{ beautiful_created_datetime }}\n"
+"</span>\n"
+"                  "
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:1
+msgid ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
+msgstr ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+" {{ place_config.response_name }} này <strong>chỉ hiển thị với người kiểm duyệt</strong> ."
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:3
+msgid ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
+msgstr ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+" {{ place_config.response_name }} này <strong>hiển thị với mọi người</strong> ."
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:5
+msgid "Make {{ place_config.response_name }} hidden"
+msgstr "Ẩn {{ place_config.response_name }}"
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:6
+msgid "Make {{ place_config.response_name }} visible"
+msgstr "Hiển thị {{ place_config.response_name }}"
+
+#: src/sa_web/jstemplates/place-survey-response.html:1
+msgid "Thanks for participating!"
+msgstr "Cảm ơn vì đã tham gia!"
+
+#: src/sa_web/templates/base.html:88
+#, python-format
+msgid ""
+"\n"
+"        Oops, %(config.app.name)s needs JavaScript to work properly.\n"
+"        "
+msgstr ""
+"\n"
+"Rất tiếc, %(config.app.name)s cần JavaScript để hoạt động bình thường.\n"
+"        "
+
+#: src/sa_web/templates/base.html:93
+#, python-format
+msgid ""
+"\n"
+"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
+"        properly. But fear not, it's really easy to turn on. Click\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
+"        "
+msgstr ""
+"\n"
+"%(config.app.name)s rất tuyệt nhưng nó cần một thứ gọi là JavaScript để hoạt động\n"
+" đúng cách. Nhưng đừng sợ, nó thực sự rất dễ bật. Nhấp chuột\n"
+" <a href=\"http://enable-javascript.com/\" target=\"_blank\">ở đây</a> để được hướng dẫn đơn giản!\n"
+"        "
+
+#: src/sa_web/templates/base.html:107
+msgid ""
+"We can't connect to the server at the moment. Hang tight while we re-"
+"establish communication."
+msgstr ""
+"Chúng tôi không thể kết nối với máy chủ vào lúc này. Hãy chờ đợi trong khi "
+"chúng ta thiết lập lại liên lạc."
+
+#: src/sa_web/templates/base.html:113
+msgid "Close"
+msgstr "Đóng"
