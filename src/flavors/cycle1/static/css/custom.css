@@ -1157,6 +1157,24 @@ body .marker-cluster div {
   padding-bottom: 1.275em;
 }
 
+.howto-video-desktop {
+  display: none;
+}
+
+.howto-video-mobile {
+  display: block;
+}
+
+@media only screen and (width >= 1024px) {
+  .howto-video-desktop {
+    display: block;
+  }
+
+  .howto-video-mobile {
+    display: none;
+  }
+}
+
 /* =Pre-launch
 -------------------------------------------------------------- */
 
