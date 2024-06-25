@@ -871,10 +871,10 @@ languages:
   - code: 'ht'
     label: 'Kreyòl Ayisyen'
   # Traditional Chinese
-  - code: 'zh_hant'
+  - code: 'zh_Hant'
     label: '繁體中文'
   # Simplified Chinese
-  - code: 'zh_hans'
+  - code: 'zh_Hans'
     label: '简体中文'
   # Vietnamese
   - code: 'vi'
@@ -889,7 +889,7 @@ languages:
   - code: 'ar'
     label: 'العربية'
   # Brazilian Portuguese
-  - code: 'pt-br'
+  - code: 'pt_BR'
     label: 'Português'
   # French
   - code: 'fr'

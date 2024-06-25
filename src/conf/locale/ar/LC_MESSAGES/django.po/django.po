@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -189,7 +189,7 @@ msgstr "فترة التصويت العامة"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:30
 msgid "Select \"Subtitles/CC\" from the gear"
-msgstr "حدد &quot;الترجمات المصاحبة/CC&quot; من الترس"
+msgstr "حدد \"الترجمات المصاحبة/CC\" من الترس"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:31
 msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
@@ -235,7 +235,7 @@ msgstr "مشغل بواسطة"
 #, python-format
 msgid ""
 "Come back on %(go_live_date|date:\"F j, Y\")s to submit your project ideas!"
-msgstr "عد في %(go_live_date|date:&quot;F j, Y&quot;)s لإرسال أفكار مشروعك!"
+msgstr "عد في %(go_live_date|date:\"F j, Y\")s لإرسال أفكار مشروعك!"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
 msgid ""
@@ -339,7 +339,7 @@ msgstr "تسجيل الدخول"
 msgid "Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
 msgstr ""
 "تم تسجيل الدخول باسم <span class=\"current-user\">{{ current_user "
-"&quot;name&quot; }}</span>"
+"\"name\" }}</span>"
 
 #: src/sa_web/jstemplates/form-field-file.html:1
 msgid "Sorry, your browser doesn't support file uploads."

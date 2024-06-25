@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -190,7 +190,7 @@ msgstr "Peryòd Vòt Piblik"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:30
 msgid "Select \"Subtitles/CC\" from the gear"
-msgstr "Chwazi &quot;Subtitles/CC&quot; nan Kovèti pou la"
+msgstr "Chwazi \"Subtitles/CC\" nan Kovèti pou la"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:31
 msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
@@ -237,7 +237,7 @@ msgstr "Patrone pa"
 msgid ""
 "Come back on %(go_live_date|date:\"F j, Y\")s to submit your project ideas!"
 msgstr ""
-"Retounen sou %(go_live_date|date:&quot;F j, Y&quot;)s pou soumèt lide pwojè "
+"Retounen sou %(go_live_date|date:\"F j, Y\")s pou soumèt lide pwojè "
 "w yo!"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
@@ -341,7 +341,7 @@ msgstr "Konekte"
 #: src/sa_web/jstemplates/auth-nav.html:3
 msgid "Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
 msgstr ""
-"Konekte kòm <span class=\"current-user\">{{ current_user &quot;name&quot; "
+"Konekte kòm <span class=\"current-user\">{{ current_user \"name\" "
 "}}</span>"
 
 #: src/sa_web/jstemplates/form-field-file.html:1

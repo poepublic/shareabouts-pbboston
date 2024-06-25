@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -196,7 +196,7 @@ msgstr "Muddada Codbixinta Dadweynaha"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:30
 msgid "Select \"Subtitles/CC\" from the gear"
-msgstr "Ka dooro &quot;Subtitles/CC&quot; gear ka"
+msgstr "Ka dooro \"Subtitles/CC\" gear ka"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:31
 msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
@@ -245,7 +245,7 @@ msgstr "Waxaa xoojiyay"
 msgid ""
 "Come back on %(go_live_date|date:\"F j, Y\")s to submit your project ideas!"
 msgstr ""
-"Ku soo noqo %(go_live_date|taariikhda:&quot;F j, Y&quot;)s si aad u soo "
+"Ku soo noqo %(go_live_date|taariikhda:\"F j, Y\")s si aad u soo "
 "gudbiso fikradahaaga mashruuca!"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
@@ -352,7 +352,7 @@ msgstr "Soo gal"
 msgid "Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
 msgstr ""
 "U soo galay sidii <span class=\"current-user\">{{ hadda_user "
-"&quot;name&quot; }}</span>"
+"\"name\" }}</span>"
 
 #: src/sa_web/jstemplates/form-field-file.html:1
 msgid "Sorry, your browser doesn't support file uploads."

@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -243,7 +243,7 @@ msgstr "Питаться от"
 msgid ""
 "Come back on %(go_live_date|date:\"F j, Y\")s to submit your project ideas!"
 msgstr ""
-"Возвращайтесь на %(go_live_date|date:&quot;F j, Y&quot;), чтобы представить "
+"Возвращайтесь на %(go_live_date|date:\"F j, Y\"), чтобы представить "
 "свои идеи проекта!"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
@@ -347,7 +347,7 @@ msgstr "Войти"
 msgid "Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
 msgstr ""
 "Выполнен вход как <span class=\"current-user\">{{ current_user "
-"&quot;name&quot; }}</span>"
+"\"name\" }}</span>"
 
 #: src/sa_web/jstemplates/form-field-file.html:1
 msgid "Sorry, your browser doesn't support file uploads."

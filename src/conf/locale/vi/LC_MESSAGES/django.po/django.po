@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -194,7 +194,7 @@ msgstr "Thời gian bỏ phiếu công khai"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:30
 msgid "Select \"Subtitles/CC\" from the gear"
-msgstr "Chọn &quot;Phụ đề/CC&quot; từ bánh răng"
+msgstr "Chọn \"Phụ đề/CC\" từ bánh răng"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:31
 msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
@@ -241,7 +241,7 @@ msgstr "Được cung cấp bởi"
 msgid ""
 "Come back on %(go_live_date|date:\"F j, Y\")s to submit your project ideas!"
 msgstr ""
-"Hãy quay lại vào %(go_live_date|date:&quot;F j, Y&quot;) để gửi ý tưởng dự "
+"Hãy quay lại vào %(go_live_date|date:\"F j, Y\") để gửi ý tưởng dự "
 "án của bạn!"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
@@ -345,7 +345,7 @@ msgstr "Đăng nhập"
 msgid "Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
 msgstr ""
 "Đã đăng nhập bằng <span class=\"current-user\">{{ current_user "
-"&quot;name&quot; }}</span>"
+"\"name\" }}</span>"
 
 #: src/sa_web/jstemplates/form-field-file.html:1
 msgid "Sorry, your browser doesn't support file uploads."
