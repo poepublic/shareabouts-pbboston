@@ -1,0 +1,459 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Mjumbe Poe <mjumbewu@gmail.com>, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-23 13:40-0500\n"
+"PO-Revision-Date: 2024-06-23 20:22+0000\n"
+"Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/mjumbewu/teams/189006/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:1
+msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
+msgstr ""
+"TODOS os residentes da cidade de Boston, independentemente da idade, podem "
+"enviar ideias!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:2
+msgid ""
+"By engaging in\n"
+"Participatory Budgeting, Bostonians of all ages and backgrounds can help inform\n"
+"priorities and future investments for the City’s larger budget process."
+msgstr ""
+"Ao se envolver\n"
+" Orçamento Participativo, os moradores de Boston de todas as idades e origens podem ajudar a informar\n"
+" prioridades e investimentos futuros para o processo orçamentário mais amplo da cidade."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:5
+msgid "Examples of Eligible Ideas"
+msgstr "Exemplos de ideias elegíveis"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:6
+msgid "Examples of Ineligible Ideas"
+msgstr "Exemplos de ideias inelegíveis"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:7
+msgid "February 2025 and Onward"
+msgstr "Fevereiro de 2025 em diante"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:8
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
+msgid ""
+"For more information on Participatory Budgeting, please visit <a "
+"href=\"http://boston.gov/participate\">http://boston.gov/participate</a> or "
+"email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgstr ""
+"Para obter mais informações sobre Orçamento Participativo, visite <a "
+"href=\"http://boston.gov/participate\">http://boston.gov/participate</a> ou "
+"envie um email para <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:9
+msgid "Fund and Implement Project Proposals"
+msgstr "Financiar e implementar propostas de projetos"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:10
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
+msgid "How to Stay Involved?"
+msgstr "Como permanecer envolvido?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:11
+msgid "How to submit a project idea..."
+msgstr "Como enviar uma ideia de projeto..."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:12
+msgid "Idea Collection Campaign: Submit Your Ideas!"
+msgstr "Campanha de coleta de ideias: envie suas ideias!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:13
+msgid ""
+"Ideas may include programs and services, as well as physical infrastructure,"
+" technological improvements, and community enhancements."
+msgstr ""
+"As ideias podem incluir programas e serviços, bem como infra-estruturas "
+"físicas, melhorias tecnológicas e melhorias comunitárias."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:14
+msgid ""
+"Infrastructure projects on private, state, or federal property are not "
+"eligible, such as projects concerning the Department of Conservation & "
+"Recreation (DCR) or the Massachusetts Bay Transit Authority (MBTA). "
+msgstr ""
+"Projetos de infraestrutura em propriedades privadas, estaduais ou federais "
+"não são elegíveis, como projetos relativos ao Departamento de Conservação e "
+"Recreação (DCR) ou à Autoridade de Trânsito da Baía de Massachusetts (MBTA)."
+" "
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+msgid "January 2025"
+msgstr "Janeiro de 2025"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:16
+msgid "July 1 – July 31, 2024"
+msgstr "1º de julho – 31 de julho de 2024"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:17
+msgid "October – November 2024"
+msgstr "Outubro – novembro de 2024"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:18
+msgid ""
+"Participatory Budgeting (PB) is a democratic process where community members\n"
+"directly decide how to spend part of a public budget. The goal of Participatory\n"
+"Budgeting in Boston is to empower residents to elevate community centered\n"
+"project ideas with an emphasis on social and racial equity."
+msgstr ""
+"O Orçamento Participativo (OP) é um processo democrático onde os membros da comunidade\n"
+" decidir diretamente como gastar parte de um orçamento público. O objetivo do Participativo\n"
+" Orçamentar em Boston visa capacitar os residentes para elevar\n"
+" ideias de projetos com ênfase na equidade social e racial."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:22
+msgid ""
+"Paying for the salary of a public employee to provide services; Repairing a "
+"privately owned building; Helping an organization renovate a space that it "
+"rents from a private landlord; Helping a religious institution repair its "
+"sanctuary; Increase the frequency of MBTA buses or trains."
+msgstr ""
+"Pagar o salário de funcionário público para prestação de serviços; Reparar "
+"um edifício de propriedade privada; Ajudar uma organização a renovar um "
+"espaço que aluga a um proprietário privado; Ajudar uma instituição religiosa"
+" a reparar o seu santuário; Aumentar a frequência dos ônibus ou trens da "
+"MBTA."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:23
+msgid ""
+"Programming to strengthen mental health among Boston youth; Expand the "
+"City’s Wicked Free WiFi network to reach more low-income areas; Digital "
+"literacy classes for senior citizens to learn new skills and promote social "
+"connections; Enhance public spaces through infrastructure projects (public "
+"art, street trees, benches, etc.)"
+msgstr ""
+"Programação para fortalecer a saúde mental entre os jovens de Boston; "
+"Expandir a rede Wicked Free WiFi da cidade para alcançar mais áreas de baixa"
+" renda; Aulas de literacia digital para idosos aprenderem novas competências"
+" e promoverem ligações sociais; Melhorar os espaços públicos através de "
+"projetos de infraestrutura (arte pública, árvores nas ruas, bancos, etc.)"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:24
+msgid ""
+"Project ideas must be feasible to implement, and be consistent with existing"
+" City policies, laws, regulations, and the Participatory Budgeting "
+"Ordinance; and"
+msgstr ""
+"As ideias de projectos devem ser viáveis de implementar e ser consistentes "
+"com as políticas, leis, regulamentos existentes da Cidade e com a Portaria "
+"do Orçamento Participativo; e"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:25
+msgid ""
+"Project ideas related to programs and services in non-City owned facilities "
+"are eligible."
+msgstr ""
+"São elegíveis ideias de projectos relacionados com programas e serviços em "
+"instalações que não sejam propriedade da cidade."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:26
+msgid ""
+"Project proposals may include programs and services as well as physical "
+"infrastructure"
+msgstr ""
+"As propostas de projetos podem incluir programas e serviços, bem como "
+"infraestrutura física"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:27
+msgid ""
+"Projects are limited to a one-time expense, and do not create new permanent "
+"positions;"
+msgstr ""
+"Os projetos estão limitados a uma despesa única e não criam novos cargos "
+"permanentes;"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:28
+msgid ""
+"Projects must be implemented or managed by the appropriate City Department "
+"or agency receiving direct budget appropriations."
+msgstr ""
+"Os projetos devem ser implementados ou gerenciados pelo Departamento "
+"Municipal apropriado ou agência que receba dotações orçamentárias diretas."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:29
+msgid "Public Voting Period"
+msgstr "Período de votação pública"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:30
+msgid "Select \"Subtitles/CC\" from the gear"
+msgstr "Selecione &quot;Legendas/CC&quot; na engrenagem"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:31
+msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
+msgstr ""
+"Inscreva-se para se manter informado sobre o Orçamento Participativo em "
+"Boston!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:32
+msgid "Visioning Forums & Online Engagement"
+msgstr "Visão de fóruns e envolvimento online"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:33
+msgid "Welcome to Participatory Budgeting in Boston!"
+msgstr "Bem-vindo ao Orçamento Participativo em Boston!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:34
+msgid "What Type of Ideas Can You Propose?"
+msgstr "Que tipo de ideias você pode propor?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:35
+msgid "What are Some Examples of Ideas?"
+msgstr "Quais são alguns exemplos de ideias?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:36
+msgid "What is the Timeline?"
+msgstr "Qual é a linha do tempo?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:37
+msgid "Who can submit project ideas?"
+msgstr "Quem pode enviar ideias de projetos?"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:38
+msgid "icon to see captions in a different language."
+msgstr "ícone para ver legendas em um idioma diferente."
+
+#: src/flavors/cycle1/templates/index.html:56
+msgid "Suggest an Idea"
+msgstr "Sugira uma ideia"
+
+#: src/flavors/cycle1/templates/index.html:79
+msgid "Powered by"
+msgstr "Distribuído por"
+
+#: src/flavors/cycle1/templates/prelaunch.html:121
+#, python-format
+msgid ""
+"Come back on %(go_live_date|date:\"F j, Y\")s to submit your project ideas!"
+msgstr ""
+"Volte em %(go_live_date|date:&quot;F j, Y&quot;)s para enviar suas ideias de"
+" projetos!"
+
+#: src/pbboston/jstemplates/activity-list-item.html:1
+msgid ""
+"<strong>{{ target.submitter_name }}</strong> submitted a city-wide {{ "
+"target.place_type_label }} idea"
+msgstr ""
+"<strong>{{ target.submitter_name }}</strong> enviou uma ideia de {{ "
+"target.place_type_label }} para toda a cidade"
+
+#: src/pbboston/jstemplates/activity-list-item.html:2
+msgid ""
+"<strong>{{ target.submitter_name }}</strong> submitted a{{#if "
+"target.type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} idea"
+" near <span class=\"place-location\">{{>location-string place}}</span>"
+msgstr ""
+"<strong>{{ target.submitter_name }}</strong> enviou uma ideia{{#if "
+"target.type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} "
+"perto de <span class=\"place-location\">{{&gt;location-string place}}</span>"
+
+#: src/pbboston/jstemplates/form-field-label.html:1
+msgid "optional"
+msgstr "opcional"
+
+#: src/pbboston/jstemplates/place-detail.html:1
+msgid "View On Map"
+msgstr "Ver no mapa"
+
+#: src/pbboston/jstemplates/place-detail.html:2
+msgid "submitted this city-wide {{ place_type_label location_type}} idea"
+msgstr ""
+"enviou esta ideia de {{ place_type_label location_type}} para toda a cidade"
+
+#: src/pbboston/jstemplates/place-detail.html:3
+msgid ""
+"submitted this {{ place_type_label location_type}} idea near {{ location }}"
+msgstr ""
+"enviou esta ideia de {{ place_type_label location_type}} perto de {{ "
+"location }}"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:1
+msgid ""
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
+"budgeting#newsletter\">Sign up</a> to stay informed about Participatory "
+"Budgeting in Boston!"
+msgstr ""
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
+"budgeting#newsletter\">Inscreva-se</a> para se manter informado sobre o "
+"Orçamento Participativo em Boston!"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
+msgid ""
+"Please help us by answering <a href=\"...\" target=\"_blank\">this optional "
+"survey</a>."
+msgstr ""
+"Por favor, ajude-nos respondendo <a href=\"...\" target=\"_blank\">a esta "
+"pesquisa opcional</a> ."
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:5
+msgid "Thank you for your submission!"
+msgstr "Obrigado pela sua submissão!"
+
+#: src/pbboston/jstemplates/place-form.html:1
+msgid "It looks like you didn't set your location yet."
+msgstr "Parece que você ainda não definiu seu local."
+
+#: src/pbboston/jstemplates/place-form.html:2
+#: src/sa_web/jstemplates/auth-nav.html:1
+msgid "Log Out"
+msgstr "Sair"
+
+#: src/pbboston/jstemplates/place-list.html:1
+msgid "All Ideas"
+msgstr "Todas as ideias"
+
+#: src/pbboston/jstemplates/place-list.html:2
+msgid "Choose a neighborhood..."
+msgstr "Escolha um bairro..."
+
+#: src/pbboston/jstemplates/place-list.html:3
+msgid "City-wide Ideas"
+msgstr "Ideias para toda a cidade"
+
+#: src/pbboston/jstemplates/place-list.html:4
+msgid "Location-specific Ideas"
+msgstr "Ideias específicas para locais"
+
+#: src/pbboston/templates/language_picker.html:16
+msgid "Select a language"
+msgstr "Selecione um idioma"
+
+#: src/pbboston/templates/language_picker.html:18
+msgid "Close language picker"
+msgstr "Fechar seletor de idioma"
+
+#: src/sa_web/jstemplates/auth-nav.html:2
+msgid "Sign In"
+msgstr "Entrar"
+
+#: src/sa_web/jstemplates/auth-nav.html:3
+msgid "Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
+msgstr ""
+"Conectado como <span class=\"current-user\">{{ current_user &quot;name&quot;"
+" }}</span>"
+
+#: src/sa_web/jstemplates/form-field-file.html:1
+msgid "Sorry, your browser doesn't support file uploads."
+msgstr "Desculpe, seu navegador não suporta upload de arquivos."
+
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:1
+msgid "Recommend on Facebook"
+msgstr "Recomendar no Facebook"
+
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:2
+msgid "Tweet This"
+msgstr "Tweetar isto"
+
+#: src/sa_web/jstemplates/place-detail-survey.html:1
+msgid ""
+"<strong class=\"response-submitter\">\n"
+"                    {{#if submitter}}\n"
+"                      <img src=\"{{ submitter.avatar_url }}\" class=\"avatar\" /> {{ submitter.name }}\n"
+"                    {{^}}\n"
+"                      <!-- TODO: FIXME: don't hardcode image URL -->\n"
+"                      <img src=\"{{ STATIC_URL }}css/images/user-50.png\" class=\"avatar\" /> {{ submitter_name }}\n"
+"                    {{/if}}\n"
+"                  </strong>\n"
+"                  <span class=\"response-date\">\n"
+"                    around {{ pretty_created_datetime }}\n"
+"                  </span>\n"
+"                  "
+msgstr ""
+"<strong class=\"response-submitter\">\n"
+"{{#se remetente}}\n"
+"<img src=\"{{ submitter.avatar_url }}\" class=\"avatar\" /> {{ submitter.name }}\n"
+" {{^}} \n"
+"<!-- TODO: FIXME: don't hardcode image URL -->\n"
+"<img src=\"{{ STATIC_URL }}css/images/user-50.png\" class=\"avatar\" /> {{nome_do_remetente}}\n"
+" {{/se}}\n"
+"</strong>\n"
+" <span class=\"response-date\">\n"
+"por volta de {{ pretty_created_datetime }}\n"
+"</span>\n"
+"                  "
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:1
+msgid ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
+msgstr ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+" Este {{ place_config.response_name }} <strong>só é visível para moderadores</strong> ."
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:3
+msgid ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
+msgstr ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+" Este {{ place_config.response_name }} é <strong>visível para todos</strong> ."
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:5
+msgid "Make {{ place_config.response_name }} hidden"
+msgstr "Tornar {{ place_config.response_name }} oculto"
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:6
+msgid "Make {{ place_config.response_name }} visible"
+msgstr "Torne {{ place_config.response_name }} visível"
+
+#: src/sa_web/jstemplates/place-survey-response.html:1
+msgid "Thanks for participating!"
+msgstr "Obrigado por participar!"
+
+#: src/sa_web/templates/base.html:88
+#, python-format
+msgid ""
+"\n"
+"        Oops, %(config.app.name)s needs JavaScript to work properly.\n"
+"        "
+msgstr ""
+"\n"
+"Ops, %(config.app.name)s precisa de JavaScript para funcionar corretamente.\n"
+"        "
+
+#: src/sa_web/templates/base.html:93
+#, python-format
+msgid ""
+"\n"
+"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
+"        properly. But fear not, it's really easy to turn on. Click\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
+"        "
+msgstr ""
+"\n"
+"%(config.app.name)s é ótimo, mas precisa de algo chamado JavaScript para funcionar\n"
+" apropriadamente. Mas não tenha medo, é muito fácil de ligar. Clique\n"
+" <a href=\"http://enable-javascript.com/\" target=\"_blank\">aqui</a> para obter instruções simples!\n"
+"        "
+
+#: src/sa_web/templates/base.html:107
+msgid ""
+"We can't connect to the server at the moment. Hang tight while we re-"
+"establish communication."
+msgstr ""
+"Não podemos nos conectar ao servidor no momento. Aguarde enquanto "
+"restabelecemos a comunicação."
+
+#: src/sa_web/templates/base.html:113
+msgid "Close"
+msgstr "Fechar"
