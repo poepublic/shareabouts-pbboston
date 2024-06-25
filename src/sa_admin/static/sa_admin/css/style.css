@@ -55,6 +55,10 @@ th {
   height: 100%;
 }
 
+#place-map {
+  min-height: 400px;
+}
+
 tbody tr.highlight {
   background-color: yellow;
 }
@@ -64,7 +68,8 @@ tbody tr::hover {
 }
 
 @media screen and (width >= 768px) {
-  .dashboard {
+  .dashboard,
+  .place-detail {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -73,18 +78,22 @@ tbody tr::hover {
     height: 100vh;
   }
 
-  .dashboard main {
+  .dashboard main,
+  .place-detail form {
     display: flex;
     flex-direction: row-reverse;
     overflow: hidden;
+    min-height: 400px;
   }
 
-  .dashboard .map-wrapper {
+  .dashboard .map-wrapper,
+  .place-detail .map-wrapper {
     width: 50%;
     height: 100%;
   }
 
-  .dashboard .table-wrapper {
+  .dashboard .table-wrapper,
+  .place-detail .form-wrapper {
     width: 50%;
     height: 100%;
   }

@@ -148,6 +148,11 @@ class PlacesTable extends Component {
         this.unhighlightRow(placeId, e.currentTarget);
         this.dispatcher.dispatchEvent(new CustomEvent('place:mouseout', { detail: { placeId } }));
       });
+
+      this.listeners.add('click', tr, (e) => {
+        const placeId = e.currentTarget.dataset.placeId;
+        this.dispatcher.dispatchEvent(new CustomEvent('place:click', { detail: { placeId } }));
+      });
     }
 
     return Component.prototype.bind.call(this);

@@ -1,0 +1,128 @@
+{% extends 'sa_admin/base.html' %}
+{% load static %}
+
+{% block title %}Shareabouts Admin - Idea #{{ place_id }}{% endblock %}
+
+{% block body_classes %}place-detail{% endblock %}
+
+{% block heading %}Shareabouts Admin - Idea #{{ place_id }}{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script type="module">
+    import { PlaceDetail } from '{% static 'sa_admin/js/places_detail.js' %}';
+
+    function exact(value) { return value === undefined ? '' : value; }
+
+    const places = new Shareabouts.PlaceCollection();
+    const place = new Shareabouts.PlaceModel({ id: {{ place_id }} });
+    place.collection = places;
+
+    const fields = [
+      {
+        attr: 'id',
+        label: 'id',
+        format: (value) => `<a target="_blank" href="/place/${value}">${value}</a>`,
+      },
+      {
+        attr: 'created_datetime',
+        label: 'created_datetime',
+        format: (value) => new Date(value).toLocaleString(),
+      },
+      {
+        attr: 'description',
+        label: 'description',
+        format: exact,
+      },
+      {
+        attr: 'benefit',
+        label: 'benefit',
+        format: exact,
+      },
+      {
+        attr: 'city_wide',
+        label: 'city_wide',
+        format: (value) => value === 'true' ? '✅' : '❌',
+      },
+      {
+        attr: 'location_type',
+        label: 'location_type',
+        format: exact,
+      },
+      {
+        attr: 'neighborhood',
+        label: 'neighborhood',
+        format: exact,
+      },
+      {
+        attr: 'private_submitter_email',
+        label: 'private_submitter_email',
+        format: exact,
+      },
+      {
+        attr: 'private_submitter_language',
+        label: 'private_submitter_language',
+        format: exact,
+      },
+      {
+        attr: 'private_submitter_name_first',
+        label: 'private_submitter_name_first',
+        format: exact,
+      },
+      {
+        attr: 'private_submitter_name_last',
+        label: 'private_submitter_name_last',
+        format: exact,
+      },
+      {
+        attr: 'private_submitter_zipcode',
+        label: 'private_submitter_zipcode',
+        format: exact,
+      },
+      {
+        attr: 'submission_event_type',
+        label: 'submission_event_type',
+        format: exact,
+      },
+      {
+        attr: 'submitter_neighborhood',
+        label: 'submitter_neighborhood',
+        format: exact,
+      },
+      {
+        attr: 'user_token',
+        label: 'user_token',
+        format: exact,
+      },
+      {
+        attr: 'visible',
+        label: 'visible',
+        format: exact,
+      },
+    ];
+    const placeDetail = new PlaceDetail(document.querySelector('main'), place, fields);
+
+    function onPlaceSuccess(place) {
+      placeDetail.render();
+    }
+
+    function onPlaceError(place, error) {
+      if (error.status === 401 || error.status === 403) {
+        console.error('Authentication error while fetching place {{ place_id }}:', error.responseText);
+        return;
+      }
+      console.error('Error fetching place {{ place_id }}:', error.status, error.responseText);
+    }
+
+    place.fetch({
+      success: onPlaceSuccess,
+      error: onPlaceError,
+      data: {
+        include_private: true
+      },
+    });
+  </script>
+{% endblock %}

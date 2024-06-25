@@ -67,6 +67,7 @@
       Shareabouts.Config = {{ config.data | as_json | safe }};
       Shareabouts.bootstrapped = {
         currentUser: {{ api.current_user | as_json | safe }},
+        dataset: {{ api.dataset_root | as_json | safe }},
       };
     </script>
     {% endblock %}

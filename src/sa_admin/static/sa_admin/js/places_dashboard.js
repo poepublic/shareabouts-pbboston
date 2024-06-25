@@ -49,6 +49,11 @@ class PlacesDashboard extends Component {
       this.unhighlightPlace(placeId, false, true);
     });
 
+    this.listeners.add('place:click', this.table.dispatcher, (e) => {
+      const placeId = e.detail.placeId;
+      this.openPlaceDetail(placeId);
+    });
+
     return Component.prototype.bind.call(this);
   }
 
@@ -67,6 +72,12 @@ class PlacesDashboard extends Component {
   unhighlightPlace(placeId, skipMap = false, skipTable = false) {
     if (!skipMap) this.map.unhighlightMarker(placeId);
     if (!skipTable) this.table.unhighlightRow(placeId);
+    return this;
+  }
+
+  openPlaceDetail(placeId) {
+    const url = `/admin/detail/${placeId}/`;
+    window.open(url, '_blank').focus();
     return this;
   }
 }
