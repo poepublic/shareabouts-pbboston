@@ -80,12 +80,12 @@ class PlacesMap extends Component {
 
   hoverMarkerStyle(place) {
     return {
-      radius: 5,
+      radius: 8,
       color: 'white',
       fillColor: Shareabouts.Config.place_types[place.get('location_type')].color,
       fillOpacity: 1,
       opacity: 1,
-      weight: 1,
+      weight: 2,
     };
   }
 

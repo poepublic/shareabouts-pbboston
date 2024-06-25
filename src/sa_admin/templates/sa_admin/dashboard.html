@@ -28,7 +28,7 @@
 
     function formatExact(value) { return value === undefined ? '' : value; }
     function formatDatetime(value) { return value === undefined ? '' : new Date(value).toLocaleString(); }
-    function formatBoolean(value) { return value === true ? '✅' : '❌'; }
+    function formatBoolean(value) { return value === true || value === 'true' ? '✅' : '❌'; }
 
     function filterSubstring(value, filterEl) {
       const substring = filterEl.value.toLowerCase();
@@ -146,7 +146,7 @@
       {
         attr: 'visible',
         label: 'visible',
-        format: formatExact,
+        format: formatBoolean,
         filter: filterBoolean,
       },
     ];
