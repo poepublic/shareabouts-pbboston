@@ -821,7 +821,7 @@ pages:
 
   - title: _(Boston PB Home)
     external: true
-    url: https://www.boston.gov/departments/participatory-budgeting
+    url: https://boston.gov/participate
 
   - title: Filter Ideas
     slug: filter-type
