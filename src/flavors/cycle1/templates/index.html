@@ -5,7 +5,7 @@
 {% block header_intro %}
 <div id="boston-small-screen-lead-in" class="boston-small-screen-lead-in">
   <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo-white.png' %}"><br>
-  <span class="pb-label">Participatory Budgeting</span>
+  <span class="pb-label">{% translate "Participatory Budgeting" %}</span>
 </div>
 {% endblock %}
 
@@ -14,7 +14,7 @@
   <img class="boston-icon" alt="" src="{% static 'css/images/boston-icon-light.svg' %}">
   <img class="pb-icon" alt="" src="{% static 'css/images/pbboston-icon.svg' %}">
   <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo.svg' %}">
-  <span class="pb-label">Participatory Budgeting</span>
+  <span class="pb-label">{% translate "Participatory Budgeting" %}</span>
 </a>
 {% endblock %}
 
@@ -75,7 +75,10 @@
   This will place content in the colophon below the map
  -->
 {% block colophon %}
-<p id="powered-by">{% blocktrans %}Powered by{% endblocktrans %} <a href="http://shareabouts.org/" class="shareabouts-logo" target="_blank">Shareabouts</a>, <span class="nobreak">a project of <a href="http://openplans.org/" class="openplans-logo" target="_blank">OpenPlans</a></span></p>
+
+<p id="powered-by">
+  <span class="nobreak">{% blocktrans with Shareabouts='<a href="https://github.com/openplans/shareabouts" class="shareabouts-logo" target="_blank">Shareabouts</a>' %}Powered by {{Shareabouts}}{% endblocktrans %}</span>,
+  <span class="nobreak">{% blocktrans with PoePublic='<a href="mailto:hello@poepublic.com" class="poepublic-logo" target="_blank">Poe<strong>Public</strong></a>' %}built by {{PoePublic}}{% endblocktrans %}</span></p>
 {% endblock %}
 
 <!--

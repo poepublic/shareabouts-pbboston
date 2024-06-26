@@ -823,10 +823,10 @@ pages:
     external: true
     url: https://boston.gov/participate
 
-  - title: Filter Ideas
+  - title: _(Filter Ideas)
     slug: filter-type
     pages:
-      - title: All
+      - title: _(All)
         url: /filter/all
         external: true
       - title: _(Arts & Culture)

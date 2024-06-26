@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-26 18:48-0400\n"
+"POT-Creation-Date: 2024-06-26 19:36-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/mjumbewu/teams/189006/"
@@ -28,6 +28,8 @@ msgid "City of Boston Participatory Budgeting"
 msgstr "Presupuesto participativo de la ciudad de Boston"
 
 #: src/flavors/cycle1/_config.translations.py:7
+#: src/flavors/cycle1/templates/index.html:8
+#: src/flavors/cycle1/templates/index.html:17
 msgid "Participatory Budgeting"
 msgstr "Presupuesto Participativo"
 
@@ -46,7 +48,7 @@ msgstr "Ingrese una ubicación…"
 
 #: src/flavors/cycle1/_config.translations.py:10
 #: src/flavors/cycle1/_config.translations.py:62
-#: src/flavors/cycle1/_config.translations.py:108
+#: src/flavors/cycle1/_config.translations.py:110
 msgid "Arts & Culture"
 msgstr "Arte y Cultura"
 
@@ -60,7 +62,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:12
 #: src/flavors/cycle1/_config.translations.py:63
-#: src/flavors/cycle1/_config.translations.py:109
+#: src/flavors/cycle1/_config.translations.py:111
 msgid "Community Resources"
 msgstr "Recursos de la comunidad"
 
@@ -76,7 +78,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:14
 #: src/flavors/cycle1/_config.translations.py:64
-#: src/flavors/cycle1/_config.translations.py:110
+#: src/flavors/cycle1/_config.translations.py:112
 msgid "Local Economy & Worker Empowerment"
 msgstr "Economía local y empoderamiento de los trabajadores"
 
@@ -92,7 +94,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:16
 #: src/flavors/cycle1/_config.translations.py:65
-#: src/flavors/cycle1/_config.translations.py:111
+#: src/flavors/cycle1/_config.translations.py:113
 msgid "Education, Youth & Families"
 msgstr "Educación, Juventud y Familias"
 
@@ -107,7 +109,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:18
 #: src/flavors/cycle1/_config.translations.py:66
-#: src/flavors/cycle1/_config.translations.py:112
+#: src/flavors/cycle1/_config.translations.py:114
 msgid "Environment, Sustainability, and Food Access"
 msgstr "Medio ambiente, sostenibilidad y acceso a los alimentos"
 
@@ -136,7 +138,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:22
 #: src/flavors/cycle1/_config.translations.py:68
-#: src/flavors/cycle1/_config.translations.py:114
+#: src/flavors/cycle1/_config.translations.py:116
 msgid "Human Services / Public Health"
 msgstr "Servicios Humanos / Salud Pública"
 
@@ -150,7 +152,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:24
 #: src/flavors/cycle1/_config.translations.py:69
-#: src/flavors/cycle1/_config.translations.py:115
+#: src/flavors/cycle1/_config.translations.py:117
 msgid "Public Safety"
 msgstr "Seguridad Pública"
 
@@ -166,7 +168,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:26
 #: src/flavors/cycle1/_config.translations.py:70
-#: src/flavors/cycle1/_config.translations.py:116
+#: src/flavors/cycle1/_config.translations.py:118
 msgid "Streets & Sidewalks"
 msgstr "Calles y aceras"
 
@@ -180,7 +182,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:28
 #: src/flavors/cycle1/_config.translations.py:71
-#: src/flavors/cycle1/_config.translations.py:117
+#: src/flavors/cycle1/_config.translations.py:119
 msgid "Other / Not Sure"
 msgstr "Otro / No estoy seguro"
 
@@ -331,7 +333,7 @@ msgid "Choose the category that most closely describes your project."
 msgstr "Elija la categoría que mejor describa su proyecto."
 
 #: src/flavors/cycle1/_config.translations.py:67
-#: src/flavors/cycle1/_config.translations.py:113
+#: src/flavors/cycle1/_config.translations.py:115
 msgid "Facilities, Parks & Recreation  "
 msgstr "Instalaciones, parques y recreación  "
 
@@ -458,6 +460,16 @@ msgstr "Acerca de"
 msgid "Boston PB Home"
 msgstr "Boston PB Inicio"
 
+#: src/flavors/cycle1/_config.translations.py:108
+#, fuzzy
+#| msgid "All Ideas"
+msgid "Filter Ideas"
+msgstr "Todas las ideas"
+
+#: src/flavors/cycle1/_config.translations.py:109
+msgid "All"
+msgstr ""
+
 #: src/flavors/cycle1/jstemplates/pages/overview.html:1
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
 msgstr ""
@@ -506,19 +518,23 @@ msgid "Fund and Implement Project Proposals"
 msgstr "Financiar e implementar propuestas de proyectos"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:10
+msgid "Get started!"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:11
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
 msgid "How to Stay Involved?"
 msgstr "¿Cómo mantenerse involucrado?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:11
+#: src/flavors/cycle1/jstemplates/pages/overview.html:12
 msgid "How to submit a project idea..."
 msgstr "Cómo presentar una idea de proyecto..."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:12
+#: src/flavors/cycle1/jstemplates/pages/overview.html:13
 msgid "Idea Collection Campaign: Submit Your Ideas!"
 msgstr "Campaña de recopilación de ideas: ¡envíe sus ideas!"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:13
+#: src/flavors/cycle1/jstemplates/pages/overview.html:14
 msgid ""
 "Ideas may include programs and services, as well as physical infrastructure, "
 "technological improvements, and community enhancements."
@@ -526,7 +542,7 @@ msgstr ""
 "Las ideas pueden incluir programas y servicios, así como infraestructura "
 "física, mejoras tecnológicas y mejoras comunitarias."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:14
+#: src/flavors/cycle1/jstemplates/pages/overview.html:15
 msgid ""
 "Infrastructure projects on private, state, or federal property are not "
 "eligible, such as projects concerning the Department of Conservation & "
@@ -537,19 +553,19 @@ msgstr ""
 "Conservación y Recreación (DCR) o la Autoridad de Tránsito de la Bahía de "
 "Massachusetts (MBTA). "
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+#: src/flavors/cycle1/jstemplates/pages/overview.html:16
 msgid "January 2025"
 msgstr "enero 2025"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:16
+#: src/flavors/cycle1/jstemplates/pages/overview.html:17
 msgid "July 1 – July 31, 2024"
 msgstr "1 de julio – 31 de julio de 2024"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:17
+#: src/flavors/cycle1/jstemplates/pages/overview.html:18
 msgid "October – November 2024"
 msgstr "Octubre – noviembre 2024"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:18
+#: src/flavors/cycle1/jstemplates/pages/overview.html:19
 msgid ""
 "Participatory Budgeting (PB) is a democratic process where community "
 "members\n"
@@ -566,7 +582,7 @@ msgstr ""
 "los residentes para que se centren en la comunidad.\n"
 " ideas de proyectos con énfasis en la equidad social y racial."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:22
+#: src/flavors/cycle1/jstemplates/pages/overview.html:23
 msgid ""
 "Paying for the salary of a public employee to provide services; Repairing a "
 "privately owned building; Helping an organization renovate a space that it "
@@ -579,7 +595,7 @@ msgstr ""
 "institución religiosa a reparar su santuario; Aumentar la frecuencia de los "
 "autobuses o trenes MBTA."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:23
+#: src/flavors/cycle1/jstemplates/pages/overview.html:24
 msgid ""
 "Programming to strengthen mental health among Boston youth; Expand the "
 "City’s Wicked Free WiFi network to reach more low-income areas; Digital "
@@ -594,7 +610,7 @@ msgstr ""
 "espacios públicos a través de proyectos de infraestructura (arte público, "
 "árboles en las calles, bancos, etc.)"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:24
+#: src/flavors/cycle1/jstemplates/pages/overview.html:25
 msgid ""
 "Project ideas must be feasible to implement, and be consistent with existing "
 "City policies, laws, regulations, and the Participatory Budgeting Ordinance; "
@@ -604,7 +620,7 @@ msgstr ""
 "con las políticas, leyes, regulaciones y la Ordenanza de Presupuesto "
 "Participativo existentes de la Ciudad; y"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:25
+#: src/flavors/cycle1/jstemplates/pages/overview.html:26
 msgid ""
 "Project ideas related to programs and services in non-City owned facilities "
 "are eligible."
@@ -612,7 +628,7 @@ msgstr ""
 "Son elegibles las ideas de proyectos relacionados con programas y servicios "
 "en instalaciones que no son propiedad de la Ciudad."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:26
+#: src/flavors/cycle1/jstemplates/pages/overview.html:27
 msgid ""
 "Project proposals may include programs and services as well as physical "
 "infrastructure"
@@ -620,7 +636,7 @@ msgstr ""
 "Las propuestas de proyectos pueden incluir programas y servicios, así como "
 "infraestructura física."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:27
+#: src/flavors/cycle1/jstemplates/pages/overview.html:28
 msgid ""
 "Projects are limited to a one-time expense, and do not create new permanent "
 "positions;"
@@ -628,7 +644,7 @@ msgstr ""
 "Los proyectos se limitan a un gasto único y no crean nuevos puestos "
 "permanentes;"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:28
+#: src/flavors/cycle1/jstemplates/pages/overview.html:29
 msgid ""
 "Projects must be implemented or managed by the appropriate City Department "
 "or agency receiving direct budget appropriations."
@@ -637,45 +653,45 @@ msgstr ""
 "agencia municipal correspondiente que reciba asignaciones presupuestarias "
 "directas."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:29
+#: src/flavors/cycle1/jstemplates/pages/overview.html:30
 msgid "Public Voting Period"
 msgstr "Período de votación pública"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:30
+#: src/flavors/cycle1/jstemplates/pages/overview.html:31
 msgid "Select \"Subtitles/CC\" from the gear"
 msgstr "Seleccione &quot;Subtítulos/CC&quot; en el engranaje"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:31
+#: src/flavors/cycle1/jstemplates/pages/overview.html:32
 msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
 msgstr ""
 "¡Regístrese para mantenerse informado sobre el Presupuesto Participativo en "
 "Boston!"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:32
+#: src/flavors/cycle1/jstemplates/pages/overview.html:33
 msgid "Visioning Forums & Online Engagement"
 msgstr "Foros de visión y participación en línea"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:33
+#: src/flavors/cycle1/jstemplates/pages/overview.html:34
 msgid "Welcome to Participatory Budgeting in Boston!"
 msgstr "¡Bienvenidos al Presupuesto Participativo en Boston!"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:34
+#: src/flavors/cycle1/jstemplates/pages/overview.html:35
 msgid "What Type of Ideas Can You Propose?"
 msgstr "¿Qué tipo de ideas puedes proponer?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:35
+#: src/flavors/cycle1/jstemplates/pages/overview.html:36
 msgid "What are Some Examples of Ideas?"
 msgstr "¿Cuáles son algunos ejemplos de ideas?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:36
+#: src/flavors/cycle1/jstemplates/pages/overview.html:37
 msgid "What is the Timeline?"
 msgstr "¿Qué es la línea de tiempo?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:37
+#: src/flavors/cycle1/jstemplates/pages/overview.html:38
 msgid "Who can submit project ideas?"
 msgstr "¿Quién puede enviar ideas de proyectos?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:38
+#: src/flavors/cycle1/jstemplates/pages/overview.html:39
 msgid "icon to see captions in a different language."
 msgstr "icono para ver los subtítulos en un idioma diferente."
 
@@ -688,10 +704,15 @@ msgstr "Todas las ideas"
 msgid "City-wide Only"
 msgstr "Sólo en toda la ciudad"
 
-#: src/flavors/cycle1/templates/index.html:79
-#: src/flavors/defaultflavor/templates/index.html:52
-msgid "Powered by"
-msgstr "Energizado por"
+#: src/flavors/cycle1/templates/index.html:81
+#, python-format
+msgid "Powered by %(Shareabouts)s"
+msgstr ""
+
+#: src/flavors/cycle1/templates/index.html:82
+#, python-format
+msgid "built by %(PoePublic)s"
+msgstr ""
 
 #: src/flavors/cycle1/templates/prelaunch.html:112
 msgid ""
@@ -727,6 +748,10 @@ msgstr ""
 #, python-format
 msgid "Come back on %(return_date)s to submit your project ideas!"
 msgstr "¡Vuelve a %(return_date)s para enviar tus ideas de proyectos!"
+
+#: src/flavors/defaultflavor/templates/index.html:52
+msgid "Powered by"
+msgstr "Energizado por"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
 msgid ""
@@ -834,11 +859,15 @@ msgstr "Ideas para toda la ciudad"
 msgid "Location-specific Ideas"
 msgstr "Ideas específicas para la ubicación"
 
+#: src/pbboston/jstemplates/place-list.html:5
+msgid "Search"
+msgstr ""
+
 #: src/pbboston/templates/language_picker.html:16
 msgid "Select a language"
 msgstr "Selecciona un idioma"
 
-#: src/pbboston/templates/language_picker.html:20
+#: src/pbboston/templates/language_picker.html:18
 msgid "Close language picker"
 msgstr "Cerrar selector de idioma"
 
@@ -853,6 +882,18 @@ msgstr "Iniciado sesión como <span class=\"current-user\">{{ this }}</span>"
 #: src/sa_web/jstemplates/form-field-file.html:1
 msgid "Sorry, your browser doesn't support file uploads."
 msgstr "Lo sentimos, su navegador no admite la carga de archivos."
+
+#: src/sa_web/jstemplates/form-field-widget.html:1
+msgid ""
+"Hover over a category to see a description of the types of projects that fit "
+"within that category."
+msgstr ""
+
+#: src/sa_web/jstemplates/form-field-widget.html:2
+msgid ""
+"Select a category to see a description of the types of projects that fit "
+"within that category."
+msgstr ""
 
 #: src/sa_web/jstemplates/place-detail-promotion-bar.html:1
 msgid "Recommend on Facebook"
