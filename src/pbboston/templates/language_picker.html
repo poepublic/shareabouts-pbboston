@@ -21,14 +21,15 @@
       </button>
     </header>
 
-      <div class="language-picker__dialog-content">
+    <form class="language-picker__dialog-content" action="{% url 'set_language' %}" method="post">
+      {% csrf_token %}
       <ul class="language-picker__options" translate="no">
         {% for language in config.languages %}
         <li class="language-picker__option">
-          <button type="button" data-language="{{ language.code }}" class="{{ language.code }} btn-language btn btn-block language-picker__option-btn">{{ language.label }}</button>
+          <button type="submit" name="language" value="{{ language.code }}" data-language="{{ language.code }}" class="{{ language.code }} btn-language btn btn-block language-picker__option-btn">{{ language.label }}</button>
         </li>
         {% endfor %}
       </ul>
-    </div>
+    </form>
 </div>
 
