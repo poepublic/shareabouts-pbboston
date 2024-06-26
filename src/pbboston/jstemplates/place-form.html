@@ -12,6 +12,7 @@
         <form id="place-form" class="place-form clearfix">
           <input type="hidden" name="visible" value="on">
           <input type="hidden" name="user_token" value="{{{ user_token }}}">
+          <input type="hidden" name="submission_language_code" value="{{ language_code }}">
 
           {{> form-field-set form_config=place_config }}
 
