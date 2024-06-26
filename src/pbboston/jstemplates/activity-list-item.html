@@ -3,10 +3,16 @@
   <a href="/place/{{ place.id }}{{#is target_type 'comments'}}/response/{{ target.id }}{{/is}}" data-action-type="{{ target_type }}" data-place-id="{{ place.id }}">
     <img src="{{ STATIC_URL }}img/categories/{{ place.location_type }}-light-square.svg" role="presentation" alt="" class="avatar" />
 
-    {{#is place.city_wide "true"}}
-      {{#_}}<strong>{{ target.submitter_name }}</strong> submitted a city-wide {{ target.place_type_label }} idea{{/_}}
-    {{^}}
-      {{#_}}<strong>{{ target.submitter_name }}</strong> submitted a{{#if target.type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} idea near <span class="place-location">{{>location-string place}}</span>{{/_}}
-    {{/is }}
+    {{#with place}}
+      {{#is city_wide "true"}}
+        {{#_}}<strong>{{ submitter_name }}</strong> submitted a city-wide {{ place_type_label location_type }} idea{{/_}}
+      {{^}}
+        {{#if type_starts_with_vowel }}
+          {{#_}}<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label location_type }} idea near <span class="place-location">{{ location }}</span>{{/_}}
+        {{^}}
+          {{#_}}<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label location_type }} idea near <span class="place-location">{{ location }}</span>{{/_}}
+        {{/if}}
+      {{/is }}
+    {{/with}}
   </a>
 </li>
