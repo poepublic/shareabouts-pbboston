@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-26 17:53-0400\n"
+"POT-Creation-Date: 2024-06-26 18:01-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -727,8 +727,7 @@ msgid "Sign In"
 msgstr ""
 
 #: src/sa_web/jstemplates/auth-nav.html:3
-msgid ""
-"Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
+msgid "Signed in as</span> <span class=\"current-user\">{{ this }}"
 msgstr ""
 
 #: src/sa_web/jstemplates/form-field-file.html:1
