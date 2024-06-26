@@ -11,15 +11,432 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-23 13:40-0500\n"
+"POT-Creation-Date: 2024-06-26 11:50-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
-"Language-Team: Chinese Simplified (https://app.transifex.com/mjumbewu/teams/189006/zh-Hans/)\n"
+"Language-Team: Chinese Simplified (https://app.transifex.com/mjumbewu/"
+"teams/189006/zh-Hans/)\n"
+"Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/flavors/cycle1/_config.translations.py:6
+#, fuzzy
+#| msgid "Welcome to Participatory Budgeting in Boston!"
+msgid "City of Boston Participatory Budgeting"
+msgstr "欢迎来到波士顿的参与式预算！"
+
+#: src/flavors/cycle1/_config.translations.py:7
+#, fuzzy
+#| msgid "Welcome to Participatory Budgeting in Boston!"
+msgid "Participatory Budgeting"
+msgstr "欢迎来到波士顿的参与式预算！"
+
+#: src/flavors/cycle1/_config.translations.py:8
+msgid ""
+"Shareabouts is a mapping tool to gather crowd sourced public input. Use it "
+"to collect suggested locations and comments in a social, engaging process."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:9
+msgid "Enter a location…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:10
+#: src/flavors/cycle1/_config.translations.py:62
+#: src/flavors/cycle1/_config.translations.py:108
+msgid "Arts & Culture"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:11
+msgid ""
+"Project ideas focused on arts and cultural programming that promote cultural "
+"spaces in the City."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:12
+#: src/flavors/cycle1/_config.translations.py:63
+#: src/flavors/cycle1/_config.translations.py:109
+msgid "Community Resources"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:13
+msgid ""
+"Project ideas that provide assistance or services to residents in need, such "
+"as programs at community centers, financial or digital literacy, English as "
+"a second language, or GED classes."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:14
+#: src/flavors/cycle1/_config.translations.py:64
+#: src/flavors/cycle1/_config.translations.py:110
+msgid "Local Economy & Worker Empowerment"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:15
+msgid ""
+"Project ideas that improve access to quality jobs, skills training, career "
+"pipelines, and other resources for workers, small business owners, and "
+"entrepreneurs."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:16
+#: src/flavors/cycle1/_config.translations.py:65
+#: src/flavors/cycle1/_config.translations.py:111
+msgid "Education, Youth & Families"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:17
+msgid ""
+"Project ideas related to education for all ages, as well as proposals that "
+"meet the needs of Boston’s youth, senior citizens, and families."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:18
+#: src/flavors/cycle1/_config.translations.py:66
+#: src/flavors/cycle1/_config.translations.py:112
+msgid "Environment, Sustainability, and Food Access"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:19
+msgid ""
+"Project ideas that help increase access to healthy and affordable food, "
+"promote environmental justice, and help increase the quality of life in "
+"Boston."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:20
+msgid "Facilities, Parks & Recreation"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:21
+msgid ""
+"Project ideas that Invest in clean, green, safe and accessible open space, "
+"facilities, and programming for residents and neighborhoods."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:22
+#: src/flavors/cycle1/_config.translations.py:68
+#: src/flavors/cycle1/_config.translations.py:114
+msgid "Human Services / Public Health"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:23
+msgid ""
+"Project ideas that promote the physical and mental health of Boston "
+"residents of all ages."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:24
+#: src/flavors/cycle1/_config.translations.py:69
+#: src/flavors/cycle1/_config.translations.py:115
+msgid "Public Safety"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:25
+msgid ""
+"Project ideas that advance safety and increase justice in the City, such as "
+"community violence prevention programs and initiatives for healing and "
+"recovering from trauma and substance abuse."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:26
+#: src/flavors/cycle1/_config.translations.py:70
+#: src/flavors/cycle1/_config.translations.py:116
+msgid "Streets & Sidewalks"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:27
+msgid ""
+"Project ideas to improve City streets and sidewalks and promote safety and "
+"accessibility."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:28
+#: src/flavors/cycle1/_config.translations.py:71
+#: src/flavors/cycle1/_config.translations.py:117
+msgid "Other / Not Sure"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:29
+msgid ""
+"Other community centered ideas that may not fit in the previous categories."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:30
+msgid "idea"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:31
+msgid "ideas"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:32
+#: src/flavors/cycle1/templates/index.html:56
+msgid "Suggest an Idea"
+msgstr "提出建议"
+
+#: src/flavors/cycle1/_config.translations.py:33
+#, fuzzy
+#| msgid "All Ideas"
+msgid "List All Ideas"
+msgstr "所有想法"
+
+#: src/flavors/cycle1/_config.translations.py:34
+msgid "Show the Map"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:35
+msgid "submitted"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:36
+msgid "How would you spend $2 million to benefit your community?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:37
+msgid "Your neighbor"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:38
+msgid "Submit"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:39
+msgid "Multiple locations throughout the city"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:40
+msgid "Please use the map's search box or drag the map to set the location."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:41
+msgid "Thank you!"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:42
+msgid ""
+"Thank you for sharing your idea with us! Please fill out the short form "
+"below. Only the information you choose to display will be made public."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:43
+msgid "Is your idea for a specific location or for the entire city?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:44
+#, fuzzy
+#| msgid "City-wide Ideas"
+msgid "City wide?"
+msgstr "全市创意"
+
+#: src/flavors/cycle1/_config.translations.py:45
+#, fuzzy
+#| msgid "Location-specific Ideas"
+msgid "Location-specific"
+msgstr "针对特定地点的创意"
+
+#: src/flavors/cycle1/_config.translations.py:46
+#, fuzzy
+#| msgid "City-wide Ideas"
+msgid "City-wide"
+msgstr "全市创意"
+
+#: src/flavors/cycle1/_config.translations.py:47
+msgid "Approximately where would your idea be?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:48
+msgid "Approximate location…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:49
+msgid "Drag the map to set the location."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:50
+msgid "Please share a short description of the project idea."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:51
+msgid "My idea is to…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:52
+msgid "Make sure your description is short and clear."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:53
+#: src/flavors/cycle1/_config.translations.py:58
+msgid "Try to keep it to 50 words or less…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:54
+msgid "How does your project advance social and racial equity?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:55
+msgid "This idea would advance social and racial equity by…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:56
+msgid "Make sure you keep it short and clear."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:57
+msgid ""
+"\"Social and racial equity\" is defined as the just and fair inclusion of "
+"people of any social and racial background into society, so they can "
+"participate, prosper, and reach their full potential."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:59
+msgid "Which category does your idea fall into?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:60
+msgid "Category"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:61
+msgid "Choose the category that most closely describes your project."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:67
+#: src/flavors/cycle1/_config.translations.py:113
+msgid "Facilities, Parks & Recreation  "
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:72
+msgid "Are you submitting this idea as part of a community event?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:73
+msgid "Yes, at a City-sponsored event"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:74
+msgid "Yes, at an independent community meeting"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:75
+msgid "No event; I am submitting this idea on my own"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:76
+#: src/flavors/cycle1/_config.translations.py:79
+msgid "Your Name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:77
+#: src/flavors/cycle1/_config.translations.py:80
+msgid "Submitter's Name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:78
+msgid "Your first name…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:81
+msgid "Your last name…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:82
+msgid "How should we display your name next to your idea?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:83
+msgid "Use my full name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:84
+msgid "Only use my first name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:85
+msgid "Do not display my name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:86
+#, fuzzy
+#| msgid "Choose a neighborhood..."
+msgid "Your Neighborhood"
+msgstr "选择一个社区..."
+
+#: src/flavors/cycle1/_config.translations.py:87
+msgid "Submitter's Neighborhood"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:88
+#, fuzzy
+#| msgid "Choose a neighborhood..."
+msgid "Select a neighborhood…"
+msgstr "选择一个社区..."
+
+#: src/flavors/cycle1/_config.translations.py:89
+#: src/flavors/cycle1/_config.translations.py:90
+msgid "Your Zip Code"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:91
+#: src/flavors/cycle1/_config.translations.py:92
+msgid "Your Email"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:93
+#: src/flavors/cycle1/_config.translations.py:94
+msgid "Your Preferred Language"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:95
+msgid "comment"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:96
+msgid "comments"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:97
+#, fuzzy
+#| msgid "Recommend on Facebook"
+msgid "commented on"
+msgstr "在 Facebook 上推荐"
+
+#: src/flavors/cycle1/_config.translations.py:98
+#: src/flavors/cycle1/_config.translations.py:105
+msgid "Someone"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:99
+#: src/flavors/cycle1/_config.translations.py:100
+msgid "Leave a Comment"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:101
+msgid "Comment"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:102
+msgid "Support"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:103
+msgid "support"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:104
+msgid "supports"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:106
+msgid "About"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:107
+msgid "Boston PB Home"
+msgstr ""
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:1
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
@@ -28,7 +445,8 @@ msgstr "所有波士顿市居民，无论年龄大小，都可以提交想法！
 #: src/flavors/cycle1/jstemplates/pages/overview.html:2
 msgid ""
 "By engaging in\n"
-"Participatory Budgeting, Bostonians of all ages and backgrounds can help inform\n"
+"Participatory Budgeting, Bostonians of all ages and backgrounds can help "
+"inform\n"
 "priorities and future investments for the City’s larger budget process."
 msgstr ""
 "通过参与\n"
@@ -54,9 +472,9 @@ msgid ""
 "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> or "
 "email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgstr ""
-"有关参与式预算的更多信息，请访问<a "
-"href=\"http://boston.gov/participate\">http://boston.gov/participate</a>或发送电子邮件至<a"
-" href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+"有关参与式预算的更多信息，请访问<a href=\"http://boston.gov/"
+"participate\">http://boston.gov/participate</a>或发送电子邮件至<a "
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:9
 msgid "Fund and Implement Project Proposals"
@@ -77,8 +495,8 @@ msgstr "创意征集活动：提交你的想法！"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:13
 msgid ""
-"Ideas may include programs and services, as well as physical infrastructure,"
-" technological improvements, and community enhancements."
+"Ideas may include programs and services, as well as physical infrastructure, "
+"technological improvements, and community enhancements."
 msgstr "想法可能包括计划和服务，以及物理基础设施、技术改进和社区增强。"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:14
@@ -86,7 +504,9 @@ msgid ""
 "Infrastructure projects on private, state, or federal property are not "
 "eligible, such as projects concerning the Department of Conservation & "
 "Recreation (DCR) or the Massachusetts Bay Transit Authority (MBTA). "
-msgstr "私人、州或联邦财产上的基础设施项目不符合资格，例如与自然保护和娱乐部 (DCR) 或马萨诸塞湾交通局 (MBTA) 有关的项目。 "
+msgstr ""
+"私人、州或联邦财产上的基础设施项目不符合资格，例如与自然保护和娱乐部 (DCR) 或"
+"马萨诸塞湾交通局 (MBTA) 有关的项目。 "
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:15
 msgid "January 2025"
@@ -102,8 +522,10 @@ msgstr "2024 年 10 月至 11 月"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:18
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community members\n"
-"directly decide how to spend part of a public budget. The goal of Participatory\n"
+"Participatory Budgeting (PB) is a democratic process where community "
+"members\n"
+"directly decide how to spend part of a public budget. The goal of "
+"Participatory\n"
 "Budgeting in Boston is to empower residents to elevate community centered\n"
 "project ideas with an emphasis on social and racial equity."
 msgstr ""
@@ -118,7 +540,9 @@ msgid ""
 "privately owned building; Helping an organization renovate a space that it "
 "rents from a private landlord; Helping a religious institution repair its "
 "sanctuary; Increase the frequency of MBTA buses or trains."
-msgstr "支付公职人员提供服务的工资；修缮私人建筑；帮助组织翻修从私人房东那里租用的空间；帮助宗教机构修缮其圣所；增加 MBTA 巴士或火车的班次。"
+msgstr ""
+"支付公职人员提供服务的工资；修缮私人建筑；帮助组织翻修从私人房东那里租用的空"
+"间；帮助宗教机构修缮其圣所；增加 MBTA 巴士或火车的班次。"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:23
 msgid ""
@@ -128,15 +552,17 @@ msgid ""
 "connections; Enhance public spaces through infrastructure projects (public "
 "art, street trees, benches, etc.)"
 msgstr ""
-"制定计划以加强波士顿青少年的心理健康；扩大该市的 Wicked Free WiFi "
-"网络以覆盖更多低收入地区；为老年人提供数字素养课程，以学习新技能并促进社会联系；通过基础设施项目（公共艺术、街道树木、长椅等）改善公共空间"
+"制定计划以加强波士顿青少年的心理健康；扩大该市的 Wicked Free WiFi 网络以覆盖"
+"更多低收入地区；为老年人提供数字素养课程，以学习新技能并促进社会联系；通过基"
+"础设施项目（公共艺术、街道树木、长椅等）改善公共空间"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:24
 msgid ""
-"Project ideas must be feasible to implement, and be consistent with existing"
-" City policies, laws, regulations, and the Participatory Budgeting "
-"Ordinance; and"
-msgstr "项目构想必须切实可行，并符合现有的城市政策、法律、法规和参与式预算条例；并且"
+"Project ideas must be feasible to implement, and be consistent with existing "
+"City policies, laws, regulations, and the Participatory Budgeting Ordinance; "
+"and"
+msgstr ""
+"项目构想必须切实可行，并符合现有的城市政策、法律、法规和参与式预算条例；并且"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:25
 msgid ""
@@ -202,37 +628,87 @@ msgstr "谁可以提交项目想法？"
 msgid "icon to see captions in a different language."
 msgstr "图标查看不同语言的字幕。"
 
-#: src/flavors/cycle1/templates/index.html:56
-msgid "Suggest an Idea"
-msgstr "提出建议"
+#: src/flavors/cycle1/templates/index.html:66
+#: src/pbboston/jstemplates/place-list.html:1
+msgid "All Ideas"
+msgstr "所有想法"
+
+#: src/flavors/cycle1/templates/index.html:70
+#, fuzzy
+#| msgid "City-wide Ideas"
+msgid "City-wide Only"
+msgstr "全市创意"
 
 #: src/flavors/cycle1/templates/index.html:79
+#: src/flavors/defaultflavor/templates/index.html:52
 msgid "Powered by"
 msgstr "供电"
 
-#: src/flavors/cycle1/templates/prelaunch.html:121
-#, python-format
+#: src/flavors/cycle1/templates/prelaunch.html:112
+#, fuzzy
+#| msgid ""
+#| "Participatory Budgeting (PB) is a democratic process where community "
+#| "members\n"
+#| "directly decide how to spend part of a public budget. The goal of "
+#| "Participatory\n"
+#| "Budgeting in Boston is to empower residents to elevate community "
+#| "centered\n"
+#| "project ideas with an emphasis on social and racial equity."
 msgid ""
-"Come back on %(go_live_date|date:\"F j, Y\")s to submit your project ideas!"
+"Participatory Budgeting (PB) is a democratic process where community "
+"members\n"
+"    directly decide how to spend part of a public budget. The goal of "
+"Participatory\n"
+"    Budgeting in Boston is to empower residents to elevate community "
+"centered\n"
+"    project ideas with an emphasis on social and racial equity."
+msgstr ""
+"参与式预算（PB）是一个民主过程，社区成员\n"
+"直接决定如何使用部分公共预算。参与式政府的目标是\n"
+"波士顿的预算是为了赋予居民权力，提升以社区为中心的\n"
+"强调社会和种族平等的项目理念。"
+
+#: src/flavors/cycle1/templates/prelaunch.html:117
+#, fuzzy
+#| msgid ""
+#| "By engaging in\n"
+#| "Participatory Budgeting, Bostonians of all ages and backgrounds can help "
+#| "inform\n"
+#| "priorities and future investments for the City’s larger budget process."
+msgid ""
+"By engaging in Participatory Budgeting, Bostonians of all ages and\n"
+"    backgrounds can help inform priorities and future investments for the\n"
+"    City’s larger budget process. "
+msgstr ""
+"通过参与\n"
+"参与式预算，各个年龄段和背景的波士顿人都可以帮助提供信息\n"
+"该市更大预算流程的优先事项和未来投资。"
+
+#: src/flavors/cycle1/templates/prelaunch.html:121
+#, fuzzy, python-format
+#| msgid ""
+#| "Come back on %(go_live_date|date:\"F j, Y\")s to submit your project "
+#| "ideas!"
+msgid "Come back on %(return_date)s to submit your project ideas!"
 msgstr "请于 %(go_live_date|date:\"F j, Y\") 回来提交您的项目想法！"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
 msgid ""
-"<strong>{{ target.submitter_name }}</strong> submitted a city-wide {{ "
-"target.place_type_label }} idea"
+"<strong>{{ target.submitter_name }}</strong> submitted a city-wide {{ target."
+"place_type_label }} idea"
 msgstr ""
-"<strong>{{ target.submitter_name }}</strong>提交了全市范围的 {{ "
-"target.place_type_label }} 创意"
+"<strong>{{ target.submitter_name }}</strong>提交了全市范围的 {{ target."
+"place_type_label }} 创意"
 
 #: src/pbboston/jstemplates/activity-list-item.html:2
 msgid ""
-"<strong>{{ target.submitter_name }}</strong> submitted a{{#if "
-"target.type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} idea"
-" near <span class=\"place-location\">{{>location-string place}}</span>"
+"<strong>{{ target.submitter_name }}</strong> submitted a{{#if target."
+"type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} idea near "
+"<span class=\"place-location\">{{>location-string place}}</span>"
 msgstr ""
-"<strong>{{ target.submitter_name }}</strong>提交了一个 {{#if "
-"target.type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} "
-"靠近<span class=\"place-location\">{{&gt;location-string place}} 的</span>想法"
+"<strong>{{ target.submitter_name }}</strong>提交了一个 {{#if target."
+"type_starts_with_vowel }}n{{/if }} {{ target.place_type_label }} 靠近<span "
+"class=\"place-location\">{{&gt;location-string place}} 的</span>想法"
 
 #: src/pbboston/jstemplates/form-field-label.html:1
 msgid "optional"
@@ -249,17 +725,16 @@ msgstr "提交了这个全市范围的 {{ place_type_label location_type}} 想�
 #: src/pbboston/jstemplates/place-detail.html:3
 msgid ""
 "submitted this {{ place_type_label location_type}} idea near {{ location }}"
-msgstr "在 {{ location }} 附近提交了这个 {{ place_type_label location_type}} 想法"
+msgstr ""
+"在 {{ location }} 附近提交了这个 {{ place_type_label location_type}} 想法"
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:1
 msgid ""
-"<a target=\"_blank\" "
-"href=\"https://www.boston.gov/departments/participatory-"
+"<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">Sign up</a> to stay informed about Participatory "
 "Budgeting in Boston!"
 msgstr ""
-"<a target=\"_blank\" "
-"href=\"https://www.boston.gov/departments/participatory-"
+"<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">注册</a>即可了解波士顿的参与式预算的最新动态！"
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
@@ -281,9 +756,19 @@ msgstr "看起来您尚未设置您的位置。"
 msgid "Log Out"
 msgstr "登出"
 
-#: src/pbboston/jstemplates/place-list.html:1
-msgid "All Ideas"
-msgstr "所有想法"
+#: src/pbboston/jstemplates/place-form.html:3
+msgid "To learn about the types of ideas you can submit,"
+msgstr ""
+
+#: src/pbboston/jstemplates/place-form.html:4
+msgid ""
+"You can also\n"
+"          share your idea by calling the PB Phone line at"
+msgstr ""
+
+#: src/pbboston/jstemplates/place-form.html:6
+msgid "click here"
+msgstr ""
 
 #: src/pbboston/jstemplates/place-list.html:2
 msgid "Choose a neighborhood..."
@@ -301,7 +786,7 @@ msgstr "针对特定地点的创意"
 msgid "Select a language"
 msgstr "选择语言"
 
-#: src/pbboston/templates/language_picker.html:18
+#: src/pbboston/templates/language_picker.html:20
 msgid "Close language picker"
 msgstr "关闭语言选择器"
 
@@ -310,7 +795,8 @@ msgid "Sign In"
 msgstr "登入"
 
 #: src/sa_web/jstemplates/auth-nav.html:3
-msgid "Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
+msgid ""
+"Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
 msgstr ""
 "以<span class=\"current-user\">{{ current_user \"name\" }}</span>身份登录"
 
@@ -330,10 +816,12 @@ msgstr "发推文"
 msgid ""
 "<strong class=\"response-submitter\">\n"
 "                    {{#if submitter}}\n"
-"                      <img src=\"{{ submitter.avatar_url }}\" class=\"avatar\" /> {{ submitter.name }}\n"
+"                      <img src=\"{{ submitter.avatar_url }}\" "
+"class=\"avatar\" /> {{ submitter.name }}\n"
 "                    {{^}}\n"
 "                      <!-- TODO: FIXME: don't hardcode image URL -->\n"
-"                      <img src=\"{{ STATIC_URL }}css/images/user-50.png\" class=\"avatar\" /> {{ submitter_name }}\n"
+"                      <img src=\"{{ STATIC_URL }}css/images/user-50.png\" "
+"class=\"avatar\" /> {{ submitter_name }}\n"
 "                    {{/if}}\n"
 "                  </strong>\n"
 "                  <span class=\"response-date\">\n"
@@ -343,10 +831,12 @@ msgid ""
 msgstr ""
 "<strong class=\"response-submitter\">\n"
 "{{#if 提交者}}\n"
-"<img src=\"{{ submitter.avatar_url }}\" class=\"avatar\" /> {{ 提交者.姓名 }}\n"
+"<img src=\"{{ submitter.avatar_url }}\" class=\"avatar\" /> {{ 提交者.姓"
+"名 }}\n"
 " {{^}} \n"
 "<!-- TODO: FIXME: don't hardcode image URL -->\n"
-"<img src=\"{{ STATIC_URL }}css/images/user-50.png\" class=\"avatar\" /> {{ 提交者姓名 }}\n"
+"<img src=\"{{ STATIC_URL }}css/images/user-50.png\" class=\"avatar\" /> {{ 提"
+"交者姓名 }}\n"
 " {{/如果}}\n"
 "</strong>\n"
 "<span class=\"response-date\">\n"
@@ -357,7 +847,8 @@ msgstr ""
 #: src/sa_web/jstemplates/place-moderation-bar.html:1
 msgid ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
+"      This {{ place_config.response_name }} is <strong>only visible to "
+"moderators</strong>."
 msgstr ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
 "此 {{ place_config.response_name }}<strong>仅版主可见</strong>。"
@@ -365,7 +856,8 @@ msgstr ""
 #: src/sa_web/jstemplates/place-moderation-bar.html:3
 msgid ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
+"      This {{ place_config.response_name }} is <strong>visible to everyone</"
+"strong>."
 msgstr ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
 "此 {{ place_config.response_name }}<strong>对所有人都可见</strong>。"
@@ -397,15 +889,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
+"        %(config.app.name)s is great but it needs something called "
+"JavaScript to work\n"
 "        properly. But fear not, it's really easy to turn on. Click\n"
-"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> "
+"for simple instructions!\n"
 "        "
 msgstr ""
 "\n"
 "%(config.app.name)s 很棒，但它需要 JavaScript 才能工作\n"
 "正常。但不用担心，它很容易打开。点击\n"
-"<a href=\"http://enable-javascript.com/\" target=\"_blank\">点击此处</a>查看简单说明！\n"
+"<a href=\"http://enable-javascript.com/\" target=\"_blank\">点击此处</a>查看"
+"简单说明！\n"
 "        "
 
 #: src/sa_web/templates/base.html:107

@@ -1,9 +1,9 @@
 # Settings for the app
 app:
   # HTML Title
-  title: City of Boston Participatory Budgeting
+  title: _(City of Boston Participatory Budgeting)
   # Header name
-  name: Participatory Budgeting
+  name: _(Participatory Budgeting)
   # Meta description that will show up in Google search results
   meta_description: _(Shareabouts is a mapping tool to gather crowd sourced public input. Use it to collect suggested locations and comments in a social, engaging process.)
   # Meta author that will show up in Google search results
@@ -476,9 +476,9 @@ place:
   unset_location_label: _(Please use the map's search box or drag the map to set the location.)
 
   personal_info_title: _(Thank you!)
-  personal_info_intro: |
-    Thank you for sharing your idea with us! Please fill out the short form
-    below. Only the information you choose to display will be made public.
+  personal_info_intro: >
+    _(Thank you for sharing your idea with us! Please fill out the short form
+    below. Only the information you choose to display will be made public.)
 
   items:
     - prompt: _(Is your idea for a specific location or for the entire city?)

@@ -108,16 +108,16 @@
   <main id="main">
     {% comment %} <h2>Welcome to Participatory Budgeting in Boston!</h2> {% endcomment %}
 
-    <p>{% translate "Participatory Budgeting (PB) is a democratic process where community members
+    <p>{% blocktranslate %}Participatory Budgeting (PB) is a democratic process where community members
     directly decide how to spend part of a public budget. The goal of Participatory
     Budgeting in Boston is to empower residents to elevate community centered
-    project ideas with an emphasis on social and racial equity." %}</p>
+    project ideas with an emphasis on social and racial equity.{% endblocktranslate %}</p>
 
-    <p>{% translate "By engaging in Participatory Budgeting, Bostonians of all ages and
+    <p>{% blocktranslate %}By engaging in Participatory Budgeting, Bostonians of all ages and
     backgrounds can help inform priorities and future investments for the
-    City’s larger budget process." %}</p>
+    City’s larger budget process. {% endblocktranslate %}</p>
 
-    <p><strong>{% blocktranslate %}Come back on {{ go_live_date|date:"F j, Y" }} to submit your project ideas!{% endblocktranslate %}</strong></p>
+    <p><strong>{% blocktranslate with return_date=go_live_date|date %}Come back on {{ return_date }} to submit your project ideas!{% endblocktranslate %}</strong></p>
   </main><!-- end #main -->
 
   <script>
