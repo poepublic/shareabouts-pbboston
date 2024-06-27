@@ -30,8 +30,6 @@
       this.el.appendChild(descriptionEl);
 
       input.setAttribute('aria-describedby', `category-description-${category}`);
-      console.log(input)
-      console.log(descriptionEl)
     }
 
     return this;

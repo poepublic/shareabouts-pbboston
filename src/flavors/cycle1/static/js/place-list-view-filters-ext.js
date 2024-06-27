@@ -22,7 +22,6 @@
 
   Shareabouts.PlaceListView.prototype.handleAllIdeasFilter = function(evt) {
     evt.preventDefault();
-    console.log('handleAllIdeasFilter');
     this.removeFilter('city_wide');
     this.removeFilter('neighborhood');
 
@@ -31,7 +30,6 @@
 
   Shareabouts.PlaceListView.prototype.handleCityWideFilter = function(evt) {
     evt.preventDefault();
-    console.log('handleCityWideFilter');
     this.removeFilter('neighborhood');
     this.filter({'city_wide': 'true'});
 
@@ -40,7 +38,6 @@
 
   Shareabouts.PlaceListView.prototype.handleLocationSpecificFilter = function(evt) {
     evt.preventDefault();
-    console.log('handleLocationSpecificFilter');
     this.removeFilter('neighborhood');
     this.filter({'city_wide': 'false'});
 
