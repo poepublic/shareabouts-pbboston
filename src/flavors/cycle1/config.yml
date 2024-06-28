@@ -554,12 +554,12 @@ place:
       type: radiogroup
       name: submission_event_type
       options:
-        - label: _(Yes, at a City-sponsored event)
-          value: city_sponsored
-        - label: _(Yes, at an independent community meeting)
-          value: community
         - label: _(No event; I am submitting this idea on my own)
           value: no_event
+        - label: _(Yes, at an Idea Collection Workshop hosted by an organization sponsored by the Office of Participatory Budgeting)
+          value: city_sponsored
+        - label: _(Yes, at an independent community gathering)
+          value: community
       attrs:
         - key: required
 

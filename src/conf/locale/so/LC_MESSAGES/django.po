@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-26 19:36-0400\n"
+"POT-Creation-Date: 2024-06-28 13:22-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: Somali (https://app.transifex.com/mjumbewu/teams/189006/so/)\n"
+"Language: so\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: so\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/flavors/cycle1/_config.translations.py:6
@@ -52,11 +52,11 @@ msgstr "Fanka &amp; Dhaqanka"
 
 #: src/flavors/cycle1/_config.translations.py:11
 msgid ""
-"Project ideas focused on arts and cultural programming that promote cultural"
-" spaces in the City."
+"Project ideas focused on arts and cultural programming that promote cultural "
+"spaces in the City."
 msgstr ""
-"Fikradaha mashruucu waxay diirada saarayaan fanka iyo barnaamijyada dhaqanka"
-" ee kor u qaada meelaha dhaqameed ee magaalada."
+"Fikradaha mashruucu waxay diirada saarayaan fanka iyo barnaamijyada dhaqanka "
+"ee kor u qaada meelaha dhaqameed ee magaalada."
 
 #: src/flavors/cycle1/_config.translations.py:12
 #: src/flavors/cycle1/_config.translations.py:63
@@ -66,9 +66,9 @@ msgstr "Khayraadka Bulshada"
 
 #: src/flavors/cycle1/_config.translations.py:13
 msgid ""
-"Project ideas that provide assistance or services to residents in need, such"
-" as programs at community centers, financial or digital literacy, English as"
-" a second language, or GED classes."
+"Project ideas that provide assistance or services to residents in need, such "
+"as programs at community centers, financial or digital literacy, English as "
+"a second language, or GED classes."
 msgstr ""
 "Fikradaha mashruuca ee bixiya caawimada ama adeegyada dadka deegaanka ee u "
 "baahan, sida barnaamijyada xarumaha bulshada, dhaqaalaha ama aqoonta "
@@ -160,8 +160,8 @@ msgid ""
 "community violence prevention programs and initiatives for healing and "
 "recovering from trauma and substance abuse."
 msgstr ""
-"Fikradaha mashruuca ee hormariya badbaadada oo kordhiya cadaalada magaalada,"
-" sida barnaamijyada ka hortagga rabshadaha bulshada iyo hindisayaasha "
+"Fikradaha mashruuca ee hormariya badbaadada oo kordhiya cadaalada magaalada, "
+"sida barnaamijyada ka hortagga rabshadaha bulshada iyo hindisayaasha "
 "bogsashada iyo ka soo kabashada dhaawacyada iyo xadgudubka muqaadaraadka."
 
 #: src/flavors/cycle1/_config.translations.py:26
@@ -343,16 +343,20 @@ msgid "Are you submitting this idea as part of a community event?"
 msgstr "Ma waxaad u soo gudbinaysaa fikraddan qayb ka mid ah dhacdo bulsho?"
 
 #: src/flavors/cycle1/_config.translations.py:73
-msgid "Yes, at a City-sponsored event"
-msgstr "Haa, munaasabad ay maalgelisay Magaaladu"
-
-#: src/flavors/cycle1/_config.translations.py:74
-msgid "Yes, at an independent community meeting"
-msgstr "Haa, shir beeleed madax banaan"
-
-#: src/flavors/cycle1/_config.translations.py:75
 msgid "No event; I am submitting this idea on my own"
 msgstr "Dhacdo ma jirto; Aniga qudhaydu waxaan soo gudbinayaa fikradan"
+
+#: src/flavors/cycle1/_config.translations.py:74
+msgid ""
+"Yes, at an Idea Collection Workshop hosted by an organization sponsored by "
+"the Office of Participatory Budgeting"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:75
+#, fuzzy
+#| msgid "Yes, at an independent community meeting"
+msgid "Yes, at an independent community gathering"
+msgstr "Haa, shir beeleed madax banaan"
 
 #: src/flavors/cycle1/_config.translations.py:76
 #: src/flavors/cycle1/_config.translations.py:79
@@ -478,12 +482,15 @@ msgstr ""
 #: src/flavors/cycle1/jstemplates/pages/overview.html:2
 msgid ""
 "By engaging in\n"
-"Participatory Budgeting, Bostonians of all ages and backgrounds can help inform\n"
+"Participatory Budgeting, Bostonians of all ages and backgrounds can help "
+"inform\n"
 "priorities and future investments for the City’s larger budget process."
 msgstr ""
 "Adigoo ku hawlan\n"
-" Miisaaniyad ka qaybqaadashada, dadka reer Boston ee da&#39; kasta leh iyo asal kasta ayaa ku caawin kara wargelinta\n"
-" mudnaanta iyo maalgashiga mustaqbalka ee habka miisaaniyadeed ee weyn ee Magaalada."
+" Miisaaniyad ka qaybqaadashada, dadka reer Boston ee da&#39; kasta leh iyo "
+"asal kasta ayaa ku caawin kara wargelinta\n"
+" mudnaanta iyo maalgashiga mustaqbalka ee habka miisaaniyadeed ee weyn ee "
+"Magaalada."
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:5
 msgid "Examples of Eligible Ideas"
@@ -505,9 +512,9 @@ msgid ""
 "email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgstr ""
 "Macluumaad dheeraad ah oo ku saabsan Miisaaniyadda Ka-qaybgalka, fadlan "
-"booqo <a "
-"href=\"http://boston.gov/participate\">http://boston.gov/participate</a> ama"
-" noogu soo dir <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+"booqo <a href=\"http://boston.gov/participate\">http://boston.gov/"
+"participate</a> ama noogu soo dir <a href=\"mailto:pb@boston.gov\">pb@boston."
+"gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:9
 msgid "Fund and Implement Project Proposals"
@@ -532,8 +539,8 @@ msgstr "Ololaha Ururinta Fikradaha: Soo gudbi fikradahaaga!"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:14
 msgid ""
-"Ideas may include programs and services, as well as physical infrastructure,"
-" technological improvements, and community enhancements."
+"Ideas may include programs and services, as well as physical infrastructure, "
+"technological improvements, and community enhancements."
 msgstr ""
 "Fikradaha waxaa ku jiri kara barnaamijyo iyo adeegyo, iyo sidoo kale "
 "kaabayaasha jirka, horumarinta tignoolajiyada, iyo kobcinta bulshada."
@@ -562,17 +569,29 @@ msgstr "Oktoobar - Noofambar 2024"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:19
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community members\n"
-"directly decide how to spend part of a public budget. The goal of Participatory\n"
+"Of note: Project ideas containing inappropriate, offensive, or derogatory "
+"language will be removed and not considered from the PB process."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:20
+msgid ""
+"Participatory Budgeting (PB) is a democratic process where community "
+"members\n"
+"directly decide how to spend part of a public budget. The goal of "
+"Participatory\n"
 "Budgeting in Boston is to empower residents to elevate community centered\n"
 "project ideas with an emphasis on social and racial equity."
 msgstr ""
-"Miisaaniyad ka qaybqaadashada (PB) waa hab dimuqraadi ah oo ay xubnaha bulshada\n"
-" si toos ah u go&#39;aansada sida loo isticmaalo qayb ka mid ah miisaaniyada dadweynaha. Hadafka ka qaybqaadashada\n"
-" Miisaaniyadda Boston waa in la xoojiyo dadka deegaanka si ay kor ugu qaadaan bulshada udub dhexaad u ah\n"
-" fikradaha mashruuca iyadoo xoogga la saarayo sinnaanta bulshada iyo jinsiyadda."
+"Miisaaniyad ka qaybqaadashada (PB) waa hab dimuqraadi ah oo ay xubnaha "
+"bulshada\n"
+" si toos ah u go&#39;aansada sida loo isticmaalo qayb ka mid ah miisaaniyada "
+"dadweynaha. Hadafka ka qaybqaadashada\n"
+" Miisaaniyadda Boston waa in la xoojiyo dadka deegaanka si ay kor ugu "
+"qaadaan bulshada udub dhexaad u ah\n"
+" fikradaha mashruuca iyadoo xoogga la saarayo sinnaanta bulshada iyo "
+"jinsiyadda."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:23
+#: src/flavors/cycle1/jstemplates/pages/overview.html:24
 msgid ""
 "Paying for the salary of a public employee to provide services; Repairing a "
 "privately owned building; Helping an organization renovate a space that it "
@@ -584,7 +603,7 @@ msgstr ""
 "meel ay ka kiraynayso mulkiilaha gaarka ah; Caawinta machad diimeed "
 "hagaajinta meesheeda; Kordhi inta jeer ee basaska ama tareenada MBTA"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:24
+#: src/flavors/cycle1/jstemplates/pages/overview.html:25
 msgid ""
 "Programming to strengthen mental health among Boston youth; Expand the "
 "City’s Wicked Free WiFi network to reach more low-income areas; Digital "
@@ -593,32 +612,32 @@ msgid ""
 "art, street trees, benches, etc.)"
 msgstr ""
 "Barnaamijyada lagu xoojinayo caafimaadka maskaxda ee dhalinyarada Boston; "
-"Kordhi shabakada WiFi bilaashka ah ee Magaalada si loo gaadho meelo badan oo"
-" dakhligoodu hooseeyo; Fasalada akhris-qoraalka dhijitaalka ah ee "
+"Kordhi shabakada WiFi bilaashka ah ee Magaalada si loo gaadho meelo badan oo "
+"dakhligoodu hooseeyo; Fasalada akhris-qoraalka dhijitaalka ah ee "
 "muwaadiniinta waayeelka ah si ay u bartaan xirfado cusub oo ay kor ugu "
 "qaadaan xidhiidhada bulshada; Kobcinta goobaha dadweynaha iyada oo loo "
 "marayo mashaariicda kaabayaasha (farshaxanka dadweynaha, geedaha "
 "waddooyinka, kuraasta, iwm.)"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:25
+#: src/flavors/cycle1/jstemplates/pages/overview.html:26
 msgid ""
-"Project ideas must be feasible to implement, and be consistent with existing"
-" City policies, laws, regulations, and the Participatory Budgeting "
-"Ordinance; and"
+"Project ideas must be feasible to implement, and be consistent with existing "
+"City policies, laws, regulations, and the Participatory Budgeting Ordinance; "
+"and"
 msgstr ""
 "Fikradaha mashruucu waa in ay noqdaan kuwo la hirgalin karo, oo waafaqayaan "
-"siyaasadaha, sharciyada, xeerarka, iyo xeerka miisaaniyada ka qaybqaadashada"
-" ee Magaalada; iyo"
+"siyaasadaha, sharciyada, xeerarka, iyo xeerka miisaaniyada ka qaybqaadashada "
+"ee Magaalada; iyo"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:26
+#: src/flavors/cycle1/jstemplates/pages/overview.html:27
 msgid ""
 "Project ideas related to programs and services in non-City owned facilities "
 "are eligible."
 msgstr ""
-"Fikradaha mashruuca ee la xidhiidha barnaamijyada iyo adeegyada xarumaha aan"
-" magaaladu leedahay waa u qalmaan."
+"Fikradaha mashruuca ee la xidhiidha barnaamijyada iyo adeegyada xarumaha aan "
+"magaaladu leedahay waa u qalmaan."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:27
+#: src/flavors/cycle1/jstemplates/pages/overview.html:28
 msgid ""
 "Project proposals may include programs and services as well as physical "
 "infrastructure"
@@ -626,7 +645,7 @@ msgstr ""
 "Soo jeedinta mashruuca waxaa ku jiri kara barnaamijyo iyo adeegyo iyo sidoo "
 "kale kaabayaasha jirka"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:28
+#: src/flavors/cycle1/jstemplates/pages/overview.html:29
 msgid ""
 "Projects are limited to a one-time expense, and do not create new permanent "
 "positions;"
@@ -634,7 +653,7 @@ msgstr ""
 "Mashruucyadu waxay ku kooban yihiin kharash hal mar ah, mana abuuraan "
 "jagooyin joogto ah oo cusub;"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:29
+#: src/flavors/cycle1/jstemplates/pages/overview.html:30
 msgid ""
 "Projects must be implemented or managed by the appropriate City Department "
 "or agency receiving direct budget appropriations."
@@ -642,45 +661,44 @@ msgstr ""
 "Mashaariicda waa in ay fulisaa ama maamusho Waaxda Magaalada ama wakaalada "
 "ku haboon ee helaysa qoondaynta miisaaniyada tooska ah."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:30
+#: src/flavors/cycle1/jstemplates/pages/overview.html:31
 msgid "Public Voting Period"
 msgstr "Muddada Codbixinta Dadweynaha"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:31
+#: src/flavors/cycle1/jstemplates/pages/overview.html:32
 msgid "Select \"Subtitles/CC\" from the gear"
 msgstr "Ka dooro &quot;Subtitles/CC&quot; gear ka"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:32
+#: src/flavors/cycle1/jstemplates/pages/overview.html:33
 msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
 msgstr ""
-"Isdiiwaangeli si aad ula socodsiiso miisaaniyada ka qaybqaadashada ee "
-"Boston!"
+"Isdiiwaangeli si aad ula socodsiiso miisaaniyada ka qaybqaadashada ee Boston!"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:33
+#: src/flavors/cycle1/jstemplates/pages/overview.html:34
 msgid "Visioning Forums & Online Engagement"
 msgstr "Madasha Aragtida &amp; Ka-qaybgalka Online-ka"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:34
+#: src/flavors/cycle1/jstemplates/pages/overview.html:35
 msgid "Welcome to Participatory Budgeting in Boston!"
 msgstr "Ku soo dhawoow Miisaaniyadda ka qaybqaadashada ee Boston!"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:35
+#: src/flavors/cycle1/jstemplates/pages/overview.html:36
 msgid "What Type of Ideas Can You Propose?"
 msgstr "Fikrado noocee ah ayaad soo jeedin kartaa?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:36
+#: src/flavors/cycle1/jstemplates/pages/overview.html:37
 msgid "What are Some Examples of Ideas?"
 msgstr "Waa maxay Tusaalooyinka Fikradaha qaarkood?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:37
+#: src/flavors/cycle1/jstemplates/pages/overview.html:38
 msgid "What is the Timeline?"
 msgstr "Waa maxay Jadwalku?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:38
+#: src/flavors/cycle1/jstemplates/pages/overview.html:39
 msgid "Who can submit project ideas?"
 msgstr "Yaa soo gudbin kara fikradaha mashruuca?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:39
+#: src/flavors/cycle1/jstemplates/pages/overview.html:40
 msgid "icon to see captions in a different language."
 msgstr "calaamadee si aad u aragto qoraallo ku qoran luqad kale."
 
@@ -705,15 +723,22 @@ msgstr "waxaa dhisay %(PoePublic)s"
 
 #: src/flavors/cycle1/templates/prelaunch.html:112
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community members\n"
-"    directly decide how to spend part of a public budget. The goal of Participatory\n"
-"    Budgeting in Boston is to empower residents to elevate community centered\n"
+"Participatory Budgeting (PB) is a democratic process where community "
+"members\n"
+"    directly decide how to spend part of a public budget. The goal of "
+"Participatory\n"
+"    Budgeting in Boston is to empower residents to elevate community "
+"centered\n"
 "    project ideas with an emphasis on social and racial equity."
 msgstr ""
-"Miisaaniyad ka qaybqaadashada (PB) waa hab dimuqraadi ah oo ay xubnaha bulshada\n"
-" si toos ah u go&#39;aansada sida loo isticmaalo qayb ka mid ah miisaaniyada dadweynaha. Hadafka ka qaybqaadashada\n"
-" Miisaaniyadda Boston waa in la xoojiyo dadka deegaanka si ay kor ugu qaadaan bulshada udub dhexaad u ah\n"
-" fikradaha mashruuca iyadoo xoogga la saarayo sinnaanta bulshada iyo jinsiyadda."
+"Miisaaniyad ka qaybqaadashada (PB) waa hab dimuqraadi ah oo ay xubnaha "
+"bulshada\n"
+" si toos ah u go&#39;aansada sida loo isticmaalo qayb ka mid ah miisaaniyada "
+"dadweynaha. Hadafka ka qaybqaadashada\n"
+" Miisaaniyadda Boston waa in la xoojiyo dadka deegaanka si ay kor ugu "
+"qaadaan bulshada udub dhexaad u ah\n"
+" fikradaha mashruuca iyadoo xoogga la saarayo sinnaanta bulshada iyo "
+"jinsiyadda."
 
 #: src/flavors/cycle1/templates/prelaunch.html:117
 msgid ""
@@ -721,8 +746,10 @@ msgid ""
 "    backgrounds can help inform priorities and future investments for the\n"
 "    City’s larger budget process. "
 msgstr ""
-"Marka aad ka qaybqaadato miisaaniyada ka qaybqaadashada, reer Boston ee da&#39;kasta leh iyo\n"
-" Taariikhdu waxay kaa caawin kartaa inaad wargeliso mudnaanta iyo maalgashiga mustaqbalka ee\n"
+"Marka aad ka qaybqaadato miisaaniyada ka qaybqaadashada, reer Boston ee "
+"da&#39;kasta leh iyo\n"
+" Taariikhdu waxay kaa caawin kartaa inaad wargeliso mudnaanta iyo "
+"maalgashiga mustaqbalka ee\n"
 " Habka miisaaniyadeed ee weyn ee magaalada. "
 
 #: src/flavors/cycle1/templates/prelaunch.html:121
@@ -737,8 +764,8 @@ msgstr "Waxaa xoojiyay"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
 msgid ""
-"<strong>{{ submitter_name }}</strong> submitted a city-wide {{ "
-"place_type_label location_type }} idea"
+"<strong>{{ submitter_name }}</strong> submitted a city-wide "
+"{{ place_type_label location_type }} idea"
 msgstr ""
 "<strong>{{ submitter_name }}</strong> waxay soo gudbisay fikradda magaalada "
 "oo dhan {{ place_type_label location_type }}"
@@ -746,22 +773,22 @@ msgstr ""
 #: src/pbboston/jstemplates/activity-list-item.html:2
 msgid ""
 "<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location "
-"}}</span>"
+"location_type }} idea near <span class=\"place-location\">{{ location }}</"
+"span>"
 msgstr ""
-"<strong>{{ submitter_name }}</strong> waxay soo gudbisay {{ place_type_label"
-" location_type }} fikrad u dhow <span class=\"place-location\">{{ location "
-"}}</span>"
+"<strong>{{ submitter_name }}</strong> waxay soo gudbisay {{ place_type_label "
+"location_type }} fikrad u dhow <span class=\"place-location\">{{ location }}"
+"</span>"
 
 #: src/pbboston/jstemplates/activity-list-item.html:3
 msgid ""
 "<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location "
-"}}</span>"
+"location_type }} idea near <span class=\"place-location\">{{ location }}</"
+"span>"
 msgstr ""
-"<strong>{{ submitter_name }}</strong> waxay soo gudbisay {{ place_type_label"
-" location_type }} fikrad u dhow <span class=\"place-location\">{{ location "
-"}}</span>"
+"<strong>{{ submitter_name }}</strong> waxay soo gudbisay {{ place_type_label "
+"location_type }} fikrad u dhow <span class=\"place-location\">{{ location }}"
+"</span>"
 
 #: src/pbboston/jstemplates/form-field-label.html:1
 msgid "optional"
@@ -781,18 +808,16 @@ msgstr ""
 msgid ""
 "submitted this {{ place_type_label location_type}} idea near {{ location }}"
 msgstr ""
-"gudbiyay fikradan {{place_type_label location_type}} fikrad u dhow {{goobta "
-"}}"
+"gudbiyay fikradan {{place_type_label location_type}} fikrad u dhow "
+"{{goobta }}"
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:1
 msgid ""
-"<a target=\"_blank\" "
-"href=\"https://www.boston.gov/departments/participatory-"
+"<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">Sign up</a> to stay informed about Participatory "
 "Budgeting in Boston!"
 msgstr ""
-"<a target=\"_blank\" "
-"href=\"https://www.boston.gov/departments/participatory-"
+"<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">Isdiiwaangeli</a> si aad ula socodsiiso miisaaniyada "
 "ka qaybqaadashada ee Boston!"
 
@@ -871,8 +896,8 @@ msgstr "Waan ka xunahay, barowsarkaaga ma taageerayo gelinta faylka."
 
 #: src/sa_web/jstemplates/form-field-widget.html:1
 msgid ""
-"Hover over a category to see a description of the types of projects that fit"
-" within that category."
+"Hover over a category to see a description of the types of projects that fit "
+"within that category."
 msgstr ""
 "Ka dul bood qayb si aad u aragto sharraxaadda noocyada mashaariicda ee ku "
 "habboon qaybtaas."
@@ -900,18 +925,22 @@ msgstr "agagaarka {{ pretty_created_datetime }}"
 #: src/sa_web/jstemplates/place-moderation-bar.html:1
 msgid ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
+"      This {{ place_config.response_name }} is <strong>only visible to "
+"moderators</strong>."
 msgstr ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
-" Kan {{place_config.response_name}} waxa <strong>kaliya u muuqda dhexdhexaadiyayaasha</strong> ."
+" Kan {{place_config.response_name}} waxa <strong>kaliya u muuqda "
+"dhexdhexaadiyayaasha</strong> ."
 
 #: src/sa_web/jstemplates/place-moderation-bar.html:3
 msgid ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
+"      This {{ place_config.response_name }} is <strong>visible to everyone</"
+"strong>."
 msgstr ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
-" Kan {{place_config.response_name}} <strong>qof walba wuu u muuqdaa</strong> ."
+" Kan {{place_config.response_name}} <strong>qof walba wuu u muuqdaa</"
+"strong> ."
 
 #: src/sa_web/jstemplates/place-moderation-bar.html:5
 msgid "Make {{ place_config.response_name }} hidden"
@@ -933,22 +962,27 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"Oops, %(config.app.name)s waxay u baahan tahay JavaScript si ay si sax ah ugu shaqeyso.\n"
+"Oops, %(config.app.name)s waxay u baahan tahay JavaScript si ay si sax ah "
+"ugu shaqeyso.\n"
 "        "
 
 #: src/sa_web/templates/base.html:93
 #, python-format
 msgid ""
 "\n"
-"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
+"        %(config.app.name)s is great but it needs something called "
+"JavaScript to work\n"
 "        properly. But fear not, it's really easy to turn on. Click\n"
-"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> "
+"for simple instructions!\n"
 "        "
 msgstr ""
 "\n"
-"%(config.app.name) s aad bay u fiican tahay laakiin waxay u baahan tahay wax la yiraahdo JavaScript si uu u shaqeeyo\n"
+"%(config.app.name) s aad bay u fiican tahay laakiin waxay u baahan tahay wax "
+"la yiraahdo JavaScript si uu u shaqeeyo\n"
 " si sax ah. Laakiin ha baqin, runtii way fududahay in la shido. Guji\n"
-" <a href=\"http://enable-javascript.com/\" target=\"_blank\">halkan</a> tilmaamaha fudud!\n"
+" <a href=\"http://enable-javascript.com/\" target=\"_blank\">halkan</a> "
+"tilmaamaha fudud!\n"
 "        "
 
 #: src/sa_web/templates/base.html:107
@@ -962,3 +996,6 @@ msgstr ""
 #: src/sa_web/templates/base.html:113
 msgid "Close"
 msgstr "Xir"
+
+#~ msgid "Yes, at a City-sponsored event"
+#~ msgstr "Haa, munaasabad ay maalgelisay Magaaladu"
