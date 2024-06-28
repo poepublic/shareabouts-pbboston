@@ -77,6 +77,14 @@ p {
   line-height: 1.5em;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--freedom-trail-red);
+}
+
 #map {
   background-color: var(--charles-blue);
 }
