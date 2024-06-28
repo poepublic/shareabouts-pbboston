@@ -9,6 +9,16 @@ hideLanguagePickerButton.addEventListener('click', hideLanguagePicker);
 languagePickerOverlay.addEventListener('click', hideLanguagePicker);
 
 
+// On page load, remove the "language" querystring parameter from the URL so
+// that the user's language preference is not overridden by the language
+// parameter in the URL.
+function resetLanguageParameter() {
+  var url = new URL(window.location.href);
+  url.searchParams.delete('language');
+  window.history.replaceState({}, '', url);
+}
+resetLanguageParameter();
+
 function showLanguagePicker() {
   languagePickerWrapper.classList.remove('hidden');
   attachKeyboardCloseLanguagePicker();
