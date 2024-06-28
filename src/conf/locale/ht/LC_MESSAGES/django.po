@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-28 15:13-0400\n"
+"POT-Creation-Date: 2024-06-28 15:45-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: Haitian (Haitian Creole) (https://app.transifex.com/mjumbewu/"
@@ -135,8 +135,8 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:22
 #: src/flavors/cycle1/_config.translations.py:68
 #: src/flavors/cycle1/_config.translations.py:116
-msgid "Human Services / Public Health"
-msgstr "Sèvis Imen / Sante Piblik"
+msgid "Health & Well-being"
+msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:23
 msgid ""
@@ -789,9 +789,11 @@ msgstr ""
 "nan Boston!"
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
-msgid ""
-"Please help us by answering <a href=\"...\" target=\"_blank\">this optional "
-"survey</a>."
+#, fuzzy
+#| msgid ""
+#| "Please help us by answering <a href=\"...\" target=\"_blank\">this "
+#| "optional survey</a>."
+msgid "Please help us by answering this optional survey:"
 msgstr ""
 "Tanpri ede nou lè w reponn <a href=\"...\" target=\"_blank\">sondaj opsyonèl "
 "sa a</a> ."
@@ -961,6 +963,9 @@ msgstr ""
 #: src/sa_web/templates/base.html:113
 msgid "Close"
 msgstr "Fèmen"
+
+#~ msgid "Human Services / Public Health"
+#~ msgstr "Sèvis Imen / Sante Piblik"
 
 #~ msgid "Yes, at a City-sponsored event"
 #~ msgstr "Wi, nan yon evènman vil la patwone"

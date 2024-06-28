@@ -293,7 +293,7 @@ place_types:
           shadowSize: null
           iconAnchor: [32, 32]
   human_services:
-    label: _(Human Services / Public Health)
+    label: _(Health & Well-being)
     description: _(Project ideas that promote the physical and mental health of Boston residents of all ages.)
     color: '#41eafa'
     icon: /static/img/categories/human_services.svg
@@ -540,7 +540,7 @@ place:
           value: sustainability
         - label: _(Facilities, Parks & Recreation  )
           value: facilities
-        - label: _(Human Services / Public Health)
+        - label: _(Health & Well-being)
           value: human_services
         - label: _(Public Safety)
           value: public_safety
@@ -847,7 +847,7 @@ pages:
       - title: _(Facilities, Parks & Recreation  )
         url: /filter/facilities
         external: true
-      - title: _(Human Services / Public Health)
+      - title: _(Health & Well-being)
         url: /filter/human_services
         external: true
       - title: _(Public Safety)
