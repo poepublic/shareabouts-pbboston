@@ -60,7 +60,7 @@
     {% block header_intro %}
     <div id="boston-small-screen-lead-in" class="boston-small-screen-lead-in">
       <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo-white.png' %}"><br>
-      <span class="pb-label">Participatory Budgeting</span>
+      <span class="pb-label">{% translate "Participatory Budgeting %}</span>
     </div>
     {% endblock %}
 
@@ -69,7 +69,7 @@
         <img class="boston-icon" alt="" src="{% static 'css/images/boston-icon-light.svg' %}">
         <img class="pb-icon" alt="" src="{% static 'css/images/pbboston-icon.svg' %}">
         <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo.svg' %}">
-        <span class="pb-label">Participatory Budgeting</span>
+        <span class="pb-label">{% translate "Participatory Budgeting %}</span>
       </a>
     {% endblock %}</h1>
 
@@ -83,7 +83,7 @@
       <nav class="access" aria-label="Map information">
         <ul class="menu">
           <li class="menu-item">
-            <a class="btn btn-block btn-secondary" href="https://www.boston.gov/departments/participatory-budgeting" target="_blank">Boston PB Home</a>
+            <a class="btn btn-block btn-secondary" href="https://boston.gov/participate" target="_blank">{% translate "Boston PB Home" %}</a>
           </li>
         </ul>
       </nav>
