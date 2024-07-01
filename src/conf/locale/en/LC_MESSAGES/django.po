@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 02:04-0400\n"
+"POT-Creation-Date: 2024-07-01 02:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -454,10 +454,11 @@ msgid "February 2025 and Onward"
 msgstr ""
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:8
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
 msgid ""
 "For more information on Participatory Budgeting, please visit <a "
-"href=\"http://boston.gov/participate\">http://boston.gov/participate</a> or "
-"email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
+"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgstr ""
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:9
@@ -698,13 +699,6 @@ msgid ""
 "<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">Sign up</a> to stay informed about Participatory "
 "Budgeting in Boston!"
-msgstr ""
-
-#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
-msgid ""
-"For more information on Participatory Budgeting, please visit <a "
-"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
-"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgstr ""
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:4

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 02:04-0400\n"
+"POT-Creation-Date: 2024-07-01 02:11-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: Arabic (https://app.transifex.com/mjumbewu/teams/189006/ar/)\n"
@@ -491,10 +491,16 @@ msgid "February 2025 and Onward"
 msgstr "فبراير 2025 وما بعده"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:8
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
+#, fuzzy
+#| msgid ""
+#| "For more information on Participatory Budgeting, please visit <a "
+#| "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
+#| "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgid ""
 "For more information on Participatory Budgeting, please visit <a "
-"href=\"http://boston.gov/participate\">http://boston.gov/participate</a> or "
-"email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
+"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgstr ""
 "لمزيد من المعلومات حول الموازنة التشاركية، يرجى زيارة <a href=\"http://"
 "boston.gov/participate\">http://boston.gov/participate</a> أو مراسلتنا عبر "
@@ -786,21 +792,6 @@ msgstr ""
 "budgeting#newsletter\">قم بالتسجيل</a> لتبقى على اطلاع حول الموازنة "
 "التشاركية في بوسطن!"
 
-#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
-#, fuzzy
-#| msgid ""
-#| "For more information on Participatory Budgeting, please visit <a "
-#| "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
-#| "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
-msgid ""
-"For more information on Participatory Budgeting, please visit <a "
-"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
-"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
-msgstr ""
-"لمزيد من المعلومات حول الموازنة التشاركية، يرجى زيارة <a href=\"http://"
-"boston.gov/participate\">http://boston.gov/participate</a> أو مراسلتنا عبر "
-"البريد الإلكتروني على <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
-
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
 msgid "Please help us by answering this optional survey:"
 msgstr "الرجاء مساعدتنا من خلال الإجابة على هذا الاستبيان الاختياري:"
@@ -963,3 +954,13 @@ msgstr "لا يمكننا الاتصال بالخادم في الوقت الحا
 #: src/sa_web/templates/base.html:113
 msgid "Close"
 msgstr "يغلق"
+
+#~ msgid ""
+#~ "For more information on Participatory Budgeting, please visit <a "
+#~ "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
+#~ "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+#~ msgstr ""
+#~ "لمزيد من المعلومات حول الموازنة التشاركية، يرجى زيارة <a href=\"http://"
+#~ "boston.gov/participate\">http://boston.gov/participate</a> أو مراسلتنا "
+#~ "عبر البريد الإلكتروني على <a href=\"mailto:pb@boston.gov\">pb@boston.gov</"
+#~ "a>"
