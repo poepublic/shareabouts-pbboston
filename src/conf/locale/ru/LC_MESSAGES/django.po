@@ -798,13 +798,13 @@ msgstr "Посмотреть на карте"
 
 #: src/pbboston/jstemplates/place-detail.html:2
 msgid "submitted this city-wide {{ place_type_label location_type}} idea"
-msgstr "отправил эту общегородскую идею {{ Place_type_label location_type}}"
+msgstr "отправил эту общегородскую идею {{ place_type_label location_type}}"
 
 #: src/pbboston/jstemplates/place-detail.html:3
 msgid ""
 "submitted this {{ place_type_label location_type}} idea near {{ location }}"
 msgstr ""
-"отправил эту идею {{ Place_type_label location_type}} рядом с {{ location }}"
+"отправил эту идею {{ place_type_label location_type}} рядом с {{ location }}"
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:1
 msgid ""
