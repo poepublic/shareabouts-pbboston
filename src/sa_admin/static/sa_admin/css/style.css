@@ -8,9 +8,14 @@
 }
 
 body {
+  margin: 0;
   font-family: var(--content-font-family);
   font-size: 16px;
   line-height: 1.5;
+}
+
+header {
+  padding: 0 1rem;
 }
 
 .table-wrapper {
@@ -67,6 +72,44 @@ tbody tr::hover {
   cursor: pointer;
 }
 
+main, form {
+  position: relative;
+}
+
+.fields-wrapper {
+  padding: 0 1rem;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.actions-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  background: #eee;
+}
+
+.place-detail label {
+  display: block;
+  font-weight: bold;
+}
+
+.place-detail input[type="text"],
+.place-detail input[type="datetime-local"],
+.place-detail textarea,
+.place-detail select {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.place-detail .field {
+  margin: 0.5rem 0;
+}
+
 @media screen and (width >= 768px) {
   .dashboard,
   .place-detail {
@@ -74,29 +117,43 @@ tbody tr::hover {
     flex-direction: column;
     box-sizing: border-box;
     margin: 0;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     height: 100vh;
   }
 
-  .dashboard main,
-  .place-detail form {
+  .dashboard main {
     display: flex;
     flex-direction: row-reverse;
     overflow: hidden;
     min-height: 400px;
   }
 
-  .dashboard .map-wrapper,
-  .place-detail .map-wrapper {
+  .dashboard .map-wrapper {
     width: 50%;
     height: 100%;
   }
 
-  .dashboard .table-wrapper,
-  .place-detail .form-wrapper {
+  .dashboard .table-wrapper {
     width: 50%;
     height: 100%;
   }
+
+  /* .place-detail form {
+    margin-right: 50%;
+    min-height: 400px;
+  }
+
+  .place-detail .map-wrapper {
+    position: sticky;
+
+    width: 50%;
+    height: 100%;
+  }
+
+  .place-detail .form-wrapper {
+    width: 50%;
+    height: 100%;
+  } */
 }
 
 
