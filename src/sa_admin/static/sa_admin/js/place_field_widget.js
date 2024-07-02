@@ -126,7 +126,7 @@ class PlaceFieldChoiceWidget extends PlaceFieldWidget {
 
   syncAttrToWidget() {
     const value = this.place.get(this.column.attr);
-    const changed = false;
+    let changed = false;
 
     for (const optionEl of this.widgetValueEls[0].options) {
       if (optionEl.value === value && !optionEl.selected) {

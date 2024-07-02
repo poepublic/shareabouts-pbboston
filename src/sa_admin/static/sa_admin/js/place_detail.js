@@ -370,10 +370,4 @@ class PlaceDetail extends Component {
 
 export {
   PlaceDetail,
-  PlaceFieldBooleanWidget,
-  PlaceFieldChoiceWidget,
-  PlaceFieldDateTimeWidget,
-  PlaceFieldReadOnlyWidget,
-  PlaceFieldLongTextWidget,
-  PlaceFieldWidget,
 };
