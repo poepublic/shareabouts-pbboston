@@ -89,6 +89,19 @@ class PlacesMap extends Component {
     };
   }
 
+  filterMarkers(predicates) {
+    for (const marker of Object.values(this._placeIdToMarker)) {
+      const place = marker.place;
+      const match = predicates.every((predicate) => predicate(place));
+
+      if (match) {
+        marker.addTo(this.placesLayer);
+      } else {
+        marker.removeFrom(this.placesLayer);
+      }
+    }
+  }
+
   highlightMarker(placeId, marker = null) {
     marker ||= this._placeIdToMarker[placeId];
     if (marker) {

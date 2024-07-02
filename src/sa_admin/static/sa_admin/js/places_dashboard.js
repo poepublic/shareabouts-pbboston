@@ -54,6 +54,14 @@ class PlacesDashboard extends Component {
       this.openPlaceDetail(placeId);
     });
 
+    this.listeners.add('filter', this.table.dispatcher, (e) => {
+      const predicates = this.table.head.cells
+        .filter((cell) => cell.filter)
+        .map((cell) => cell.filter.filterPredicate.bind(cell.filter));
+      this.table.filterRows(predicates);
+      this.map.filterMarkers(predicates);
+    });
+
     return Component.prototype.bind.call(this);
   }
 

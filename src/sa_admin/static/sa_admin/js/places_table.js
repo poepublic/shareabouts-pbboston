@@ -6,44 +6,20 @@ class PlacesTableHeaderCell extends Component {
 
     this.places = places;
     this.column = column;
+    this.filter = null;
   }
 
   fill() {
-    this.el.innerHTML = `
-      <span class="place-table-column-label">${this.column.label}</span>
-      ${this.column.filter ? `
-        <span class="place-table-column-filter">
-          <button class="filter">Filter</button>
-        </span>
-
-        <dialog class="filter">
-          <header>
-            <h2>${this.column.label}</h2>
-            <button class="close">Close</button>
-          </header>
-          <form method="dialog">
-            <label>
-              <span>Filter</span>
-              <input type="text">
-            </label>
-            <button type="submit">Apply</button>
-          </form>
-        </dialog>
-      ` : ''}
-    `;
-
-    return this;
-  }
-
-  bind() {
+    this.el.innerHTML = `<span class="place-table-column-label">${this.column.label}</span>`;
     if (this.column.filter) {
-      const filterButton = this.el.querySelector('button.filter');
-      const filterDialog = this.el.querySelector('dialog.filter');
-      this.listeners.add('click', filterButton, () => {
-        filterDialog.showModal();
-      });
-    }
+      const filterEl = document.createElement('span');
+      filterEl.classList.add('filter');
 
+      const PlacesFilter = this.column.filter;
+      this.filter = new PlacesFilter(filterEl, this.column);
+      this.filter.render();
+      this.el.appendChild(filterEl);
+    }
     return this;
   }
 }
@@ -66,6 +42,24 @@ class PlacesTableHeaderRow extends Component {
     }
 
     return this;
+  }
+
+  bind() {
+    for (const cell of this.cells) {
+      if (cell.filter) {
+        this.listeners.add('filter', cell.filter.dispatcher, (e) => {
+          this.dispatcher.dispatchEvent(new CustomEvent('filter', e.detail));
+        });
+      }
+    }
+  }
+
+  unbind() {
+    for (const cell of this.cells) {
+      cell.unbind();
+    }
+
+    return Component.prototype.unbind.call(this);
   }
 }
 
@@ -133,8 +127,11 @@ class PlacesTable extends Component {
   }
 
   bind() {
-    if (this.head) { this.head.bind(); }
-    for (const row of Object.values(this.rows)) { row.bind(); }
+    if (this.head) {
+      this.listeners.add('filter', this.head.dispatcher, (e) => {
+        this.dispatcher.dispatchEvent(new CustomEvent('filter', e.detail));
+      });
+    }
 
     for (const tr of this.el.querySelectorAll('tbody tr')) {
       this.listeners.add('mouseover', tr, (e) => {
@@ -163,6 +160,19 @@ class PlacesTable extends Component {
     for (const row of Object.values(this.rows)) { row.unbind(); }
 
     return Component.prototype.unbind.call(this);
+  }
+
+  filterRows(predicates) {
+    for (const [placeId, row] of Object.entries(this.rows)) {
+      const place = this.places.get(placeId);
+      const matches = predicates.every((predicate) => predicate(place));
+
+      if (matches) {
+        this.bodyEl.appendChild(row.el);
+      } else if (this.bodyEl.contains(row.el)) {
+        this.bodyEl.removeChild(row.el);
+      }
+    }
   }
 
   highlightRow(placeId, tr = null) {

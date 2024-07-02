@@ -13,14 +13,8 @@
 {% block scripts %}
   {{ block.super }}
   <script type="module">
-    import {
-      PlaceDetail,
-      PlaceFieldBooleanWidget,
-      PlaceFieldChoiceWidget,
-      PlaceFieldDateTimeWidget,
-      PlaceFieldReadOnlyWidget,
-      PlaceFieldLongTextWidget,
-    } from '{% static 'sa_admin/js/place_detail.js' %}';
+    import { fields } from '{% static 'sa_admin/js/admin_config.js' %}';
+    import { PlaceDetail } from '{% static 'sa_admin/js/place_detail.js' %}';
 
     function exact(value) { return value === undefined ? '' : value; }
 
@@ -28,105 +22,6 @@
     const place = new Shareabouts.PlaceModel({ id: {{ place_id }} });
     place.collection = places;
 
-    const fields = [
-      {
-        attr: 'id',
-        label: 'id',
-        format: (value) => `<a target="_blank" href="/place/${value}">${value}</a>`,
-        widget: PlaceFieldReadOnlyWidget,
-      },
-      {
-        attr: 'created_datetime',
-        label: 'created_datetime',
-        format: (value) => new Date(value).toLocaleString(),
-        widget: PlaceFieldDateTimeWidget,
-      },
-      {
-        attr: 'description',
-        label: 'description',
-        format: exact,
-        widget: PlaceFieldLongTextWidget,
-      },
-      {
-        attr: 'benefit',
-        label: 'benefit',
-        format: exact,
-        widget: PlaceFieldLongTextWidget,
-      },
-      {
-        attr: 'city_wide',
-        label: 'city_wide',
-        format: (value) => value === 'true' ? '✅' : '❌',
-        widget: PlaceFieldBooleanWidget,
-      },
-      {
-        attr: 'location_type',
-        label: 'location_type',
-        format: exact,
-        options: Shareabouts.Config.place.items.find(item => item.name === 'location_type').options,
-        widget: PlaceFieldChoiceWidget,
-      },
-      {
-        attr: 'neighborhood',
-        label: 'neighborhood',
-        format: exact,
-        options: Shareabouts.Config.place.items.find(i => i.name == 'submitter_neighborhood').options,
-        widget: PlaceFieldChoiceWidget,
-      },
-      {
-        attr: 'private_submitter_email',
-        label: 'private_submitter_email',
-        format: exact,
-      },
-      {
-        attr: 'private_submitter_language',
-        label: 'private_submitter_language',
-        format: exact,
-        options: Shareabouts.Config.place.items.find(i => i.name == 'private_submitter_language').options,
-        widget: PlaceFieldChoiceWidget,
-      },
-      {
-        attr: 'private_submitter_name_first',
-        label: 'private_submitter_name_first',
-        format: exact,
-      },
-      {
-        attr: 'private_submitter_name_last',
-        label: 'private_submitter_name_last',
-        format: exact,
-      },
-      {
-        attr: 'private_submitter_zipcode',
-        label: 'private_submitter_zipcode',
-        format: exact,
-      },
-      {
-        attr: 'submission_event_type',
-        label: 'submission_event_type',
-        format: exact,
-        options: Shareabouts.Config.place.items.find(i => i.name == 'submission_event_type').options,
-        widget: PlaceFieldChoiceWidget,
-      },
-      {
-        attr: 'submitter_neighborhood',
-        label: 'submitter_neighborhood',
-        format: exact,
-        options: Shareabouts.Config.place.items.find(i => i.name == 'submitter_neighborhood').options,
-        widget: PlaceFieldChoiceWidget,
-      },
-      {
-        attr: 'user_token',
-        label: 'user_token',
-        format: exact,
-        widget: PlaceFieldReadOnlyWidget,
-      },
-      {
-        attr: 'visible',
-        label: 'visible',
-        format: exact,
-        widget: PlaceFieldBooleanWidget,
-      },
-    ];
     const placeDetail = new PlaceDetail(document.querySelector('main'), place, fields);
 
     function onPlaceSuccess(place) {
