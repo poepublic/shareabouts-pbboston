@@ -18,8 +18,15 @@ class PlacesFilter extends Component {
     `;
   }
 
+  get filterData() {
+    return {
+      type: 'substring',
+      value: this.el.querySelector('input').value
+    };
+  }
+
   filterPredicate(place) {
-    const filterValue = this.el.querySelector('input').value;
+    const { value: filterValue } = this.filterData;
     if (!filterValue) { return true; }
 
     const attrValue = place.get(this.column.attr);
@@ -111,7 +118,7 @@ class PlacesChoiceFilter extends PlacesFilter {
     const options = this.column.options.map((option) => {
       return `
         <label>
-          <input type="checkbox" name="${this.filterName}" value="${option.value}" checked>
+          <input type="checkbox" name="${this.filterName}" value="${option.value}">
           ${option.label}
         </label>
       `;
@@ -125,6 +132,8 @@ class PlacesChoiceFilter extends PlacesFilter {
 
   filterPredicate(place) {
     const filterValues = Array.from(this.el.querySelectorAll('input:checked')).map((input) => input.value);
+    if (filterValues.length === 0) { return true; }
+
     const attrValue = place.get(this.column.attr);
     return filterValues.includes(attrValue);
   }

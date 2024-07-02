@@ -1,3 +1,4 @@
+import * as csv from 'https://cdn.jsdelivr.net/npm/csv-stringify@6.5.0/sync/+esm';
 import { Component } from "./component.js";
 import { PlacesTable } from "./places_table.js";
 import { PlacesMap } from "./places_map.js";
@@ -9,6 +10,9 @@ class PlacesDashboard extends Component {
 
     this.places = places;
     this.fields = fields;
+    this.filteredCount = this.el.querySelector('.filtered-count');
+    this.totalCount = this.el.querySelector('.total-count');
+    this.downloadButton = this.el.querySelector('button.download');
     this.table = new PlacesTable(this.el.querySelector('#places-table'), this.places, fields);
     this.map = new PlacesMap(this.el.querySelector('#places-map'), this.places);
   }
@@ -16,6 +20,7 @@ class PlacesDashboard extends Component {
   fill() {
     this.table.fill();
     this.map.fill();
+    this.initPlaceCounts();
     return this;
   }
 
@@ -58,11 +63,50 @@ class PlacesDashboard extends Component {
       const predicates = this.table.head.cells
         .filter((cell) => cell.filter)
         .map((cell) => cell.filter.filterPredicate.bind(cell.filter));
-      this.table.filterRows(predicates);
-      this.map.filterMarkers(predicates);
+      this.filterPlaces(predicates);
+    });
+
+    this.listeners.add('click', this.downloadButton, (e) => {
+      e.preventDefault();
+      this.downloadPlaces();
     });
 
     return Component.prototype.bind.call(this);
+  }
+
+  initPlaceCounts() {
+    this.filteredCount.innerHTML = this.places.models.length;
+    this.totalCount.innerHTML = this.places.models.length;
+  }
+
+  filterPlaces(predicates) {
+    this.table.filterRows(predicates);
+    this.map.filterMarkers(predicates);
+
+    const filteredPlaces = this.places.models.filter((place) => predicates.every((predicate) => predicate(place)));
+    this.filteredCount.innerHTML = filteredPlaces.length;
+    this.totalCount.innerHTML = this.places.models.length;
+  }
+
+  downloadPlaces() {
+    const header = this.fields.map((field) => field.label);
+    const data = this.places.models.map((place) => {
+      const row = [];
+      for (const field of this.fields) {
+        row.push(place.get(field.attr));
+      }
+      return row;
+    });
+
+    const output = csv.stringify([header, ...data]);
+
+    const blob = new Blob([output], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'data.csv';
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   unbind() {
