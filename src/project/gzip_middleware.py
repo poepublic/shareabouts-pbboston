@@ -76,7 +76,7 @@ class GzipMiddleware:
         headers = Headers(app_response['headers'])
         if 'content-encoding' in headers:
             # Since there already is a content encoding, apparently, we just
-            # return the respons without compression
+            # return the response without compression
             return pass_through(app_response, raw_response)
 
         # Perform the gzip

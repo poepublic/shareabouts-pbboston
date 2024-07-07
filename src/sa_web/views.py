@@ -218,7 +218,7 @@ def send_place_created_notifications(request, response):
         errors.append('Received invalid place JSON from request: %r' % (request.body,))
 
     try:
-        # The response has things like ID and cretated datetime, which may be
+        # The response has things like ID and created datetime, which may be
         # useful in the notification email.
         try: response.render()
         except: pass

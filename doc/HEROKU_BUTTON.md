@@ -117,7 +117,7 @@ by Heroku.
     $ pip install -r requirements.txt
     ```
 
-Once these steps complete sucessfully, you should be able to run the server with
+Once these steps complete successfully, you should be able to run the server with
 
     ```
     $ src/manage.py runserver

@@ -192,7 +192,7 @@ var Shareabouts = Shareabouts || {};
       if (this.isNew()) {
         realSuccessHandler = options.success || $.noop;
 
-        // Attach files after the model is succesfully saved
+        // Attach files after the model is successfully saved
         options.success = function() {
           self.saveAttachments();
           realSuccessHandler.apply(this, arguments);

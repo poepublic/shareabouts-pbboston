@@ -179,7 +179,7 @@ var Shareabouts = Shareabouts || {};
           this.appView.listView.filter({'location_type': locationType});
         }
 
-        // Show the menu item title with the coresponding style
+        // Show the menu item title with the corresponding style
         if (menuItem) {
           $filterIndicator
             .removeClass()
