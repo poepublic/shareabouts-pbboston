@@ -533,7 +533,7 @@ def csv_download(request, path):
         'ACCEPT': 'text/csv'
     }
     cookies = {'sessionid': api_session_cookie} if api_session_cookie else {}
-    return proxy_view(request, url, requests_args={
+    response = proxy_view(request, url, requests_args={
         'headers': headers,
         'cookies': cookies
     })
