@@ -389,6 +389,16 @@ if 'PACKAGE' not in SHAREABOUTS:
 
 
 ##############################################################################
+# Remote API Authentication
+# -------------------------
+
+# Load in any social auth keys and secrets from the environment
+for key in os.environ:
+    if key.startswith('SOCIAL_AUTH_') and (key.endswith('_KEY') or key.endswith('_SECRET') or key.endswith('_REDIRECT')):
+        globals()[key] = os.environ[key]
+
+
+##############################################################################
 # Locale paths
 # ------------
 # Help Django find any translation files.

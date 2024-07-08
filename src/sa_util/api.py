@@ -124,19 +124,19 @@ class ShareaboutsApi:
 
     def get_provider_client_id(self, provider):
         try:
-            return os.environ[f'SOCIAL_AUTH__{provider.upper()}__CLIENT_ID']
+            return os.environ[f'SOCIAL_AUTH_{provider.upper()}_KEY']
         except KeyError:
             raise ShareaboutsAuthProviderError(f'No client_id found for provider "{provider}"', {})
 
     def get_provider_client_secret(self, provider):
         try:
-            return os.environ[f'SOCIAL_AUTH__{provider.upper()}__CLIENT_SECRET']
+            return os.environ[f'SOCIAL_AUTH_{provider.upper()}_SECRET']
         except KeyError:
             raise ShareaboutsAuthProviderError(f'No client_secret found for provider "{provider}"', {})
 
     def get_provider_redirect_uri(self, provider):
         return os.environ.get(
-            f'SOCIAL_AUTH__{provider.upper()}__REDIRECT_URI',
+            f'SOCIAL_AUTH_{provider.upper()}_REDIRECT',
             self.request.build_absolute_uri(
                 reverse('oauth_complete', args=[provider])
             )
