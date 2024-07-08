@@ -36,8 +36,19 @@
       flex-grow: 1;
       width: 100%;
     }
-    form > button {
-      margin-top: 1rem;
+    form > button,
+    form > .button {
+      display: inline-block;
+      margin: 1rem 0;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 0.25rem;
+      padding: 0.25rem 1rem;
+      background-color: #efefef;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1rem;
+      color: black;
     }
     .hidden {
       display: none;
@@ -59,6 +70,10 @@
     <div><label><span>Password:</span> <input id="login-password" name="password" required type="password" autocomplete="current-password"></label></div>
     {% if next_url %}<input type="hidden" name="next" value="{{ next_url }}">{% endif %}
     <button type="submit">Log In</button>
+
+    <!-- Specifically for Boston SSO -->
+    <div style="text-align: center">- or -</div>
+    <a class="button" href="{% url 'oauth_begin' 'boston_sso' %}">Log in with Boston SSO</a>
   </form>
 
   {% if errors %}

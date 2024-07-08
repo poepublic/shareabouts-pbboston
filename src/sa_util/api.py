@@ -1,5 +1,6 @@
 from django.http import HttpRequest
 from django.urls import reverse
+import os
 import requests
 from urllib.parse import urlparse
 
@@ -54,6 +55,10 @@ class ShareaboutsApiError (Exception):
         self.errors = errors
 
 
+class ShareaboutsAuthProviderError (ShareaboutsApiError):
+    pass
+
+
 class ShareaboutsApi:
     def __init__(
         self,
@@ -79,6 +84,7 @@ class ShareaboutsApi:
                 raise ValueError('A request object is required to dynamically get the sessionid.')
             sessionid = get_api_sessionid(request)
 
+        self.request = request
         self.config = config
         self.dataset_root = dataset_root
         self.auth_root = make_auth_root(dataset_root)
@@ -116,12 +122,54 @@ class ShareaboutsApi:
         else:
             raise ShareaboutsApiError(res.text, res.json().get('errors'))
 
-    def provider_login_complete(self, provider, **kwargs):
-        uri = make_resource_uri('login/' + provider, root=self.auth_root)
-        res = self.session.get(uri, **kwargs)
+    def get_provider_client_id(self, provider):
+        try:
+            return os.environ[f'SOCIAL_AUTH__{provider.upper()}__CLIENT_ID']
+        except KeyError:
+            raise ShareaboutsAuthProviderError(f'No client_id found for provider "{provider}"', {})
+
+    def get_provider_client_secret(self, provider):
+        try:
+            return os.environ[f'SOCIAL_AUTH__{provider.upper()}__CLIENT_SECRET']
+        except KeyError:
+            raise ShareaboutsAuthProviderError(f'No client_secret found for provider "{provider}"', {})
+
+    def get_provider_redirect_uri(self, provider):
+        return os.environ.get(
+            f'SOCIAL_AUTH__{provider.upper()}__REDIRECT_URI',
+            self.request.build_absolute_uri(
+                reverse('oauth_complete', args=[provider])
+            )
+        )
+
+    def oauth_begin(self, provider, **kwargs) -> str:
+        """
+        Begin the OAuth process for the given provider. Returns the URL to
+        redirect to. May raise a ShareaboutsApiError if the request fails, or
+        ShareaboutsAuthProviderError if the provider is not configured.
+        """
+        uri = make_resource_uri(f'login/{provider}/', root=self.auth_root)
+        params = {
+            'client_id': self.get_provider_client_id(provider),
+            'client_secret': self.get_provider_client_secret(provider),
+            'redirect_uri': self.get_provider_redirect_uri(provider),
+        }
+
+        res = self.session.get(uri, params=params, allow_redirects=False, **kwargs)
+        self.update_sessionid()
+
+        if res.status_code == 302:
+            return res.headers['Location']
+        else:
+            raise ShareaboutsApiError(res.text, {})
+
+    def oauth_complete(self, provider, params, **kwargs):
+        uri = make_resource_uri(f'complete/{provider}/', root=self.auth_root)
+        res = self.session.get(uri, params=params, **kwargs)
         self.update_sessionid()
 
         if res.status_code == 200:
+            self._cache_user(res.json())
             return True
         else:
             raise ShareaboutsApiError(res.text, res.json().get('errors'))
