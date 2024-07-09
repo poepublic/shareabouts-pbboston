@@ -89,12 +89,13 @@ class PlacesDashboard extends Component {
   }
 
   downloadPlaces() {
-    const header = this.fields.map((field) => field.label);
+    const header = [...this.fields.map((field) => field.label), 'longitude', 'latitude'];
     const data = this.places.models.map((place) => {
       const row = [];
       for (const field of this.fields) {
         row.push(place.get(field.attr));
       }
+      row.push(...place.get('geometry').coordinates);
       return row;
     });
 
@@ -104,7 +105,7 @@ class PlacesDashboard extends Component {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'data.csv';
+    a.download = `data-${(new Date()).toISOString().replace(/:/g, '').replace(/-/g, '').slice(0, 15)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   }
