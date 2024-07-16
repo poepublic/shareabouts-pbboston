@@ -115,7 +115,7 @@ class PlacesTable extends Component {
       const placeId = place.get('id');
 
       if (this.rows[placeId]) {
-        this.rows[placeId].redraw();
+        this.rows[placeId].render();
       } else {
         this.rows[placeId] = new PlacesTableBodyRow(document.createElement('tr'), place, this.columns);
         this.bodyEl.appendChild(this.rows[placeId].render().el);
