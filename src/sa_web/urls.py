@@ -28,7 +28,13 @@ def users_complete(request):
     )
 
     from django.http import HttpResponse
-    return HttpResponse('Sent the email.')
+    from sa_util.config import get_shareabouts_config
+    from sa_util.api import ShareaboutsApi
+
+    config = get_shareabouts_config()
+    api = ShareaboutsApi(config, request)
+
+    return api.respond_with_sessionid(HttpResponse('Sent the email.'))
 
 
 urlpatterns = [
