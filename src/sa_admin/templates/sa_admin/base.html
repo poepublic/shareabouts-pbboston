@@ -28,6 +28,13 @@
           <li><a href="{% url 'sa_admin:admin-logout' %}">Logout</a></li>
         </ul>
       </nav> {% endcomment %}
+      <p>You are logged in as {{ api.current_user.name }} ({{ api.current_user.username }}).</p>
+      <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="hidden" name="shadowmethod" value="DELETE">
+        <input type="hidden" name="next" value="{% url 'admin_home' %}">
+        <button type="submit">Logout</button>
+      </form>
     </header>
 
     <main>

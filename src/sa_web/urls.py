@@ -34,7 +34,7 @@ def users_complete(request):
     config = get_shareabouts_config()
     api = ShareaboutsApi(config, request)
 
-    return api.respond_with_sessionid(HttpResponse('Sent the email.'))
+    return api.respond_with_session_cookie(HttpResponse('Sent the email.'))
 
 
 urlpatterns = [
@@ -49,7 +49,7 @@ urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
 
     url(r'^api/(.*)$', views.api, name='api_proxy'),
-    url(r'^users/complete/', users_complete, name='users_complete'),
+    # url(r'^users/complete/', users_complete, name='users_complete'),
     url(r'^users/(.*)$', views.users, name='auth_proxy'),
     url(r'^download/(.*).csv$', views.csv_download, name='csv_proxy'),
     url(r'^place/(?P<place_id>[^/]+)$', views.index, name='place'),

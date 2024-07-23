@@ -175,7 +175,6 @@ def index(request, place_id=None):
                'DATASET_ROOT': api.dataset_root,
 
                'api_user': api.current_user(default=None),
-               'api_sessionid': api.sessionid,
                'uses_mapbox_layers': uses_mapbox_layers,
 
                 # Geo-data for Boston
@@ -185,7 +184,7 @@ def index(request, place_id=None):
                 'site_root': settings.SITE_ROOT,
                }
 
-    return render(request, 'index.html', context)
+    return api.respond_with_session_cookie(render(request, 'index.html', context))
 
 
 def place_was_created(request, path, response):
