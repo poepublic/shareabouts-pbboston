@@ -16,7 +16,7 @@ class PlacesMap extends Component {
 
   fill() {
     if (this.map === null) {
-      this.map = L.map(this.el).setView([0, 0], 1);
+      this.map = L.map(this.el, {zoomSnap: 0}).setView([0, 0], 1);
       L.mapboxGL({
         accessToken: 'pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNseGpqbzk5ODAwZTMyam9heGp0amYxY3cifQ.z8HXEZq5rvWgg97PzPlBKA',
         style: 'mapbox://styles/mapbox/dark-v11',
@@ -41,7 +41,7 @@ class PlacesMap extends Component {
     }
 
     if (this.places.models.length > 0) {
-      this.map.fitBounds(this.placesLayer.getBounds());
+      this.map.fitBounds(this.placesLayer.getBounds(), {padding: [50, 50]});
     }
 
     return this;
