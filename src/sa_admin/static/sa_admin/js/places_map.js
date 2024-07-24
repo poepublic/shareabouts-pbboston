@@ -64,6 +64,9 @@ class PlacesMap extends Component {
         this.unhighlightMarker(placeId, marker);
         this.dispatcher.dispatchEvent(new CustomEvent('place:mouseout', { detail: { placeId } }));
       });
+      this.listeners.add('click', marker, () => {
+        this.dispatcher.dispatchEvent(new CustomEvent('place:click', { detail: { placeId } }));
+      });
     });
     return this;
   }

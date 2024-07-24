@@ -44,6 +44,11 @@ class PlacesDashboard extends Component {
       this.unhighlightPlace(placeId, true, false);
     });
 
+    this.listeners.add('place:click', this.map.dispatcher, (e) => {
+      const placeId = e.detail.placeId;
+      this.openPlaceDetail(placeId);
+    })
+
     this.listeners.add('place:mouseover', this.table.dispatcher, (e) => {
       const placeId = e.detail.placeId;
       this.highlightPlace(placeId, false, true);
