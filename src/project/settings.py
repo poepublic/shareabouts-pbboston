@@ -394,7 +394,7 @@ if 'PACKAGE' not in SHAREABOUTS:
 
 # Load in any social auth keys and secrets from the environment
 for key in os.environ:
-    if key.startswith('SOCIAL_AUTH_') and (key.endswith('_KEY') or key.endswith('_SECRET') or key.endswith('_REDIRECT')):
+    if key.startswith('SOCIAL_AUTH_') and key.endswith(('_KEY', '_REDIRECT', '_SECRET')):
         globals()[key] = os.environ[key]
 
 
