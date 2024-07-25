@@ -213,7 +213,7 @@ var Shareabouts = Shareabouts || {};
         placeId = actionModel.get('target').id;
       }
 
-      // If a place with the given ID exists, call sucess immediately.
+      // If a place with the given ID exists, call success immediately.
       placeModel = this.placeCollection.get(placeId);
       if (placeModel && options.success) {
         options.success(placeModel, null, options);

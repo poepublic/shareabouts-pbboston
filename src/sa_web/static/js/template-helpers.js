@@ -61,7 +61,7 @@ var Shareabouts = Shareabouts || {};
         placeTypeConfig.type = 'hidden';
         placeTypeConfig.prompt = null;
 
-        // Use defult or the one option
+        // Use default or the one option
         if (defaultPlaceTypeName) {
           valueAttr = {key: 'value', value: defaultPlaceTypeName};
         } else {

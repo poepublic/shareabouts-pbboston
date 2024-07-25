@@ -76,7 +76,7 @@ var Shareabouts = Shareabouts || {};
              !evt.altKey && !evt.ctrlKey && !evt.metaKey && !evt.shiftKey) {
           evt.preventDefault();
 
-          // Remove leading slashes and hash bangs (backward compatablility)
+          // Remove leading slashes and hash bangs (backward compatibility)
           url = href.replace(/^\//, '').replace('#!/', '');
 
           // # Instruct Backbone to trigger routing events
@@ -418,13 +418,13 @@ var Shareabouts = Shareabouts || {};
       var self = this,
           ll;
 
-      // If the map locatin is part of the url already
+      // If the map location is part of the url already
       if (zoom && lat && lng) {
         ll = L.latLng(parseFloat(lat), parseFloat(lng));
 
         // Why defer? Good question. There is a mysterious race condition in
         // some cases where the view fails to set and the user is left in map
-        // limbo. This condition is seemingly eliminated by defering the
+        // limbo. This condition is seemingly eliminated by deferring the
         // execution of this step.
         _.defer(function() {
           self.mapView.map.setView(ll, parseInt(zoom, 10));

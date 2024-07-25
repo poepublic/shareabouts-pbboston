@@ -139,7 +139,7 @@ The geocoding configuration has a few other options:
 
 ### Place Types
 
-Shareabouts can handle multiple types of Place. To set up the typess
+Shareabouts can handle multiple types of Place. To set up the types
 you're interested in, edit config.yml and add items to the `place_types`
 section. Each Place value should match a location_type.
 
@@ -424,7 +424,7 @@ For more information on language codes, see the [Django documentation](https://d
 Shareabouts allows you to create multiple static pages, linked from
 the top navigation bar. To create a page:
 
-* To add a page to the navigaton bar, first add a *title*, and *slug*
+* To add a page to the navigation bar, first add a *title*, and *slug*
   to the "pages" array in config.yml.  For example:
 
         - title: About

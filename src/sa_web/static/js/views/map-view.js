@@ -138,7 +138,7 @@ var Shareabouts = Shareabouts || {};
         switch (evt.code) {
           // Unknown
           case 0:
-            message = 'An unknown error occured while locating your position. Please try again.';
+            message = 'An unknown error occurred while locating your position. Please try again.';
             break;
           // Permission Denied
           case 1:
