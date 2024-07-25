@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 02:11-0400\n"
+"POT-Creation-Date: 2024-07-25 19:09-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: Arabic (https://app.transifex.com/mjumbewu/teams/189006/ar/)\n"
@@ -461,6 +461,11 @@ msgstr "أفكار التصفية"
 msgid "All"
 msgstr "الجميع"
 
+#: src/flavors/cycle1/jstemplates/important-updates.html:1
+msgid ""
+"The deadline to submit ideas has been extended to Thursday, August 15th."
+msgstr ""
+
 #: src/flavors/cycle1/jstemplates/pages/overview.html:1
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
 msgstr ""
@@ -550,7 +555,9 @@ msgid "January 2025"
 msgstr "يناير 2025"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:17
-msgid "July 1 – July 31, 2024"
+#, fuzzy
+#| msgid "July 1 – July 31, 2024"
+msgid "July 1 – August 15, 2024"
 msgstr "1 يوليو – 31 يوليو 2024"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:18
