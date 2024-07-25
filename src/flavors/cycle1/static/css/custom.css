@@ -131,6 +131,15 @@ a:hover {
   }
 }
 
+.important-update,
+.page .important-update {
+  border: 2px dashed var(--freedom-trail-red);
+  padding: 0.5rem calc(0.5rem - 2px);
+  margin: 0.5rem -0.5rem;
+  background-color: var(--supporting-gray-4);
+  font-weight: bold;
+}
+
 /* .btn-primary, .btn-primary:visited, .btn-primary:link {
   font-size: 1rem;
 } */
