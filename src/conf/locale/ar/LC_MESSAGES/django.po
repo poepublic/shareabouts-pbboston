@@ -2,25 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-25 20:05-0400\n"
+"POT-Creation-Date: 2024-07-25 19:09-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: Arabic (https://app.transifex.com/mjumbewu/teams/189006/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: src/flavors/cycle1/_config.translations.py:6
 msgid "City of Boston Participatory Budgeting"
@@ -52,11 +51,11 @@ msgstr "الفنون والثقافة"
 
 #: src/flavors/cycle1/_config.translations.py:11
 msgid ""
-"Project ideas focused on arts and cultural programming that promote cultural "
-"spaces in the City."
+"Project ideas focused on arts and cultural programming that promote cultural"
+" spaces in the City."
 msgstr ""
-"تركز أفكار المشاريع على البرامج الفنية والثقافية التي تعزز المساحات الثقافية "
-"في المدينة."
+"تركز أفكار المشاريع على البرامج الفنية والثقافية التي تعزز المساحات الثقافية"
+" في المدينة."
 
 #: src/flavors/cycle1/_config.translations.py:12
 #: src/flavors/cycle1/_config.translations.py:63
@@ -66,13 +65,13 @@ msgstr "موارد المجتمع"
 
 #: src/flavors/cycle1/_config.translations.py:13
 msgid ""
-"Project ideas that provide assistance or services to residents in need, such "
-"as programs at community centers, financial or digital literacy, English as "
-"a second language, or GED classes."
+"Project ideas that provide assistance or services to residents in need, such"
+" as programs at community centers, financial or digital literacy, English as"
+" a second language, or GED classes."
 msgstr ""
-"أفكار المشاريع التي تقدم المساعدة أو الخدمات للمقيمين المحتاجين، مثل البرامج "
-"في المراكز المجتمعية، أو محو الأمية المالية أو الرقمية، أو اللغة الإنجليزية "
-"كلغة ثانية، أو دروس GED."
+"أفكار المشاريع التي تقدم المساعدة أو الخدمات للمقيمين المحتاجين، مثل البرامج"
+" في المراكز المجتمعية، أو محو الأمية المالية أو الرقمية، أو اللغة الإنجليزية"
+" كلغة ثانية، أو دروس GED."
 
 #: src/flavors/cycle1/_config.translations.py:14
 #: src/flavors/cycle1/_config.translations.py:64
@@ -87,8 +86,8 @@ msgid ""
 "entrepreneurs."
 msgstr ""
 "أفكار المشاريع التي تعمل على تحسين الوصول إلى وظائف جيدة، والتدريب على "
-"المهارات، والمسارات المهنية، وغيرها من الموارد للعمال وأصحاب الأعمال الصغيرة "
-"ورجال الأعمال."
+"المهارات، والمسارات المهنية، وغيرها من الموارد للعمال وأصحاب الأعمال الصغيرة"
+" ورجال الأعمال."
 
 #: src/flavors/cycle1/_config.translations.py:16
 #: src/flavors/cycle1/_config.translations.py:65
@@ -464,7 +463,7 @@ msgstr "الجميع"
 #: src/flavors/cycle1/jstemplates/important-updates.html:1
 msgid ""
 "The deadline to submit ideas has been extended to Thursday, August 15th."
-msgstr ""
+msgstr "تم تمديد الموعد النهائي لتقديم الأفكار إلى الخميس 15 أغسطس."
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:1
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
@@ -474,13 +473,11 @@ msgstr ""
 #: src/flavors/cycle1/jstemplates/pages/overview.html:2
 msgid ""
 "By engaging in\n"
-"Participatory Budgeting, Bostonians of all ages and backgrounds can help "
-"inform\n"
+"Participatory Budgeting, Bostonians of all ages and backgrounds can help inform\n"
 "priorities and future investments for the City’s larger budget process."
 msgstr ""
 "من خلال الانخراط في\n"
-" الموازنة التشاركية، يمكن أن يساعد سكان بوسطن من جميع الأعمار والخلفيات في "
-"تقديم المعلومات\n"
+" الموازنة التشاركية، يمكن أن يساعد سكان بوسطن من جميع الأعمار والخلفيات في تقديم المعلومات\n"
 " الأولويات والاستثمارات المستقبلية لعملية الميزانية الأكبر للمدينة."
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:5
@@ -497,19 +494,15 @@ msgstr "فبراير 2025 وما بعده"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:8
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
-#, fuzzy
-#| msgid ""
-#| "For more information on Participatory Budgeting, please visit <a "
-#| "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
-#| "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgid ""
 "For more information on Participatory Budgeting, please visit <a "
 "href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
 "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgstr ""
-"لمزيد من المعلومات حول الموازنة التشاركية، يرجى زيارة <a href=\"http://"
-"boston.gov/participate\">http://boston.gov/participate</a> أو مراسلتنا عبر "
-"البريد الإلكتروني على <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+"لمزيد من المعلومات حول الموازنة التشاركية، يرجى زيارة <a "
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
+"أو مراسلتنا عبر البريد الإلكتروني على <a "
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:9
 msgid "Fund and Implement Project Proposals"
@@ -534,8 +527,8 @@ msgstr "حملة جمع الأفكار: أرسل أفكارك!"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:14
 msgid ""
-"Ideas may include programs and services, as well as physical infrastructure, "
-"technological improvements, and community enhancements."
+"Ideas may include programs and services, as well as physical infrastructure,"
+" technological improvements, and community enhancements."
 msgstr ""
 "وقد تشمل الأفكار البرامج والخدمات، فضلا عن البنية التحتية المادية، "
 "والتحسينات التكنولوجية، والتحسينات المجتمعية."
@@ -555,10 +548,8 @@ msgid "January 2025"
 msgstr "يناير 2025"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:17
-#, fuzzy
-#| msgid "July 1 – July 31, 2024"
 msgid "July 1 – August 15, 2024"
-msgstr "1 يوليو – 31 يوليو 2024"
+msgstr "1 يوليو – 15 أغسطس 2024"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:18
 msgid "October – November 2024"
@@ -574,10 +565,8 @@ msgstr ""
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:20
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community "
-"members\n"
-"directly decide how to spend part of a public budget. The goal of "
-"Participatory\n"
+"Participatory Budgeting (PB) is a democratic process where community members\n"
+"directly decide how to spend part of a public budget. The goal of Participatory\n"
 "Budgeting in Boston is to empower residents to elevate community centered\n"
 "project ideas with an emphasis on social and racial equity."
 msgstr ""
@@ -593,8 +582,8 @@ msgid ""
 "rents from a private landlord; Helping a religious institution repair its "
 "sanctuary; Increase the frequency of MBTA buses or trains."
 msgstr ""
-"دفع راتب موظف عام لتقديم الخدمات؛ ترميم مبنى مملوك للقطاع الخاص؛ مساعدة إحدى "
-"المؤسسات على تجديد مساحة تستأجرها من مالك خاص؛ مساعدة مؤسسة دينية في إصلاح "
+"دفع راتب موظف عام لتقديم الخدمات؛ ترميم مبنى مملوك للقطاع الخاص؛ مساعدة إحدى"
+" المؤسسات على تجديد مساحة تستأجرها من مالك خاص؛ مساعدة مؤسسة دينية في إصلاح "
 "حرمها؛ زيادة وتيرة حافلات أو قطارات MBTA."
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:25
@@ -613,9 +602,9 @@ msgstr ""
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:26
 msgid ""
-"Project ideas must be feasible to implement, and be consistent with existing "
-"City policies, laws, regulations, and the Participatory Budgeting Ordinance; "
-"and"
+"Project ideas must be feasible to implement, and be consistent with existing"
+" City policies, laws, regulations, and the Participatory Budgeting "
+"Ordinance; and"
 msgstr ""
 "يجب أن تكون أفكار المشروع قابلة للتنفيذ، وأن تكون متسقة مع سياسات المدينة "
 "وقوانينها ولوائحها الحالية ومرسوم الموازنة التشاركية؛ و"
@@ -711,12 +700,9 @@ msgstr "تم بناؤه بواسطة %(PoePublic)s"
 
 #: src/flavors/cycle1/templates/prelaunch.html:112
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community "
-"members\n"
-"    directly decide how to spend part of a public budget. The goal of "
-"Participatory\n"
-"    Budgeting in Boston is to empower residents to elevate community "
-"centered\n"
+"Participatory Budgeting (PB) is a democratic process where community members\n"
+"    directly decide how to spend part of a public budget. The goal of Participatory\n"
+"    Budgeting in Boston is to empower residents to elevate community centered\n"
 "    project ideas with an emphasis on social and racial equity."
 msgstr ""
 "الموازنة التشاركية (PB) هي عملية ديمقراطية يشارك فيها أفراد المجتمع\n"
@@ -745,8 +731,8 @@ msgstr "مشغل بواسطة"
 
 #: src/pbboston/jstemplates/activity-list-item.html:1
 msgid ""
-"<strong>{{ submitter_name }}</strong> submitted a city-wide "
-"{{ place_type_label location_type }} idea"
+"<strong>{{ submitter_name }}</strong> submitted a city-wide {{ "
+"place_type_label location_type }} idea"
 msgstr ""
 "قدمت <strong>{{ submitter_name }}</strong> فكرة {{ place_type_label "
 "location_type }} على مستوى المدينة"
@@ -754,22 +740,22 @@ msgstr ""
 #: src/pbboston/jstemplates/activity-list-item.html:2
 msgid ""
 "<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location }}</"
-"span>"
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
 msgstr ""
 "<strong>{{ submitter_name }}</strong> قدم فكرة {{ place_type_label "
-"location_type }} بالقرب من <span class=\"place-location\">{{ location }}</"
-"span>"
+"location_type }} بالقرب من <span class=\"place-location\">{{ location "
+"}}</span>"
 
 #: src/pbboston/jstemplates/activity-list-item.html:3
 msgid ""
 "<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location }}</"
-"span>"
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
 msgstr ""
 "<strong>{{ submitter_name }}</strong> قدم فكرة {{ place_type_label "
-"location_type }} بالقرب من <span class=\"place-location\">{{ location }}</"
-"span>"
+"location_type }} بالقرب من <span class=\"place-location\">{{ location "
+"}}</span>"
 
 #: src/pbboston/jstemplates/form-field-label.html:1
 msgid "optional"
@@ -791,11 +777,13 @@ msgstr ""
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:1
 msgid ""
-"<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">Sign up</a> to stay informed about Participatory "
 "Budgeting in Boston!"
 msgstr ""
-"<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">قم بالتسجيل</a> لتبقى على اطلاع حول الموازنة "
 "التشاركية في بوسطن!"
 
@@ -870,8 +858,8 @@ msgstr "عذرًا، متصفحك لا يدعم تحميل الملفات."
 
 #: src/sa_web/jstemplates/form-field-widget.html:1
 msgid ""
-"Hover over a category to see a description of the types of projects that fit "
-"within that category."
+"Hover over a category to see a description of the types of projects that fit"
+" within that category."
 msgstr ""
 "قم بالتمرير فوق إحدى الفئات لرؤية وصف لأنواع المشاريع التي تناسب تلك الفئة."
 
@@ -896,8 +884,7 @@ msgstr "حول {{ pretty_created_datetime }}"
 #: src/sa_web/jstemplates/place-moderation-bar.html:1
 msgid ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>only visible to "
-"moderators</strong>."
+"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
 msgstr ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
 " هذا {{ place_config.response_name }} <strong>مرئي للمشرفين فقط</strong> ."
@@ -905,8 +892,7 @@ msgstr ""
 #: src/sa_web/jstemplates/place-moderation-bar.html:3
 msgid ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>visible to everyone</"
-"strong>."
+"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
 msgstr ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
 " هذا {{ place_config.response_name }} <strong>مرئي للجميع</strong> ."
@@ -938,18 +924,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        %(config.app.name)s is great but it needs something called "
-"JavaScript to work\n"
+"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
 "        properly. But fear not, it's really easy to turn on. Click\n"
-"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> "
-"for simple instructions!\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
 "        "
 msgstr ""
 "\n"
 "%(config.app.name)s رائع ولكنه يحتاج إلى شيء يسمى JavaScript حتى يعمل\n"
 " على وجه صحيح. لكن لا تخف، فمن السهل حقًا تشغيله. انقر\n"
-" <a href=\"http://enable-javascript.com/\" target=\"_blank\">هنا</a> للحصول "
-"على تعليمات بسيطة!\n"
+" <a href=\"http://enable-javascript.com/\" target=\"_blank\">هنا</a> للحصول على تعليمات بسيطة!\n"
 "        "
 
 #: src/sa_web/templates/base.html:107
