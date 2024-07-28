@@ -25,12 +25,13 @@ var Shareabouts = Shareabouts || {};
       this.initLayer();
     },
     initLayer: function() {
-      var geom, context;
+      var geom, context, locationType;
 
       // Handle if an existing place type does not match the list of available
       // place types.
-      this.placeType = this.options.placeTypes[this.model.get('location_type')];
-      if (!this.placeType) {
+      locationType = this.model.get('location_type');
+      this.placeType = this.options.placeTypes[locationType];
+      if (locationType && !this.placeType) {
         console.warn('Place type', this.model.get('location_type'),
           'is not configured so it will not appear on the map.');
         return;

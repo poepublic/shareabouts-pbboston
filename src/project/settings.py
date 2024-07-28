@@ -41,7 +41,7 @@ REST_FRAMEWORK = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/New_York'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -133,10 +133,11 @@ TEMPLATES = [
 
 MIDDLEWARE = (
     'sa_web.middleware.CacheRequestBody',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
@@ -173,10 +174,15 @@ INSTALLED_APPS = (
     'jstemplate',
     'compressor',
     'django_extensions',
+    'corsheaders',
+
+    # Instance-specific app
+    'pbboston',
 
     # Project apps
     'sa_web',
     'sa_login',
+    'sa_admin',
     'proxy',
 )
 
@@ -253,6 +259,13 @@ if 'REDIS_URL' in env:
 
     # Django sessions
     SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
+if 'SITE_ROOT' in env:
+    SITE_ROOT = env.get('SITE_ROOT')
+    CORS_ALLOWED_ORIGINS = [
+        SITE_ROOT.rstrip('/'),
+        SITE_ROOT.rstrip('/').replace('-', '--').replace('.', '-') + '.translate.goog',
+    ]
 
 SHAREABOUTS = {}
 if 'SHAREABOUTS_FLAVOR' in env:
@@ -376,6 +389,16 @@ if 'PACKAGE' not in SHAREABOUTS:
 
 
 ##############################################################################
+# Remote API Authentication
+# -------------------------
+
+# Load in any social auth keys and secrets from the environment
+for key in os.environ:
+    if key.startswith('SOCIAL_AUTH_') and (key.endswith('_KEY') or key.endswith('_SECRET') or key.endswith('_REDIRECT')):
+        globals()[key] = os.environ[key]
+
+
+##############################################################################
 # Locale paths
 # ------------
 # Help Django find any translation files.
@@ -411,6 +434,7 @@ if 'DATASET_ROOT' in SHAREABOUTS and SHAREABOUTS['DATASET_ROOT'].startswith('/')
         'sa_api_v2.apikey',
         'sa_api_v2.cors',
         'remote_client_user',
+        'mapbox_proxy',
     )
 
 
