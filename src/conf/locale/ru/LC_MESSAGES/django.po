@@ -506,7 +506,7 @@ msgstr ""
 " Бостон.</strong> Для получения дополнительной информации о бюджетировании участия посетите сайт\n"
 " <a href=\"https://boston.gov/participate\">Boston.gov/participate</a> или свяжитесь с нами\n"
 " Офис партисипаторного бюджетирования в <a\n"
-" href=&quot;mailto:pb@boston.gov&quot;&gt;pb@boston.gov"
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:12
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
