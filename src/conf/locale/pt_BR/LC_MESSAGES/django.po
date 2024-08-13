@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-25 20:05-0400\n"
+"POT-Creation-Date: 2024-08-13 06:40-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/mjumbewu/"
@@ -201,7 +201,7 @@ msgid "ideas"
 msgstr "Ideias"
 
 #: src/flavors/cycle1/_config.translations.py:32
-#: src/flavors/cycle1/templates/index.html:56
+#: src/flavors/cycle1/templates/index.html:57
 msgid "Suggest an Idea"
 msgstr "Sugira uma ideia"
 
@@ -477,74 +477,63 @@ msgid ""
 msgstr ""
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:1
-msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
-msgstr ""
-"TODOS os residentes da cidade de Boston, independentemente da idade, podem "
-"enviar ideias!"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:2
 msgid ""
-"By engaging in\n"
-"Participatory Budgeting, Bostonians of all ages and backgrounds can help "
-"inform\n"
-"priorities and future investments for the City’s larger budget process."
+"<strong>Ideas in Action</strong> is the City's new Participatory\n"
+"Budgeting initiative, where Bostonians can decide how to spend a part of "
+"the\n"
+"City’s budget. The City of Boston launched the first cycle of Participatory\n"
+"Budgeting and collected ideas from residents between July 1st to August 15,\n"
+"2024. Boston residents were asked about how to spend $2 million to benefit\n"
+"their community. On the map, you can find all the submitted ideas."
 msgstr ""
-"Ao se envolver\n"
-" Orçamento Participativo, os moradores de Boston de todas as idades e "
-"origens podem ajudar a informar\n"
-" prioridades e investimentos futuros para o processo orçamentário mais amplo "
-"da cidade."
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:5
-msgid "Examples of Eligible Ideas"
-msgstr "Exemplos de ideias elegíveis"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:6
-msgid "Examples of Ineligible Ideas"
-msgstr "Exemplos de ideias inelegíveis"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:7
-msgid "February 2025 and Onward"
-msgstr "Fevereiro de 2025 em diante"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:8
-#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
 #, fuzzy
 #| msgid ""
 #| "For more information on Participatory Budgeting, please visit <a "
 #| "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
 #| "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgid ""
-"For more information on Participatory Budgeting, please visit <a "
-"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
-"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+"<strong>Sign up to stay informed about Participatory Budgeting in\n"
+"Boston.</strong> For more information on Participatory Budgeting, please "
+"visit\n"
+"<a href=\"https://boston.gov/participate\">Boston.gov/participate</a> or "
+"contact\n"
+"the Office of Participatory Budgeting at <a\n"
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgstr ""
 "Para obter mais informações sobre Orçamento Participativo, visite <a "
 "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> ou "
 "envie um email para <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:9
-msgid "Fund and Implement Project Proposals"
-msgstr "Financiar e implementar propostas de projetos"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:10
-msgid "Get started!"
-msgstr "Iniciar!"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:11
-#: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
-msgid "How to Stay Involved?"
-msgstr "Como permanecer envolvido?"
-
 #: src/flavors/cycle1/jstemplates/pages/overview.html:12
-msgid "How to submit a project idea..."
-msgstr "Como enviar uma ideia de projeto..."
+msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
+msgstr ""
+"TODOS os residentes da cidade de Boston, independentemente da idade, podem "
+"enviar ideias!"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:13
-msgid "Idea Collection Campaign: Submit Your Ideas!"
-msgstr "Campanha de coleta de ideias: envie suas ideias!"
+msgid "Examples of Eligible Ideas"
+msgstr "Exemplos de ideias elegíveis"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:14
+msgid "Examples of Ineligible Ideas"
+msgstr "Exemplos de ideias inelegíveis"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+msgid ""
+"From August through September 2024, the City will review all submitted\n"
+"project ideas during the Idea Collection phase. The Office of Participatory\n"
+"Budgeting will host public workshops in the fall to develop these ideas "
+"into\n"
+"proposals for the PB ballot for voting in January."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:19
+msgid "Idea Submission Criteria"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:20
 msgid ""
 "Ideas may include programs and services, as well as physical infrastructure, "
 "technological improvements, and community enhancements."
@@ -552,7 +541,7 @@ msgstr ""
 "As ideias podem incluir programas e serviços, bem como infra-estruturas "
 "físicas, melhorias tecnológicas e melhorias comunitárias."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+#: src/flavors/cycle1/jstemplates/pages/overview.html:21
 msgid ""
 "Infrastructure projects on private, state, or federal property are not "
 "eligible, such as projects concerning the Department of Conservation & "
@@ -562,21 +551,7 @@ msgstr ""
 "não são elegíveis, como projetos relativos ao Departamento de Conservação e "
 "Recreação (DCR) ou à Autoridade de Trânsito da Baía de Massachusetts (MBTA). "
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:16
-msgid "January 2025"
-msgstr "Janeiro de 2025"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:17
-#, fuzzy
-#| msgid "July 1 – July 31, 2024"
-msgid "July 1 – August 15, 2024"
-msgstr "1º de julho – 31 de julho de 2024"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:18
-msgid "October – November 2024"
-msgstr "Outubro – novembro de 2024"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:19
+#: src/flavors/cycle1/jstemplates/pages/overview.html:22
 msgid ""
 "Of note: Project ideas containing inappropriate, offensive, or derogatory "
 "language will be removed and not considered from the PB process."
@@ -585,14 +560,26 @@ msgstr ""
 "ofensiva ou depreciativa serão removidas e não serão consideradas no "
 "processo do OP."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:20
+#: src/flavors/cycle1/jstemplates/pages/overview.html:23
+#, fuzzy
+#| msgid ""
+#| "Participatory Budgeting (PB) is a democratic process where community "
+#| "members\n"
+#| "directly decide how to spend part of a public budget. The goal of "
+#| "Participatory\n"
+#| "Budgeting in Boston is to empower residents to elevate community "
+#| "centered\n"
+#| "project ideas with an emphasis on social and racial equity."
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community "
-"members\n"
-"directly decide how to spend part of a public budget. The goal of "
-"Participatory\n"
-"Budgeting in Boston is to empower residents to elevate community centered\n"
-"project ideas with an emphasis on social and racial equity."
+"Participatory Budgeting (PB) is a democratic process where community\n"
+"members directly decide how to spend part of a public budget. The goal of\n"
+"Participatory Budgeting in Boston is to empower residents to elevate "
+"community\n"
+"centered project ideas with an emphasis on social and racial equity. By\n"
+"engaging in Participatory Budgeting, Bostonians of all ages and backgrounds "
+"can\n"
+"help inform priorities and future investments for the City’s larger budget\n"
+"process."
 msgstr ""
 "O Orçamento Participativo (OP) é um processo democrático onde os membros da "
 "comunidade\n"
@@ -601,7 +588,7 @@ msgstr ""
 " Orçamentar em Boston visa capacitar os residentes para elevar\n"
 " ideias de projetos com ênfase na equidade social e racial."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:24
+#: src/flavors/cycle1/jstemplates/pages/overview.html:30
 msgid ""
 "Paying for the salary of a public employee to provide services; Repairing a "
 "privately owned building; Helping an organization renovate a space that it "
@@ -613,7 +600,7 @@ msgstr ""
 "espaço que aluga a um proprietário privado; Ajudar uma instituição religiosa "
 "a reparar o seu santuário; Aumentar a frequência dos ônibus ou trens da MBTA."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:25
+#: src/flavors/cycle1/jstemplates/pages/overview.html:31
 msgid ""
 "Programming to strengthen mental health among Boston youth; Expand the "
 "City’s Wicked Free WiFi network to reach more low-income areas; Digital "
@@ -627,7 +614,7 @@ msgstr ""
 "e promoverem ligações sociais; Melhorar os espaços públicos através de "
 "projetos de infraestrutura (arte pública, árvores nas ruas, bancos, etc.)"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:26
+#: src/flavors/cycle1/jstemplates/pages/overview.html:32
 msgid ""
 "Project ideas must be feasible to implement, and be consistent with existing "
 "City policies, laws, regulations, and the Participatory Budgeting Ordinance; "
@@ -637,7 +624,7 @@ msgstr ""
 "com as políticas, leis, regulamentos existentes da Cidade e com a Portaria "
 "do Orçamento Participativo; e"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:27
+#: src/flavors/cycle1/jstemplates/pages/overview.html:33
 msgid ""
 "Project ideas related to programs and services in non-City owned facilities "
 "are eligible."
@@ -645,7 +632,7 @@ msgstr ""
 "São elegíveis ideias de projectos relacionados com programas e serviços em "
 "instalações que não sejam propriedade da cidade."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:28
+#: src/flavors/cycle1/jstemplates/pages/overview.html:34
 msgid ""
 "Project proposals may include programs and services as well as physical "
 "infrastructure"
@@ -653,7 +640,7 @@ msgstr ""
 "As propostas de projetos podem incluir programas e serviços, bem como "
 "infraestrutura física"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:29
+#: src/flavors/cycle1/jstemplates/pages/overview.html:35
 msgid ""
 "Projects are limited to a one-time expense, and do not create new permanent "
 "positions;"
@@ -661,7 +648,7 @@ msgstr ""
 "Os projetos estão limitados a uma despesa única e não criam novos cargos "
 "permanentes;"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:30
+#: src/flavors/cycle1/jstemplates/pages/overview.html:36
 msgid ""
 "Projects must be implemented or managed by the appropriate City Department "
 "or agency receiving direct budget appropriations."
@@ -669,63 +656,37 @@ msgstr ""
 "Os projetos devem ser implementados ou gerenciados pelo Departamento "
 "Municipal apropriado ou agência que receba dotações orçamentárias diretas."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:31
-msgid "Public Voting Period"
-msgstr "Período de votação pública"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:32
-msgid "Select \"Subtitles/CC\" from the gear"
-msgstr "Selecione &quot;Legendas/CC&quot; na engrenagem"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:33
-msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
-msgstr ""
-"Inscreva-se para se manter informado sobre o Orçamento Participativo em "
-"Boston!"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:34
-msgid "Visioning Forums & Online Engagement"
-msgstr "Visão de fóruns e envolvimento online"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:35
+#: src/flavors/cycle1/jstemplates/pages/overview.html:37
 msgid "Welcome to Participatory Budgeting in Boston!"
 msgstr "Bem-vindo ao Orçamento Participativo em Boston!"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:36
+#: src/flavors/cycle1/jstemplates/pages/overview.html:38
 msgid "What Type of Ideas Can You Propose?"
 msgstr "Que tipo de ideias você pode propor?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:37
+#: src/flavors/cycle1/jstemplates/pages/overview.html:39
 msgid "What are Some Examples of Ideas?"
 msgstr "Quais são alguns exemplos de ideias?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:38
-msgid "What is the Timeline?"
-msgstr "Qual é a linha do tempo?"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:39
+#: src/flavors/cycle1/jstemplates/pages/overview.html:40
 msgid "Who can submit project ideas?"
 msgstr "Quem pode enviar ideias de projetos?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:40
-msgid "icon to see captions in a different language."
-msgstr "ícone para ver legendas em um idioma diferente."
-
-#: src/flavors/cycle1/templates/index.html:66
+#: src/flavors/cycle1/templates/index.html:68
 #: src/pbboston/jstemplates/place-list.html:1
 msgid "All Ideas"
 msgstr "Todas as ideias"
 
-#: src/flavors/cycle1/templates/index.html:70
+#: src/flavors/cycle1/templates/index.html:72
 msgid "City-wide Only"
 msgstr "Apenas em toda a cidade"
 
-#: src/flavors/cycle1/templates/index.html:81
+#: src/flavors/cycle1/templates/index.html:83
 #, python-format
 msgid "Powered by %(Shareabouts)s"
 msgstr "Desenvolvido por %(Shareabouts)s"
 
-#: src/flavors/cycle1/templates/index.html:82
+#: src/flavors/cycle1/templates/index.html:84
 #, python-format
 msgid "built by %(PoePublic)s"
 msgstr "construído por %(PoePublic)s"
@@ -825,6 +786,25 @@ msgstr ""
 "<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">Inscreva-se</a> para se manter informado sobre o "
 "Orçamento Participativo em Boston!"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
+#, fuzzy
+#| msgid ""
+#| "For more information on Participatory Budgeting, please visit <a "
+#| "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
+#| "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgid ""
+"For more information on Participatory Budgeting, please visit <a "
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
+"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgstr ""
+"Para obter mais informações sobre Orçamento Participativo, visite <a "
+"href=\"http://boston.gov/participate\">http://boston.gov/participate</a> ou "
+"envie um email para <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
+msgid "How to Stay Involved?"
+msgstr "Como permanecer envolvido?"
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
 msgid "Please help us by answering this optional survey:"
@@ -996,3 +976,61 @@ msgstr ""
 #: src/sa_web/templates/base.html:113
 msgid "Close"
 msgstr "Fechar"
+
+#~ msgid ""
+#~ "By engaging in\n"
+#~ "Participatory Budgeting, Bostonians of all ages and backgrounds can help "
+#~ "inform\n"
+#~ "priorities and future investments for the City’s larger budget process."
+#~ msgstr ""
+#~ "Ao se envolver\n"
+#~ " Orçamento Participativo, os moradores de Boston de todas as idades e "
+#~ "origens podem ajudar a informar\n"
+#~ " prioridades e investimentos futuros para o processo orçamentário mais "
+#~ "amplo da cidade."
+
+#~ msgid "February 2025 and Onward"
+#~ msgstr "Fevereiro de 2025 em diante"
+
+#~ msgid "Fund and Implement Project Proposals"
+#~ msgstr "Financiar e implementar propostas de projetos"
+
+#~ msgid "Get started!"
+#~ msgstr "Iniciar!"
+
+#~ msgid "How to submit a project idea..."
+#~ msgstr "Como enviar uma ideia de projeto..."
+
+#~ msgid "Idea Collection Campaign: Submit Your Ideas!"
+#~ msgstr "Campanha de coleta de ideias: envie suas ideias!"
+
+#~ msgid "January 2025"
+#~ msgstr "Janeiro de 2025"
+
+#, fuzzy
+#~| msgid "July 1 – July 31, 2024"
+#~ msgid "July 1 – August 15, 2024"
+#~ msgstr "1º de julho – 31 de julho de 2024"
+
+#~ msgid "October – November 2024"
+#~ msgstr "Outubro – novembro de 2024"
+
+#~ msgid "Public Voting Period"
+#~ msgstr "Período de votação pública"
+
+#~ msgid "Select \"Subtitles/CC\" from the gear"
+#~ msgstr "Selecione &quot;Legendas/CC&quot; na engrenagem"
+
+#~ msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
+#~ msgstr ""
+#~ "Inscreva-se para se manter informado sobre o Orçamento Participativo em "
+#~ "Boston!"
+
+#~ msgid "Visioning Forums & Online Engagement"
+#~ msgstr "Visão de fóruns e envolvimento online"
+
+#~ msgid "What is the Timeline?"
+#~ msgstr "Qual é a linha do tempo?"
+
+#~ msgid "icon to see captions in a different language."
+#~ msgstr "ícone para ver legendas em um idioma diferente."

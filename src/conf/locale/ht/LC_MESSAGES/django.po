@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-25 20:05-0400\n"
+"POT-Creation-Date: 2024-08-13 06:40-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: Haitian (Haitian Creole) (https://app.transifex.com/mjumbewu/"
@@ -194,7 +194,7 @@ msgid "ideas"
 msgstr "lide"
 
 #: src/flavors/cycle1/_config.translations.py:32
-#: src/flavors/cycle1/templates/index.html:56
+#: src/flavors/cycle1/templates/index.html:57
 msgid "Suggest an Idea"
 msgstr "Sijere yon lide"
 
@@ -469,70 +469,61 @@ msgid ""
 msgstr ""
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:1
-msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
-msgstr "TOUT rezidan Vil Boston, kèlkeswa laj yo, kapab soumèt lide!"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:2
 msgid ""
-"By engaging in\n"
-"Participatory Budgeting, Bostonians of all ages and backgrounds can help "
-"inform\n"
-"priorities and future investments for the City’s larger budget process."
+"<strong>Ideas in Action</strong> is the City's new Participatory\n"
+"Budgeting initiative, where Bostonians can decide how to spend a part of "
+"the\n"
+"City’s budget. The City of Boston launched the first cycle of Participatory\n"
+"Budgeting and collected ideas from residents between July 1st to August 15,\n"
+"2024. Boston residents were asked about how to spend $2 million to benefit\n"
+"their community. On the map, you can find all the submitted ideas."
 msgstr ""
-"Pa angaje nan\n"
-" Bidjè Patisipatif, Bostonyen tout laj ak tout orijin kapab ede enfòme\n"
-" priyorite ak envestisman nan lavni pou pi gwo pwosesis bidjè vil la."
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:5
-msgid "Examples of Eligible Ideas"
-msgstr "Egzanp Lide Elijib"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:6
-msgid "Examples of Ineligible Ideas"
-msgstr "Egzanp Lide Inelijib"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:7
-msgid "February 2025 and Onward"
-msgstr "Fevriye 2025 ak pi devan"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:8
-#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
 #, fuzzy
 #| msgid ""
 #| "For more information on Participatory Budgeting, please visit <a "
 #| "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
 #| "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgid ""
-"For more information on Participatory Budgeting, please visit <a "
-"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
-"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+"<strong>Sign up to stay informed about Participatory Budgeting in\n"
+"Boston.</strong> For more information on Participatory Budgeting, please "
+"visit\n"
+"<a href=\"https://boston.gov/participate\">Boston.gov/participate</a> or "
+"contact\n"
+"the Office of Participatory Budgeting at <a\n"
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 msgstr ""
 "Pou plis enfòmasyon sou Bidjè Patisipatif, tanpri vizite <a href=\"http://"
 "boston.gov/participate\">http://boston.gov/participate</a> oswa voye yon "
 "imèl ba nou nan <a href=\"mailto:pb@boston.gov\">pb@boston.gov.</a>"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:9
-msgid "Fund and Implement Project Proposals"
-msgstr "Fon ak Enpliman Pwopozisyon Pwojè"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:10
-msgid "Get started!"
-msgstr "Kòmanse!"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:11
-#: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
-msgid "How to Stay Involved?"
-msgstr "Ki jan yo rete patisipe?"
-
 #: src/flavors/cycle1/jstemplates/pages/overview.html:12
-msgid "How to submit a project idea..."
-msgstr "Ki jan yo soumèt yon lide pwojè..."
+msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
+msgstr "TOUT rezidan Vil Boston, kèlkeswa laj yo, kapab soumèt lide!"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:13
-msgid "Idea Collection Campaign: Submit Your Ideas!"
-msgstr "Kanpay Koleksyon Ide: Soumèt Lide Ou!"
+msgid "Examples of Eligible Ideas"
+msgstr "Egzanp Lide Elijib"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:14
+msgid "Examples of Ineligible Ideas"
+msgstr "Egzanp Lide Inelijib"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+msgid ""
+"From August through September 2024, the City will review all submitted\n"
+"project ideas during the Idea Collection phase. The Office of Participatory\n"
+"Budgeting will host public workshops in the fall to develop these ideas "
+"into\n"
+"proposals for the PB ballot for voting in January."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:19
+msgid "Idea Submission Criteria"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:20
 msgid ""
 "Ideas may include programs and services, as well as physical infrastructure, "
 "technological improvements, and community enhancements."
@@ -540,7 +531,7 @@ msgstr ""
 "Lide yo ka gen ladan pwogram ak sèvis, osi byen ke enfrastrikti fizik, "
 "amelyorasyon teknolojik, ak amelyorasyon kominote a."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+#: src/flavors/cycle1/jstemplates/pages/overview.html:21
 msgid ""
 "Infrastructure projects on private, state, or federal property are not "
 "eligible, such as projects concerning the Department of Conservation & "
@@ -550,21 +541,7 @@ msgstr ""
 "pwojè ki konsène Depatman Konsèvasyon ak Rekreyasyon (DCR) oswa "
 "Massachusetts Bay Transit Authority (MBTA). "
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:16
-msgid "January 2025"
-msgstr "Janvye 2025"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:17
-#, fuzzy
-#| msgid "July 1 – July 31, 2024"
-msgid "July 1 – August 15, 2024"
-msgstr "1ye jiyè - 31 jiyè 2024"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:18
-msgid "October – November 2024"
-msgstr "Oktòb - Novanm 2024"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:19
+#: src/flavors/cycle1/jstemplates/pages/overview.html:22
 msgid ""
 "Of note: Project ideas containing inappropriate, offensive, or derogatory "
 "language will be removed and not considered from the PB process."
@@ -572,14 +549,26 @@ msgstr ""
 "Nòt: Lide pwojè ki genyen langaj ki pa apwopriye, ofansif, oswa denigrasyon "
 "yo pral retire epi yo pa konsidere yo nan pwosesis PB a."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:20
+#: src/flavors/cycle1/jstemplates/pages/overview.html:23
+#, fuzzy
+#| msgid ""
+#| "Participatory Budgeting (PB) is a democratic process where community "
+#| "members\n"
+#| "directly decide how to spend part of a public budget. The goal of "
+#| "Participatory\n"
+#| "Budgeting in Boston is to empower residents to elevate community "
+#| "centered\n"
+#| "project ideas with an emphasis on social and racial equity."
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community "
-"members\n"
-"directly decide how to spend part of a public budget. The goal of "
-"Participatory\n"
-"Budgeting in Boston is to empower residents to elevate community centered\n"
-"project ideas with an emphasis on social and racial equity."
+"Participatory Budgeting (PB) is a democratic process where community\n"
+"members directly decide how to spend part of a public budget. The goal of\n"
+"Participatory Budgeting in Boston is to empower residents to elevate "
+"community\n"
+"centered project ideas with an emphasis on social and racial equity. By\n"
+"engaging in Participatory Budgeting, Bostonians of all ages and backgrounds "
+"can\n"
+"help inform priorities and future investments for the City’s larger budget\n"
+"process."
 msgstr ""
 "Bidjè Patisipatif (PB) se yon pwosesis demokratik kote manm kominote a\n"
 " dirèkteman deside kijan pou depanse yon pati nan yon bidjè piblik. Objektif "
@@ -587,7 +576,7 @@ msgstr ""
 " Bidjè nan Boston se bay rezidan yo pouvwa pou yo elve kominote santre\n"
 " ide pwojè ak yon anfaz sou ekite sosyal ak rasyal."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:24
+#: src/flavors/cycle1/jstemplates/pages/overview.html:30
 msgid ""
 "Paying for the salary of a public employee to provide services; Repairing a "
 "privately owned building; Helping an organization renovate a space that it "
@@ -599,7 +588,7 @@ msgstr ""
 "prive; Ede yon enstitisyon relijye repare tanp li; Ogmante frekans otobis "
 "oswa tren MBTA yo."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:25
+#: src/flavors/cycle1/jstemplates/pages/overview.html:31
 msgid ""
 "Programming to strengthen mental health among Boston youth; Expand the "
 "City’s Wicked Free WiFi network to reach more low-income areas; Digital "
@@ -613,7 +602,7 @@ msgstr ""
 "koneksyon sosyal; Amelyore espas piblik yo atravè pwojè enfrastrikti (atizay "
 "piblik, pye bwa nan lari, ban, elatriye)"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:26
+#: src/flavors/cycle1/jstemplates/pages/overview.html:32
 msgid ""
 "Project ideas must be feasible to implement, and be consistent with existing "
 "City policies, laws, regulations, and the Participatory Budgeting Ordinance; "
@@ -622,7 +611,7 @@ msgstr ""
 "Lide pwojè yo dwe posib pou yo aplike, epi yo dwe konsistan avèk politik, "
 "lwa, règleman vil ki egziste deja, ak Òdonans Bidjè Patisipatif la; epi"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:27
+#: src/flavors/cycle1/jstemplates/pages/overview.html:33
 msgid ""
 "Project ideas related to programs and services in non-City owned facilities "
 "are eligible."
@@ -630,7 +619,7 @@ msgstr ""
 "Lide pwojè ki gen rapò ak pwogram ak sèvis nan lokal ki pa nan vil la "
 "kalifye."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:28
+#: src/flavors/cycle1/jstemplates/pages/overview.html:34
 msgid ""
 "Project proposals may include programs and services as well as physical "
 "infrastructure"
@@ -638,14 +627,14 @@ msgstr ""
 "Pwopozisyon pwojè yo ka gen ladan pwogram ak sèvis osi byen ke enfrastrikti "
 "fizik"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:29
+#: src/flavors/cycle1/jstemplates/pages/overview.html:35
 msgid ""
 "Projects are limited to a one-time expense, and do not create new permanent "
 "positions;"
 msgstr ""
 "Pwojè yo limite a yon sèl depans, epi yo pa kreye nouvo pozisyon pèmanan;"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:30
+#: src/flavors/cycle1/jstemplates/pages/overview.html:36
 msgid ""
 "Projects must be implemented or managed by the appropriate City Department "
 "or agency receiving direct budget appropriations."
@@ -653,61 +642,37 @@ msgstr ""
 "Pwojè yo dwe aplike oswa jere pa Depatman Vil apwopriye oswa ajans k ap "
 "resevwa afektasyon bidjè dirèk."
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:31
-msgid "Public Voting Period"
-msgstr "Peryòd Vòt Piblik"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:32
-msgid "Select \"Subtitles/CC\" from the gear"
-msgstr "Chwazi &quot;Subtitles/CC&quot; nan Kovèti pou la"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:33
-msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
-msgstr "Enskri pou w rete enfòme sou Bidjè Patisipatif nan Boston!"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:34
-msgid "Visioning Forums & Online Engagement"
-msgstr "Fowòm vizyon &amp; Angajman sou entènèt"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:35
+#: src/flavors/cycle1/jstemplates/pages/overview.html:37
 msgid "Welcome to Participatory Budgeting in Boston!"
 msgstr "Byenvini nan Bidjè Patisipatif nan Boston!"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:36
+#: src/flavors/cycle1/jstemplates/pages/overview.html:38
 msgid "What Type of Ideas Can You Propose?"
 msgstr "Ki kalite lide ou ka pwopoze?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:37
+#: src/flavors/cycle1/jstemplates/pages/overview.html:39
 msgid "What are Some Examples of Ideas?"
 msgstr "Ki kèk egzanp lide?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:38
-msgid "What is the Timeline?"
-msgstr "Ki sa ki Timeline a?"
-
-#: src/flavors/cycle1/jstemplates/pages/overview.html:39
+#: src/flavors/cycle1/jstemplates/pages/overview.html:40
 msgid "Who can submit project ideas?"
 msgstr "Ki moun ki ka soumèt lide pwojè?"
 
-#: src/flavors/cycle1/jstemplates/pages/overview.html:40
-msgid "icon to see captions in a different language."
-msgstr "icon pou wè tit nan yon lang diferan."
-
-#: src/flavors/cycle1/templates/index.html:66
+#: src/flavors/cycle1/templates/index.html:68
 #: src/pbboston/jstemplates/place-list.html:1
 msgid "All Ideas"
 msgstr "Tout Lide"
 
-#: src/flavors/cycle1/templates/index.html:70
+#: src/flavors/cycle1/templates/index.html:72
 msgid "City-wide Only"
 msgstr "Nan tout vil la sèlman"
 
-#: src/flavors/cycle1/templates/index.html:81
+#: src/flavors/cycle1/templates/index.html:83
 #, python-format
 msgid "Powered by %(Shareabouts)s"
 msgstr "Powered by %(Shareabouts)s"
 
-#: src/flavors/cycle1/templates/index.html:82
+#: src/flavors/cycle1/templates/index.html:84
 #, python-format
 msgid "built by %(PoePublic)s"
 msgstr "bati pa %(PoePublic)s"
@@ -801,6 +766,25 @@ msgstr ""
 "<a target=\"_blank\" href=\"https://www.boston.gov/departments/participatory-"
 "budgeting#newsletter\">Enskri</a> pou w rete enfòme sou Bidjè Patisipatif "
 "nan Boston!"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
+#, fuzzy
+#| msgid ""
+#| "For more information on Participatory Budgeting, please visit <a "
+#| "href=\"http://boston.gov/participate\">http://boston.gov/participate</a> "
+#| "or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgid ""
+"For more information on Participatory Budgeting, please visit <a "
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
+"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgstr ""
+"Pou plis enfòmasyon sou Bidjè Patisipatif, tanpri vizite <a href=\"http://"
+"boston.gov/participate\">http://boston.gov/participate</a> oswa voye yon "
+"imèl ba nou nan <a href=\"mailto:pb@boston.gov\">pb@boston.gov.</a>"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
+msgid "How to Stay Involved?"
+msgstr "Ki jan yo rete patisipe?"
 
 #: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
 msgid "Please help us by answering this optional survey:"
@@ -971,3 +955,57 @@ msgstr ""
 #: src/sa_web/templates/base.html:113
 msgid "Close"
 msgstr "Fèmen"
+
+#~ msgid ""
+#~ "By engaging in\n"
+#~ "Participatory Budgeting, Bostonians of all ages and backgrounds can help "
+#~ "inform\n"
+#~ "priorities and future investments for the City’s larger budget process."
+#~ msgstr ""
+#~ "Pa angaje nan\n"
+#~ " Bidjè Patisipatif, Bostonyen tout laj ak tout orijin kapab ede enfòme\n"
+#~ " priyorite ak envestisman nan lavni pou pi gwo pwosesis bidjè vil la."
+
+#~ msgid "February 2025 and Onward"
+#~ msgstr "Fevriye 2025 ak pi devan"
+
+#~ msgid "Fund and Implement Project Proposals"
+#~ msgstr "Fon ak Enpliman Pwopozisyon Pwojè"
+
+#~ msgid "Get started!"
+#~ msgstr "Kòmanse!"
+
+#~ msgid "How to submit a project idea..."
+#~ msgstr "Ki jan yo soumèt yon lide pwojè..."
+
+#~ msgid "Idea Collection Campaign: Submit Your Ideas!"
+#~ msgstr "Kanpay Koleksyon Ide: Soumèt Lide Ou!"
+
+#~ msgid "January 2025"
+#~ msgstr "Janvye 2025"
+
+#, fuzzy
+#~| msgid "July 1 – July 31, 2024"
+#~ msgid "July 1 – August 15, 2024"
+#~ msgstr "1ye jiyè - 31 jiyè 2024"
+
+#~ msgid "October – November 2024"
+#~ msgstr "Oktòb - Novanm 2024"
+
+#~ msgid "Public Voting Period"
+#~ msgstr "Peryòd Vòt Piblik"
+
+#~ msgid "Select \"Subtitles/CC\" from the gear"
+#~ msgstr "Chwazi &quot;Subtitles/CC&quot; nan Kovèti pou la"
+
+#~ msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
+#~ msgstr "Enskri pou w rete enfòme sou Bidjè Patisipatif nan Boston!"
+
+#~ msgid "Visioning Forums & Online Engagement"
+#~ msgstr "Fowòm vizyon &amp; Angajman sou entènèt"
+
+#~ msgid "What is the Timeline?"
+#~ msgstr "Ki sa ki Timeline a?"
+
+#~ msgid "icon to see captions in a different language."
+#~ msgstr "icon pou wè tit nan yon lang diferan."
