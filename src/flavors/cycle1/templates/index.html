@@ -52,7 +52,9 @@
 {% endblock %}
 
 {% block pre_pages_nav %}
-  <a class="btn btn-primary navbar-suggest-btn" rel="internal" href="/place/new">{% blocktrans %}Suggest an Idea{% endblocktrans %}</a>
+  {% if config.place.adding_supported %}
+    <a class="btn btn-primary navbar-suggest-btn" rel="internal" href="/place/new">{% blocktrans %}Suggest an Idea{% endblocktrans %}</a>
+  {% endif %}
 {% endblock %}
 
 <!--

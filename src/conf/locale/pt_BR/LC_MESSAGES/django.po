@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -953,3 +953,61 @@ msgstr ""
 #: src/sa_web/templates/base.html:113
 msgid "Close"
 msgstr "Fechar"
+
+#~ msgid ""
+#~ "By engaging in\n"
+#~ "Participatory Budgeting, Bostonians of all ages and backgrounds can help "
+#~ "inform\n"
+#~ "priorities and future investments for the City’s larger budget process."
+#~ msgstr ""
+#~ "Ao se envolver\n"
+#~ " Orçamento Participativo, os moradores de Boston de todas as idades e "
+#~ "origens podem ajudar a informar\n"
+#~ " prioridades e investimentos futuros para o processo orçamentário mais "
+#~ "amplo da cidade."
+
+#~ msgid "February 2025 and Onward"
+#~ msgstr "Fevereiro de 2025 em diante"
+
+#~ msgid "Fund and Implement Project Proposals"
+#~ msgstr "Financiar e implementar propostas de projetos"
+
+#~ msgid "Get started!"
+#~ msgstr "Iniciar!"
+
+#~ msgid "How to submit a project idea..."
+#~ msgstr "Como enviar uma ideia de projeto..."
+
+#~ msgid "Idea Collection Campaign: Submit Your Ideas!"
+#~ msgstr "Campanha de coleta de ideias: envie suas ideias!"
+
+#~ msgid "January 2025"
+#~ msgstr "Janeiro de 2025"
+
+#, fuzzy
+#~| msgid "July 1 – July 31, 2024"
+#~ msgid "July 1 – August 15, 2024"
+#~ msgstr "1º de julho – 31 de julho de 2024"
+
+#~ msgid "October – November 2024"
+#~ msgstr "Outubro – novembro de 2024"
+
+#~ msgid "Public Voting Period"
+#~ msgstr "Período de votação pública"
+
+#~ msgid "Select \"Subtitles/CC\" from the gear"
+#~ msgstr "Selecione &quot;Legendas/CC&quot; na engrenagem"
+
+#~ msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
+#~ msgstr ""
+#~ "Inscreva-se para se manter informado sobre o Orçamento Participativo em "
+#~ "Boston!"
+
+#~ msgid "Visioning Forums & Online Engagement"
+#~ msgstr "Visão de fóruns e envolvimento online"
+
+#~ msgid "What is the Timeline?"
+#~ msgstr "Qual é a linha do tempo?"
+
+#~ msgid "icon to see captions in a different language."
+#~ msgstr "ícone para ver legendas em um idioma diferente."

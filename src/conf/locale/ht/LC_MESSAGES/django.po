@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -938,3 +938,57 @@ msgstr ""
 #: src/sa_web/templates/base.html:113
 msgid "Close"
 msgstr "Fèmen"
+
+#~ msgid ""
+#~ "By engaging in\n"
+#~ "Participatory Budgeting, Bostonians of all ages and backgrounds can help "
+#~ "inform\n"
+#~ "priorities and future investments for the City’s larger budget process."
+#~ msgstr ""
+#~ "Pa angaje nan\n"
+#~ " Bidjè Patisipatif, Bostonyen tout laj ak tout orijin kapab ede enfòme\n"
+#~ " priyorite ak envestisman nan lavni pou pi gwo pwosesis bidjè vil la."
+
+#~ msgid "February 2025 and Onward"
+#~ msgstr "Fevriye 2025 ak pi devan"
+
+#~ msgid "Fund and Implement Project Proposals"
+#~ msgstr "Fon ak Enpliman Pwopozisyon Pwojè"
+
+#~ msgid "Get started!"
+#~ msgstr "Kòmanse!"
+
+#~ msgid "How to submit a project idea..."
+#~ msgstr "Ki jan yo soumèt yon lide pwojè..."
+
+#~ msgid "Idea Collection Campaign: Submit Your Ideas!"
+#~ msgstr "Kanpay Koleksyon Ide: Soumèt Lide Ou!"
+
+#~ msgid "January 2025"
+#~ msgstr "Janvye 2025"
+
+#, fuzzy
+#~| msgid "July 1 – July 31, 2024"
+#~ msgid "July 1 – August 15, 2024"
+#~ msgstr "1ye jiyè - 31 jiyè 2024"
+
+#~ msgid "October – November 2024"
+#~ msgstr "Oktòb - Novanm 2024"
+
+#~ msgid "Public Voting Period"
+#~ msgstr "Peryòd Vòt Piblik"
+
+#~ msgid "Select \"Subtitles/CC\" from the gear"
+#~ msgstr "Chwazi &quot;Subtitles/CC&quot; nan Kovèti pou la"
+
+#~ msgid "Sign up to stay informed about Participatory Budgeting in Boston!"
+#~ msgstr "Enskri pou w rete enfòme sou Bidjè Patisipatif nan Boston!"
+
+#~ msgid "Visioning Forums & Online Engagement"
+#~ msgstr "Fowòm vizyon &amp; Angajman sou entènèt"
+
+#~ msgid "What is the Timeline?"
+#~ msgstr "Ki sa ki Timeline a?"
+
+#~ msgid "icon to see captions in a different language."
+#~ msgstr "icon pou wè tit nan yon lang diferan."
