@@ -504,7 +504,7 @@ msgstr ""
 " Boston.</strong> Para mais informações sobre Orçamento Participativo, visite\n"
 " <a href=\"https://boston.gov/participate\">Boston.gov/participate</a> ou contato\n"
 " o Gabinete de Orçamento Participativo da <a\n"
-" href=&quot;mailto:pb@boston.gov&quot;&gt;pb@boston.gov"
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:12
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
