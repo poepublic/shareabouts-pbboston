@@ -1186,6 +1186,17 @@ body .marker-cluster div {
   display: block;
 }
 
+.page-about p {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (width > 768px) {
+  .page-about#content article {
+    padding: 2rem;
+  }
+}
+
 @media only screen and (width >= 1024px) {
   .howto-video-desktop {
     display: block;
