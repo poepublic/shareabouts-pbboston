@@ -465,7 +465,7 @@ msgstr ""
 "波士頓。</strong>有關參與式預算的更多信息，請訪問\n"
 "<a href=\"https://boston.gov/participate\">Boston.gov/參與</a>或聯繫\n"
 "參與式預算辦公室<a\n"
-" href=&quot;mailto:pb@boston.gov&quot;&gt;pb@boston.gov"
+" href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:12
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
