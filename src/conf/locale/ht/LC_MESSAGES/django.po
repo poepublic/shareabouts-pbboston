@@ -496,7 +496,7 @@ msgstr ""
 " Boston.</strong> Pou plis enfòmasyon sou Bidjè Patisipatif, tanpri vizite\n"
 " <a href=\"https://boston.gov/participate\">Boston.gov/participate</a> oswa kontakte\n"
 " Biwo Bidjè Patisipatif nan <a\n"
-" href=&quot;mailto:pb@boston.gov&quot;&gt;pb@boston.gov"
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:12
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
