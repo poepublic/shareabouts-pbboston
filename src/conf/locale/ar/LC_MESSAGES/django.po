@@ -493,7 +493,7 @@ msgstr ""
 " بوسطن.</strong> لمزيد من المعلومات حول الميزانية التشاركية، يرجى زيارة\n"
 " <a href=\"https://boston.gov/participate\">Boston.gov/participate</a> أو الاتصال\n"
 " مكتب الميزانية التشاركية في <a\n"
-" href=\"mailto:pb@boston.gov\">pb@boston.gov"
+" href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:12
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
