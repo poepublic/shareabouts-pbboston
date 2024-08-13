@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2024
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -933,7 +933,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"Oops, %(config.app.name) waxay u baahan tahay JavaScript si ay si sax ah ugu shaqeyso.\n"
+"Oops, %(config.app.name)s waxay u baahan tahay JavaScript si ay si sax ah ugu shaqeyso.\n"
 "        "
 
 #: src/sa_web/templates/base.html:93
