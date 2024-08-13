@@ -509,7 +509,7 @@ msgstr ""
 " Boston</strong> Wixii macluumaad dheeraad ah oo ku saabsan Miisaaniyadda ka qaybqaadashada, fadlan booqo\n"
 " <a href=\"https://boston.gov/participate\">Boston.gov/participate</a> ama la xidhiidh\n"
 " Xafiiska Miisaaniyada ka qaybqaadashada ee <a\n"
-" href=&quot;mailto:pb@boston.gov&quot;&gt;pb@boston.gov"
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
 
 #: src/flavors/cycle1/jstemplates/pages/overview.html:12
 msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
