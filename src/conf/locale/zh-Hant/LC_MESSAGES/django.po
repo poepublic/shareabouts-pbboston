@@ -1,0 +1,880 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Mjumbe Poe <mjumbewu@gmail.com>, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-15 04:34-0400\n"
+"PO-Revision-Date: 2024-06-23 20:22+0000\n"
+"Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
+"Language-Team: Chinese Traditional (https://app.transifex.com/mjumbewu/teams/189006/zh-Hant/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hant\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/flavors/cycle1/_config.translations.py:6
+msgid "City of Boston Participatory Budgeting"
+msgstr "波士頓市參與式預算"
+
+#: src/flavors/cycle1/_config.translations.py:7
+#: src/flavors/cycle1/templates/index.html:8
+#: src/flavors/cycle1/templates/index.html:17
+msgid "Participatory Budgeting"
+msgstr "參與式預算"
+
+#: src/flavors/cycle1/_config.translations.py:8
+msgid ""
+"Shareabouts is a mapping tool to gather crowd sourced public input. Use it "
+"to collect suggested locations and comments in a social, engaging process."
+msgstr "Shareabouts 是收集眾包公眾意見的繪圖工具。使用它在社交、參與的過程中收集建議的位置和評論。"
+
+#: src/flavors/cycle1/_config.translations.py:9
+msgid "Enter a location…"
+msgstr "輸入位置..."
+
+#: src/flavors/cycle1/_config.translations.py:10
+#: src/flavors/cycle1/_config.translations.py:62
+#: src/flavors/cycle1/_config.translations.py:110
+msgid "Arts & Culture"
+msgstr "藝術與文化"
+
+#: src/flavors/cycle1/_config.translations.py:11
+msgid ""
+"Project ideas focused on arts and cultural programming that promote cultural"
+" spaces in the City."
+msgstr "項目理念著重於促進城市文化空間的藝術和文化規劃。"
+
+#: src/flavors/cycle1/_config.translations.py:12
+#: src/flavors/cycle1/_config.translations.py:63
+#: src/flavors/cycle1/_config.translations.py:111
+msgid "Community Resources"
+msgstr "社區資源"
+
+#: src/flavors/cycle1/_config.translations.py:13
+msgid ""
+"Project ideas that provide assistance or services to residents in need, such"
+" as programs at community centers, financial or digital literacy, English as"
+" a second language, or GED classes."
+msgstr "為有需要的居民提供援助或服務的專案創意，例如社區中心的專案、金融或數位素養、英語作為第二語言或 GED 課程。"
+
+#: src/flavors/cycle1/_config.translations.py:14
+#: src/flavors/cycle1/_config.translations.py:64
+#: src/flavors/cycle1/_config.translations.py:112
+msgid "Local Economy & Worker Empowerment"
+msgstr "地方經濟與工人賦權"
+
+#: src/flavors/cycle1/_config.translations.py:15
+msgid ""
+"Project ideas that improve access to quality jobs, skills training, career "
+"pipelines, and other resources for workers, small business owners, and "
+"entrepreneurs."
+msgstr "旨在改善工人、小企業主和企業家獲得優質工作、技能培訓、職業管道和其他資源的機會的專案想法。"
+
+#: src/flavors/cycle1/_config.translations.py:16
+#: src/flavors/cycle1/_config.translations.py:65
+#: src/flavors/cycle1/_config.translations.py:113
+msgid "Education, Youth & Families"
+msgstr "教育、青少年與家庭"
+
+#: src/flavors/cycle1/_config.translations.py:17
+msgid ""
+"Project ideas related to education for all ages, as well as proposals that "
+"meet the needs of Boston’s youth, senior citizens, and families."
+msgstr "與所有年齡層的教育相關的項目想法，以及滿足波士頓年輕人、老年人和家庭需求的提案。"
+
+#: src/flavors/cycle1/_config.translations.py:18
+#: src/flavors/cycle1/_config.translations.py:66
+#: src/flavors/cycle1/_config.translations.py:114
+msgid "Environment, Sustainability, and Food Access"
+msgstr "環境、永續性和食品獲取"
+
+#: src/flavors/cycle1/_config.translations.py:19
+msgid ""
+"Project ideas that help increase access to healthy and affordable food, "
+"promote environmental justice, and help increase the quality of life in "
+"Boston."
+msgstr "項目想法有助於增加獲得健康和負擔得起的食品的機會，促進環境正義，並幫助提高波士頓的生活品質。"
+
+#: src/flavors/cycle1/_config.translations.py:20
+msgid "Facilities, Parks & Recreation"
+msgstr "設施、公園和娛樂"
+
+#: src/flavors/cycle1/_config.translations.py:21
+msgid ""
+"Project ideas that Invest in clean, green, safe and accessible open space, "
+"facilities, and programming for residents and neighborhoods."
+msgstr "專案理念是為居民和社區投資清潔、綠色、安全和無障礙的開放空間、設施和規劃。"
+
+#: src/flavors/cycle1/_config.translations.py:22
+#: src/flavors/cycle1/_config.translations.py:68
+#: src/flavors/cycle1/_config.translations.py:116
+msgid "Health & Well-being"
+msgstr "健康與福祉"
+
+#: src/flavors/cycle1/_config.translations.py:23
+msgid ""
+"Project ideas that promote the physical and mental health of Boston "
+"residents of all ages."
+msgstr "促進各年齡層波士頓居民身心健康的計畫理念。"
+
+#: src/flavors/cycle1/_config.translations.py:24
+#: src/flavors/cycle1/_config.translations.py:69
+#: src/flavors/cycle1/_config.translations.py:117
+msgid "Public Safety"
+msgstr "公共安全"
+
+#: src/flavors/cycle1/_config.translations.py:25
+msgid ""
+"Project ideas that advance safety and increase justice in the City, such as "
+"community violence prevention programs and initiatives for healing and "
+"recovering from trauma and substance abuse."
+msgstr "促進城市安全和加強正義的計畫想法，例如社區暴力預防計劃以及從創傷和藥物濫用中治癒和恢復的舉措。"
+
+#: src/flavors/cycle1/_config.translations.py:26
+#: src/flavors/cycle1/_config.translations.py:70
+#: src/flavors/cycle1/_config.translations.py:118
+msgid "Streets & Sidewalks"
+msgstr "街道和人行道"
+
+#: src/flavors/cycle1/_config.translations.py:27
+msgid ""
+"Project ideas to improve City streets and sidewalks and promote safety and "
+"accessibility."
+msgstr "改善城市街道和人行道並提高安全性和無障礙性的專案想法。"
+
+#: src/flavors/cycle1/_config.translations.py:28
+#: src/flavors/cycle1/_config.translations.py:71
+#: src/flavors/cycle1/_config.translations.py:119
+msgid "Other / Not Sure"
+msgstr "其他/不確定"
+
+#: src/flavors/cycle1/_config.translations.py:29
+msgid ""
+"Other community centered ideas that may not fit in the previous categories."
+msgstr "其他以社區為中心的想法可能不適合前面的類別。"
+
+#: src/flavors/cycle1/_config.translations.py:30
+msgid "idea"
+msgstr "主意"
+
+#: src/flavors/cycle1/_config.translations.py:31
+msgid "ideas"
+msgstr "想法"
+
+#: src/flavors/cycle1/_config.translations.py:32
+#: src/flavors/cycle1/templates/index.html:57
+msgid "Suggest an Idea"
+msgstr "提出一個想法"
+
+#: src/flavors/cycle1/_config.translations.py:33
+msgid "List All Ideas"
+msgstr "列出所有想法"
+
+#: src/flavors/cycle1/_config.translations.py:34
+msgid "Show the Map"
+msgstr "顯示地圖"
+
+#: src/flavors/cycle1/_config.translations.py:35
+msgid "submitted"
+msgstr "已提交"
+
+#: src/flavors/cycle1/_config.translations.py:36
+msgid "How would you spend $2 million to benefit your community?"
+msgstr "您將如何花費 200 萬美元來造福您的社區？"
+
+#: src/flavors/cycle1/_config.translations.py:37
+msgid "Your neighbor"
+msgstr "你的鄰居"
+
+#: src/flavors/cycle1/_config.translations.py:38
+msgid "Submit"
+msgstr "提交"
+
+#: src/flavors/cycle1/_config.translations.py:39
+msgid "Multiple locations throughout the city"
+msgstr "全市多個地點"
+
+#: src/flavors/cycle1/_config.translations.py:40
+msgid "Please use the map's search box or drag the map to set the location."
+msgstr "請使用地圖的搜尋框或拖曳地圖來設定位置。"
+
+#: src/flavors/cycle1/_config.translations.py:41
+msgid "Thank you!"
+msgstr "謝謝你！"
+
+#: src/flavors/cycle1/_config.translations.py:42
+msgid ""
+"Thank you for sharing your idea with us! Please fill out the short form "
+"below. Only the information you choose to display will be made public."
+msgstr "感謝您與我們分享您的想法！請填寫下面的簡短表格。只有您選擇顯示的資訊才會被公開。"
+
+#: src/flavors/cycle1/_config.translations.py:43
+msgid "Is your idea for a specific location or for the entire city?"
+msgstr "您的想法是針對某個特定地點還是針對整個城市？"
+
+#: src/flavors/cycle1/_config.translations.py:44
+msgid "City wide?"
+msgstr "全市？"
+
+#: src/flavors/cycle1/_config.translations.py:45
+msgid "Location-specific"
+msgstr "特定地點"
+
+#: src/flavors/cycle1/_config.translations.py:46
+msgid "City-wide"
+msgstr "全市"
+
+#: src/flavors/cycle1/_config.translations.py:47
+msgid "Approximately where would your idea be?"
+msgstr "您的想法大概在哪裡？"
+
+#: src/flavors/cycle1/_config.translations.py:48
+msgid "Approximate location…"
+msgstr "大概位置…"
+
+#: src/flavors/cycle1/_config.translations.py:49
+msgid "Drag the map to set the location."
+msgstr "拖曳地圖來設定位置。"
+
+#: src/flavors/cycle1/_config.translations.py:50
+msgid "Please share a short description of the project idea."
+msgstr "請分享項目想法的簡短描述。"
+
+#: src/flavors/cycle1/_config.translations.py:51
+msgid "My idea is to…"
+msgstr "我的想法是…"
+
+#: src/flavors/cycle1/_config.translations.py:52
+msgid "Make sure your description is short and clear."
+msgstr "確保您的描述簡短而清晰。"
+
+#: src/flavors/cycle1/_config.translations.py:53
+#: src/flavors/cycle1/_config.translations.py:58
+msgid "Try to keep it to 50 words or less…"
+msgstr "盡量控制在 50 個字以內…"
+
+#: src/flavors/cycle1/_config.translations.py:54
+msgid "How does your project advance social and racial equity?"
+msgstr "您的計畫如何促進社會和種族平等？"
+
+#: src/flavors/cycle1/_config.translations.py:55
+msgid "This idea would advance social and racial equity by…"
+msgstr "這個想法將透過…促進社會和種族平等。"
+
+#: src/flavors/cycle1/_config.translations.py:56
+msgid "Make sure you keep it short and clear."
+msgstr "確保內容簡短、清晰。"
+
+#: src/flavors/cycle1/_config.translations.py:57
+msgid ""
+"\"Social and racial equity\" is defined as the just and fair inclusion of "
+"people of any social and racial background into society, so they can "
+"participate, prosper, and reach their full potential."
+msgstr "「社會和種族平等」的定義是公正、公平地將任何社會和種族背景的人納入社會，使他們能夠參與、繁榮並充分發揮潛力。"
+
+#: src/flavors/cycle1/_config.translations.py:59
+msgid "Which category does your idea fall into?"
+msgstr "您的想法屬於哪一類？"
+
+#: src/flavors/cycle1/_config.translations.py:60
+msgid "Category"
+msgstr "類別"
+
+#: src/flavors/cycle1/_config.translations.py:61
+msgid "Choose the category that most closely describes your project."
+msgstr "選擇最能描述您的項目的類別。"
+
+#: src/flavors/cycle1/_config.translations.py:67
+#: src/flavors/cycle1/_config.translations.py:115
+msgid "Facilities, Parks & Recreation  "
+msgstr "設施、公園和娛樂  "
+
+#: src/flavors/cycle1/_config.translations.py:72
+msgid "Are you submitting this idea as part of a community event?"
+msgstr "您是否將這個想法作為社區活動的一部分提交？"
+
+#: src/flavors/cycle1/_config.translations.py:73
+msgid "No event; I am submitting this idea on my own"
+msgstr "無事件；我自己提交這個想法"
+
+#: src/flavors/cycle1/_config.translations.py:74
+msgid ""
+"Yes, at an Idea Collection Workshop hosted by an organization sponsored by "
+"the Office of Participatory Budgeting"
+msgstr "是的，在參與式預算辦公室贊助的組織主辦的創意收集研討會上"
+
+#: src/flavors/cycle1/_config.translations.py:75
+msgid "Yes, at an independent community gathering"
+msgstr "是的，在獨立社區聚會上"
+
+#: src/flavors/cycle1/_config.translations.py:76
+#: src/flavors/cycle1/_config.translations.py:79
+msgid "Your Name"
+msgstr "你的名字"
+
+#: src/flavors/cycle1/_config.translations.py:77
+#: src/flavors/cycle1/_config.translations.py:80
+msgid "Submitter's Name"
+msgstr "提交者姓名"
+
+#: src/flavors/cycle1/_config.translations.py:78
+msgid "Your first name…"
+msgstr "你的名字…"
+
+#: src/flavors/cycle1/_config.translations.py:81
+msgid "Your last name…"
+msgstr "你的姓氏…"
+
+#: src/flavors/cycle1/_config.translations.py:82
+msgid "How should we display your name next to your idea?"
+msgstr "我們應該如何在您的想法旁邊顯示您的名字？"
+
+#: src/flavors/cycle1/_config.translations.py:83
+msgid "Use my full name"
+msgstr "使用我的全名"
+
+#: src/flavors/cycle1/_config.translations.py:84
+msgid "Only use my first name"
+msgstr "只使用我的名字"
+
+#: src/flavors/cycle1/_config.translations.py:85
+msgid "Do not display my name"
+msgstr "不顯示我的名字"
+
+#: src/flavors/cycle1/_config.translations.py:86
+msgid "Your Neighborhood"
+msgstr "您的社區"
+
+#: src/flavors/cycle1/_config.translations.py:87
+msgid "Submitter's Neighborhood"
+msgstr "提交者所在社區"
+
+#: src/flavors/cycle1/_config.translations.py:88
+msgid "Select a neighborhood…"
+msgstr "選擇一個社區..."
+
+#: src/flavors/cycle1/_config.translations.py:89
+#: src/flavors/cycle1/_config.translations.py:90
+msgid "Your Zip Code"
+msgstr "你的郵遞區號"
+
+#: src/flavors/cycle1/_config.translations.py:91
+#: src/flavors/cycle1/_config.translations.py:92
+msgid "Your Email"
+msgstr "你的郵件"
+
+#: src/flavors/cycle1/_config.translations.py:93
+#: src/flavors/cycle1/_config.translations.py:94
+msgid "Your Preferred Language"
+msgstr "您的首選語言"
+
+#: src/flavors/cycle1/_config.translations.py:95
+msgid "comment"
+msgstr "評論"
+
+#: src/flavors/cycle1/_config.translations.py:96
+msgid "comments"
+msgstr "評論"
+
+#: src/flavors/cycle1/_config.translations.py:97
+msgid "commented on"
+msgstr "評論過"
+
+#: src/flavors/cycle1/_config.translations.py:98
+#: src/flavors/cycle1/_config.translations.py:105
+msgid "Someone"
+msgstr "有人"
+
+#: src/flavors/cycle1/_config.translations.py:99
+#: src/flavors/cycle1/_config.translations.py:100
+msgid "Leave a Comment"
+msgstr "發表評論"
+
+#: src/flavors/cycle1/_config.translations.py:101
+msgid "Comment"
+msgstr "評論"
+
+#: src/flavors/cycle1/_config.translations.py:102
+msgid "Support"
+msgstr "支援"
+
+#: src/flavors/cycle1/_config.translations.py:103
+msgid "support"
+msgstr "支援"
+
+#: src/flavors/cycle1/_config.translations.py:104
+msgid "supports"
+msgstr "支援"
+
+#: src/flavors/cycle1/_config.translations.py:106
+msgid "About"
+msgstr "關於"
+
+#: src/flavors/cycle1/_config.translations.py:107
+#: src/flavors/cycle1/templates/prelaunch.html:86
+msgid "Boston PB Home"
+msgstr "波士頓 PB 主場"
+
+#: src/flavors/cycle1/_config.translations.py:108
+msgid "Filter Ideas"
+msgstr "過濾想法"
+
+#: src/flavors/cycle1/_config.translations.py:109
+msgid "All"
+msgstr "全部"
+
+#: src/flavors/cycle1/jstemplates/important-updates.html:1
+msgid ""
+"The deadline to submit ideas has been extended to Thursday, August 15th."
+msgstr "提交想法的截止日期已延長至 8 月 15 日星期四。"
+
+#: src/flavors/cycle1/jstemplates/important-updates.html:2
+msgid ""
+"The submission period for Idea Collection is now closed. However, you can "
+"review all resident proposed ideas during PB Cycle One on the map."
+msgstr "創意收集的提交期現已結束。但是，您可以在地圖上查看 PB 第一周期期間居民提出的所有想法。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:1
+msgid ""
+"<strong>Ideas in Action</strong> is the City's new Participatory\n"
+"Budgeting initiative, where Bostonians can decide how to spend a part of the\n"
+"City’s budget. The City of Boston launched the first cycle of Participatory\n"
+"Budgeting and collected ideas from residents between July 1st to August 15,\n"
+"2024. Boston residents were asked about how to spend $2 million to benefit\n"
+"their community."
+msgstr ""
+"<strong>「想法付諸行動」</strong>是該市的新參與方式\n"
+"預算計劃，波士頓人可以決定如何花費一部分\n"
+"城市的預算。波士頓市啟動了第一輪參與式計劃\n"
+"7月1日至8月15日期間制定預算並收集居民的想法，\n"
+" 2024 年。\n"
+"他們的社區。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:7
+msgid ""
+"<strong>Sign up to stay informed about Participatory Budgeting in\n"
+"Boston.</strong> For more information on Participatory Budgeting, please visit\n"
+"<a href=\"https://boston.gov/participate\">Boston.gov/participate</a> or contact\n"
+"the Office of Participatory Budgeting at <a\n"
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgstr ""
+"<strong>註冊以了解有關參與式預算的信息\n"
+"波士頓。</strong>有關參與式預算的更多信息，請訪問\n"
+"<a href=\"https://boston.gov/participate\">Boston.gov/參與</a>或聯繫\n"
+"參與式預算辦公室<a\n"
+" href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:12
+msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
+msgstr "所有波士頓市居民，無論年齡大小，都可以提交想法！"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:13
+msgid "Examples of Eligible Ideas"
+msgstr "合格想法的範例"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:14
+msgid "Examples of Ineligible Ideas"
+msgstr "不合格想法的例子"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+msgid ""
+"From August through September 2024, the City will review all submitted\n"
+"project ideas during the Idea Collection phase. The Office of Participatory\n"
+"Budgeting will host public workshops in the fall to develop these ideas into\n"
+"proposals for the PB ballot for voting in January."
+msgstr ""
+"從 2024 年 8 月到 2024 年 9 月，市府將審查所有提交的申請\n"
+"創意收集階段的專案創意。參與辦公室\n"
+"預算部門將在秋季舉辦公共研討會，將這些想法發展成為\n"
+"1 月投票的 PB 投票提案。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:19
+msgid "Idea Submission Criteria"
+msgstr "創意提交標準"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:20
+msgid ""
+"Ideas may include programs and services, as well as physical infrastructure,"
+" technological improvements, and community enhancements."
+msgstr "想法可能包括項目和服務，以及物質基礎設施、技術改進和社區增強。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:21
+msgid ""
+"Infrastructure projects on private, state, or federal property are not "
+"eligible, such as projects concerning the Department of Conservation & "
+"Recreation (DCR) or the Massachusetts Bay Transit Authority (MBTA). "
+msgstr "私人、州或聯邦財產上的基礎設施項目不符合資格，例如涉及保護和娛樂部 (DCR) 或馬薩諸塞灣交通管理局 (MBTA) 的項目。 "
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:22
+msgid ""
+"Of note: Project ideas containing inappropriate, offensive, or derogatory "
+"language will be removed and not considered from the PB process."
+msgstr "值得注意的是：包含不當、冒犯性或貶損性語言的專案創意將被刪除，並且不會從 PB 流程中考慮。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:23
+msgid ""
+"Participatory Budgeting (PB) is a democratic process where community\n"
+"members directly decide how to spend part of a public budget. The goal of\n"
+"Participatory Budgeting in Boston is to empower residents to elevate community\n"
+"centered project ideas with an emphasis on social and racial equity. By\n"
+"engaging in Participatory Budgeting, Bostonians of all ages and backgrounds can\n"
+"help inform priorities and future investments for the City’s larger budget\n"
+"process."
+msgstr ""
+"參與式預算（PB）是一個民主過程，社區\n"
+"成員直接決定如何支出部分公共預算。目標是\n"
+"波士頓的參與式預算旨在幫助居民提升社區水平\n"
+"以計畫理念為中心，強調社會和種族平等。經過\n"
+"參與式預算，所有年齡和背景的波士頓人都可以\n"
+"幫助為城市更大的預算提供優先事項和未來投資信息\n"
+"過程。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:30
+msgid ""
+"Paying for the salary of a public employee to provide services; Repairing a "
+"privately owned building; Helping an organization renovate a space that it "
+"rents from a private landlord; Helping a religious institution repair its "
+"sanctuary; Increase the frequency of MBTA buses or trains."
+msgstr "支付公職人員提供服務的薪資；修復私人建築；幫助某個組織翻新從私人房東租用的空間；幫助宗教機構修復其聖所；增加 MBTA 巴士或火車的班次。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:31
+msgid ""
+"Programming to strengthen mental health among Boston youth; Expand the "
+"City’s Wicked Free WiFi network to reach more low-income areas; Digital "
+"literacy classes for senior citizens to learn new skills and promote social "
+"connections; Enhance public spaces through infrastructure projects (public "
+"art, street trees, benches, etc.)"
+msgstr ""
+"制定加強波士頓青少年心理健康的計畫；擴大 City&#39;s Wicked Free WiFi "
+"網路覆蓋更多低收入地區；為老年人提供數位掃盲課程，以學習新技能並促進社會聯繫；透過基礎設施項目（公共藝術、行道樹、長凳等）增強公共空間"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:32
+msgid ""
+"Project ideas must be feasible to implement, and be consistent with existing"
+" City policies, laws, regulations, and the Participatory Budgeting "
+"Ordinance; and"
+msgstr "計畫構想必須切實可行，並符合現有的城市政策、法律、法規和參與式預算條例；和"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:33
+msgid ""
+"Project ideas related to programs and services in non-City owned facilities "
+"are eligible."
+msgstr "與非市政府擁有的設施中的項目和服務相關的項目創意是合格的。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:34
+msgid ""
+"Project proposals may include programs and services as well as physical "
+"infrastructure"
+msgstr "專案提案可能包括專案和服務以及實體基礎設施"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:35
+msgid ""
+"Projects are limited to a one-time expense, and do not create new permanent "
+"positions;"
+msgstr "項目僅限於一次性費用，不會創造新的長期職位；"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:36
+msgid ""
+"Projects must be implemented or managed by the appropriate City Department "
+"or agency receiving direct budget appropriations."
+msgstr "項目必須由接受直接預算撥款的相應城市部門或機構實施或管理。"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:37
+msgid "Welcome to Participatory Budgeting in Boston!"
+msgstr "歡迎來到波士頓的參與式預算！"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:38
+msgid "What Type of Ideas Can You Propose?"
+msgstr "您可以提出什麼類型的想法？"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:39
+msgid "What are Some Examples of Ideas?"
+msgstr "有哪些想法的例子？"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:40
+msgid "Who can submit project ideas?"
+msgstr "誰可以提交專案想法？"
+
+#: src/flavors/cycle1/templates/index.html:68
+#: src/pbboston/jstemplates/place-list.html:1
+msgid "All Ideas"
+msgstr "所有想法"
+
+#: src/flavors/cycle1/templates/index.html:72
+msgid "City-wide Only"
+msgstr "限全市範圍"
+
+#: src/flavors/cycle1/templates/index.html:83
+#, python-format
+msgid "Powered by %(Shareabouts)s"
+msgstr "由%(Shareabouts)s提供支持"
+
+#: src/flavors/cycle1/templates/index.html:84
+#, python-format
+msgid "built by %(PoePublic)s"
+msgstr "由%(PoePublic)s構建"
+
+#: src/flavors/cycle1/templates/prelaunch.html:112
+msgid ""
+"Participatory Budgeting (PB) is a democratic process where community members\n"
+"    directly decide how to spend part of a public budget. The goal of Participatory\n"
+"    Budgeting in Boston is to empower residents to elevate community centered\n"
+"    project ideas with an emphasis on social and racial equity."
+msgstr ""
+"參與式預算（PB）是一個民主過程，社區成員可以\n"
+"直接決定如何支出部分公共預算。參與性目標\n"
+"波士頓的預算旨在使居民能夠提升以社區為中心的水平\n"
+"強調社會和種族平等的項目想法。"
+
+#: src/flavors/cycle1/templates/prelaunch.html:117
+msgid ""
+"By engaging in Participatory Budgeting, Bostonians of all ages and\n"
+"    backgrounds can help inform priorities and future investments for the\n"
+"    City’s larger budget process. "
+msgstr ""
+"透過參與參與式預算，各個年齡層的波士頓人以及\n"
+"背景可以幫助了解優先事項和未來投資\n"
+"城市更大的預算流程。 "
+
+#: src/flavors/cycle1/templates/prelaunch.html:121
+#, python-format
+msgid "Come back on %(return_date)s to submit your project ideas!"
+msgstr "返回%(return_date)s提交您的專案想法！"
+
+#: src/flavors/defaultflavor/templates/index.html:52
+msgid "Powered by"
+msgstr "供電"
+
+#: src/pbboston/jstemplates/activity-list-item.html:1
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a city-wide {{ "
+"place_type_label location_type }} idea"
+msgstr ""
+"<strong>{{ submitter_name }}</strong>提交了全市範圍的{{ place_type_label "
+"location_type }}想法"
+
+#: src/pbboston/jstemplates/activity-list-item.html:2
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
+msgstr ""
+"<strong>{{ submitter_name }}</strong>在<span class=\"place-location\">{{ "
+"location }}</span>附近提交了一個{{ place_type_label location_type }}想法"
+
+#: src/pbboston/jstemplates/activity-list-item.html:3
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
+msgstr ""
+"<strong>{{ submitter_name }}</strong>在<span class=\"place-location\">{{ "
+"location }}</span>附近提交了一個{{ place_type_label location_type }}想法"
+
+#: src/pbboston/jstemplates/form-field-label.html:1
+msgid "optional"
+msgstr "選修的"
+
+#: src/pbboston/jstemplates/place-detail.html:1
+msgid "View On Map"
+msgstr "在地圖上查看"
+
+#: src/pbboston/jstemplates/place-detail.html:2
+msgid "submitted this city-wide {{ place_type_label location_type}} idea"
+msgstr "提交了這個全市範圍的{{ place_type_label location_type}}想法"
+
+#: src/pbboston/jstemplates/place-detail.html:3
+msgid ""
+"submitted this {{ place_type_label location_type}} idea near {{ location }}"
+msgstr "在 {{ location }} 附近提交了此 {{ place_type_label location_type}} 創意"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:1
+msgid ""
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
+"budgeting#newsletter\">Sign up</a> to stay informed about Participatory "
+"Budgeting in Boston!"
+msgstr ""
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
+"budgeting#newsletter\">註冊</a>以了解有關波士頓參與式預算的資訊！"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
+msgid ""
+"For more information on Participatory Budgeting, please visit <a "
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
+"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgstr ""
+"有關參與式預算的更多信息，請訪問<a "
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a>或發送電子郵件至<a"
+" href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
+msgid "How to Stay Involved?"
+msgstr "如何保持參與？"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
+msgid "Please help us by answering this optional survey:"
+msgstr "請回答此可選調查來幫助我們："
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:5
+msgid "Thank you for your submission!"
+msgstr "感謝您提交！"
+
+#: src/pbboston/jstemplates/place-form.html:1
+msgid "It looks like you didn't set your location yet."
+msgstr "您似乎尚未設定位置。"
+
+#: src/pbboston/jstemplates/place-form.html:2
+#: src/sa_web/jstemplates/auth-nav.html:1
+msgid "Log Out"
+msgstr "登出"
+
+#: src/pbboston/jstemplates/place-form.html:3
+msgid "To learn about the types of ideas you can submit,"
+msgstr "要了解您可以提交的想法類型，"
+
+#: src/pbboston/jstemplates/place-form.html:4
+msgid ""
+"You can also\n"
+"          share your idea by calling the PB Phone line at"
+msgstr ""
+"你也可以\n"
+"請撥打 PB 電話線分享您的想法"
+
+#: src/pbboston/jstemplates/place-form.html:6
+msgid "click here"
+msgstr "點這裡"
+
+#: src/pbboston/jstemplates/place-list.html:2
+msgid "Choose a neighborhood..."
+msgstr "選擇一個社區..."
+
+#: src/pbboston/jstemplates/place-list.html:3
+msgid "City-wide Ideas"
+msgstr "全市創意"
+
+#: src/pbboston/jstemplates/place-list.html:4
+msgid "Location-specific Ideas"
+msgstr "特定地點的想法"
+
+#: src/pbboston/jstemplates/place-list.html:5
+msgid "Search"
+msgstr "搜尋"
+
+#: src/pbboston/templates/language_picker.html:16
+msgid "Select a language"
+msgstr "選擇語言"
+
+#: src/pbboston/templates/language_picker.html:18
+msgid "Close language picker"
+msgstr "關閉語言選擇器"
+
+#: src/sa_web/jstemplates/auth-nav.html:2
+msgid "Sign In"
+msgstr "登入"
+
+#: src/sa_web/jstemplates/auth-nav.html:3
+msgid "Signed in as</span> <span class=\"current-user\">{{ this }}"
+msgstr "以<span class=\"current-user\">{{ this }}</span>身分登入"
+
+#: src/sa_web/jstemplates/form-field-file.html:1
+msgid "Sorry, your browser doesn't support file uploads."
+msgstr "抱歉，您的瀏覽器不支援文件上傳。"
+
+#: src/sa_web/jstemplates/form-field-widget.html:1
+msgid ""
+"Hover over a category to see a description of the types of projects that fit"
+" within that category."
+msgstr "將滑鼠懸停在類別上可查看適合該類別的項目類型的描述。"
+
+#: src/sa_web/jstemplates/form-field-widget.html:2
+msgid ""
+"Select a category to see a description of the types of projects that fit "
+"within that category."
+msgstr "選擇一個類別以查看適合該類別的項目類型的描述。"
+
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:1
+msgid "Recommend on Facebook"
+msgstr "在臉書上推薦"
+
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:2
+msgid "Tweet This"
+msgstr "推特這個"
+
+#: src/sa_web/jstemplates/place-detail-survey.html:1
+msgid "around {{ pretty_created_datetime }}"
+msgstr "大約{{ pretty_created_datetime }}"
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:1
+msgid ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
+msgstr ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+"此 {{ place_config.response_name }}<strong>僅對版主可見</strong>。"
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:3
+msgid ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
+msgstr ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+"此 {{ place_config.response_name }}<strong>對所有人可見</strong>。"
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:5
+msgid "Make {{ place_config.response_name }} hidden"
+msgstr "隱藏 {{ place_config.response_name }}"
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:6
+msgid "Make {{ place_config.response_name }} visible"
+msgstr "使 {{ place_config.response_name }} 可見"
+
+#: src/sa_web/jstemplates/place-survey-response.html:1
+msgid "Thanks for participating!"
+msgstr "感謝您的參與！"
+
+#: src/sa_web/templates/base.html:88
+#, python-format
+msgid ""
+"\n"
+"        Oops, %(config.app.name)s needs JavaScript to work properly.\n"
+"        "
+msgstr ""
+"\n"
+"糟糕，%(config.app.name)s 需要 JavaScript 才能正常運作。\n"
+"        "
+
+#: src/sa_web/templates/base.html:93
+#, python-format
+msgid ""
+"\n"
+"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
+"        properly. But fear not, it's really easy to turn on. Click\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
+"        "
+msgstr ""
+"\n"
+"%(config.app.name)s 很棒，但它需要 JavaScript 才能運作\n"
+"適當地。但不用擔心，它真的很容易啟動。點選\n"
+"<a href=\"http://enable-javascript.com/\" target=\"_blank\">這裡</a>有簡單的說明！\n"
+"        "
+
+#: src/sa_web/templates/base.html:107
+msgid ""
+"We can't connect to the server at the moment. Hang tight while we re-"
+"establish communication."
+msgstr "我們目前無法連接到伺服器。在我們重新建立溝通期間請堅持住。"
+
+#: src/sa_web/templates/base.html:113
+msgid "Close"
+msgstr "關閉"
