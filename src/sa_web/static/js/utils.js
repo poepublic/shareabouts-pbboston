@@ -482,7 +482,7 @@ var Shareabouts = Shareabouts || {};
         options = options || {};
         options.dataType = 'json';
         options.cache = true;
-        options.url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + lng + ',' + lat + '.json?access_token=' + mapboxToken;
+        options.url = '/mapbox/json/api.mapbox.com/geocoding/v5/mapbox.places/' + lng + ',' + lat + '.json?access_token=' + mapboxToken;
         $.ajax(options);
       },
       getLocation: function(reverseGeocodedData) {

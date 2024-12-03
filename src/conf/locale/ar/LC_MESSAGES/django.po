@@ -1,0 +1,938 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Mjumbe Poe <mjumbewu@gmail.com>, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-15 04:34-0400\n"
+"PO-Revision-Date: 2024-06-23 20:22+0000\n"
+"Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
+"Language-Team: Arabic (https://app.transifex.com/mjumbewu/teams/189006/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: src/flavors/cycle1/_config.translations.py:6
+msgid "City of Boston Participatory Budgeting"
+msgstr "مدينة بوسطن الموازنة التشاركية"
+
+#: src/flavors/cycle1/_config.translations.py:7
+#: src/flavors/cycle1/templates/index.html:8
+#: src/flavors/cycle1/templates/index.html:17
+msgid "Participatory Budgeting"
+msgstr "الموازنة التشاركية"
+
+#: src/flavors/cycle1/_config.translations.py:8
+msgid ""
+"Shareabouts is a mapping tool to gather crowd sourced public input. Use it "
+"to collect suggested locations and comments in a social, engaging process."
+msgstr ""
+"Shareabouts هي أداة رسم خرائط لجمع المدخلات العامة من مصادر جماعية. استخدمه "
+"لجمع المواقع والتعليقات المقترحة في عملية اجتماعية وجذابة."
+
+#: src/flavors/cycle1/_config.translations.py:9
+msgid "Enter a location…"
+msgstr "أدخل موقعا..."
+
+#: src/flavors/cycle1/_config.translations.py:10
+#: src/flavors/cycle1/_config.translations.py:62
+#: src/flavors/cycle1/_config.translations.py:110
+msgid "Arts & Culture"
+msgstr "الفنون والثقافة"
+
+#: src/flavors/cycle1/_config.translations.py:11
+msgid ""
+"Project ideas focused on arts and cultural programming that promote cultural"
+" spaces in the City."
+msgstr ""
+"تركز أفكار المشاريع على البرامج الفنية والثقافية التي تعزز المساحات الثقافية"
+" في المدينة."
+
+#: src/flavors/cycle1/_config.translations.py:12
+#: src/flavors/cycle1/_config.translations.py:63
+#: src/flavors/cycle1/_config.translations.py:111
+msgid "Community Resources"
+msgstr "موارد المجتمع"
+
+#: src/flavors/cycle1/_config.translations.py:13
+msgid ""
+"Project ideas that provide assistance or services to residents in need, such"
+" as programs at community centers, financial or digital literacy, English as"
+" a second language, or GED classes."
+msgstr ""
+"أفكار المشاريع التي تقدم المساعدة أو الخدمات للمقيمين المحتاجين، مثل البرامج"
+" في المراكز المجتمعية، أو محو الأمية المالية أو الرقمية، أو اللغة الإنجليزية"
+" كلغة ثانية، أو دروس GED."
+
+#: src/flavors/cycle1/_config.translations.py:14
+#: src/flavors/cycle1/_config.translations.py:64
+#: src/flavors/cycle1/_config.translations.py:112
+msgid "Local Economy & Worker Empowerment"
+msgstr "الاقتصاد المحلي وتمكين العمال"
+
+#: src/flavors/cycle1/_config.translations.py:15
+msgid ""
+"Project ideas that improve access to quality jobs, skills training, career "
+"pipelines, and other resources for workers, small business owners, and "
+"entrepreneurs."
+msgstr ""
+"أفكار المشاريع التي تعمل على تحسين الوصول إلى وظائف جيدة، والتدريب على "
+"المهارات، والمسارات المهنية، وغيرها من الموارد للعمال وأصحاب الأعمال الصغيرة"
+" ورجال الأعمال."
+
+#: src/flavors/cycle1/_config.translations.py:16
+#: src/flavors/cycle1/_config.translations.py:65
+#: src/flavors/cycle1/_config.translations.py:113
+msgid "Education, Youth & Families"
+msgstr "التعليم والشباب والعائلات"
+
+#: src/flavors/cycle1/_config.translations.py:17
+msgid ""
+"Project ideas related to education for all ages, as well as proposals that "
+"meet the needs of Boston’s youth, senior citizens, and families."
+msgstr ""
+"أفكار المشاريع المتعلقة بالتعليم لجميع الأعمار، بالإضافة إلى المقترحات التي "
+"تلبي احتياجات شباب بوسطن وكبار السن والعائلات."
+
+#: src/flavors/cycle1/_config.translations.py:18
+#: src/flavors/cycle1/_config.translations.py:66
+#: src/flavors/cycle1/_config.translations.py:114
+msgid "Environment, Sustainability, and Food Access"
+msgstr "البيئة والاستدامة والحصول على الغذاء"
+
+#: src/flavors/cycle1/_config.translations.py:19
+msgid ""
+"Project ideas that help increase access to healthy and affordable food, "
+"promote environmental justice, and help increase the quality of life in "
+"Boston."
+msgstr ""
+"أفكار المشاريع التي تساعد على زيادة الوصول إلى الغذاء الصحي وبأسعار معقولة، "
+"وتعزيز العدالة البيئية، وتساعد على تحسين نوعية الحياة في بوسطن."
+
+#: src/flavors/cycle1/_config.translations.py:20
+msgid "Facilities, Parks & Recreation"
+msgstr "المرافق والمتنزهات والترفيه"
+
+#: src/flavors/cycle1/_config.translations.py:21
+msgid ""
+"Project ideas that Invest in clean, green, safe and accessible open space, "
+"facilities, and programming for residents and neighborhoods."
+msgstr ""
+"أفكار المشاريع التي تستثمر في المساحات المفتوحة والمرافق والبرمجة النظيفة "
+"والخضراء والآمنة والتي يمكن الوصول إليها للمقيمين والأحياء."
+
+#: src/flavors/cycle1/_config.translations.py:22
+#: src/flavors/cycle1/_config.translations.py:68
+#: src/flavors/cycle1/_config.translations.py:116
+msgid "Health & Well-being"
+msgstr "الصحة و أمبير؛ رفاهية"
+
+#: src/flavors/cycle1/_config.translations.py:23
+msgid ""
+"Project ideas that promote the physical and mental health of Boston "
+"residents of all ages."
+msgstr "أفكار مشاريع تعزز الصحة الجسدية والعقلية لسكان بوسطن من جميع الأعمار."
+
+#: src/flavors/cycle1/_config.translations.py:24
+#: src/flavors/cycle1/_config.translations.py:69
+#: src/flavors/cycle1/_config.translations.py:117
+msgid "Public Safety"
+msgstr "السلامة العامة"
+
+#: src/flavors/cycle1/_config.translations.py:25
+msgid ""
+"Project ideas that advance safety and increase justice in the City, such as "
+"community violence prevention programs and initiatives for healing and "
+"recovering from trauma and substance abuse."
+msgstr ""
+"أفكار المشاريع التي تعمل على تعزيز السلامة وزيادة العدالة في المدينة، مثل "
+"برامج الوقاية من العنف المجتمعي ومبادرات الشفاء والتعافي من الصدمات النفسية "
+"وتعاطي المخدرات."
+
+#: src/flavors/cycle1/_config.translations.py:26
+#: src/flavors/cycle1/_config.translations.py:70
+#: src/flavors/cycle1/_config.translations.py:118
+msgid "Streets & Sidewalks"
+msgstr "الشوارع والأرصفة"
+
+#: src/flavors/cycle1/_config.translations.py:27
+msgid ""
+"Project ideas to improve City streets and sidewalks and promote safety and "
+"accessibility."
+msgstr ""
+"أفكار مشاريع لتحسين شوارع المدينة وأرصفةها وتعزيز السلامة وسهولة الوصول "
+"إليها."
+
+#: src/flavors/cycle1/_config.translations.py:28
+#: src/flavors/cycle1/_config.translations.py:71
+#: src/flavors/cycle1/_config.translations.py:119
+msgid "Other / Not Sure"
+msgstr "أخرى / غير متأكد"
+
+#: src/flavors/cycle1/_config.translations.py:29
+msgid ""
+"Other community centered ideas that may not fit in the previous categories."
+msgstr "أفكار أخرى تتمحور حول المجتمع والتي قد لا تتناسب مع الفئات السابقة."
+
+#: src/flavors/cycle1/_config.translations.py:30
+msgid "idea"
+msgstr "فكرة"
+
+#: src/flavors/cycle1/_config.translations.py:31
+msgid "ideas"
+msgstr "أفكار"
+
+#: src/flavors/cycle1/_config.translations.py:32
+#: src/flavors/cycle1/templates/index.html:57
+msgid "Suggest an Idea"
+msgstr "أقترح فكرة"
+
+#: src/flavors/cycle1/_config.translations.py:33
+msgid "List All Ideas"
+msgstr "قائمة بجميع الأفكار"
+
+#: src/flavors/cycle1/_config.translations.py:34
+msgid "Show the Map"
+msgstr "عرض الخريطة"
+
+#: src/flavors/cycle1/_config.translations.py:35
+msgid "submitted"
+msgstr "مُقَدَّم"
+
+#: src/flavors/cycle1/_config.translations.py:36
+msgid "How would you spend $2 million to benefit your community?"
+msgstr "كيف ستنفق مليوني دولار لإفادة مجتمعك؟"
+
+#: src/flavors/cycle1/_config.translations.py:37
+msgid "Your neighbor"
+msgstr "جارك"
+
+#: src/flavors/cycle1/_config.translations.py:38
+msgid "Submit"
+msgstr "يُقدِّم"
+
+#: src/flavors/cycle1/_config.translations.py:39
+msgid "Multiple locations throughout the city"
+msgstr "مواقع متعددة في جميع أنحاء المدينة"
+
+#: src/flavors/cycle1/_config.translations.py:40
+msgid "Please use the map's search box or drag the map to set the location."
+msgstr "يرجى استخدام مربع البحث الخاص بالخريطة أو سحب الخريطة لتعيين الموقع."
+
+#: src/flavors/cycle1/_config.translations.py:41
+msgid "Thank you!"
+msgstr "شكرًا لك!"
+
+#: src/flavors/cycle1/_config.translations.py:42
+msgid ""
+"Thank you for sharing your idea with us! Please fill out the short form "
+"below. Only the information you choose to display will be made public."
+msgstr ""
+"شكرا لتقاسم فكرتك معنا! يرجى ملء النموذج القصير أدناه. سيتم فقط نشر "
+"المعلومات التي تختار عرضها."
+
+#: src/flavors/cycle1/_config.translations.py:43
+msgid "Is your idea for a specific location or for the entire city?"
+msgstr "هل فكرتك لمنطقة معينة أم للمدينة بأكملها؟"
+
+#: src/flavors/cycle1/_config.translations.py:44
+msgid "City wide?"
+msgstr "على مستوى المدينة؟"
+
+#: src/flavors/cycle1/_config.translations.py:45
+msgid "Location-specific"
+msgstr "موقع محدد"
+
+#: src/flavors/cycle1/_config.translations.py:46
+msgid "City-wide"
+msgstr "على مستوى المدينة"
+
+#: src/flavors/cycle1/_config.translations.py:47
+msgid "Approximately where would your idea be?"
+msgstr "تقريبا أين ستكون فكرتك؟"
+
+#: src/flavors/cycle1/_config.translations.py:48
+msgid "Approximate location…"
+msgstr "الموقع التقريبي…"
+
+#: src/flavors/cycle1/_config.translations.py:49
+msgid "Drag the map to set the location."
+msgstr "اسحب الخريطة لتعيين الموقع."
+
+#: src/flavors/cycle1/_config.translations.py:50
+msgid "Please share a short description of the project idea."
+msgstr "يرجى مشاركة وصف مختصر لفكرة المشروع."
+
+#: src/flavors/cycle1/_config.translations.py:51
+msgid "My idea is to…"
+msgstr "فكرتي هي…"
+
+#: src/flavors/cycle1/_config.translations.py:52
+msgid "Make sure your description is short and clear."
+msgstr "تأكد من أن الوصف قصير وواضح."
+
+#: src/flavors/cycle1/_config.translations.py:53
+#: src/flavors/cycle1/_config.translations.py:58
+msgid "Try to keep it to 50 words or less…"
+msgstr "حاول أن تجعلها لا تزيد عن 50 كلمة أو أقل..."
+
+#: src/flavors/cycle1/_config.translations.py:54
+msgid "How does your project advance social and racial equity?"
+msgstr "كيف يعزز مشروعك العدالة الاجتماعية والعنصرية؟"
+
+#: src/flavors/cycle1/_config.translations.py:55
+msgid "This idea would advance social and racial equity by…"
+msgstr "من شأن هذه الفكرة أن تعزز العدالة الاجتماعية والعنصرية من خلال ..."
+
+#: src/flavors/cycle1/_config.translations.py:56
+msgid "Make sure you keep it short and clear."
+msgstr "تأكد من إبقائها قصيرة وواضحة."
+
+#: src/flavors/cycle1/_config.translations.py:57
+msgid ""
+"\"Social and racial equity\" is defined as the just and fair inclusion of "
+"people of any social and racial background into society, so they can "
+"participate, prosper, and reach their full potential."
+msgstr ""
+"يتم تعريف &quot;العدالة الاجتماعية والعنصرية&quot; على أنها الإدماج العادل "
+"والمنصف للأشخاص من أي خلفية اجتماعية أو عنصرية في المجتمع، حتى يتمكنوا من "
+"المشاركة والازدهار وتحقيق إمكاناتهم الكاملة."
+
+#: src/flavors/cycle1/_config.translations.py:59
+msgid "Which category does your idea fall into?"
+msgstr "في أي فئة تقع فكرتك؟"
+
+#: src/flavors/cycle1/_config.translations.py:60
+msgid "Category"
+msgstr "فئة"
+
+#: src/flavors/cycle1/_config.translations.py:61
+msgid "Choose the category that most closely describes your project."
+msgstr "اختر الفئة التي تصف مشروعك بشكل وثيق."
+
+#: src/flavors/cycle1/_config.translations.py:67
+#: src/flavors/cycle1/_config.translations.py:115
+msgid "Facilities, Parks & Recreation  "
+msgstr "المرافق والمتنزهات والترفيه  "
+
+#: src/flavors/cycle1/_config.translations.py:72
+msgid "Are you submitting this idea as part of a community event?"
+msgstr "هل تقدم هذه الفكرة كجزء من حدث مجتمعي؟"
+
+#: src/flavors/cycle1/_config.translations.py:73
+msgid "No event; I am submitting this idea on my own"
+msgstr "لا حدث؛ أنا أطرح هذه الفكرة بنفسي"
+
+#: src/flavors/cycle1/_config.translations.py:74
+msgid ""
+"Yes, at an Idea Collection Workshop hosted by an organization sponsored by "
+"the Office of Participatory Budgeting"
+msgstr ""
+"نعم، في ورشة عمل تجميع الأفكار التي تستضيفها منظمة يرعاها مكتب الموازنة "
+"التشاركية"
+
+#: src/flavors/cycle1/_config.translations.py:75
+msgid "Yes, at an independent community gathering"
+msgstr "نعم، في تجمع مجتمعي مستقل"
+
+#: src/flavors/cycle1/_config.translations.py:76
+#: src/flavors/cycle1/_config.translations.py:79
+msgid "Your Name"
+msgstr "اسمك"
+
+#: src/flavors/cycle1/_config.translations.py:77
+#: src/flavors/cycle1/_config.translations.py:80
+msgid "Submitter's Name"
+msgstr "اسم المرسل"
+
+#: src/flavors/cycle1/_config.translations.py:78
+msgid "Your first name…"
+msgstr "اسمك الأول…"
+
+#: src/flavors/cycle1/_config.translations.py:81
+msgid "Your last name…"
+msgstr "اسمك الاخير…"
+
+#: src/flavors/cycle1/_config.translations.py:82
+msgid "How should we display your name next to your idea?"
+msgstr "كيف يجب أن نعرض اسمك بجانب فكرتك؟"
+
+#: src/flavors/cycle1/_config.translations.py:83
+msgid "Use my full name"
+msgstr "استخدم اسمي الكامل"
+
+#: src/flavors/cycle1/_config.translations.py:84
+msgid "Only use my first name"
+msgstr "استخدم اسمي الأول فقط"
+
+#: src/flavors/cycle1/_config.translations.py:85
+msgid "Do not display my name"
+msgstr "لا تظهر اسمي"
+
+#: src/flavors/cycle1/_config.translations.py:86
+msgid "Your Neighborhood"
+msgstr "حيك"
+
+#: src/flavors/cycle1/_config.translations.py:87
+msgid "Submitter's Neighborhood"
+msgstr "حي المرسل"
+
+#: src/flavors/cycle1/_config.translations.py:88
+msgid "Select a neighborhood…"
+msgstr "اختر حي…"
+
+#: src/flavors/cycle1/_config.translations.py:89
+#: src/flavors/cycle1/_config.translations.py:90
+msgid "Your Zip Code"
+msgstr "رمزك البريدي"
+
+#: src/flavors/cycle1/_config.translations.py:91
+#: src/flavors/cycle1/_config.translations.py:92
+msgid "Your Email"
+msgstr "بريدك الالكتروني"
+
+#: src/flavors/cycle1/_config.translations.py:93
+#: src/flavors/cycle1/_config.translations.py:94
+msgid "Your Preferred Language"
+msgstr "لغتك المفضلة"
+
+#: src/flavors/cycle1/_config.translations.py:95
+msgid "comment"
+msgstr "تعليق"
+
+#: src/flavors/cycle1/_config.translations.py:96
+msgid "comments"
+msgstr "تعليقات"
+
+#: src/flavors/cycle1/_config.translations.py:97
+msgid "commented on"
+msgstr "علق على"
+
+#: src/flavors/cycle1/_config.translations.py:98
+#: src/flavors/cycle1/_config.translations.py:105
+msgid "Someone"
+msgstr "شخص ما"
+
+#: src/flavors/cycle1/_config.translations.py:99
+#: src/flavors/cycle1/_config.translations.py:100
+msgid "Leave a Comment"
+msgstr "اترك تعليقا"
+
+#: src/flavors/cycle1/_config.translations.py:101
+msgid "Comment"
+msgstr "تعليق"
+
+#: src/flavors/cycle1/_config.translations.py:102
+msgid "Support"
+msgstr "يدعم"
+
+#: src/flavors/cycle1/_config.translations.py:103
+msgid "support"
+msgstr "يدعم"
+
+#: src/flavors/cycle1/_config.translations.py:104
+msgid "supports"
+msgstr "يدعم"
+
+#: src/flavors/cycle1/_config.translations.py:106
+msgid "About"
+msgstr "عن"
+
+#: src/flavors/cycle1/_config.translations.py:107
+#: src/flavors/cycle1/templates/prelaunch.html:86
+msgid "Boston PB Home"
+msgstr "بوسطن بي بي هوم"
+
+#: src/flavors/cycle1/_config.translations.py:108
+msgid "Filter Ideas"
+msgstr "أفكار التصفية"
+
+#: src/flavors/cycle1/_config.translations.py:109
+msgid "All"
+msgstr "الجميع"
+
+#: src/flavors/cycle1/jstemplates/important-updates.html:1
+msgid ""
+"The deadline to submit ideas has been extended to Thursday, August 15th."
+msgstr "تم تمديد الموعد النهائي لتقديم الأفكار إلى الخميس 15 أغسطس."
+
+#: src/flavors/cycle1/jstemplates/important-updates.html:2
+msgid ""
+"The submission period for Idea Collection is now closed. However, you can "
+"review all resident proposed ideas during PB Cycle One on the map."
+msgstr ""
+"انتهت الآن فترة تقديم الأفكار لجمعها. ومع ذلك، يمكنك مراجعة جميع الأفكار "
+"المقترحة من قبل المقيمين خلال الدورة الأولى من PB على الخريطة."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:1
+msgid ""
+"<strong>Ideas in Action</strong> is the City's new Participatory\n"
+"Budgeting initiative, where Bostonians can decide how to spend a part of the\n"
+"City’s budget. The City of Boston launched the first cycle of Participatory\n"
+"Budgeting and collected ideas from residents between July 1st to August 15,\n"
+"2024. Boston residents were asked about how to spend $2 million to benefit\n"
+"their community."
+msgstr ""
+"<strong>الأفكار في العمل</strong> هي مبادرة المشاركة الجديدة للمدينة\n"
+" مبادرة الميزانية، حيث يمكن لسكان بوسطن أن يقرروا كيفية إنفاق جزء من\n"
+" ميزانية المدينة. أطلقت مدينة بوسطن الدورة الأولى من برنامج المشاركة\n"
+" إعداد الميزانية وجمع الأفكار من السكان في الفترة من 1 يوليو إلى 15 أغسطس،\n"
+" 2024. سُئل سكان بوسطن عن كيفية إنفاق 2 مليون دولار للاستفادة\n"
+" مجتمعهم."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:7
+msgid ""
+"<strong>Sign up to stay informed about Participatory Budgeting in\n"
+"Boston.</strong> For more information on Participatory Budgeting, please visit\n"
+"<a href=\"https://boston.gov/participate\">Boston.gov/participate</a> or contact\n"
+"the Office of Participatory Budgeting at <a\n"
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgstr ""
+"<strong>سجل للحصول على معلومات حول الميزانية التشاركية في\n"
+" بوسطن.</strong> لمزيد من المعلومات حول الميزانية التشاركية، يرجى زيارة\n"
+" <a href=\"https://boston.gov/participate\">Boston.gov/participate</a> أو الاتصال\n"
+" مكتب الميزانية التشاركية في <a\n"
+" href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:12
+msgid "ALL City of Boston residents, regardless of age, can submit ideas!"
+msgstr ""
+"يمكن لجميع المقيمين في مدينة بوسطن، بغض النظر عن أعمارهم، تقديم أفكارهم!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:13
+msgid "Examples of Eligible Ideas"
+msgstr "أمثلة على الأفكار المؤهلة"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:14
+msgid "Examples of Ineligible Ideas"
+msgstr "أمثلة على الأفكار غير المؤهلة"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:15
+msgid ""
+"From August through September 2024, the City will review all submitted\n"
+"project ideas during the Idea Collection phase. The Office of Participatory\n"
+"Budgeting will host public workshops in the fall to develop these ideas into\n"
+"proposals for the PB ballot for voting in January."
+msgstr ""
+"من أغسطس إلى سبتمبر 2024، ستقوم المدينة بمراجعة جميع الطلبات المقدمة\n"
+" أفكار المشاريع خلال مرحلة جمع الأفكار. مكتب المشاركة\n"
+" ستستضيف الميزانية ورش عمل عامة في الخريف لتطوير هذه الأفكار\n"
+" مقترحات للتصويت على مشروع القانون في يناير/كانون الثاني."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:19
+msgid "Idea Submission Criteria"
+msgstr "معايير تقديم الفكرة"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:20
+msgid ""
+"Ideas may include programs and services, as well as physical infrastructure,"
+" technological improvements, and community enhancements."
+msgstr ""
+"وقد تشمل الأفكار البرامج والخدمات، فضلا عن البنية التحتية المادية، "
+"والتحسينات التكنولوجية، والتحسينات المجتمعية."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:21
+msgid ""
+"Infrastructure projects on private, state, or federal property are not "
+"eligible, such as projects concerning the Department of Conservation & "
+"Recreation (DCR) or the Massachusetts Bay Transit Authority (MBTA). "
+msgstr ""
+"مشاريع البنية التحتية على الممتلكات الخاصة أو الحكومية أو الفيدرالية ليست "
+"مؤهلة، مثل المشاريع المتعلقة بإدارة الحفظ والترفيه (DCR) أو هيئة عبور خليج "
+"ماساتشوستس (MBTA). "
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:22
+msgid ""
+"Of note: Project ideas containing inappropriate, offensive, or derogatory "
+"language will be removed and not considered from the PB process."
+msgstr ""
+"ملاحظة: ستتم إزالة أفكار المشروع التي تحتوي على لغة غير لائقة أو مسيئة أو "
+"مهينة ولن يتم أخذها في الاعتبار من عملية المشاركة في المشروع."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:23
+msgid ""
+"Participatory Budgeting (PB) is a democratic process where community\n"
+"members directly decide how to spend part of a public budget. The goal of\n"
+"Participatory Budgeting in Boston is to empower residents to elevate community\n"
+"centered project ideas with an emphasis on social and racial equity. By\n"
+"engaging in Participatory Budgeting, Bostonians of all ages and backgrounds can\n"
+"help inform priorities and future investments for the City’s larger budget\n"
+"process."
+msgstr ""
+"الميزانية التشاركية هي عملية ديمقراطية حيث يشارك المجتمع\n"
+" يقرر الأعضاء بشكل مباشر كيفية إنفاق جزء من الميزانية العامة. والهدف من ذلك هو\n"
+" تهدف الميزانية التشاركية في بوسطن إلى تمكين السكان من الارتقاء بالمجتمع\n"
+" أفكار مشاريع تركز على المساواة الاجتماعية والعرقية.\n"
+" من خلال المشاركة في الميزانية التشاركية، يمكن لسكان بوسطن من جميع الأعمار والخلفيات\n"
+" المساعدة في تحديد الأولويات والاستثمارات المستقبلية للميزانية الأكبر للمدينة\n"
+" عملية."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:30
+msgid ""
+"Paying for the salary of a public employee to provide services; Repairing a "
+"privately owned building; Helping an organization renovate a space that it "
+"rents from a private landlord; Helping a religious institution repair its "
+"sanctuary; Increase the frequency of MBTA buses or trains."
+msgstr ""
+"دفع راتب موظف عام لتقديم الخدمات؛ ترميم مبنى مملوك للقطاع الخاص؛ مساعدة إحدى"
+" المؤسسات على تجديد مساحة تستأجرها من مالك خاص؛ مساعدة مؤسسة دينية في إصلاح "
+"حرمها؛ زيادة وتيرة حافلات أو قطارات MBTA."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:31
+msgid ""
+"Programming to strengthen mental health among Boston youth; Expand the "
+"City’s Wicked Free WiFi network to reach more low-income areas; Digital "
+"literacy classes for senior citizens to learn new skills and promote social "
+"connections; Enhance public spaces through infrastructure projects (public "
+"art, street trees, benches, etc.)"
+msgstr ""
+"البرمجة لتعزيز الصحة العقلية بين شباب بوسطن؛ توسيع شبكة WiFi المجانية "
+"الشريرة في المدينة للوصول إلى المزيد من المناطق ذات الدخل المنخفض؛ فصول محو "
+"الأمية الرقمية لكبار السن لتعلم مهارات جديدة وتعزيز الروابط الاجتماعية؛ "
+"تعزيز الأماكن العامة من خلال مشاريع البنية التحتية (الفن العام، أشجار "
+"الشوارع، المقاعد، الخ)"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:32
+msgid ""
+"Project ideas must be feasible to implement, and be consistent with existing"
+" City policies, laws, regulations, and the Participatory Budgeting "
+"Ordinance; and"
+msgstr ""
+"يجب أن تكون أفكار المشروع قابلة للتنفيذ، وأن تكون متسقة مع سياسات المدينة "
+"وقوانينها ولوائحها الحالية ومرسوم الموازنة التشاركية؛ و"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:33
+msgid ""
+"Project ideas related to programs and services in non-City owned facilities "
+"are eligible."
+msgstr ""
+"أفكار المشاريع المتعلقة بالبرامج والخدمات في المرافق غير المملوكة للمدينة "
+"مؤهلة."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:34
+msgid ""
+"Project proposals may include programs and services as well as physical "
+"infrastructure"
+msgstr ""
+"قد تتضمن مقترحات المشاريع برامج وخدمات بالإضافة إلى البنية التحتية المادية"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:35
+msgid ""
+"Projects are limited to a one-time expense, and do not create new permanent "
+"positions;"
+msgstr ""
+"تقتصر المشاريع على نفقة لمرة واحدة، ولا تؤدي إلى إنشاء وظائف دائمة جديدة؛"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:36
+msgid ""
+"Projects must be implemented or managed by the appropriate City Department "
+"or agency receiving direct budget appropriations."
+msgstr ""
+"يجب تنفيذ المشاريع أو إدارتها من قبل إدارة المدينة أو الوكالة المناسبة التي "
+"تتلقى مخصصات الميزانية المباشرة."
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:37
+msgid "Welcome to Participatory Budgeting in Boston!"
+msgstr "مرحبًا بكم في الموازنة التشاركية في بوسطن!"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:38
+msgid "What Type of Ideas Can You Propose?"
+msgstr "ما نوع الأفكار التي يمكنك اقتراحها؟"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:39
+msgid "What are Some Examples of Ideas?"
+msgstr "ما هي بعض الأمثلة على الأفكار؟"
+
+#: src/flavors/cycle1/jstemplates/pages/overview.html:40
+msgid "Who can submit project ideas?"
+msgstr "من يمكنه تقديم أفكار المشاريع؟"
+
+#: src/flavors/cycle1/templates/index.html:68
+#: src/pbboston/jstemplates/place-list.html:1
+msgid "All Ideas"
+msgstr "جميع الأفكار"
+
+#: src/flavors/cycle1/templates/index.html:72
+msgid "City-wide Only"
+msgstr "على مستوى المدينة فقط"
+
+#: src/flavors/cycle1/templates/index.html:83
+#, python-format
+msgid "Powered by %(Shareabouts)s"
+msgstr "مدعوم من %(Shareabouts)s"
+
+#: src/flavors/cycle1/templates/index.html:84
+#, python-format
+msgid "built by %(PoePublic)s"
+msgstr "تم بناؤه بواسطة %(PoePublic)s"
+
+#: src/flavors/cycle1/templates/prelaunch.html:112
+msgid ""
+"Participatory Budgeting (PB) is a democratic process where community members\n"
+"    directly decide how to spend part of a public budget. The goal of Participatory\n"
+"    Budgeting in Boston is to empower residents to elevate community centered\n"
+"    project ideas with an emphasis on social and racial equity."
+msgstr ""
+"الموازنة التشاركية (PB) هي عملية ديمقراطية يشارك فيها أفراد المجتمع\n"
+" يقرر بشكل مباشر كيفية إنفاق جزء من الموازنة العامة. الهدف التشاركي\n"
+" تهدف الميزانية في بوسطن إلى تمكين السكان من رفع مستوى التركيز على المجتمع\n"
+" أفكار المشروع مع التركيز على العدالة الاجتماعية والعنصرية."
+
+#: src/flavors/cycle1/templates/prelaunch.html:117
+msgid ""
+"By engaging in Participatory Budgeting, Bostonians of all ages and\n"
+"    backgrounds can help inform priorities and future investments for the\n"
+"    City’s larger budget process. "
+msgstr ""
+"من خلال الانخراط في الموازنة التشاركية، سكان بوسطن من جميع الأعمار و\n"
+" يمكن أن تساعد الخلفيات في تحديد الأولويات والاستثمارات المستقبلية لـ\n"
+" عملية الميزانية الأكبر في المدينة. "
+
+#: src/flavors/cycle1/templates/prelaunch.html:121
+#, python-format
+msgid "Come back on %(return_date)s to submit your project ideas!"
+msgstr "عُد إلى %(return_date)s لإرسال أفكار مشروعك!"
+
+#: src/flavors/defaultflavor/templates/index.html:52
+msgid "Powered by"
+msgstr "مشغل بواسطة"
+
+#: src/pbboston/jstemplates/activity-list-item.html:1
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a city-wide {{ "
+"place_type_label location_type }} idea"
+msgstr ""
+"قدمت <strong>{{ submitter_name }}</strong> فكرة {{ place_type_label "
+"location_type }} على مستوى المدينة"
+
+#: src/pbboston/jstemplates/activity-list-item.html:2
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
+msgstr ""
+"<strong>{{ submitter_name }}</strong> قدم فكرة {{ place_type_label "
+"location_type }} بالقرب من <span class=\"place-location\">{{ location "
+"}}</span>"
+
+#: src/pbboston/jstemplates/activity-list-item.html:3
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
+msgstr ""
+"<strong>{{ submitter_name }}</strong> قدم فكرة {{ place_type_label "
+"location_type }} بالقرب من <span class=\"place-location\">{{ location "
+"}}</span>"
+
+#: src/pbboston/jstemplates/form-field-label.html:1
+msgid "optional"
+msgstr "خياري"
+
+#: src/pbboston/jstemplates/place-detail.html:1
+msgid "View On Map"
+msgstr "عرض على الخريطة"
+
+#: src/pbboston/jstemplates/place-detail.html:2
+msgid "submitted this city-wide {{ place_type_label location_type}} idea"
+msgstr "أرسل هذه الفكرة {{ place_type_label location_type}} على مستوى المدينة"
+
+#: src/pbboston/jstemplates/place-detail.html:3
+msgid ""
+"submitted this {{ place_type_label location_type}} idea near {{ location }}"
+msgstr ""
+"أرسل هذه الفكرة {{ place_type_label location_type}} بالقرب من {{ location }}"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:1
+msgid ""
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
+"budgeting#newsletter\">Sign up</a> to stay informed about Participatory "
+"Budgeting in Boston!"
+msgstr ""
+"<a target=\"_blank\" "
+"href=\"https://www.boston.gov/departments/participatory-"
+"budgeting#newsletter\">قم بالتسجيل</a> لتبقى على اطلاع حول الموازنة "
+"التشاركية في بوسطن!"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:2
+msgid ""
+"For more information on Participatory Budgeting, please visit <a "
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
+"or email us at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+msgstr ""
+"لمزيد من المعلومات حول الموازنة التشاركية، يرجى زيارة <a "
+"href=\"https://boston.gov/participate\">https://boston.gov/participate</a> "
+"أو مراسلتنا عبر البريد الإلكتروني على <a "
+"href=\"mailto:pb@boston.gov\">pb@boston.gov</a>"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:3
+msgid "How to Stay Involved?"
+msgstr "كيف تبقى مشاركا؟"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:4
+msgid "Please help us by answering this optional survey:"
+msgstr "الرجاء مساعدتنا من خلال الإجابة على هذا الاستبيان الاختياري:"
+
+#: src/pbboston/jstemplates/place-form-submission-confirmation.html:5
+msgid "Thank you for your submission!"
+msgstr "شكرا لتقريركم!"
+
+#: src/pbboston/jstemplates/place-form.html:1
+msgid "It looks like you didn't set your location yet."
+msgstr "يبدو أنك لم تحدد موقعك بعد."
+
+#: src/pbboston/jstemplates/place-form.html:2
+#: src/sa_web/jstemplates/auth-nav.html:1
+msgid "Log Out"
+msgstr "تسجيل خروج"
+
+#: src/pbboston/jstemplates/place-form.html:3
+msgid "To learn about the types of ideas you can submit,"
+msgstr "للتعرف على أنواع الأفكار التي يمكنك تقديمها،"
+
+#: src/pbboston/jstemplates/place-form.html:4
+msgid ""
+"You can also\n"
+"          share your idea by calling the PB Phone line at"
+msgstr ""
+"بامكانك ايضا\n"
+" شارك فكرتك عن طريق الاتصال بخط PB Phone على"
+
+#: src/pbboston/jstemplates/place-form.html:6
+msgid "click here"
+msgstr "انقر هنا"
+
+#: src/pbboston/jstemplates/place-list.html:2
+msgid "Choose a neighborhood..."
+msgstr "اختر الحي..."
+
+#: src/pbboston/jstemplates/place-list.html:3
+msgid "City-wide Ideas"
+msgstr "أفكار على مستوى المدينة"
+
+#: src/pbboston/jstemplates/place-list.html:4
+msgid "Location-specific Ideas"
+msgstr "أفكار خاصة بالموقع"
+
+#: src/pbboston/jstemplates/place-list.html:5
+msgid "Search"
+msgstr "يبحث"
+
+#: src/pbboston/templates/language_picker.html:16
+msgid "Select a language"
+msgstr "اختر لغة"
+
+#: src/pbboston/templates/language_picker.html:18
+msgid "Close language picker"
+msgstr "إغلاق منتقي اللغة"
+
+#: src/sa_web/jstemplates/auth-nav.html:2
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+#: src/sa_web/jstemplates/auth-nav.html:3
+msgid "Signed in as</span> <span class=\"current-user\">{{ this }}"
+msgstr "تم تسجيل الدخول كـ <span class=\"current-user\">{{ this }}</span>"
+
+#: src/sa_web/jstemplates/form-field-file.html:1
+msgid "Sorry, your browser doesn't support file uploads."
+msgstr "عذرًا، متصفحك لا يدعم تحميل الملفات."
+
+#: src/sa_web/jstemplates/form-field-widget.html:1
+msgid ""
+"Hover over a category to see a description of the types of projects that fit"
+" within that category."
+msgstr ""
+"قم بالتمرير فوق إحدى الفئات لرؤية وصف لأنواع المشاريع التي تناسب تلك الفئة."
+
+#: src/sa_web/jstemplates/form-field-widget.html:2
+msgid ""
+"Select a category to see a description of the types of projects that fit "
+"within that category."
+msgstr "حدد فئة لرؤية وصف لأنواع المشاريع التي تناسب هذه الفئة."
+
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:1
+msgid "Recommend on Facebook"
+msgstr "يوصي في الفيسبوك"
+
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:2
+msgid "Tweet This"
+msgstr "سقسقة هذا"
+
+#: src/sa_web/jstemplates/place-detail-survey.html:1
+msgid "around {{ pretty_created_datetime }}"
+msgstr "حول {{ pretty_created_datetime }}"
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:1
+msgid ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
+msgstr ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+" هذا {{ place_config.response_name }} <strong>مرئي للمشرفين فقط</strong> ."
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:3
+msgid ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
+msgstr ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+" هذا {{ place_config.response_name }} <strong>مرئي للجميع</strong> ."
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:5
+msgid "Make {{ place_config.response_name }} hidden"
+msgstr "اجعل {{ place_config.response_name }} مخفيًا"
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:6
+msgid "Make {{ place_config.response_name }} visible"
+msgstr "اجعل {{ place_config.response_name }} مرئيًا"
+
+#: src/sa_web/jstemplates/place-survey-response.html:1
+msgid "Thanks for participating!"
+msgstr "شكرا للمشاركة!"
+
+#: src/sa_web/templates/base.html:88
+#, python-format
+msgid ""
+"\n"
+"        Oops, %(config.app.name)s needs JavaScript to work properly.\n"
+"        "
+msgstr ""
+"\n"
+"عفوًا، يحتاج %(config.app.name)s إلى JavaScript ليعمل بشكل صحيح.\n"
+"        "
+
+#: src/sa_web/templates/base.html:93
+#, python-format
+msgid ""
+"\n"
+"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
+"        properly. But fear not, it's really easy to turn on. Click\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
+"        "
+msgstr ""
+"\n"
+"%(config.app.name)s رائع ولكنه يحتاج إلى شيء يسمى JavaScript حتى يعمل\n"
+" على وجه صحيح. لكن لا تخف، فمن السهل حقًا تشغيله. انقر\n"
+" <a href=\"http://enable-javascript.com/\" target=\"_blank\">هنا</a> للحصول على تعليمات بسيطة!\n"
+"        "
+
+#: src/sa_web/templates/base.html:107
+msgid ""
+"We can't connect to the server at the moment. Hang tight while we re-"
+"establish communication."
+msgstr "لا يمكننا الاتصال بالخادم في الوقت الحالي. انتظر حتى نعيد الاتصال."
+
+#: src/sa_web/templates/base.html:113
+msgid "Close"
+msgstr "يغلق"

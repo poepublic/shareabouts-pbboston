@@ -18,7 +18,7 @@ var Shareabouts = Shareabouts || {};
           };
 
       // Init the map
-      self.map = L.map(self.el, self.options.mapConfig.options);
+      self.map = self.constructMap();
       self.placeLayers = L.layerGroup();
 
       // Add layers defined in the config file
@@ -102,6 +102,9 @@ var Shareabouts = Shareabouts || {};
       self.collection.on('reset', self.render, self);
       self.collection.on('add', self.addLayerView, self);
       self.collection.on('remove', self.removeLayerView, self);
+    },
+    constructMap: function() {
+      return L.map(this.el, this.options.mapConfig.options);
     },
     reverseGeocodeMapCenter: _.debounce(function() {
       var center = this.map.getCenter();
@@ -193,6 +196,7 @@ var Shareabouts = Shareabouts || {};
       switch (this.options.mapConfig.geocoding_engine) {
         case 'Mapbox':
           options.geocoder = L.Control.Geocoder.mapbox(S.bootstrapped.mapboxToken, {
+            serviceUrl: '/mapbox/json/api.mapbox.com/geocoding/v5/mapbox.places/',
             geocodingQueryParams: {
               proximity: [
                 this.options.mapConfig.options.center.lng,
@@ -214,7 +218,9 @@ var Shareabouts = Shareabouts || {};
       control = L.Control.geocoder(options)
         .on('markgeocode', function(evt) {
           result = evt.geocode || evt;
-          this._map.fitBounds(result.bbox);
+          const zoom = this._map.getBoundsZoom(result.bbox);
+          const center = result.center;
+          this._map.setView(center, zoom);
           $(S).trigger('geocode', [evt]);
         })
         .addTo(this.map);
@@ -245,7 +251,10 @@ var Shareabouts = Shareabouts || {};
       });
     },
     removeLayerView: function(model) {
-      this.layerViews[model.cid].remove();
+      var layerView = this.layerViews[model.cid];
+      if (layerView && layerView.remove) {
+        layerView.remove();
+      }
       delete this.layerViews[model.cid];
     },
     zoomInOn: function(latLng) {
@@ -254,16 +263,20 @@ var Shareabouts = Shareabouts || {};
 
     filter: function(locationType) {
       var self = this;
-      console.log('filter the map', arguments);
       this.locationTypeFilter = locationType;
       this.collection.each(function(model) {
-        var modelLocationType = model.get('location_type');
+        var modelLocationType = model.get('location_type'),
+            layerView = self.layerViews[model.cid];
+
+        if (!layerView) {
+          return;
+        }
 
         if (modelLocationType &&
             modelLocationType.toUpperCase() === locationType.toUpperCase()) {
-          self.layerViews[model.cid].show();
+          layerView.show();
         } else {
-          self.layerViews[model.cid].hide();
+          layerView.hide();
         }
       });
     },
@@ -272,7 +285,10 @@ var Shareabouts = Shareabouts || {};
       var self = this;
       this.locationTypeFilter = null;
       this.collection.each(function(model) {
-        self.layerViews[model.cid].render();
+        var layerView = self.layerViews[model.cid];
+        if (layerView) {
+          layerView.render();
+        }
       });
     }
   });

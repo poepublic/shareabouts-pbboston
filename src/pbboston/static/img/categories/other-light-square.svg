@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 144 144"
+   version="1.1"
+   sodipodi:docname="other-light-square.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview21"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="4.3680556"
+     inkscape:cx="90.429253"
+     inkscape:cy="72.114467"
+     inkscape:window-width="1600"
+     inkscape:window-height="831"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#fff;stroke:#121f2c;stroke-linecap:round;stroke-miterlimit:10;stroke-width:3px;}</style>
+  </defs>
+  <title
+     id="title6">lightbulb</title>
+  <path
+     class="cls-1"
+     d="M54.57,56.51a3.6,3.6,0,0,1-1.12-7l34.86-11.4a3.6,3.6,0,0,1,2.24,6.84L55.69,56.33A3.64,3.64,0,0,1,54.57,56.51Z"
+     id="path8"
+     style="fill:#f8f8f8;fill-opacity:0.30000001;stroke:#f8f8f8;stroke-opacity:1" />
+  <path
+     class="cls-1"
+     d="M54.57,41.81a3.6,3.6,0,0,1-1.12-7L69.1,29.68l0-2.91a3.61,3.61,0,0,1,3.6-3.55h0a3.58,3.58,0,0,1,3.55,3.64l-.07,5.48a3.61,3.61,0,0,1-2.48,3.38L55.69,41.64A3.63,3.63,0,0,1,54.57,41.81Z"
+     id="path10"
+     style="fill:#f8f8f8;fill-opacity:0.30000001;stroke:#f8f8f8;stroke-opacity:1" />
+  <path
+     class="cls-1"
+     d="M54.57,71.21a3.6,3.6,0,0,1-1.12-7l34.86-11.4a3.6,3.6,0,0,1,2.24,6.84L55.69,71A3.64,3.64,0,0,1,54.57,71.21Z"
+     id="path12"
+     style="fill:#f8f8f8;fill-opacity:0.30000001;stroke:#f8f8f8;stroke-opacity:1" />
+  <path
+     id="path14"
+     style="fill:#f8f8f8;fill-opacity:0.30000001;stroke:#f8f8f8;stroke-opacity:1"
+     class="cls-1"
+     d="M 89.089844 78.580078 A 33.72 33.72 0 0 0 83.089844 80.169922 C 81.719337 80.608111 75.274574 83.485657 74.408203 99.480469 L 81.609375 99.480469 C 82.200539 89.677868 85.060993 87.304617 85.5 87 A 33.79 33.79 0 0 1 89.910156 85.730469 A 3.6 3.6 0 0 0 89.089844 78.580078 z " />
+  <path
+     id="path16"
+     style="fill:#f8f8f8;fill-opacity:0.30000001;stroke:#f8f8f8;stroke-opacity:1"
+     class="cls-1"
+     d="M 89.53125 66.195312 A 3.6 3.6 0 0 0 88.310547 66.339844 L 53.449219 77.740234 A 3.59 3.59 0 0 0 52.710938 84.240234 L 60.539062 88.970703 C 60.749458 89.146032 63.910751 91.536903 64.6875 99.480469 L 71.902344 99.480469 C 70.920876 87.337999 65.280286 83.451102 64.240234 82.839844 L 63.150391 82.179688 L 90.550781 73.179688 A 3.6 3.6 0 0 0 89.53125 66.195312 z " />
+  <path
+     class="cls-1"
+     d="M60.77,99.48H85.22a0,0,0,0,1,0,0v16.38a4.92,4.92,0,0,1-4.92,4.92H65.69a4.92,4.92,0,0,1-4.92-4.92V99.48A0,0,0,0,1,60.77,99.48Z"
+     id="path18"
+     style="fill:#f8f8f8;fill-opacity:0.5;stroke:#f8f8f8;stroke-opacity:1" />
+  <metadata
+     id="metadata880">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>lightbulb</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
