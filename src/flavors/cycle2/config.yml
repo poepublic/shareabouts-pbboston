@@ -55,10 +55,10 @@ map:
     # Mapbox GL Layers
     # ================
     - type: mapbox
-      style: mapbox://styles/poepublic/clrgpjg9h00bz01mef8atgnpl
+      style: mapbox://styles/poepublic/cma9x7aqj00fr01si1d4xcauh
       accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
       fallback:
-        url: https://api.mapbox.com/styles/v1/poepublic/clrgpjg9h00bz01mef8atgnpl/tiles/256/{z}/{x}/{y}@2x
+        url: https://api.mapbox.com/styles/v1/poepublic/cma9x7aqj00fr01si1d4xcauh/tiles/256/{z}/{x}/{y}@2x
         attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
 
 # The keys show up in the dropdown list when you are adding a new place
