@@ -55,7 +55,18 @@ map:
     # Mapbox GL Layers
     # ================
     - type: mapbox
-      style: mapbox://styles/poepublic/cma9x7aqj00fr01si1d4xcauh
+      pane: lightPane
+      style: mapbox://styles/poepublic/cma9wxtih00g201snhawygbxu  # Dark style
+      padding: 1
+      accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
+      fallback:
+        url: https://api.mapbox.com/styles/v1/poepublic/cma9wxtih00g201snhawygbxu/tiles/256/{z}/{x}/{y}@2x
+        attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
+
+    - type: mapbox
+      pane: darkPane
+      style: mapbox://styles/poepublic/cma9x7aqj00fr01si1d4xcauh  # Light style
+      padding: 1
       accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
       fallback:
         url: https://api.mapbox.com/styles/v1/poepublic/cma9x7aqj00fr01si1d4xcauh/tiles/256/{z}/{x}/{y}@2x
@@ -500,9 +511,9 @@ place:
     - name: neighborhood
       type: hidden
 
-    - prompt: _(Please share a short description of the project idea.)
+    - prompt: _(Please describe your project idea.)
       label: _(My idea is to…)
-      help_text: _(Make sure your description is short and clear.)
+      help_text: _(Tell us about the issue you want to address. Why is this idea a priority and beneficial to the community?)
       type: textarea
       name: description
       attrs:

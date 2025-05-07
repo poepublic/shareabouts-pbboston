@@ -63,6 +63,17 @@
   --instructions-bg: var(--iia-fog-grey);
   --instructions-fg: var(--iia-dark-blue);
 
+  --content-bg: var(--iia-dark-blue);
+  --content-fg: white;
+  --content-line: var(--iia-fog-grey);
+  --content-link: var(--iia-electric-purple-alt);
+  --content-link-hover: var(--iia-urban-pink-alt);
+
+  --attention-bg: var(--iia-callout-blue);
+  --attention-fg: white;
+
+  --map-bg: var(--iia-fog-grey);
+
   --full-navbar-limit: 1280px;
   --large-screen-limit: 1024px;
   --medium-screen-limit: 768px;
@@ -102,12 +113,12 @@ p {
 }
 
 a, a:active, a:visited {
-  color: var(--iia-electric-purple-alt);
+  color: var(--content-link);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--iia-urban-pink-alt);
+  color: var(--content-link-hover);
 }
 
 .scribble-text {
@@ -155,6 +166,7 @@ a:hover {
   background-position: center bottom;
   margin: -1em;
   margin-top: -10rem;
+  padding: 1em;
 }
 
 #content article {
@@ -169,12 +181,20 @@ a:hover {
 
 #content,
 a.close-btn {
-  background-color: var(--iia-dark-blue);
-  color: white;
+  background-color: var(--content-bg);
+  color: var(--content-fg);
 }
 
 #map {
-  background-color: var(--iia-fog-grey);
+  background-color: var(--map-bg);
+}
+
+.leaflet-light-pane {
+  display: block;
+}
+
+.leaflet-dark-pane {
+  display: none;
 }
 
 #centerpoint.newpin .x {
@@ -230,7 +250,8 @@ a.close-btn {
 .page .important-update {
   padding: 0.5rem calc(0.5rem - 2px);
   margin: 0.5rem -0.5rem;
-  background-color: var(--iia-callout-blue);
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
   font-weight: bold;
 }
 
@@ -441,7 +462,7 @@ textarea {
   display: block;
   border-width: 0.25em;
   border-radius: 0;
-  border-color: var(--iia-fog-grey);
+  border-color: var(--content-line);
   color: var(--iia-dark-blue);
   font-family: var(--body-font);
   font-weight: normal;
@@ -453,8 +474,8 @@ textarea {
   display: block;
   border-width: 0.25em;
   border-radius: 0;
-  border-color: var(--iia-fog-grey);
-  color: white;
+  border-color: var(--content-line);
+  color: var(--content-fg);
   font-family: var(--body-font);
   font-weight: normal;
   text-transform: none;
@@ -479,8 +500,9 @@ input:focus, select:focus, textarea:focus {
 label {
   font-family: var(--header-font);
   font-weight: bold;
+  font-size: 1rem;
   text-transform: uppercase;
-  color: white;
+  color: var(--content-fg);
 }
 
 .radio-group {
@@ -527,6 +549,7 @@ label {
 
 .help-text {
   font-style: italic;
+  font-size: 1rem;
   margin-bottom: 0.25rem;
 }
 
@@ -772,8 +795,8 @@ label {
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  background-color: var(--charles-blue);
-  color: white;
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
   line-height: 1rem;
   text-align: center;
   font-size: 0.75rem;
@@ -783,9 +806,10 @@ label {
 .tooltip-content {
   margin: 0.5rem 0;
   padding: 0.5rem;
-  border: 1px solid var(--charles-blue);
+  border: 1px solid var(--content-line);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  background-color: var(--supporting-gray-4);
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
 }
 
 /*~~~~~~~~~~~~~~~~~~~~
@@ -803,7 +827,8 @@ label {
   position: sticky;
   top: 0;
   z-index: 10000;
-  background-color: var(--iia-callout-blue);
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
 }
 
 @media (hover: hover) and (width >= 1024px) {
@@ -1083,6 +1108,12 @@ label {
   #content {
     margin: 1rem 1rem 1rem 0;
     border-radius: 0.25rem;
+  }
+
+  @media screen and (width >= 60rem) {
+    .content-visible #centerpoint.newpin {
+      left: calc(50% - var(--content-left) / 2 + 1rem);
+    }
   }
 }
 
@@ -1700,4 +1731,58 @@ body .marker-cluster div {
 }
 
 @media only screen and (width >= 1300px) {
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --instructions-bg: var(--iia-urban-pink);
+    --instructions-fg: white;
+
+    --content-bg: var(--iia-fog-grey);
+    --content-fg: var(--iia-dark-blue);
+    --content-line: var(--iia-indigo-blue);
+    --content-link: var(--iia-electric-purple);
+    --content-link-hover: var(--iia-urban-pink);
+
+    --map-bg: var(--iia-fog-grey);
+  }
+
+  [name="location_type"][value="arts_culture"] + .label-text {
+    background-image: url("/static/img/categories/arts_culture-dark-square.svg");
+  }
+  [name="location_type"][value="community"] + .label-text {
+    background-image: url("/static/img/categories/community-dark-square.svg");
+  }
+  [name="location_type"][value="economy_workers"] + .label-text {
+    background-image: url("/static/img/categories/economy_workers-dark-square.svg");
+  }
+  [name="location_type"][value="education_youth"] + .label-text {
+    background-image: url("/static/img/categories/education_youth-dark-square.svg");
+  }
+  [name="location_type"][value="sustainability"] + .label-text {
+    background-image: url("/static/img/categories/sustainability-dark-square.svg");
+  }
+  [name="location_type"][value="facilities"] + .label-text {
+    background-image: url("/static/img/categories/facilities-dark-square.svg");
+  }
+  [name="location_type"][value="human_services"] + .label-text {
+    background-image: url("/static/img/categories/human_services-dark-square.svg");
+  }
+  [name="location_type"][value="public_safety"] + .label-text {
+    background-image: url("/static/img/categories/public_safety-dark-square.svg");
+  }
+  [name="location_type"][value="streets_sidewalks"] + .label-text {
+    background-image: url("/static/img/categories/streets_sidewalks-dark-square.svg");
+  }
+  [name="location_type"][value="other"] + .label-text {
+    background-image: url("/static/img/categories/other-dark-square.svg");
+  }
+
+  .leaflet-light-pane {
+    display: none;
+  }
+
+  .leaflet-dark-pane {
+    display: block;
+  }
 }
