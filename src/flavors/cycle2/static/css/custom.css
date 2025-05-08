@@ -145,7 +145,7 @@ a:hover {
   font-weight: 800;
 }
 
-.place-form-container {
+.iia-content-container {
   background-image: url(images/iia-background-repeat.png);
   background-repeat: repeat;
   background-size: 100% auto;
@@ -155,11 +155,11 @@ a:hover {
   padding: 1em;
 }
 
-.place-form-container:after {
+.iia-content-container::after {
   content: '';
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1.25;
   background-image: url(images/iia-background-vertical.png);
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -1110,10 +1110,8 @@ label {
     border-radius: 0.25rem;
   }
 
-  @media screen and (width >= 60rem) {
-    .content-visible #centerpoint.newpin {
-      left: calc(50% - var(--content-left) / 2 + 1rem);
-    }
+  .content-visible #centerpoint.newpin {
+    left: calc(50% - var(--content-left) / 2 + 1rem);
   }
 }
 
@@ -1367,8 +1365,14 @@ body .marker-cluster div {
 }
 
 @media screen and (width > 768px) {
-  .page-about#content article {
+  .page-about#content .iia-content-container {
     padding: 2rem;
+  }
+
+  .page-about .iia-content-container::after {
+    margin: -2rem;
+    padding: 2rem;
+    margin-top: -6rem;
   }
 }
 
@@ -1784,5 +1788,52 @@ body .marker-cluster div {
 
   .leaflet-dark-pane {
     display: block;
+  }
+}
+
+/* =Logos
+-------------------------------------------------------------- */
+#content .logo {
+  width: 6rem;
+}
+
+#content .boston-logo,
+#content .opb-logo {
+  display: none;
+}
+
+#content .light-logos {
+  display: none;
+}
+
+#content .dark-logos {
+  display: flex;
+}
+
+#content .logos {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+@media only screen and (width >= 60rem) {  /* 960px */
+  #content .boston-logo,
+  #content .opb-logo {
+    display: initial;
+  }
+
+  #content .logos {
+    margin-top: 0;
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  #content .light-logos {
+    display: flex;
+  }
+
+  #content .dark-logos {
+    display: none;
   }
 }

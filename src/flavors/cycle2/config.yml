@@ -57,7 +57,7 @@ map:
     - type: mapbox
       pane: lightPane
       style: mapbox://styles/poepublic/cma9wxtih00g201snhawygbxu  # Dark style
-      padding: 1
+      padding: 1  # Ensure padding is enough for the content overlay
       accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
       fallback:
         url: https://api.mapbox.com/styles/v1/poepublic/cma9wxtih00g201snhawygbxu/tiles/256/{z}/{x}/{y}@2x
@@ -66,7 +66,7 @@ map:
     - type: mapbox
       pane: darkPane
       style: mapbox://styles/poepublic/cma9x7aqj00fr01si1d4xcauh  # Light style
-      padding: 1
+      padding: 1  # Ensure padding is enough for the content overlay
       accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
       fallback:
         url: https://api.mapbox.com/styles/v1/poepublic/cma9x7aqj00fr01si1d4xcauh/tiles/256/{z}/{x}/{y}@2x
