@@ -16,6 +16,7 @@
   --icon-blue-2: #c2d9ed;
   --icon-blue-3: #288be4;
 
+  /* Boston colors -- from the style guide */
   --charles-blue: #091f2f;
   --optimistic-blue: #288be4;
   --freedom-trail-red: #fb4d42;
@@ -71,6 +72,9 @@
 
   --attention-bg: var(--iia-callout-blue);
   --attention-fg: white;
+
+  --selection-bg: var(--iia-electric-purple-alt);
+  --selection-fg: white;
 
   --map-bg: var(--iia-fog-grey);
 
@@ -207,10 +211,10 @@ a.close-btn {
 
 .btn, .btn:visited, .btn:link {
   padding: 1.275em 1.5em;
-  background-color: var(--optimistic-blue);
+  background-color: var(--selection-bg);
   font-family: var(--header-font);
   font-size: 0.77778rem;
-  color: white;
+  color: var(--selection-fg);
   border: none;
   border-radius: 0;
   box-shadow: none;
@@ -538,8 +542,8 @@ label {
 .radio-label-text.checked,
 :checked + .checkbox-label-text,
 .checkbox-label-text.checked {
-  background-color: var(--optimistic-blue);
-  color: #fff;
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
   border-color: rgba(0 0 0 / 0.05);
 }
 
@@ -557,7 +561,9 @@ label {
   display: none;
 }
 
-.personal-info-title {
+.personal-info-title,
+.demographic-info-title,
+.contact-info-title {
   margin-top: 4rem;
 }
 
@@ -874,7 +880,8 @@ label {
 }
 
 .category-description {
-  background-color: var(--iia-callout-blue);
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
   padding: 0.5rem;
 }
 
@@ -946,9 +953,9 @@ label {
 }
 
 .recent-points a:hover {
-  color: #fff;
-  background: var(--optimistic-blue);
-  border-color: var(--optimistic-blue);
+  color: var(--selection-fg);
+  background: var(--selection-bg);
+  border-color: var(--selection-bg);
 }
 
 .recent-points .avatar {
@@ -1335,7 +1342,7 @@ body .marker-cluster div {
 .campaign-calendar-list dd.current-step {
   padding-top: 0.25rem;
   padding-bottom: .25rem;
-  background-color: var(--instructions-bg)
+  background-color: var(--instructions-bg);
   color: var(--instructions-fg);
 }
 
@@ -1747,6 +1754,8 @@ body .marker-cluster div {
     --content-line: var(--iia-indigo-blue);
     --content-link: var(--iia-electric-purple);
     --content-link-hover: var(--iia-urban-pink);
+
+    --selection-bg: var(--iia-electric-purple);
 
     --map-bg: var(--iia-fog-grey);
   }

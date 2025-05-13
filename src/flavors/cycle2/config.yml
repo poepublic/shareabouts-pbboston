@@ -488,8 +488,18 @@ place:
 
   personal_info_title: _(Thank you!)
   personal_info_intro: >
-    _(Thank you for sharing your idea with us! Please fill out the short form
-    below. Only the information you choose to display will be made public.)
+    _(<strong>Thank you for sharing your idea with us!</strong> Please fill out the short form
+    below. Only the information you choose to display will be made public. )
+  
+  demographic_info_title: _(Optional Demographic Survey)
+  demographic_info_intro: >
+    _(The demographic questions below are designed to assist the Office of
+    Participatory Budgeting in obtaining a more accurate understanding of
+    participants. Your responses will remain anonymous and confidential.
+    <strong>Please note that all questions are optional.</strong>)
+  
+  contact_info_title: _(Stay updated—sign up for our mailing list!)
+  contact_info_intro: ""
 
   items:
     - prompt: _(Is your idea for a specific location or for the entire city?)
@@ -561,16 +571,16 @@ place:
           value: other
       attrs:
         - key: required
-    - prompt: _(Are you submitting this idea as part of a community event?)
+    - prompt: _(Are you submitting this idea through a community event or activity?)
       type: radiogroup
       name: submission_event_type
       options:
-        - label: _(No event; I am submitting this idea on my own)
+        - label: _(No; I am submitting this idea on my own)
           value: no_event
-        - label: _(Yes, at an Idea Collection Workshop hosted by an organization sponsored by the Office of Participatory Budgeting)
-          value: city_sponsored
-        - label: _(Yes, at an independent community gathering)
-          value: community
+        - label: _(Yes, through a community event or activity hosted by <strong>PB Contract Partner organization</strong>)
+          value: partner
+        - label: _(Yes, through an event or activity hosted by a <strong>Non-PB Contract Partner</strong>)
+          value: non_partner
       attrs:
         - key: required
 
@@ -579,8 +589,8 @@ place:
       type: hidden  # The submitter display name is set according to the user's choices in the next fields.
       sticky: true
       is_first_personal_info_field: true
-    - prompt: _(Your Name)
-      label: _(Submitter's Name)
+    - prompt: _(Your First Name)
+      label: _(Submitter's First Name)
       type: text
       name: private_submitter_name_first
       sticky: true
@@ -588,8 +598,8 @@ place:
         - key: required
         - key: placeholder
           value: _(Your first name…)
-    - prompt: _(Your Name)
-      label: _(Submitter's Name)
+    - prompt: _(Your Last Name)
+      label: _(Submitter's Last Name)
       type: text
       name: private_submitter_name_last
       sticky: true
@@ -754,48 +764,67 @@ place:
       name: private_submitter_zipcode
       sticky: true
       optional: true
+    
+    # Demographic Info
+    - prompt: _(What is your age (in years)?)
+      label: _(Age)
+      is_first_demographic_field: true
+      name: private_submitter_age
+      type: number
+      optional: true
+      sticky: true
+      attrs:
+        - key: min
+          value: 0
+        - key: max
+          value: 120
+        - key: step
+          value: 1
+    - prompt: _(What is your race and/or ethnicity?)
+      label: _(Race and/or Ethnicity)
+      name: private_submitter_race_ethnicity
+      help_text: |
+        _(Example: Black or African American, Hispanic or Latino/-a/-e/-x,
+        White, Colombian, Haitian, Indian, Russian, Somali, Vietnamese, etc.)
+      type: text
+      optional: true
+      sticky: true
+    - prompt: _(What was your household income in the past 12 months?)
+      label: _(Household Income)
+      name: private_submitter_income
+      type: select
+      optional: true
+      sticky: true
+      options:
+        - label: _(Select an option…)
+          value: ''
+        - label: _(Less than $14,999)
+          value: 'under_15000'
+        - label: _($15,000 to $34,999)
+          value: '25000-49999'
+        - label: _($35,000 to $49,999)
+          value: '50000-74999'
+        - label: _($50,000 to $74,999)
+          value: '50000-74999'
+        - label: _($75,000 to $99,999)
+          value: '75000-99999'
+        - label: _($100,000 to $149,999)
+          value: '100000-149999'
+        - label: _($150,000 or more)
+          value: '150000_or_more'
+        - label: _(I don't know)
+          value: 'dont_know'
+        - label: _(Prefer not to answer)
+          value: 'prefer_not_to_answer'
+    
+    # Contact Info
     - prompt: _(Your Email)
       label: _(Your Email)
+      is_first_contact_info_field: true
       type: text
       name: private_submitter_email
       optional: true
       sticky: true
-    - prompt: _(Your Preferred Language)
-      label: _(Your Preferred Language)
-      type: select
-      name: private_submitter_language
-      optional: true
-      sticky: true
-      options:
-        - label: ' '
-          value: ''
-        - label: 'English'
-          value: 'English'
-        - label: 'Español'
-          value: 'Spanish'
-        - label: 'Kreyòl Ayisyen'
-          value: 'Haitian Creole'
-        - label: '繁體中文'
-          value: 'Traditional Chinese'
-        - label: '简体中文'
-          value: 'Simplified Chinese'
-        - label: 'Tiếng Việt'
-          value: 'Vietnamese'
-        - label: 'Kabuverdianu'
-          value: 'Cabo Verdean Creole'
-        - label: 'Русский'
-          value: 'Russian'
-        - label: 'العربية'
-          value: 'Arabic'
-        - label: 'Português'
-          value: 'Brazilian Portuguese'
-        - label: 'Français'
-          value: 'French'
-        - label: 'Soomaali'
-          value: 'Somali'
-      attrs:
-        - key: translate
-          value: "no"
 
 survey:
   submission_type: comments
