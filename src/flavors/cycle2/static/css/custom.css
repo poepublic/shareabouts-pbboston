@@ -160,7 +160,7 @@ a:hover {
   padding: 1em;
 }
 
-.iia-content-container::after {
+#content .iia-content-container::after {
   content: '';
   display: block;
   width: 100%;
@@ -1378,7 +1378,7 @@ body .marker-cluster div {
     padding: 2rem;
   }
 
-  .page-about .iia-content-container::after {
+  #content.page-about .iia-content-container::after {
     margin: -2rem;
     padding: 2rem;
     margin-top: -6rem;
