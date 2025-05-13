@@ -940,6 +940,11 @@ label {
   height: auto;
 }
 
+.place-submission-confirmation a {
+	color: var(--instructions-fg);
+	text-decoration: underline;
+}
+
 /* =Ticker
 -------------------------------------------------------------- */
 
