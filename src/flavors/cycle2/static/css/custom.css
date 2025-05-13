@@ -156,6 +156,7 @@ a:hover {
   background-position: center top;
 
   margin: -1em;
+  margin-bottom: -2rem;
   padding: 1em;
 }
 
@@ -181,6 +182,7 @@ a:hover {
   background-color: white;
   color: black;
   padding: 0.5rem;
+  position: relative;
 }
 
 #content,

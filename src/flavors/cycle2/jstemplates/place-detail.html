@@ -1,0 +1,66 @@
+      <div class="iia-content-container">
+        {{#if is_new }}
+          {{> place-form-submission-confirmation }}
+        {{/if}}
+
+        {{#can_moderate_places}}
+          {{> place-moderation-bar }}
+        {{/can_moderate_places}}
+
+        <header class="place-header clearfix">
+          <span class="place-submission-details">
+            <strong class="point-submitter">
+              {{#if submitter.avatar_url }}
+                <img src="{{ submitter.avatar_url }}" class="avatar" />
+              {{^}}
+                {{#if location_type }}
+                  <img src="{{ STATIC_URL }}img/categories/{{ location_type }}-blueish.svg" class="avatar" />
+                {{/if}}
+              {{/if}}
+              {{#if submitter.name }}
+                {{ submitter.name }}
+              {{^}}
+                {{#if submitter_name }}
+                  {{ submitter_name }}
+                {{^}}
+                  {{ anonymous_name }}
+                {{/if}}
+              {{/if}}
+            </strong>
+            {{#is city_wide "true" }}
+              {{#_}}submitted this city-wide {{ place_type_label location_type}} idea{{/_}}
+            {{^}}
+              {{#_}}submitted this {{ place_type_label location_type}} idea near {{ location }}{{/_}}
+            {{/is}}
+
+            {{#if region}}
+              in {{ region }}
+            {{/if}}
+
+            <time datetime="{{ created_datetime }}" class="response-date"><a href="/place/{{ id }}">{{ fromnow created_datetime }}</a></time>
+
+            {{^if survey_config}}
+            <a href="/place/{{ id }}" class="view-on-map-btn btn btn-small">{{#_}}View On Map{{/_}}</a>
+            {{/if}}
+
+          </span>
+        </header>
+
+        <section class="place-items">
+          {{# attachments }}
+          <div class="place-item place-item-attachment place-attachment-{{ name }}">
+            <img src="{{ file }}" class="place-value place-value-{{ name }}" alt="{{ name }}">
+          </div>
+          {{/ attachments }}
+          {{#each_place_item "submitter_name" "submitter_neighborhood" "title" "location_type" "city_wide" "address" "neighborhood" "submission_event_type" "submission_language_code" }}
+          <div class="place-item place-item-{{ name }}">
+            <span class="place-label place-label-{{ name }}">{{ label }}</span>
+            <p class="place-value place-value-{{ name }}" lang="{{ default ../submission_language_code "en" }}">{{nlToBr value }}</p>
+          </div>
+          {{/each_place_item }}
+        </section>
+
+        {{#if survey_config}}
+        <!-- <section class="survey" id="survey"></section> -->
+        {{/if}}
+      </div>
