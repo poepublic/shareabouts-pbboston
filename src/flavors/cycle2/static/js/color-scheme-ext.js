@@ -49,7 +49,7 @@
         map.invalidateSize();
         map.eachLayer(function (layer) {
           if (layer.options.pane === pane) {
-            layer.redraw();
+            // layer.redraw();
           }
         });
       }, 0);
