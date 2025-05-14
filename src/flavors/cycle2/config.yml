@@ -585,6 +585,24 @@ place:
           value: non_partner
       attrs:
         - key: required
+    - prompt: _(Which partner organization hosted the event?)
+      label: _(Organization name)
+      type: select
+      name: submission_event_org
+      attrs:
+      options:
+        - label: _(Select an organization…)
+          value: ''
+        - label: Some Org 1
+          value: Some Org 1
+          attrs:
+            - key: translate
+              value: "no"
+        - label: Some Org 2
+          value: Some Org 2
+          attrs:
+            - key: translate
+              value: "no"
 
     # Personal info
     - name: submitter_name
