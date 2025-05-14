@@ -487,19 +487,21 @@ place:
   unset_location_label: _(Please use the map's search box or drag the map to set the location.)
 
   personal_info_title: _(Thank you!)
-  personal_info_intro: >
+  personal_info_intro: >-
     _(<strong>Thank you for sharing your idea with us!</strong> Please fill out the short form
     below. Only the information you choose to display will be made public. )
   
   demographic_info_title: _(Optional Demographic Survey)
-  demographic_info_intro: >
+  demographic_info_intro: >-
     _(The demographic questions below are designed to assist the Office of
     Participatory Budgeting in obtaining a more accurate understanding of
     participants. Your responses will remain anonymous and confidential.
     <strong>Please note that all questions are optional.</strong>)
   
-  contact_info_title: _(Stay updated—sign up for our mailing list!)
-  contact_info_intro: ""
+  contact_info_title: _(Stay updated!)
+  contact_info_intro: >-
+    _(Please leave your email to receive updates from the Office of
+    Participatory Budgeting.)
 
   items:
     - prompt: _(Is your idea for a specific location or for the entire city?)
@@ -783,9 +785,10 @@ place:
     - prompt: _(What is your race and/or ethnicity?)
       label: _(Race and/or Ethnicity)
       name: private_submitter_race_ethnicity
-      help_text: |
-        _(Example: Black or African American, Hispanic or Latino/-a/-e/-x,
-        White, Colombian, Haitian, Indian, Russian, Somali, Vietnamese, etc.)
+      help_text: >-
+        _(Examples: American Indian or Alaska Native, Asian, Black or African
+        American, Hispanic or Latino/-a/-e/-x, Native Hawaiian or other Pacific
+        Islander, White, etc.)
       type: text
       optional: true
       sticky: true
