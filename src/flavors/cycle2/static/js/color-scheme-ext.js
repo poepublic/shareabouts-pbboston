@@ -42,8 +42,17 @@
 
     // Listen for changes to the user's color scheme preference.
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+      const pane = e.matches ? 'darkPane' : 'lightPane';
+
       // The tile pane may have been display none, so we need to redraw the map.
-      setTimeout(() => { map.invalidateSize(); }, 0);
+      setTimeout(() => {
+        map.invalidateSize();
+        map.eachLayer(function (layer) {
+          if (layer.options.pane === pane) {
+            layer.redraw();
+          }
+        });
+      }, 0);
     });
 
     return map;
