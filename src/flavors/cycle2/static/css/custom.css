@@ -1833,7 +1833,7 @@ body .marker-cluster div {
 }
 
 @media only screen and (width >= 60rem) {  /* 960px */
-  #content .boston-logo,
+  /* #content .boston-logo,
   #content .opb-logo {
     display: initial;
   }
@@ -1841,6 +1841,10 @@ body .marker-cluster div {
   #content .logos {
     margin-top: 0;
     justify-content: space-between;
+  } */
+
+  #content .logo {
+    width: 8rem;
   }
 }
 
