@@ -471,7 +471,7 @@ place:
   moderators: place-editors
   response_name: _(idea)
   response_plural_name: _(ideas)
-  add_button_label: _(Suggest an Idea)
+  add_button_label: _(Share an Idea)
   # Labels for the buttons that toggle the map and list views
   show_list_button_label: _(List All Ideas)
   show_map_button_label: _(Show the Map)
