@@ -593,13 +593,68 @@ place:
       options:
         - label: _(Select an organization…)
           value: ''
-        - label: Some Org 1
-          value: Some Org 1
+        - label: "Allston Brighton Health Collaborative"
+          value: "Allston Brighton Health Collaborative"
           attrs:
             - key: translate
               value: "no"
-        - label: Some Org 2
-          value: Some Org 2
+        - label: "Boston Center for Independent Living"
+          value: "Boston Center for Independent Living"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Center for Economic Democracy"
+          value: "Center for Economic Democracy"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Center to Support Immigrant Organizing/Equity Now & Beyond"
+          value: "Center to Support Immigrant Organizing/Equity Now & Beyond"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "De Nosotros Foundation"
+          value: "De Nosotros Foundation"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "East Boston Community Council, Inc."
+          value: "East Boston Community Council, Inc."
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "EASTIE Coalition"
+          value: "EASTIE Coalition"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Fields Corner Crossroads Collaborative"
+          value: "Fields Corner Crossroads Collaborative"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Maverick Landing Community Services"
+          value: "Maverick Landing Community Services"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Neighbors United for a Better East Boston (NUBE)"
+          value: "Neighbors United for a Better East Boston (NUBE)"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Sociedad Latina"
+          value: "Sociedad Latina"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Turkish American Cultural Society of New England (TACS)"
+          value: "Turkish American Cultural Society of New England (TACS)"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Union Capital Boston"
+          value: "Union Capital Boston"
           attrs:
             - key: translate
               value: "no"
