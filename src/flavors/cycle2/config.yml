@@ -585,11 +585,16 @@ place:
           value: non_partner
       attrs:
         - key: required
+        - key: data-has-detail-children
     - prompt: _(Which partner organization hosted the event?)
       label: _(Organization name)
       type: select
-      name: submission_event_org
+      name: submission_event_partner
       attrs:
+        - key: data-parent-field
+          value: submission_event_type
+        - key: data-parent-value
+          value: partner
       options:
         - label: _(Select an organization…)
           value: ''
@@ -658,6 +663,15 @@ place:
           attrs:
             - key: translate
               value: "no"
+    - prompt: _(What is the name of the organization that hosted the event?')
+      label: _(Organization name)
+      type: text
+      name: submission_event_non_partner
+      attrs:
+        - key: data-parent-field
+          value: submission_event_type
+        - key: data-parent-value
+          value: non_partner
 
     # Personal info
     - name: submitter_name
@@ -859,12 +873,35 @@ place:
       label: _(Race and/or Ethnicity)
       name: private_submitter_race_ethnicity
       help_text: >-
-        _(Examples: American Indian or Alaska Native, Asian, Black or African
-        American, Hispanic or Latino/-a/-e/-x, Native Hawaiian or other Pacific
-        Islander, White, etc.)
-      type: text
+        _(Select all that apply.)
+      type: checkboxgroup
+      options:
+        - label: _(American Indian or Alaska Native)
+          value: american_indian
+        - label: _(Asian)
+          value: asian
+        - label: _(Black or African American)
+          value: black_african_american
+        - label: _(Hispanic or Latino/-a/-e/-x)
+          value: hispanic_latino
+        - label: _(Native Hawaiian or other Pacific Islander)
+          value: native_hawaiian
+        - label: _(White)
+          value: white
+        - label: _(Other)
+          value: other
+      attrs:
+        - key: data-has-detail-children
       optional: true
       sticky: true
+    - prompt: _(Please specify other race/ethnicity)
+      name: private_submitter_other_race_ethnicity
+      type: text
+      attrs:
+        - key: data-parent-field
+          value: private_submitter_race_ethnicity
+        - key: data-parent-value
+          value: other
     - prompt: _(What was your household income in the past 12 months?)
       label: _(Household Income)
       name: private_submitter_income

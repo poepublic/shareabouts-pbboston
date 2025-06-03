@@ -569,6 +569,12 @@ label {
   margin-top: 4rem;
 }
 
+.place-private_submitter_race_ethnicity-field .label-text {
+  width: initial;
+  height: initial;
+  padding: 0.5em;
+}
+
 /* City-wide toggle buttons */
 [name="city_wide"] + .label-text {
   background-size: 4rem;
