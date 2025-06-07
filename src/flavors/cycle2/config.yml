@@ -623,6 +623,11 @@ place:
           attrs:
             - key: translate
               value: "no"
+        - label: "Eagle Hill Civic Association"
+          value: "Eagle Hill Civic Association"
+          attrs:
+            - key: translate
+              value: "no"
         - label: "East Boston Community Council, Inc."
           value: "East Boston Community Council, Inc."
           attrs:
@@ -635,6 +640,11 @@ place:
               value: "no"
         - label: "Fields Corner Crossroads Collaborative"
           value: "Fields Corner Crossroads Collaborative"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Greater Boston Chinese Golden Age Center"
+          value: "Greater Boston Chinese Golden Age Center"
           attrs:
             - key: translate
               value: "no"
