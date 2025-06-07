@@ -585,7 +585,7 @@ place:
           value: non_partner
       attrs:
         - key: required
-        - key: data-has-detail-children
+        - key: data-has-children
     - prompt: _(Which partner organization hosted the event?)
       label: _(Organization name)
       type: select
@@ -677,6 +677,7 @@ place:
       label: _(Organization name)
       type: text
       name: submission_event_non_partner
+      optional: true
       attrs:
         - key: data-parent-field
           value: submission_event_type
@@ -901,12 +902,13 @@ place:
         - label: _(Other)
           value: other
       attrs:
-        - key: data-has-detail-children
+        - key: data-has-children
       optional: true
       sticky: true
     - prompt: _(Please specify other race/ethnicity)
       name: private_submitter_other_race_ethnicity
       type: text
+      optional: true
       attrs:
         - key: data-parent-field
           value: private_submitter_race_ethnicity
