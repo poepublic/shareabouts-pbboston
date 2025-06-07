@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-22 08:55-0400\n"
+"POT-Creation-Date: 2025-06-07 18:07-0400\n"
 "PO-Revision-Date: 2024-06-23 20:22+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2024\n"
 "Language-Team: French (https://app.transifex.com/mjumbewu/teams/189006/fr/)\n"
@@ -1424,7 +1424,7 @@ msgstr "Entrez un emplacement…"
 #: src/flavors/cycle1/_config.translations.py:110
 #: src/flavors/cycle2/_config.translations.py:10
 #: src/flavors/cycle2/_config.translations.py:66
-#: src/flavors/cycle2/_config.translations.py:132
+#: src/flavors/cycle2/_config.translations.py:142
 msgid "Arts & Culture"
 msgstr "Arts et culture"
 
@@ -1442,7 +1442,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:111
 #: src/flavors/cycle2/_config.translations.py:12
 #: src/flavors/cycle2/_config.translations.py:67
-#: src/flavors/cycle2/_config.translations.py:133
+#: src/flavors/cycle2/_config.translations.py:143
 msgid "Community Resources"
 msgstr "Ressources communautaires"
 
@@ -1463,7 +1463,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:112
 #: src/flavors/cycle2/_config.translations.py:14
 #: src/flavors/cycle2/_config.translations.py:68
-#: src/flavors/cycle2/_config.translations.py:134
+#: src/flavors/cycle2/_config.translations.py:144
 msgid "Local Economy & Worker Empowerment"
 msgstr "Économie locale et autonomisation des travailleurs"
 
@@ -1484,7 +1484,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:113
 #: src/flavors/cycle2/_config.translations.py:16
 #: src/flavors/cycle2/_config.translations.py:69
-#: src/flavors/cycle2/_config.translations.py:135
+#: src/flavors/cycle2/_config.translations.py:145
 msgid "Education, Youth & Families"
 msgstr "Éducation, jeunesse et familles"
 
@@ -1503,7 +1503,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:114
 #: src/flavors/cycle2/_config.translations.py:18
 #: src/flavors/cycle2/_config.translations.py:70
-#: src/flavors/cycle2/_config.translations.py:136
+#: src/flavors/cycle2/_config.translations.py:146
 msgid "Environment, Sustainability, and Food Access"
 msgstr "Environnement, durabilité et accès à la nourriture"
 
@@ -1538,7 +1538,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:116
 #: src/flavors/cycle2/_config.translations.py:22
 #: src/flavors/cycle2/_config.translations.py:72
-#: src/flavors/cycle2/_config.translations.py:138
+#: src/flavors/cycle2/_config.translations.py:148
 msgid "Health & Well-being"
 msgstr "Santé &amp; Bien-être"
 
@@ -1556,7 +1556,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:117
 #: src/flavors/cycle2/_config.translations.py:24
 #: src/flavors/cycle2/_config.translations.py:73
-#: src/flavors/cycle2/_config.translations.py:139
+#: src/flavors/cycle2/_config.translations.py:149
 msgid "Public Safety"
 msgstr "La sécurité publique"
 
@@ -1577,7 +1577,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:118
 #: src/flavors/cycle2/_config.translations.py:26
 #: src/flavors/cycle2/_config.translations.py:74
-#: src/flavors/cycle2/_config.translations.py:140
+#: src/flavors/cycle2/_config.translations.py:150
 msgid "Streets & Sidewalks"
 msgstr "Rues et trottoirs"
 
@@ -1595,7 +1595,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:119
 #: src/flavors/cycle2/_config.translations.py:28
 #: src/flavors/cycle2/_config.translations.py:75
-#: src/flavors/cycle2/_config.translations.py:141
+#: src/flavors/cycle2/_config.translations.py:151
 msgid "Other / Not Sure"
 msgstr "Autre/Je ne suis pas sûr"
 
@@ -1781,7 +1781,7 @@ msgstr "Choisissez la catégorie qui décrit le mieux votre projet."
 #: src/flavors/cycle1/_config.translations.py:67
 #: src/flavors/cycle1/_config.translations.py:115
 #: src/flavors/cycle2/_config.translations.py:71
-#: src/flavors/cycle2/_config.translations.py:137
+#: src/flavors/cycle2/_config.translations.py:147
 msgid "Facilities, Parks & Recreation  "
 msgstr "Installations, parcs et loisirs  "
 
@@ -1816,61 +1816,61 @@ msgid "Submitter's Name"
 msgstr "Nom de l&#39;auteur"
 
 #: src/flavors/cycle1/_config.translations.py:78
-#: src/flavors/cycle2/_config.translations.py:85
+#: src/flavors/cycle2/_config.translations.py:87
 msgid "Your first name…"
 msgstr "Ton prénom…"
 
 #: src/flavors/cycle1/_config.translations.py:81
-#: src/flavors/cycle2/_config.translations.py:88
+#: src/flavors/cycle2/_config.translations.py:90
 msgid "Your last name…"
 msgstr "Votre nom de famille…"
 
 #: src/flavors/cycle1/_config.translations.py:82
-#: src/flavors/cycle2/_config.translations.py:89
+#: src/flavors/cycle2/_config.translations.py:91
 msgid "How should we display your name next to your idea?"
 msgstr "Comment devrions-nous afficher votre nom à côté de votre idée ?"
 
 #: src/flavors/cycle1/_config.translations.py:83
-#: src/flavors/cycle2/_config.translations.py:90
+#: src/flavors/cycle2/_config.translations.py:92
 msgid "Use my full name"
 msgstr "Utilisez mon nom complet"
 
 #: src/flavors/cycle1/_config.translations.py:84
-#: src/flavors/cycle2/_config.translations.py:91
+#: src/flavors/cycle2/_config.translations.py:93
 msgid "Only use my first name"
 msgstr "N&#39;utilise que mon prénom"
 
 #: src/flavors/cycle1/_config.translations.py:85
-#: src/flavors/cycle2/_config.translations.py:92
+#: src/flavors/cycle2/_config.translations.py:94
 msgid "Do not display my name"
 msgstr "N&#39;affichez pas mon nom"
 
 #: src/flavors/cycle1/_config.translations.py:86
-#: src/flavors/cycle2/_config.translations.py:93
+#: src/flavors/cycle2/_config.translations.py:95
 msgid "Your Neighborhood"
 msgstr "Votre quartier"
 
 #: src/flavors/cycle1/_config.translations.py:87
-#: src/flavors/cycle2/_config.translations.py:94
+#: src/flavors/cycle2/_config.translations.py:96
 msgid "Submitter's Neighborhood"
 msgstr "Quartier de l&#39;auteur de l&#39;envoi"
 
 #: src/flavors/cycle1/_config.translations.py:88
-#: src/flavors/cycle2/_config.translations.py:95
+#: src/flavors/cycle2/_config.translations.py:97
 msgid "Select a neighborhood…"
 msgstr "Sélectionnez un quartier…"
 
 #: src/flavors/cycle1/_config.translations.py:89
 #: src/flavors/cycle1/_config.translations.py:90
-#: src/flavors/cycle2/_config.translations.py:96
-#: src/flavors/cycle2/_config.translations.py:97
+#: src/flavors/cycle2/_config.translations.py:98
+#: src/flavors/cycle2/_config.translations.py:99
 msgid "Your Zip Code"
 msgstr "Ton code postal"
 
 #: src/flavors/cycle1/_config.translations.py:91
 #: src/flavors/cycle1/_config.translations.py:92
-#: src/flavors/cycle2/_config.translations.py:115
-#: src/flavors/cycle2/_config.translations.py:116
+#: src/flavors/cycle2/_config.translations.py:125
+#: src/flavors/cycle2/_config.translations.py:126
 msgid "Your Email"
 msgstr "Votre e-mail"
 
@@ -1880,73 +1880,73 @@ msgid "Your Preferred Language"
 msgstr "Votre langue préférée"
 
 #: src/flavors/cycle1/_config.translations.py:95
-#: src/flavors/cycle2/_config.translations.py:117
+#: src/flavors/cycle2/_config.translations.py:127
 msgid "comment"
 msgstr "commentaire"
 
 #: src/flavors/cycle1/_config.translations.py:96
-#: src/flavors/cycle2/_config.translations.py:118
+#: src/flavors/cycle2/_config.translations.py:128
 msgid "comments"
 msgstr "commentaires"
 
 #: src/flavors/cycle1/_config.translations.py:97
-#: src/flavors/cycle2/_config.translations.py:119
+#: src/flavors/cycle2/_config.translations.py:129
 msgid "commented on"
 msgstr "commenté sur"
 
 #: src/flavors/cycle1/_config.translations.py:98
 #: src/flavors/cycle1/_config.translations.py:105
-#: src/flavors/cycle2/_config.translations.py:120
-#: src/flavors/cycle2/_config.translations.py:127
+#: src/flavors/cycle2/_config.translations.py:130
+#: src/flavors/cycle2/_config.translations.py:137
 msgid "Someone"
 msgstr "Quelqu&#39;un"
 
 #: src/flavors/cycle1/_config.translations.py:99
 #: src/flavors/cycle1/_config.translations.py:100
-#: src/flavors/cycle2/_config.translations.py:121
-#: src/flavors/cycle2/_config.translations.py:122
+#: src/flavors/cycle2/_config.translations.py:131
+#: src/flavors/cycle2/_config.translations.py:132
 msgid "Leave a Comment"
 msgstr "Laissez un commentaire"
 
 #: src/flavors/cycle1/_config.translations.py:101
-#: src/flavors/cycle2/_config.translations.py:123
+#: src/flavors/cycle2/_config.translations.py:133
 msgid "Comment"
 msgstr "Commentaire"
 
 #: src/flavors/cycle1/_config.translations.py:102
-#: src/flavors/cycle2/_config.translations.py:124
+#: src/flavors/cycle2/_config.translations.py:134
 msgid "Support"
 msgstr "Soutien"
 
 #: src/flavors/cycle1/_config.translations.py:103
-#: src/flavors/cycle2/_config.translations.py:125
+#: src/flavors/cycle2/_config.translations.py:135
 msgid "support"
 msgstr "soutien"
 
 #: src/flavors/cycle1/_config.translations.py:104
-#: src/flavors/cycle2/_config.translations.py:126
+#: src/flavors/cycle2/_config.translations.py:136
 msgid "supports"
 msgstr "les soutiens"
 
 #: src/flavors/cycle1/_config.translations.py:106
-#: src/flavors/cycle2/_config.translations.py:128
+#: src/flavors/cycle2/_config.translations.py:138
 msgid "About"
 msgstr "À propos"
 
 #: src/flavors/cycle1/_config.translations.py:107
 #: src/flavors/cycle1/templates/prelaunch.html:86
-#: src/flavors/cycle2/_config.translations.py:129
+#: src/flavors/cycle2/_config.translations.py:139
 #: src/flavors/cycle2/templates/prelaunch.html:86
 msgid "Boston PB Home"
 msgstr "Boston PB Accueil"
 
 #: src/flavors/cycle1/_config.translations.py:108
-#: src/flavors/cycle2/_config.translations.py:130
+#: src/flavors/cycle2/_config.translations.py:140
 msgid "Filter Ideas"
 msgstr "Filtrer les idées"
 
 #: src/flavors/cycle1/_config.translations.py:109
-#: src/flavors/cycle2/_config.translations.py:131
+#: src/flavors/cycle2/_config.translations.py:141
 msgid "All"
 msgstr "Tous"
 
@@ -2095,6 +2095,7 @@ msgid "Which partner organization hosted the event?"
 msgstr ""
 
 #: src/flavors/cycle2/_config.translations.py:81
+#: src/flavors/cycle2/_config.translations.py:84
 msgid "Organization name"
 msgstr ""
 
@@ -2105,99 +2106,132 @@ msgid "Select an organization…"
 msgstr "Sélectionnez un quartier…"
 
 #: src/flavors/cycle2/_config.translations.py:83
+msgid "What is the name of the organization that hosted the event?'"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:85
 #, fuzzy
 #| msgid "Your first name…"
 msgid "Your First Name"
 msgstr "Ton prénom…"
 
-#: src/flavors/cycle2/_config.translations.py:84
+#: src/flavors/cycle2/_config.translations.py:86
 #, fuzzy
 #| msgid "Submitter's Name"
 msgid "Submitter's First Name"
 msgstr "Nom de l&#39;auteur"
 
-#: src/flavors/cycle2/_config.translations.py:86
+#: src/flavors/cycle2/_config.translations.py:88
 #, fuzzy
 #| msgid "Your Name"
 msgid "Your Last Name"
 msgstr "votre nom"
 
-#: src/flavors/cycle2/_config.translations.py:87
+#: src/flavors/cycle2/_config.translations.py:89
 #, fuzzy
 #| msgid "Submitter's Name"
 msgid "Submitter's Last Name"
 msgstr "Nom de l&#39;auteur"
 
-#: src/flavors/cycle2/_config.translations.py:98
-msgid "What is your age (in years)?"
-msgstr ""
-
-#: src/flavors/cycle2/_config.translations.py:99
-msgid "Age"
-msgstr ""
-
 #: src/flavors/cycle2/_config.translations.py:100
-msgid "What is your race and/or ethnicity?"
+msgid "What is your age in years?"
 msgstr ""
 
 #: src/flavors/cycle2/_config.translations.py:101
-msgid "Race and/or Ethnicity"
+msgid "Age"
 msgstr ""
 
 #: src/flavors/cycle2/_config.translations.py:102
-msgid ""
-"Examples: American Indian or Alaska Native, Asian, Black or African "
-"American, Hispanic or Latino/-a/-e/-x, Native Hawaiian or other Pacific "
-"Islander, White, etc."
+msgid "What is your race and/or ethnicity?"
 msgstr ""
 
 #: src/flavors/cycle2/_config.translations.py:103
-msgid "What was your household income in the past 12 months?"
+msgid "Race and/or Ethnicity"
 msgstr ""
 
 #: src/flavors/cycle2/_config.translations.py:104
-msgid "Household Income"
+msgid "Select all that apply."
 msgstr ""
 
 #: src/flavors/cycle2/_config.translations.py:105
+msgid "American Indian or Alaska Native"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:106
+msgid "Asian"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:107
+msgid "Black or African American"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:108
+msgid "Hispanic or Latino/-a/-e/-x"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:109
+msgid "Native Hawaiian or other Pacific Islander"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:110
+msgid "White"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:111
+msgid "Other"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:112
+msgid "Please tell us what other race/ethnicity"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:113
+msgid "What was your household income in the past 12 months?"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:114
+msgid "Household Income"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:115
 #, fuzzy
 #| msgid "Select a neighborhood…"
 msgid "Select an option…"
 msgstr "Sélectionnez un quartier…"
 
-#: src/flavors/cycle2/_config.translations.py:106
+#: src/flavors/cycle2/_config.translations.py:116
 msgid "Less than $14,999"
 msgstr ""
 
-#: src/flavors/cycle2/_config.translations.py:107
+#: src/flavors/cycle2/_config.translations.py:117
 msgid "$15,000 to $34,999"
 msgstr ""
 
-#: src/flavors/cycle2/_config.translations.py:108
+#: src/flavors/cycle2/_config.translations.py:118
 msgid "$35,000 to $49,999"
 msgstr ""
 
-#: src/flavors/cycle2/_config.translations.py:109
+#: src/flavors/cycle2/_config.translations.py:119
 msgid "$50,000 to $74,999"
 msgstr ""
 
-#: src/flavors/cycle2/_config.translations.py:110
+#: src/flavors/cycle2/_config.translations.py:120
 msgid "$75,000 to $99,999"
 msgstr ""
 
-#: src/flavors/cycle2/_config.translations.py:111
+#: src/flavors/cycle2/_config.translations.py:121
 msgid "$100,000 to $149,999"
 msgstr ""
 
-#: src/flavors/cycle2/_config.translations.py:112
+#: src/flavors/cycle2/_config.translations.py:122
 msgid "$150,000 or more"
 msgstr ""
 
-#: src/flavors/cycle2/_config.translations.py:113
+#: src/flavors/cycle2/_config.translations.py:123
 msgid "I don't know"
 msgstr ""
 
-#: src/flavors/cycle2/_config.translations.py:114
+#: src/flavors/cycle2/_config.translations.py:124
 msgid "Prefer not to answer"
 msgstr ""
 
