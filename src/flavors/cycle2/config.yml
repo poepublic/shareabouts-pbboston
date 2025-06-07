@@ -866,7 +866,7 @@ place:
       optional: true
     
     # Demographic Info
-    - prompt: _(What is your age (in years)?)
+    - prompt: _(What is your age in years?)
       label: _(Age)
       is_first_demographic_field: true
       name: private_submitter_age
@@ -905,7 +905,7 @@ place:
         - key: data-has-children
       optional: true
       sticky: true
-    - prompt: _(Please specify other race/ethnicity)
+    - prompt: _(Please tell us what other race/ethnicity)
       name: private_submitter_other_race_ethnicity
       type: text
       optional: true
