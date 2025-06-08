@@ -15,19 +15,14 @@ To generate translations, you can use the following command:
 
 ```bash
 honcho run src/manage.py flavormessages \
---locale am \
 --locale ar \
 --locale en \
 --locale es \
---locale fr \
 --locale ht \
---locale kea \
 --locale pt_BR \
---locale ru \
 --locale so \
 --locale vi \
 --locale zh_Hans \
---locale zh_Hant \
 --keep-config  # <-- Keeps the .py file with the config.yml source strings
 ```
 
