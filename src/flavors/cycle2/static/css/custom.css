@@ -569,10 +569,41 @@ label {
   margin-top: 4rem;
 }
 
+.place-private_submitter_race_ethnicity-field label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}  
+
+.place-private_submitter_race_ethnicity-field input {
+  opacity: 1;
+  width: auto;
+  height: auto;
+  position: static;
+}
+
 .place-private_submitter_race_ethnicity-field .label-text {
   width: initial;
   height: initial;
-  padding: 0.5em;
+  display: block;
+  padding: 0.5rem 0;
+  border: none;
+  font-size: 1rem;
+}
+
+.place-private_submitter_race_ethnicity-field input:checked + .label-text {
+  background: none;
+  color: var(--content-fg);
+}
+
+.place-private_submitter_other_race_ethnicity-field {
+  margin-top: -1rem;
+}
+
+.place-private_submitter_other_race_ethnicity-field label {
+  font-weight: normal;
+  font-style: italic;
+  text-transform: none;
 }
 
 /* City-wide toggle buttons */
