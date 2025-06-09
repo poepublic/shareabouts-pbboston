@@ -1098,7 +1098,7 @@ msgstr ""
 msgid ""
 "submitted this {{ place_type_label location_type}} idea near {{ location }}"
 msgstr ""
-"envió esta idea {{ place_type_label location_type}} cerca de {{ ubicación }}"
+"envió esta idea {{ place_type_label location_type}} cerca de {{ location }}"
 
 #: src/flavors/cycle2/jstemplates/place-form-submission-confirmation.html:1
 msgid "Please help us by answering this optional survey:"
