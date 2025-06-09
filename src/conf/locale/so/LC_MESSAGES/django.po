@@ -1104,8 +1104,8 @@ msgstr ""
 msgid ""
 "submitted this {{ place_type_label location_type}} idea near {{ location }}"
 msgstr ""
-"gudbiyay fikradan {{place_type_label location_type}} fikrad u dhow {{goobta "
-"}}"
+"gudbiyay fikradan {{ place_type_label location_type}} fikrad u dhow {{ "
+"location }}"
 
 #: src/flavors/cycle2/jstemplates/place-form-submission-confirmation.html:1
 msgid "Please help us by answering this optional survey:"
