@@ -1278,7 +1278,7 @@ msgstr ""
 
 #: src/sa_web/jstemplates/place-moderation-bar.html:5
 msgid "Make {{ place_config.response_name }} hidden"
-msgstr "Qarsoon {{place_config.response_name}}"
+msgstr "Qarsoon {{ place_config.response_name }}"
 
 #: src/sa_web/jstemplates/place-moderation-bar.html:6
 msgid "Make {{ place_config.response_name }} visible"
