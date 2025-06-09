@@ -1097,7 +1097,7 @@ msgstr "Ka Daawo Khariidadda"
 #: src/flavors/cycle2/jstemplates/place-detail.html:2
 msgid "submitted this city-wide {{ place_type_label location_type}} idea"
 msgstr ""
-"gudbiyay fikradan magaalada oo dhan {{place_type_label location_type}} "
+"gudbiyay fikradan magaalada oo dhan {{ place_type_label location_type}} "
 "fikradda"
 
 #: src/flavors/cycle2/jstemplates/place-detail.html:3
