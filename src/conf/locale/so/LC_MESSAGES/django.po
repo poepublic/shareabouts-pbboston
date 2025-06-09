@@ -1282,7 +1282,7 @@ msgstr "Qarsoon {{ place_config.response_name }}"
 
 #: src/sa_web/jstemplates/place-moderation-bar.html:6
 msgid "Make {{ place_config.response_name }} visible"
-msgstr "Ka dhig {{place_config.response_name}} mid muuqda"
+msgstr "Ka dhig {{ place_config.response_name }} mid muuqda"
 
 #: src/sa_web/jstemplates/place-survey-response.html:1
 msgid "Thanks for participating!"
