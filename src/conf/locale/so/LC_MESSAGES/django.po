@@ -1274,7 +1274,7 @@ msgid ""
 "      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
 msgstr ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
-" Kan {{place_config.response_name}} <strong>qof walba wuu u muuqdaa</strong> ."
+" Kan {{ place_config.response_name }} <strong>qof walba wuu u muuqdaa</strong> ."
 
 #: src/sa_web/jstemplates/place-moderation-bar.html:5
 msgid "Make {{ place_config.response_name }} hidden"
