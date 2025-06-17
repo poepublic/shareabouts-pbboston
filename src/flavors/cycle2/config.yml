@@ -1048,6 +1048,9 @@ languages:
   # Somali
   - code: 'so'
     label: 'Soomaali'
+  # Vietnamese
+  - code: 'vi'
+    label: 'Tiếng Việt'
 
 notifications:
   on_new_place: false
