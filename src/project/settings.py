@@ -47,6 +47,15 @@ TIME_ZONE = 'America/New_York'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
+# Add languages that are unsupported in the core of Django..
+from django.conf import global_settings
+from django.utils.translation import gettext_lazy as _
+LANGUAGES = global_settings.LANGUAGES + [
+    ('so', 'Somali'),
+    ('ht', 'Hatian Creole'),
+]
+
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
