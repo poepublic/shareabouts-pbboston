@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-09 10:27-0400\n"
+"POT-Creation-Date: 2025-06-17 07:23-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -776,6 +776,28 @@ msgstr ""
 
 #: src/flavors/cycle2/_config.translations.py:124
 msgid "Prefer not to answer"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/fullname-display-message.html:1
+msgid ""
+"Choose an idea category above to to see how your idea will be displayed."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/fullname-display-message.html:2
+msgid ""
+"Enter your first and last name above to see how your idea will be displayed."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/fullname-display-message.html:3
+msgid "Enter your first name above to see how your idea will be displayed."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/fullname-display-message.html:4
+msgid "submitted a {{category}} idea."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/fullname-field-label.html:1
+msgid "Your Full Name"
 msgstr ""
 
 #: src/flavors/cycle2/jstemplates/important-updates.html:1
