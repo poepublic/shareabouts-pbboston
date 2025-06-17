@@ -267,7 +267,8 @@ msgstr "submetido"
 #: src/flavors/cycle1/_config.translations.py:36
 #: src/flavors/cycle2/_config.translations.py:36
 msgid "How would you spend $2 million to benefit your community?"
-msgstr "Como você gastaria US$ 2 milhões para beneficiar sua comunidade?"
+msgstr ""
+"Como você gastaria $2 milhões de dólares para beneficiar sua comunidade?"
 
 #: src/flavors/cycle1/_config.translations.py:37
 #: src/flavors/cycle2/_config.translations.py:37
@@ -1085,7 +1086,7 @@ msgid ""
 "  us: How would you spend $2 million to benefit our communities?"
 msgstr ""
 "Dizer\n"
-" nós: Como você gastaria US$ 2 milhões para beneficiar nossas comunidades?"
+" nós: Como você gastaria $2 milhões de dólares para beneficiar nossas comunidades?"
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:58
 msgid "Welcome to Ideas in Action!"
@@ -1142,13 +1143,14 @@ msgid ""
 "<span class=\"bigger-text\">communities<span class=\"scribble-text scribble-"
 "text-pink\">?</span></span>"
 msgstr ""
-"Como seria<img class=\"inline-scribble\" "
-"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> você gasta <span "
-"class=\"bigger-text\"><span class=\"scribble-text scribble-text-pink\">US$ "
-"<span class=\"scribble-underline\">2 milhões para<img class=\"inline-"
-"scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> "
-"beneficiar nossas <span class=\"bigger-text\">comunidades <span "
-"class=\"scribble-text scribble-text-pink\">?"
+"Como você gastaria <span class=\"bigger-text\"><span class=\"scribble-text "
+"scribble-text-pink\">$</span><span class=\"scribble-underline\">2 "
+"milhões</span></span> <img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> de dólares para "
+"beneficiar<img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> <span "
+"class=\"bigger-text\">nossas comunidades<span class=\"scribble-text "
+"scribble-text-pink\">?</span></span>"
 
 #: src/flavors/cycle2/jstemplates/place-form.html:2
 msgid "It looks like you didn't set your location yet."
