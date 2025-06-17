@@ -268,7 +268,7 @@ msgstr "enviado"
 #: src/flavors/cycle1/_config.translations.py:36
 #: src/flavors/cycle2/_config.translations.py:36
 msgid "How would you spend $2 million to benefit your community?"
-msgstr "¿Cómo gastarías $2 millones para beneficiar a tu comunidad?"
+msgstr "¿Cómo usaría usted $2 millones para beneficiar a tu comunidad?"
 
 #: src/flavors/cycle1/_config.translations.py:37
 #: src/flavors/cycle2/_config.translations.py:37
@@ -1143,14 +1143,14 @@ msgid ""
 "<span class=\"bigger-text\">communities<span class=\"scribble-text scribble-"
 "text-pink\">?</span></span>"
 msgstr ""
-"¿Cómo sería<img class=\"inline-scribble\" "
-"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> gastas <span "
-"class=\"bigger-text\"><span class=\"scribble-underline\">2 millones</span> "
-"<span class=\"scribble-text scribble-text-pink\">de dólares</span></span> "
-"en<img class=\"inline-scribble\" "
-"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> beneficiar a "
-"nuestras <span class=\"bigger-text\">comunidades <span class=\"scribble-text"
-" scribble-text-pink\">?</span></span>"
+"¿Cómo usaría usted <img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> <span class=\"bigger-"
+"text\"><span class=\"scribble-text scribble-text-pink\">$</span><span "
+"class=\"scribble-underline\">2 million</span></span> de dólares para "
+"beneficiar a <img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> <span "
+"class=\"bigger-text\">nuestras comunidades<span class=\"scribble-text "
+"scribble-text-pink\">?</span></span>"
 
 #: src/flavors/cycle2/jstemplates/place-form.html:2
 msgid "It looks like you didn't set your location yet."
