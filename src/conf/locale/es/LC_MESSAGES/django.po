@@ -268,7 +268,7 @@ msgstr "enviado"
 #: src/flavors/cycle1/_config.translations.py:36
 #: src/flavors/cycle2/_config.translations.py:36
 msgid "How would you spend $2 million to benefit your community?"
-msgstr "¿Cómo gastarías $2 millones para beneficiar a tu comunidad?"
+msgstr "¿Cómo usaría usted $2 millones para beneficiar a tu comunidad?"
 
 #: src/flavors/cycle1/_config.translations.py:37
 #: src/flavors/cycle2/_config.translations.py:37
