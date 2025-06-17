@@ -598,6 +598,16 @@ place:
       options:
         - label: _(Select an organization…)
           value: ''
+        - label: "African Community Economic Development of New England (ACEDONE)"
+          value: "African Community Economic Development of New England (ACEDONE)"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Agencia ALPHA"
+          value: "Agencia ALPHA"
+          attrs:
+            - key: translate
+              value: "no"
         - label: "Allston Brighton Health Collaborative"
           value: "Allston Brighton Health Collaborative"
           attrs:
@@ -608,13 +618,18 @@ place:
           attrs:
             - key: translate
               value: "no"
+        - label: "Brazilian Women's Group"
+          value: "Brazilian Women's Group"
+          attrs:
+            - key: translate
+              value: "no"
         - label: "Center for Economic Democracy"
           value: "Center for Economic Democracy"
           attrs:
             - key: translate
               value: "no"
-        - label: "Center to Support Immigrant Organizing/Equity Now & Beyond"
-          value: "Center to Support Immigrant Organizing/Equity Now & Beyond"
+        - label: "Center to Support Immigrant Organizing (CSIO)"
+          value: "Center to Support Immigrant Organizing (CSIO)"
           attrs:
             - key: translate
               value: "no"
@@ -660,6 +675,11 @@ place:
               value: "no"
         - label: "Sociedad Latina"
           value: "Sociedad Latina"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "True Alliance Center"
+          value: "True Alliance Center"
           attrs:
             - key: translate
               value: "no"
