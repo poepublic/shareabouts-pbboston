@@ -1070,7 +1070,7 @@ msgid ""
 "  us: How would you spend $2 million to benefit our communities?"
 msgstr ""
 "Di\n"
-" nou: Ki jan ou ta depanse 2 milyon dola pou benefisye kominote nou yo?"
+" nou: Kijan w t ap depanse $2 milyon dola pou benefis kominote nou yo?"
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:58
 msgid "Welcome to Ideas in Action!"
