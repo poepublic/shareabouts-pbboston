@@ -375,7 +375,7 @@ msgstr "Esta idea promovería la equidad social y racial al..."
 #: src/flavors/cycle1/_config.translations.py:56
 #: src/flavors/cycle2/_config.translations.py:60
 msgid "Make sure you keep it short and clear."
-msgstr "Asegúrese de que sea breve y claro."
+msgstr "Asegúrese de ser breve y claro."
 
 #: src/flavors/cycle1/_config.translations.py:57
 #: src/flavors/cycle2/_config.translations.py:61
