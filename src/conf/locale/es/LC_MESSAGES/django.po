@@ -448,7 +448,7 @@ msgstr "Su nombre…"
 #: src/flavors/cycle1/_config.translations.py:81
 #: src/flavors/cycle2/_config.translations.py:90
 msgid "Your last name…"
-msgstr "Tu apellido…"
+msgstr "Su apellido…"
 
 #: src/flavors/cycle1/_config.translations.py:82
 #: src/flavors/cycle2/_config.translations.py:91
