@@ -268,8 +268,7 @@ msgstr "enviado"
 #: src/flavors/cycle1/_config.translations.py:36
 #: src/flavors/cycle2/_config.translations.py:36
 msgid "How would you spend $2 million to benefit your community?"
-msgstr ""
-"¿Cómo usaría usted $2 millon de dólares para beneficiar a tu comunidad?"
+msgstr "¿Cómo usaría usted $2 millones para beneficiar a tu comunidad?"
 
 #: src/flavors/cycle1/_config.translations.py:37
 #: src/flavors/cycle2/_config.translations.py:37
@@ -1088,7 +1087,7 @@ msgid ""
 "  us: How would you spend $2 million to benefit our communities?"
 msgstr ""
 "Decir\n"
-" nosotros: ¿Cómo usaría usted $2 millon de dólares para beneficiar a nuestras comunidades?"
+" nosotros: ¿Cómo usaría usted $2 millones para beneficiar a nuestras comunidades?"
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:58
 msgid "Welcome to Ideas in Action!"
@@ -1144,14 +1143,13 @@ msgid ""
 "<span class=\"bigger-text\">communities<span class=\"scribble-text scribble-"
 "text-pink\">?</span></span>"
 msgstr ""
-"¿Cómo usaría usted <img class=\"inline-scribble\" "
-"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> <span class=\"bigger-"
-"text\"><span class=\"scribble-text scribble-text-pink\">$</span><span "
-"class=\"scribble-underline\">2 million</span></span> de dólares para "
-"beneficiar a <img class=\"inline-scribble\" "
-"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> <span "
-"class=\"bigger-text\">nuestras comunidades<span class=\"scribble-text "
-"scribble-text-pink\">?</span></span>"
+"¿Cómo usaría usted <span class=\"bigger-text\"><span class=\"scribble-text "
+"scribble-text-pink\">$</span><span class=\"scribble-underline\">2 "
+"milliones</span></span> <img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> para beneficiar a <img "
+"class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\""
+" alt=\"\"> <span class=\"bigger-text\">nuestras comunidades<span "
+"class=\"scribble-text scribble-text-pink\">?</span></span>"
 
 #: src/flavors/cycle2/jstemplates/place-form.html:2
 msgid "It looks like you didn't set your location yet."
