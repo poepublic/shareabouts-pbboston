@@ -268,7 +268,8 @@ msgstr "enviado"
 #: src/flavors/cycle1/_config.translations.py:36
 #: src/flavors/cycle2/_config.translations.py:36
 msgid "How would you spend $2 million to benefit your community?"
-msgstr "¿Cómo usaría usted $2 millones para beneficiar a tu comunidad?"
+msgstr ""
+"¿Cómo usaría usted $2 millon de dólares para beneficiar a tu comunidad?"
 
 #: src/flavors/cycle1/_config.translations.py:37
 #: src/flavors/cycle2/_config.translations.py:37
@@ -278,7 +279,7 @@ msgstr "Tu vecino"
 #: src/flavors/cycle1/_config.translations.py:38
 #: src/flavors/cycle2/_config.translations.py:38
 msgid "Submit"
-msgstr "Entregar"
+msgstr "Enviar"
 
 #: src/flavors/cycle1/_config.translations.py:39
 #: src/flavors/cycle2/_config.translations.py:39
@@ -319,7 +320,7 @@ msgstr "¿Toda la Ciudad?"
 #: src/flavors/cycle1/_config.translations.py:45
 #: src/flavors/cycle2/_config.translations.py:49
 msgid "Location-specific"
-msgstr "Específico de la ubicación"
+msgstr "Especifique la ubicación"
 
 #: src/flavors/cycle1/_config.translations.py:46
 #: src/flavors/cycle2/_config.translations.py:50
@@ -374,7 +375,7 @@ msgstr "Esta idea promovería la equidad social y racial al..."
 #: src/flavors/cycle1/_config.translations.py:56
 #: src/flavors/cycle2/_config.translations.py:60
 msgid "Make sure you keep it short and clear."
-msgstr "Asegúrese de que sea breve y claro."
+msgstr "Asegúrese de ser breve y claro."
 
 #: src/flavors/cycle1/_config.translations.py:57
 #: src/flavors/cycle2/_config.translations.py:61
@@ -383,14 +384,14 @@ msgid ""
 "people of any social and racial background into society, so they can "
 "participate, prosper, and reach their full potential."
 msgstr ""
-"La &quot;equidad social y racial&quot; se define como la inclusión justa y "
-"equitativa de personas de cualquier origen social y racial en la sociedad, "
-"para que puedan participar, prosperar y alcanzar su máximo potencial."
+"La equidad social y racial se define como la inclusión justa y equitativa de"
+" personas de cualquier origen social y racial en la sociedad, para que "
+"puedan participar, prosperar y alcanzar su máximo potencial."
 
 #: src/flavors/cycle1/_config.translations.py:59
 #: src/flavors/cycle2/_config.translations.py:63
 msgid "Which category does your idea fall into?"
-msgstr "¿En qué categoría cae tu idea?"
+msgstr "¿En qué categoría está su idea?"
 
 #: src/flavors/cycle1/_config.translations.py:60
 #: src/flavors/cycle2/_config.translations.py:64
@@ -447,7 +448,7 @@ msgstr "Su nombre…"
 #: src/flavors/cycle1/_config.translations.py:81
 #: src/flavors/cycle2/_config.translations.py:90
 msgid "Your last name…"
-msgstr "Tu apellido…"
+msgstr "Su apellido…"
 
 #: src/flavors/cycle1/_config.translations.py:82
 #: src/flavors/cycle2/_config.translations.py:91
@@ -696,16 +697,16 @@ msgid ""
 "Yes, through a community event or activity hosted by <strong>PB Contract "
 "Partner organization</strong>"
 msgstr ""
-"Sí, a través de un evento o actividad comunitaria organizada por <strong>la "
-"organización socia del contrato de PB</strong>"
+"Sí, a través de una actividad realizada por <strong>una organización que "
+"trabaja con la Oficina de Presupuesto Participativo</strong>"
 
 #: src/flavors/cycle2/_config.translations.py:79
 msgid ""
 "Yes, through an event or activity hosted by a <strong>Non-PB Contract "
 "Partner</strong>"
 msgstr ""
-"Sí, a través de un evento o actividad organizada por un <strong>socio "
-"contractual no PB</strong>"
+"Sí, a través de una actividad realizada de <strong>forma "
+"independiente</strong>"
 
 #: src/flavors/cycle2/_config.translations.py:80
 msgid "Which partner organization hosted the event?"
@@ -734,7 +735,7 @@ msgstr "Nombre del remitente"
 
 #: src/flavors/cycle2/_config.translations.py:88
 msgid "Your Last Name"
-msgstr "Tu apellido"
+msgstr "Su apellido"
 
 #: src/flavors/cycle2/_config.translations.py:89
 msgid "Submitter's Last Name"
@@ -1087,7 +1088,7 @@ msgid ""
 "  us: How would you spend $2 million to benefit our communities?"
 msgstr ""
 "Decir\n"
-" Nosotros: ¿Cómo gastarías 2 millones de dólares para beneficiar a nuestras comunidades?"
+" nosotros: ¿Cómo usaría usted $2 millon de dólares para beneficiar a nuestras comunidades?"
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:58
 msgid "Welcome to Ideas in Action!"
@@ -1170,8 +1171,7 @@ msgid ""
 "You can also\n"
 "          share your idea by calling the PB Phone line at"
 msgstr ""
-"Tú también puedes\n"
-" comparte tu idea llamando a la línea telefónica de PB al"
+"También puede compartir su idea llamando a la línea telefónica de PB al"
 
 #: src/flavors/cycle2/jstemplates/place-form.html:7
 msgid "click here"

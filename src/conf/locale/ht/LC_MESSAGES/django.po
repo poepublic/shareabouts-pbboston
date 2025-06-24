@@ -375,9 +375,9 @@ msgid ""
 "people of any social and racial background into society, so they can "
 "participate, prosper, and reach their full potential."
 msgstr ""
-"&quot;Ekite sosyal ak rasyal&quot; defini kòm enklizyon jis ak jis moun ki "
-"gen nenpòt orijin sosyal ak rasyal nan sosyete a, pou yo ka patisipe, "
-"pwospere, epi atenn tout potansyèl yo."
+"Ekite sosyal ak rasyal defini kòm enklizyon jis ak jis moun ki gen nenpòt "
+"orijin sosyal ak rasyal nan sosyete a, pou yo ka patisipe, pwospere, epi "
+"atenn tout potansyèl yo."
 
 #: src/flavors/cycle1/_config.translations.py:59
 #: src/flavors/cycle2/_config.translations.py:63
