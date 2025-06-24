@@ -705,8 +705,8 @@ msgid ""
 "Yes, through an event or activity hosted by a <strong>Non-PB Contract "
 "Partner</strong>"
 msgstr ""
-"Sí, a través de un evento o actividad organizada por un <strong>socio "
-"contractual no PB</strong>"
+"Sí, a través de una actividad realizada de <strong>forma "
+"independiente</strong>"
 
 #: src/flavors/cycle2/_config.translations.py:80
 msgid "Which partner organization hosted the event?"
