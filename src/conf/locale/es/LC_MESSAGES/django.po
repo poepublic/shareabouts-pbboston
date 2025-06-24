@@ -279,7 +279,7 @@ msgstr "Tu vecino"
 #: src/flavors/cycle1/_config.translations.py:38
 #: src/flavors/cycle2/_config.translations.py:38
 msgid "Submit"
-msgstr "Entregar"
+msgstr "Enviar"
 
 #: src/flavors/cycle1/_config.translations.py:39
 #: src/flavors/cycle2/_config.translations.py:39
