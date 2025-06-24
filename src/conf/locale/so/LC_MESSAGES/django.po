@@ -385,10 +385,10 @@ msgid ""
 "people of any social and racial background into society, so they can "
 "participate, prosper, and reach their full potential."
 msgstr ""
-"&quot;Sinaanta bulshada iyo jinsiyadda&quot; waxaa lagu qeexaa in ay si "
-"cadaalad ah oo caddaalad ah dadka asal kasta oo bulsho iyo jinsiyadeed ugu "
-"soo biiraan bulshada, si ay uga qayb qaataan, u barwaaqoobaan, oo ay u "
-"gaaraan awooddooda buuxda."
+"Sinaanta bulshada iyo jinsiyadda waxaa lagu qeexaa in ay si cadaalad ah oo "
+"caddaalad ah dadka asal kasta oo bulsho iyo jinsiyadeed ugu soo biiraan "
+"bulshada, si ay uga qayb qaataan, u barwaaqoobaan, oo ay u gaaraan "
+"awooddooda buuxda."
 
 #: src/flavors/cycle1/_config.translations.py:59
 #: src/flavors/cycle2/_config.translations.py:63
