@@ -320,7 +320,7 @@ msgstr "¿Toda la Ciudad?"
 #: src/flavors/cycle1/_config.translations.py:45
 #: src/flavors/cycle2/_config.translations.py:49
 msgid "Location-specific"
-msgstr "Específico de la ubicación"
+msgstr "Especifique la ubicación"
 
 #: src/flavors/cycle1/_config.translations.py:46
 #: src/flavors/cycle2/_config.translations.py:50
