@@ -1088,7 +1088,7 @@ msgid ""
 "  us: How would you spend $2 million to benefit our communities?"
 msgstr ""
 "Decir\n"
-" nosotros: ¿Cómo usaría usted $2 millon de dólares para beneficiar a nuestras comunidades?"
+" nosotros: ¿Cómo usaría usted $2 millones para beneficiar a nuestras comunidades?"
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:58
 msgid "Welcome to Ideas in Action!"
