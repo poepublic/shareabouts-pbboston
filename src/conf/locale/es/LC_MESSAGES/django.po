@@ -697,8 +697,8 @@ msgid ""
 "Yes, through a community event or activity hosted by <strong>PB Contract "
 "Partner organization</strong>"
 msgstr ""
-"Sí, a través de un evento o actividad comunitaria organizada por <strong>la "
-"organización socia del contrato de PB</strong>"
+"Sí, a través de una actividad realizada por <strong>una organización que "
+"trabaja con la Oficina de Presupuesto Participativo</strong>"
 
 #: src/flavors/cycle2/_config.translations.py:79
 msgid ""
