@@ -391,7 +391,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:59
 #: src/flavors/cycle2/_config.translations.py:63
 msgid "Which category does your idea fall into?"
-msgstr "¿En qué categoría cae tu idea?"
+msgstr "¿En qué categoría está su idea?"
 
 #: src/flavors/cycle1/_config.translations.py:60
 #: src/flavors/cycle2/_config.translations.py:64
