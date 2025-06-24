@@ -383,10 +383,9 @@ msgid ""
 "people of any social and racial background into society, so they can "
 "participate, prosper, and reach their full potential."
 msgstr ""
-"&quot;Công bằng xã hội và chủng tộc&quot; được định nghĩa là sự hòa nhập "
-"công bằng và bình đẳng của những người thuộc mọi hoàn cảnh xã hội và chủng "
-"tộc vào xã hội, để họ có thể tham gia, phát triển và phát huy hết tiềm năng "
-"của mình."
+"Công bằng xã hội và chủng tộc được định nghĩa là sự hòa nhập công bằng và "
+"bình đẳng của những người thuộc mọi hoàn cảnh xã hội và chủng tộc vào xã "
+"hội, để họ có thể tham gia, phát triển và phát huy hết tiềm năng của mình."
 
 #: src/flavors/cycle1/_config.translations.py:59
 #: src/flavors/cycle2/_config.translations.py:63
