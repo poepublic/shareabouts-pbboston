@@ -1085,9 +1085,9 @@ label {
 @keyframes rotateWord {
   0% { opacity: 0; }
   1% { opacity: 0; transform: translateY(-30px); }
-  5% { opacity: 1; transform: translateY(0px); }  /* This percentage of the total time should come out to about 1 second */
-  15% { opacity: 1; transform: translateY(0px); }  /* This percentage of the total time should come out to about 3 seconds */
-  19% { opacity: 0; transform: translateY(30px); }
+  4.17% { opacity: 1; transform: translateY(0px); }  /* This percentage of the total time should come out to about 1 second */
+  12.5% { opacity: 1; transform: translateY(0px); }  /* This percentage of the total time should come out to about 3 seconds */
+  15.67% { opacity: 0; transform: translateY(30px); }
   100% { opacity: 0; }
 }
 
