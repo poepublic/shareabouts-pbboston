@@ -384,9 +384,9 @@ msgid ""
 "people of any social and racial background into society, so they can "
 "participate, prosper, and reach their full potential."
 msgstr ""
-"La &quot;equidad social y racial&quot; se define como la inclusión justa y "
-"equitativa de personas de cualquier origen social y racial en la sociedad, "
-"para que puedan participar, prosperar y alcanzar su máximo potencial."
+"La equidad social y racial se define como la inclusión justa y equitativa de"
+" personas de cualquier origen social y racial en la sociedad, para que "
+"puedan participar, prosperar y alcanzar su máximo potencial."
 
 #: src/flavors/cycle1/_config.translations.py:59
 #: src/flavors/cycle2/_config.translations.py:63
