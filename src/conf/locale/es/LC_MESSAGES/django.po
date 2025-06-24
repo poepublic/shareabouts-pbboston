@@ -735,7 +735,7 @@ msgstr "Nombre del remitente"
 
 #: src/flavors/cycle2/_config.translations.py:88
 msgid "Your Last Name"
-msgstr "Tu apellido"
+msgstr "Su apellido"
 
 #: src/flavors/cycle2/_config.translations.py:89
 msgid "Submitter's Last Name"
