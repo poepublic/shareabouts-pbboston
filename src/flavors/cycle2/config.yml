@@ -190,7 +190,7 @@ place_types:
           shadowSize: null
           iconAnchor: [32, 32]
   education_youth:
-    label: _(Education, Youth & Families)
+    label: _(Education, Youth, Families, & Older Adults)
     description: _(Project ideas related to education for all ages, as well as proposals that meet the needs of Boston’s youth, senior citizens, and families.)
     color: '#faee41'
     icon: /static/img/categories/education_youth.svg
@@ -557,7 +557,7 @@ place:
           value: community
         - label: _(Local Economy & Worker Empowerment)
           value: economy_workers
-        - label: _(Education, Youth & Families)
+        - label: _(Education, Youth, Families, & Older Adults)
           value: education_youth
         - label: _(Environment, Sustainability, and Food Access)
           value: sustainability
@@ -1024,7 +1024,7 @@ pages:
       - title: _(Local Economy & Worker Empowerment)
         url: /filter/economy_workers
         external: true
-      - title: _(Education, Youth & Families)
+      - title: _(Education, Youth, Families, & Older Adults)
         url: /filter/education_youth
         external: true
       - title: _(Environment, Sustainability, and Food Access)
