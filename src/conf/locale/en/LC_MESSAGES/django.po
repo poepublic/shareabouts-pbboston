@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 07:23-0400\n"
+"POT-Creation-Date: 2025-06-25 10:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,9 +97,6 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:16
 #: src/flavors/cycle1/_config.translations.py:65
 #: src/flavors/cycle1/_config.translations.py:113
-#: src/flavors/cycle2/_config.translations.py:16
-#: src/flavors/cycle2/_config.translations.py:69
-#: src/flavors/cycle2/_config.translations.py:145
 msgid "Education, Youth & Families"
 msgstr ""
 
@@ -581,6 +578,12 @@ msgstr ""
 msgid "Come back on %(return_date)s to submit your project ideas!"
 msgstr ""
 
+#: src/flavors/cycle2/_config.translations.py:16
+#: src/flavors/cycle2/_config.translations.py:69
+#: src/flavors/cycle2/_config.translations.py:145
+msgid "Education, Youth, Families, & Older Adults"
+msgstr ""
+
 #: src/flavors/cycle2/_config.translations.py:32
 #: src/flavors/cycle2/templates/index.html:57
 msgid "Share an Idea"
@@ -845,42 +848,40 @@ msgstr ""
 #: src/flavors/cycle2/jstemplates/pages/overview.html:15
 msgid ""
 "Cycle Two of Ideas in Action starts this summer! Between <strong>July\n"
-"  1st and July 31</strong>, you can share project ideas online at <a\n"
-"  href=\"https://boston.gov/participate\" target=\"_blank\">Boston.gov/"
-"participate</a>,\n"
+"  1st and July 31</strong>, you can share project ideas through this "
+"website,\n"
 "  over the phone by calling <a href=\"tel:+16176353059\">(617) 635-3059</a>, "
 "or\n"
-"  in-person at Boston Public Library Branches and through community "
-"workshops\n"
+"  in-person at Boston Public Library Branches and through community events\n"
 "  across the City."
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:21
+#: src/flavors/cycle2/jstemplates/pages/overview.html:20
 msgid ""
 "Digital literacy classes for senior citizens to learn new skills and promote "
 "social connections;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:22
+#: src/flavors/cycle2/jstemplates/pages/overview.html:21
 msgid ""
 "Enhance public spaces through infrastructure projects (public art, street "
 "trees, benches, etc.)"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:23
+#: src/flavors/cycle2/jstemplates/pages/overview.html:22
 msgid "Examples of eligible project ideas:"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:24
+#: src/flavors/cycle2/jstemplates/pages/overview.html:23
 msgid "Examples of ineligible project ideas:"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:25
+#: src/flavors/cycle2/jstemplates/pages/overview.html:24
 msgid ""
 "Expand the City’s Wicked Free WiFi network to reach more low-income areas;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:26
+#: src/flavors/cycle2/jstemplates/pages/overview.html:25
 msgid ""
 "From August through September 2025, the City will review all the\n"
 "  submitted project ideas. Then, in the fall, the Office of Participatory\n"
@@ -891,35 +892,35 @@ msgid ""
 "  place in January of 2026!"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:31
+#: src/flavors/cycle2/jstemplates/pages/overview.html:30
 msgid "Helping a religious institution repair its sanctuary;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:32
+#: src/flavors/cycle2/jstemplates/pages/overview.html:31
 msgid ""
 "Helping an organization renovate a space that it rents from a private "
 "landlord;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:33
+#: src/flavors/cycle2/jstemplates/pages/overview.html:32
 msgid "How do I stay connected?"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:34
+#: src/flavors/cycle2/jstemplates/pages/overview.html:33
 msgid "Idea Submission Criteria"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:35
+#: src/flavors/cycle2/jstemplates/pages/overview.html:34
 msgid ""
 "Ideas about programs, services, or physical infrastructure\n"
 "    improvements;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:37
+#: src/flavors/cycle2/jstemplates/pages/overview.html:36
 msgid "Increase the frequency of MBTA buses or trains."
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:38
+#: src/flavors/cycle2/jstemplates/pages/overview.html:37
 msgid ""
 "Infrastructure projects on private, state, or federal property\n"
 "        are not eligible, such as projects concerning the Department of\n"
@@ -927,44 +928,44 @@ msgid ""
 "        Authority (MBTA)."
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:42
+#: src/flavors/cycle2/jstemplates/pages/overview.html:41
 msgid ""
 "Lastly, projects must be implemented or managed by the appropriate\n"
 "    City Department or agency receiving direct budget appropriations."
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:44
+#: src/flavors/cycle2/jstemplates/pages/overview.html:43
 msgid "Paying for the salary of a public employee to provide services;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:45
+#: src/flavors/cycle2/jstemplates/pages/overview.html:44
 msgid "Programming to strengthen mental health among Boston youth;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:46
+#: src/flavors/cycle2/jstemplates/pages/overview.html:45
 msgid ""
 "Project ideas containing inappropriate, offensive, or derogatory language "
 "will be removed and not considered from the PB process."
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:47
+#: src/flavors/cycle2/jstemplates/pages/overview.html:46
 msgid ""
 "Project ideas that are feasible to implement, and are consistent\n"
 "    with existing City policies, laws, regulations, and the Participatory\n"
 "    Budgeting Ordinance;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:50
+#: src/flavors/cycle2/jstemplates/pages/overview.html:49
 msgid ""
 "Project ideas that are limited to a one-time expense, and do not\n"
 "    create new permanent positions;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:52
+#: src/flavors/cycle2/jstemplates/pages/overview.html:51
 msgid "Repairing a privately owned building;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:53
+#: src/flavors/cycle2/jstemplates/pages/overview.html:52
 msgid ""
 "Sign up for our newsletter! For more information about Participatory\n"
 "  Budgeting, please visit <a href=\"https://boston.gov/participate\" "
@@ -973,29 +974,29 @@ msgid ""
 "a>."
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:56
+#: src/flavors/cycle2/jstemplates/pages/overview.html:55
 msgid ""
 "Tell\n"
 "  us: How would you spend $2 million to benefit our communities?"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:58
+#: src/flavors/cycle2/jstemplates/pages/overview.html:57
 msgid "Welcome to Ideas in Action!"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:59
+#: src/flavors/cycle2/jstemplates/pages/overview.html:58
 msgid "What happens after I share my ideas?"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:60
+#: src/flavors/cycle2/jstemplates/pages/overview.html:59
 msgid "What type of ideas can I propose?"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:61
+#: src/flavors/cycle2/jstemplates/pages/overview.html:60
 msgid "When can I start sharing my ideas"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:62
+#: src/flavors/cycle2/jstemplates/pages/overview.html:61
 msgid "Who can submit project ideas?"
 msgstr ""
 
