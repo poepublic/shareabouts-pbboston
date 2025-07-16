@@ -3,6 +3,38 @@
 // user shoud be required to select an event organization. If the event type is
 // anything else, then the organization field should no longer be required and
 // should be hidden from view.
+//
+// In the config.yml file, set up a subfield with a data-parent-field
+// attribute that matches the name of the main field, and a data-parent-value
+// attribute that matches the value of the main field that should trigger the
+// subfield to be shown. The subfield will be hidden by default, and will only
+// be shown when the main field is set to the specified value.
+//
+// The parent field should also have a data-has-children attribute to indicate
+// that it has subfields that depend on its value.
+//
+// Example:
+//    - name: submission_event_type
+//      type: radio
+//      label: Event Type
+//      options:
+//        - value: partner
+//          label: Partner Event
+//        - value: non-partner
+//          label: Non-Partner Event
+//      attrs:
+//        - key: required
+//        - key: data-has-children  # <- this indicates that this field has children
+//
+//    - name: submission_event_organization
+//      type: text
+//      label: Event Organization
+//      attrs:
+//        - key: required
+//        - key: data-parent-field  # <- this indicates that this field is a child of the parent field
+//          value: submission_event_type
+//        - key: data-parent-value  # <- this indicates the value of the parent field that should trigger this child field to be shown
+//          value: partner
 
 (function() {
 
