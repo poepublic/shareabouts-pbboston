@@ -1,5 +1,5 @@
-@import url('/static/css/city-wide-ext.css');
-@import url('/static/css/language-picker.css');
+@import url('./city-wide-ext.css');
+@import url('./language-picker.css');
 
 /*
  * This CSS file follows the default Shareabouts style.css.
@@ -443,10 +443,10 @@ label {
 }
 
 [name="city_wide"][value="false"] + .label-text {
-  background-image: url("/static/img/specific-location.svg");
+  background-image: url("../img/specific-location.svg");
 }
 [name="city_wide"][value="true"] + .label-text {
-  background-image: url("/static/img/city-hall.svg");
+  background-image: url("../img/city-hall.svg");
 }
 
 /* Location type buttons */
@@ -458,34 +458,34 @@ label {
 }
 
 [name="location_type"][value="arts_culture"] + .label-text {
-  background-image: url("/static/img/categories/arts_culture-dark-square.svg");
+  background-image: url("../img/categories/arts_culture-dark-square.svg");
 }
 [name="location_type"][value="community"] + .label-text {
-  background-image: url("/static/img/categories/community-dark-square.svg");
+  background-image: url("../img/categories/community-dark-square.svg");
 }
 [name="location_type"][value="economy_workers"] + .label-text {
-  background-image: url("/static/img/categories/economy_workers-dark-square.svg");
+  background-image: url("../img/categories/economy_workers-dark-square.svg");
 }
 [name="location_type"][value="education_youth"] + .label-text {
-  background-image: url("/static/img/categories/education_youth-dark-square.svg");
+  background-image: url("../img/categories/education_youth-dark-square.svg");
 }
 [name="location_type"][value="sustainability"] + .label-text {
-  background-image: url("/static/img/categories/sustainability-dark-square.svg");
+  background-image: url("../img/categories/sustainability-dark-square.svg");
 }
 [name="location_type"][value="facilities"] + .label-text {
-  background-image: url("/static/img/categories/facilities-dark-square.svg");
+  background-image: url("../img/categories/facilities-dark-square.svg");
 }
 [name="location_type"][value="human_services"] + .label-text {
-  background-image: url("/static/img/categories/human_services-dark-square.svg");
+  background-image: url("../img/categories/human_services-dark-square.svg");
 }
 [name="location_type"][value="public_safety"] + .label-text {
-  background-image: url("/static/img/categories/public_safety-dark-square.svg");
+  background-image: url("../img/categories/public_safety-dark-square.svg");
 }
 [name="location_type"][value="streets_sidewalks"] + .label-text {
-  background-image: url("/static/img/categories/streets_sidewalks-dark-square.svg");
+  background-image: url("../img/categories/streets_sidewalks-dark-square.svg");
 }
 [name="location_type"][value="other"] + .label-text {
-  background-image: url("/static/img/categories/other-dark-square.svg");
+  background-image: url("../img/categories/other-dark-square.svg");
 }
 
 [name="location_type"] + .label-text:hover {
@@ -527,61 +527,61 @@ label {
 
 [name="location_type"][value="arts_culture"]:checked + .label-text {
   background-color: var(--icon-color-01);
-  background-image: url("/static/img/categories/arts_culture-light-square.svg");
+  background-image: url("../img/categories/arts_culture-light-square.svg");
   border-color: var(--icon-color-01);
   color: white;
 }
 [name="location_type"][value="community"]:checked + .label-text {
   background-color: var(--icon-color-02);
-  background-image: url("/static/img/categories/community-dark-square.svg");
+  background-image: url("../img/categories/community-dark-square.svg");
   border-color: var(--icon-color-02);
   color: var(--charles-blue);
 }
 [name="location_type"][value="economy_workers"]:checked + .label-text {
   background-color: var(--icon-color-03);
-  background-image: url("/static/img/categories/economy_workers-dark-square.svg");
+  background-image: url("../img/categories/economy_workers-dark-square.svg");
   border-color: var(--icon-color-03);
   color: var(--charles-blue);
 }
 [name="location_type"][value="education_youth"]:checked + .label-text {
   background-color: var(--icon-color-04);
-  background-image: url("/static/img/categories/education_youth-dark-square.svg");
+  background-image: url("../img/categories/education_youth-dark-square.svg");
   border-color: var(--icon-color-04);
   color: var(--charles-blue);
 }
 [name="location_type"][value="sustainability"]:checked + .label-text {
   background-color: var(--icon-color-05);
-  background-image: url("/static/img/categories/sustainability-dark-square.svg");
+  background-image: url("../img/categories/sustainability-dark-square.svg");
   border-color: var(--icon-color-05);
   color: var(--charles-blue);
 }
 [name="location_type"][value="facilities"]:checked + .label-text {
   background-color: var(--icon-color-06);
-  background-image: url("/static/img/categories/facilities-dark-square.svg");
+  background-image: url("../img/categories/facilities-dark-square.svg");
   border-color: var(--icon-color-06);
   color: var(--charles-blue);
 }
 [name="location_type"][value="human_services"]:checked + .label-text {
   background-color: var(--icon-color-07);
-  background-image: url("/static/img/categories/human_services-dark-square.svg");
+  background-image: url("../img/categories/human_services-dark-square.svg");
   border-color: var(--icon-color-07);
   color: var(--charles-blue);
 }
 [name="location_type"][value="public_safety"]:checked + .label-text {
   background-color: var(--icon-color-08);
-  background-image: url("/static/img/categories/public_safety-light-square.svg");
+  background-image: url("../img/categories/public_safety-light-square.svg");
   border-color: var(--icon-color-08);
   color: white;
 }
 [name="location_type"][value="streets_sidewalks"]:checked + .label-text {
   background-color: var(--icon-color-09);
-  background-image: url("/static/img/categories/streets_sidewalks-light-square.svg");
+  background-image: url("../img/categories/streets_sidewalks-light-square.svg");
   border-color: var(--icon-color-09);
   color: white;
 }
 [name="location_type"][value="other"]:checked + .label-text {
   background-color: var(--icon-color-11);
-  background-image: url("/static/img/categories/other-light-square.svg");
+  background-image: url("../img/categories/other-light-square.svg");
   border-color: var(--icon-color-11);
   color: white;
 }
@@ -1005,7 +1005,7 @@ label {
 .show-the-map {
   padding: 0;
   padding-left: 1.25rem;
-  background-image: url("/static/css/images/show-map-icon.svg");
+  background-image: url("./images/show-map-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   white-space: nowrap;
@@ -1014,7 +1014,7 @@ label {
 .show-the-list {
   padding: 0;
   padding-left: 1.25rem;
-  background-image: url("/static/css/images/show-list-icon.svg");
+  background-image: url("./images/show-list-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   white-space: nowrap;

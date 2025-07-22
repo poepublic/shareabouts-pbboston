@@ -7,7 +7,7 @@
 
         <p><em>
           {{#_}}To learn about the types of ideas you can submit,{{/_}} <a
-          data-internal="true" href="/page/about">{{#_}}click here{{/_}}</a>. {{#_}}You can also
+          data-internal="true" href="{{prefix "/page/about"}}">{{#_}}click here{{/_}}</a>. {{#_}}You can also
           share your idea by calling the PB Phone line at{{/_}} <a style="text-decoration: none; color:black;" class="downlow-link" href="tel:(617) 635-3059">(617) 635-3059</a>.
         </em></p>
 
@@ -21,7 +21,7 @@
           <input name="save-place-btn" id="save-place-btn" type="submit" value="{{ place_config.submit_button_label }}" class="btn btn-primary submit-btn">
 
           {{#is_authenticated}}
-            <p class="signed-in-as"><img src="{{ current_user "avatar_url" }}" class="avatar" /> {{ current_user "name" }}. <a class="" href="/users/logout/">{{#_}}Log Out{{/_}}</a></p>
+            <p class="signed-in-as"><img src="{{ current_user "avatar_url" }}" class="avatar" /> {{ current_user "name" }}. <a class="" href="{{prefix "/users/logout/"}}">{{#_}}Log Out{{/_}}</a></p>
           {{^}}
           {{/is_authenticated}}
 

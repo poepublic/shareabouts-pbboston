@@ -18,8 +18,8 @@ admin.autodiscover()
 urlpatterns = [
     path(base_path + 'choose-language', set_language, name='set_language'),
     path(base_path + 'login/', include('sa_login.urls')),
-    path('users/begin/<provider>', auth_views.oauth_begin, name='oauth_begin'),
-    path('users/complete/<provider>', auth_views.oauth_complete, name='oauth_complete'),
+    path(base_path + 'users/begin/<provider>', auth_views.oauth_begin, name='oauth_begin'),
+    path(base_path + 'users/complete/<provider>', auth_views.oauth_complete, name='oauth_complete'),
     path(base_path + 'admin/', include('sa_admin.urls')),
     path(base_path + '', include('sa_web.urls')),
 ]

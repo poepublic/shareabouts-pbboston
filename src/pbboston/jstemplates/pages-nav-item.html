@@ -22,7 +22,7 @@
       <a class="btn btn-block btn-secondary" href="{{ url }}" target="_blank">{{ title }}</a>
     {{else }}
       {{#if slug }}
-        <a class="btn btn-block btn-secondary" href="/page/{{ slug }}">{{ title }}</a>
+        <a class="btn btn-block btn-secondary" href="{{prefix "/page/"}}{{ slug }}">{{ title }}</a>
       {{else }}
         <a class="btn btn-block btn-secondary">{{ title }}</a>
       {{/if }}

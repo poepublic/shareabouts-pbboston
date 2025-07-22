@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block site-title %}
-<a href="/{{ config.app.home_path }}" data-internal="true">
+<a href="{{route_prefix}}/{{ config.app.home_path }}" data-internal="true">
   <img class="boston-icon" alt="" src="{% static 'css/images/boston-icon-light.svg' %}">
   <img class="pb-icon" alt="" src="{% static 'css/images/pbboston-icon.svg' %}">
   <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo.svg' %}">
@@ -53,7 +53,7 @@
 
 {% block pre_pages_nav %}
   {% if config.place.adding_supported %}
-    <a class="btn btn-primary navbar-suggest-btn" rel="internal" href="/place/new">{% blocktrans %}Suggest an Idea{% endblocktrans %}</a>
+    <a class="btn btn-primary navbar-suggest-btn" rel="internal" href="{{route_prefix}}/place/new">{% blocktrans %}Suggest an Idea{% endblocktrans %}</a>
   {% endif %}
 {% endblock %}
 
