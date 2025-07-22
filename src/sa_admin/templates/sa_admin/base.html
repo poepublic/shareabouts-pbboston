@@ -75,7 +75,11 @@
       Shareabouts.bootstrapped = {
         currentUser: {{ api.current_user | as_json | safe }},
         dataset: {{ api.dataset_root | as_json | safe }},
+        staticUrl: {{ STATIC_URL | as_json | safe }},
+        mapboxToken: {{ settings.MAPBOX_TOKEN | as_json | safe }},
       };
+
+      Shareabouts.PlaceCollection.prototype.url += '?include_private&include_invisible';
     </script>
     {% endblock %}
 </html>

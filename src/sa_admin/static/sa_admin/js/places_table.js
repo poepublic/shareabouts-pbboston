@@ -9,6 +9,14 @@ class PlacesTableHeaderCell extends Component {
     this.filter = null;
   }
 
+  clearFilter() {
+    if (this.filter) {
+      this.filter.clear();
+      this.filter.filter();
+    }
+    return this;
+  }
+
   fill() {
     this.el.innerHTML = `<span class="place-table-column-label">${this.column.label}</span>`;
     if (this.column.filter) {
@@ -19,6 +27,23 @@ class PlacesTableHeaderCell extends Component {
       this.filter = new PlacesFilter(filterEl, this.column);
       this.filter.render();
       this.el.appendChild(filterEl);
+    }
+    return this;
+  }
+
+  bind() {
+    if (this.filter) {
+      this.listeners.add('filter', this.filter.dispatcher, (e) => {
+        this.updateFilterIndicator();
+      });
+    }
+  }
+
+  updateFilterIndicator() {
+    if (this.filter && !this.filter.isClear()) {
+      this.el.classList.add('filtered');
+    } else {
+      this.el.classList.remove('filtered');
     }
     return this;
   }
@@ -34,9 +59,18 @@ class PlacesTableHeaderRow extends Component {
     this.cells = [];
   }
 
+  clearFilters() {
+    for (const cell of this.cells) {
+      cell.clearFilter();
+    }
+    return this;
+  }
+
   fill() {
     for (const column of this.columns) {
-      const cell = new PlacesTableHeaderCell(document.createElement('th'), this.places, column);
+      const th = document.createElement('th');
+      th.classList.add(`${column.attr}-column`);
+      const cell = new PlacesTableHeaderCell(th, this.places, column);
       this.el.appendChild(cell.render().el);
       this.cells.push(cell);
     }
@@ -173,6 +207,11 @@ class PlacesTable extends Component {
         this.bodyEl.removeChild(row.el);
       }
     }
+  }
+
+  clearFilters() {
+    this.head.clearFilters();
+    return this;
   }
 
   highlightRow(placeId, tr = null) {

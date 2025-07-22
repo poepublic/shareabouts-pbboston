@@ -248,6 +248,12 @@ class PlaceForm extends Component {
 
   saveValues() {
     const saveButton = this.el.querySelector('.save-button');
+
+    // const submitter = this.place.get('submitter');
+    // if (submitter && submitter.id) {
+    //   this.place.set('submitter', {id: submitter.id});
+    // }
+
     this.place.save(null, {
       beforeSend: ($xhr) => {
         $xhr.setRequestHeader('X-Shareabouts-Silent', 'true');

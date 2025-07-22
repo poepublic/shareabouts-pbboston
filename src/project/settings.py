@@ -60,6 +60,13 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+# Path or URL prefix for all app paths and static files. This is useful if you
+# want to run Shareabouts under a subpath, such as `/subpath/`. Note that if the
+# `BASE_URL` is set, the site will not work directly through runserver, so you
+# should use a reverse proxy in front of it. Thus by default, this is an empty
+# string.
+BASE_URL = os.environ.get('BASE_URL', '')
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = ''
@@ -79,7 +86,7 @@ COMPRESS_ROOT = STATIC_ROOT
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = BASE_URL + '/static/'
 COMPRESS_URL = STATIC_URL
 
 # Additional locations of static files
@@ -415,7 +422,6 @@ if 'DATASET_ROOT' in SHAREABOUTS and SHAREABOUTS['DATASET_ROOT'].startswith('/')
         # 3rd-party reusaple apps
         # =================================
         'rest_framework',
-        'django_nose',
         'storages',
         'social.apps.django_app.default',
         'raven.contrib.django.raven_compat',

@@ -12,7 +12,10 @@ class PlacesDashboard extends Component {
     this.fields = fields;
     this.filteredCount = this.el.querySelector('.filtered-count');
     this.totalCount = this.el.querySelector('.total-count');
-    this.downloadButton = this.el.querySelector('button.download');
+    this.filteredColumns = this.el.querySelector('.filtered-columns');
+    this.clearFiltersButton = this.el.querySelector('button.clear-filters');
+    this.downloadFilteredButton = this.el.querySelector('button.download-filtered');
+    this.downloadAllButton = this.el.querySelector('button.download-all');
     this.table = new PlacesTable(this.el.querySelector('#places-table'), this.places, fields);
     this.map = new PlacesMap(this.el.querySelector('#places-map'), this.places);
   }
@@ -65,23 +68,49 @@ class PlacesDashboard extends Component {
     });
 
     this.listeners.add('filter', this.table.dispatcher, (e) => {
-      const predicates = this.table.head.cells
-        .filter((cell) => cell.filter)
-        .map((cell) => cell.filter.filterPredicate.bind(cell.filter));
+      const predicates = this.filterPredicates();
       this.filterPlaces(predicates);
     });
 
-    this.listeners.add('click', this.downloadButton, (e) => {
+    this.listeners.add('click', this.clearFiltersButton, (e) => {
+      e.preventDefault();
+      this.clearPlaceFilters();
+    });
+
+    this.listeners.add('click', this.downloadAllButton, (e) => {
       e.preventDefault();
       this.downloadPlaces();
+    });
+
+    this.listeners.add('click', this.downloadFilteredButton, (e) => {
+      e.preventDefault();
+      this.downloadPlaces(this.filteredPlaces());
     });
 
     return Component.prototype.bind.call(this);
   }
 
+  filterPredicates() {
+    const predicates = this.table.head.cells
+        .filter((cell) => cell.filter)
+        .map((cell) => cell.filter.filterPredicate.bind(cell.filter));
+    return predicates;
+  }
+
+  filteredPlaces(predicates) {
+    predicates ||= this.filterPredicates();
+    const filteredPlaces = this.places.models.filter((place) => predicates.every((predicate) => predicate(place)))
+    return filteredPlaces;
+  }
+
   initPlaceCounts() {
-    this.filteredCount.innerHTML = this.places.models.length;
+    this.filteredCount.innerHTML = `${this.places.models.length} ${Shareabouts.Config.place.response_plural_name}`;
     this.totalCount.innerHTML = this.places.models.length;
+  }
+
+  clearPlaceFilters() {
+    this.table.clearFilters();
+    return this;
   }
 
   filterPlaces(predicates) {
@@ -89,13 +118,27 @@ class PlacesDashboard extends Component {
     this.map.filterMarkers(predicates);
 
     const filteredPlaces = this.places.models.filter((place) => predicates.every((predicate) => predicate(place)));
-    this.filteredCount.innerHTML = filteredPlaces.length;
+    this.filteredCount.innerHTML = `${filteredPlaces.length} ${Shareabouts.Config.place.response_plural_name}`;
     this.totalCount.innerHTML = this.places.models.length;
+
+    const filteredCells = this.table.head.cells.filter((cell) => cell.filter && !cell.filter.isClear());
+
+    const filtersAreApplied = filteredCells.length > 0;
+    this.downloadFilteredButton.disabled = !filtersAreApplied;
+    this.clearFiltersButton.disabled = !filtersAreApplied;
+
+    this.filteredColumns.innerHTML = filtersAreApplied
+      ? `Filtered by: ${filteredCells
+        .map((cell) => `<span class="filtered-column">${cell.column.label}</span>`)
+        .join(', ')}`
+      : '';
   }
 
-  downloadPlaces() {
+  downloadPlaces(placeModels) {
+    if (!placeModels) placeModels = this.places.models;
+
     const header = [...this.fields.map((field) => field.label), 'longitude', 'latitude'];
-    const data = this.places.models.map((place) => {
+    const data = placeModels.map((place) => {
       const row = [];
       for (const field of this.fields) {
         row.push(place.get(field.attr));
