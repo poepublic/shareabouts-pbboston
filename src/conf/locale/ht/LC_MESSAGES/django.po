@@ -2,23 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2025
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-25 10:49-0400\n"
+"POT-Creation-Date: 2025-07-23 11:47-0400\n"
 "PO-Revision-Date: 2025-06-07 22:19+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2025\n"
-"Language-Team: Haitian (Haitian Creole) (https://app.transifex.com/mjumbewu/teams/189006/ht/)\n"
+"Language-Team: Haitian (Haitian Creole) (https://app.transifex.com/mjumbewu/"
+"teams/189006/ht/)\n"
+"Language: ht\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ht\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/flavors/cycle1/_config.translations.py:6
@@ -55,15 +56,15 @@ msgstr "Antre yon kote..."
 #: src/flavors/cycle1/_config.translations.py:110
 #: src/flavors/cycle2/_config.translations.py:10
 #: src/flavors/cycle2/_config.translations.py:66
-#: src/flavors/cycle2/_config.translations.py:142
+#: src/flavors/cycle2/_config.translations.py:144
 msgid "Arts & Culture"
 msgstr "Atizay ak Kilti"
 
 #: src/flavors/cycle1/_config.translations.py:11
 #: src/flavors/cycle2/_config.translations.py:11
 msgid ""
-"Project ideas focused on arts and cultural programming that promote cultural"
-" spaces in the City."
+"Project ideas focused on arts and cultural programming that promote cultural "
+"spaces in the City."
 msgstr ""
 "Lide pwojè yo konsantre sou pwogram atizay ak kiltirèl ki ankouraje espas "
 "kiltirèl nan vil la."
@@ -73,16 +74,16 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:111
 #: src/flavors/cycle2/_config.translations.py:12
 #: src/flavors/cycle2/_config.translations.py:67
-#: src/flavors/cycle2/_config.translations.py:143
+#: src/flavors/cycle2/_config.translations.py:145
 msgid "Community Resources"
 msgstr "Resous Kominotè"
 
 #: src/flavors/cycle1/_config.translations.py:13
 #: src/flavors/cycle2/_config.translations.py:13
 msgid ""
-"Project ideas that provide assistance or services to residents in need, such"
-" as programs at community centers, financial or digital literacy, English as"
-" a second language, or GED classes."
+"Project ideas that provide assistance or services to residents in need, such "
+"as programs at community centers, financial or digital literacy, English as "
+"a second language, or GED classes."
 msgstr ""
 "Lide pwojè ki bay asistans oswa sèvis pou rezidan ki nan bezwen yo, tankou "
 "pwogram nan sant kominotè, alfabetizasyon finansye oswa dijital, angle kòm "
@@ -93,7 +94,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:112
 #: src/flavors/cycle2/_config.translations.py:14
 #: src/flavors/cycle2/_config.translations.py:68
-#: src/flavors/cycle2/_config.translations.py:144
+#: src/flavors/cycle2/_config.translations.py:146
 msgid "Local Economy & Worker Empowerment"
 msgstr "Ekonomi lokal &amp; Otonòm Travayè"
 
@@ -128,7 +129,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:114
 #: src/flavors/cycle2/_config.translations.py:18
 #: src/flavors/cycle2/_config.translations.py:70
-#: src/flavors/cycle2/_config.translations.py:146
+#: src/flavors/cycle2/_config.translations.py:148
 msgid "Environment, Sustainability, and Food Access"
 msgstr "Anviwònman, Dirab, ak Aksè Manje"
 
@@ -161,7 +162,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:116
 #: src/flavors/cycle2/_config.translations.py:22
 #: src/flavors/cycle2/_config.translations.py:72
-#: src/flavors/cycle2/_config.translations.py:148
+#: src/flavors/cycle2/_config.translations.py:150
 msgid "Health & Well-being"
 msgstr "Sante ak byennèt"
 
@@ -178,7 +179,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:117
 #: src/flavors/cycle2/_config.translations.py:24
 #: src/flavors/cycle2/_config.translations.py:73
-#: src/flavors/cycle2/_config.translations.py:149
+#: src/flavors/cycle2/_config.translations.py:151
 msgid "Public Safety"
 msgstr "Sekirite Piblik"
 
@@ -198,7 +199,7 @@ msgstr ""
 #: src/flavors/cycle1/_config.translations.py:118
 #: src/flavors/cycle2/_config.translations.py:26
 #: src/flavors/cycle2/_config.translations.py:74
-#: src/flavors/cycle2/_config.translations.py:150
+#: src/flavors/cycle2/_config.translations.py:152
 msgid "Streets & Sidewalks"
 msgstr "Lari ak twotwa"
 
@@ -208,15 +209,14 @@ msgid ""
 "Project ideas to improve City streets and sidewalks and promote safety and "
 "accessibility."
 msgstr ""
-"Lide pwojè pou amelyore lari ak twotwa vil yo epi ankouraje sekirite ak "
-"aksè."
+"Lide pwojè pou amelyore lari ak twotwa vil yo epi ankouraje sekirite ak aksè."
 
 #: src/flavors/cycle1/_config.translations.py:28
 #: src/flavors/cycle1/_config.translations.py:71
 #: src/flavors/cycle1/_config.translations.py:119
 #: src/flavors/cycle2/_config.translations.py:28
 #: src/flavors/cycle2/_config.translations.py:75
-#: src/flavors/cycle2/_config.translations.py:151
+#: src/flavors/cycle2/_config.translations.py:153
 msgid "Other / Not Sure"
 msgstr "Lòt / Pa sèten"
 
@@ -394,7 +394,7 @@ msgstr "Chwazi kategori ki pi byen dekri pwojè ou a."
 #: src/flavors/cycle1/_config.translations.py:67
 #: src/flavors/cycle1/_config.translations.py:115
 #: src/flavors/cycle2/_config.translations.py:71
-#: src/flavors/cycle2/_config.translations.py:147
+#: src/flavors/cycle2/_config.translations.py:149
 msgid "Facilities, Parks & Recreation  "
 msgstr "Enstalasyon, Pak &amp; Rekreyasyon  "
 
@@ -411,8 +411,8 @@ msgid ""
 "Yes, at an Idea Collection Workshop hosted by an organization sponsored by "
 "the Office of Participatory Budgeting"
 msgstr ""
-"Wi, nan yon Atelye Koleksyon Ide ki te òganize pa yon òganizasyon patwone pa"
-" Biwo Bidjè Patisipatif"
+"Wi, nan yon Atelye Koleksyon Ide ki te òganize pa yon òganizasyon patwone pa "
+"Biwo Bidjè Patisipatif"
 
 #: src/flavors/cycle1/_config.translations.py:75
 msgid "Yes, at an independent community gathering"
@@ -548,24 +548,24 @@ msgstr "Konsènan"
 
 #: src/flavors/cycle1/_config.translations.py:107
 #: src/flavors/cycle1/templates/prelaunch.html:86
-#: src/flavors/cycle2/_config.translations.py:139
+#: src/flavors/cycle2/_config.translations.py:141
 #: src/flavors/cycle2/templates/prelaunch.html:86
 msgid "Boston PB Home"
 msgstr "Boston PB Kay"
 
 #: src/flavors/cycle1/_config.translations.py:108
-#: src/flavors/cycle2/_config.translations.py:140
+#: src/flavors/cycle2/_config.translations.py:142
 msgid "Filter Ideas"
 msgstr "Filtre Lide"
 
 #: src/flavors/cycle1/_config.translations.py:109
-#: src/flavors/cycle2/_config.translations.py:141
+#: src/flavors/cycle2/_config.translations.py:143
 msgid "All"
 msgstr "Tout"
 
 #: src/flavors/cycle1/templates/index.html:68
+#: src/flavors/cycle2/jstemplates/place-list.html:1
 #: src/flavors/cycle2/templates/index.html:68
-#: src/pbboston/jstemplates/place-list.html:1
 msgid "All Ideas"
 msgstr "Tout Lide"
 
@@ -589,13 +589,17 @@ msgstr "bati pa %(PoePublic)s"
 #: src/flavors/cycle1/templates/prelaunch.html:112
 #: src/flavors/cycle2/templates/prelaunch.html:112
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community members\n"
-"    directly decide how to spend part of a public budget. The goal of Participatory\n"
-"    Budgeting in Boston is to empower residents to elevate community centered\n"
+"Participatory Budgeting (PB) is a democratic process where community "
+"members\n"
+"    directly decide how to spend part of a public budget. The goal of "
+"Participatory\n"
+"    Budgeting in Boston is to empower residents to elevate community "
+"centered\n"
 "    project ideas with an emphasis on social and racial equity."
 msgstr ""
 "Bidjè patisipatif (PB) se yon pwosesis demokratik kote manm kominote a\n"
-" dirèkteman deside kijan pou depanse yon pati nan yon bidjè piblik. Objektif Patisipasyon\n"
+" dirèkteman deside kijan pou depanse yon pati nan yon bidjè piblik. Objektif "
+"Patisipasyon\n"
 " Bidjè nan Boston se bay rezidan yo pouvwa pou yo elve kominote santre\n"
 " ide pwojè ak yon anfaz sou ekite sosyal ak rasyal."
 
@@ -618,7 +622,7 @@ msgstr "Retounen sou %(return_date)s pou soumèt lide pwojè ou!"
 
 #: src/flavors/cycle2/_config.translations.py:16
 #: src/flavors/cycle2/_config.translations.py:69
-#: src/flavors/cycle2/_config.translations.py:145
+#: src/flavors/cycle2/_config.translations.py:147
 msgid "Education, Youth, Families, & Older Adults"
 msgstr "Edikasyon, Jèn, Fanmi, ak Granmoun Aje"
 
@@ -633,8 +637,8 @@ msgid ""
 "the short form below. Only the information you choose to display will be "
 "made public. "
 msgstr ""
-"<strong>Mèsi paske ou pataje lide ou avèk nou!</strong> Tanpri ranpli ti fòm"
-" ki anba a. Se sèlman enfòmasyon ou chwazi pou montre yo ki pral pibliye. "
+"<strong>Mèsi paske ou pataje lide ou avèk nou!</strong> Tanpri ranpli ti fòm "
+"ki anba a. Se sèlman enfòmasyon ou chwazi pou montre yo ki pral pibliye. "
 
 #: src/flavors/cycle2/_config.translations.py:43
 msgid "Optional Demographic Survey"
@@ -647,8 +651,8 @@ msgid ""
 "participants. Your responses will remain anonymous and confidential. "
 "<strong>Please note that all questions are optional.</strong>"
 msgstr ""
-"Kesyon demografik ki anba yo fèt pou ede Biwo Bidjè Patisipatif la jwenn yon"
-" konpreyansyon pi egzak sou patisipan yo. Repons ou yo ap rete anonim epi "
+"Kesyon demografik ki anba yo fèt pou ede Biwo Bidjè Patisipatif la jwenn yon "
+"konpreyansyon pi egzak sou patisipan yo. Repons ou yo ap rete anonim epi "
 "konfidansyèl. <strong>Tanpri sonje ke tout kesyon yo opsyonèl.</strong>"
 
 #: src/flavors/cycle2/_config.translations.py:45
@@ -669,8 +673,8 @@ msgstr "Tanpri dekri lide pwojè ou a."
 
 #: src/flavors/cycle2/_config.translations.py:56
 msgid ""
-"Tell us about the issue you want to address. Why is this idea a priority and"
-" beneficial to the community?"
+"Tell us about the issue you want to address. Why is this idea a priority and "
+"beneficial to the community?"
 msgstr ""
 "Di nou pwoblèm ou vle adrese a. Poukisa ide sa a se yon priyorite epi li "
 "benefisye kominote a?"
@@ -833,6 +837,60 @@ msgstr "Mwen pa konnen"
 msgid "Prefer not to answer"
 msgstr "Prefere pa reponn"
 
+#: src/flavors/cycle2/_config.translations.py:139
+msgid "Past PB Cycles"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:140
+msgid "Cycle 1 (2024)"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:1
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a city-wide "
+"{{ place_type_label location_type }} idea"
+msgstr ""
+"<strong>{{ submitter_name }}</strong> te soumèt yon lide nan tout vil la "
+"{{ place_type_label location_type }}"
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:2
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location }}</"
+"span>"
+msgstr ""
+"<strong>{{ submitter_name }}</strong> te soumèt yon lide {{ place_type_label "
+"location_type }} tou pre <span class=\"place-location\">{{ location }}</span>"
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:3
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location }}</"
+"span>"
+msgstr ""
+"<strong>{{ submitter_name }}</strong> te soumèt yon lide {{ place_type_label "
+"location_type }} tou pre <span class=\"place-location\">{{ location }}</span>"
+
+#: src/flavors/cycle2/jstemplates/form-field-label.html:1
+msgid "optional"
+msgstr "opsyonèl"
+
+#: src/flavors/cycle2/jstemplates/form-field-widget.html:1
+msgid ""
+"Hover over a category to see a description of the types of projects that fit "
+"within that category."
+msgstr ""
+"Pase sou yon kategori pou wè yon deskripsyon kalite pwojè ki anfòm nan "
+"kategori sa a."
+
+#: src/flavors/cycle2/jstemplates/form-field-widget.html:2
+msgid ""
+"Select a category to see a description of the types of projects that fit "
+"within that category."
+msgstr ""
+"Chwazi yon kategori pou wè yon deskripsyon kalite pwojè ki anfòm nan "
+"kategori sa a."
+
 #: src/flavors/cycle2/jstemplates/fullname-display-message.html:1
 msgid ""
 "Choose an idea category above to to see how your idea will be displayed."
@@ -865,30 +923,38 @@ msgid ""
 "The submission period for Idea Collection is now closed. However, you can "
 "review all resident proposed ideas during PB Cycle One on the map."
 msgstr ""
-"Peryòd soumèt pou Ide Collection fèmen kounye a. Sepandan, ou ka revize tout"
-" ide rezidan yo pwopoze pandan Premye Sik PB sou kat la."
+"Peryòd soumèt pou Ide Collection fèmen kounye a. Sepandan, ou ka revize tout "
+"ide rezidan yo pwopoze pandan Premye Sik PB sou kat la."
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:1
 msgid ""
 "<strong>Ideas in Action</strong> is Boston’s Participatory Budgeting\n"
-"  (PB) initiative, where residents can decide how to spend a part of the City’s\n"
-"  budget. By engaging in Ideas in Action, Bostonians of all ages and backgrounds\n"
+"  (PB) initiative, where residents can decide how to spend a part of the "
+"City’s\n"
+"  budget. By engaging in Ideas in Action, Bostonians of all ages and "
+"backgrounds\n"
 "  can:\n"
 "    <ol>\n"
-"      <li>Share project ideas that help advance social and racial equity;</li>\n"
-"      <li>Decide on the top projects that will appear on the PB Ballot for voting; and,</li>\n"
-"      <li>Vote on how to spend $2 million of the City’s budget to benefit our communities.</li>\n"
+"      <li>Share project ideas that help advance social and racial equity;</"
+"li>\n"
+"      <li>Decide on the top projects that will appear on the PB Ballot for "
+"voting; and,</li>\n"
+"      <li>Vote on how to spend $2 million of the City’s budget to benefit "
+"our communities.</li>\n"
 "    </ol>\n"
 "  "
 msgstr ""
 "<strong>Ide an Aksyon</strong> se Bidjè Patisipatif Boston an\n"
-" Inisyativ (PB), kote rezidan yo ka deside kijan pou yo depanse yon pati nan bidjè Vil la\n"
+" Inisyativ (PB), kote rezidan yo ka deside kijan pou yo depanse yon pati nan "
+"bidjè Vil la\n"
 " bidjè. Lè yo patisipe nan Ide an Aksyon, Bostonyen tout laj ak tout orijin\n"
 " kapab:\n"
 "<ol>\n"
 "<li> Pataje ide pwojè ki ede fè pwogrè nan egalite sosyal ak rasyal;</li>\n"
-"<li> Deside sou pi gwo pwojè ki pral parèt sou bilten vòt PB a pou vòt; epi,</li>\n"
-"<li> Vote sou kijan pou depanse 2 milyon dola nan bidjè Vil la pou benefisye kominote nou yo.</li>\n"
+"<li> Deside sou pi gwo pwojè ki pral parèt sou bilten vòt PB a pou vòt; epi,"
+"</li>\n"
+"<li> Vote sou kijan pou depanse 2 milyon dola nan bidjè Vil la pou benefisye "
+"kominote nou yo.</li>\n"
 "</ol>\n"
 "  "
 
@@ -911,21 +977,25 @@ msgstr ""
 #: src/flavors/cycle2/jstemplates/pages/overview.html:15
 msgid ""
 "Cycle Two of Ideas in Action starts this summer! Between <strong>July\n"
-"  1st and July 31</strong>, you can share project ideas through this website,\n"
-"  over the phone by calling <a href=\"tel:+16176353059\">(617) 635-3059</a>, or\n"
+"  1st and July 31</strong>, you can share project ideas through this "
+"website,\n"
+"  over the phone by calling <a href=\"tel:+16176353059\">(617) 635-3059</a>, "
+"or\n"
 "  in-person at Boston Public Library Branches and through community events\n"
 "  across the City."
 msgstr ""
 "Dezyèm sik Ide an Aksyon an kòmanse ete sa a! Ant <strong>Jiyè\n"
 " 1ye ak 31 Jiyè</strong> , ou ka pataje lide pwojè atravè sit entènèt sa a,\n"
-" nan telefòn nan nimewo <a href=\"tel:+16176353059\">(617) 635-3059</a> , oubyen\n"
-" an pèsòn nan branch Bibliyotèk Piblik Boston yo ak atravè evènman kominotè yo\n"
+" nan telefòn nan nimewo <a href=\"tel:+16176353059\">(617) 635-3059</a> , "
+"oubyen\n"
+" an pèsòn nan branch Bibliyotèk Piblik Boston yo ak atravè evènman kominotè "
+"yo\n"
 " atravè Vil la."
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:20
 msgid ""
-"Digital literacy classes for senior citizens to learn new skills and promote"
-" social connections;"
+"Digital literacy classes for senior citizens to learn new skills and promote "
+"social connections;"
 msgstr ""
 "Klas alfabetizasyon dijital pou granmoun aje yo pou yo ka aprann nouvo "
 "konpetans epi ankouraje koneksyon sosyal;"
@@ -956,13 +1026,16 @@ msgstr ""
 msgid ""
 "From August through September 2025, the City will review all the\n"
 "  submitted project ideas. Then, in the fall, the Office of Participatory\n"
-"  Budgeting will host public workshops for residents to review, prioritize, and\n"
-"  develop these ideas into project proposals for the PB ballot. Voting will take\n"
+"  Budgeting will host public workshops for residents to review, prioritize, "
+"and\n"
+"  develop these ideas into project proposals for the PB ballot. Voting will "
+"take\n"
 "  place in January of 2026!"
 msgstr ""
 "Soti Out rive Septanm 2025, Vil la pral revize tout\n"
 " soumèt lide pwojè. Apre sa, nan otòn, Biwo Patisipasyon an\n"
-" Bidjè a pral òganize atelye piblik pou rezidan yo ka revize, bay priyorite epi\n"
+" Bidjè a pral òganize atelye piblik pou rezidan yo ka revize, bay priyorite "
+"epi\n"
 " devlope ide sa yo an pwopozisyon pwojè pou bilten vòt PB a. Vòt la ap fèt\n"
 " plas nan mwa janvye 2026!"
 
@@ -1058,11 +1131,14 @@ msgstr "Reparasyon yon bilding prive;"
 #: src/flavors/cycle2/jstemplates/pages/overview.html:52
 msgid ""
 "Sign up for our newsletter! For more information about Participatory\n"
-"  Budgeting, please visit <a href=\"https://boston.gov/participate\" target=\"_blank\">Boston.gov/participate</a> or contact the Office of\n"
-"  Participatory Budgeting at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a>."
+"  Budgeting, please visit <a href=\"https://boston.gov/participate\" "
+"target=\"_blank\">Boston.gov/participate</a> or contact the Office of\n"
+"  Participatory Budgeting at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</"
+"a>."
 msgstr ""
 "Enskri pou bilten nou an! Pou plis enfòmasyon sou Patisipatif\n"
-" Pou bidjè, tanpri vizite <a href=\"https://boston.gov/participate\" target=\"_blank\">Boston.gov/participate</a> oubyen kontakte Biwo\n"
+" Pou bidjè, tanpri vizite <a href=\"https://boston.gov/participate\" "
+"target=\"_blank\">Boston.gov/participate</a> oubyen kontakte Biwo\n"
 " Bidjè patisipatif nan <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a> ."
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:55
@@ -1105,8 +1181,8 @@ msgstr "te soumèt lide sa a pou tout vil {{ place_type_label location_type}}"
 msgid ""
 "submitted this {{ place_type_label location_type}} idea near {{ location }}"
 msgstr ""
-"te soumèt lide sa a {{ place_type_label location_type}} tou pre {{ location "
-"}}"
+"te soumèt lide sa a {{ place_type_label location_type}} tou pre "
+"{{ location }}"
 
 #: src/flavors/cycle2/jstemplates/place-form-submission-confirmation.html:1
 msgid "Please help us by answering this optional survey:"
@@ -1118,22 +1194,21 @@ msgstr "Mèsi pou soumèt ou!"
 
 #: src/flavors/cycle2/jstemplates/place-form.html:1
 msgid ""
-"How would <img class=\"inline-scribble\" "
-"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> you spend <span "
-"class=\"bigger-text\"><span class=\"scribble-text scribble-text-"
-"pink\">$</span><span class=\"scribble-underline\">2 million</span></span> to"
-" <img class=\"inline-scribble\" "
-"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> benefit our "
-"<span class=\"bigger-text\">communities<span class=\"scribble-text scribble-"
-"text-pink\">?</span></span>"
+"How would <img class=\"inline-scribble\" src=\"/static/img/iia/"
+"Scribble_Wavey_04_Pink.svg\"> you spend <span class=\"bigger-text\"><span "
+"class=\"scribble-text scribble-text-pink\">$</span><span class=\"scribble-"
+"underline\">2 million</span></span> to <img class=\"inline-scribble\" src=\"/"
+"static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> benefit our <span "
+"class=\"bigger-text\">communities<span class=\"scribble-text scribble-text-"
+"pink\">?</span></span>"
 msgstr ""
-"Kijan w t ap depanse <span class=\"bigger-text\"><span class=\"scribble-text"
-" scribble-text-pink\">$</span><span class=\"scribble-underline\">2 "
-"milyon</span></span> <img class=\"inline-scribble\" "
-"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> dola pou benefis<img "
-"class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\""
-" alt=\"\"> <span class=\"bigger-text\">kominote nou yo<span "
-"class=\"scribble-text scribble-text-pink\">?</span></span>"
+"Kijan w t ap depanse <span class=\"bigger-text\"><span class=\"scribble-text "
+"scribble-text-pink\">$</span><span class=\"scribble-underline\">2 milyon</"
+"span></span> <img class=\"inline-scribble\" src=\"/static/img/iia/"
+"Scribble_Wavey_04_Pink.svg\"> dola pou benefis<img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> <span "
+"class=\"bigger-text\">kominote nou yo<span class=\"scribble-text scribble-"
+"text-pink\">?</span></span>"
 
 #: src/flavors/cycle2/jstemplates/place-form.html:2
 msgid "It looks like you didn't set your location yet."
@@ -1160,73 +1235,25 @@ msgstr ""
 msgid "click here"
 msgstr "klike la a"
 
-#: src/flavors/defaultflavor/templates/index.html:52
-msgid "Powered by"
-msgstr "Patrone pa"
-
-#: src/pbboston/jstemplates/activity-list-item.html:1
-msgid ""
-"<strong>{{ submitter_name }}</strong> submitted a city-wide {{ "
-"place_type_label location_type }} idea"
-msgstr ""
-"<strong>{{ submitter_name }}</strong> te soumèt yon lide nan tout vil la {{ "
-"place_type_label location_type }}"
-
-#: src/pbboston/jstemplates/activity-list-item.html:2
-msgid ""
-"<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location "
-"}}</span>"
-msgstr ""
-"<strong>{{ submitter_name }}</strong> te soumèt yon lide {{ place_type_label"
-" location_type }} tou pre <span class=\"place-location\">{{ location "
-"}}</span>"
-
-#: src/pbboston/jstemplates/activity-list-item.html:3
-msgid ""
-"<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location "
-"}}</span>"
-msgstr ""
-"<strong>{{ submitter_name }}</strong> te soumèt yon lide {{ place_type_label"
-" location_type }} tou pre <span class=\"place-location\">{{ location "
-"}}</span>"
-
-#: src/pbboston/jstemplates/form-field-label.html:1
-msgid "optional"
-msgstr "opsyonèl"
-
-#: src/pbboston/jstemplates/form-field-widget.html:1
-msgid ""
-"Hover over a category to see a description of the types of projects that fit"
-" within that category."
-msgstr ""
-"Pase sou yon kategori pou wè yon deskripsyon kalite pwojè ki anfòm nan "
-"kategori sa a."
-
-#: src/pbboston/jstemplates/form-field-widget.html:2
-msgid ""
-"Select a category to see a description of the types of projects that fit "
-"within that category."
-msgstr ""
-"Chwazi yon kategori pou wè yon deskripsyon kalite pwojè ki anfòm nan "
-"kategori sa a."
-
-#: src/pbboston/jstemplates/place-list.html:2
+#: src/flavors/cycle2/jstemplates/place-list.html:2
 msgid "Choose a neighborhood..."
 msgstr "Chwazi yon katye..."
 
-#: src/pbboston/jstemplates/place-list.html:3
+#: src/flavors/cycle2/jstemplates/place-list.html:3
 msgid "City-wide Ideas"
 msgstr "Lide pou tout vil la"
 
-#: src/pbboston/jstemplates/place-list.html:4
+#: src/flavors/cycle2/jstemplates/place-list.html:4
 msgid "Location-specific Ideas"
 msgstr "Lide espesifik kote yo ye"
 
-#: src/pbboston/jstemplates/place-list.html:5
+#: src/flavors/cycle2/jstemplates/place-list.html:5
 msgid "Search"
 msgstr "Rechèch"
+
+#: src/flavors/defaultflavor/templates/index.html:52
+msgid "Powered by"
+msgstr "Patrone pa"
 
 #: src/pbboston/templates/language_picker.html:16
 msgid "Select a language"
@@ -1263,15 +1290,18 @@ msgstr "alantou {{ pretty_created_datetime }}"
 #: src/sa_web/jstemplates/place-moderation-bar.html:1
 msgid ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
+"      This {{ place_config.response_name }} is <strong>only visible to "
+"moderators</strong>."
 msgstr ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
-" Sa a {{ place_config.response_name }} <strong>vizib sèlman pou moderatè yo</strong> ."
+" Sa a {{ place_config.response_name }} <strong>vizib sèlman pou moderatè yo</"
+"strong> ."
 
 #: src/sa_web/jstemplates/place-moderation-bar.html:3
 msgid ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
+"      This {{ place_config.response_name }} is <strong>visible to everyone</"
+"strong>."
 msgstr ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
 " {{ place_config.response_name }} sa a <strong>vizib pou tout moun</strong> ."
@@ -1303,15 +1333,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
+"        %(config.app.name)s is great but it needs something called "
+"JavaScript to work\n"
 "        properly. But fear not, it's really easy to turn on. Click\n"
-"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> "
+"for simple instructions!\n"
 "        "
 msgstr ""
 "\n"
-"%(config.app.name)s se gwo men li bezwen yon bagay ki rele JavaScript pou travay\n"
+"%(config.app.name)s se gwo men li bezwen yon bagay ki rele JavaScript pou "
+"travay\n"
 " byen. Men, ou pa bezwen pè, li vrèman fasil yo vire sou. Klike sou\n"
-" <a href=\"http://enable-javascript.com/\" target=\"_blank\">isit la</a> pou enstriksyon senp!\n"
+" <a href=\"http://enable-javascript.com/\" target=\"_blank\">isit la</a> pou "
+"enstriksyon senp!\n"
 "        "
 
 #: src/sa_web/templates/base.html:108
