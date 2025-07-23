@@ -823,7 +823,7 @@ pages:
   - title: _(Past PB Cycles)
     slug: past-cycles
     pages:
-      - title: _(Cycle 1 (2024-25))
+      - title: _(Cycle 1 (2024))
         url: /cycle1/
         external: true
 
