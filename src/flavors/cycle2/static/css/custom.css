@@ -1593,23 +1593,6 @@ body .marker-cluster div {
   ul.recent-points {
     /* border-left: 2px solid var(--optimistic-blue); */
   }
-
-  #past-cycles-menu-filler {
-    position: absolute;
-    width: 250%;
-    transform: translateX(-30%);
-    left: 0.5rem;
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: normal;
-    font-style: italic;
-    color: var(--supporting-blue-3);
-  }
-  
-  .menu-item-past-cycles:hover > #past-cycles-menu-filler {
-    min-width: 100%;
-    min-height: 2rem;
-  }
 }
 
 @media only screen and (width >= 1280px) {
