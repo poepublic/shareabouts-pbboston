@@ -28,13 +28,13 @@ src/sa_web/static/dist/
 # installed packages
 env/
 .env/
-.env.*
 node_modules/
 
 # local project settings
 src/project/local_settings.py
 src/project/config.yml
 .env
+.env.*
 
 # sqlite database
 *.db
