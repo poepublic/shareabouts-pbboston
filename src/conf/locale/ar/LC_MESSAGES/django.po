@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-23 11:47-0400\n"
+"POT-Creation-Date: 2025-07-23 12:41-0400\n"
 "PO-Revision-Date: 2025-06-07 22:19+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2025\n"
 "Language-Team: Arabic (https://app.transifex.com/mjumbewu/teams/189006/ar/)\n"
@@ -52,7 +52,7 @@ msgstr "أدخل موقعا..."
 
 #: src/flavors/cycle1/_config.translations.py:10
 #: src/flavors/cycle1/_config.translations.py:62
-#: src/flavors/cycle1/_config.translations.py:110
+#: src/flavors/cycle1/_config.translations.py:112
 #: src/flavors/cycle2/_config.translations.py:10
 #: src/flavors/cycle2/_config.translations.py:66
 #: src/flavors/cycle2/_config.translations.py:144
@@ -70,7 +70,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:12
 #: src/flavors/cycle1/_config.translations.py:63
-#: src/flavors/cycle1/_config.translations.py:111
+#: src/flavors/cycle1/_config.translations.py:113
 #: src/flavors/cycle2/_config.translations.py:12
 #: src/flavors/cycle2/_config.translations.py:67
 #: src/flavors/cycle2/_config.translations.py:145
@@ -90,7 +90,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:14
 #: src/flavors/cycle1/_config.translations.py:64
-#: src/flavors/cycle1/_config.translations.py:112
+#: src/flavors/cycle1/_config.translations.py:114
 #: src/flavors/cycle2/_config.translations.py:14
 #: src/flavors/cycle2/_config.translations.py:68
 #: src/flavors/cycle2/_config.translations.py:146
@@ -110,7 +110,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:16
 #: src/flavors/cycle1/_config.translations.py:65
-#: src/flavors/cycle1/_config.translations.py:113
+#: src/flavors/cycle1/_config.translations.py:115
 msgid "Education, Youth & Families"
 msgstr "التعليم والشباب والعائلات"
 
@@ -125,7 +125,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:18
 #: src/flavors/cycle1/_config.translations.py:66
-#: src/flavors/cycle1/_config.translations.py:114
+#: src/flavors/cycle1/_config.translations.py:116
 #: src/flavors/cycle2/_config.translations.py:18
 #: src/flavors/cycle2/_config.translations.py:70
 #: src/flavors/cycle2/_config.translations.py:148
@@ -158,7 +158,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:22
 #: src/flavors/cycle1/_config.translations.py:68
-#: src/flavors/cycle1/_config.translations.py:116
+#: src/flavors/cycle1/_config.translations.py:118
 #: src/flavors/cycle2/_config.translations.py:22
 #: src/flavors/cycle2/_config.translations.py:72
 #: src/flavors/cycle2/_config.translations.py:150
@@ -174,7 +174,7 @@ msgstr "أفكار مشاريع تعزز الصحة الجسدية والعقل�
 
 #: src/flavors/cycle1/_config.translations.py:24
 #: src/flavors/cycle1/_config.translations.py:69
-#: src/flavors/cycle1/_config.translations.py:117
+#: src/flavors/cycle1/_config.translations.py:119
 #: src/flavors/cycle2/_config.translations.py:24
 #: src/flavors/cycle2/_config.translations.py:73
 #: src/flavors/cycle2/_config.translations.py:151
@@ -194,7 +194,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:26
 #: src/flavors/cycle1/_config.translations.py:70
-#: src/flavors/cycle1/_config.translations.py:118
+#: src/flavors/cycle1/_config.translations.py:120
 #: src/flavors/cycle2/_config.translations.py:26
 #: src/flavors/cycle2/_config.translations.py:74
 #: src/flavors/cycle2/_config.translations.py:152
@@ -212,7 +212,7 @@ msgstr ""
 
 #: src/flavors/cycle1/_config.translations.py:28
 #: src/flavors/cycle1/_config.translations.py:71
-#: src/flavors/cycle1/_config.translations.py:119
+#: src/flavors/cycle1/_config.translations.py:121
 #: src/flavors/cycle2/_config.translations.py:28
 #: src/flavors/cycle2/_config.translations.py:75
 #: src/flavors/cycle2/_config.translations.py:153
@@ -390,7 +390,7 @@ msgid "Choose the category that most closely describes your project."
 msgstr "اختر الفئة التي تصف مشروعك بشكل وثيق."
 
 #: src/flavors/cycle1/_config.translations.py:67
-#: src/flavors/cycle1/_config.translations.py:115
+#: src/flavors/cycle1/_config.translations.py:117
 #: src/flavors/cycle2/_config.translations.py:71
 #: src/flavors/cycle2/_config.translations.py:149
 msgid "Facilities, Parks & Recreation  "
@@ -545,21 +545,140 @@ msgid "About"
 msgstr "عن"
 
 #: src/flavors/cycle1/_config.translations.py:107
+#: src/flavors/cycle2/_config.translations.py:139
+msgid "Past PB Cycles"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:108
+#: src/flavors/cycle2/_config.translations.py:140
+msgid "Cycle 1 (2024)"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:109
 #: src/flavors/cycle1/templates/prelaunch.html:86
 #: src/flavors/cycle2/_config.translations.py:141
 #: src/flavors/cycle2/templates/prelaunch.html:86
 msgid "Boston PB Home"
 msgstr "بوسطن بي بي هوم"
 
-#: src/flavors/cycle1/_config.translations.py:108
+#: src/flavors/cycle1/_config.translations.py:110
 #: src/flavors/cycle2/_config.translations.py:142
 msgid "Filter Ideas"
 msgstr "أفكار التصفية"
 
-#: src/flavors/cycle1/_config.translations.py:109
+#: src/flavors/cycle1/_config.translations.py:111
 #: src/flavors/cycle2/_config.translations.py:143
 msgid "All"
 msgstr "الجميع"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:1
+msgid "14 ballot proposals available for PB Voting"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:2
+msgid ""
+"15 project proposals were drafted by Boston residents with support from OPB "
+"and City Departments"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:3
+msgid "4.35 (high) average number of projects selected per voter"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:4
+msgid ""
+"Boston residents submitted over 1200 project ideas via multiple channels, "
+"including:"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:5
+msgid ""
+"Highest voter turnout in Dorchester, Brighton, Roxbury, East Boston, South "
+"Boston, and Hyde Park"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:6
+msgid "Highlights from the Inaugural Year of Ideas in Action:"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:7
+msgid ""
+"In January of 2025, a total of 4,462 Boston residents cast their ballot in "
+"person and online, selecting their top proposals to be funded."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:8
+msgid "In the Fall of 2024, OPB hosted three (3) Visioning Forums:"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:9
+msgid ""
+"In the summer of 2024, the City of Boston’s Office of Participatory "
+"Budgeting (OPB) launched <strong>Ideas in Action</strong>, an initiative "
+"where Boston residents can decide how to spend $2 million of the City’s "
+"budget to benefit their communities. Thousands of residents engaged by "
+"joining community meetings, submitting project ideas, drafting the proposals "
+"that appeared on the ballot, and collectively voting on the top projects "
+"that they wanted to see implemented."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:10
+msgid ""
+"In-person submissions through PB Corners at City Hall and Boston Public "
+"Library Branches"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:11
+msgid "Multi-lingual PB Phone Line"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:12
+msgid ""
+"Nineteen (19) idea collection workshops across the City in partnership with "
+"community organizations"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:13
+msgid ""
+"OPB created an <a href=\"https://app.powerbigov.us/view?"
+"r=eyJrIjoiZTEyYmE4MWQtMDIzNi00MjNiLWE3YzctN2Y2ZjJhMjFlZjg5IiwidCI6Ijg1NTI4ODdjLWNiYzMtNGVlNS05ZmQzLWVhMjE3ZTMwMjZmYyJ9\" "
+"target=\"_blank\">Idea Submission Dashboard</a> that allows the public to "
+"explore the nine (9) Community Priorities and review all the submitted ideas "
+"from Cycle One."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:14
+msgid "Online PB Portal"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:15
+msgid ""
+"See a list of winning projects funded in Cycle One <a href=\"https://www."
+"boston.gov/departments/participatory-budgeting/ideas-action-project-"
+"implementation\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:16
+msgid ""
+"Thanks to everyone who made their voices heard and actively participated in "
+"this exciting inaugural year! As we celebrate this milestone, we invite all "
+"Boston residents to continue their participation with <a href=\"https://www."
+"boston.gov/departments/participatory-budgeting/ideas-action\" "
+"target=\"_blank\">Ideas in Action Cycle 2</a>!"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:17
+#, fuzzy
+#| msgid "City of Boston Participatory Budgeting"
+msgid "The City of Boston’s First Participatory Budgeting Cycle"
+msgstr "مدينة بوسطن الموازنة التشاركية"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:18
+msgid ""
+"Three (3) in-person Visioning Forums hosted in East Boston, Roxbury, and "
+"Dorchester with ~100 resident participants worked with 20 City Departments "
+"to review, assess, and draft project proposals for the PB Ballot."
+msgstr ""
 
 #: src/flavors/cycle1/templates/index.html:68
 #: src/flavors/cycle2/jstemplates/place-list.html:1
@@ -829,14 +948,6 @@ msgstr "لا أعرف"
 #: src/flavors/cycle2/_config.translations.py:124
 msgid "Prefer not to answer"
 msgstr "أفضل عدم الإجابة"
-
-#: src/flavors/cycle2/_config.translations.py:139
-msgid "Past PB Cycles"
-msgstr ""
-
-#: src/flavors/cycle2/_config.translations.py:140
-msgid "Cycle 1 (2024)"
-msgstr ""
 
 #: src/flavors/cycle2/jstemplates/activity-list-item.html:1
 msgid ""

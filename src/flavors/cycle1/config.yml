@@ -817,7 +817,7 @@ support:
 pages:
   - title: _(About)
     slug: about
-    name: overview
+    name: cycle1-review
     start_page: true
 
   - title: _(Past PB Cycles)

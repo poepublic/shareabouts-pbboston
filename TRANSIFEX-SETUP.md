@@ -16,6 +16,8 @@ To generate translations, you can use the following command:
 ```bash
 honcho run src/manage.py flavormessages \
 --ignore=env/* \
+--flavor cycle1 \
+--flavor cycle2 \
 --locale ar \
 --locale en \
 --locale es \
