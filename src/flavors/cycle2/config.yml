@@ -1004,6 +1004,13 @@ pages:
     slug: about
     name: overview
     # start_page: true
+  
+  - title: _(Past PB Cycles)
+    slug: past-cycles
+    pages:
+      - title: _(Cycle 1 (2024-25))
+        url: /cycle1/
+        external: true
 
   - title: _(Boston PB Home)
     external: true
