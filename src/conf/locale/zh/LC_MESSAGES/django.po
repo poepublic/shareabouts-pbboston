@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-25 10:49-0400\n"
+"POT-Creation-Date: 2025-07-23 12:41-0400\n"
 "PO-Revision-Date: 2025-06-07 22:19+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2025\n"
 "Language-Team: Chinese (https://app.transifex.com/mjumbewu/teams/189006/zh/)\n"
@@ -49,10 +49,10 @@ msgstr "输入位置..."
 
 #: src/flavors/cycle1/_config.translations.py:10
 #: src/flavors/cycle1/_config.translations.py:62
-#: src/flavors/cycle1/_config.translations.py:110
+#: src/flavors/cycle1/_config.translations.py:112
 #: src/flavors/cycle2/_config.translations.py:10
 #: src/flavors/cycle2/_config.translations.py:66
-#: src/flavors/cycle2/_config.translations.py:142
+#: src/flavors/cycle2/_config.translations.py:144
 msgid "Arts & Culture"
 msgstr "艺术与文化"
 
@@ -65,10 +65,10 @@ msgstr "项目理念侧重于促进城市文化空间发展的艺术和文化项
 
 #: src/flavors/cycle1/_config.translations.py:12
 #: src/flavors/cycle1/_config.translations.py:63
-#: src/flavors/cycle1/_config.translations.py:111
+#: src/flavors/cycle1/_config.translations.py:113
 #: src/flavors/cycle2/_config.translations.py:12
 #: src/flavors/cycle2/_config.translations.py:67
-#: src/flavors/cycle2/_config.translations.py:143
+#: src/flavors/cycle2/_config.translations.py:145
 msgid "Community Resources"
 msgstr "社区资源"
 
@@ -82,10 +82,10 @@ msgstr "为有需要的居民提供援助或服务的项目构想，例如社区
 
 #: src/flavors/cycle1/_config.translations.py:14
 #: src/flavors/cycle1/_config.translations.py:64
-#: src/flavors/cycle1/_config.translations.py:112
+#: src/flavors/cycle1/_config.translations.py:114
 #: src/flavors/cycle2/_config.translations.py:14
 #: src/flavors/cycle2/_config.translations.py:68
-#: src/flavors/cycle2/_config.translations.py:144
+#: src/flavors/cycle2/_config.translations.py:146
 msgid "Local Economy & Worker Empowerment"
 msgstr "地方经济与工人赋权"
 
@@ -99,7 +99,7 @@ msgstr "项目理念旨在改善工人、小企业主和企业家获得优质工
 
 #: src/flavors/cycle1/_config.translations.py:16
 #: src/flavors/cycle1/_config.translations.py:65
-#: src/flavors/cycle1/_config.translations.py:113
+#: src/flavors/cycle1/_config.translations.py:115
 msgid "Education, Youth & Families"
 msgstr "教育、青年与家庭"
 
@@ -112,10 +112,10 @@ msgstr "与各年龄段教育相关的项目构想，以及满足波士顿青少
 
 #: src/flavors/cycle1/_config.translations.py:18
 #: src/flavors/cycle1/_config.translations.py:66
-#: src/flavors/cycle1/_config.translations.py:114
+#: src/flavors/cycle1/_config.translations.py:116
 #: src/flavors/cycle2/_config.translations.py:18
 #: src/flavors/cycle2/_config.translations.py:70
-#: src/flavors/cycle2/_config.translations.py:146
+#: src/flavors/cycle2/_config.translations.py:148
 msgid "Environment, Sustainability, and Food Access"
 msgstr "环境、可持续性和粮食获取"
 
@@ -141,10 +141,10 @@ msgstr "项目理念是投资于为居民和社区提供清洁、绿色、安全
 
 #: src/flavors/cycle1/_config.translations.py:22
 #: src/flavors/cycle1/_config.translations.py:68
-#: src/flavors/cycle1/_config.translations.py:116
+#: src/flavors/cycle1/_config.translations.py:118
 #: src/flavors/cycle2/_config.translations.py:22
 #: src/flavors/cycle2/_config.translations.py:72
-#: src/flavors/cycle2/_config.translations.py:148
+#: src/flavors/cycle2/_config.translations.py:150
 msgid "Health & Well-being"
 msgstr "健康与福祉"
 
@@ -157,10 +157,10 @@ msgstr "促进波士顿各年龄段居民身心健康的项目理念。"
 
 #: src/flavors/cycle1/_config.translations.py:24
 #: src/flavors/cycle1/_config.translations.py:69
-#: src/flavors/cycle1/_config.translations.py:117
+#: src/flavors/cycle1/_config.translations.py:119
 #: src/flavors/cycle2/_config.translations.py:24
 #: src/flavors/cycle2/_config.translations.py:73
-#: src/flavors/cycle2/_config.translations.py:149
+#: src/flavors/cycle2/_config.translations.py:151
 msgid "Public Safety"
 msgstr "公安"
 
@@ -174,10 +174,10 @@ msgstr "提出一些促进城市安全和加强公正的项目理念，例如社
 
 #: src/flavors/cycle1/_config.translations.py:26
 #: src/flavors/cycle1/_config.translations.py:70
-#: src/flavors/cycle1/_config.translations.py:118
+#: src/flavors/cycle1/_config.translations.py:120
 #: src/flavors/cycle2/_config.translations.py:26
 #: src/flavors/cycle2/_config.translations.py:74
-#: src/flavors/cycle2/_config.translations.py:150
+#: src/flavors/cycle2/_config.translations.py:152
 msgid "Streets & Sidewalks"
 msgstr "街道和人行道"
 
@@ -190,10 +190,10 @@ msgstr "改善城市街道和人行道并提高安全性和可达性的项目构
 
 #: src/flavors/cycle1/_config.translations.py:28
 #: src/flavors/cycle1/_config.translations.py:71
-#: src/flavors/cycle1/_config.translations.py:119
+#: src/flavors/cycle1/_config.translations.py:121
 #: src/flavors/cycle2/_config.translations.py:28
 #: src/flavors/cycle2/_config.translations.py:75
-#: src/flavors/cycle2/_config.translations.py:151
+#: src/flavors/cycle2/_config.translations.py:153
 msgid "Other / Not Sure"
 msgstr "其他/不确定"
 
@@ -363,9 +363,9 @@ msgid "Choose the category that most closely describes your project."
 msgstr "选择最能描述您的项目的类别。"
 
 #: src/flavors/cycle1/_config.translations.py:67
-#: src/flavors/cycle1/_config.translations.py:115
+#: src/flavors/cycle1/_config.translations.py:117
 #: src/flavors/cycle2/_config.translations.py:71
-#: src/flavors/cycle2/_config.translations.py:147
+#: src/flavors/cycle2/_config.translations.py:149
 msgid "Facilities, Parks & Recreation  "
 msgstr "设施、公园和娱乐  "
 
@@ -516,25 +516,154 @@ msgid "About"
 msgstr "关于"
 
 #: src/flavors/cycle1/_config.translations.py:107
-#: src/flavors/cycle1/templates/prelaunch.html:86
 #: src/flavors/cycle2/_config.translations.py:139
+msgid "Past PB Cycles"
+msgstr "过去的 PB 周期"
+
+#: src/flavors/cycle1/_config.translations.py:108
+#: src/flavors/cycle2/_config.translations.py:140
+msgid "Cycle 1 (2024)"
+msgstr "第一周期（2024年）"
+
+#: src/flavors/cycle1/_config.translations.py:109
+#: src/flavors/cycle1/templates/prelaunch.html:86
+#: src/flavors/cycle2/_config.translations.py:141
 #: src/flavors/cycle2/templates/prelaunch.html:86
 msgid "Boston PB Home"
 msgstr "波士顿 PB 之家"
 
-#: src/flavors/cycle1/_config.translations.py:108
-#: src/flavors/cycle2/_config.translations.py:140
+#: src/flavors/cycle1/_config.translations.py:110
+#: src/flavors/cycle2/_config.translations.py:142
 msgid "Filter Ideas"
 msgstr "过滤想法"
 
-#: src/flavors/cycle1/_config.translations.py:109
-#: src/flavors/cycle2/_config.translations.py:141
+#: src/flavors/cycle1/_config.translations.py:111
+#: src/flavors/cycle2/_config.translations.py:143
 msgid "All"
 msgstr "全部"
 
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:1
+msgid "14 ballot proposals available for PB Voting"
+msgstr "14 项投票提案可供 PB 投票"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:2
+msgid ""
+"15 project proposals were drafted by Boston residents with support from OPB "
+"and City Departments"
+msgstr "在波士顿公共广播局和市政府部门的支持下，波士顿居民起草了 15 份项目提案"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:3
+msgid "4.35 (high) average number of projects selected per voter"
+msgstr "每位投票者平均选择的项目数量为 4.35（高）"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:4
+msgid ""
+"Boston residents submitted over 1200 project ideas via multiple channels, "
+"including:"
+msgstr "波士顿居民通过多种渠道提交了超过 1200 个项目想法，其中包括："
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:5
+msgid ""
+"Highest voter turnout in Dorchester, Brighton, Roxbury, East Boston, South "
+"Boston, and Hyde Park"
+msgstr "多切斯特、布莱顿、罗克斯伯里、东波士顿、南波士顿和海德公园的投票率最高"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:6
+msgid "Highlights from the Inaugural Year of Ideas in Action:"
+msgstr "“创意行动”首届亮点："
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:7
+msgid ""
+"In January of 2025, a total of 4,462 Boston residents cast their ballot in "
+"person and online, selecting their top proposals to be funded."
+msgstr "2025 年 1 月，共有 4,462 名波士顿居民通过现场和在线投票，选出了他们最希望获得资助的提案。"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:8
+msgid "In the Fall of 2024, OPB hosted three (3) Visioning Forums:"
+msgstr "2024 年秋季，OPB 主办了三 (3) 场愿景论坛："
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:9
+msgid ""
+"In the summer of 2024, the City of Boston’s Office of Participatory "
+"Budgeting (OPB) launched <strong>Ideas in Action</strong>, an initiative "
+"where Boston residents can decide how to spend $2 million of the City’s "
+"budget to benefit their communities. Thousands of residents engaged by "
+"joining community meetings, submitting project ideas, drafting the proposals"
+" that appeared on the ballot, and collectively voting on the top projects "
+"that they wanted to see implemented."
+msgstr ""
+"2024年夏天，波士顿市参与式预算办公室 (OPB) "
+"启动了<strong>“行动中的创意”项目</strong>，波士顿居民可以自主决定如何使用市政府200万美元的预算来造福社区。数千名居民参与其中，他们参与的方式包括参加社区会议、提交项目构想、起草最终列入投票的提案，并集体投票选出他们最希望实施的项目。"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:10
+msgid ""
+"In-person submissions through PB Corners at City Hall and Boston Public "
+"Library Branches"
+msgstr "通过市政厅和波士顿公共图书馆分馆的 PB Corners 亲自提交"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:11
+msgid "Multi-lingual PB Phone Line"
+msgstr "多语言PB电话线"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:12
+msgid ""
+"Nineteen (19) idea collection workshops across the City in partnership with "
+"community organizations"
+msgstr "与社区组织合作，在全市范围内举办 19 场创意收集研讨会"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:13
+msgid ""
+"OPB created an <a "
+"href=\"https://app.powerbigov.us/view?r=eyJrIjoiZTEyYmE4MWQtMDIzNi00MjNiLWE3YzctN2Y2ZjJhMjFlZjg5IiwidCI6Ijg1NTI4ODdjLWNiYzMtNGVlNS05ZmQzLWVhMjE3ZTMwMjZmYyJ9\""
+" target=\"_blank\">Idea Submission Dashboard</a> that allows the public to "
+"explore the nine (9) Community Priorities and review all the submitted ideas"
+" from Cycle One."
+msgstr ""
+"OPB 创建了一个<a "
+"href=\"https://app.powerbigov.us/view?r=eyJrIjoiZTEyYmE4MWQtMDIzNi00MjNiLWE3YzctN2Y2ZjJhMjFlZjg5IiwidCI6Ijg1NTI4ODdjLWNiYzMtNGVlNS05ZmQzLWVhMjE3ZTMwMjZmYyJ9\""
+" target=\"_blank\">想法提交仪表板</a>，让公众可以探索九 (9) 个社区优先事项，并查看第一周期提交的所有想法。"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:14
+msgid "Online PB Portal"
+msgstr "在线 PB 门户"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:15
+msgid ""
+"See a list of winning projects funded in Cycle One <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
+"action-project-implementation\" target=\"_blank\">here</a>."
+msgstr ""
+"<a href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
+"action-project-implementation\" target=\"_blank\">此处</a>查看第一轮资助的获奖项目列表。"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:16
+msgid ""
+"Thanks to everyone who made their voices heard and actively participated in "
+"this exciting inaugural year! As we celebrate this milestone, we invite all "
+"Boston residents to continue their participation with <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
+"action\" target=\"_blank\">Ideas in Action Cycle 2</a>!"
+msgstr ""
+"感谢所有在激动人心的创始之年积极参与并表达心声的人们！值此庆祝这一里程碑之际，我们诚邀所有波士顿居民继续参与 <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
+"action\" target=\"_blank\">“创意行动”第二轮</a>！"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:17
+msgid "The City of Boston’s First Participatory Budgeting Cycle"
+msgstr "波士顿市首次参与式预算周期"
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:18
+msgid ""
+"Three (3) in-person Visioning Forums hosted in East Boston, Roxbury, and "
+"Dorchester with ~100 resident participants worked with 20 City Departments "
+"to review, assess, and draft project proposals for the PB Ballot."
+msgstr ""
+"在东波士顿、罗克斯伯里和多切斯特举办了三 (3) 场面对面愿景论坛，约有 100 名居民参加，与 20 个市政府部门合作审查、评估和起草 PB "
+"投票的项目提案。"
+
 #: src/flavors/cycle1/templates/index.html:68
+#: src/flavors/cycle2/jstemplates/place-list.html:1
 #: src/flavors/cycle2/templates/index.html:68
-#: src/pbboston/jstemplates/place-list.html:1
 msgid "All Ideas"
 msgstr "所有想法"
 
@@ -587,7 +716,7 @@ msgstr "回到%(return_date)s提交您的项目想法！"
 
 #: src/flavors/cycle2/_config.translations.py:16
 #: src/flavors/cycle2/_config.translations.py:69
-#: src/flavors/cycle2/_config.translations.py:145
+#: src/flavors/cycle2/_config.translations.py:147
 msgid "Education, Youth, Families, & Older Adults"
 msgstr "教育、青年、家庭和老年人"
 
@@ -788,6 +917,49 @@ msgstr "我不知道"
 #: src/flavors/cycle2/_config.translations.py:124
 msgid "Prefer not to answer"
 msgstr "不想回答"
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:1
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a city-wide {{ "
+"place_type_label location_type }} idea"
+msgstr ""
+"<strong>{{ submitter_name }}</strong>提交了全市范围的{{ place_type_label "
+"location_type }}创意"
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:2
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
+msgstr ""
+"<strong>{{ submitter_name }}</strong>在 TXPROTECT <span class=\"place-"
+"location\">{{ location }}附近提交了一个 TXPROTECT- {{ place_type_label "
+"location_type }}想法"
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:3
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
+msgstr ""
+"<strong>{{ submitter_name }}</strong>提交了{{ place_type_label location_type "
+"}}创意，靠近<span class=\"place-location\">{{ location }}"
+
+#: src/flavors/cycle2/jstemplates/form-field-label.html:1
+msgid "optional"
+msgstr "选修的"
+
+#: src/flavors/cycle2/jstemplates/form-field-widget.html:1
+msgid ""
+"Hover over a category to see a description of the types of projects that fit"
+" within that category."
+msgstr "将鼠标悬停在某个类别上即可查看属于该类别的项目类型的描述。"
+
+#: src/flavors/cycle2/jstemplates/form-field-widget.html:2
+msgid ""
+"Select a category to see a description of the types of projects that fit "
+"within that category."
+msgstr "选择一个类别来查看适合该类别的项目类型的描述。"
 
 #: src/flavors/cycle2/jstemplates/fullname-display-message.html:1
 msgid ""
@@ -1104,68 +1276,25 @@ msgstr ""
 msgid "click here"
 msgstr "点击这里"
 
-#: src/flavors/defaultflavor/templates/index.html:52
-msgid "Powered by"
-msgstr "供电"
-
-#: src/pbboston/jstemplates/activity-list-item.html:1
-msgid ""
-"<strong>{{ submitter_name }}</strong> submitted a city-wide {{ "
-"place_type_label location_type }} idea"
-msgstr ""
-"<strong>{{ submitter_name }}</strong>提交了全市范围的{{ place_type_label "
-"location_type }}创意"
-
-#: src/pbboston/jstemplates/activity-list-item.html:2
-msgid ""
-"<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location "
-"}}</span>"
-msgstr ""
-"<strong>{{ submitter_name }}</strong>在 TXPROTECT <span class=\"place-"
-"location\">{{ location }}附近提交了一个 TXPROTECT- {{ place_type_label "
-"location_type }}想法"
-
-#: src/pbboston/jstemplates/activity-list-item.html:3
-msgid ""
-"<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location "
-"}}</span>"
-msgstr ""
-"<strong>{{ submitter_name }}</strong>提交了{{ place_type_label location_type "
-"}}创意，靠近<span class=\"place-location\">{{ location }}"
-
-#: src/pbboston/jstemplates/form-field-label.html:1
-msgid "optional"
-msgstr "选修的"
-
-#: src/pbboston/jstemplates/form-field-widget.html:1
-msgid ""
-"Hover over a category to see a description of the types of projects that fit"
-" within that category."
-msgstr "将鼠标悬停在某个类别上即可查看属于该类别的项目类型的描述。"
-
-#: src/pbboston/jstemplates/form-field-widget.html:2
-msgid ""
-"Select a category to see a description of the types of projects that fit "
-"within that category."
-msgstr "选择一个类别来查看适合该类别的项目类型的描述。"
-
-#: src/pbboston/jstemplates/place-list.html:2
+#: src/flavors/cycle2/jstemplates/place-list.html:2
 msgid "Choose a neighborhood..."
 msgstr "选择一个社区..."
 
-#: src/pbboston/jstemplates/place-list.html:3
+#: src/flavors/cycle2/jstemplates/place-list.html:3
 msgid "City-wide Ideas"
 msgstr "全市创意"
 
-#: src/pbboston/jstemplates/place-list.html:4
+#: src/flavors/cycle2/jstemplates/place-list.html:4
 msgid "Location-specific Ideas"
 msgstr "特定地点的想法"
 
-#: src/pbboston/jstemplates/place-list.html:5
+#: src/flavors/cycle2/jstemplates/place-list.html:5
 msgid "Search"
 msgstr "搜索"
+
+#: src/flavors/defaultflavor/templates/index.html:52
+msgid "Powered by"
+msgstr "供电"
 
 #: src/pbboston/templates/language_picker.html:16
 msgid "Select a language"
