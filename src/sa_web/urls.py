@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import include, path, re_path
 
 from . import views
 from sa_login import views as login_views
@@ -42,5 +42,6 @@ urlpatterns = [
     re_path('^download/(.*)$.csv', views.csv_download, name='csv_proxy'),
     path('place/<place_id>', views.index, name='place'),
     path('login/', login_views.login, name='login'),
+    path('mapbox/', include('mapbox_proxy.urls')),
     re_path(r'^', views.index, name='index'),
 ]

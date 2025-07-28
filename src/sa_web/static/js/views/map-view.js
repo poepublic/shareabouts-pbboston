@@ -196,7 +196,7 @@ var Shareabouts = Shareabouts || {};
       switch (this.options.mapConfig.geocoding_engine) {
         case 'Mapbox':
           options.geocoder = L.Control.Geocoder.mapbox(S.bootstrapped.mapboxToken, {
-            serviceUrl: '/mapbox/json/api.mapbox.com/geocoding/v5/mapbox.places/',
+            serviceUrl: S.Util.prefixRoute('/mapbox/json/api.mapbox.com/geocoding/v5/mapbox.places/'),
             geocodingQueryParams: {
               proximity: [
                 this.options.mapConfig.options.center.lng,
