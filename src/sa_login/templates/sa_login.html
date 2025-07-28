@@ -36,8 +36,19 @@
       flex-grow: 1;
       width: 100%;
     }
-    form > button {
-      margin-top: 1rem;
+    form > button,
+    form > .button {
+      display: inline-block;
+      margin: 1rem 0;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 0.25rem;
+      padding: 0.25rem 1rem;
+      background-color: #efefef;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1rem;
+      color: black;
     }
     .hidden {
       display: none;
@@ -54,10 +65,16 @@
   {% comment %} <p>api_user: {{ api_user }}, errors: {{ errors }}</p> {% endcomment %}
   <form id="login-form" method="POST" class="{% if api_user %}hidden{% endif %}">
     {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next_url|default:'' }}">
     <h2>Log in to {{ config.app.title }}</h2>
     <div><label><span>Username:</span> <input id="login-username" name="username" required type="text" autocomplete="username" value="{{ request.POST.username }}"></label></div>
     <div><label><span>Password:</span> <input id="login-password" name="password" required type="password" autocomplete="current-password"></label></div>
+    {% if next_url %}<input type="hidden" name="next" value="{{ next_url }}">{% endif %}
     <button type="submit">Log In</button>
+
+    <!-- Specifically for Boston SSO -->
+    <div style="text-align: center">- or -</div>
+    <a class="button" href="{% url 'oauth_begin' 'boston_sso' %}">Log in with Boston SSO</a>
   </form>
 
   {% if errors %}
@@ -68,7 +85,7 @@
         <img src="{{ api_user.avatar_url }}" alt="{{ api_user.username }} avatar">
       {% endif %}
       <p>You are now logged in as <strong>{{ api_user.name}} ({{ api_user.username }})</strong>.</p>
-      <p>Click <a href="/">here</a> to return to the map.</p>'
+      <p><a href="/">Return to the map</a> | <a href="/admin/">View the admin</a></p>'
     </div>
   {% else %}
     <div id="login-messages" class="hidden"></div>
@@ -81,6 +98,7 @@
   <form id="logout-form" method="POST" class="{% if not api_user %}hidden{% endif %}">
     {% csrf_token %}
     <input type="hidden" name="shadowmethod" value="DELETE">
+    {% if next_url %}<input type="hidden" name="next" value="{{ next_url }}">{% endif %}
     <button type="submit">Log Out</button>
   </form>
 

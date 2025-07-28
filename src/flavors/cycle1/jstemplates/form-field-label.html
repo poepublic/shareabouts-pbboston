@@ -1,0 +1,12 @@
+{{#is_authenticated}}
+  {{^is_submitter_name}}
+    <label {{#if tooltip}}aria-describedby="{{name}}-tooltip"{{/if}} class="field-label {{ type }}-field-label" id="{{ default submission_type 'place' }}-{{ name }}-label" for="{{ default submission_type 'place' }}-{{ name }}">{{{ prompt }}} {{# optional }}<small>({{#_}}optional{{/_}})</small>{{/ optional }}</label>
+  {{/is_submitter_name}}
+{{^}}
+  <label {{#if tooltip}}aria-describedby="{{name}}-tooltip"{{/if}} class="field-label {{ type }}-field-label" id="{{ default submission_type 'place' }}-{{ name }}-label" for="{{ default submission_type 'place' }}-{{ name }}">{{{ prompt }}} {{# optional }}<small>({{#_}}optional{{/_}})</small>{{/ optional }}</label>
+{{/is_authenticated}}
+
+{{#if tooltip}}
+  <span class="tooltip-icon" data-tooltip-id="{{name}}-tooltip">?</span>
+  <div class="tooltip-content hidden-if-no-hover" role="tooltip" id="{{name}}-tooltip">{{ tooltip }}</div>
+{{/if}}

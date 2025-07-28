@@ -1,124 +1,31 @@
 import dateutil.parser
-import requests
-import yaml
 import ujson as json
 import logging
 import os
 import time
 import hashlib
-from urllib.parse import urlparse
-from .config import get_shareabouts_config
+
+from sa_util.api import make_auth_root, make_resource_uri, ShareaboutsApi
+from sa_util.config import get_shareabouts_config
+from pbboston.geodata import load_neighborhoods
 from django.shortcuts import render
 from django.conf import settings
-from django.core.cache import cache
+from django.core.exceptions import ImproperlyConfigured
 from django.core.mail import EmailMultiAlternatives
-from django.http import HttpResponse, Http404
+from django.http import HttpRequest, HttpResponse, Http404
 from django.template import TemplateDoesNotExist
 from django.template.loader import render_to_string
-from django.utils.timezone import now
-from django.views.decorators.csrf import ensure_csrf_cookie
-from django.urls import resolve, reverse
+from django.utils import translation
+from django.utils.timezone import now, make_aware
+from django.utils.translation import (
+    LANGUAGE_SESSION_KEY, check_for_language, get_language,
+)
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
+from django.views.i18n import LANGUAGE_QUERY_PARAMETER
+from django.urls import resolve
 from proxy.views import proxy_view as remote_proxy_view
 
 log = logging.getLogger(__name__)
-
-
-def make_api_root(dataset_root):
-    components = dataset_root.split('/')
-    if dataset_root.endswith('/'):
-        return '/'.join(components[:-4]) + '/'
-    else:
-        return '/'.join(components[:-3]) + '/'
-
-def make_auth_root(dataset_root):
-    return make_api_root(dataset_root) + 'users/'
-
-def make_resource_uri(resource, root):
-    resource = resource.lstrip('/')
-    root = root.rstrip('/')
-    uri = '%s/%s' % (root, resource)
-    return uri
-
-def get_api_sessionid(django_http_request):
-    return django_http_request.COOKIES.get('sa-api-sessionid')
-
-def make_api_session(dataset_root, api_sessionid):
-    """
-    Create a requests session for the Shareabouts API.
-    """
-    api_session = requests.Session()
-    api_session.headers['Content-type'] = 'application/json'
-    api_session.headers['Accept'] = 'application/json'
-
-    if api_sessionid:
-        api_session.cookies.set(
-            'sessionid',
-            api_sessionid,
-            domain=urlparse(dataset_root).netloc,
-        )
-
-    return api_session
-
-
-class ShareaboutsApiError (Exception):
-    def __init__(self, msg, errors):
-        super().__init__(msg)
-        self.errors = errors
-
-
-class ShareaboutsApi:
-    def __init__(self, dataset_root, sessionid=None):
-        self.dataset_root = dataset_root
-        self.auth_root = make_auth_root(dataset_root)
-        self.root = make_api_root(dataset_root)
-        self.sessionid = sessionid
-        self.session = make_api_session(dataset_root, sessionid)
-
-    def get(self, resource, default=None, **kwargs):
-        uri = make_resource_uri(resource, root=self.dataset_root)
-        res = self.session.get(uri, params=kwargs)
-        self.update_sessionid()
-        return (res.text if res.status_code == 200 else default)
-
-    def current_user(self, default='null', **kwargs):
-        uri = make_resource_uri('current', root=self.auth_root)
-        res = self.session.get(uri, **kwargs)
-        self.update_sessionid()
-
-        return (res.json() if res.status_code == 200 else default)
-
-    def login(self, username, password, **kwargs):
-        payload = {
-            'username': username,
-            'password': password,
-        }
-        uri = make_resource_uri('current', root=self.auth_root)
-        res = self.session.post(uri, json=payload, **kwargs)
-        self.update_sessionid()
-
-        if res.status_code == 200:
-            return True
-        else:
-            raise ShareaboutsApiError(res.text, res.json().get('errors'))
-
-    def logout(self, **kwargs):
-        uri = make_resource_uri('current', root=self.auth_root)
-        res = self.session.delete(uri, **kwargs)
-        self.update_sessionid()
-
-        if res.status_code == 204:
-            return True
-        else:
-            raise ShareaboutsApiError(res.text, {})
-
-    def update_sessionid(self):
-        """
-        Update the sessionid from the cookies in the session.
-        """
-        self.sessionid = self.session.cookies.get(
-            'sessionid',
-            domain=urlparse(self.dataset_root).netloc,
-        )
 
 
 def calc_adding_support(adding_supported):
@@ -153,19 +60,68 @@ def calc_adding_support(adding_supported):
         return adding_supported
 
 
+def apply_language(viewfunc):
+    def view_wrapper(request: HttpRequest, *args, **kwargs) -> HttpResponse:
+        """
+        Use the code from the django.views.i18n.set_language view to update the language
+        in response to a GET request.
+
+        Use as a decorator around a view function.
+        """
+        lang_code = request.GET.get(LANGUAGE_QUERY_PARAMETER)
+        if not (lang_code and check_for_language(lang_code)):
+            return viewfunc(request, *args, **kwargs)
+
+        # Because we don't have a language cookie set yet, we need to activate the
+        # language, as would normally happen in django.middleware.locale.LocaleMiddleware.
+        translation.activate(lang_code)
+        request.LANGUAGE_CODE = get_language()
+
+        if hasattr(request, 'session'):
+            # Storing the language in the session is deprecated.
+            # (RemovedInDjango40Warning)
+            request.session[LANGUAGE_SESSION_KEY] = lang_code
+
+        response = viewfunc(request, *args, **kwargs)
+
+        # Finally, set the language cookie so that future requests will have the
+        # language set.
+        response.set_cookie(
+            settings.LANGUAGE_COOKIE_NAME, lang_code,
+            max_age=settings.LANGUAGE_COOKIE_AGE,
+            path=settings.LANGUAGE_COOKIE_PATH,
+            domain=settings.LANGUAGE_COOKIE_DOMAIN,
+            secure=settings.LANGUAGE_COOKIE_SECURE,
+            httponly=settings.LANGUAGE_COOKIE_HTTPONLY,
+            samesite=settings.LANGUAGE_COOKIE_SAMESITE,
+        )
+        return response
+    return view_wrapper
+
+
 @ensure_csrf_cookie
+@apply_language
 def index(request, place_id=None):
-    # Load app config settings
-    config = get_shareabouts_config(settings.SHAREABOUTS.get('CONFIG'))
-    config.update(settings.SHAREABOUTS.get('CONTEXT', {}))
+    config = get_shareabouts_config()
+    api = ShareaboutsApi(config, request)
 
-    # Get initial data for bootstrapping into the page.
-    dataset_root = settings.SHAREABOUTS.get('DATASET_ROOT')
-    if (dataset_root.startswith('file:')):
-        dataset_root = request.build_absolute_uri(reverse('api_proxy', args=('',)))
+    go_live_date = config.get('app', {}).get('go_live_date')
+    if go_live_date:
+        try:
+            go_live_date = dateutil.parser.parse(go_live_date)
+        except Exception as e:
+            raise ImproperlyConfigured(f'Invalid go_live_date: {go_live_date} -- {e}')
 
-    api_sessionid = get_api_sessionid(request)
-    api = ShareaboutsApi(dataset_root=dataset_root, sessionid=api_sessionid)
+        # Make the go_live_date timezone-aware if it's not already.
+        if not go_live_date.tzinfo:
+            go_live_date = make_aware(go_live_date)
+
+        if go_live_date > now():
+            return render(request, 'prelaunch.html', {
+                'config': config,
+                'go_live_date': go_live_date,
+                'site_root': settings.SITE_ROOT,
+            })
 
     # Get the content of the static pages linked in the menu.
     pages_config = config.get('pages', [])
@@ -205,7 +161,13 @@ def index(request, place_id=None):
     except KeyError:
         uses_mapbox_layers = False
 
+    neighborhoods = load_neighborhoods()
+    path_prefix = settings.BASE_URL
+
     context = {'config': config,
+
+               'route_prefix': path_prefix,
+               'api_prefix': path_prefix + '/api',
 
                'user_token_json': user_token_json,
                'pages_config': pages_config,
@@ -217,11 +179,16 @@ def index(request, place_id=None):
                'DATASET_ROOT': api.dataset_root,
 
                'api_user': api.current_user(default=None),
-               'api_sessionid': api.sessionid,
                'uses_mapbox_layers': uses_mapbox_layers,
+
+                # Geo-data for Boston
+               'neighborhoods': neighborhoods,
+
+               # Site root useful for automatic translation
+                'site_root': settings.SITE_ROOT,
                }
 
-    return render(request, 'index.html', context)
+    return api.respond_with_session_cookie(render(request, 'index.html', context))
 
 
 def place_was_created(request, path, response):
@@ -234,7 +201,6 @@ def place_was_created(request, path, response):
 
 def send_place_created_notifications(request, response):
     config = get_shareabouts_config(settings.SHAREABOUTS.get('CONFIG'))
-    config.update(settings.SHAREABOUTS.get('CONTEXT', {}))
 
     # Before we start, check whether we're configured to send at all on new
     # place.
@@ -290,10 +256,11 @@ def send_place_created_notifications(request, response):
 
     # If we didn't find any errors, then render the email and send.
     context_data = {
+        'requested_place': requested_place,
         'place': place,
         'email': recipient_email,
         'config': config,
-        'site_root': request.build_absolute_uri('/'),
+        'site_root': request.build_absolute_uri(settings.BASE_URL),
     }
     subject = render_to_string('new_place_email_subject.txt', context_data, request)
     body = render_to_string('new_place_email_body.txt', context_data, request)
@@ -458,6 +425,7 @@ def readonly_file_api(request, path, datafilename='data.json'):
             raise Http404
 
 
+@csrf_exempt
 def api(request, path):
     """
     A small proxy for a Shareabouts API server, exposing only
@@ -485,6 +453,13 @@ def api(request, path):
     # Clear cookies from the current domain, so that they don't interfere with
     # our settings here.
     request.META.pop('HTTP_COOKIE', None)
+
+    # Ignore requests for text/html, and assume the client wants
+    # application/json instead. This is so that other proxies that don't
+    # request JSON still get it back.
+    if not request.META.get('HTTP_ACCEPT', '').startswith('application/'):
+        headers['ACCEPT'] = 'application/json'
+
     response = proxy_view(request, url, requests_args={
         'headers': headers,
         'cookies': cookies
@@ -497,6 +472,29 @@ def api(request, path):
 
 
 def users(request, path):
+    """
+    A small proxy for a Shareabouts API server, exposing only
+    user authentication.
+    """
+    if settings.SHAREABOUTS.get('DATASET_ROOT').startswith('file://'):
+        return readonly_response(request, None)
+
+    root = make_auth_root(settings.SHAREABOUTS.get('DATASET_ROOT'))
+    api_key = settings.SHAREABOUTS.get('DATASET_KEY')
+    api_session_cookie = request.COOKIES.get('sa-api-session')
+
+    url = make_resource_uri(path, root)
+    headers = {'X-Shareabouts-Key': api_key} if api_key else {}
+    cookies = {'sessionid': api_session_cookie} if api_session_cookie else {}
+    response = proxy_view(request, url, requests_args={
+        'headers': headers,
+        'allow_redirects': False,
+        'cookies': cookies
+    })
+    return response
+
+
+def users_sso_start(request, path):
     """
     A small proxy for a Shareabouts API server, exposing only
     user authentication.

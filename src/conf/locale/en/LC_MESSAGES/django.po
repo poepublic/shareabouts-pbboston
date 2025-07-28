@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 16:46-0400\n"
+"POT-Creation-Date: 2025-07-23 12:41-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,153 +16,1277 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: jstemplates/activity-list-item.html:1
+#: src/flavors/cycle1/_config.translations.py:6
+#: src/flavors/cycle2/_config.translations.py:6
+msgid "City of Boston Participatory Budgeting"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:7
+#: src/flavors/cycle1/templates/index.html:8
+#: src/flavors/cycle1/templates/index.html:17
+#: src/flavors/cycle2/_config.translations.py:7
+#: src/flavors/cycle2/templates/index.html:8
+#: src/flavors/cycle2/templates/index.html:17
+msgid "Participatory Budgeting"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:8
+#: src/flavors/cycle2/_config.translations.py:8
 msgid ""
-"<strong>\n"
-"\n"
-"        {{#if target.submitter}}\n"
-"          <img src=\"{{ target.submitter.avatar_url }}\" class=\"avatar\" /> "
-"{{ target.submitter.name }}\n"
-"        {{^}}\n"
-"          <!-- TODO: FIXME: don't hardcode image URL -->\n"
-"          <img src=\"/static/css/images/user-50.png\" class=\"avatar\" /> "
-"{{ target.submitter_name }}\n"
-"        {{/if}}\n"
-"        </strong>\n"
-"\n"
-"        {{#if is_place }}\n"
-"          {{ action }} a{{#if place.type_starts_with_vowel }}n{{/if }} <span "
-"class=\"place-type\">{{ place.place_type_label }}</span>\n"
-"          {{#if place.name }}\n"
-"            named <span class=\"place-name\">{{ place.name }}</span>\n"
-"          {{^}}\n"
-"            {{#if place.location }}\n"
-"              at <span class=\"place-name\">{{>location-string place."
-"location }}</span>\n"
-"            {{/if }}\n"
-"          {{/if }}\n"
-"        {{else}}\n"
-"          {{ action }}\n"
-"\n"
-"          {{#if place.name }}\n"
-"            <span class=\"place-name\">{{ place.name }}</span>\n"
-"          {{else}}\n"
-"            a{{# place.type_starts_with_vowel }}n{{/ place."
-"type_starts_with_vowel }} {{ place.place_type_label }}\n"
-"          {{/if }}\n"
-"\n"
-"        {{/if }}\n"
-"        "
+"Shareabouts is a mapping tool to gather crowd sourced public input. Use it "
+"to collect suggested locations and comments in a social, engaging process."
 msgstr ""
 
-#: jstemplates/auth-nav.html:1 jstemplates/place-form.html:3
-msgid "Log Out"
+#: src/flavors/cycle1/_config.translations.py:9
+#: src/flavors/cycle2/_config.translations.py:9
+msgid "Enter a location…"
 msgstr ""
 
-#: jstemplates/auth-nav.html:2
-msgid "Sign In"
+#: src/flavors/cycle1/_config.translations.py:10
+#: src/flavors/cycle1/_config.translations.py:62
+#: src/flavors/cycle1/_config.translations.py:112
+#: src/flavors/cycle2/_config.translations.py:10
+#: src/flavors/cycle2/_config.translations.py:66
+#: src/flavors/cycle2/_config.translations.py:144
+msgid "Arts & Culture"
 msgstr ""
 
-#: jstemplates/auth-nav.html:3
+#: src/flavors/cycle1/_config.translations.py:11
+#: src/flavors/cycle2/_config.translations.py:11
 msgid ""
-"Signed in as</span> <span class=\"current-user\">{{ current_user \"name\" }}"
+"Project ideas focused on arts and cultural programming that promote cultural "
+"spaces in the City."
 msgstr ""
 
-#: jstemplates/geocode-address.html:1
-msgid "Search"
+#: src/flavors/cycle1/_config.translations.py:12
+#: src/flavors/cycle1/_config.translations.py:63
+#: src/flavors/cycle1/_config.translations.py:113
+#: src/flavors/cycle2/_config.translations.py:12
+#: src/flavors/cycle2/_config.translations.py:67
+#: src/flavors/cycle2/_config.translations.py:145
+msgid "Community Resources"
 msgstr ""
 
-#: jstemplates/place-detail-promotion-bar.html:1
-msgid "Recommend on Facebook"
-msgstr ""
-
-#: jstemplates/place-detail-promotion-bar.html:2
-msgid "Tweet This"
-msgstr ""
-
-#: jstemplates/place-detail-survey.html:1
+#: src/flavors/cycle1/_config.translations.py:13
+#: src/flavors/cycle2/_config.translations.py:13
 msgid ""
-"<strong class=\"response-submitter\">\n"
-"                    {{#if submitter}}\n"
-"                      <img src=\"{{ submitter.avatar_url }}\" class=\"avatar"
-"\" /> {{ submitter.name }}\n"
-"                    {{^}}\n"
-"                      <!-- TODO: FIXME: don't hardcode image URL -->\n"
-"                      <img src=\"/static/css/images/user-50.png\" class="
-"\"avatar\" /> {{ submitter_name }}\n"
-"                    {{/if}}\n"
-"                  </strong>\n"
-"                  <span class=\"response-date\">\n"
-"                    around {{ pretty_created_datetime }}\n"
-"                  </span>\n"
-"                  "
+"Project ideas that provide assistance or services to residents in need, such "
+"as programs at community centers, financial or digital literacy, English as "
+"a second language, or GED classes."
 msgstr ""
 
-#: jstemplates/place-detail-survey.html:13 jstemplates/place-form.html:6
+#: src/flavors/cycle1/_config.translations.py:14
+#: src/flavors/cycle1/_config.translations.py:64
+#: src/flavors/cycle1/_config.translations.py:114
+#: src/flavors/cycle2/_config.translations.py:14
+#: src/flavors/cycle2/_config.translations.py:68
+#: src/flavors/cycle2/_config.translations.py:146
+msgid "Local Economy & Worker Empowerment"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:15
+#: src/flavors/cycle2/_config.translations.py:15
+msgid ""
+"Project ideas that improve access to quality jobs, skills training, career "
+"pipelines, and other resources for workers, small business owners, and "
+"entrepreneurs."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:16
+#: src/flavors/cycle1/_config.translations.py:65
+#: src/flavors/cycle1/_config.translations.py:115
+msgid "Education, Youth & Families"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:17
+#: src/flavors/cycle2/_config.translations.py:17
+msgid ""
+"Project ideas related to education for all ages, as well as proposals that "
+"meet the needs of Boston’s youth, senior citizens, and families."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:18
+#: src/flavors/cycle1/_config.translations.py:66
+#: src/flavors/cycle1/_config.translations.py:116
+#: src/flavors/cycle2/_config.translations.py:18
+#: src/flavors/cycle2/_config.translations.py:70
+#: src/flavors/cycle2/_config.translations.py:148
+msgid "Environment, Sustainability, and Food Access"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:19
+#: src/flavors/cycle2/_config.translations.py:19
+msgid ""
+"Project ideas that help increase access to healthy and affordable food, "
+"promote environmental justice, and help increase the quality of life in "
+"Boston."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:20
+#: src/flavors/cycle2/_config.translations.py:20
+msgid "Facilities, Parks & Recreation"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:21
+#: src/flavors/cycle2/_config.translations.py:21
+msgid ""
+"Project ideas that Invest in clean, green, safe and accessible open space, "
+"facilities, and programming for residents and neighborhoods."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:22
+#: src/flavors/cycle1/_config.translations.py:68
+#: src/flavors/cycle1/_config.translations.py:118
+#: src/flavors/cycle2/_config.translations.py:22
+#: src/flavors/cycle2/_config.translations.py:72
+#: src/flavors/cycle2/_config.translations.py:150
+msgid "Health & Well-being"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:23
+#: src/flavors/cycle2/_config.translations.py:23
+msgid ""
+"Project ideas that promote the physical and mental health of Boston "
+"residents of all ages."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:24
+#: src/flavors/cycle1/_config.translations.py:69
+#: src/flavors/cycle1/_config.translations.py:119
+#: src/flavors/cycle2/_config.translations.py:24
+#: src/flavors/cycle2/_config.translations.py:73
+#: src/flavors/cycle2/_config.translations.py:151
+msgid "Public Safety"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:25
+#: src/flavors/cycle2/_config.translations.py:25
+msgid ""
+"Project ideas that advance safety and increase justice in the City, such as "
+"community violence prevention programs and initiatives for healing and "
+"recovering from trauma and substance abuse."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:26
+#: src/flavors/cycle1/_config.translations.py:70
+#: src/flavors/cycle1/_config.translations.py:120
+#: src/flavors/cycle2/_config.translations.py:26
+#: src/flavors/cycle2/_config.translations.py:74
+#: src/flavors/cycle2/_config.translations.py:152
+msgid "Streets & Sidewalks"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:27
+#: src/flavors/cycle2/_config.translations.py:27
+msgid ""
+"Project ideas to improve City streets and sidewalks and promote safety and "
+"accessibility."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:28
+#: src/flavors/cycle1/_config.translations.py:71
+#: src/flavors/cycle1/_config.translations.py:121
+#: src/flavors/cycle2/_config.translations.py:28
+#: src/flavors/cycle2/_config.translations.py:75
+#: src/flavors/cycle2/_config.translations.py:153
+msgid "Other / Not Sure"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:29
+#: src/flavors/cycle2/_config.translations.py:29
+msgid ""
+"Other community centered ideas that may not fit in the previous categories."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:30
+#: src/flavors/cycle2/_config.translations.py:30
+msgid "idea"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:31
+#: src/flavors/cycle2/_config.translations.py:31
+msgid "ideas"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:32
+#: src/flavors/cycle1/templates/index.html:57
+msgid "Suggest an Idea"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:33
+#: src/flavors/cycle2/_config.translations.py:33
+msgid "List All Ideas"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:34
+#: src/flavors/cycle2/_config.translations.py:34
+msgid "Show the Map"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:35
+#: src/flavors/cycle2/_config.translations.py:35
+msgid "submitted"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:36
+#: src/flavors/cycle2/_config.translations.py:36
+msgid "How would you spend $2 million to benefit your community?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:37
+#: src/flavors/cycle2/_config.translations.py:37
+msgid "Your neighbor"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:38
+#: src/flavors/cycle2/_config.translations.py:38
+msgid "Submit"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:39
+#: src/flavors/cycle2/_config.translations.py:39
+msgid "Multiple locations throughout the city"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:40
+#: src/flavors/cycle2/_config.translations.py:40
+msgid "Please use the map's search box or drag the map to set the location."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:41
+#: src/flavors/cycle2/_config.translations.py:41
+msgid "Thank you!"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:42
+msgid ""
+"Thank you for sharing your idea with us! Please fill out the short form "
+"below. Only the information you choose to display will be made public."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:43
+#: src/flavors/cycle2/_config.translations.py:47
+msgid "Is your idea for a specific location or for the entire city?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:44
+#: src/flavors/cycle2/_config.translations.py:48
+msgid "City wide?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:45
+#: src/flavors/cycle2/_config.translations.py:49
+msgid "Location-specific"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:46
+#: src/flavors/cycle2/_config.translations.py:50
+msgid "City-wide"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:47
+#: src/flavors/cycle2/_config.translations.py:51
+msgid "Approximately where would your idea be?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:48
+#: src/flavors/cycle2/_config.translations.py:52
+msgid "Approximate location…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:49
+#: src/flavors/cycle2/_config.translations.py:53
+msgid "Drag the map to set the location."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:50
+msgid "Please share a short description of the project idea."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:51
+#: src/flavors/cycle2/_config.translations.py:55
+msgid "My idea is to…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:52
+msgid "Make sure your description is short and clear."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:53
+#: src/flavors/cycle1/_config.translations.py:58
+#: src/flavors/cycle2/_config.translations.py:57
+#: src/flavors/cycle2/_config.translations.py:62
+msgid "Try to keep it to 50 words or less…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:54
+#: src/flavors/cycle2/_config.translations.py:58
+msgid "How does your project advance social and racial equity?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:55
+#: src/flavors/cycle2/_config.translations.py:59
+msgid "This idea would advance social and racial equity by…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:56
+#: src/flavors/cycle2/_config.translations.py:60
+msgid "Make sure you keep it short and clear."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:57
+#: src/flavors/cycle2/_config.translations.py:61
+msgid ""
+"\"Social and racial equity\" is defined as the just and fair inclusion of "
+"people of any social and racial background into society, so they can "
+"participate, prosper, and reach their full potential."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:59
+#: src/flavors/cycle2/_config.translations.py:63
+msgid "Which category does your idea fall into?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:60
+#: src/flavors/cycle2/_config.translations.py:64
+msgid "Category"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:61
+#: src/flavors/cycle2/_config.translations.py:65
+msgid "Choose the category that most closely describes your project."
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:67
+#: src/flavors/cycle1/_config.translations.py:117
+#: src/flavors/cycle2/_config.translations.py:71
+#: src/flavors/cycle2/_config.translations.py:149
+msgid "Facilities, Parks & Recreation  "
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:72
+msgid "Are you submitting this idea as part of a community event?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:73
+msgid "No event; I am submitting this idea on my own"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:74
+msgid ""
+"Yes, at an Idea Collection Workshop hosted by an organization sponsored by "
+"the Office of Participatory Budgeting"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:75
+msgid "Yes, at an independent community gathering"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:76
+#: src/flavors/cycle1/_config.translations.py:79
+msgid "Your Name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:77
+#: src/flavors/cycle1/_config.translations.py:80
+msgid "Submitter's Name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:78
+#: src/flavors/cycle2/_config.translations.py:87
+msgid "Your first name…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:81
+#: src/flavors/cycle2/_config.translations.py:90
+msgid "Your last name…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:82
+#: src/flavors/cycle2/_config.translations.py:91
+msgid "How should we display your name next to your idea?"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:83
+#: src/flavors/cycle2/_config.translations.py:92
+msgid "Use my full name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:84
+#: src/flavors/cycle2/_config.translations.py:93
+msgid "Only use my first name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:85
+#: src/flavors/cycle2/_config.translations.py:94
+msgid "Do not display my name"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:86
+#: src/flavors/cycle2/_config.translations.py:95
+msgid "Your Neighborhood"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:87
+#: src/flavors/cycle2/_config.translations.py:96
+msgid "Submitter's Neighborhood"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:88
+#: src/flavors/cycle2/_config.translations.py:97
+msgid "Select a neighborhood…"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:89
+#: src/flavors/cycle1/_config.translations.py:90
+#: src/flavors/cycle2/_config.translations.py:98
+#: src/flavors/cycle2/_config.translations.py:99
+msgid "Your Zip Code"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:91
+#: src/flavors/cycle1/_config.translations.py:92
+#: src/flavors/cycle2/_config.translations.py:125
+#: src/flavors/cycle2/_config.translations.py:126
+msgid "Your Email"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:93
+#: src/flavors/cycle1/_config.translations.py:94
+msgid "Your Preferred Language"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:95
+#: src/flavors/cycle2/_config.translations.py:127
+msgid "comment"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:96
+#: src/flavors/cycle2/_config.translations.py:128
+msgid "comments"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:97
+#: src/flavors/cycle2/_config.translations.py:129
+msgid "commented on"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:98
+#: src/flavors/cycle1/_config.translations.py:105
+#: src/flavors/cycle2/_config.translations.py:130
+#: src/flavors/cycle2/_config.translations.py:137
+msgid "Someone"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:99
+#: src/flavors/cycle1/_config.translations.py:100
+#: src/flavors/cycle2/_config.translations.py:131
+#: src/flavors/cycle2/_config.translations.py:132
+msgid "Leave a Comment"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:101
+#: src/flavors/cycle2/_config.translations.py:133
+msgid "Comment"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:102
+#: src/flavors/cycle2/_config.translations.py:134
+msgid "Support"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:103
+#: src/flavors/cycle2/_config.translations.py:135
+msgid "support"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:104
+#: src/flavors/cycle2/_config.translations.py:136
+msgid "supports"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:106
+#: src/flavors/cycle2/_config.translations.py:138
+msgid "About"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:107
+#: src/flavors/cycle2/_config.translations.py:139
+msgid "Past PB Cycles"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:108
+#: src/flavors/cycle2/_config.translations.py:140
+msgid "Cycle 1 (2024)"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:109
+#: src/flavors/cycle1/templates/prelaunch.html:86
+#: src/flavors/cycle2/_config.translations.py:141
+#: src/flavors/cycle2/templates/prelaunch.html:86
+msgid "Boston PB Home"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:110
+#: src/flavors/cycle2/_config.translations.py:142
+msgid "Filter Ideas"
+msgstr ""
+
+#: src/flavors/cycle1/_config.translations.py:111
+#: src/flavors/cycle2/_config.translations.py:143
+msgid "All"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:1
+msgid "14 ballot proposals available for PB Voting"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:2
+msgid ""
+"15 project proposals were drafted by Boston residents with support from OPB "
+"and City Departments"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:3
+msgid "4.35 (high) average number of projects selected per voter"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:4
+msgid ""
+"Boston residents submitted over 1200 project ideas via multiple channels, "
+"including:"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:5
+msgid ""
+"Highest voter turnout in Dorchester, Brighton, Roxbury, East Boston, South "
+"Boston, and Hyde Park"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:6
+msgid "Highlights from the Inaugural Year of Ideas in Action:"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:7
+msgid ""
+"In January of 2025, a total of 4,462 Boston residents cast their ballot in "
+"person and online, selecting their top proposals to be funded."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:8
+msgid "In the Fall of 2024, OPB hosted three (3) Visioning Forums:"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:9
+msgid ""
+"In the summer of 2024, the City of Boston’s Office of Participatory "
+"Budgeting (OPB) launched <strong>Ideas in Action</strong>, an initiative "
+"where Boston residents can decide how to spend $2 million of the City’s "
+"budget to benefit their communities. Thousands of residents engaged by "
+"joining community meetings, submitting project ideas, drafting the proposals "
+"that appeared on the ballot, and collectively voting on the top projects "
+"that they wanted to see implemented."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:10
+msgid ""
+"In-person submissions through PB Corners at City Hall and Boston Public "
+"Library Branches"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:11
+msgid "Multi-lingual PB Phone Line"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:12
+msgid ""
+"Nineteen (19) idea collection workshops across the City in partnership with "
+"community organizations"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:13
+msgid ""
+"OPB created an <a href=\"https://app.powerbigov.us/view?"
+"r=eyJrIjoiZTEyYmE4MWQtMDIzNi00MjNiLWE3YzctN2Y2ZjJhMjFlZjg5IiwidCI6Ijg1NTI4ODdjLWNiYzMtNGVlNS05ZmQzLWVhMjE3ZTMwMjZmYyJ9\" "
+"target=\"_blank\">Idea Submission Dashboard</a> that allows the public to "
+"explore the nine (9) Community Priorities and review all the submitted ideas "
+"from Cycle One."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:14
+msgid "Online PB Portal"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:15
+msgid ""
+"See a list of winning projects funded in Cycle One <a href=\"https://www."
+"boston.gov/departments/participatory-budgeting/ideas-action-project-"
+"implementation\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:16
+msgid ""
+"Thanks to everyone who made their voices heard and actively participated in "
+"this exciting inaugural year! As we celebrate this milestone, we invite all "
+"Boston residents to continue their participation with <a href=\"https://www."
+"boston.gov/departments/participatory-budgeting/ideas-action\" "
+"target=\"_blank\">Ideas in Action Cycle 2</a>!"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:17
+msgid "The City of Boston’s First Participatory Budgeting Cycle"
+msgstr ""
+
+#: src/flavors/cycle1/jstemplates/pages/cycle1-review.html:18
+msgid ""
+"Three (3) in-person Visioning Forums hosted in East Boston, Roxbury, and "
+"Dorchester with ~100 resident participants worked with 20 City Departments "
+"to review, assess, and draft project proposals for the PB Ballot."
+msgstr ""
+
+#: src/flavors/cycle1/templates/index.html:68
+#: src/flavors/cycle2/jstemplates/place-list.html:1
+#: src/flavors/cycle2/templates/index.html:68
+msgid "All Ideas"
+msgstr ""
+
+#: src/flavors/cycle1/templates/index.html:72
+#: src/flavors/cycle2/templates/index.html:72
+msgid "City-wide Only"
+msgstr ""
+
+#: src/flavors/cycle1/templates/index.html:83
+#: src/flavors/cycle2/templates/index.html:83
+#, python-format
+msgid "Powered by %(Shareabouts)s"
+msgstr ""
+
+#: src/flavors/cycle1/templates/index.html:84
+#: src/flavors/cycle2/templates/index.html:84
+#, python-format
+msgid "built by %(PoePublic)s"
+msgstr ""
+
+#: src/flavors/cycle1/templates/prelaunch.html:112
+#: src/flavors/cycle2/templates/prelaunch.html:112
+msgid ""
+"Participatory Budgeting (PB) is a democratic process where community "
+"members\n"
+"    directly decide how to spend part of a public budget. The goal of "
+"Participatory\n"
+"    Budgeting in Boston is to empower residents to elevate community "
+"centered\n"
+"    project ideas with an emphasis on social and racial equity."
+msgstr ""
+
+#: src/flavors/cycle1/templates/prelaunch.html:117
+#: src/flavors/cycle2/templates/prelaunch.html:117
+msgid ""
+"By engaging in Participatory Budgeting, Bostonians of all ages and\n"
+"    backgrounds can help inform priorities and future investments for the\n"
+"    City’s larger budget process. "
+msgstr ""
+
+#: src/flavors/cycle1/templates/prelaunch.html:121
+#: src/flavors/cycle2/templates/prelaunch.html:121
+#, python-format
+msgid "Come back on %(return_date)s to submit your project ideas!"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:16
+#: src/flavors/cycle2/_config.translations.py:69
+#: src/flavors/cycle2/_config.translations.py:147
+msgid "Education, Youth, Families, & Older Adults"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:32
+#: src/flavors/cycle2/templates/index.html:57
+msgid "Share an Idea"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:42
+msgid ""
+"<strong>Thank you for sharing your idea with us!</strong> Please fill out "
+"the short form below. Only the information you choose to display will be "
+"made public. "
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:43
+msgid "Optional Demographic Survey"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:44
+msgid ""
+"The demographic questions below are designed to assist the Office of "
+"Participatory Budgeting in obtaining a more accurate understanding of "
+"participants. Your responses will remain anonymous and confidential. "
+"<strong>Please note that all questions are optional.</strong>"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:45
+msgid "Stay updated!"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:46
+msgid ""
+"Please leave your email to receive updates from the Office of Participatory "
+"Budgeting."
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:54
+msgid "Please describe your project idea."
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:56
+msgid ""
+"Tell us about the issue you want to address. Why is this idea a priority and "
+"beneficial to the community?"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:76
+msgid "Are you submitting this idea through a community event or activity?"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:77
+msgid "No; I am submitting this idea on my own"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:78
+msgid ""
+"Yes, through a community event or activity hosted by <strong>PB Contract "
+"Partner organization</strong>"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:79
+msgid ""
+"Yes, through an event or activity hosted by a <strong>Non-PB Contract "
+"Partner</strong>"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:80
+msgid "Which partner organization hosted the event?"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:81
+#: src/flavors/cycle2/_config.translations.py:84
+msgid "Organization name"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:82
+msgid "Select an organization…"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:83
+msgid "What is the name of the organization that hosted the event?'"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:85
+msgid "Your First Name"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:86
+msgid "Submitter's First Name"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:88
+msgid "Your Last Name"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:89
+msgid "Submitter's Last Name"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:100
+msgid "What is your age in years?"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:101
+msgid "Age"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:102
+msgid "What is your race and/or ethnicity?"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:103
+msgid "Race and/or Ethnicity"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:104
+msgid "Select all that apply."
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:105
+msgid "American Indian or Alaska Native"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:106
+msgid "Asian"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:107
+msgid "Black or African American"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:108
+msgid "Hispanic or Latino/-a/-e/-x"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:109
+msgid "Native Hawaiian or other Pacific Islander"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:110
+msgid "White"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:111
+msgid "Other"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:112
+msgid "Please tell us what other race/ethnicity"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:113
+msgid "What was your household income in the past 12 months?"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:114
+msgid "Household Income"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:115
+msgid "Select an option…"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:116
+msgid "Less than $14,999"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:117
+msgid "$15,000 to $34,999"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:118
+msgid "$35,000 to $49,999"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:119
+msgid "$50,000 to $74,999"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:120
+msgid "$75,000 to $99,999"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:121
+msgid "$100,000 to $149,999"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:122
+msgid "$150,000 or more"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:123
+msgid "I don't know"
+msgstr ""
+
+#: src/flavors/cycle2/_config.translations.py:124
+msgid "Prefer not to answer"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:1
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a city-wide "
+"{{ place_type_label location_type }} idea"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:2
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location }}</"
+"span>"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/activity-list-item.html:3
+msgid ""
+"<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
+"location_type }} idea near <span class=\"place-location\">{{ location }}</"
+"span>"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/form-field-label.html:1
 msgid "optional"
 msgstr ""
 
-#: jstemplates/place-detail.html:1
+#: src/flavors/cycle2/jstemplates/form-field-widget.html:1
 msgid ""
-"<strong class=\"point-submitter\">\n"
-"              {{#if submitter.avatar_url }}\n"
-"                <img src=\"{{ submitter.avatar_url }}\" class=\"avatar\" />\n"
-"              {{^}}\n"
-"                <img src=\"{{ STATIC_URL }}/css/images/user-50.png\" class="
-"\"avatar\" />\n"
-"              {{/if}}\n"
-"              {{#if submitter.name }}\n"
-"                {{ submitter.name }}\n"
-"              {{^}}\n"
-"                {{#if submitter_name }}\n"
-"                  {{ submitter_name }}\n"
-"                {{^}}\n"
-"                  {{ anonymous_name }}\n"
-"                {{/if}}\n"
-"              {{/if}}\n"
-"            </strong> {{ action_text }} this {{ place_type_label "
-"location_type}}\n"
-"\n"
-"            {{#if region}}\n"
-"              in {{ region }}\n"
-"            {{/if}}"
+"Hover over a category to see a description of the types of projects that fit "
+"within that category."
 msgstr ""
 
-#: jstemplates/place-form.html:1
-msgid "Drag the map to your location."
-msgstr ""
-
-#: jstemplates/place-form.html:2
+#: src/flavors/cycle2/jstemplates/form-field-widget.html:2
 msgid ""
-"It looks like you didn't set your location yet. Please drag the map to your "
-"location."
+"Select a category to see a description of the types of projects that fit "
+"within that category."
 msgstr ""
 
-#: jstemplates/place-form.html:4
+#: src/flavors/cycle2/jstemplates/fullname-display-message.html:1
 msgid ""
-"Or sign in with <a class=\"auth-inline twitter-btn\" href=\"/users/login/"
-"twitter/\">Twitter</a> <a class=\"auth-inline facebook-btn\" href=\"/users/"
-"login/facebook/\">Facebook</a>"
+"Choose an idea category above to to see how your idea will be displayed."
 msgstr ""
 
-#: jstemplates/place-form.html:5
+#: src/flavors/cycle2/jstemplates/fullname-display-message.html:2
+msgid ""
+"Enter your first and last name above to see how your idea will be displayed."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/fullname-display-message.html:3
+msgid "Enter your first name above to see how your idea will be displayed."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/fullname-display-message.html:4
+msgid "submitted a {{category}} idea."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/fullname-field-label.html:1
+msgid "Your Full Name"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/important-updates.html:1
+msgid ""
+"The deadline to submit ideas has been extended to Thursday, August 15th."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/important-updates.html:2
+msgid ""
+"The submission period for Idea Collection is now closed. However, you can "
+"review all resident proposed ideas during PB Cycle One on the map."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:1
+msgid ""
+"<strong>Ideas in Action</strong> is Boston’s Participatory Budgeting\n"
+"  (PB) initiative, where residents can decide how to spend a part of the "
+"City’s\n"
+"  budget. By engaging in Ideas in Action, Bostonians of all ages and "
+"backgrounds\n"
+"  can:\n"
+"    <ol>\n"
+"      <li>Share project ideas that help advance social and racial equity;</"
+"li>\n"
+"      <li>Decide on the top projects that will appear on the PB Ballot for "
+"voting; and,</li>\n"
+"      <li>Vote on how to spend $2 million of the City’s budget to benefit "
+"our communities.</li>\n"
+"    </ol>\n"
+"  "
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:11
+msgid ""
+"All City of Boston residents, regardless of age, can submit\n"
+"  ideas."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:13
+msgid ""
+"As part of this process, residents inform the City about their\n"
+"  priorities to help decide future budget investments."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:15
+msgid ""
+"Cycle Two of Ideas in Action starts this summer! Between <strong>July\n"
+"  1st and July 31</strong>, you can share project ideas through this "
+"website,\n"
+"  over the phone by calling <a href=\"tel:+16176353059\">(617) 635-3059</a>, "
+"or\n"
+"  in-person at Boston Public Library Branches and through community events\n"
+"  across the City."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:20
+msgid ""
+"Digital literacy classes for senior citizens to learn new skills and promote "
+"social connections;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:21
+msgid ""
+"Enhance public spaces through infrastructure projects (public art, street "
+"trees, benches, etc.)"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:22
+msgid "Examples of eligible project ideas:"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:23
+msgid "Examples of ineligible project ideas:"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:24
+msgid ""
+"Expand the City’s Wicked Free WiFi network to reach more low-income areas;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:25
+msgid ""
+"From August through September 2025, the City will review all the\n"
+"  submitted project ideas. Then, in the fall, the Office of Participatory\n"
+"  Budgeting will host public workshops for residents to review, prioritize, "
+"and\n"
+"  develop these ideas into project proposals for the PB ballot. Voting will "
+"take\n"
+"  place in January of 2026!"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:30
+msgid "Helping a religious institution repair its sanctuary;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:31
+msgid ""
+"Helping an organization renovate a space that it rents from a private "
+"landlord;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:32
+msgid "How do I stay connected?"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:33
+msgid "Idea Submission Criteria"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:34
+msgid ""
+"Ideas about programs, services, or physical infrastructure\n"
+"    improvements;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:36
+msgid "Increase the frequency of MBTA buses or trains."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:37
+msgid ""
+"Infrastructure projects on private, state, or federal property\n"
+"        are not eligible, such as projects concerning the Department of\n"
+"        Conservation & Recreation (DCR) or the Massachusetts Bay Transit\n"
+"        Authority (MBTA)."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:41
+msgid ""
+"Lastly, projects must be implemented or managed by the appropriate\n"
+"    City Department or agency receiving direct budget appropriations."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:43
+msgid "Paying for the salary of a public employee to provide services;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:44
+msgid "Programming to strengthen mental health among Boston youth;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:45
+msgid ""
+"Project ideas containing inappropriate, offensive, or derogatory language "
+"will be removed and not considered from the PB process."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:46
+msgid ""
+"Project ideas that are feasible to implement, and are consistent\n"
+"    with existing City policies, laws, regulations, and the Participatory\n"
+"    Budgeting Ordinance;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:49
+msgid ""
+"Project ideas that are limited to a one-time expense, and do not\n"
+"    create new permanent positions;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:51
+msgid "Repairing a privately owned building;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:52
+msgid ""
+"Sign up for our newsletter! For more information about Participatory\n"
+"  Budgeting, please visit <a href=\"https://boston.gov/participate\" "
+"target=\"_blank\">Boston.gov/participate</a> or contact the Office of\n"
+"  Participatory Budgeting at <a href=\"mailto:pb@boston.gov\">pb@boston.gov</"
+"a>."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:55
+msgid ""
+"Tell\n"
+"  us: How would you spend $2 million to benefit our communities?"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:57
+msgid "Welcome to Ideas in Action!"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:58
+msgid "What happens after I share my ideas?"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:59
+msgid "What type of ideas can I propose?"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:60
+msgid "When can I start sharing my ideas"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:61
+msgid "Who can submit project ideas?"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-detail.html:1
+msgid "View On Map"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-detail.html:2
+msgid "submitted this city-wide {{ place_type_label location_type}} idea"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-detail.html:3
+msgid ""
+"submitted this {{ place_type_label location_type}} idea near {{ location }}"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-form-submission-confirmation.html:1
+msgid "Please help us by answering this optional survey:"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-form-submission-confirmation.html:2
+msgid "Thank you for your submission!"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-form.html:1
+msgid ""
+"How would <img class=\"inline-scribble\" src=\"/static/img/iia/"
+"Scribble_Wavey_04_Pink.svg\"> you spend <span class=\"bigger-text\"><span "
+"class=\"scribble-text scribble-text-pink\">$</span><span class=\"scribble-"
+"underline\">2 million</span></span> to <img class=\"inline-scribble\" src=\"/"
+"static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> benefit our <span "
+"class=\"bigger-text\">communities<span class=\"scribble-text scribble-text-"
+"pink\">?</span></span>"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-form.html:2
+msgid "It looks like you didn't set your location yet."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-form.html:3
+#: src/sa_web/jstemplates/auth-nav.html:1
+msgid "Log Out"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-form.html:4
+msgid "To learn about the types of ideas you can submit,"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-form.html:5
+msgid ""
+"You can also\n"
+"          share your idea by calling the PB Phone line at"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-form.html:7
+msgid "click here"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-list.html:2
+msgid "Choose a neighborhood..."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-list.html:3
+msgid "City-wide Ideas"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-list.html:4
+msgid "Location-specific Ideas"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/place-list.html:5
+msgid "Search"
+msgstr ""
+
+#: src/flavors/defaultflavor/templates/index.html:52
+msgid "Powered by"
+msgstr ""
+
+#: src/pbboston/templates/language_picker.html:16
+msgid "Select a language"
+msgstr ""
+
+#: src/pbboston/templates/language_picker.html:18
+msgid "Close language picker"
+msgstr ""
+
+#: src/sa_web/jstemplates/auth-nav.html:2
+msgid "Sign In"
+msgstr ""
+
+#: src/sa_web/jstemplates/auth-nav.html:3
+msgid "Signed in as</span> <span class=\"current-user\">{{ this }}"
+msgstr ""
+
+#: src/sa_web/jstemplates/form-field-file.html:1
 msgid "Sorry, your browser doesn't support file uploads."
 msgstr ""
 
-#: jstemplates/place-list.html:1
-msgid "Most Recent"
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:1
+msgid "Recommend on Facebook"
 msgstr ""
 
-#: jstemplates/place-list.html:2
-msgid "Most {{ support_label_plural }}"
+#: src/sa_web/jstemplates/place-detail-promotion-bar.html:2
+msgid "Tweet This"
 msgstr ""
 
-#: jstemplates/place-list.html:3
-msgid "Most {{ survey_label_plural }}"
+#: src/sa_web/jstemplates/place-detail-survey.html:1
+msgid "around {{ pretty_created_datetime }}"
 msgstr ""
 
-#: templates/base.html:104
+#: src/sa_web/jstemplates/place-moderation-bar.html:1
+msgid ""
+"<span class=\"visibility-icon invisible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>only visible to "
+"moderators</strong>."
+msgstr ""
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:3
+msgid ""
+"<span class=\"visibility-icon visible-icon\">👁</span>\n"
+"      This {{ place_config.response_name }} is <strong>visible to everyone</"
+"strong>."
+msgstr ""
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:5
+msgid "Make {{ place_config.response_name }} hidden"
+msgstr ""
+
+#: src/sa_web/jstemplates/place-moderation-bar.html:6
+msgid "Make {{ place_config.response_name }} visible"
+msgstr ""
+
+#: src/sa_web/jstemplates/place-survey-response.html:1
+msgid "Thanks for participating!"
+msgstr ""
+
+#: src/sa_web/templates/base.html:89
 #, python-format
 msgid ""
 "\n"
@@ -170,7 +1294,7 @@ msgid ""
 "        "
 msgstr ""
 
-#: templates/base.html:109
+#: src/sa_web/templates/base.html:94
 #, python-format
 msgid ""
 "\n"
@@ -182,34 +1306,12 @@ msgid ""
 "        "
 msgstr ""
 
-#: templates/base.html:123
+#: src/sa_web/templates/base.html:108
 msgid ""
 "We can't connect to the server at the moment. Hang tight while we re-"
 "establish communication."
 msgstr ""
 
-#: templates/base.html:129
+#: src/sa_web/templates/base.html:114
 msgid "Close"
 msgstr ""
-
-#~ msgid ""
-#~ "\n"
-#~ "    App Name is not officially supported in {{browser.name}}\n"
-#~ "    {{browser.version}}. Things may not work. Or they may, we're not "
-#~ "sure. If\n"
-#~ "    you want to be safe, we suggest using one of <a\n"
-#~ "    href=\"http://upgradeyourbrowser.net/\" target=\"_blank\">these</a> "
-#~ "instead.\n"
-#~ "    "
-#~ msgstr ""
-#~ "\n"
-#~ "Shareabouts is not officially supported in {{browser.name}}\n"
-#~ "    {{browser.version}}. Things may not work. Or they may, we're not "
-#~ "sure. If\n"
-#~ "    you want to be safe, we suggest using one of <a\n"
-#~ "    href=\"http://upgradeyourbrowser.net/\" target=\"_blank\">these</a> "
-#~ "instead.\n"
-#~ "    "
-
-#~ msgid "Close Button"
-#~ msgstr "Close"

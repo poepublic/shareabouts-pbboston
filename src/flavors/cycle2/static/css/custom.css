@@ -1,0 +1,1892 @@
+@import url('/static/css/city-wide-ext.css');
+@import url('/static/css/language-picker.css');
+
+/*
+ * This CSS file follows the default Shareabouts style.css.
+ * All rules herein will override the default Shareabouts styles.
+ * NOTE: "With great power comes great responsibility."
+ */
+
+:root {
+  --icon-purple-1: #49157e;
+  --icon-purple-2: #e9d3ff;
+  --icon-purple-3: #925dc8;
+
+  --icon-blue-1: #091f2f;
+  --icon-blue-2: #c2d9ed;
+  --icon-blue-3: #288be4;
+
+  /* Boston colors -- from the style guide */
+  --charles-blue: #091f2f;
+  --optimistic-blue: #288be4;
+  --freedom-trail-red: #fb4d42;
+
+  /* --instructions-bg: rgba(248, 208, 8, 0.25); */
+
+  --supporting-red-1: #d22d23; /* This is not in the style guide, but is the bg color of the menu button on boston.gov */
+
+  --supporting-blue-1: #061622;
+  --supporting-blue-2: #0C2639;
+  --supporting-blue-3: #45789C;
+  --supporting-blue-4: #51ACFF;
+  --supporting-blue-5: #1871bd; /* This is not in the style guide, but is the bg color for buttons on boston.gov */
+
+  --supporting-gray-1: #58585B;
+  --supporting-gray-2: #D2D2D2;
+  --supporting-gray-3: #E0E0E0;
+  --supporting-gray-4: #F2F2F2;
+
+  /* Category colors -- chosen for high saturations, mutual differentiation, and contrast with the background */
+  --icon-color-01: #fb4d42;
+  --icon-color-02: #fa8b41;
+  --icon-color-03: #fac241;
+  --icon-color-04: #faee41;
+  --icon-color-05: #b6fa41;
+  --icon-color-06: #75fa41;
+  --icon-color-07: #41eafa;
+  --icon-color-08: #4185fa;
+  --icon-color-09: #4441fa;
+  --icon-color-10: #8b41fa;
+  --icon-color-11: #e441fa;
+
+  /* Ideas in Action colors -- from the style guide */
+  --iia-dark-blue: #0E0E30;
+  --iia-indigo-blue: #1900B0;
+  --iia-fog-grey: #efeff4;
+  --iia-vibrant-green: #00cd5f;
+  --iia-electric-purple: #B11FFF;
+  --iia-electric-purple-alt: #BF49FF;  /* For dark backgrounds */
+  --iia-urban-pink: #E90055;
+  --iia-urban-pink-alt: #FF1E71;  /* For dark backgrounds */
+  --iia-callout-blue: #303392;  /* Not listed in the style guide colors, but used in samples */
+  --iia-gradient: linear-gradient(90deg,#E90055 0%, #1A1E4C 50%, #0E0E30 100%);
+
+  --instructions-bg: var(--iia-fog-grey);
+  --instructions-fg: var(--iia-dark-blue);
+
+  --content-bg: var(--iia-dark-blue);
+  --content-fg: white;
+  --content-line: var(--iia-fog-grey);
+  --content-link: var(--iia-electric-purple-alt);
+  --content-link-hover: var(--iia-urban-pink-alt);
+
+  --attention-bg: var(--iia-callout-blue);
+  --attention-fg: white;
+
+  --selection-bg: var(--iia-electric-purple-alt);
+  --selection-fg: white;
+
+  --map-bg: var(--iia-dark-blue);
+
+  --full-navbar-limit: 1280px;
+  --large-screen-limit: 1024px;
+  --medium-screen-limit: 768px;
+  --landscape-limit: 480px;
+
+  --banner-height: 65px;
+  --pre-banner-height: 60px;
+
+  --header-font: 'Montserrat', sans-serif;
+  --body-font: 'Montserrat', sans-serif;
+}
+
+.inline-scribble {
+  display: inline-block;
+  height: 0.75em;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--charles-blue);
+  background-color: var(--iia-fog-grey);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--header-font);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#content h4 {
+  font-weight: 600;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5em;
+}
+
+a, a:active, a:visited {
+  color: var(--content-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--content-link-hover);
+}
+
+.scribble-text {
+  font-family: "Covered By Your Grace", cursive;
+  font-weight: 400;
+  /* font-style: normal; */
+  font-size: 1.1em;
+}
+
+.scribble-text-pink {
+  color: var(--iia-urban-pink);
+}
+
+.scribble-underline {
+  border-width: 10px;
+  border-image-source: url(/static/img/iia/Scribble_Wavey_02_Pink.png);
+  border-image-slice: 0 60 84 75;
+  border-image-width: 0.5rem;
+  border-image-repeat: round;
+}
+
+.bigger-text {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.iia-content-container {
+  background-image: url(images/iia-background-repeat.png);
+  background-repeat: repeat;
+  background-size: 100% auto;
+  background-position: center top;
+
+  margin: -1em;
+  margin-bottom: -2rem;
+  padding: 1em;
+}
+
+#content .iia-content-container::after {
+  content: '';
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1.25;
+  background-image: url(images/iia-background-vertical.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center bottom;
+  margin: -1em;
+  margin-top: -10rem;
+  padding: 1em;
+}
+
+#content article {
+  padding-bottom: 0;
+}
+
+.place-items {
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+  position: relative;
+}
+
+#content,
+a.close-btn {
+  background-color: var(--content-bg);
+  color: var(--content-fg);
+}
+
+#map {
+  background-color: var(--map-bg);
+}
+
+.leaflet-light-pane {
+  display: block;
+}
+
+.leaflet-dark-pane {
+  display: none;
+}
+
+#centerpoint.newpin .x {
+  background-image: url(images/marker-x-light.png);
+}
+
+#add-place-btn-container {
+  background-color: var(--charles-blue);
+}
+
+.btn, .btn:visited, .btn:link {
+  padding: 1.275em 1.5em;
+  background-color: var(--selection-bg);
+  font-family: var(--header-font);
+  font-size: 0.77778rem;
+  color: var(--selection-fg);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  transition: background-color 0.1s;
+}
+
+.btn-primary, .btn-primary:visited, .btn-primary:link {
+  background-color: var(--supporting-red-1);
+}
+
+.btn:hover {
+  background-color: var(--freedom-trail-red);
+}
+
+.btn-small:visited, .btn-small:link {
+  padding: 0.5em 0.75em;
+}
+
+@media only screen and (width >= 60em) {
+  #content h4 {
+    max-width: 28rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  #add-place {
+    font-size: 1.25rem;
+  }
+
+  .content-visible #add-place {
+    font-size: 0.77778rem;
+  }
+}
+
+.important-update,
+.page .important-update {
+  padding: 0.5rem calc(0.5rem - 2px);
+  margin: 0.5rem -0.5rem;
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
+  font-weight: bold;
+}
+
+/* .btn-primary, .btn-primary:visited, .btn-primary:link {
+  font-size: 1rem;
+} */
+
+/* =Header
+-------------------------------------------------------------- */
+.boston-small-screen-lead-in {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--pre-banner-height);
+  background-color: var(--charles-blue);
+  color: white;
+  font-family: var(--header-font);
+  font-size: 0.9rem;
+  line-height: 0.7rem;
+  text-align: center;
+}
+
+.boston-small-screen-lead-in .boston-logo {
+  margin-top: 0.5rem;
+  height: 1.6rem;
+}
+
+#site-title .pb-label {
+  display: none;
+}
+
+@media only screen and (width >= 480px) {
+  .boston-small-screen-lead-in {
+    display: none;
+  }
+
+  #site-title .pb-label {
+    display: revert;
+  }
+}
+
+#site-header {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  padding-top: calc(var(--pre-banner-height) + 0.5rem);
+  height: calc(var(--pre-banner-height) + var(--banner-height));
+  background-color: white;
+}
+
+@media only screen and (width >= 480px) {
+  #site-header {
+    padding-top: 0.5rem;
+    height: var(--banner-height);
+  }
+}
+
+#site-title {
+  float: none;
+  margin-right: 9rem;
+  font-family: var(--header-font);
+  color: var(--charles-blue);
+  text-shadow: none;
+}
+
+.menu .btn-block {
+  padding: 1.275em 1.5em;
+  background-color: var(--supporting-blue-5);
+  color: white;
+}
+
+.access {
+  float: none;
+  margin: 0.5rem -0.5rem;
+  width: calc(100% + 1rem);
+  background-color: var(--charles-blue);
+}
+
+.access .btn {
+  text-align: left;
+  padding: 1.75rem 1.25rem;
+  border: none;
+  box-shadow: none;
+}
+
+.access li {
+  padding-bottom: 2px;
+}
+
+.access li li {
+  padding-bottom: 0;
+  padding-top: 2px;
+  padding-left: 1.5rem;
+}
+
+.has-pages #site-title {
+  padding-left: var(--banner-height);
+}
+
+#site-title a {
+  display: flex;
+}
+
+#site-title a:link, #site-title a:visited {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--charles-blue);
+}
+
+#site-title .boston-icon {
+  /* intrinsic size of the boston icon is 54px x 84px */
+  --aspect-ratio: calc(54 / 84);
+  --icon-height: 2rem;
+
+  display: block;
+  height: var(--icon-height);
+  margin: -0.5rem 0.5rem -0.5rem -0.5rem;
+  padding:
+    calc(var(--banner-height) / 2 - var(--icon-height) / 2)
+    calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
+  background-color: var(--charles-blue);
+}
+
+#site-title .pb-icon {
+  /* intrinsic size of the boston icon is 182px x 174px */
+  --aspect-ratio: calc(182 / 174);
+  --icon-height: 2.5rem;
+
+  display: none;
+  height: var(--icon-height);
+  margin: -0.5rem 0 -0.5rem -0.5rem;
+  padding:
+    calc(var(--banner-height) / 2 - var(--icon-height) / 2)
+    calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
+  background-color: white;
+}
+
+#site-title .boston-logo {
+  display: none;
+}
+
+#nav-btn {
+  left: 0;
+  top: var(--pre-banner-height);
+  width: var(--banner-height);
+  height: var(--banner-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--supporting-red-1);
+
+  font-size: 3rem;
+  color: white;
+  text-shadow: none;
+}
+
+@media only screen and (width >= 480px) {
+  #nav-btn {
+    top: 0;
+  }
+}
+
+.menu-item-filter-type > .btn::after {
+  content: '…';
+}
+
+.menu-item-filter-type li .btn::before {
+  content: '›\a0\a0\a0';  /* U+00a0 is non-breaking space */
+}
+
+.user-menu {
+  display: none;
+}
+
+.navbar-suggest-btn, .navbar-suggest-btn:visited, .navbar-suggest-btn:link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media only screen and (width <= 1280px) {
+  .navbar-suggest-btn, .navbar-suggest-btn:visited, .navbar-suggest-btn:link {
+    display: none;
+  }
+}
+
+/* =Form
+-------------------------------------------------------------- */
+
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+select,
+body .select2-container,
+textarea {
+  display: block;
+  border-width: 0.25em;
+  border-radius: 0;
+  border-color: var(--content-line);
+  color: var(--iia-dark-blue);
+  font-family: var(--body-font);
+  font-weight: normal;
+  text-transform: none;
+}
+
+.radio-label-text,
+.checkbox-label-text {
+  display: block;
+  border-width: 0.25em;
+  border-radius: 0;
+  border-color: var(--content-line);
+  color: var(--content-fg);
+  font-family: var(--body-font);
+  font-weight: normal;
+  text-transform: none;
+}
+
+body .select2-container--default .select2-selection--single {
+  padding: 0.5em;
+  border-width: 0.25em;
+  border-radius: 0;
+  border-color: var(--charles-blue);
+  color: var(--charles-blue);
+  font-family: var(--body-font);
+  font-weight: normal;
+  text-transform: none;
+}
+
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid #007fbf;
+}
+
+label {
+  font-family: var(--header-font);
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--content-fg);
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.radio-label-text, .checkbox-label-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 8rem;
+  box-sizing: border-box;
+  padding-top: 50%;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+:focus + .radio-label-text,
+.radio-label-text:hover,
+:focus + .checkbox-label-text,
+.checkbox-label-text:hover {
+  background-color: var(--supporting-gray-4);
+  color: var(--charles-blue);
+  border-color: var(--charles-blue);
+  cursor: pointer;
+}
+
+:checked + .radio-label-text,
+.radio-label-text.checked,
+:checked + .checkbox-label-text,
+.checkbox-label-text.checked {
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
+  border-color: rgba(0 0 0 / 0.05);
+}
+
+.location-receiver {
+  font-weight: normal;
+}
+
+.help-text {
+  font-style: italic;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.hidden-field {
+  display: none;
+}
+
+.personal-info-title,
+.demographic-info-title,
+.contact-info-title {
+  margin-top: 4rem;
+}
+
+.place-private_submitter_race_ethnicity-field label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}  
+
+.place-private_submitter_race_ethnicity-field input {
+  opacity: 1;
+  width: auto;
+  height: auto;
+  position: static;
+}
+
+.place-private_submitter_race_ethnicity-field .label-text {
+  width: initial;
+  height: initial;
+  display: block;
+  padding: 0.5rem 0;
+  border: none;
+  font-size: 1rem;
+}
+
+.place-private_submitter_race_ethnicity-field input:checked + .label-text {
+  background: none;
+  color: var(--content-fg);
+}
+
+.place-private_submitter_other_race_ethnicity-field {
+  margin-top: -1rem;
+}
+
+.place-private_submitter_other_race_ethnicity-field label {
+  font-weight: normal;
+  font-style: italic;
+  text-transform: none;
+}
+
+/* City-wide toggle buttons */
+[name="city_wide"] + .label-text {
+  background-size: 4rem;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 16.67%;
+}
+
+[name="city_wide"][value="false"] + .label-text {
+  background-image: url("/static/img/specific-location.svg");
+}
+[name="city_wide"][value="true"] + .label-text {
+  background-image: url("/static/img/city-hall.svg");
+}
+
+/* Location type buttons */
+[name="location_type"] + .label-text {
+  background-size: 3.5rem;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 10%;
+}
+
+[name="location_type"][value="arts_culture"] + .label-text {
+  background-image: url("/static/img/categories/arts_culture-light-square.svg");
+}
+[name="location_type"][value="community"] + .label-text {
+  background-image: url("/static/img/categories/community-light-square.svg");
+}
+[name="location_type"][value="economy_workers"] + .label-text {
+  background-image: url("/static/img/categories/economy_workers-light-square.svg");
+}
+[name="location_type"][value="education_youth"] + .label-text {
+  background-image: url("/static/img/categories/education_youth-light-square.svg");
+}
+[name="location_type"][value="sustainability"] + .label-text {
+  background-image: url("/static/img/categories/sustainability-light-square.svg");
+}
+[name="location_type"][value="facilities"] + .label-text {
+  background-image: url("/static/img/categories/facilities-light-square.svg");
+}
+[name="location_type"][value="human_services"] + .label-text {
+  background-image: url("/static/img/categories/human_services-light-square.svg");
+}
+[name="location_type"][value="public_safety"] + .label-text {
+  background-image: url("/static/img/categories/public_safety-light-square.svg");
+}
+[name="location_type"][value="streets_sidewalks"] + .label-text {
+  background-image: url("/static/img/categories/streets_sidewalks-light-square.svg");
+}
+[name="location_type"][value="other"] + .label-text {
+  background-image: url("/static/img/categories/other-light-square.svg");
+}
+
+[name="location_type"] + .label-text:hover {
+  background-color: var(--supporting-gray-4);
+  border-color: var(--charles-blue);
+  color: var(--charles-blue);
+}
+
+[name="location_type"][value="arts_culture"] + .label-text:hover {
+  background-image: url("/static/img/categories/arts_culture-dark-square.svg");
+  border-color: var(--icon-color-01);
+}
+[name="location_type"][value="community"] + .label-text:hover {
+  background-image: url("/static/img/categories/community-dark-square.svg");
+  border-color: var(--icon-color-02);
+}
+[name="location_type"][value="economy_workers"] + .label-text:hover {
+  background-image: url("/static/img/categories/economy_workers-dark-square.svg");
+  border-color: var(--icon-color-03);
+}
+[name="location_type"][value="education_youth"] + .label-text:hover {
+  background-image: url("/static/img/categories/education_youth-dark-square.svg");
+  border-color: var(--icon-color-04);
+}
+[name="location_type"][value="sustainability"] + .label-text:hover {
+  background-image: url("/static/img/categories/sustainability-dark-square.svg");
+  border-color: var(--icon-color-05);
+}
+[name="location_type"][value="facilities"] + .label-text:hover {
+  background-image: url("/static/img/categories/facilities-dark-square.svg");
+  border-color: var(--icon-color-06);
+}
+[name="location_type"][value="human_services"] + .label-text:hover {
+  background-image: url("/static/img/categories/human_services-dark-square.svg");
+  border-color: var(--icon-color-07);
+}
+[name="location_type"][value="public_safety"] + .label-text:hover {
+  background-image: url("/static/img/categories/public_safety-dark-square.svg");
+  border-color: var(--icon-color-08);
+}
+[name="location_type"][value="streets_sidewalks"] + .label-text:hover {
+  background-image: url("/static/img/categories/streets_sidewalks-dark-square.svg");
+  border-color: var(--icon-color-09);
+}
+[name="location_type"][value="other"] + .label-text:hover {
+  background-image: url("/static/img/categories/other-dark-square.svg");
+  border-color: var(--icon-color-11);
+}
+
+[name="location_type"][value="arts_culture"]:checked + .label-text {
+  background-color: var(--icon-color-01);
+  background-image: url("/static/img/categories/arts_culture-light-square.svg");
+  border-color: var(--icon-color-01);
+  color: white;
+}
+[name="location_type"][value="community"]:checked + .label-text {
+  background-color: var(--icon-color-02);
+  background-image: url("/static/img/categories/community-dark-square.svg");
+  border-color: var(--icon-color-02);
+  color: var(--charles-blue);
+}
+[name="location_type"][value="economy_workers"]:checked + .label-text {
+  background-color: var(--icon-color-03);
+  background-image: url("/static/img/categories/economy_workers-dark-square.svg");
+  border-color: var(--icon-color-03);
+  color: var(--charles-blue);
+}
+[name="location_type"][value="education_youth"]:checked + .label-text {
+  background-color: var(--icon-color-04);
+  background-image: url("/static/img/categories/education_youth-dark-square.svg");
+  border-color: var(--icon-color-04);
+  color: var(--charles-blue);
+}
+[name="location_type"][value="sustainability"]:checked + .label-text {
+  background-color: var(--icon-color-05);
+  background-image: url("/static/img/categories/sustainability-dark-square.svg");
+  border-color: var(--icon-color-05);
+  color: var(--charles-blue);
+}
+[name="location_type"][value="facilities"]:checked + .label-text {
+  background-color: var(--icon-color-06);
+  background-image: url("/static/img/categories/facilities-dark-square.svg");
+  border-color: var(--icon-color-06);
+  color: var(--charles-blue);
+}
+[name="location_type"][value="human_services"]:checked + .label-text {
+  background-color: var(--icon-color-07);
+  background-image: url("/static/img/categories/human_services-dark-square.svg");
+  border-color: var(--icon-color-07);
+  color: var(--charles-blue);
+}
+[name="location_type"][value="public_safety"]:checked + .label-text {
+  background-color: var(--icon-color-08);
+  background-image: url("/static/img/categories/public_safety-light-square.svg");
+  border-color: var(--icon-color-08);
+  color: white;
+}
+[name="location_type"][value="streets_sidewalks"]:checked + .label-text {
+  background-color: var(--icon-color-09);
+  background-image: url("/static/img/categories/streets_sidewalks-light-square.svg");
+  border-color: var(--icon-color-09);
+  color: white;
+}
+[name="location_type"][value="other"]:checked + .label-text {
+  background-color: var(--icon-color-11);
+  background-image: url("/static/img/categories/other-light-square.svg");
+  border-color: var(--icon-color-11);
+  color: white;
+}
+
+.fullname-field-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.place-submission_event_type-field .radio-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+[name="submission_event_type"] + .radio-label-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.place-private_submitter_name_display_style-field .radio-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+[name="private_submitter_name_display_style"] + .radio-label-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.submitter_name-display-sample {
+  margin-top: 0.5rem;
+}
+
+.submitter_name-display-sample .sample {
+  background-color: var(--supporting-gray-4);
+  padding: 0.5rem;
+  font-style: italic;
+}
+
+.submitter_name-display-sample .instructions {
+  background-color: var(--instructions-bg);
+  color: var(--instructions-fg);
+  padding: 0.5rem;
+  font-style: italic;
+}
+
+.drag-marker-instructions {
+  background-color: var(--instructions-bg);
+  color: var(--instructions-fg);
+}
+
+.awaiting-location {
+  padding: 0.5rem;
+  background-color: var(--instructions-bg);
+  color: var(--instructions-fg);
+  font-style: italic;
+}
+
+.field {
+  position: relative;
+}
+
+.tooltip-icon {
+  cursor: pointer;
+  border-radius: 50%;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
+  line-height: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.tooltip-content {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid var(--content-line);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
+}
+
+/*~~~~~~~~~~~~~~~~~~~~
+
+  NOTE: The following treats all small screens as if there is no hover
+  capability. This is because some mobile browsers (e.g. Brave as of
+  2024-06-10) report that they have hover capability.
+
+*/
+.hidden-if-no-hover {
+  display: none;
+}
+
+.place-location_type-option-description {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
+}
+
+@media (hover: hover) and (width >= 1024px) {
+  .hidden-if-no-hover {
+    display: revert;
+  }
+
+  .place-location_type-option-description-hover-wrapper {
+    position: relative;
+  }
+
+  .tooltip-content {
+    position: absolute;
+    display: none;
+    box-sizing: border-box;
+    left: 0;
+    width: 100%;
+  }
+
+  .tooltip-icon:hover + .tooltip-content {
+    display: block;
+  }
+}
+
+@media (hover: none) {
+  .hidden-if-no-hover {
+    display: none;
+  }
+}
+/*~~~~~~~~~~~~~~~~~~~~*/
+
+.place-location_type-option-description-hover-wrapper {
+  position: relative;
+  z-index: 10000;
+}
+
+
+.place-location_type-option-description .instructions {
+  background-color: var(--instructions-bg);
+  color: var(--instructions-fg);
+  padding: 0.5rem;
+  font-style: italic;
+}
+
+.category-description {
+  background-color: var(--attention-bg);
+  color: var(--attention-fg);
+  padding: 0.5rem;
+}
+
+.category-description-label {
+  font-weight: bold;
+}
+
+.category-description-label::after {
+  content: ':';
+}
+
+.category-description-hovered {
+  position: absolute;
+  width: 100%;
+  margin: 0.5rem 0;
+  box-sizing: border-box;
+  border: 1px solid var(--charles-blue);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.if-hoverable { display: none; }
+
+@media (hover: hover) and (width >= 1024px) {
+  .if-hoverable { display: block; }
+  .if-not-hoverable { display: none; }
+}
+
+.if-hoverable.hidden,
+.if-not-hoverable.hidden {
+  display: none;
+}
+
+.place-submission-confirmation {
+  background-color: var(--instructions-bg);
+  color: var(--instructions-fg);
+  text-align: left;
+}
+
+.place-submission-confirmation h3 {
+  font-size: 1em;
+}
+
+/* =Place detail
+-------------------------------------------------------------- */
+
+.place-label {
+  font-family: var(--header-font);
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.point-submitter .avatar {
+  height: auto;
+}
+
+.place-submission-confirmation a {
+	color: var(--instructions-fg);
+	text-decoration: underline;
+}
+
+/* =Ticker
+-------------------------------------------------------------- */
+
+#ticker {
+  background-color: var(--iia-dark-blue);
+}
+
+.recent-points a, .recent-points a:active, .recent-points a:visited {
+  color: white;
+  padding-left: 4rem;
+  border-color: transparent;
+  transition: background-color 0.1s, border-color 0.1s;
+}
+
+.recent-points a:hover {
+  color: var(--selection-fg);
+  background: var(--selection-bg);
+  border-color: var(--selection-bg);
+}
+
+.recent-points .avatar {
+  width: 3rem;
+  height: 3rem;
+  margin-left: -3.5rem;
+}
+
+.place-title {
+  font-weight: bold;
+}
+
+.activity-filters {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.activity-filters .display-choice {
+  position: relative;
+  width: 100%;
+  min-height: 2rem;
+}
+
+.activity-filters .display-choice input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.activity-filters .display-choice label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: var(--charles-blue);
+  font-weight: normal;
+  text-align: center;
+  border: 2px solid transparent;
+  /* border-bottom-color: var(--optimistic-blue) */
+}
+
+.activity-filters .display-choice label:hover {
+  cursor: pointer;
+  color: var(--freedom-trail-red);
+  border-style: dashed;
+  border-color: var(--freedom-trail-red);
+}
+
+.activity-filters .display-choice input[type="radio"]:checked + label {
+  background-color: var(--charles-blue);
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  border-color: transparent;
+  /* border-top-color: var(--optimistic-blue);
+  border-right-color: var(--optimistic-blue);
+  border-left-color: var(--optimistic-blue); */
+  border-style: solid;
+  cursor: default;
+}
+
+/* =Colophon
+-------------------------------------------------------------- */
+
+#colophon {
+  background-color: var(--iia-dark-blue);
+}
+
+#colophon .poepublic-logo {
+  font-family: "Helvetica Neue", Helvetica, sans-serif !important;
+}
+
+/* =Language picker
+-------------------------------------------------------------- */
+
+@keyframes rotateWord {
+  0% { opacity: 0; }
+  1% { opacity: 0; transform: translateY(-30px); }
+  4.17% { opacity: 1; transform: translateY(0px); }  /* This percentage of the total time should come out to about 1 second */
+  12.5% { opacity: 1; transform: translateY(0px); }  /* This percentage of the total time should come out to about 3 seconds */
+  15.67% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 0; }
+}
+
+.btn-language__carousel {
+  position: relative;
+  display: flex;
+  min-width: 7.5rem;
+  align-items: center;
+}
+
+.btn-language__carousel span {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: max-content;
+
+  animation: rotateWord 24s linear infinite 0s;  /* This is 3 times the number of languages */
+}
+
+/* There should be times from 3 up to (N-1) * 3 seconds, where N is the number of languages */
+.btn-language__carousel span:nth-child(2) { animation-delay: 3s;}
+.btn-language__carousel span:nth-child(3) { animation-delay: 6s;}
+.btn-language__carousel span:nth-child(4) { animation-delay: 9s;}
+.btn-language__carousel span:nth-child(5) { animation-delay: 12s;}
+.btn-language__carousel span:nth-child(6) { animation-delay: 15s;}
+.btn-language__carousel span:nth-child(7) { animation-delay: 18s;}
+.btn-language__carousel span:nth-child(8) { animation-delay: 21s;}
+
+#show-language-picker-btn {
+  position: absolute;
+  right: 0.25rem;
+  top: var(--pre-banner-height);
+  height: var(--banner-height);
+  margin: 0;
+  padding: 0;
+  padding-right: 1.75rem;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Translate_logo.svg');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 1.5rem;
+  background-position: right center;
+  color: var(--charles-blue);
+  font-weight: normal;
+}
+
+@media only screen and (width >= 480px) {
+  #show-language-picker-btn {
+    top: 0;
+  }
+}
+
+#show-language-picker-btn:hover {
+  color: var(--supporting-red-1);
+}
+
+@media only screen and (width >= 48rem) {  /* 768px */
+  #show-language-picker-btn {
+    padding: 1.275em 1.75rem 1.275em 1.5em;
+  }
+}
+
+@media only screen and (width >= 60rem) {  /* 960px */
+  #content {
+    margin: 1rem 1rem 1rem 0;
+    border-radius: 0.25rem;
+  }
+
+  .content-visible #centerpoint.newpin {
+    left: calc(50% - var(--content-left) / 2 + 1rem);
+  }
+}
+
+@media only screen and (width >= 80rem) {  /* 1280px */
+  #show-language-picker-btn {
+    position: static;
+    margin-left: 1.25rem;
+    margin-right: 0.25rem;
+    padding-left: 1.75rem;
+    padding-right: 1.5em;
+    height: auto;
+    background-color: transparent;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Translate_logo.svg');
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    color: var(--charles-blue);
+    font-weight: normal;
+  }
+
+  .btn-language__carousel span {
+    left: 0;
+    right: auto;
+  }
+}
+
+/* =List view
+-------------------------------------------------------------- */
+
+#list-container {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.list-toggle-btn, .list-toggle-btn:visited, .list-toggle-btn:link {
+  margin-left: 1.25rem;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--charles-blue);
+  font-weight: normal;
+}
+
+.show-the-map {
+  padding: 0;
+  padding-left: 1.25rem;
+  background-image: url("/static/css/images/show-map-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  white-space: nowrap;
+}
+
+.show-the-list {
+  padding: 0;
+  padding-left: 1.25rem;
+  background-image: url("/static/css/images/show-list-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  white-space: nowrap;
+}
+
+.place-list-header {
+  background-color: var(--charles-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 -1rem;
+  padding: 1rem;
+}
+
+.place-list .point-submitter .avatar {
+  width: 5rem;
+  height: auto;
+  margin-left: -5.5rem;
+}
+
+.place-list .place-submission-details {
+  padding-left: 5rem;
+  font-style: italic;
+}
+
+.list-search-form {
+  display: flex;
+}
+
+.list-search-form input, .list-sort-menu {
+  float: none;
+}
+
+.list-filter-menu {
+  color: #eee;
+  text-transform: uppercase;
+}
+
+.neighborhood-filter {
+  display: inline;
+  width: auto;
+  padding: 0;
+  border: none;
+  background-color: var(--charles-blue);
+  text-transform: inherit;
+}
+
+.neighborhood-filter option {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.list-filter-menu a,
+.list-filter-menu select {
+  font-size: 0.75em;
+  text-decoration: none;
+}
+
+.list-sort-menu,
+.list-filter-menu {
+  padding: 0;
+}
+
+.list-sort-menu a,
+.list-filter-menu a,
+.list-sort-menu select,
+.list-filter-menu select {
+  color: white;
+  font-weight: normal;
+  font-family: var(--header-font);
+}
+
+.list-sort-menu a.is-selected,
+.list-filter-menu a.is-selected,
+.list-sort-menu select.is-selected,
+.list-filter-menu select.is-selected {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.list-sort-menu a:hover,
+.list-filter-menu a:hover,
+.list-sort-menu select:hover,
+.list-filter-menu select:hover {
+  color: var(--supporting-red-1);
+  cursor: pointer;
+}
+
+.list-sort-menu select:focus,
+.list-filter-menu select:focus {
+  color: white;
+}
+
+/* =Map
+-------------------------------------------------------------- */
+
+.leaflet-control-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+@media screen and (width >= 60rem) {  /* 960px */
+  .content-visible .leaflet-control-container {
+    /* the width of the map is the width of the whole page minus the
+     * width of the ticker, but the content position is calculated as a
+     * percentage of the width of the page, so we need to add the width
+     * of the ticker to the map width to get the content position. */
+    width: calc((100% + var(--ticker-width)) * var(--content-left-num));
+  }
+}
+
+/* =Map Clustering
+-------------------------------------------------------------- */
+
+body .marker-cluster {
+  background-color: rgb(from var(--optimistic-blue) r g b / 0.5);
+  color: white;
+  /* border-radius: 50%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer; */
+}
+
+body .marker-cluster div {
+  background-color: rgb(from var(--optimistic-blue) r g b / 0.5);
+}
+
+.leaflet-container .leaflet-focused-pane img {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* =Project Info Pages
+-------------------------------------------------------------- */
+
+.campaign-calendar-list dt {
+  font-style: italic;
+  float: left;
+  margin-right: 0.25rem;
+}
+
+.campaign-calendar-list dt::after {
+  content: ':';
+}
+
+.page h3 {
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+}
+
+.campaign-calendar-list dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+}
+
+.campaign-calendar-list dt.current-step {
+  padding-top: 0.25rem;
+  text-decoration: underline;
+}
+
+.campaign-calendar-list dd.current-step {
+  padding-top: 0.25rem;
+  padding-bottom: .25rem;
+  background-color: var(--instructions-bg);
+  color: var(--instructions-fg);
+}
+
+.page dl, .page ol, .page ul, .page li, .page p {
+  padding-bottom: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.page .btn {
+  padding-bottom: 1.275em;
+}
+
+.howto-video-desktop {
+  display: none;
+}
+
+.howto-video-mobile {
+  display: block;
+}
+
+.page-about p {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (width > 768px) {
+  .page-about#content .iia-content-container {
+    padding: 2rem;
+  }
+
+  #content.page-about .iia-content-container::after {
+    margin: -2rem;
+    padding: 2rem;
+    margin-top: -6rem;
+  }
+}
+
+@media only screen and (width >= 1024px) {
+  .howto-video-desktop {
+    display: block;
+  }
+
+  .howto-video-mobile {
+    display: none;
+  }
+}
+
+/* =Pre-launch
+-------------------------------------------------------------- */
+
+.prelaunch {
+  color: white;
+}
+
+.prelaunch main {
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto;
+  padding: 54px 36px 54px 36px;
+}
+
+.prelaunch main h2 {
+  font-size: 30px;
+  color: white;
+}
+
+.prelaunch main p {
+  font-size: 18px;
+  font-style: italic;
+}
+
+@media screen and (width > 768px) {
+  .prelaunch main {
+    width: 768px;
+    margin: auto;
+    padding: 90px 60px 90px 60px;
+  }
+
+  .prelaunch main h2 {
+    font-size: 75px;
+  }
+
+  .prelaunch main p {
+    font-size: 30px;
+  }
+
+  .prelaunch .menu {
+    min-width: 0;
+  }
+}
+
+/* =Media Queries
+-------------------------------------------------------------- */
+
+@media only screen and (width >= 768px) {
+  :root {
+    --ticker-width: 18em;
+    --content-left: 40%;
+    --content-left-num: 0.4;
+
+    --shadow-offset: 0.325rem;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --shadow-blur: 0.325rem;
+    --shadow-spread: 0;
+  }
+
+  .activity-enabled {
+    --content-left: 30%;
+    --content-left-num: 0.3;
+  }
+
+  #site-title .pb-icon {
+    display: block;
+  }
+
+  .menu {
+    border: 2px solid var(--charles-blue);
+    min-width: 20rem;
+  }
+
+  .menu-item {
+    border-bottom: 2px solid var(--charles-blue);
+  }
+
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+
+  .menu .btn {
+    border-radius: 0;
+  }
+
+  /* The remainder of the rules in this media query are overriding the 60rem
+   * min-width media query in the default stylesheet (at a base font size of
+   * 16px, 60rem is 960px, and so falls between the 768 and 1024 breakpoints).
+   */
+  .access {
+    font-size: 0.875em;
+    display: none;
+    position: static;
+  }
+
+  .access li {
+    float: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .access li ul {
+    display: block;
+    padding-top: 2px;
+  }
+
+  .access li:hover > ul, .access li:hover > form > ul {
+    display: block;
+    background: var(--charles-blue);
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    position: static;
+  }
+
+  .access li li {
+    padding-top: 2px;
+  }
+
+  .access li li .btn {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .access li li .btn:hover {
+    background-color: var(--freedom-trail-red);
+  }
+}
+
+@media only screen and (width >= 960px) {
+  .activity-enabled.content-visible #map-container,
+  .activity-enabled #map-container,
+  .content-visible #map-container,
+  #map-container {
+    width: calc(100% - var(--ticker-width));
+  }
+
+  #ticker {
+    box-shadow:
+      calc(var(--shadow-offset) * -1) 0
+      var(--shadow-blur)
+      var(--shadow-spread)
+      var(--shadow-color);
+  }
+
+  #content,
+  a.close-btn {
+    box-shadow:
+      calc(var(--shadow-offset) * -1) var(--shadow-offset)
+      var(--shadow-blur)
+      var(--shadow-spread)
+      var(--shadow-color);
+  }
+
+  ul.recent-points {
+    /* border-left: 2px solid var(--optimistic-blue); */
+  }
+}
+
+@media only screen and (width >= 1280px) {
+  :root {
+    --content-left: 60%;
+    --content-left-num: 0.6;
+  }
+
+  .activity-enabled {
+    --content-left: 45%;
+    --content-left-num: 0.45;
+  }
+
+  #site-header {
+    display: flex;
+    justify-content: left;
+  }
+
+  #site-header::before {
+    content: none;
+  }
+
+  #site-header::after {
+    content: none;
+  }
+
+  .has-pages #site-title{
+    height: 100%;
+    padding-left: 0;
+    flex-grow: 1;
+  }
+
+  #nav-btn {
+    display: none;
+  }
+
+  #site-title a:link, #site-title a:visited {
+    height: 100%;
+    width: fit-content;
+    display: grid;
+    grid-template-areas:
+      "pb-icon boston-logo"
+      "pb-icon pb-label";
+    grid-template-columns: max-content max-content;
+    font-size: 1.2rem;
+  }
+
+  #site-title .boston-icon {
+    display: none;
+  }
+
+  #site-title .pb-icon {
+    --icon-height: 3rem;
+    grid-area: pb-icon;
+  }
+
+  #site-title .boston-logo {
+    grid-area: boston-logo;
+    display: block;
+    height: 1.2rem;
+  }
+
+  .access {
+    display: block;
+    top: 0;
+    margin: 0;
+    background: none;
+    height: 100%;
+  }
+
+  .access .menu {
+    display: flex;
+    height: 100%;
+    border: none;
+    align-items: center;
+  }
+
+  .access .menu-item {
+    border: none;
+  }
+
+  .access li ul {
+    display: none;
+  }
+
+  .access .menu > li {
+    float: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .access .menu > li > .btn {
+    padding: 0;
+    margin-left: 1.25rem;
+    background: none;
+    color: var(--charles-blue);
+    font-weight: normal;
+  }
+
+  .access .menu > li > .btn:hover {
+    color: var(--supporting-red-1);
+  }
+
+  .access li:hover > ul, .access li:hover > form > ul {
+    position: absolute;
+    left: 1.25rem;
+    border: none;
+    box-shadow: none;
+    background-color: var(--charles-blue);
+    top: 215%;
+  }
+
+  .access li:hover > #current-filter-type {
+    /* Ensure a minimum size for the current filter type so that the
+     * filter menu stays open for the mouse.
+     */
+    min-height: 2rem;
+    min-width: 100%;
+  }
+
+  .list-toggle-btn:hover {
+    color: var(--supporting-red-1);
+  }
+
+  .menu-item-filter-type ul {
+    width: 200%;
+    transform: translateX(-25%);
+  }
+
+  .menu-item-filter-type .btn-block {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  #current-filter-type {
+    position: absolute;
+    width: 250%;
+    transform: translateX(-30%);
+    left: 0.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--supporting-blue-3);
+  }
+
+  .access li li {
+    padding: 0 2px 2px 2px;
+  }
+
+  .access li li:first-child {
+    padding-top: 2px;
+  }
+
+  .access li li .btn {
+    margin: 0;
+  }
+
+  #map-container, #content, #ticker, #list-container {
+    top: calc(var(--banner-height) + 2px);
+  }
+
+  .place-list-header {
+    max-width: none;
+  }
+
+  .list-toggle-nav {
+    float: none;
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin: 0;
+    position: static;
+  }
+}
+
+@media only screen and (width < 1024px) {
+  body .leaflet-control-geocoder-form input {
+    width: 144px;
+  }
+}
+
+@media only screen and (1024px <= width < 1280px) {
+  .content-visible .leaflet-control-geocoder-form input {
+    width: 120px;
+  }
+}
+
+@media only screen and (width >= 1300px) {
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --instructions-bg: var(--iia-urban-pink);
+    --instructions-fg: white;
+
+    --content-bg: var(--iia-fog-grey);
+    --content-fg: var(--iia-dark-blue);
+    --content-line: var(--iia-indigo-blue);
+    --content-link: var(--iia-electric-purple);
+    --content-link-hover: var(--iia-urban-pink);
+
+    --selection-bg: var(--iia-electric-purple);
+
+    --map-bg: var(--iia-fog-grey);
+  }
+
+  [name="location_type"][value="arts_culture"] + .label-text {
+    background-image: url("/static/img/categories/arts_culture-dark-square.svg");
+  }
+  [name="location_type"][value="community"] + .label-text {
+    background-image: url("/static/img/categories/community-dark-square.svg");
+  }
+  [name="location_type"][value="economy_workers"] + .label-text {
+    background-image: url("/static/img/categories/economy_workers-dark-square.svg");
+  }
+  [name="location_type"][value="education_youth"] + .label-text {
+    background-image: url("/static/img/categories/education_youth-dark-square.svg");
+  }
+  [name="location_type"][value="sustainability"] + .label-text {
+    background-image: url("/static/img/categories/sustainability-dark-square.svg");
+  }
+  [name="location_type"][value="facilities"] + .label-text {
+    background-image: url("/static/img/categories/facilities-dark-square.svg");
+  }
+  [name="location_type"][value="human_services"] + .label-text {
+    background-image: url("/static/img/categories/human_services-dark-square.svg");
+  }
+  [name="location_type"][value="public_safety"] + .label-text {
+    background-image: url("/static/img/categories/public_safety-dark-square.svg");
+  }
+  [name="location_type"][value="streets_sidewalks"] + .label-text {
+    background-image: url("/static/img/categories/streets_sidewalks-dark-square.svg");
+  }
+  [name="location_type"][value="other"] + .label-text {
+    background-image: url("/static/img/categories/other-dark-square.svg");
+  }
+
+  .leaflet-light-pane {
+    display: none;
+  }
+
+  .leaflet-dark-pane {
+    display: block;
+  }
+}
+
+/* =Logos
+-------------------------------------------------------------- */
+#content .logo {
+  width: 6rem;
+}
+
+#content .boston-logo,
+#content .opb-logo {
+  display: none;
+}
+
+#content .light-logos {
+  display: none;
+}
+
+#content .dark-logos {
+  display: flex;
+}
+
+#content .logos {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+@media only screen and (width >= 60rem) {  /* 960px */
+  /* #content .boston-logo,
+  #content .opb-logo {
+    display: initial;
+  }
+
+  #content .logos {
+    margin-top: 0;
+    justify-content: space-between;
+  } */
+
+  #content .logo {
+    width: 8rem;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  #content .light-logos {
+    display: flex;
+  }
+
+  #content .dark-logos {
+    display: none;
+  }
+}

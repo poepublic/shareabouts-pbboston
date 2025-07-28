@@ -80,15 +80,24 @@ var Shareabouts = Shareabouts || {};
       if (options.defaultPlaceTypeName) {
         historyOptions.root = '/' + options.defaultPlaceTypeName + '/';
       }
+      if (options.routePrefix) {
+        historyOptions.root = options.routePrefix + '/';
+      }
 
       Backbone.history.start(historyOptions);
 
       // Load the default page only if there is no page already in the url
       if (this.isMapRoute(Backbone.history.getFragment())) {
+        let startPath = options.config.app.home_path || '';
+
         startPageConfig = S.Util.findPageConfig(options.pagesConfig, {start_page: true});
 
         if (startPageConfig && startPageConfig.slug) {
-          this.navigate('page/' + startPageConfig.slug, {trigger: true});
+          startPath = 'page/' + startPageConfig.slug
+        }
+
+        if (startPath) {
+          this.navigate(startPath, {trigger: true});
         }
       }
 

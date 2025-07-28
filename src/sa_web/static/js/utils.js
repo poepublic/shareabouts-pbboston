@@ -350,6 +350,30 @@ var Shareabouts = Shareabouts || {};
       func.apply(context, args);
     },
 
+    prefixRoute: function(route) {
+      return (S.bootstrapped.routePrefix || '') + route;
+    },
+
+    unprefixRoute: function(route) {
+      var prefix = S.bootstrapped.routePrefix || '';
+      if (route.indexOf(prefix) === 0) {
+        return route.substr(prefix.length);
+      }
+      return route;
+    },
+
+    prefixApiEndpoint: function(route) {
+      return (S.bootstrapped.apiPrefix || '') + route;
+    },
+
+    unprefixApiEndpoint: function(route) {
+      var prefix = S.bootstrapped.apiPrefix || '';
+      if (route.indexOf(prefix) === 0) {
+        return route.substr(prefix.length);
+      }
+      return route;
+    },
+
     // Cookies! Om nom nom
     // Thanks ppk! http://www.quirksmode.org/js/cookies.html
     cookies: {
@@ -482,7 +506,7 @@ var Shareabouts = Shareabouts || {};
         options = options || {};
         options.dataType = 'json';
         options.cache = true;
-        options.url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + lng + ',' + lat + '.json?access_token=' + mapboxToken;
+        options.url = '/mapbox/json/api.mapbox.com/geocoding/v5/mapbox.places/' + lng + ',' + lat + '.json?access_token=' + mapboxToken;
         $.ajax(options);
       },
       getLocation: function(reverseGeocodedData) {
