@@ -19,7 +19,7 @@ app:
   # list_enabled: false
 
   # Optional. Specify a path if you don't want to use a page as the homepage.
-  home_path: place/new
+  # home_path: place/new
 
 # Settings for map and layer configs
 map:
@@ -1003,7 +1003,7 @@ pages:
   - title: _(About)
     slug: about
     name: overview
-    # start_page: true
+    start_page: true
   
   - title: _(Past PB Cycles)
     slug: past-cycles
