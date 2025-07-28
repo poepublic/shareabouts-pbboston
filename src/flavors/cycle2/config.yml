@@ -19,7 +19,7 @@ app:
   # list_enabled: false
 
   # Optional. Specify a path if you don't want to use a page as the homepage.
-  # home_path: place/new
+  home_path: place/new
 
 # Settings for map and layer configs
 map:
@@ -190,7 +190,7 @@ place_types:
           shadowSize: null
           iconAnchor: [32, 32]
   education_youth:
-    label: _(Education, Youth & Families)
+    label: _(Education, Youth, Families, & Older Adults)
     description: _(Project ideas related to education for all ages, as well as proposals that meet the needs of Boston’s youth, senior citizens, and families.)
     color: '#faee41'
     icon: /static/img/categories/education_youth.svg
@@ -557,7 +557,7 @@ place:
           value: community
         - label: _(Local Economy & Worker Empowerment)
           value: economy_workers
-        - label: _(Education, Youth & Families)
+        - label: _(Education, Youth, Families, & Older Adults)
           value: education_youth
         - label: _(Environment, Sustainability, and Food Access)
           value: sustainability
@@ -585,14 +585,29 @@ place:
           value: non_partner
       attrs:
         - key: required
+        - key: data-has-children
     - prompt: _(Which partner organization hosted the event?)
       label: _(Organization name)
       type: select
-      name: submission_event_org
+      name: submission_event_partner
       attrs:
+        - key: data-parent-field
+          value: submission_event_type
+        - key: data-parent-value
+          value: partner
       options:
         - label: _(Select an organization…)
           value: ''
+        - label: "African Community Economic Development of New England (ACEDONE)"
+          value: "African Community Economic Development of New England (ACEDONE)"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Agencia ALPHA"
+          value: "Agencia ALPHA"
+          attrs:
+            - key: translate
+              value: "no"
         - label: "Allston Brighton Health Collaborative"
           value: "Allston Brighton Health Collaborative"
           attrs:
@@ -603,18 +618,28 @@ place:
           attrs:
             - key: translate
               value: "no"
+        - label: "Brazilian Women's Group"
+          value: "Brazilian Women's Group"
+          attrs:
+            - key: translate
+              value: "no"
         - label: "Center for Economic Democracy"
           value: "Center for Economic Democracy"
           attrs:
             - key: translate
               value: "no"
-        - label: "Center to Support Immigrant Organizing/Equity Now & Beyond"
-          value: "Center to Support Immigrant Organizing/Equity Now & Beyond"
+        - label: "Center to Support Immigrant Organizing (CSIO)"
+          value: "Center to Support Immigrant Organizing (CSIO)"
           attrs:
             - key: translate
               value: "no"
         - label: "De Nosotros Foundation"
           value: "De Nosotros Foundation"
+          attrs:
+            - key: translate
+              value: "no"
+        - label: "Eagle Hill Civic Association"
+          value: "Eagle Hill Civic Association"
           attrs:
             - key: translate
               value: "no"
@@ -633,6 +658,11 @@ place:
           attrs:
             - key: translate
               value: "no"
+        - label: "Greater Boston Chinese Golden Age Center"
+          value: "Greater Boston Chinese Golden Age Center"
+          attrs:
+            - key: translate
+              value: "no"
         - label: "Maverick Landing Community Services"
           value: "Maverick Landing Community Services"
           attrs:
@@ -648,6 +678,11 @@ place:
           attrs:
             - key: translate
               value: "no"
+        - label: "True Alliance Center"
+          value: "True Alliance Center"
+          attrs:
+            - key: translate
+              value: "no"
         - label: "Turkish American Cultural Society of New England (TACS)"
           value: "Turkish American Cultural Society of New England (TACS)"
           attrs:
@@ -658,6 +693,16 @@ place:
           attrs:
             - key: translate
               value: "no"
+    - prompt: _(What is the name of the organization that hosted the event?')
+      label: _(Organization name)
+      type: text
+      name: submission_event_non_partner
+      optional: true
+      attrs:
+        - key: data-parent-field
+          value: submission_event_type
+        - key: data-parent-value
+          value: non_partner
 
     # Personal info
     - name: submitter_name
@@ -841,7 +886,7 @@ place:
       optional: true
     
     # Demographic Info
-    - prompt: _(What is your age (in years)?)
+    - prompt: _(What is your age in years?)
       label: _(Age)
       is_first_demographic_field: true
       name: private_submitter_age
@@ -859,12 +904,36 @@ place:
       label: _(Race and/or Ethnicity)
       name: private_submitter_race_ethnicity
       help_text: >-
-        _(Examples: American Indian or Alaska Native, Asian, Black or African
-        American, Hispanic or Latino/-a/-e/-x, Native Hawaiian or other Pacific
-        Islander, White, etc.)
-      type: text
+        _(Select all that apply.)
+      type: checkboxgroup
+      options:
+        - label: _(American Indian or Alaska Native)
+          value: american_indian
+        - label: _(Asian)
+          value: asian
+        - label: _(Black or African American)
+          value: black_african_american
+        - label: _(Hispanic or Latino/-a/-e/-x)
+          value: hispanic_latino
+        - label: _(Native Hawaiian or other Pacific Islander)
+          value: native_hawaiian
+        - label: _(White)
+          value: white
+        - label: _(Other)
+          value: other
+      attrs:
+        - key: data-has-children
       optional: true
       sticky: true
+    - prompt: _(Please tell us what other race/ethnicity)
+      name: private_submitter_other_race_ethnicity
+      type: text
+      optional: true
+      attrs:
+        - key: data-parent-field
+          value: private_submitter_race_ethnicity
+        - key: data-parent-value
+          value: other
     - prompt: _(What was your household income in the past 12 months?)
       label: _(Household Income)
       name: private_submitter_income
@@ -934,7 +1003,14 @@ pages:
   - title: _(About)
     slug: about
     name: overview
-    start_page: true
+    # start_page: true
+  
+  - title: _(Past PB Cycles)
+    slug: past-cycles
+    pages:
+      - title: _(Cycle 1 (2024))
+        url: /cycle1/
+        external: true
 
   - title: _(Boston PB Home)
     external: true
@@ -955,7 +1031,7 @@ pages:
       - title: _(Local Economy & Worker Empowerment)
         url: /filter/economy_workers
         external: true
-      - title: _(Education, Youth & Families)
+      - title: _(Education, Youth, Families, & Older Adults)
         url: /filter/education_youth
         external: true
       - title: _(Environment, Sustainability, and Food Access)
@@ -987,33 +1063,21 @@ languages:
   # Haitian Creole
   - code: 'ht'
     label: 'Kreyòl Ayisyen'
-  # Traditional Chinese
-  - code: 'zh-hant'
-    label: '繁體中文'
   # Simplified Chinese
   - code: 'zh-hans'
     label: '简体中文'
-  # Vietnamese
-  - code: 'vi'
-    label: 'Tiếng Việt'
-  # Cabo Verdean Creole
-  - code: 'kea'
-    label: 'Kabuverdianu'
-  # Russian
-  - code: 'ru'
-    label: 'Русский'
   # Arabic
   - code: 'ar'
     label: 'العربية'
   # Brazilian Portuguese
   - code: 'pt-br'
     label: 'Português'
-  # French
-  - code: 'fr'
-    label: 'Français'
   # Somali
   - code: 'so'
     label: 'Soomaali'
+  # Vietnamese
+  - code: 'vi'
+    label: 'Tiếng Việt'
 
 notifications:
   on_new_place: false

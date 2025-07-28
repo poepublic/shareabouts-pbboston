@@ -40,58 +40,43 @@
     const lastNameInput = this.el.querySelector(`[name="${lastNameFieldName}"]`);
     const displayedNameInput = this.el.querySelector(`[name="${displayedNameFieldName}"]`);
 
-    let displayedName = null;
-    let message = null;
+    const placeTypeInput = this.el.querySelector('[name="location_type"]:checked');
+    const placeType = placeTypeInput ? Shareabouts.Config.placeTypes[placeTypeInput.value] : '';
+    const category = placeType ? (placeType.label || placeTypeInput.value) : '';
+    const isCategorySelected = !!category;
 
-    if (displayStyle === 'full_name') {
-      if (!firstNameInput.value.trim() || !lastNameInput.value.trim()) {
-        message = 'Enter your first and last name above to see how your idea will be displayed.';
-      } else {
-        displayedName = `${firstNameInput.value} ${lastNameInput.value}`;
-      }
-    } else if (displayStyle === 'first_name') {
-      if (!firstNameInput.value.trim()) {
-        message = 'Enter your first name above to see how your idea will be displayed.';
-      } else {
-        displayedName = firstNameInput.value;
-      }
-    } else if (displayStyle === 'no_name') {
-      displayedName = '';
-    }
+    const firstName = firstNameInput ? firstNameInput.value.trim() : '';
+    const lastName = lastNameInput ? lastNameInput.value.trim() : '';
+    const isFirstEntered = !!firstName;
+    const isLastEntered = !!lastName;
+    const isFullEntered = (firstName && lastName);
+
+    const needMoreInfo = (
+      (displayStyle === 'full_name' && !isFullEntered) ||
+      (displayStyle === 'first_name' && !isFirstEntered) ||
+      !category
+    )
+
+    const nameDisplayContext = {
+      displayStyle,
+      firstName,
+      lastName,
+      anonymousName: Shareabouts.Config.place.anonymous_name,
+      isFirstEntered,
+      isLastEntered,
+      isFullEntered,
+      category,
+      isCategorySelected,
+      needMoreInfo,
+    };
+
+    const message = Handlebars.templates['fullname-display-message'](nameDisplayContext).trim();
+    const displayedName = Handlebars.templates['fullname-display-value'](nameDisplayContext).trim();
 
     displayedNameInput.value = displayedName || '';
-    this.updateNameDisplaySample(displayedName, displayStyle, message);
-  }
 
-  Shareabouts.PlaceFormView.prototype.updateNameDisplaySample = function(displayedName, displayStyle, message) {
-    const placeTypeInput = this.el.querySelector('[name="location_type"]:checked');
     const nameDisplaySampleDiv = this.el.querySelector('.submitter_name-display-sample');
-
-    function showInstructions(instructions) {
-      nameDisplaySampleDiv.innerHTML = `<div class="instructions">${instructions}</div>`;
-    }
-
-    function showIdeaDisplaySample(displayedName, category) {
-      const sample = `
-        <strong>${displayedName || Shareabouts.Config.place.anonymous_name}</strong>
-        submitted ${'aeiou'.includes(category[0].toLowerCase()) ? 'an' : 'a'}
-        ${category} idea
-      `;
-      nameDisplaySampleDiv.innerHTML = `<label>Display sample:</label> <div class="sample">${sample}</div>`;
-    }
-
-    if (placeTypeInput === null) {
-      showInstructions('Choose an idea category above to to see how your idea will be displayed.');
-      return;
-    } else if (message) {
-      showInstructions(message);
-      return;
-    }
-
-    const placeType = Shareabouts.Config.placeTypes[placeTypeInput.value];
-    const category = placeType ? (placeType.label || placeTypeInput.value) : '';
-
-    showIdeaDisplaySample(displayedName, category);
+    nameDisplaySampleDiv.innerHTML = message;
   }
 
   Shareabouts.PlaceFormView.prototype.onSubmitterNameDisplayStyleChange = function(evt) {
@@ -128,8 +113,12 @@
       `place-${firstNameFieldName}-field`,
       `place-${lastNameFieldName}-field`,
     );
+
+    const fullNameFieldLabelHTML = Handlebars.templates['fullname-field-label']({
+      name: firstNameFieldName,
+    });
     fullNameFieldWrapper.innerHTML = `
-      <label class="field-label text-field-label" for="place-${firstNameFieldName}">Your Full Name</label>
+      ${fullNameFieldLabelHTML}
       <div class="fullname-field-wrapper">
         ${firstNameInput.outerHTML}
         ${lastNameInput.outerHTML}

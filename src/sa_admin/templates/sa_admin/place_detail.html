@@ -13,8 +13,8 @@
 {% block scripts %}
   {{ block.super }}
   <script type="module">
-    import { fields } from '{% static 'sa_admin/js/admin_config.js' %}';
-    import { PlaceDetail } from '{% static 'sa_admin/js/place_detail.js' %}';
+    import { fields } from '{% static 'sa_admin/js/admin_config.js' %}?_={{settings.LAST_DEPLOY_DATE}}';
+    import { PlaceDetail } from '{% static 'sa_admin/js/place_detail.js' %}?_={{settings.LAST_DEPLOY_DATE}}';
 
     function exact(value) { return value === undefined ? '' : value; }
 
@@ -40,7 +40,8 @@
       success: onPlaceSuccess,
       error: onPlaceError,
       data: {
-        include_private: true
+        include_private: true,
+        include_invisible: true,
       },
     });
   </script>

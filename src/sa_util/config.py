@@ -8,7 +8,7 @@ except:
 from contextlib import closing
 from copy import deepcopy
 from django.conf import settings
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 
 def apply_env_overrides(data, env):
@@ -50,8 +50,6 @@ def apply_env_overrides(data, env):
 
 
 def translate(data):
-    i18n_data = {}
-
     # If it's an object, recurse
     if isinstance(data, dict):
         return {k: translate(v)
@@ -73,10 +71,26 @@ def translate(data):
     else:
         return data
 
+
 def parse_msg(s):
     s = s.strip()
     if s.startswith('_(') and s.endswith(')'):
         return s[2:-1]
+
+
+def interpolate(data):
+    """
+    Interpolate strings in the data structure that contain placeholders.
+    Placeholders are of the form {key} where key is a key in the data structure.
+    """
+    if isinstance(data, dict):
+        return {k: interpolate(v) for k, v in data.items()}
+    elif isinstance(data, list):
+        return [interpolate(item) for item in data]
+    elif isinstance(data, str):
+        return data.replace('{{static_url}}', settings.STATIC_URL)
+    else:
+        return data
 
 
 class _ShareaboutsConfig:
@@ -86,9 +100,10 @@ class _ShareaboutsConfig:
     raw = False
     apply_env = True
 
-    def __init__(self, translate=True, apply_env=True):
+    def __init__(self, translate=True, apply_env=True, interpolate=True):
         self.translate = translate
         self.apply_env = apply_env
+        self.interpolate = interpolate
 
     @property
     def data(self):
@@ -101,6 +116,9 @@ class _ShareaboutsConfig:
 
             if self.translate:
                 self._data = translate(self._data)
+            
+            if self.interpolate:
+                self._data = interpolate(self._data)
 
         return self._data
 

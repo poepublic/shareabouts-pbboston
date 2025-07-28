@@ -26,7 +26,6 @@ with open(source_file, 'r') as f:
         feature['geometry']['coordinates'] = round_coords(feature['geometry']['coordinates'])
 
     with open(dest_file, 'w') as f:
-        content = json.dumps(data)
-        # Get rid of extra spaces after commas and colons
-        content = content.replace(', ', ',').replace(': ', ':')
+        # Render the JSON using compact separators
+        content = json.dumps(data, separators=(',', ':'))
         f.write(content)
