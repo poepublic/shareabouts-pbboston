@@ -27,6 +27,7 @@
   <p>{{#_}}As part of this process, residents inform the City about their
   priorities to help decide future budget investments.{{/_}}</p>
 
+  {{#can_add_places}}
   <h3>{{#_}}When can I start sharing my ideas{{/_}}</h3>
 
   <p>{{#_}}Cycle Two of Ideas in Action starts this summer! Between <strong>July
@@ -95,4 +96,15 @@
     <li>{{#_}}Helping a religious institution repair its sanctuary;{{/_}}</li>
     <li>{{#_}}Increase the frequency of MBTA buses or trains.{{/_}}</li>
   </ul>
+  {{^}}
+  <p><strong>{{#_}}THE IDEA SUBMISSION PERIOD FOR BOSTON’S PARTICIPATORY BUDGETING INITIATIVE HAS ENDED.{{/_}}</strong></p>
+
+  <p>{{#_}}Thanks to all who submitted project ideas for how to spend $2.2 million of the City’s budget! {{/_}}</p>
+
+  <p>{{#_}}Over the coming months, the Office of Participatory Budgeting will collaborate with the City’s Data Analytics team to carefully sort and review all the ideas for eligibility. {{/_}}</p>
+
+  <p>{{#_}}The City will host proposal development forums this fall. These meetings will allow residents to review, prioritize, and develop the collected ideas into project proposals for the PB ballot. Voting will take place in January of 2026! {{/_}}</p>
+
+  <p>{{#_}}To stay informed about the latest updates, upcoming meetings, and opportunities to participate, please <a href="https://www.boston.gov/departments/participatory-budgeting/ideas-action#newsletter" target="_blank">sign up for our newsletter.</a>{{/_}}</p>
+  {{/can_add_places}}
 </div>
