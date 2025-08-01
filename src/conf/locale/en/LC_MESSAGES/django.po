@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-28 10:50-0400\n"
+"POT-Creation-Date: 2025-07-31 23:34-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1088,37 +1088,44 @@ msgid ""
 msgstr ""
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:43
-msgid "Paying for the salary of a public employee to provide services;"
+msgid ""
+"Over the coming months, the Office of Participatory Budgeting will "
+"collaborate with the City’s Data Analytics team to carefully sort and review "
+"all the ideas for eligibility. "
 msgstr ""
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:44
-msgid "Programming to strengthen mental health among Boston youth;"
+msgid "Paying for the salary of a public employee to provide services;"
 msgstr ""
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:45
+msgid "Programming to strengthen mental health among Boston youth;"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:46
 msgid ""
 "Project ideas containing inappropriate, offensive, or derogatory language "
 "will be removed and not considered from the PB process."
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:46
+#: src/flavors/cycle2/jstemplates/pages/overview.html:47
 msgid ""
 "Project ideas that are feasible to implement, and are consistent\n"
 "    with existing City policies, laws, regulations, and the Participatory\n"
 "    Budgeting Ordinance;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:49
+#: src/flavors/cycle2/jstemplates/pages/overview.html:50
 msgid ""
 "Project ideas that are limited to a one-time expense, and do not\n"
 "    create new permanent positions;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:51
+#: src/flavors/cycle2/jstemplates/pages/overview.html:52
 msgid "Repairing a privately owned building;"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:52
+#: src/flavors/cycle2/jstemplates/pages/overview.html:53
 msgid ""
 "Sign up for our newsletter! For more information about Participatory\n"
 "  Budgeting, please visit <a href=\"https://boston.gov/participate\" "
@@ -1127,29 +1134,57 @@ msgid ""
 "a>."
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:55
+#: src/flavors/cycle2/jstemplates/pages/overview.html:56
+msgid ""
+"THE IDEA SUBMISSION PERIOD FOR BOSTON’S PARTICIPATORY BUDGETING INITIATIVE "
+"HAS ENDED."
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:57
 msgid ""
 "Tell\n"
 "  us: How would you spend $2 million to benefit our communities?"
 msgstr ""
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:57
-msgid "Welcome to Ideas in Action!"
-msgstr ""
-
-#: src/flavors/cycle2/jstemplates/pages/overview.html:58
-msgid "What happens after I share my ideas?"
-msgstr ""
-
 #: src/flavors/cycle2/jstemplates/pages/overview.html:59
-msgid "What type of ideas can I propose?"
+msgid ""
+"Thanks to all who submitted project ideas for how to spend $2.2 million of "
+"the City’s budget! "
 msgstr ""
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:60
-msgid "When can I start sharing my ideas"
+msgid ""
+"The City will host proposal development forums this fall. These meetings "
+"will allow residents to review, prioritize, and develop the collected ideas "
+"into project proposals for the PB ballot. Voting will take place in January "
+"of 2026! "
 msgstr ""
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:61
+msgid ""
+"To stay informed about the latest updates, upcoming meetings, and "
+"opportunities to participate, please <a href=\"https://www.boston.gov/"
+"departments/participatory-budgeting/ideas-action#newsletter\" "
+"target=\"_blank\">sign up for our newsletter.</a>"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:62
+msgid "Welcome to Ideas in Action!"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:63
+msgid "What happens after I share my ideas?"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:64
+msgid "What type of ideas can I propose?"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:65
+msgid "When can I start sharing my ideas"
+msgstr ""
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:66
 msgid "Who can submit project ideas?"
 msgstr ""
 
