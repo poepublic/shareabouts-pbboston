@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-28 10:50-0400\n"
+"POT-Creation-Date: 2025-07-31 23:34-0400\n"
 "PO-Revision-Date: 2025-06-07 22:19+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2025\n"
 "Language-Team: Chinese (https://app.transifex.com/mjumbewu/teams/189006/zh/)\n"
@@ -1138,20 +1138,27 @@ msgstr ""
 "获得直接预算拨款的市部门或机构。"
 
 #: src/flavors/cycle2/jstemplates/pages/overview.html:43
+msgid ""
+"Over the coming months, the Office of Participatory Budgeting will "
+"collaborate with the City’s Data Analytics team to carefully sort and review"
+" all the ideas for eligibility. "
+msgstr "在接下来的几个月里，参与式预算办公室将与城市数据分析团队合作，仔细分类和审查所有符合资格的想法。 "
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:44
 msgid "Paying for the salary of a public employee to provide services;"
 msgstr "支付公职人员提供服务的工资；"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:44
+#: src/flavors/cycle2/jstemplates/pages/overview.html:45
 msgid "Programming to strengthen mental health among Boston youth;"
 msgstr "旨在加强波士顿青少年心理健康的项目；"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:45
+#: src/flavors/cycle2/jstemplates/pages/overview.html:46
 msgid ""
 "Project ideas containing inappropriate, offensive, or derogatory language "
 "will be removed and not considered from the PB process."
 msgstr "包含不适当、冒犯或贬损语言的项目想法将被删除，并且不会在 PB 流程中考虑。"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:46
+#: src/flavors/cycle2/jstemplates/pages/overview.html:47
 msgid ""
 "Project ideas that are feasible to implement, and are consistent\n"
 "    with existing City policies, laws, regulations, and the Participatory\n"
@@ -1161,7 +1168,7 @@ msgstr ""
 "符合现有的城市政策、法律、法规和参与性\n"
 "预算条例；"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:49
+#: src/flavors/cycle2/jstemplates/pages/overview.html:50
 msgid ""
 "Project ideas that are limited to a one-time expense, and do not\n"
 "    create new permanent positions;"
@@ -1169,11 +1176,11 @@ msgstr ""
 "仅限于一次性支出的项目构想，并且不\n"
 "创造新的永久职位；"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:51
+#: src/flavors/cycle2/jstemplates/pages/overview.html:52
 msgid "Repairing a privately owned building;"
 msgstr "修缮私人建筑；"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:52
+#: src/flavors/cycle2/jstemplates/pages/overview.html:53
 msgid ""
 "Sign up for our newsletter! For more information about Participatory\n"
 "  Budgeting, please visit <a href=\"https://boston.gov/participate\" target=\"_blank\">Boston.gov/participate</a> or contact the Office of\n"
@@ -1183,7 +1190,13 @@ msgstr ""
 "预算，请访问<a href=\"https://boston.gov/participate\" target=\"_blank\">Boston.gov/participate</a>或联系\n"
 "参与式预算，邮箱<a href=\"mailto:pb@boston.gov\">：pb@boston.gov</a> 。"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:55
+#: src/flavors/cycle2/jstemplates/pages/overview.html:56
+msgid ""
+"THE IDEA SUBMISSION PERIOD FOR BOSTON’S PARTICIPATORY BUDGETING INITIATIVE "
+"HAS ENDED."
+msgstr "波士顿参与式预算计划的想法提交期已经结束。"
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:57
 msgid ""
 "Tell\n"
 "  us: How would you spend $2 million to benefit our communities?"
@@ -1191,23 +1204,49 @@ msgstr ""
 "告诉\n"
 "我们：您会如何花费 200 万美元来造福我们的社区？"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:57
+#: src/flavors/cycle2/jstemplates/pages/overview.html:59
+msgid ""
+"Thanks to all who submitted project ideas for how to spend $2.2 million of "
+"the City’s budget! "
+msgstr "感谢所有就如何使用 220 万美元市预算提交项目构想的人！ "
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:60
+msgid ""
+"The City will host proposal development forums this fall. These meetings "
+"will allow residents to review, prioritize, and develop the collected ideas "
+"into project proposals for the PB ballot. Voting will take place in January "
+"of 2026! "
+msgstr ""
+"市政府将于今年秋季举办提案发展论坛。这些会议将使居民能够审查、确定优先顺序，并将收集到的想法发展成项目提案，用于PB投票。投票将于2026年1月进行！ "
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:61
+msgid ""
+"To stay informed about the latest updates, upcoming meetings, and "
+"opportunities to participate, please <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
+"action#newsletter\" target=\"_blank\">sign up for our newsletter.</a>"
+msgstr ""
+"要了解最新动态、即将召开的会议以及参与机会，请<a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
+"action#newsletter\" target=\"_blank\">订阅我们的时事通讯。</a>"
+
+#: src/flavors/cycle2/jstemplates/pages/overview.html:62
 msgid "Welcome to Ideas in Action!"
 msgstr "欢迎来到“创意行动”！"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:58
+#: src/flavors/cycle2/jstemplates/pages/overview.html:63
 msgid "What happens after I share my ideas?"
 msgstr "我分享我的想法之后会发生什么？"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:59
+#: src/flavors/cycle2/jstemplates/pages/overview.html:64
 msgid "What type of ideas can I propose?"
 msgstr "我可以提出什么类型的想法？"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:60
+#: src/flavors/cycle2/jstemplates/pages/overview.html:65
 msgid "When can I start sharing my ideas"
 msgstr "我什么时候可以开始分享我的想法"
 
-#: src/flavors/cycle2/jstemplates/pages/overview.html:61
+#: src/flavors/cycle2/jstemplates/pages/overview.html:66
 msgid "Who can submit project ideas?"
 msgstr "谁可以提交项目想法？"
 
