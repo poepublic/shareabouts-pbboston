@@ -1,0 +1,31 @@
+{{#if needMoreInfo}}
+    <div class="instructions">
+    {{#if isCategorySelected}}
+        {{#is displayStyle 'full_name'}}
+            {{#unless isFullEntered}}
+                {{#_}}Enter your first and last name above to see how your idea will be displayed.{{/_}}
+            {{/unless}}
+        {{/is}}
+
+        {{#is displayStyle 'first_name'}}
+            {{#unless isFirstEntered}}
+                {{#_}}Enter your first name above to see how your idea will be displayed.{{/_}}
+            {{/unless}}
+        {{/is}}
+    {{else}}
+        {{#_}}Choose an idea category above to to see how your idea will be displayed.{{/_}}
+    {{/if}}
+    </div>
+{{else}}
+    <label>Display sample:</label>
+    <div class="sample">
+        <strong>
+        {{#is displayStyle 'no_name'}}
+            {{anonymousName}}
+        {{else}}
+            {{> fullname-display-value }}
+        {{/is}}
+        </strong>
+        {{#_}}submitted a {{category}} idea.{{/_}}
+    </div>
+{{/if}}
