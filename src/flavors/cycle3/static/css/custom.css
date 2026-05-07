@@ -1351,6 +1351,63 @@ body .marker-cluster div {
   max-height: none !important;
 }
 
+#cluster-icon-arts_culture { background-color: #332288;}
+#cluster-icon-community { background-color: #88CCEE;}
+#cluster-icon-economy_workers { background-color: #44AA99;}
+#cluster-icon-education_youth { background-color: #117733;}
+#cluster-icon-facilities { background-color: #999933;}
+#cluster-icon-human_services { background-color: #DDCC77; color: black;}
+#cluster-icon-other { background-color: #DDDDDD; color: black}
+#cluster-icon-public_safety { background-color: #882255;}
+#cluster-icon-streets_sidewalks { background-color: #AA4499;}
+#cluster-icon-sustainability { background-color: #CC6677;}
+
+.leaflet-tooltip.cluster-tooltip {
+  background: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-family: var(--header-font);
+  font-weight: 600;
+  box-shadow: none;
+  color: rgb(235, 235, 235);
+  text-shadow: 
+  -.75px -.75px 0 #0d0d0d75,  
+   .75px -.75px 0 #0d0d0d75,
+  -.75px  .75px 0 #0d0d0d75,
+   .75px  .75px 0 #0d0d0d75;
+}
+
+.leaflet-div-icon {
+  background: none;                                                                                        
+  border: none; 
+}   
+
+.cluster-icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.cluster-icon:hover {
+  transform: scale(1.3);
+  opacity: 1;
+}
+
 /* =Project Info Pages
 -------------------------------------------------------------- */
 

@@ -42,7 +42,7 @@ map:
       lng: -71.0689
     zoom: 11.5
     zoomSnap: 0
-    minZoom: 10
+    minZoom: 11.5
     maxZoom: 17
     preferCanvas: true
     scrollWheelZoom: false
@@ -83,20 +83,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#332288'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/arts_culture-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#332288'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/arts_culture-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "arts_culture" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -110,9 +110,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/arts_culture-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   community:
     label: _(Community Resources)
     description: _(Project ideas that provide assistance or services to residents in need, such as programs at community centers, financial or digital literacy, English as a second language, or GED classes.)
@@ -121,20 +121,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "community" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#fa8b41'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/community-tol.svg
+          shadowUrl: null
+          iconSize: [4, 4]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "community" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#fa8b41'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/community-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "community" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -148,9 +148,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/community-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   economy_workers:
     label: _(Local Economy & Worker Empowerment)
     description: _(Project ideas that improve access to quality jobs, skills training, career pipelines, and other resources for workers, small business owners, and entrepreneurs.)
@@ -159,20 +159,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#44AA99'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/economy_workers-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#44AA99'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/economy_workers-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "economy_workers" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -186,9 +186,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/economy_workers-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   education_youth:
     label: _(Education, Youth, Families, & Older Adults)
     description: _(Project ideas related to education for all ages, as well as proposals that meet the needs of Boston’s youth, senior citizens, and families.)
@@ -197,20 +197,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#117733'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/education_youth-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#117733'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/education_youth-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -224,9 +224,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/education_youth-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   sustainability:
     label: _(Environment, Sustainability, and Food Access)
     description: _(Project ideas that help increase access to healthy and affordable food, promote environmental justice, and help increase the quality of life in Boston.)
@@ -235,20 +235,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#CC6677'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/sustainability-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#CC6677'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/sustainability-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -262,9 +262,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/sustainability-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   facilities:
     label: _(Facilities, Parks & Recreation)
     description: _(Project ideas that Invest in clean, green, safe and accessible open space, facilities, and programming for residents and neighborhoods.)
@@ -273,20 +273,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#999933'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/facilities-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#999933'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/facilities-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "facilities" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -300,9 +300,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/facilities-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   human_services:
     label: _(Health & Well-being)
     description: _(Project ideas that promote the physical and mental health of Boston residents of all ages.)
@@ -311,20 +311,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#DDCC77'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/human_services-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#DDCC77'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/human_services-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "human_services" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -338,9 +338,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/human_services-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   public_safety:
     label: _(Public Safety)
     description: _(Project ideas that advance safety and increase justice in the City, such as community violence prevention programs and initiatives for healing and recovering from trauma and substance abuse.)
@@ -349,20 +349,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#882255'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/public_safety-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#882255'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/public_safety-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "public_safety" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -376,9 +376,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/public_safety-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   streets_sidewalks:
     label: _(Streets & Sidewalks)
     description: _(Project ideas to improve City streets and sidewalks and promote safety and accessibility.)
@@ -387,20 +387,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#AA4499'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/streets_sidewalks-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#AA4499'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/streets_sidewalks-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "streets_sidewalks" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -414,9 +414,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/streets_sidewalks-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
   other:
     label: _(Other / Not Sure)
     description: _(Other community centered ideas that may not fit in the previous categories.)
@@ -425,20 +425,20 @@ place_types:
     rules:
       # Draw small circles when zoomed out to see a lot of the ideas…
       - condition: '"{{location_type}}" === "other" && {{map.zoom}} < 12 && {{layer.focused}} === false'
-        style:
-          color: '#DDDDDD'
-          radius: 3
-          weight: 1
-          opacity: 0.9
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/other-tol.svg
+          shadowUrl: null
+          iconSize: [8, 8]
+          shadowSize: null
+          iconAnchor: [4, 4]
       # Draw larger circles when fewer ideas visible…
       - condition: '"{{location_type}}" === "other" && {{map.zoom}} < 15 && {{layer.focused}} === false'
-        style:
-          color: '#DDDDDD'
-          radius: 6
-          weight: 3
-          opacity: 0.7
-          fillOpacity: 1
+        icon:
+          iconUrl: /static/img/categories/other-tol.svg
+          shadowUrl: null
+          iconSize: [16, 16]
+          shadowSize: null
+          iconAnchor: [8, 8]
       # Draw even larger circles when super zoomed in…
       - condition: '"{{location_type}}" === "other" && {{map.zoom}} >= 15 && {{layer.focused}} === false'
         icon:
@@ -452,9 +452,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/other-tol.svg
           shadowUrl: null
-          iconSize: [64, 64]
+          iconSize: [48, 48]
           shadowSize: null
-          iconAnchor: [32, 32]
+          iconAnchor: [24, 24]
 
 
 activity:

@@ -19,10 +19,33 @@
     const optimisticBlue = '#288be4'; // This should match the --optimistic-blue color in the CSS
     this.map.removeLayer(this.placeLayers);
     this.oldPlaceLayersGroup = this.placeLayers;
-    this.placeLayers = new L.MarkerClusterGroup({
-      spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75 }
-    });
-    this.map.addLayer(this.placeLayers);
+
+    // Create a cluster group for each idea category (placeType) 
+    this.placeLayers = {};
+
+    Object.keys(this.options.placeTypes).forEach(placeType => {
+      this.placeLayers[placeType] = L.markerClusterGroup({
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75 },
+        maxClusterRadius: 80,
+        clusterPane: 'markerPane',
+        
+        // Create custom cluster icons including the number of markers and a tooltip indicating placeType
+        iconCreateFunction: (cluster) => {
+            cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [0, -10], className: "cluster-tooltip"}); // add tooltip to cluster
+            return L.divIcon({
+            html: `<div class="cluster-icon" id="cluster-icon-${placeType}">` + cluster.getChildCount() + '</div>',
+            className: '', // this drops leaflet's default styles
+            });
+        }
+
+        });
+
+        this.map.addLayer(this.placeLayers[placeType]);
+        
+    })
+    
 
     this.focusedPlaceLayers = new L.LayerGroup();
     this.map.addLayer(this.focusedPlaceLayers);
@@ -62,7 +85,7 @@
           this.options.focusedPlaceLayers.addLayer(this.layer);
         } else {
           this.layer.options.pane = 'markerPane';
-          this.options.placeLayers.addLayer(this.layer);
+          this.options.placeLayers[locationType].addLayer(this.layer);
         }
       }
     } else {
@@ -74,8 +97,9 @@
   // focused place layer in addition to the place layer.
   var Shareabouts_LayerView_removeLayer = Shareabouts.LayerView.prototype.removeLayer;
   Shareabouts.LayerView.prototype.removeLayer = function() {
+    var locationType = this.model.get('location_type');
     if (this.layer) {
-      this.options.placeLayers.removeLayer(this.layer);
+      this.options.placeLayers[locationType].removeLayer(this.layer);
       this.options.focusedPlaceLayers.removeLayer(this.layer);
     }
   }
