@@ -2,7 +2,8 @@
 // ==============================
 //
 // This script extends the Shareabouts map view to use clustering for the place
-// markers. It uses the Leaflet.markercluster plugin to do this.
+// markers. Markers are clustered by category and distance. 
+// It uses the Leaflet.markercluster plugin to do this.
 //
 // The script also adds a new layer group for focused places, which are places
 // that are currently being viewed in the detail view.
