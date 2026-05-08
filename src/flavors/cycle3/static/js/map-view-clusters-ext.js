@@ -29,7 +29,7 @@
         zoomToBoundsOnClick: true,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75 },
         maxClusterRadius: 80,
-        clusterPane: 'markerPane',
+        clusterPane: 'clusterPane',
         
         // Create custom cluster icons including the number of markers and a tooltip indicating placeType
         iconCreateFunction: (cluster) => {
@@ -54,6 +54,9 @@
 
     // Create a new pane on top of the default marker pane for the focused
     // place markers.
+    const clusterPane = this.map.createPane('clusterPane');
+    clusterPane.style.zIndex = 620;
+
     const focusedPane = this.map.createPane('focusedPane');
     focusedPane.style.zIndex = 610;
     focusedPane.style.pointerEvents = 'none';

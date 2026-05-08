@@ -17,8 +17,8 @@
     L.geoJSON(mask,{                                                                                      
       style: {
         color: '#cd2c67',                                                                                     
-        fillColor: '#000000',
-        fillOpacity: 0.5
+        fillColor: '#0f0309',
+        fillOpacity: 0.5,
       }
     }).addTo(map);
 
