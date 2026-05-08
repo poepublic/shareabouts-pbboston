@@ -33,10 +33,12 @@
         
         // Create custom cluster icons including the number of markers and a tooltip indicating placeType
         iconCreateFunction: (cluster) => {
-            cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [0, -10], className: "cluster-tooltip"}); // add tooltip to cluster
+            cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [0, -10], className: "cluster-tooltip"});
             return L.divIcon({
             html: `<div class="cluster-icon" id="cluster-icon-${placeType}">` + cluster.getChildCount() + '</div>',
             className: '', // this drops leaflet's default styles
+            iconSize: [15, 15], 
+            iconAnchor: [7.5, 7.5]  
             });
         }
 

@@ -1328,6 +1328,18 @@ label {
   }
 }
 
+/* =Map Markers
+-------------------------------------------------------------- */
+.leaflet-marker-pane .leaflet-marker-icon {                                                                
+  opacity: 0.85;                                                                                           
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.5));                                                         
+}                                           
+                                                                                                           
+.leaflet-marker-pane .leaflet-marker-icon:hover {
+  opacity: 1;                                                                                              
+}
+
+
 /* =Map Clustering
 -------------------------------------------------------------- */
 
@@ -1372,17 +1384,16 @@ body .marker-cluster div {
   font-family: var(--header-font);
   font-weight: 600;
   box-shadow: none;
-  color: rgb(235, 235, 235);
+  color: rgb(21, 21, 21);
   text-shadow: 
-  -.75px -.75px 0 #0d0d0d75,  
-   .75px -.75px 0 #0d0d0d75,
-  -.75px  .75px 0 #0d0d0d75,
-   .75px  .75px 0 #0d0d0d75;
+  -1px -1px 0 #ffffff84,  
+   1px -1px 0 #ffffff84,  
+  -1px  1px 0 #ffffff84,  
+   1px  1px 0 #ffffff84,  
 }
 
-.leaflet-div-icon {
-  background: none;                                                                                        
-  border: none; 
+.leaflet-tooltip.cluster-tooltip::before {                                                                 
+  display: none;                                                                                           
 }   
 
 .cluster-icon {
@@ -1522,7 +1533,7 @@ body .marker-cluster div {
   }
 
   .prelaunch main h2 {
-    font-size: 75px;
+    font-size: 1px;
   }
 
   .prelaunch main p {
