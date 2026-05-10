@@ -56,20 +56,20 @@ map:
     # ================
     - type: mapbox
       pane: lightPane
-      style: mapbox://styles/poepublic/cma9wxtih00g201snhawygbxu  # Dark style
+      style: mapbox://styles/poepublic/cmoz9195f000t01qp257x6dfs  # Dark style
       padding: 1  # Ensure padding is enough for the content overlay
       accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
       fallback:
-        url: https://api.mapbox.com/styles/v1/poepublic/cma9wxtih00g201snhawygbxu/tiles/256/{z}/{x}/{y}@2x
+        url: https://api.mapbox.com/styles/v1/poepublic/cmoz9195f000t01qp257x6dfs/tiles/256/{z}/{x}/{y}@2x
         attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
 
     - type: mapbox
       pane: darkPane
-      style: mapbox://styles/poepublic/cma9x7aqj00fr01si1d4xcauh  # Light style
+      style: mapbox://styles/poepublic/cmoxckvtc001e01qsfgh6chc6  # Light style
       padding: 1  # Ensure padding is enough for the content overlay
       accessToken: pk.eyJ1IjoicG9lcHVibGljIiwiYSI6ImNpaDZnYXNxZDBiajlzd20yd2ZwZXhkb3QifQ.XYIHS6tfEXqoiyximdmLXg
       fallback:
-        url: https://api.mapbox.com/styles/v1/poepublic/cma9x7aqj00fr01si1d4xcauh/tiles/256/{z}/{x}/{y}@2x
+        url: https://api.mapbox.com/styles/v1/poepublic/cmoxckvtc001e01qsfgh6chc6/tiles/256/{z}/{x}/{y}@2x
         attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
 
 # The keys show up in the dropdown list when you are adding a new place
@@ -490,14 +490,14 @@ place:
   personal_info_intro: >-
     _(<strong>Thank you for sharing your idea with us!</strong> Please fill out the short form
     below. Only the information you choose to display will be made public. )
-  
+
   demographic_info_title: _(Optional Demographic Survey)
   demographic_info_intro: >-
     _(The demographic questions below are designed to assist the Office of
     Participatory Budgeting in obtaining a more accurate understanding of
     participants. Your responses will remain anonymous and confidential.
     <strong>Please note that all questions are optional.</strong>)
-  
+
   contact_info_title: _(Stay updated!)
   contact_info_intro: >-
     _(Please leave your email to receive updates from the Office of
@@ -884,7 +884,7 @@ place:
       name: private_submitter_zipcode
       sticky: true
       optional: true
-    
+
     # Demographic Info
     - prompt: _(What is your age in years?)
       label: _(Age)
@@ -961,7 +961,7 @@ place:
           value: 'dont_know'
         - label: _(Prefer not to answer)
           value: 'prefer_not_to_answer'
-    
+
     # Contact Info
     - prompt: _(Your Email)
       label: _(Your Email)
@@ -1004,7 +1004,7 @@ pages:
     slug: about
     name: overview
     start_page: true
-  
+
   - title: _(Past PB Cycles)
     slug: past-cycles
     pages:
