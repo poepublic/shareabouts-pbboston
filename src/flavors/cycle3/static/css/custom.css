@@ -37,17 +37,16 @@
   --supporting-gray-4: #F2F2F2;
 
   /* Category colors -- chosen for high saturations, mutual differentiation, and contrast with the background */
-  --icon-color-01: #fb4d42;
+  --icon-color-01: #332288;
   --icon-color-02: #fa8b41;
-  --icon-color-03: #fac241;
-  --icon-color-04: #faee41;
-  --icon-color-05: #b6fa41;
-  --icon-color-06: #75fa41;
-  --icon-color-07: #41eafa;
-  --icon-color-08: #4185fa;
-  --icon-color-09: #4441fa;
-  --icon-color-10: #8b41fa;
-  --icon-color-11: #e441fa;
+  --icon-color-03: #44AA99;
+  --icon-color-04: #117733;
+  --icon-color-05: #CC6677;
+  --icon-color-06: #999933;
+  --icon-color-07: #DDCC77;
+  --icon-color-08: #882255;
+  --icon-color-09: #AA4499;
+  --icon-color-10: #DDDDDD;
 
   /* Ideas in Action colors -- from the style guide */
   --iia-dark-blue: #0E0E30;
@@ -704,7 +703,7 @@ label {
 }
 [name="location_type"][value="other"] + .label-text:hover {
   background-image: url("/static/img/categories/other-dark-square.svg");
-  border-color: var(--icon-color-11);
+  border-color: var(--icon-color-10);
 }
 
 [name="location_type"][value="arts_culture"]:checked + .label-text {
@@ -762,9 +761,9 @@ label {
   color: white;
 }
 [name="location_type"][value="other"]:checked + .label-text {
-  background-color: var(--icon-color-11);
+  background-color: var(--icon-color-10);
   background-image: url("/static/img/categories/other-light-square.svg");
-  border-color: var(--icon-color-11);
+  border-color: var(--icon-color-10);
   color: white;
 }
 
