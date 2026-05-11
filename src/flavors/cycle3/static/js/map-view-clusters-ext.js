@@ -27,7 +27,7 @@
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75 },
-        maxClusterRadius: 100,
+        maxClusterRadius: 200,
         clusterPane: 'clusterPane',
         
         // Create custom cluster icons including the number of markers and a tooltip indicating placeType
@@ -52,11 +52,9 @@
             if (this._spiderfied) {
               const saved = this._unspiderfy;
               this._unspiderfy = function() {};
-              try {
-                return original(layer);
-              } finally {
-                this._unspiderfy = saved;
-              }
+              const result = original(layer);
+              this._unspiderfy = saved;
+              return result;
             }
             return original(layer);
           };
@@ -178,7 +176,7 @@
   Shareabouts.LayerView.prototype.removeLayer = function() {
     var locationType = this.model.get('location_type');
     if (this.layer) {
-      this.options.placeLayers[locationType] && this.options.placeLayers[locationType].removeLayer(this.layer);
+      this.options.placeLayers[locationType].removeLayer(this.layer);
       this.options.focusedPlaceLayers.removeLayer(this.layer);
     }
   }
