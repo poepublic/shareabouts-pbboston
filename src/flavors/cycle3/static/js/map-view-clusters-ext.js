@@ -28,7 +28,7 @@
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75 },
-        maxClusterRadius: 80,
+        maxClusterRadius: 100,
         clusterPane: 'clusterPane',
         
         // Create custom cluster icons including the number of markers and a tooltip indicating placeType
@@ -45,7 +45,16 @@
         });
 
         this.map.addLayer(this.placeLayers[placeType]);
-        
+
+        // When this cluster group spiderfies, collapse any other spiderfied cluster
+        this.placeLayers[placeType].on('spiderfied', () => {
+          Object.values(this.placeLayers).forEach(group => {
+            if (group !== this.placeLayers[placeType] && group._spiderfied) {
+              group._unspiderfy();
+            }
+          });
+        });
+
     })
     
 
