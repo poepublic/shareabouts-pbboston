@@ -43,7 +43,7 @@ map:
     zoom: 11.5
     zoomSnap: 0
     minZoom: 11.5
-    maxZoom: 16
+    maxZoom: 20
     maxBounds:                                                                                                 
     - [42.02797, -71.39125]  # southwest corner [lat, lng]                                                       
     - [42.59697, -70.7232]  # northeast corner [lat, lng]

@@ -27,7 +27,7 @@
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75 },
-        maxClusterRadius: 200,
+        maxClusterRadius: (zoom) => Math.max(30, zoom * 30),
         clusterPane: 'clusterPane',
         
         // Create custom cluster icons including the number of markers and a tooltip indicating placeType
