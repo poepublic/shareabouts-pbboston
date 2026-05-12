@@ -1383,12 +1383,12 @@ body .marker-cluster div {
   font-family: var(--header-font);
   font-weight: 600;
   box-shadow: none;
-  color: rgb(27, 27, 27);
-  text-shadow: 
-  -1px -1px 0 #ffffff94,  
-   1px -1px 0 #ffffff94,  
-  -1px  1px 0 #ffffff94,  
-   1px  1px 0 #ffffff94,  
+  color: #edecec;
+  text-shadow:
+  -1px -1px 0 rgba(0,0,0,0.5),
+   1px -1px 0 rgba(0,0,0,0.5),
+  -1px  1px 0 rgba(0,0,0,0.5),
+   1px  1px 0 rgba(0,0,0,0.5);
 }
 
 .leaflet-tooltip.cluster-tooltip::before {                                                                 
@@ -1904,6 +1904,15 @@ body .marker-cluster div {
 
   .leaflet-dark-pane {
     display: block;
+  }
+
+  .leaflet-tooltip.cluster-tooltip {
+    color: rgb(27, 27, 27);
+    text-shadow:
+      -1px -1px 0 #ffffff94,
+       1px -1px 0 #ffffff94,
+      -1px  1px 0 #ffffff94,
+       1px  1px 0 #ffffff94;
   }
 }
 
