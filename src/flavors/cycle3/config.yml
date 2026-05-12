@@ -22,7 +22,7 @@ app:
   # home_path: place/new
 
 # Settings for map and layer configs
-cluster_markers: true
+cluster_markers: false
 
 map:
   geolocation_enabled: true
@@ -51,7 +51,7 @@ map:
     - [42.59697, -70.7232]  # northeast corner [lat, lng]
     maxBoundsViscosity: 1.0
     preferCanvas: true
-    scrollWheelZoom: false
+    scrollWheelZoom: true
   layers:
     # Raster Tile Layers
     # ==================

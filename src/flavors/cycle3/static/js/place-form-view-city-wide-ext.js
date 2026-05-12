@@ -96,9 +96,9 @@ Shareabouts.PlaceFormView.prototype.setCityWideLatLng = function(latLng) {
   const pt = turf.point(this.options.placeConfig.city_wide_location_center);
 
   // Offset city-wide ideas some random amount within 50 meters.
-  const offsetDist = Math.random() * this.options.placeConfig.city_wide_location_offset;
-  const offsetDir = Math.random() * 360;
-  const randpt = turf.transformTranslate(pt, offsetDist, offsetDir, {units: 'meters'});
+  const offsetDist = 0 //Math.random() * this.options.placeConfig.city_wide_location_offset; // here
+  const offsetDir = 0 //Math.random() * 360;
+  const randpt = turf.transformTranslate(pt, offsetDist, offsetDir, {units: 'meters'}); //
 
   this.setLatLng({lng: randpt.geometry.coordinates[0], lat: randpt.geometry.coordinates[1]});
 

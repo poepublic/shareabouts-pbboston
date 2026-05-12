@@ -40,17 +40,4 @@
     }
   };
 
-  if (Shareabouts.Config.flavor.cluster_markers !== false) return;
-
-  var Shareabouts_MapView_initialize = Shareabouts.MapView.prototype.initialize;
-  Shareabouts.MapView.prototype.initialize = function() {
-    Shareabouts_MapView_initialize.apply(this, arguments);
-
-    this.map.on('zoomend', () => {
-      Object.values(this.layerViews).forEach(lv => {
-        if (lv.layer && lv.layer.setLatLng) lv.initLayer();
-      });
-    });
-  };
-
 })();
