@@ -38,7 +38,9 @@
             const offsetRadius = Math.max(35, (18 - this.map.getZoom()) * 8);
             const offsetX = Math.round(Math.cos(angle) * offsetRadius);
             const offsetY = Math.round(Math.sin(angle) * offsetRadius);
-            cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [offsetX, offsetY - 12], className: "cluster-tooltip"});
+            if (!cluster._tooltip) {
+              cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [offsetX, offsetY - 12], className: "cluster-tooltip"});
+            }
             return L.divIcon({
             html: `<div class="cluster-icon" id="cluster-icon-${placeType}">` + cluster.getChildCount() + '</div>',
             className: '', // this drops leaflet's default styles
