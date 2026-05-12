@@ -10,6 +10,34 @@
 
 (function() {
 
+  var Shareabouts_LayerView_initLayer = Shareabouts.LayerView.prototype.initLayer;
+  Shareabouts.LayerView.prototype.initLayer = function() {
+    Shareabouts_LayerView_initLayer.apply(this, arguments);
+    if (!this.layer || !this.layer.setIcon || !this.styleRule) return;
+
+    const locationType = this.model.get('location_type');
+    const placeTypeKeys = Object.keys(this.options.placeTypes);
+    const index = placeTypeKeys.indexOf(locationType);
+    if (index === -1) return;
+
+    const clusteringOff = Shareabouts.Config.flavor.cluster_markers === false;
+    const scale = clusteringOff ? 0.8 : 1.0;
+    const angle = (2 * Math.PI * index) / placeTypeKeys.length;
+    const zoom = this.map.getZoom();
+    const offsetRadius = Math.max(35, (18 - zoom) * 8) * (clusteringOff ? scale : 1.0);
+    const offsetX = Math.round(Math.cos(angle) * offsetRadius);
+    const offsetY = Math.round(Math.sin(angle) * offsetRadius);
+
+    const iconDef = (this.isFocused && this.styleRule.focus_icon) ? this.styleRule.focus_icon : this.styleRule.icon;
+    if (!iconDef || !iconDef.iconSize) return;
+
+    const baseAnchor = iconDef.iconAnchor || [iconDef.iconSize[0] / 2, iconDef.iconSize[1] / 2];
+    this.layer.setIcon(L.icon(Object.assign({}, iconDef, {
+      iconSize: [iconDef.iconSize[0] * scale, iconDef.iconSize[1] * scale],
+      iconAnchor: [baseAnchor[0] * scale - offsetX, baseAnchor[1] * scale - offsetY],
+    })));
+  };
+
   if (Shareabouts.Config.flavor.cluster_markers === false) return;
 
   // Override the map view's initialize method to add the clustering layer
