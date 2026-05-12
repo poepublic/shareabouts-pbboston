@@ -22,7 +22,7 @@ app:
   # home_path: place/new
 
 # Settings for map and layer configs
-cluster_markers: false
+cluster_markers: true
 
 map:
   geolocation_enabled: true
