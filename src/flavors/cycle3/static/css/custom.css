@@ -1329,13 +1329,13 @@ label {
 
 /* =Map Markers
 -------------------------------------------------------------- */
-.leaflet-marker-pane .leaflet-marker-icon {                                                                
-  opacity: 0.85;                                                                                           
-  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.5));                                                         
-}                                           
-                                                                                                           
+.leaflet-marker-pane .leaflet-marker-icon {
+  opacity: 0.85;
+  filter: drop-shadow(0 1px 4px rgba(255, 255, 255, 0.121));
+}
+
 .leaflet-marker-pane .leaflet-marker-icon:hover {
-  opacity: 1;                                                                                              
+  opacity: 1;
 }
 
 
@@ -1904,6 +1904,10 @@ body .marker-cluster div {
 
   .leaflet-dark-pane {
     display: block;
+  }
+
+  .leaflet-marker-pane .leaflet-marker-icon {
+    filter: drop-shadow(0 1px 3px rgb(0, 0, 0, 0.1));
   }
 
   .leaflet-tooltip.cluster-tooltip {

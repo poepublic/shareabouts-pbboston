@@ -10,6 +10,8 @@
 
 (function() {
 
+  if (Shareabouts.Config.flavor.cluster_markers === false) return;
+
   // Override the map view's initialize method to add the clustering layer
   // and the focused place layer.
   var Shareabouts_MapView_initialize = Shareabouts.MapView.prototype.initialize;

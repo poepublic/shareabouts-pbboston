@@ -22,6 +22,8 @@ app:
   # home_path: place/new
 
 # Settings for map and layer configs
+cluster_markers: false
+
 map:
   geolocation_enabled: true
   geolocation_onload: false
