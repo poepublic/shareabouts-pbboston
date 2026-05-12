@@ -1367,8 +1367,8 @@ body .marker-cluster div {
 #cluster-icon-economy_workers { background-color: #44AA99;}
 #cluster-icon-education_youth { background-color: #117733;}
 #cluster-icon-facilities { background-color: #999933;}
-#cluster-icon-human_services { background-color: #DDCC77; color: black;}
-#cluster-icon-other { background-color: #DDDDDD; color: black}
+#cluster-icon-human_services { background-color: #DDCC77; color: rgb(27, 27, 27);}
+#cluster-icon-other { background-color: #DDDDDD; color: rgb(27, 27, 27);}
 #cluster-icon-public_safety { background-color: #882255;}
 #cluster-icon-streets_sidewalks { background-color: #AA4499;}
 #cluster-icon-sustainability { background-color: #CC6677;}
@@ -1383,12 +1383,12 @@ body .marker-cluster div {
   font-family: var(--header-font);
   font-weight: 600;
   box-shadow: none;
-  color: rgb(21, 21, 21);
+  color: rgb(27, 27, 27);
   text-shadow: 
-  -1px -1px 0 #ffffff84,  
-   1px -1px 0 #ffffff84,  
-  -1px  1px 0 #ffffff84,  
-   1px  1px 0 #ffffff84,  
+  -1px -1px 0 #ffffff94,  
+   1px -1px 0 #ffffff94,  
+  -1px  1px 0 #ffffff94,  
+   1px  1px 0 #ffffff94,  
 }
 
 .leaflet-tooltip.cluster-tooltip::before {                                                                 

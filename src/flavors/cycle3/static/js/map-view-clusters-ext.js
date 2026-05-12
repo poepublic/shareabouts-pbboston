@@ -22,22 +22,28 @@
     // Create a cluster group for each idea category (placeType) 
     this.placeLayers = {};
 
-    Object.keys(this.options.placeTypes).forEach(placeType => {
+    const placeTypeKeys = Object.keys(this.options.placeTypes);
+    placeTypeKeys.forEach((placeType, index) => {
+      const angle = (2 * Math.PI * index) / placeTypeKeys.length;
+
       this.placeLayers[placeType] = L.markerClusterGroup({
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75 },
-        maxClusterRadius: (zoom) => Math.max(30, zoom * 30),
+        maxClusterRadius: (zoom) => Math.max(30, zoom * zoom * 2),
         clusterPane: 'clusterPane',
-        
+
         // Create custom cluster icons including the number of markers and a tooltip indicating placeType
         iconCreateFunction: (cluster) => {
-            cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [0, -10], className: "cluster-tooltip"});
+            const offsetRadius = Math.max(35, (18 - this.map.getZoom()) * 8);
+            const offsetX = Math.round(Math.cos(angle) * offsetRadius);
+            const offsetY = Math.round(Math.sin(angle) * offsetRadius);
+            cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [offsetX, offsetY - 12], className: "cluster-tooltip"});
             return L.divIcon({
             html: `<div class="cluster-icon" id="cluster-icon-${placeType}">` + cluster.getChildCount() + '</div>',
             className: '', // this drops leaflet's default styles
-            iconSize: [15, 15], 
-            iconAnchor: [7.5, 7.5]  
+            iconSize: [15, 15],
+            iconAnchor: [7.5 - offsetX, 7.5 - offsetY]
             });
         }
 
