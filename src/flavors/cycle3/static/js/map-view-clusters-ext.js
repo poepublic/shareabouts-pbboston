@@ -23,7 +23,7 @@
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75, pane: 'spiderLegPane' },
-        maxClusterRadius: (zoom) => Math.max(30, zoom * zoom * 1.5),
+        maxClusterRadius: (zoom) => Math.max(20, zoom * zoom * .8),
         clusterPane: 'clusterPane',
 
         // Show the marker count and a category tooltip on each cluster bubble.
