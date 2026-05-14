@@ -22,7 +22,7 @@ app:
   # home_path: place/new
 
 # Settings for map and layer configs
-cluster_markers: true
+cluster_markers: false
 
 map:
   geolocation_enabled: true
@@ -36,7 +36,7 @@ map:
   geocode_bounding_box: [39.830159, -75.478821, 40.167331, -74.781189]  # top, left, bottom, right
 
   # Optional. Set to true to show the city-wide ideas on the map.
-  show_city_wide_ideas: false
+  show_city_wide_ideas: true
 
   options:
     center:
@@ -100,9 +100,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/arts_culture-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "arts_culture" && {{layer.focused}} === true'
         icon:
@@ -122,25 +122,25 @@ place_types:
         icon:
           iconUrl: /static/img/categories/community-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw larger icons when fewer ideas visible…
       - condition: '"{{location_type}}" === "community" && {{map.zoom}} >= 12 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/community-tol.svg
           shadowUrl: null
-          iconSize: [45, 45]
+          iconSize: [30, 30]
           shadowSize: null
-          iconAnchor: [22.5, 22.5]
+          iconAnchor: [15, 15]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "community" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/community-tol.svg
           shadowUrl: null
-          iconSize: [72, 72]
+          iconSize: [60, 60]
           shadowSize: null
-          iconAnchor: [36, 36]
+          iconAnchor: [30, 30]
   economy_workers:
     label: _(Local Economy & Worker Empowerment)
     description: _(Project ideas that improve access to quality jobs, skills training, career pipelines, and other resources for workers, small business owners, and entrepreneurs.)
@@ -160,9 +160,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/economy_workers-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "economy_workers" && {{layer.focused}} === true'
         icon:
@@ -182,25 +182,25 @@ place_types:
         icon:
           iconUrl: /static/img/categories/education_youth-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw larger icons when fewer ideas visible…
       - condition: '"{{location_type}}" === "education_youth" && {{map.zoom}} >= 12 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/education_youth-tol.svg
           shadowUrl: null
-          iconSize: [45, 45]
+          iconSize: [30, 30]
           shadowSize: null
-          iconAnchor: [22.5, 22.5]
+          iconAnchor: [15, 15]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "education_youth" && {{layer.focused}} === true'
         icon:
           iconUrl: /static/img/categories/education_youth-tol.svg
           shadowUrl: null
-          iconSize: [72, 72]
+          iconSize: [60, 60]
           shadowSize: null
-          iconAnchor: [36, 36]
+          iconAnchor: [30, 30]
   sustainability:
     label: _(Environment, Sustainability, and Food Access)
     description: _(Project ideas that help increase access to healthy and affordable food, promote environmental justice, and help increase the quality of life in Boston.)
@@ -212,17 +212,17 @@ place_types:
         icon:
           iconUrl: /static/img/categories/sustainability-tol.svg
           shadowUrl: null
-          iconSize: [25, 25]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [12.5, 12.5]
+          iconAnchor: [12, 12]
       # Draw larger icons when fewer ideas visible…
       - condition: '"{{location_type}}" === "sustainability" && {{map.zoom}} >= 12 && {{layer.focused}} === false'
         icon:
           iconUrl: /static/img/categories/sustainability-tol.svg
           shadowUrl: null
-          iconSize: [37.5, 37.5]
+          iconSize: [30, 30]
           shadowSize: null
-          iconAnchor: [18.75, 18.75]
+          iconAnchor: [15, 15]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "sustainability" && {{layer.focused}} === true'
         icon:
@@ -250,9 +250,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/facilities-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "facilities" && {{layer.focused}} === true'
         icon:
@@ -280,9 +280,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/human_services-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "human_services" && {{layer.focused}} === true'
         icon:
@@ -310,9 +310,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/public_safety-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "public_safety" && {{layer.focused}} === true'
         icon:
@@ -340,9 +340,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/streets_sidewalks-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "streets_sidewalks" && {{layer.focused}} === true'
         icon:
@@ -370,9 +370,9 @@ place_types:
         icon:
           iconUrl: /static/img/categories/other-tol.svg
           shadowUrl: null
-          iconSize: [30, 30]
+          iconSize: [24, 24]
           shadowSize: null
-          iconAnchor: [15, 15]
+          iconAnchor: [12, 12]
       # Draw biggest icons when focused…
       - condition: '"{{location_type}}" === "other" && {{layer.focused}} === true'
         icon:

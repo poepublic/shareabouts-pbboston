@@ -1,5 +1,6 @@
 // Extends the Shareabouts map view to cluster markers by category using Leaflet.markercluster.
 // Markers for open places are pulled out of their cluster and shown in a separate focused layer.
+// Intercepts addLayer/removeLayer calls during spiderfy to avoid collapsing the spider when a marker is focused/unfocused while the spider is open.
 
 (function() {
 
