@@ -714,33 +714,33 @@ label {
 }
 [name="location_type"][value="community"]:checked + .label-text {
   background-color: var(--icon-color-02);
-  background-image: url("/static/img/categories/community-dark-square.svg");
+  background-image: url("/static/img/categories/community-light-square.svg");
   border-color: var(--icon-color-02);
-  color: var(--charles-blue);
+  color: white;
 }
 [name="location_type"][value="economy_workers"]:checked + .label-text {
   background-color: var(--icon-color-03);
-  background-image: url("/static/img/categories/economy_workers-dark-square.svg");
+  background-image: url("/static/img/categories/economy_workers-light-square.svg");
   border-color: var(--icon-color-03);
-  color: var(--charles-blue);
+  color: white;
 }
 [name="location_type"][value="education_youth"]:checked + .label-text {
   background-color: var(--icon-color-04);
-  background-image: url("/static/img/categories/education_youth-dark-square.svg");
+  background-image: url("/static/img/categories/education_youth-light-square.svg");
   border-color: var(--icon-color-04);
-  color: var(--charles-blue);
+  color: white;
 }
 [name="location_type"][value="sustainability"]:checked + .label-text {
   background-color: var(--icon-color-05);
-  background-image: url("/static/img/categories/sustainability-dark-square.svg");
+  background-image: url("/static/img/categories/sustainability-light-square.svg");
   border-color: var(--icon-color-05);
-  color: var(--charles-blue);
+  color: white;
 }
 [name="location_type"][value="facilities"]:checked + .label-text {
   background-color: var(--icon-color-06);
-  background-image: url("/static/img/categories/facilities-dark-square.svg");
+  background-image: url("/static/img/categories/facilities-light-square.svg");
   border-color: var(--icon-color-06);
-  color: var(--charles-blue);
+  color: white;
 }
 [name="location_type"][value="human_services"]:checked + .label-text {
   background-color: var(--icon-color-07);
@@ -762,9 +762,9 @@ label {
 }
 [name="location_type"][value="other"]:checked + .label-text {
   background-color: var(--icon-color-10);
-  background-image: url("/static/img/categories/other-light-square.svg");
+  background-image: url("/static/img/categories/other-dark-square.svg");
   border-color: var(--icon-color-10);
-  color: white;
+  color: var(--charles-blue);
 }
 
 .fullname-field-wrapper {
