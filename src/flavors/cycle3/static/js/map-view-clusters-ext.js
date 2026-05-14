@@ -1,23 +1,22 @@
-// This script extends the Shareabouts map view to cluster markers by category using Leaflet.markercluster.
+// Extends the Shareabouts map view to cluster markers by category using Leaflet.markercluster.
 // Markers for open places are pulled out of their cluster and shown in a separate focused layer.
-// 
 
 (function() {
 
-  if (Shareabouts.Config.flavor.cluster_markers === false) return; 
+  if (Shareabouts.Config.flavor.cluster_markers === false) return;
 
   var Shareabouts_MapView_initialize = Shareabouts.MapView.prototype.initialize;
   Shareabouts.MapView.prototype.initialize = function() {
     Shareabouts_MapView_initialize.apply(this, arguments);
 
-    const optimisticBlue = '#288be4';
+    const optimisticBlue = '#288be4'; // must match --optimistic-blue in CSS
     this.map.removeLayer(this.placeLayers);
 
     // Replace the default single layer group with one MarkerClusterGroup per category.
     this.placeLayers = {};
 
     const placeTypeKeys = Object.keys(this.options.placeTypes);
-    placeTypeKeys.forEach((placeType, index) => {
+    placeTypeKeys.forEach((placeType) => {
 
       this.placeLayers[placeType] = L.markerClusterGroup({
         showCoverageOnHover: false,
@@ -26,75 +25,77 @@
         maxClusterRadius: (zoom) => Math.max(30, zoom * zoom * 1.5),
         clusterPane: 'clusterPane',
 
-        iconCreateFunction: (cluster) => { // Create custom cluster markers + a tooltip indicating the place type
-            if (!cluster._tooltip) {
-              cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [0, -12], className: "cluster-tooltip"});
-            }
-            return L.divIcon({
+        // Show the marker count and a category tooltip on each cluster bubble.
+        iconCreateFunction: (cluster) => {
+          if (!cluster._tooltip) {
+            cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [0, -12], className: "cluster-tooltip"});
+          }
+          return L.divIcon({
             html: `<div class="cluster-icon" id="cluster-icon-${placeType}">` + cluster.getChildCount() + '</div>',
             className: '', // drops Leaflet's default icon styles
             iconSize: [15, 15],
             iconAnchor: [7.5, 7.5]
-            });
-        }
-
-        });
-
-        this.map.addLayer(this.placeLayers[placeType]); // Add each cluster group to the map
-
-        // Suppress _unspiderfy during addLayer/removeLayer so the spider stays open when a marker is selected
-        ['addLayer', 'removeLayer'].forEach(method => {
-          const original = this.placeLayers[placeType][method].bind(this.placeLayers[placeType]);
-          this.placeLayers[placeType][method] = function(layer) {
-            if (this._spiderfied) {
-              const saved = this._unspiderfy;
-              this._unspiderfy = function() {};
-              const result = original(layer);
-              this._unspiderfy = saved;
-              return result;
-            }
-            return original(layer);
-          };
-        });
-
-        this.placeLayers[placeType].on('spiderfied', (e) => {
-          // Close any other open spider.
-          Object.values(this.placeLayers).forEach(group => {
-            if (group !== this.placeLayers[placeType] && group._spiderfied) {
-              group._unspiderfy();
-            }
           });
+        }
+      });
 
-          // Raise marker pane so 'spiderfied' clusters sit on top of others
-          this.map.getPane('markerPane').style.zIndex = 626;
-          e.markers.forEach(m => { if (m._icon) m._icon.classList.add('spiderfied-active'); });
-          if (e.cluster && e.cluster._icon) e.cluster._icon.classList.add('spiderfied-active');
-          this.map.getContainer().classList.add('map-spiderfied'); 
+      this.map.addLayer(this.placeLayers[placeType]);
+
+      // Suppress _unspiderfy during addLayer/removeLayer so the spider stays open when a marker is selected.
+      ['addLayer', 'removeLayer'].forEach(method => {
+        const original = this.placeLayers[placeType][method].bind(this.placeLayers[placeType]);
+        this.placeLayers[placeType][method] = function(layer) {
+          if (this._spiderfied) {
+            const saved = this._unspiderfy;
+            this._unspiderfy = function() {};
+            const result = original(layer);
+            this._unspiderfy = saved;
+            return result;
+          }
+          return original(layer);
+        };
+      });
+
+      this.placeLayers[placeType].on('spiderfied', (e) => {
+        // Close any other open spider.
+        Object.values(this.placeLayers).forEach(group => {
+          if (group !== this.placeLayers[placeType] && group._spiderfied) {
+            group._unspiderfy();
+          }
         });
+        // Raise marker pane so spiderfied markers appear above cluster icons.
+        this.map.getPane('markerPane').style.zIndex = 626;
+        e.markers.forEach(m => { if (m._icon) m._icon.classList.add('spiderfied-active'); });
+        if (e.cluster && e.cluster._icon) e.cluster._icon.classList.add('spiderfied-active');
+        this.map.getContainer().classList.add('map-spiderfied');
+      });
 
-        this.placeLayers[placeType].on('unspiderfied', () => {
-          setTimeout(() => {
-            if (!Object.values(this.placeLayers).some(g => g._spiderfied)) {
-              this.map.getPane('markerPane').style.zIndex = 600;
-              this.map.getContainer().classList.remove('map-spiderfied');
-              this.map.getContainer().querySelectorAll('.spiderfied-active').forEach(el => el.classList.remove('spiderfied-active'));
-
-              Object.values(this.layerViews).forEach(lv => {
-                if (!lv.layer) return;
-                if (!lv.isFocused && this.focusedPlaceLayers.hasLayer(lv.layer)) {
-
-                  lv.updateLayer();
-                } else if (lv.isFocused && !this.focusedPlaceLayers.hasLayer(lv.layer)) { // When a marker is focused in a spiderfied cluster and the cluster unspiderfies, the marker needs to be re-rendered to move it back to the cluster layer and update its icon
-                  lv.updateLayer();
-                }
-              });
-            }
-          }, 0);
-        });
+      this.placeLayers[placeType].on('unspiderfied', () => {
+        // Defer cleanup so Leaflet finishes collapsing the spider first.
+        setTimeout(() => {
+          if (!Object.values(this.placeLayers).some(g => g._spiderfied)) {
+            this.map.getPane('markerPane').style.zIndex = 600;
+            this.map.getContainer().classList.remove('map-spiderfied');
+            this.map.getContainer().querySelectorAll('.spiderfied-active').forEach(el => el.classList.remove('spiderfied-active'));
+            // Reconcile markers whose focused/unfocused state drifted while the spider was open.
+            Object.values(this.layerViews).forEach(lv => {
+              if (!lv.layer) return;
+              if (!lv.isFocused && this.focusedPlaceLayers.hasLayer(lv.layer)) {
+                // Unfocused marker still in focused layer; move it back to its cluster.
+                lv.updateLayer();
+              } else if (lv.isFocused && !this.focusedPlaceLayers.hasLayer(lv.layer)) {
+                // Focused in-place during spiderfy; move it to the focused layer now.
+                lv.updateLayer();
+              }
+            });
+          }
+        }, 0);
+      });
 
     });
 
-    // After zoom, rebuild each cluster group from the current layer views
+    // After zoom, rebuild each cluster group from the current layer views.
+    // Icon recalculation and avoid-overlap offsets are handled by the base zoomend listener.
     this.map.on('zoomend', () => {
       placeTypeKeys.forEach(placeType => {
         const group = this.placeLayers[placeType];
@@ -107,10 +108,12 @@
       });
     });
 
+    // Focused markers render here, above everything else.
     this.focusedPlaceLayers = new L.LayerGroup();
     this.map.addLayer(this.focusedPlaceLayers);
 
-    // z-index hierarchy: markers (600) < clusters (620) < spider legs (622) < spidered markers (626) < focused spidered markers (670)
+    // Pane z-indices. The markerPane is also set here (600) and raised to 626 during spiderfy.
+    // clusters (620) < spider legs (622) < spiderfied markers (626) < focused (670)
     const clusterPane = this.map.createPane('clusterPane');
     clusterPane.style.zIndex = 620;
 
@@ -124,7 +127,6 @@
   }
 
   // Pass cluster-specific options to each LayerView so it knows about placeLayers and focusedPlaceLayers.
-  var Shareabouts_MapView_addLayerView = Shareabouts.MapView.prototype.addLayerView;
   Shareabouts.MapView.prototype.addLayerView = function(model) {
     this.layerViews[model.cid] = new Shareabouts.LayerView({
       model: model,
@@ -139,7 +141,6 @@
 
   // When a marker in an open spider is focused, swap its icon in-place instead of calling updateLayer()
   // to avoid triggering _unspiderfy and collapsing the spider.
-  var Shareabouts_LayerView_focus = Shareabouts.LayerView.prototype.focus;
   Shareabouts.LayerView.prototype.focus = function() {
     if (!this.isFocused) {
       var locationType = this.model.get('location_type');
@@ -162,7 +163,6 @@
   };
 
   // Same in-place swap for unfocus, to keep the spider open.
-  var Shareabouts_LayerView_unfocus = Shareabouts.LayerView.prototype.unfocus;
   Shareabouts.LayerView.prototype.unfocus = function() {
     if (this.isFocused) {
       var locationType = this.model.get('location_type');
@@ -185,7 +185,6 @@
 
   // Route markers to the right layer group: focused markers go to focusedPlaceLayers, others to their cluster.
   // Skip entirely if the spider is open to avoid disturbing its layout.
-  var Shareabouts_LayerView_show = Shareabouts.LayerView.prototype.show;
   Shareabouts.LayerView.prototype.show = function() {
     var locationTypeFilter = this.getLocationTypeFilter();
     var locationType = this.model.get('location_type');
@@ -217,7 +216,6 @@
   }
 
   // Remove the marker from both layer groups so neither holds a stale reference.
-  var Shareabouts_LayerView_removeLayer = Shareabouts.LayerView.prototype.removeLayer;
   Shareabouts.LayerView.prototype.removeLayer = function() {
     var locationType = this.model.get('location_type');
     if (this.layer) {
