@@ -16,10 +16,10 @@
     // Replace the default single layer group with one MarkerClusterGroup per category.
     this.placeLayers = {};
 
-    const placeTypeKeys = Object.keys(this.options.placeTypes);
-    placeTypeKeys.forEach((placeType) => {
+    const placeTypeKeyValues = Object.entries(this.options.placeTypes); 
+    placeTypeKeyValues.forEach(([placeTypeKey, placeType]) => {
 
-      this.placeLayers[placeType] = L.markerClusterGroup({
+      this.placeLayers[placeTypeKey] = L.markerClusterGroup({
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75, pane: 'spiderLegPane' },
@@ -29,10 +29,10 @@
         // Show the marker count and a category tooltip on each cluster bubble.
         iconCreateFunction: (cluster) => {
           if (!cluster._tooltip) {
-            cluster.bindTooltip(`${placeType.replace(/_/g, ' & ')}`, {direction: "top", offset: [0, -12], className: "cluster-tooltip"});
+            cluster.bindTooltip(placeType.label, {direction: "top", offset: [0, -12], className: "cluster-tooltip"});
           }
           return L.divIcon({
-            html: `<div class="cluster-icon" id="cluster-icon-${placeType}">` + cluster.getChildCount() + '</div>',
+            html: `<div class="cluster-icon" id="cluster-icon-${placeTypeKey}">` + cluster.getChildCount() + '</div>',
             className: '', // drops Leaflet's default icon styles
             iconSize: [15, 15],
             iconAnchor: [7.5, 7.5]
@@ -40,12 +40,12 @@
         }
       });
 
-      this.map.addLayer(this.placeLayers[placeType]);
+      this.map.addLayer(this.placeLayers[placeTypeKey]);
 
       // Suppress _unspiderfy during addLayer/removeLayer so the spider stays open when a marker is selected.
       ['addLayer', 'removeLayer'].forEach(method => {
-        const original = this.placeLayers[placeType][method].bind(this.placeLayers[placeType]);
-        this.placeLayers[placeType][method] = function(layer) {
+        const original = this.placeLayers[placeTypeKey][method].bind(this.placeLayers[placeTypeKey]);
+        this.placeLayers[placeTypeKey][method] = function(layer) {
           if (this._spiderfied) {
             const saved = this._unspiderfy;
             this._unspiderfy = function() {};
@@ -57,10 +57,10 @@
         };
       });
 
-      this.placeLayers[placeType].on('spiderfied', (e) => {
+      this.placeLayers[placeTypeKey].on('spiderfied', (e) => {
         // Close any other open spider.
         Object.values(this.placeLayers).forEach(group => {
-          if (group !== this.placeLayers[placeType] && group._spiderfied) {
+          if (group !== this.placeLayers[placeTypeKey] && group._spiderfied) {
             group._unspiderfy();
           }
         });
@@ -71,7 +71,7 @@
         this.map.getContainer().classList.add('map-spiderfied');
       });
 
-      this.placeLayers[placeType].on('unspiderfied', () => {
+      this.placeLayers[placeTypeKey].on('unspiderfied', () => {
         // Defer cleanup so Leaflet finishes collapsing the spider first.
         setTimeout(() => {
           if (!Object.values(this.placeLayers).some(g => g._spiderfied)) {
@@ -98,11 +98,11 @@
     // After zoom, rebuild each cluster group from the current layer views.
     // Icon recalculation and avoid-overlap offsets are handled by the base zoomend listener.
     this.map.on('zoomend', () => {
-      placeTypeKeys.forEach(placeType => {
-        const group = this.placeLayers[placeType];
+      placeTypeKeyValues.forEach(([placeTypeKey]) => {
+        const group = this.placeLayers[placeTypeKey];
         if (!group || group._spiderfied) return;
         const layers = Object.values(this.layerViews)
-          .filter(lv => lv.model.get('location_type') === placeType && lv.layer && !lv.isFocused)
+          .filter(lv => lv.model.get('location_type') === placeTypeKey && lv.layer && !lv.isFocused)
           .map(lv => lv.layer);
         group.clearLayers();
         group.addLayers(layers);
