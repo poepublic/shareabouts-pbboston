@@ -98,20 +98,6 @@
 
     });
 
-    // After zoom, rebuild each cluster group from the current layer views.
-    // Icon recalculation and avoid-overlap offsets are handled by the base zoomend listener.
-    this.map.on('zoomend', () => {
-      placeTypeKeyValues.forEach(([placeTypeKey]) => {
-        const group = this.placeLayers[placeTypeKey];
-        if (!group || group._spiderfied) return;
-        const layers = Object.values(this.layerViews)
-          .filter(lv => lv.model.get('location_type') === placeTypeKey && lv.layer && !lv.isFocused)
-          .map(lv => lv.layer);
-        group.clearLayers();
-        group.addLayers(layers);
-      });
-    });
-
     // Focused markers render here, above everything else.
     this.focusedPlaceLayers = new L.LayerGroup();
     this.map.addLayer(this.focusedPlaceLayers);
