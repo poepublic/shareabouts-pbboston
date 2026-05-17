@@ -43,6 +43,9 @@
       this.map.addLayer(this.placeLayers[placeTypeKey]);
 
       // Suppress _unspiderfy during addLayer/removeLayer so the spider stays open when a marker is selected.
+      if (!this.placeLayers[placeTypeKey]._unspiderfy) {
+        console.warn('markercluster: _unspiderfy not found, spider suppression may be broken');
+      }
       ['addLayer', 'removeLayer'].forEach(method => {
         const original = this.placeLayers[placeTypeKey][method].bind(this.placeLayers[placeTypeKey]);
         this.placeLayers[placeTypeKey][method] = function(layer) {
@@ -60,8 +63,8 @@
       this.placeLayers[placeTypeKey].on('spiderfied', (e) => {
         // Close any other open spider.
         Object.values(this.placeLayers).forEach(group => {
-          if (group !== this.placeLayers[placeTypeKey] && group._spiderfied) {
-            group._unspiderfy();
+          if (group !== this.placeLayers[placeTypeKey]) {
+            group.unspiderfy();
           }
         });
         // Raise marker pane so spiderfied markers appear above cluster icons.
