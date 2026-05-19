@@ -25,6 +25,22 @@
     transition: right 0.3s ease;
   }
 
+  #sidebar-toggle .collapse-icon {
+    display: block;
+  }
+
+  #sidebar-toggle .expand-icon {
+    display: none;
+  }
+
+  body.sidebar-collapsed #sidebar-toggle .collapse-icon {
+    display: none;
+  }
+
+  body.sidebar-collapsed #sidebar-toggle .expand-icon {
+    display: block;
+  }
+
   #sidebar-toggle:hover {
     background-color: var(--iia-urban-pink);
   }

@@ -1,31 +1,30 @@
-(function($) {
-  $(function() {
-    var $body = $('body');
+(function() {
+  const body = document.body;
+  const toggleBtn = document.getElementById('sidebar-toggle');
+  const ticker = document.getElementById('ticker');
 
-    var $toggleBtn = $('<button id="sidebar-toggle" aria-label="Toggle Sidebar">' +
-      '<span class="collapse-icon">🞂</span>' +
-      '<span class="expand-icon" style="display: none;">🞀</span>' +
-    '</button>');
+  toggleBtn.setAttribute('aria-controls', ticker.id);
 
-    $body.append($toggleBtn);
+  function updateSidebarCollapsedState() {
+    const isCollapsed = body.classList.contains('sidebar-collapsed');
 
-    $toggleBtn.on('click', function() {
-      $body.toggleClass('sidebar-collapsed');
+    ticker.setAttribute('aria-hidden', isCollapsed);
+    toggleBtn.setAttribute('aria-expanded', !isCollapsed);
+  }
 
-      if ($body.hasClass('sidebar-collapsed')) {
-        $toggleBtn.find('.collapse-icon').hide();
-        $toggleBtn.find('.expand-icon').show();
-      } else {
-        $toggleBtn.find('.collapse-icon').show();
-        $toggleBtn.find('.expand-icon').hide();
+  toggleBtn.addEventListener('click', function() {
+    body.classList.toggle('sidebar-collapsed');
+
+    updateSidebarCollapsedState();
+
+    // Invalidate map size after transition to ensure tiles load properly
+    setTimeout(function() {
+      if (window.app?.appView?.mapView?.map) {
+        window.app.appView.mapView.map.invalidateSize();
       }
-
-      // Invalidate map size after transition to ensure tiles load properly
-      setTimeout(function() {
-        if (window.app?.appView?.mapView?.map) {
-          window.app.appView.mapView.map.invalidateSize();
-        }
-      }, 350); // 350ms to ensure the 300ms transition completes
-    });
+    }, 350); // 350ms to ensure the 300ms CSS transition completes
   });
-})(jQuery);
+
+  // Initialize the sidebar collapsed state
+  updateSidebarCollapsedState();
+})();
