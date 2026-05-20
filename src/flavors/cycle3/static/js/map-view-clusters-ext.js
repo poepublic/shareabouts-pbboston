@@ -21,7 +21,7 @@
 
       this.placeLayers[placeTypeKey] = L.markerClusterGroup({
         showCoverageOnHover: false,
-        zoomToBoundsOnClick: true,
+        zoomToBoundsOnClick: false,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75, pane: 'spiderLegPane' },
         maxClusterRadius: (zoom) => Math.max(20, zoom * zoom * .8),
         clusterPane: 'clusterPane',
@@ -58,6 +58,10 @@
           }
           return original(layer);
         };
+      });
+
+      this.placeLayers[placeTypeKey].on('clusterclick', (e) => { // spiderfy on click regardless of zoom level
+        e.layer.spiderfy();
       });
 
       this.placeLayers[placeTypeKey].on('spiderfied', (e) => {
