@@ -1,5 +1,11 @@
 (function() {
   const body = document.body;
+  const sidebarToggleTpl = Handlebars.templates['sidebar-toggle-control'];
+  const sidebarToggle = document.createElement('div');
+  sidebarToggle.id = 'sidebar-toggle-container';
+  sidebarToggle.innerHTML = sidebarToggleTpl();
+  body.append(sidebarToggle);
+
   const toggleBtn = document.getElementById('sidebar-toggle');
   const ticker = document.getElementById('ticker');
 
