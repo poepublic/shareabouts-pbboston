@@ -45,6 +45,16 @@
     background-color: var(--iia-urban-pink);
   }
 
+  #sidebar-toggle svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  #sidebar-toggle svg path {
+    stroke: none;
+    fill: currentColor;
+  }
+
   body.sidebar-collapsed #sidebar-toggle {
     right: 0;
   }
