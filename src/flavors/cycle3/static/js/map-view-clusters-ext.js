@@ -17,13 +17,15 @@
     this.placeLayers = {};
 
     const placeTypeKeyValues = Object.entries(this.options.placeTypes); 
-    placeTypeKeyValues.forEach(([placeTypeKey, placeType]) => {
+    placeTypeKeyValues.forEach(([placeTypeKey, placeType], placeTypeIndex) => {
 
       this.placeLayers[placeTypeKey] = L.markerClusterGroup({
+        placeTypeIndex: placeTypeIndex,
+        placeTypeCount: placeTypeKeyValues.length,
         showCoverageOnHover: false,
         zoomToBoundsOnClick: false,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75, pane: 'spiderLegPane' },
-        maxClusterRadius: (zoom) => Math.max(20, zoom * zoom * .8),
+        maxClusterRadius: 100,
         clusterPane: 'clusterPane',
 
         // Show the marker count and a category tooltip on each cluster bubble.
