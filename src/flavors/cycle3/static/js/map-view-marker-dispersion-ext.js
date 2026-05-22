@@ -70,6 +70,9 @@
           const point = map.project(baseLatlng, zoom);
           cluster._dispersionLatLng = map.unproject(point.add([offsetX, offsetY]), zoom);
         }
+        if (cluster._tooltip) {
+          cluster._tooltip.options.offset = L.point(offsetX, offsetY - 12);
+        }
         return L.divIcon({
           html: origIcon.options.html,
           className: origIcon.options.className,
