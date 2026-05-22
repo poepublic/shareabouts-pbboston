@@ -1331,12 +1331,14 @@ label {
 -------------------------------------------------------------- */
 .leaflet-marker-pane .leaflet-marker-icon {
   opacity: 0.85;
-  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0 2px 8px rgba(238, 230, 255, 0.2));
   transition: opacity 0.15s;
 }
 
 .leaflet-marker-pane .leaflet-marker-icon:hover {
   opacity: 1;
+  filter: drop-shadow(0 2px 8px rgba(238, 230, 255, 0.5));
+  transform: scale(1.3);
 }
 
 .map-spiderfied .leaflet-pane .leaflet-marker-icon:not(.spiderfied-active) {
@@ -1896,7 +1898,14 @@ label {
   }
 
   .leaflet-marker-pane .leaflet-marker-icon {
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    opacity: 0.85;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  .leaflet-marker-pane .leaflet-marker-icon:hover {
+    opacity: 1;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+    transform: scale(1.3);
   }
 
   .leaflet-tooltip.cluster-tooltip {
