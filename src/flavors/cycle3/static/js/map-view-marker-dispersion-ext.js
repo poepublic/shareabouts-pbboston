@@ -9,7 +9,7 @@
 
   // Radial offset radius (pixels); increases with zoom
   function radialOffsetRadius(zoom) {
-    return 50;
+    return zoom * 2;
   }
 
   // Deterministic pseudo-random in [0, 1) for a numeric seed.
