@@ -25,7 +25,7 @@
         showCoverageOnHover: false,
         zoomToBoundsOnClick: false,
         spiderLegPolylineOptions: { weight: 1.5, color: optimisticBlue, opacity: 0.75, pane: 'spiderLegPane' },
-        //maxClusterRadius: (zoom) => Math.max(30, 140 - zoom * 5), // not bad: slow decrease in radius with zoom
+        //maxClusterRadius: (zoom) => Math.max(30, 140 - zoom * 5), // not bad but the improvements aren't worth the added complexity over a constant
         maxClusterRadius: 50,
         clusterPane: 'clusterPane',
 
