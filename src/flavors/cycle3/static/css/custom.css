@@ -1331,6 +1331,7 @@ label {
 -------------------------------------------------------------- */
 .leaflet-marker-pane .leaflet-marker-icon {
   opacity: 0.85;
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.3));
   transition: opacity 0.15s;
 }
 
@@ -1345,21 +1346,6 @@ label {
 
 /* =Map Clustering
 -------------------------------------------------------------- */
-
-body .marker-cluster {
-  background-color: rgb(from var(--optimistic-blue) r g b / 0.5);
-  color: white;
-  /* border-radius: 50%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer; */
-}
-
-body .marker-cluster div {
-  background-color: rgb(from var(--optimistic-blue) r g b / 0.5);
-}
 
 .leaflet-container .leaflet-focused-pane img {
   max-width: none !important;
@@ -1409,7 +1395,6 @@ body .marker-cluster div {
   color: white;
   font-size: 13px;
   font-weight: 500;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   border: 2px solid white;
   opacity: 0.85;
   cursor: pointer;
@@ -1911,7 +1896,7 @@ body .marker-cluster div {
   }
 
   .leaflet-marker-pane .leaflet-marker-icon {
-    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.034));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   }
 
   .leaflet-tooltip.cluster-tooltip {
@@ -1922,6 +1907,8 @@ body .marker-cluster div {
       -1px  1px 0 #ffffff94,
        1px  1px 0 #ffffff94;
   }
+
+
 }
 
 /* =Logos
