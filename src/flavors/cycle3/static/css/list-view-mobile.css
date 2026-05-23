@@ -143,4 +143,19 @@
     margin-left: 0;
     margin-right: 0;
   }
+
+  #list-container .iia-content-container {
+    background-image: none;
+    background-color: white;
+  }
+
+  #list-container .place-submission-details {
+    float: none;
+    width: auto;
+    text-align: center;
+  }
+
+  #list-container .place-submission-details .view-on-map-btn {
+    float: none;
+  }
 }
