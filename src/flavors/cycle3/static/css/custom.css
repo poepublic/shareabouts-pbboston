@@ -1,6 +1,7 @@
 @import url('/static/css/city-wide-ext.css');
 @import url('/static/css/language-picker.css');
 @import url('/static/css/sidebar-collapse-ext.css');
+@import url('/static/css/list-view-mobile.css');
 
 /*
  * This CSS file follows the default Shareabouts style.css.
@@ -573,7 +574,7 @@ label {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-}  
+}
 
 .place-private_submitter_race_ethnicity-field input {
   opacity: 1;
@@ -1384,9 +1385,9 @@ label {
    1px  1px 0 rgba(0,0,0,0.5);
 }
 
-.leaflet-tooltip.cluster-tooltip::before {                                                                 
-  display: none;                                                                                           
-}   
+.leaflet-tooltip.cluster-tooltip::before {
+  display: none;
+}
 
 .cluster-icon {
   width: 15px;
