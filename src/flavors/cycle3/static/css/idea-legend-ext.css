@@ -6,14 +6,18 @@
     left: 1rem;
     z-index: 1000;;
     width: 230px; 
-    background-color: white;
     font-size: 0.875em;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
     --selection-bg: var(--supporting-red-1)
   }
 
   .legend-wrapper.open {
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-offset) 
+    var(--shadow-offset) 
+    var(--shadow-blur) 
+    var(--shadow-spread)
+    var(--shadow-color);
   }
   
   .legend-wrapper h2 {
@@ -27,18 +31,17 @@
     position: relative;
     z-index: 2;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 0.5rem;
+    justify-content: center;
     padding: 0.5rem;
     width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    transition: bottom 0.3s ease;
   }
   
   .legend-toggle-button {
-    border: none;
-    background: none;
-    padding: 0;
+    position: absolute;
+    padding: 0.5rem;
+    right: 0;
   }
   
   .hamburger-icon {
@@ -81,10 +84,7 @@
   
   .place-type-legend {
     display: none;
-    margin: 0.5rem;
     margin-bottom: 0;
-    border: 2px solid rgba(0, 0, 0, 0.5);
-    border-radius: 0.5rem;
     color: var(--charles-blue);
   }
   
@@ -109,8 +109,9 @@
     border: none;
     text-decoration: none;
     color: var(--charles-blue);
+    background-color: var(--iia-fog-grey);
   }
-  
+
   .place-type-legend .legend-item.deselected {
     opacity: 0.5;
   }
@@ -119,11 +120,6 @@
     background-color: var(--hover-color);
     color: white;
     opacity: 1;
-  }
-  
-  .place-type-legend .legend-item:first-child {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
   }
   
   .place-type-legend .legend-item:last-child {
