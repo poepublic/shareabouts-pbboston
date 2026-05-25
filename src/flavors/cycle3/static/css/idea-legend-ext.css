@@ -83,13 +83,14 @@
   }
   
   .place-type-legend {
-    display: none;
-    margin-bottom: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
     color: var(--charles-blue);
   }
-  
+
   .open .place-type-legend {
-    display: block;
+    max-height: 500px;
   }
 
 
