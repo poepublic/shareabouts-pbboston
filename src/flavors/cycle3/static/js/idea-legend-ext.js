@@ -55,6 +55,12 @@ Shareabouts.AppView.prototype.renderLegend = function() {
     }
     const html = Handlebars.templates['legend']();
     legendWrapper.innerHTML = html;
+
+    legendWrapper.querySelectorAll('.legend-item').forEach(item => {
+      const type = item.dataset.placeType;
+      const color = Shareabouts.Config.placeTypes[type]?.color;
+      if (color) item.style.setProperty('--hover-color', color);
+    });
   };
   
   Shareabouts.AppView.prototype.toggleLegend = function() {

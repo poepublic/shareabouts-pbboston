@@ -114,7 +114,7 @@ place_types:
   community:
     label: _(Community Resources)
     description: _(Project ideas that provide assistance or services to residents in need, such as programs at community centers, financial or digital literacy, English as a second language, or GED classes.)
-    color: '#fa8b41'
+    color: '#88CCEE'
     icon: /static/img/categories/community.svg
     rules:
       # Draw small icons when zoomed out to see a lot of the ideas…

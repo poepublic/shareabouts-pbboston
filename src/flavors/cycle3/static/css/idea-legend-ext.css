@@ -116,8 +116,8 @@
   }
   
   .place-type-legend .legend-item:hover {
-    color: var(--charles-blue);
-    text-decoration: underline;
+    background-color: var(--hover-color);
+    color: white;
     opacity: 1;
   }
   
