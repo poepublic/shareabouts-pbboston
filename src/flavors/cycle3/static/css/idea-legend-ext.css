@@ -2,9 +2,9 @@
 -------------------------------------------------------------- */
 .legend-wrapper {
     position: absolute;
-    bottom: 8rem;
-    left: 1rem;
-    z-index: 1000;;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
     width: 230px; 
     font-size: 0.875em;
     border-bottom-left-radius: 0.5rem;
