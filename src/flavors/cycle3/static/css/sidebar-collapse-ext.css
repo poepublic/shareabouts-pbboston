@@ -93,4 +93,15 @@
     left: calc(var(--content-left) + var(--ticker-width));
     right: 0;
   }
+
+  #colophon {
+    transition: right 0.3s ease;
+  }
+
+  body.sidebar-collapsed.activity-enabled.content-visible #colophon,
+  body.sidebar-collapsed.activity-enabled #colophon,
+  body.sidebar-collapsed.content-visible #colophon,
+  body.sidebar-collapsed #colophon {
+    right: 0;
+  }
 }
