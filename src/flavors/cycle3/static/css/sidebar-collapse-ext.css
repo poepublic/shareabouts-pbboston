@@ -59,6 +59,10 @@
     right: 0;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   #ticker {
     transition: transform 0.3s ease;
   }
