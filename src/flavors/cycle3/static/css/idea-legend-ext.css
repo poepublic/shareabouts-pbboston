@@ -1,154 +1,188 @@
 /* =Legend
 -------------------------------------------------------------- */
+
+/* Mobile: full-width in-flow below #add-place-btn-container */
 .legend-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.875em;
+  --selection-bg: var(--supporting-red-1);
+  background-color: var(--charles-blue);
+  padding: 0.5em 0.5em 0.75em;
+}
+
+.content-visible .legend-wrapper {
+  display: none;
+}
+
+.legend-wrapper h2 {
+  margin: 0;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: white;
+}
+
+.legend-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 0.75em 1em 0.5em;
+  font-size: 1.25em;
+  background-color: var(--supporting-red-1);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.legend-toggle:hover {
+  background-color: var(--freedom-trail-red);
+}
+
+.legend-toggle-button {
+  position: absolute;
+  padding: 0.5rem;
+  right: 0;
+}
+
+.hamburger-icon {
+  position: relative;
+  height: 1em;
+  width: 1em;
+}
+
+.hamburger-bar {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 0.15em;
+  background-color: white;
+  transition: 0.4s;
+}
+
+.hamburger-bar:first-child {
+  top: 10%;
+}
+.hamburger-bar:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hamburger-bar:last-child {
+  bottom: 10%;
+}
+
+.open .hamburger-bar:first-child {
+  transform: translateY(-50%) rotate(45deg);
+  top: 50%;
+}
+.open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.open .hamburger-bar:last-child {
+  transform: translateY(-50%) rotate(-45deg);
+  top: 50%;
+}
+
+.place-type-legend {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  color: var(--charles-blue);
+}
+
+.open .place-type-legend {
+  max-height: 80vh;
+  overflow: auto;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.place-type-legend .legend-item img {
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+}
+
+.place-type-legend .legend-item {
+  float: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  text-decoration: none;
+  color: var(--charles-blue);
+  background-color: var(--iia-fog-grey);
+}
+
+.place-type-legend .legend-item.deselected {
+  opacity: 0.5;
+}
+
+.place-type-legend .legend-item:hover {
+  background-color: var(--hover-color);
+  color: white;
+  opacity: 1;
+}
+
+.place-type-legend .legend-item:last-child {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.place-type-legend .legend-text {
+  flex-grow: 1;
+}
+
+.place-type-legend .legend-count {
+  width: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.place-type-legend .legend-count::before {
+  content: "(";
+}
+
+.place-type-legend .legend-count::after {
+  content: ")";
+}
+
+/* Desktop: absolute overlay inside #map-container */
+@media only screen and (width >= 960px) {
+  .legend-wrapper {
     position: absolute;
     top: 1rem;
     right: 1rem;
     z-index: 1000;
-    width: 230px; 
-    font-size: 0.875em;
+    width: 230px;
+    padding: 0;
+    background-color: transparent;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    --selection-bg: var(--supporting-red-1)
+  }
+
+  .content-visible .legend-wrapper {
+    display: block;
   }
 
   .legend-wrapper.open {
-    box-shadow: var(--shadow-offset) 
-    var(--shadow-offset) 
-    var(--shadow-blur) 
+    box-shadow: var(--shadow-offset)
+    var(--shadow-offset)
+    var(--shadow-blur)
     var(--shadow-spread)
     var(--shadow-color);
   }
-  
-  .legend-wrapper h2 {
-    margin: 0;
-    font-size: 1em;
-    text-transform: uppercase;
-    color: white;
-  }
-  
+
   .legend-toggle {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--charles-blue);
+    font-size: 1em;
     padding: 0.5rem;
-    width: 100%;
-    transition: bottom 0.3s ease;
+    transition: background-color 0.1s;
   }
-  
-  .legend-toggle-button {
-    position: absolute;
-    padding: 0.5rem;
-    right: 0;
-  }
-  
-  .hamburger-icon {
-    position: relative;
-    height: 1em;
-    width: 1em;
-  }
-  
-  .hamburger-bar {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 0.15em;
-    background-color: white;
-    transition: 0.4s;
-  }
-  
-  .hamburger-bar:first-child {
-    top: 10%;
-  }
-  .hamburger-bar:nth-child(2) {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .hamburger-bar:last-child {
-    bottom: 10%;
-  }
-  
-  .open .hamburger-bar:first-child {
-    transform: translateY(-50%) rotate(45deg);
-    top: 50%;
-  }
-  .open .hamburger-bar:nth-child(2) {
-    opacity: 0;
-  }
-  .open .hamburger-bar:last-child {
-    transform: translateY(-50%) rotate(-45deg);
-    top: 50%;
-  }
-  
-  .place-type-legend {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    color: var(--charles-blue);
-  }
-
-  .open .place-type-legend {
-    max-height: 500px;
-  }
-
-
-  .place-type-legend .legend-item img {
-    height: 2rem;
-    width: 2rem;
-    flex-shrink: 0;
-  }
-  
-  .place-type-legend .legend-item {
-    float: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    border: none;
-    text-decoration: none;
-    color: var(--charles-blue);
-    background-color: var(--iia-fog-grey);
-  }
-
-  .place-type-legend .legend-item.deselected {
-    opacity: 0.5;
-  }
-  
-  .place-type-legend .legend-item:hover {
-    background-color: var(--hover-color);
-    color: white;
-    opacity: 1;
-  }
-  
-  .place-type-legend .legend-item:last-child {
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-  }
-  
-  .place-type-legend .legend-item img {
-    height: 2rem;
-  }
-  
-  .place-type-legend .legend-text {
-    flex-grow: 1;
-  }
-  
-  .place-type-legend .legend-count {
-    width: 2.5rem;
-    text-align: center;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 0.9em;
-  }
-  
-  .place-type-legend .legend-count::before {
-    content: "(";
-  }
-  
-  .place-type-legend .legend-count::after {
-    content: ")";
-  }
-  
+}
