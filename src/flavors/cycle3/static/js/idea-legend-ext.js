@@ -108,6 +108,13 @@ Shareabouts.AppView.prototype.renderLegend = function() {
       if (!item) return;
       const type = item.dataset.placeType;
       if (!type) return;
+
+      // Close open spiders before filtering
+      if (this.mapView && this.mapView.placeLayers) {
+        Object.values(this.mapView.placeLayers).forEach(group => {
+          if (group._spiderfied) group.unspiderfy();
+        });
+      }
       legendLocationType = (legendLocationType === type) ? null : type;
       this.activityView.render();
     };
