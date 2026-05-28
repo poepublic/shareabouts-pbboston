@@ -47,6 +47,18 @@ Handlebars.registerHelper('is_place_type_shown', function(type, options) {
 
 
 
+let legendLocationType = null;
+
+// Chain on top of the city-wide renderAction override from activity-view-filters-ext.js.
+const Shareabouts_ActivityView_renderAction = Shareabouts.ActivityView.prototype.renderAction;
+Shareabouts.ActivityView.prototype.renderAction = function(model, index) {
+  if (legendLocationType !== null) {
+    const target = model.get('target') || {};
+    if (target['location_type'] !== legendLocationType) return;
+  }
+  Shareabouts_ActivityView_renderAction.apply(this, arguments);
+};
+
 // Update the current count of places in the legend.
 Shareabouts.AppView.prototype.renderLegend = function() {
     const legendWrapper = this.el.querySelector('.legend-wrapper');
@@ -89,6 +101,18 @@ Shareabouts.AppView.prototype.renderLegend = function() {
       }
     };
     this.el.addEventListener('click', this.handleLegendToggleClick);
+
+    // Filter the activity ticker when a legend category is clicked.
+    this.handleLegendItemClick = (evt) => {
+      const item = evt.target.closest('.legend-item');
+      if (!item) return;
+      const type = item.dataset.placeType;
+      if (!type) return;
+      legendLocationType = (legendLocationType === type) ? null : type;
+      this.activityView.render();
+    };
+    this.el.addEventListener('click', this.handleLegendItemClick);
+
     return result;
   }
   
