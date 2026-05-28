@@ -20,7 +20,7 @@ Handlebars.registerHelper('each_place_type', function() {
     return result;
   });
 
-  // Provide a way to determine whether a given place type is visible (i.e. not
+// Provide a way to determine whether a given place type is visible (i.e. not
 // filtered out).
 Handlebars.registerHelper('is_place_type_shown', function(type, options) {
     const path = window.location.pathname;
@@ -123,8 +123,10 @@ Shareabouts.AppView.prototype.renderLegend = function() {
     return result;
   }
   
-  // Update the current place type in the activity view.
+  // Sync legend filter state and re-render when the map filter changes.
   Shareabouts.AppView.prototype.setSelectedPlaceType = function(type) {
+    legendLocationType = (!type || type === 'all') ? null : type;
+    this.activityView.render();
     this.renderLegend();
   }
   
