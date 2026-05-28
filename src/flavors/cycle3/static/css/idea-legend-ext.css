@@ -106,7 +106,6 @@
 }
 
 .place-type-legend .legend-item {
-  float: none;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -183,6 +182,5 @@
     background-color: var(--charles-blue);
     font-size: 1em;
     padding: 0.5rem;
-    transition: background-color 0.1s;
   }
 }
