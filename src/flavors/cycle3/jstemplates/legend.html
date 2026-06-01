@@ -1,7 +1,7 @@
 <div>
     <button class="legend-toggle btn btn-secondary">
-      <h2>Filter by category</h2>
-      <div type="button" class="legend-toggle-button" title="Toggle the legend visibility">
+      <h2>{{#_}}Filter by category{{/_}}</h2>
+      <div type="button" class="legend-toggle-button" title="{{#_}}Toggle the legend visibility{{/_}}">
         <div class="hamburger-icon">
           <div class="hamburger-bar"></div>
           <div class="hamburger-bar"></div>
@@ -16,23 +16,23 @@
           <a href="/filter/{{#if isFiltered}}all{{^}}{{type}}{{/if}}"
             data-internal
             data-place-type="{{type}}"
-            aria-label="Filter to {{count_places type}} {{label}}s"
+            aria-label="{{#_}}Filter to {{count_places type}} {{label}}s{{/_}}"
             class="legend-item {{type}}-legend-item"
             id="{{type}}-legend-entry">
             <img src="{{ STATIC_URL }}img/categories/{{type}}-tol.svg" role="presentation">
             <div class="legend-text">{{label}}</div>
-            <div class="legend-count" title="Number of ideas">{{count_places type}}</div>
+            <div class="legend-count" title="{{#_}}Number of ideas{{/_}}">{{count_places type}}</div>
           </a>
         {{^}}
           <a href="/filter/{{type}}"
             data-internal
             data-place-type="{{type}}"
-            aria-label="Filter to {{count_places type}} {{label}}s"
+            aria-label="{{#_}}Filter to {{count_places type}} {{label}}s{{/_}}"
             class="legend-item {{type}}-legend-item deselected"
             id="{{type}}-legend-entry">
             <img src="{{ STATIC_URL }}img/categories/{{type}}-tol.svg" role="presentation">
             <div class="legend-text">{{label}}</div>
-            <div class="legend-count" title="Number of ideas">{{count_places type}}</div>
+            <div class="legend-count" title="{{#_}}Number of ideas{{/_}}">{{count_places type}}</div>
           </a>
         {{/is_place_type_shown}}
       {{/each_place_type}}
