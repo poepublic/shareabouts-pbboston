@@ -1676,7 +1676,6 @@ label {
     align-items: center;
     width: auto;
     margin: 0;
-    margin-right: 9rem;
     position: static;
   }
 
@@ -1772,6 +1771,7 @@ label {
     margin-left: 1.25rem;
     background: none;
     color: var(--charles-blue);
+    font-weight: normal;
     width: unset;
   }
 

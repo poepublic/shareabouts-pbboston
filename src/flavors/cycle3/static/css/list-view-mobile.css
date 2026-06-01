@@ -10,7 +10,13 @@
   --leaflet-control-z-index: 1000;
 }
 
-@media only screen and (width < 960px) {
+@media only screen and (960px <= width < 1280px) {
+  #site-header .list-toggle-nav {
+    margin-right: 9rem;
+  }
+}
+
+@media only screen and (width <= 960px) {
 
   /* --- List/Map Toggle Button ---
      Position the toggle like a Leaflet control on the map,
