@@ -1772,7 +1772,7 @@ label {
     margin-left: 1.25rem;
     background: none;
     color: var(--charles-blue);
-    font-weight: normal;
+    width: unset;
   }
 
   .access .menu > li > .btn:hover {
