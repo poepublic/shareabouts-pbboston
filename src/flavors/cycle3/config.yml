@@ -46,8 +46,8 @@ map:
     zoomSnap: 0
     minZoom: 11.5
     maxZoom: 20
-    maxBounds:                                                                                                 
-    - [42.02797, -71.39125]  # southwest corner [lat, lng]                                                       
+    maxBounds:
+    - [42.02797, -71.39125]  # southwest corner [lat, lng]
     - [42.59697, -70.7232]  # northeast corner [lat, lng]
     maxBoundsViscosity: 1.0
     preferCanvas: true
@@ -934,6 +934,9 @@ pages:
   - title: _(Past PB Cycles)
     slug: past-cycles
     pages:
+      - title: _(Cycle 2 (2025))
+        url: /cycle2/
+        external: true
       - title: _(Cycle 1 (2024))
         url: /cycle1/
         external: true

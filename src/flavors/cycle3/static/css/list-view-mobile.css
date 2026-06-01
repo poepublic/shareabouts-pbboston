@@ -1,0 +1,170 @@
+/* =List View on Small Screens
+   Styles for the list view toggle and list container on screens
+   below 960px (the breakpoint where the default large-screen
+   styles kick in).
+-------------------------------------------------------------- */
+
+:root {
+  --leaflet-control-size: 33px;
+  --leaflet-control-edge-offset: 10px;
+  --leaflet-control-z-index: 1000;
+}
+
+@media only screen and (width < 960px) {
+
+  /* --- List/Map Toggle Button ---
+     Position the toggle like a Leaflet control on the map,
+     in the top-right of the map area, below the header.
+  */
+  #site-header .list-toggle-nav {
+    display: block;
+    position: absolute;
+    z-index: var(--leaflet-control-z-index);
+    top: calc(var(--pre-banner-height) + var(--banner-height) + var(--leaflet-control-edge-offset));
+    right: var(--leaflet-control-edge-offset);
+    float: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Style the toggle button to look like a Leaflet control */
+  #site-header .list-toggle-nav .list-toggle-btn,
+  #site-header .list-toggle-nav .list-toggle-btn:visited,
+  #site-header .list-toggle-nav .list-toggle-btn:link {
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: auto;
+    border: 2px solid rgb(0  0  0 / 20%);
+    border-radius: 4px;
+  }
+
+  #site-header .list-toggle-nav .list-toggle-btn:hover {
+    background-color: #f4f4f4;
+    color: var(--supporting-gray-4);
+  }
+
+  /* The show-the-list and show-the-map spans: override the
+     background-image icons to be smaller on the control button */
+  #site-header .list-toggle-nav .list-toggle-btn .show-the-list,
+  #site-header .list-toggle-nav .list-toggle-btn .show-the-map {
+    box-sizing: content-box;
+    padding-left: var(--leaflet-control-size);
+    width: 0;
+    height: var(--leaflet-control-size);
+    background-size: 18px 18px;
+    background-position: center center;
+    background-color: white;
+    overflow: hidden;
+  }
+
+  /* Push the locate-me control down so the list toggle button
+     sits above it. */
+  #map .leaflet-top.leaflet-right {
+    top: calc(var(--leaflet-control-size) + var(--leaflet-control-edge-offset));
+  }
+
+  /* At >= 480px, the pre-banner is hidden, so adjust the toggle
+     position accordingly. */
+  @media only screen and (width >= 480px) {
+    #site-header .list-toggle-nav {
+      top: calc(var(--banner-height) + var(--leaflet-control-edge-offset));
+    }
+  }
+
+
+  /* --- List Container ---
+     Full-screen overlay below the header, matching the
+     large-screen absolute-positioning approach.
+  */
+  #list-container.is-exposed {
+    display: block;
+    top: calc(var(--pre-banner-height) + var(--banner-height));
+    overflow: visible;
+  }
+
+  @media only screen and (width >= 480px) {
+    #list-container.is-exposed {
+      top: var(--banner-height);
+    }
+  }
+
+
+  /* --- List Header Layout ---
+     Search spans full width; filters stack below.
+     Right margin reserves space for the fixed toggle button.
+  */
+  #list-container .place-list-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--leaflet-control-edge-offset);
+    padding-right: calc(var(--leaflet-control-size) + 2 * var(--leaflet-control-edge-offset) + 4px);  /* The extra 4px is for the map view button's border width */
+    box-sizing: border-box;
+  }
+
+  #list-container .list-search-form {
+    width: 100%;
+    display: flex;
+    gap: var(--leaflet-control-edge-offset);
+  }
+
+  #list-container .list-search-form input[type="text"] {
+    flex: 1;
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+    padding-left: var(--leaflet-control-edge-offset);
+    border-width: 2px;
+    border-radius: 4px;
+    height: var(--leaflet-control-size);
+    max-width: none;
+  }
+
+  #list-container .list-search-form input[type="submit"] {
+    box-sizing: content-box;
+    margin: 2px 0;
+    padding: 0 var(--leaflet-control-edge-offset);
+    border-radius: 2px;
+    height: var(--leaflet-control-size);
+  }
+
+  #list-container .list-filter-menu {
+    margin-top: 0.75rem;
+  }
+
+  /* --- Place List Items ---
+     Simplify the place list layout for narrow screens.
+  */
+  #list-container .place-list .place-items {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #list-container .place-list .point-submitter .avatar {
+    margin-left: -4.5rem;
+    margin-right: 0.5rem;
+  }
+
+  #list-container .iia-content-container {
+    background-image: none;
+    background-color: white;
+    margin: -1px -1rem -2rem -1rem;
+  }
+
+  #list-container li:first-child .iia-content-container {
+    margin-top: -1rem;
+  }
+
+  #list-container .place-submission-details {
+    float: none;
+    width: auto;
+  }
+
+  #list-container .place-submission-details .view-on-map-btn {
+    float: none;
+  }
+}

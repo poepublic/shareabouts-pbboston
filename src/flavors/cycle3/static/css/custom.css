@@ -2,6 +2,8 @@
 @import url('/static/css/language-picker.css');
 @import url('/static/css/sidebar-collapse-ext.css');
 @import url('/static/css/idea-legend-ext.css');
+@import url('/static/css/list-view-mobile.css');
+@import url('/static/css/map-view-mobile.css');
 
 /*
  * This CSS file follows the default Shareabouts style.css.
@@ -574,7 +576,7 @@ label {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-}  
+}
 
 .place-private_submitter_race_ethnicity-field input {
   opacity: 1;
@@ -1385,9 +1387,9 @@ label {
    1px  1px 0 rgba(0,0,0,0.5);
 }
 
-.leaflet-tooltip.cluster-tooltip::before {                                                                 
-  display: none;                                                                                           
-}   
+.leaflet-tooltip.cluster-tooltip::before {
+  display: none;
+}
 
 .cluster-icon {
   width: 15px;
@@ -1653,6 +1655,39 @@ label {
   ul.recent-points {
     /* border-left: 2px solid var(--optimistic-blue); */
   }
+
+  #site-header {
+    display: flex;
+    justify-content: left;
+  }
+
+  .has-pages #site-title{
+    height: 100%;
+    padding-left: 0;
+    flex-grow: 1;
+  }
+
+  .list-toggle-btn:hover {
+    color: var(--supporting-red-1);
+  }
+
+  .list-toggle-nav {
+    float: none;
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin: 0;
+    margin-right: 9rem;
+    position: static;
+  }
+
+  #map-container, #content, #ticker, #list-container {
+    top: calc(var(--banner-height) + 2px);
+  }
+
+  .place-list-header {
+    max-width: none;
+  }
 }
 
 @media only screen and (width >= 1280px) {
@@ -1666,23 +1701,12 @@ label {
     --content-left-num: 0.45;
   }
 
-  #site-header {
-    display: flex;
-    justify-content: left;
-  }
-
   #site-header::before {
     content: none;
   }
 
   #site-header::after {
     content: none;
-  }
-
-  .has-pages #site-title{
-    height: 100%;
-    padding-left: 0;
-    flex-grow: 1;
   }
 
   #nav-btn {
@@ -1749,7 +1773,7 @@ label {
     margin-left: 1.25rem;
     background: none;
     color: var(--charles-blue);
-    font-weight: normal;
+    width: unset;
   }
 
   .access .menu > li > .btn:hover {
@@ -1771,10 +1795,6 @@ label {
      */
     min-height: 2rem;
     min-width: 100%;
-  }
-
-  .list-toggle-btn:hover {
-    color: var(--supporting-red-1);
   }
 
   .menu-item-filter-type ul {
@@ -1809,23 +1829,6 @@ label {
 
   .access li li .btn {
     margin: 0;
-  }
-
-  #map-container, #content, #ticker, #list-container {
-    top: calc(var(--banner-height) + 2px);
-  }
-
-  .place-list-header {
-    max-width: none;
-  }
-
-  .list-toggle-nav {
-    float: none;
-    display: flex;
-    align-items: center;
-    width: auto;
-    margin: 0;
-    position: static;
   }
 }
 

@@ -21,7 +21,7 @@
     line-height: 1;
     padding: 0;
     box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-    z-index: 1000;
+    z-index: 11;
     transition: right 0.3s ease;
   }
 
@@ -59,6 +59,10 @@
     right: 0;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   #ticker {
     transition: transform 0.3s ease;
   }
@@ -87,6 +91,17 @@
   body.sidebar-collapsed.content-visible #content,
   body.sidebar-collapsed #content {
     left: calc(var(--content-left) + var(--ticker-width));
+    right: 0;
+  }
+
+  #colophon {
+    transition: right 0.3s ease;
+  }
+
+  body.sidebar-collapsed.activity-enabled.content-visible #colophon,
+  body.sidebar-collapsed.activity-enabled #colophon,
+  body.sidebar-collapsed.content-visible #colophon,
+  body.sidebar-collapsed #colophon {
     right: 0;
   }
 }
