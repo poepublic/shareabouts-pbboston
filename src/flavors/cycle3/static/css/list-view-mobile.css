@@ -144,10 +144,15 @@
     margin-right: 0;
   }
 
+  #list-container .place-list .point-submitter .avatar {
+    margin-left: -4.5rem;
+    margin-right: 0.5rem;
+  }
+
   #list-container .iia-content-container {
     background-image: none;
     background-color: white;
-    margin: 0 -1rem -2rem -1rem;
+    margin: -1px -1rem -2rem -1rem;
   }
 
   #list-container li:first-child .iia-content-container {
