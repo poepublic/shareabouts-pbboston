@@ -126,7 +126,6 @@ Shareabouts.AppView.prototype.renderLegend = function() {
   // Sync legend filter state and re-render when the map filter changes.
   Shareabouts.AppView.prototype.setSelectedPlaceType = function(type) {
     legendLocationType = (!type || type === 'all') ? null : type;
-    this.activityView.render();
     this.renderLegend();
   }
   
