@@ -40,7 +40,7 @@
   --supporting-gray-3: #E0E0E0;
   --supporting-gray-4: #F2F2F2;
 
-  /* Category colors -- chosen for high saturations, mutual differentiation, and contrast with the background */
+  /* Category colors -- chosen for mutual differentiation, contrast with the background, and accessibility */
   --icon-color-01: #332288;
   --icon-color-02: #88CCEE;
   --icon-color-03: #44AA99;
@@ -616,6 +616,11 @@ label {
   background-position-x: 50%;
   background-position-y: 16.67%;
 }
+
+/* Toggle city-wide vs specific location prompt based on toggle state */
+.city-wide-prompt { display: none; }
+body[data-city_wide="true"] .location-field-label .city-wide-prompt { display: inline; }
+body[data-city_wide="true"] .location-field-label .regular-prompt { display: none; }
 
 [name="city_wide"][value="false"] + .label-text {
   background-image: url("/static/img/specific-location.svg");
