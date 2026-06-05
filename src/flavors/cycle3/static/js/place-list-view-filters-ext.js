@@ -34,16 +34,12 @@
     evt.preventDefault();
     this.removeFilter('neighborhood');
     this.filter({'city_wide': 'true'});
-
-    this.updateFilterLinks();
   };
 
   Shareabouts.PlaceListView.prototype.handleLocationSpecificFilter = function(evt) {
     evt.preventDefault();
     this.removeFilter('neighborhood');
     this.filter({'city_wide': 'false'});
-
-    this.updateFilterLinks();
   };
 
   Shareabouts.PlaceListView.prototype.updateFilterLinks = function() {
@@ -53,25 +49,40 @@
     this.ui.neighborhoodField
       .val(this.collectionFilters.neighborhood ? this.collectionFilters.neighborhood : '')
       .toggleClass('is-selected', !!this.collectionFilters.neighborhood);
+    this.ui.categoryFilter
+      .val(this.collectionFilters.location_type ? this.collectionFilters.location_type : '')
+      .toggleClass('is-selected', !!this.collectionFilters.location_type);
   };
 
   Shareabouts.PlaceListView.prototype.handleNeighborhoodChange = function(evt) {
     evt.preventDefault();
+    var val = this.ui.neighborhoodField.val();
     this.removeFilter('city_wide');
-    this.filter({'neighborhood': this.ui.neighborhoodField.val()});
-
-    this.updateFilterLinks();
+    if (val) {
+      this.filter({'neighborhood': val});
+    } else {
+      this.removeFilter('neighborhood');
+    }
   };
 
   Shareabouts.PlaceListView.prototype.handleCategoryChange = function(evt) {
     var val = this.ui.categoryFilter.val();
-    if (val) {
-      this.filter({'location_type': val});
-    } else {
-      this.removeFilter('location_type');
-    }
+    Backbone.history.navigate(val ? '/filter/' + val : '/filter/all', {trigger: true});
+  };
+
+  const original_filter = Shareabouts.PlaceListView.prototype.filter;
+  Shareabouts.PlaceListView.prototype.filter = function(filters, replace) {
+    const result = original_filter.call(this, filters, replace);
     this.updateFilterLinks();
-  }
+    return result;
+  };
+
+  const original_clearFilters = Shareabouts.PlaceListView.prototype.clearFilters;
+  Shareabouts.PlaceListView.prototype.clearFilters = function() {
+    const result = original_clearFilters.call(this, ...arguments);
+    this.updateFilterLinks();
+    return result;
+  };
 
   // Ensure that the neighborhood data is available to the template.
   const Shareabouts_PlaceListView_serializeData = Shareabouts.PlaceListView.prototype.serializeData;
