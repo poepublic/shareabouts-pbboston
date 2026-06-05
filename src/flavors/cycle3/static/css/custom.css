@@ -1256,7 +1256,8 @@ label {
   text-transform: uppercase;
 }
 
-.neighborhood-filter {
+.neighborhood-filter,
+.category-filter {
   display: inline;
   width: auto;
   padding: 0;
@@ -1265,7 +1266,12 @@ label {
   text-transform: inherit;
 }
 
-.neighborhood-filter option {
+.category-filter {
+  max-width: 170px;
+}
+
+.neighborhood-filter option,
+.category-filter option {
   padding-left: 0;
   padding-right: 0;
 }
