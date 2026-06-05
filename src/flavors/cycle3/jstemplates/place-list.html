@@ -8,6 +8,12 @@
     <a href="#" class="all-ideas-filter is-selected">{{#_}}All Ideas{{/_}}</a> |
     <a href="#" class="city-wide-filter">{{#_}}City-wide Ideas{{/_}}</a> |
     <a href="#" class="location-specific-filter">{{#_}}Location-specific Ideas{{/_}}</a> |
+    <select id="list-category" class="category-filter" name="list_category">
+      <option value="">{{#_}}All categories{{/_}}</option>
+      {{#each categories}}
+      <option value="{{value}}">{{label}}</option>
+      {{/each}}
+    </select> |
     <select id="list-neighborhood" class="neighborhood-filter" name="list_neighborhood">
       <option value="">{{#_}}Choose a neighborhood...{{/_}}</option>
       {{#each neighborhoods}}

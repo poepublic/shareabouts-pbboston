@@ -3,6 +3,7 @@
     ...Shareabouts.PlaceListView.prototype.ui,
     allIdeasFilter: '.all-ideas-filter',
     cityWideFilter: '.city-wide-filter',
+    categoryFilter: '.category-filter',
     locationSpecificFilter: '.location-specific-filter',
     neighborhoodField: '#list-neighborhood',
   };
@@ -11,6 +12,7 @@
     ...Shareabouts.PlaceListView.prototype.events,
     'click @ui.allIdeasFilter': 'handleAllIdeasFilter',
     'click @ui.cityWideFilter': 'handleCityWideFilter',
+    'change @ui.categoryFilter': 'handleCategoryChange',
     'click @ui.locationSpecificFilter': 'handleLocationSpecificFilter',
     'change @ui.neighborhoodField': 'handleNeighborhoodChange',
   };
@@ -61,6 +63,16 @@
     this.updateFilterLinks();
   };
 
+  Shareabouts.PlaceListView.prototype.handleCategoryChange = function(evt) {
+    var val = this.ui.categoryFilter.val();
+    if (val) {
+      this.filter({'location_type': val});
+    } else {
+      this.removeFilter('location_type');
+    }
+    this.updateFilterLinks();
+  }
+
   // Ensure that the neighborhood data is available to the template.
   const Shareabouts_PlaceListView_serializeData = Shareabouts.PlaceListView.prototype.serializeData;
   Shareabouts.PlaceListView.prototype.serializeData = function() {
@@ -68,6 +80,7 @@
     data.neighborhoods = Shareabouts.bootstrapped.neighborhoods.features.sort(
       (n1, n2) => n1.properties.name.localeCompare(n2.properties.name)
     );
+    data.categories = Object.entries(Shareabouts.Config.placeTypes).map(([value, config]) => ({value, label: config.label}));
     return data;
   };
 })();
