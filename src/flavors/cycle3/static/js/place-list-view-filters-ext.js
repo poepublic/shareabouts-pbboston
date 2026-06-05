@@ -77,11 +77,11 @@
     return result;
   };
 
-  const original_clearFilters = Shareabouts.PlaceListView.prototype.clearFilters;
+  // Only clears location_type (neighborhood and city_wide have their own reset paths)
   Shareabouts.PlaceListView.prototype.clearFilters = function() {
-    const result = original_clearFilters.call(this, ...arguments);
+    delete this.collectionFilters.location_type;
+    this.applyFilters(this.collectionFilters, this.searchTerm);
     this.updateFilterLinks();
-    return result;
   };
 
   // Ensure that the neighborhood data is available to the template.
