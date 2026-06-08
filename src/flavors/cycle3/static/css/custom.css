@@ -1257,7 +1257,8 @@ label {
 }
 
 .neighborhood-filter,
-.category-filter {
+.category-filter,
+.scope-filter {
   display: inline;
   width: auto;
   padding: 0;
@@ -1271,7 +1272,8 @@ label {
 }
 
 .neighborhood-filter option,
-.category-filter option {
+.category-filter option,
+.scope-filter option {
   padding-left: 0;
   padding-right: 0;
 }

@@ -1,19 +1,15 @@
 (function() {
   Shareabouts.PlaceListView.prototype.ui = {
     ...Shareabouts.PlaceListView.prototype.ui,
-    allIdeasFilter: '.all-ideas-filter',
-    cityWideFilter: '.city-wide-filter',
+    scopeFilter: '.scope-filter',
     categoryFilter: '.category-filter',
-    locationSpecificFilter: '.location-specific-filter',
     neighborhoodField: '#list-neighborhood',
   };
 
   Shareabouts.PlaceListView.prototype.events = {
     ...Shareabouts.PlaceListView.prototype.events,
-    'click @ui.allIdeasFilter': 'handleAllIdeasFilter',
-    'click @ui.cityWideFilter': 'handleCityWideFilter',
+    'change @ui.scopeFilter': 'handleScopeChange',
     'change @ui.categoryFilter': 'handleCategoryChange',
-    'click @ui.locationSpecificFilter': 'handleLocationSpecificFilter',
     'change @ui.neighborhoodField': 'handleNeighborhoodChange',
   };
 
@@ -22,30 +18,25 @@
     this.applyFilters(this.collectionFilters, this.searchTerm);
   }
 
-  Shareabouts.PlaceListView.prototype.handleAllIdeasFilter = function(evt) {
-    evt.preventDefault();
-    this.removeFilter('city_wide');
-    this.removeFilter('neighborhood');
-
-    this.updateFilterLinks();
-  };
-
-  Shareabouts.PlaceListView.prototype.handleCityWideFilter = function(evt) {
-    evt.preventDefault();
-    this.removeFilter('neighborhood');
-    this.filter({'city_wide': 'true'});
-  };
-
-  Shareabouts.PlaceListView.prototype.handleLocationSpecificFilter = function(evt) {
-    evt.preventDefault();
-    this.removeFilter('neighborhood');
-    this.filter({'city_wide': 'false'});
+  Shareabouts.PlaceListView.prototype.handleScopeChange = function(evt) {
+    const val = evt.target.value;
+    if (val === 'city_wide') {
+      this.removeFilter('neighborhood');
+      this.filter({'city_wide': 'true'});
+    } else if (val === 'location_specific') {
+      this.filter({'city_wide': 'false'});
+    } else {
+      this.removeFilter('city_wide');
+    }
   };
 
   Shareabouts.PlaceListView.prototype.updateFilterLinks = function() {
-    this.ui.allIdeasFilter.toggleClass('is-selected', !this.collectionFilters.city_wide && !this.collectionFilters.neighborhood);
-    this.ui.cityWideFilter.toggleClass('is-selected', this.collectionFilters.city_wide === 'true');
-    this.ui.locationSpecificFilter.toggleClass('is-selected', this.collectionFilters.city_wide === 'false');
+    const scopeVal = this.collectionFilters.city_wide === 'true' ? 'city_wide'
+      : this.collectionFilters.city_wide === 'false' ? 'location_specific'
+      : '';
+    this.ui.scopeFilter
+      .val(scopeVal)
+      .toggleClass('is-selected', !!this.collectionFilters.city_wide);
     this.ui.neighborhoodField
       .val(this.collectionFilters.neighborhood ? this.collectionFilters.neighborhood : '')
       .toggleClass('is-selected', !!this.collectionFilters.neighborhood);
