@@ -1,4 +1,4 @@
-(function() {
+(function () {
   Shareabouts.PlaceListView.prototype.ui = {
     ...Shareabouts.PlaceListView.prototype.ui,
     scopeFilter: '.scope-filter',
@@ -13,29 +13,30 @@
     'change @ui.neighborhoodField': 'handleNeighborhoodChange',
   };
 
-  Shareabouts.PlaceListView.prototype.removeFilter = function(filterName) {
+  Shareabouts.PlaceListView.prototype.removeFilter = function (filterName) {
     delete this.collectionFilters[filterName];
     this.applyFilters(this.collectionFilters, this.searchTerm);
   }
 
-  Shareabouts.PlaceListView.prototype.handleScopeChange = function(evt) {
+  Shareabouts.PlaceListView.prototype.handleScopeChange = function (evt) {
     const val = evt.target.value;
     if (val === 'city_wide') {
       this.removeFilter('neighborhood');
-      this.filter({'city_wide': 'true'});
+      this.filter({ 'city_wide': 'true' });
     } else if (val === 'location_specific') {
-      this.filter({'city_wide': 'false'});
+      this.filter({ 'city_wide': 'false' });
     } else {
       this.removeFilter('city_wide');
+      this.updateFilterLinks();
     }
   };
 
-  Shareabouts.PlaceListView.prototype.updateCategoryCounts = function() {
+  Shareabouts.PlaceListView.prototype.updateCategoryCounts = function () {
     const places = this.collection.models;
     const cityWide = this.collectionFilters.city_wide;
     const neighborhood = this.collectionFilters.neighborhood;
 
-    this.ui.categoryFilter.find('option[data-label]').each(function() {
+    this.ui.categoryFilter.find('option[data-label]').each(function () {
       const $opt = $(this);
       const type = $opt.val();
       const label = $opt.data('label');
@@ -49,10 +50,10 @@
     });
   };
 
-  Shareabouts.PlaceListView.prototype.updateFilterLinks = function() {
+  Shareabouts.PlaceListView.prototype.updateFilterLinks = function () {
     const scopeVal = this.collectionFilters.city_wide === 'true' ? 'city_wide'
       : this.collectionFilters.city_wide === 'false' ? 'location_specific'
-      : '';
+        : '';
     this.ui.scopeFilter
       .val(scopeVal)
       .toggleClass('is-selected', !!this.collectionFilters.city_wide);
@@ -65,31 +66,32 @@
     this.updateCategoryCounts();
   };
 
-  Shareabouts.PlaceListView.prototype.handleNeighborhoodChange = function(evt) {
+  Shareabouts.PlaceListView.prototype.handleNeighborhoodChange = function (evt) {
     evt.preventDefault();
     var val = this.ui.neighborhoodField.val();
     this.removeFilter('city_wide');
     if (val) {
-      this.filter({'neighborhood': val});
+      this.filter({ 'neighborhood': val });
     } else {
       this.removeFilter('neighborhood');
+      this.updateFilterLinks();
     }
   };
 
-  Shareabouts.PlaceListView.prototype.handleCategoryChange = function(evt) {
+  Shareabouts.PlaceListView.prototype.handleCategoryChange = function (evt) {
     var val = this.ui.categoryFilter.val();
-    Backbone.history.navigate(val ? '/filter/' + val : '/filter/all', {trigger: true});
+    Backbone.history.navigate(val ? '/filter/' + val : '/filter/all', { trigger: true });
   };
 
   const original_filter = Shareabouts.PlaceListView.prototype.filter;
-  Shareabouts.PlaceListView.prototype.filter = function(filters, replace) {
+  Shareabouts.PlaceListView.prototype.filter = function (filters, replace) {
     const result = original_filter.call(this, filters, replace);
     this.updateFilterLinks();
     return result;
   };
 
   // Only clears location_type (neighborhood and city_wide have their own reset paths)
-  Shareabouts.PlaceListView.prototype.clearFilters = function() {
+  Shareabouts.PlaceListView.prototype.clearFilters = function () {
     delete this.collectionFilters.location_type;
     this.applyFilters(this.collectionFilters, this.searchTerm);
     this.updateFilterLinks();
@@ -97,15 +99,15 @@
 
   // Ensure that the neighborhood data is available to the template.
   const Shareabouts_PlaceListView_serializeData = Shareabouts.PlaceListView.prototype.serializeData;
-  Shareabouts.PlaceListView.prototype.serializeData = function() {
+  Shareabouts.PlaceListView.prototype.serializeData = function () {
     const data = Shareabouts_PlaceListView_serializeData.apply(this, arguments);
     data.neighborhoods = Shareabouts.bootstrapped.neighborhoods.features.sort(
       (n1, n2) => n1.properties.name.localeCompare(n2.properties.name)
     );
-    data.categories = Object.entries(Shareabouts.Config.placeTypes).map(([value, config]) => ({value, label: config.label}));
+    data.categories = Object.entries(Shareabouts.Config.placeTypes).map(([value, config]) => ({ value, label: config.label }));
 
     // Update counts once the collection finishes loading.
-    this.collection.once('reset', () => this.updateCategoryCounts());
+    this.listenToOnce(this.collection, 'reset', this.updateCategoryCounts);
 
     return data;
   };
