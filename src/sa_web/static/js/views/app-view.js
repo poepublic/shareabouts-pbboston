@@ -56,6 +56,10 @@ var Shareabouts = Shareabouts || {};
         self.toggleListView();
       });
 
+      $(document).on('click', '.activity-item a', function(evt) {
+        window.app.clearLocationTypeFilter();
+      });
+
       // Globally capture clicks. If they are internal and not in the pass
       // through list, route them through Backbone's navigate method.
       $(document).on('click', 'a[href^="/"]', function(evt) {
