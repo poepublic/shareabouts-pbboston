@@ -10,16 +10,16 @@
       <option value="city_wide">{{#_}}City-wide only{{/_}}</option>
       <option value="location_specific">{{#_}}Location-specific only{{/_}}</option>
     </select> |
-    <select id="list-category" class="category-filter" name="list_category">
-      <option value="">{{#_}}Filter by category...{{/_}}</option>
-      {{#each categories}}
-      <option value="{{value}}">{{label}}</option>
-      {{/each}}
-    </select> |
     <select id="list-neighborhood" class="neighborhood-filter" name="list_neighborhood">
       <option value="">{{#_}}Choose a neighborhood...{{/_}}</option>
       {{#each neighborhoods}}
       <option value="{{properties.name}}" translate="no">{{properties.name}}</option>
+      {{/each}}
+    </select> |
+    <select id="list-category" class="category-filter" name="list_category">
+      <option value="">{{#_}}Filter by category...{{/_}}</option>
+      {{#each categories}}
+      <option value="{{value}}" data-label="{{label}}">{{label}}</option>
       {{/each}}
     </select>
   </nav>
