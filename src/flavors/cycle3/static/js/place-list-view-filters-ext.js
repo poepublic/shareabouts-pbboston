@@ -30,6 +30,25 @@
     }
   };
 
+  Shareabouts.PlaceListView.prototype.updateCategoryCounts = function() {
+    const places = this.collection.models;
+    const cityWide = this.collectionFilters.city_wide;
+    const neighborhood = this.collectionFilters.neighborhood;
+
+    this.ui.categoryFilter.find('option[data-label]').each(function() {
+      const $opt = $(this);
+      const type = $opt.val();
+      const label = $opt.data('label');
+      const count = places.filter(p => {
+        if (p.get('location_type') !== type) return false;
+        if (cityWide && p.get('city_wide') !== cityWide) return false;
+        if (neighborhood && p.get('neighborhood') !== neighborhood) return false;
+        return true;
+      }).length;
+      $opt.text(`${label} (${count})`);
+    });
+  };
+
   Shareabouts.PlaceListView.prototype.updateFilterLinks = function() {
     const scopeVal = this.collectionFilters.city_wide === 'true' ? 'city_wide'
       : this.collectionFilters.city_wide === 'false' ? 'location_specific'
@@ -43,6 +62,7 @@
     this.ui.categoryFilter
       .val(this.collectionFilters.location_type ? this.collectionFilters.location_type : '')
       .toggleClass('is-selected', !!this.collectionFilters.location_type);
+    this.updateCategoryCounts();
   };
 
   Shareabouts.PlaceListView.prototype.handleNeighborhoodChange = function(evt) {
@@ -83,6 +103,10 @@
       (n1, n2) => n1.properties.name.localeCompare(n2.properties.name)
     );
     data.categories = Object.entries(Shareabouts.Config.placeTypes).map(([value, config]) => ({value, label: config.label}));
+
+    // Update counts once the collection finishes loading.
+    this.collection.once('reset', () => this.updateCategoryCounts());
+
     return data;
   };
 })();
