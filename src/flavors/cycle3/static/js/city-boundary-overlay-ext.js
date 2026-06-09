@@ -35,9 +35,9 @@
       });
   };
 
-  const original_AppView_newPlace = Shareabouts.AppView.prototype.newPlace;
-  Shareabouts.AppView.prototype.newPlace = function () {
-    original_AppView_newPlace.call(this, ...arguments);
+  const original_AppView_hidePanel = Shareabouts.AppView.prototype.hidePanel;
+  Shareabouts.AppView.prototype.hidePanel = function () {
+    original_AppView_hidePanel.call(this, ...arguments);
     if (boundaryLayer) boundaryLayer.remove();
   };
 
