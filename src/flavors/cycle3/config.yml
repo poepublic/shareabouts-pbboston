@@ -887,6 +887,59 @@ place:
           value: 'dont_know'
         - label: _(Prefer not to answer)
           value: 'prefer_not_to_answer'
+    - prompt: _(How did you hear about Ideas in Action?)
+      label: _(How they heard about Idead in Action)
+      name: private_submitter_how_heard
+      optional: true
+      sticky: true
+      help_text: >-
+        _(Select all that apply.)
+      type: checkboxgroup
+      options:
+        - label: _(City of Boston newsletter, event, or public official)
+          value: city_of_boston
+        - label: _(Local community organization or event)
+          value: local_community_organization
+        - label: _(Boston Public Library)
+          value: boston_public_library
+        - label: _(Boston Centers for Youth and Families (BCYF))
+          value: boston_centers_for_youth_and_families
+        - label: _(Boston Public Schools)
+          value: boston_public_schools
+        - label: "_(Social Media (examples: Facebook, Instagram, Twitter X))"
+          value: social_media
+        - label: _(Word of mouth (family, friends, neighbors))
+          value: word_of_mouth
+        - label: _(Newspaper, radio, billboard, or bus advertisement)
+          value: newspaper_radio_billboard_bus
+        - label: _(Other (write-in))
+          value: other_write_in
+      attrs:
+        - key: data-has-children
+    - prompt: _(Please specify)
+      name: private_submitter_how_heard_other
+      type: text
+      optional: true
+      attrs:
+        - key: data-parent-field
+          value: private_submitter_how_heard
+        - key: data-parent-value
+          value: other_write_in
+    - prompt: _(Have you participated in Ideas in Action in the past?)
+      label: _(Participated in Ideas in Action in the past)
+      name: private_submitter_participated_before
+      type: radiogroup
+      optional: true
+      sticky: true
+      help_text: >-
+        _(Examples include: submitting ideas online, attending a workshop or forum, or voting for project proposals on the ballot.)
+      options:
+        - label: _(Yes, I have participated in the past)
+          value: yes
+        - label: _(No, this is my first time)
+          value: no
+        - label: _(Not sure)
+          value: not_sure
 
     # Contact Info
     - prompt: _(Your Email)
