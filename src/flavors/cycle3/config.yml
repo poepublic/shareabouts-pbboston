@@ -409,7 +409,7 @@ place:
   location_item_name: location
   city_wide_location_prompt: _(Citywide ideas apply to the entire City of Boston.)
   city_wide_location_label: _(The marker for your idea will appear at City Hall.)
-  city_wide_location_center:  [-71.05804664749975, 42.36058038175507]  # <- Boston City Hall
+  city_wide_location_center:  [-71.05798753720381, 42.360394484137274]  # <- Boston City Hall (footprint centroid)
   city_wide_location_offset: 50  # Within 50 meters of City Hall
   unset_location_label: _(Please use the map's search box or drag the map to set the location.)
 
