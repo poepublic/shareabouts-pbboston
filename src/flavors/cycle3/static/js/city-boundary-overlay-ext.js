@@ -15,7 +15,8 @@
     map = this.mapView.map;
 
     const pane = map.createPane('cityBoundaryPane');
-    pane.style.zIndex = 440;
+    pane.style.zIndex = 625;
+    pane.style.pointerEvents = 'none';
 
     const computedStyles = getComputedStyle(document.documentElement);
     const color = computedStyles.getPropertyValue('--iia-urban-pink-alt').trim();
@@ -29,7 +30,7 @@
         boundaryLayer = L.geoJSON(data, {
           pane: 'cityBoundaryPane',
           renderer: svgRenderer,
-          style: { fillColor: color, color: color, fillOpacity: 0.3, weight: 2 },
+          style: { fillColor: color, color: color, fillOpacity: 0.4, weight: 2 },
         });
       });
   };
