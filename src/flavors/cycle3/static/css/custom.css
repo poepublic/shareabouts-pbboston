@@ -1317,6 +1317,84 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   color: white;
 }
 
+/* =City Hall overlay
+-------------------------------------------------------------- */
+
+.city-hall-footprint {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s ease;
+  opacity: 0.5;
+}
+
+.city-hall-footprint.is-hover {
+  transform: scale(1.2);
+}
+
+.city-hall-popup {
+  position: absolute;
+  z-index: 1000;
+  width: 250px;
+  background-color: var(--iia-fog-grey);
+  color: var(--charles-blue);
+  font-family: var(--header-font);
+  font-size: 0.8em;
+  border-radius: 0.5rem;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%) translateY(-110%);
+  animation: city-hall-popup-in 0.2s ease;
+}
+
+@keyframes city-hall-popup-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-100%); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(-110%); }
+}
+
+.city-hall-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--iia-urban-pink);
+  color: var(--iia-fog-grey);
+  border-radius: 0.5rem 0.5rem 0 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.city-hall-popup-close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.8;
+}
+
+.city-hall-popup-close:hover {
+  opacity: 1;
+}
+
+.city-hall-popup-body {
+  padding: 0.75rem;
+}
+
+.city-hall-popup-body p {
+  margin: 0 0 0.5rem;
+  font-size: 0.875em;
+  line-height: 1.4;
+  font-family: var(--body-font);
+  text-transform: none;
+  font-weight: normal;
+}
+
+.city-hall-popup-body p:last-child {
+  margin-bottom: 0;
+}
+
 /* =Map
 -------------------------------------------------------------- */
 
