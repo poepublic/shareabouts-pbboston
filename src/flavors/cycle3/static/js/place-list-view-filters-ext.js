@@ -69,7 +69,7 @@
   Shareabouts.PlaceListView.prototype.handleNeighborhoodChange = function (evt) {
     evt.preventDefault();
     var val = this.ui.neighborhoodField.val();
-    this.removeFilter('city_wide');
+    if (this.collectionFilters.city_wide === 'true') this.removeFilter('city_wide');
     if (val) {
       this.filter({ 'neighborhood': val });
     } else {

@@ -127,7 +127,7 @@ Shareabouts.AppView.prototype.initialize = function () {
 Shareabouts.AppView.prototype.setSelectedPlaceType = function (type) {
   legendLocationType = (!type || type === 'all') ? null : type;
   this.renderLegend();
-  this.activityView.render();
+  if (this.activityView) this.activityView.render();
 }
 
 var original_App_setLocationTypeFilter = Shareabouts.App.prototype.setLocationTypeFilter;
