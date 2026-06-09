@@ -62,6 +62,7 @@ Shareabouts.PlaceFormView.prototype.setLocation = function(location) {
 var original_PlaceFormView_setLocation = Shareabouts.PlaceFormView.prototype.setLocation;
 function cityWide_PlaceFormView_setLocation() {
   this.location = null;
+  this.isLocationValid = true;
   this.$('.location-receiver').removeClass('awaiting-location').html(this.options.placeConfig.city_wide_location_label);
 }
 
