@@ -597,12 +597,17 @@ label {
   margin-top: 4rem;
 }
 
-.place-private_submitter_race_ethnicity-field label {
+/* Use normal check boxes and radio buttons for demographics */
+.place-private_submitter_how_heard-field .checkbox-group label,
+.place-private_submitter_participated_before-field .radio-group label,
+.place-private_submitter_race_ethnicity-field .checkbox-group label {
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
 
+.place-private_submitter_how_heard-field input,
+.place-private_submitter_participated_before-field input,
 .place-private_submitter_race_ethnicity-field input {
   opacity: 1;
   width: auto;
@@ -610,6 +615,8 @@ label {
   position: static;
 }
 
+.place-private_submitter_how_heard-field .label-text,
+.place-private_submitter_participated_before-field .label-text,
 .place-private_submitter_race_ethnicity-field .label-text {
   width: initial;
   height: initial;
@@ -619,15 +626,23 @@ label {
   font-size: 1rem;
 }
 
-.place-private_submitter_race_ethnicity-field input:checked+.label-text {
+.place-private_submitter_how_heard-field input:checked + .label-text,
+.place-private_submitter_participated_before-field input:checked + .label-text,
+.place-private_submitter_race_ethnicity-field input:checked + .label-text {
   background: none;
   color: var(--content-fg);
 }
 
+.place-private_submitter_participated_before-field .radio-group {
+  display: block;
+}
+
+.place-private_submitter_how_heard_other-field,
 .place-private_submitter_other_race_ethnicity-field {
   margin-top: -1rem;
 }
 
+.place-private_submitter_how_heard_other-field label,
 .place-private_submitter_other_race_ethnicity-field label {
   font-weight: normal;
   font-style: italic;
