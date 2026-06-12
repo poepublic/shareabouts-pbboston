@@ -41,11 +41,20 @@ REST_FRAMEWORK = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/New_York'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
+
+# Add languages that are unsupported in the core of Django..
+from django.conf import global_settings
+from django.utils.translation import gettext_lazy as _
+LANGUAGES = global_settings.LANGUAGES + [
+    ('so', 'Somali'),
+    ('ht', 'Hatian Creole'),
+]
+
 
 SITE_ID = 1
 
@@ -59,6 +68,13 @@ USE_L10N = True
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
+
+# Path or URL prefix for all app paths and static files. This is useful if you
+# want to run Shareabouts under a subpath, such as `/subpath/`. Note that if the
+# `BASE_URL` is set, the site will not work directly through runserver, so you
+# should use a reverse proxy in front of it. Thus by default, this is an empty
+# string.
+BASE_URL = os.environ.get('BASE_URL', '')
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -79,7 +95,7 @@ COMPRESS_ROOT = STATIC_ROOT
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = BASE_URL + '/static/'
 COMPRESS_URL = STATIC_URL
 
 # Additional locations of static files
@@ -133,10 +149,11 @@ TEMPLATES = [
 
 MIDDLEWARE = (
     'sa_web.middleware.CacheRequestBody',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
@@ -173,10 +190,15 @@ INSTALLED_APPS = (
     'jstemplate',
     'compressor',
     'django_extensions',
+    'corsheaders',
+
+    # Instance-specific app
+    'pbboston',
 
     # Project apps
     'sa_web',
     'sa_login',
+    'sa_admin',
     'proxy',
 )
 
@@ -253,6 +275,13 @@ if 'REDIS_URL' in env:
 
     # Django sessions
     SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
+if 'SITE_ROOT' in env:
+    SITE_ROOT = env.get('SITE_ROOT')
+    CORS_ALLOWED_ORIGINS = [
+        SITE_ROOT.rstrip('/'),
+        SITE_ROOT.rstrip('/').replace('-', '--').replace('.', '-') + '.translate.goog',
+    ]
 
 SHAREABOUTS = {}
 if 'SHAREABOUTS_FLAVOR' in env:
@@ -376,6 +405,16 @@ if 'PACKAGE' not in SHAREABOUTS:
 
 
 ##############################################################################
+# Remote API Authentication
+# -------------------------
+
+# Load in any social auth keys and secrets from the environment
+for key in os.environ:
+    if key.startswith('SOCIAL_AUTH_') and (key.endswith('_KEY') or key.endswith('_SECRET') or key.endswith('_REDIRECT')):
+        globals()[key] = os.environ[key]
+
+
+##############################################################################
 # Locale paths
 # ------------
 # Help Django find any translation files.
@@ -392,7 +431,6 @@ if 'DATASET_ROOT' in SHAREABOUTS and SHAREABOUTS['DATASET_ROOT'].startswith('/')
         # 3rd-party reusaple apps
         # =================================
         'rest_framework',
-        'django_nose',
         'storages',
         'social.apps.django_app.default',
         'raven.contrib.django.raven_compat',
@@ -411,6 +449,7 @@ if 'DATASET_ROOT' in SHAREABOUTS and SHAREABOUTS['DATASET_ROOT'].startswith('/')
         'sa_api_v2.apikey',
         'sa_api_v2.cors',
         'remote_client_user',
+        'mapbox_proxy',
     )
 
 

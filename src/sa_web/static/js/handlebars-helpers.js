@@ -7,6 +7,10 @@ var Shareabouts = Shareabouts || {};
     return NS.bootstrapped.staticUrl;
   });
 
+  Handlebars.registerHelper('prefix', function(route) {
+    return NS.Util.prefixRoute(route);
+  });
+
   Handlebars.registerHelper('debug', function(value) {
     if (typeof(value) === typeof({})) {
       return JSON.stringify(value, null, 4);
@@ -205,7 +209,7 @@ var Shareabouts = Shareabouts || {};
 
       // if not an exclusion and not private data
       if (_.contains(exclusions, item.name) === false &&
-          item.name.indexOf('private-') !== 0) {
+          item.name.indexOf('private') !== 0) {
         result += options.fn(newItem);
       }
     }, this);

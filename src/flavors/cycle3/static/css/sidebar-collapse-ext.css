@@ -1,0 +1,107 @@
+#sidebar-toggle {
+  display: none;
+}
+
+@media only screen and (width >= 60rem) {
+  #sidebar-toggle {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    right: var(--ticker-width, 18em);
+    width: 1.5rem;
+    height: 3rem;
+    margin-top: -1.5rem;
+    background-color: var(--iia-dark-blue);
+    color: white;
+    border: none;
+    border-radius: 0.5rem 0 0 0.5rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    z-index: 11;
+    transition: right 0.3s ease;
+  }
+
+  #sidebar-toggle .collapse-icon {
+    display: block;
+  }
+
+  #sidebar-toggle .expand-icon {
+    display: none;
+  }
+
+  body.sidebar-collapsed #sidebar-toggle .collapse-icon {
+    display: none;
+  }
+
+  body.sidebar-collapsed #sidebar-toggle .expand-icon {
+    display: block;
+  }
+
+  #sidebar-toggle:hover {
+    background-color: var(--iia-urban-pink);
+  }
+
+  #sidebar-toggle svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  #sidebar-toggle svg path {
+    stroke: none;
+    fill: currentColor;
+  }
+
+  body.sidebar-collapsed #sidebar-toggle {
+    right: 0;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  #ticker {
+    transition: transform 0.3s ease;
+  }
+
+  body.sidebar-collapsed #ticker {
+    transform: translateX(100%);
+  }
+
+  #map-container {
+    transition: width 0.3s ease, right 0.3s ease;
+  }
+
+  body.sidebar-collapsed.activity-enabled.content-visible #map-container,
+  body.sidebar-collapsed.activity-enabled #map-container,
+  body.sidebar-collapsed.content-visible #map-container,
+  body.sidebar-collapsed #map-container {
+    width: 100%;
+  }
+
+  #content {
+    transition: right 0.3s ease, left 0.3s ease;
+  }
+
+  body.sidebar-collapsed.activity-enabled.content-visible #content,
+  body.sidebar-collapsed.activity-enabled #content,
+  body.sidebar-collapsed.content-visible #content,
+  body.sidebar-collapsed #content {
+    left: calc(var(--content-left) + var(--ticker-width));
+    right: 0;
+  }
+
+  #colophon {
+    transition: right 0.3s ease;
+  }
+
+  body.sidebar-collapsed.activity-enabled.content-visible #colophon,
+  body.sidebar-collapsed.activity-enabled #colophon,
+  body.sidebar-collapsed.content-visible #colophon,
+  body.sidebar-collapsed #colophon {
+    right: 0;
+  }
+}
