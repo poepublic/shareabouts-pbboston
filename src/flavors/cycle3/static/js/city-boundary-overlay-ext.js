@@ -1,18 +1,21 @@
 // City boundary overlay, shown when the user selects city-wide on the place form.
 
 (function () {
-  let map = null;
-  let boundaryLayer = null;
-
-  const original_AppView_initialize = Shareabouts.AppView.prototype.initialize;
-  Shareabouts.AppView.prototype.initialize = function () {
-    const result = original_AppView_initialize.call(this, ...arguments);
-    this.initCityBoundaryOverlay();
+  const original_MapView_initialize = Shareabouts.MapView.prototype.initialize;
+  Shareabouts.MapView.prototype.initialize = function () {
+    const result = original_MapView_initialize.call(this, ...arguments);
+    this.initBoundaryLayer();
     return result;
   };
 
-  Shareabouts.AppView.prototype.initCityBoundaryOverlay = function () {
-    map = this.mapView.map;
+  const original_AppView_hidePanel = Shareabouts.AppView.prototype.hidePanel;
+  Shareabouts.AppView.prototype.hidePanel = function () {
+    original_AppView_hidePanel.call(this, ...arguments);
+    this.mapView.hideBoundaryLayer();
+  };
+
+  Shareabouts.MapView.prototype.initBoundaryLayer = function () {
+    const map = this.map;
 
     const pane = map.createPane('cityBoundaryPane');
     pane.style.zIndex = 625;
@@ -27,7 +30,7 @@
     fetch(geojsonUrl)
       .then(r => r.json())
       .then(data => {
-        boundaryLayer = L.geoJSON(data, {
+        this.boundaryLayer = L.geoJSON(data, {
           pane: 'cityBoundaryPane',
           renderer: svgRenderer,
           style: { fillColor: color, color: color, fillOpacity: 0.4, weight: 2 },
@@ -35,22 +38,24 @@
       });
   };
 
-  const original_AppView_hidePanel = Shareabouts.AppView.prototype.hidePanel;
-  Shareabouts.AppView.prototype.hidePanel = function () {
-    original_AppView_hidePanel.call(this, ...arguments);
-    if (boundaryLayer) boundaryLayer.remove();
+  Shareabouts.MapView.prototype.showBoundaryLayer = function () {
+    if (!this.boundaryLayer) return;
+    this.boundaryLayer.addTo(this.map);
+    this.map.flyToBounds(this.boundaryLayer.getBounds(), { duration: 0.8 });
+  };
+
+  Shareabouts.MapView.prototype.hideBoundaryLayer = function () {
+    if (this.boundaryLayer) this.boundaryLayer.remove();
   };
 
   const original_resetCityWide = Shareabouts.PlaceFormView.prototype.resetCityWide;
   Shareabouts.PlaceFormView.prototype.resetCityWide = function (isCityWide) {
     original_resetCityWide.call(this, isCityWide);
-    if (!boundaryLayer) return;
-
+    const mapView = this.options.appView.mapView;
     if (isCityWide === 'true') {
-      boundaryLayer.addTo(map);
-      map.flyToBounds(boundaryLayer.getBounds(), { duration: 0.8 });
+      mapView.showBoundaryLayer();
     } else {
-      boundaryLayer.remove();
+      mapView.hideBoundaryLayer();
     }
   };
 })();
