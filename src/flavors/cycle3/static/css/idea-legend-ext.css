@@ -26,6 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   position: relative;
   width: 100%;
   padding: 0.75em 1em 0.5em;
@@ -39,12 +40,6 @@
 
 .legend-toggle:hover {
   background-color: var(--freedom-trail-red);
-}
-
-.legend-toggle-button {
-  position: absolute;
-  padding: 0.5rem;
-  right: 0;
 }
 
 .hamburger-icon {
