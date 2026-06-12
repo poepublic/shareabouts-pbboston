@@ -998,43 +998,6 @@ pages:
     external: true
     url: https://boston.gov/participate
 
-  - title: _(Filter Ideas)
-    slug: filter-type
-    pages:
-      - title: _(All)
-        url: /filter/all
-        external: true
-      - title: _(Arts & Culture)
-        url: /filter/arts_culture
-        external: true
-      - title: _(Community Resources)
-        url: /filter/community
-        external: true
-      - title: _(Local Economy & Worker Empowerment)
-        url: /filter/economy_workers
-        external: true
-      - title: _(Education, Youth, Families, & Older Adults)
-        url: /filter/education_youth
-        external: true
-      - title: _(Environment, Sustainability, and Food Access)
-        url: /filter/sustainability
-        external: true
-      - title: _(Facilities, Parks & Recreation  )
-        url: /filter/facilities
-        external: true
-      - title: _(Health & Well-being)
-        url: /filter/human_services
-        external: true
-      - title: _(Public Safety)
-        url: /filter/public_safety
-        external: true
-      - title: _(Streets & Sidewalks)
-        url: /filter/streets_sidewalks
-        external: true
-      - title: _(Other / Not Sure)
-        url: /filter/other
-        external: true
-
 languages:
   # English
   - code: 'en'

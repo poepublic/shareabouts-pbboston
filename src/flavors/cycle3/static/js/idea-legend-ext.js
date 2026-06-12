@@ -84,6 +84,9 @@ var original_AppView_initialize = Shareabouts.AppView.prototype.initialize;
 Shareabouts.AppView.prototype.initialize = function () {
   const result = original_AppView_initialize.call(this, ...arguments);
 
+  // Prevent ticker clicks from clearing the legend/category filter.
+  $(document).off('click', '.activity-item a');
+
   const legendWrapper = document.createElement('div');
   legendWrapper.className = 'legend-wrapper';
   document.getElementById('map-container').append(legendWrapper);
@@ -127,6 +130,7 @@ Shareabouts.AppView.prototype.initialize = function () {
 Shareabouts.AppView.prototype.setSelectedPlaceType = function (type) {
   legendLocationType = (!type || type === 'all') ? null : type;
   this.renderLegend();
+  if (this.activityView) this.activityView.render();
 }
 
 var original_App_setLocationTypeFilter = Shareabouts.App.prototype.setLocationTypeFilter;
