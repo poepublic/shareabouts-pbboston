@@ -1398,7 +1398,6 @@ label {
   background-color: var(--charles-blue);
   text-transform: inherit;
   text-overflow: ellipsis;
-  text-overflow: ellipsis;
   margin-right: 1em;
 }
 
