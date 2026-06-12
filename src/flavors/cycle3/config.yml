@@ -524,13 +524,13 @@ place:
       options:
         - label: _(Select an organization…)
           value: ''
-        - label: "Agencia ALPHA"
-          value: "Agencia ALPHA"
+        - label: "ACEDONE"
+          value: "ACEDONE"
           attrs:
             - key: translate
               value: "no"
-        - label: "African Community Economic Development of New England (ACEDONE)"
-          value: "African Community Economic Development of New England (ACEDONE)"
+        - label: "Agencia ALPHA"
+          value: "Agencia ALPHA"
           attrs:
             - key: translate
               value: "no"
@@ -544,8 +544,8 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "Brazilian Women's Group"
-          value: "Brazilian Women's Group"
+        - label: "Brazilian Women’s Group"
+          value: "Brazilian Women’s Group"
           attrs:
             - key: translate
               value: "no"
@@ -569,8 +569,8 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "Dunk the Vote"
-          value: "Dunk the Vote"
+        - label: "Dunk the Vote (fiscal sponsor Circle of Nations Inc.)"
+          value: "Dunk the Vote (fiscal sponsor Circle of Nations Inc.)"
           attrs:
             - key: translate
               value: "no"
@@ -599,13 +599,13 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "True Alliance Center"
-          value: "True Alliance Center"
+        - label: "True Alliance Center (TAC)"
+          value: "True Alliance Center (TAC)"
           attrs:
             - key: translate
               value: "no"
-        - label: "Turkish American Cultural Society of New England"
-          value: "Turkish American Cultural Society of New England"
+        - label: "Turkish American Cultural Society of New England (TACS)"
+          value: "Turkish American Cultural Society of New England (TACS)"
           attrs:
             - key: translate
               value: "no"
