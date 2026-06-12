@@ -19,7 +19,7 @@
     pane.style.pointerEvents = 'none';
 
     const computedStyles = getComputedStyle(document.documentElement);
-    const color = computedStyles.getPropertyValue('--iia-urban-pink-alt').trim();
+    const color = computedStyles.getPropertyValue('--selection-bg').trim();
 
     const svgRenderer = L.svg({ pane: 'cityBoundaryPane' });
 
