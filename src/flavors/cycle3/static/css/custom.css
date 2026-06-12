@@ -1394,16 +1394,9 @@ label {
   width: auto;
   padding: 0;
   border: none;
+  border-bottom: 1px solid currentColor;
   background-color: var(--charles-blue);
   text-transform: inherit;
-}
-
-.category-filter {
-  max-width: 170px;
-}
-
-.scope-filter {
-  max-width: 180px;
 }
 
 .neighborhood-filter option,
