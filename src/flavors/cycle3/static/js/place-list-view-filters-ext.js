@@ -4,6 +4,9 @@
     scopeFilter: '.scope-filter',
     categoryFilter: '.category-filter',
     neighborhoodField: '#list-neighborhood',
+    clearScopeFilter: '.clear-scope-filter',
+    clearNeighborhoodFilter: '.clear-neighborhood-filter',
+    clearCategoryFilter: '.clear-category-filter',
   };
 
   Shareabouts.PlaceListView.prototype.events = {
@@ -11,6 +14,21 @@
     'change @ui.scopeFilter': 'handleScopeChange',
     'change @ui.categoryFilter': 'handleCategoryChange',
     'change @ui.neighborhoodField': 'handleNeighborhoodChange',
+    'click @ui.clearScopeFilter': 'handleClearScope',
+    'click @ui.clearNeighborhoodFilter': 'handleClearNeighborhood',
+    'click @ui.clearCategoryFilter': 'handleClearCategory',
+  };
+
+  Shareabouts.PlaceListView.prototype.handleClearScope = function () {
+    this.ui.scopeFilter.val('').trigger('change');
+  };
+
+  Shareabouts.PlaceListView.prototype.handleClearNeighborhood = function () {
+    this.ui.neighborhoodField.val('').trigger('change');
+  };
+
+  Shareabouts.PlaceListView.prototype.handleClearCategory = function () {
+    this.ui.categoryFilter.val('').trigger('change');
   };
 
   Shareabouts.PlaceListView.prototype.removeFilter = function (filterName) {
@@ -63,6 +81,9 @@
     this.ui.categoryFilter
       .val(this.collectionFilters.location_type ? this.collectionFilters.location_type : '')
       .toggleClass('is-selected', !!this.collectionFilters.location_type);
+    this.ui.clearScopeFilter.toggle(!!this.collectionFilters.city_wide);
+    this.ui.clearNeighborhoodFilter.toggle(!!this.collectionFilters.neighborhood);
+    this.ui.clearCategoryFilter.toggle(!!this.collectionFilters.location_type);
     this.updateCategoryCounts();
   };
 

@@ -1397,6 +1397,7 @@ label {
   border-bottom: 1px solid currentColor;
   background-color: var(--charles-blue);
   text-transform: inherit;
+  margin-right: 1em;
 }
 
 .neighborhood-filter option,
@@ -1410,6 +1411,18 @@ label {
 .list-filter-menu select {
   font-size: 0.75em;
   text-decoration: none;
+}
+
+.clear-filter {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 1em;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .list-sort-menu,

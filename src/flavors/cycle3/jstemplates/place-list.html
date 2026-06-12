@@ -5,18 +5,18 @@
   </form>
   <nav class="list-filter-menu">
     <span class="list-filter-prompt"></span>
-    <select id="list-scope" class="scope-filter" name="list_scope">
+    <button class="clear-filter clear-scope-filter" title="Clear filter">×</button><select id="list-scope" class="scope-filter" name="list_scope">
       <option value="">{{#_}}Filter by scope...{{/_}}</option>
       <option value="city_wide">{{#_}}City-wide only{{/_}}</option>
       <option value="location_specific">{{#_}}Location-specific only{{/_}}</option>
-    </select> |
-    <select id="list-neighborhood" class="neighborhood-filter" name="list_neighborhood">
+    </select> 
+    <button class="clear-filter clear-neighborhood-filter" title="Clear filter">×</button><select id="list-neighborhood" class="neighborhood-filter" name="list_neighborhood">
       <option value="">{{#_}}Choose a neighborhood...{{/_}}</option>
       {{#each neighborhoods}}
       <option value="{{properties.name}}" translate="no">{{properties.name}}</option>
       {{/each}}
-    </select> |
-    <select id="list-category" class="category-filter" name="list_category">
+    </select> 
+    <button class="clear-filter clear-category-filter" title="Clear filter">×</button><select id="list-category" class="category-filter" name="list_category">
       <option value="">{{#_}}Filter by category...{{/_}}</option>
       {{#each categories}}
       <option value="{{value}}" data-label="{{label}}">{{label}}</option>
