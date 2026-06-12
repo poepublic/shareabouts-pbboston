@@ -8,12 +8,12 @@
   const original_AppView_initialize = Shareabouts.AppView.prototype.initialize;
   Shareabouts.AppView.prototype.initialize = function () {
     const result = original_AppView_initialize.call(this, ...arguments);
-    this.initCityHallOverlay();
+    this.mapView.initCityHallOverlay();
     return result;
   };
 
-  Shareabouts.AppView.prototype.initCityHallOverlay = function () {
-    const map = this.mapView.map;
+  Shareabouts.MapView.prototype.initCityHallOverlay = function () {
+    const map = this.map;
     const mapContainer = document.getElementById('map-container');
 
     const pane = map.createPane('cityHallPane');
@@ -29,7 +29,7 @@
       evt.stopPropagation();
       closePopup();
     });
-    
+
     const computedStyles = getComputedStyle(document.documentElement);
     const colorFill  = computedStyles.getPropertyValue('--iia-urban-pink-alt').trim();
 
