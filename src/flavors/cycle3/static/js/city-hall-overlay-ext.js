@@ -5,10 +5,10 @@
 
 
 (function () {
-  const original_AppView_initialize = Shareabouts.AppView.prototype.initialize;
-  Shareabouts.AppView.prototype.initialize = function () {
-    const result = original_AppView_initialize.call(this, ...arguments);
-    this.mapView.initCityHallOverlay();
+  const original_MapView_initialize = Shareabouts.MapView.prototype.initialize;
+  Shareabouts.MapView.prototype.initialize = function () {
+    const result = original_MapView_initialize.call(this, ...arguments);
+    this.initCityHallOverlay();
     return result;
   };
 
