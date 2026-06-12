@@ -95,13 +95,7 @@ var original_PlaceFormView_setLatLng = Shareabouts.PlaceFormView.prototype.setLa
 // Set a location near City Hall:
 Shareabouts.PlaceFormView.prototype.setCityWideLatLng = function(latLng) {
   const pt = turf.point(this.options.placeConfig.city_wide_location_center);
-
-  // Offset city-wide ideas some random amount within 50 meters.
-  //const offsetDist = 0 //Math.random() * this.options.placeConfig.city_wide_location_offset; // here
-  //const offsetDir = 0 //Math.random() * 360;
-  //const randpt = turf.transformTranslate(pt, offsetDist, offsetDir, {units: 'meters'}); //
-
-  //this.setLatLng({lng: randpt.geometry.coordinates[0], lat: randpt.geometry.coordinates[1]});
+  this.setLatLng({lng: pt.geometry.coordinates[0], lat: pt.geometry.coordinates[1]});
 
   // Make it so that any actions that would normally alter the form's latlng
   // (like moving the map) will have no effect.
