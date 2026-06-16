@@ -564,7 +564,7 @@ a.logout-btn {
   z-index: 400;
   width: 47px;
   height: 47px;
-  margin: -44px 0 0 -15px;
+  margin: -44px 0 0 -12px;
 }
 #centerpoint.newpin .x {
   display: block;
@@ -572,7 +572,7 @@ a.logout-btn {
   width: 18px;
   height: 12px;
   background: transparent url(images/marker-x.png) 0 0 no-repeat scroll;
-  left: 6px;
+  left: 4px;
   top: 37px;
   opacity: 0;
   -webkit-transition: opacity 0.25s;
@@ -591,7 +591,7 @@ a.logout-btn {
   width: 47px;
   position: absolute;
   top: 0;
-  left: 3px;
+  left: 0;
   background: transparent url(images/marker-shadow.png) 0 3px no-repeat scroll;
   -webkit-transition: opacity 0s, background-position 0.3s ease;
   -moz-transition: opacity 0s, background-position 0.3s ease;
@@ -627,12 +627,11 @@ a.logout-btn {
 }
 #centerpoint.newpin .marker {
   display: block;
-  width: 30px;
-  height: 30px;
-  background: transparent url(images/marker-plus-dark.svg) 0 0 no-repeat scroll;
-  background-size: 30px 30px;
+  width: 25px;
+  height: 41px;
+  background: transparent url(images/marker-plus.png) 0 0 no-repeat scroll;
   position: relative;
-  top: 17px;
+  top: 3px;
   -webkit-transition: top 0.4s ease;
   -moz-transition: top 0.4s ease;
   -o-transition: top 0.4s ease;
@@ -641,7 +640,7 @@ a.logout-btn {
 }
 #centerpoint.newpin:hover .marker,
 #centerpoint.newpin.dragging .marker {
-  top: -6px;
+  top: -20px;
 }
 
 /* Drag Marker Instructions (for adding a new place) */
