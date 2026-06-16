@@ -572,7 +572,7 @@ a.logout-btn {
   width: 18px;
   height: 12px;
   background: transparent url(images/marker-x.png) 0 0 no-repeat scroll;
-  left: 4px;
+  left: 6px;
   top: 37px;
   opacity: 0;
   -webkit-transition: opacity 0.25s;
@@ -591,7 +591,7 @@ a.logout-btn {
   width: 47px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 3px;
   background: transparent url(images/marker-shadow.png) 0 3px no-repeat scroll;
   -webkit-transition: opacity 0s, background-position 0.3s ease;
   -moz-transition: opacity 0s, background-position 0.3s ease;
