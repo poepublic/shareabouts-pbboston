@@ -2118,6 +2118,10 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 @media only screen and (width >=1300px) {}
 
 @media (prefers-color-scheme: light) {
+  #centerpoint.newpin .marker {
+    background-image: url(/static/css/images/marker-plus-light.svg);
+  }
+
   :root {
     --instructions-bg: var(--iia-urban-pink);
     --instructions-fg: white;

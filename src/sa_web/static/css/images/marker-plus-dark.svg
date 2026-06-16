@@ -1,0 +1,22 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pinGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CF6FFF"></stop>
+      <stop offset="100%" stop-color="#BF49FF"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Symmetrical map pin -->
+  <path d="
+      M128 24
+      C171.08 24 206 58.92 206 102
+      C206 135 186 162 128 232
+      C70 162 50 135 50 102
+      C50 58.92 84.92 24 128 24
+      Z
+    " fill="url(#pinGradient)"></path>
+
+  <!-- Centered plus sign -->
+  <rect x="117" y="60" width="22" height="68" fill="white"></rect>
+  <rect x="94" y="83" width="68" height="22" fill="white"></rect>
+</svg>

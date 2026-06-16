@@ -629,7 +629,8 @@ a.logout-btn {
   display: block;
   width: 25px;
   height: 41px;
-  background: transparent url(images/marker-plus.png) 0 0 no-repeat scroll;
+  background: transparent url(images/marker-plus-dark.svg) 0 0 no-repeat scroll;
+  background-size: 25px 41px;
   position: relative;
   top: 3px;
   -webkit-transition: top 0.4s ease;
