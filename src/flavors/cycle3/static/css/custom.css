@@ -244,7 +244,7 @@ a.close-btn {
 .btn-primary,
 .btn-primary:visited,
 .btn-primary:link {
-  background-color: var(--supporting-red-1);
+  background-color: var(--content-link-hover);
 }
 
 .btn:hover {
@@ -280,10 +280,6 @@ a.close-btn {
   color: var(--attention-fg);
   font-weight: bold;
 }
-
-/* .btn-primary, .btn-primary:visited, .btn-primary:link {
-  font-size: 1rem;
-} */
 
 /* =Header
 -------------------------------------------------------------- */
@@ -429,7 +425,7 @@ a.close-btn {
   align-items: center;
   justify-content: center;
   padding: 0;
-  background: var(--supporting-red-1);
+  background: var(--iia-urban-pink);
 
   font-size: 3rem;
   color: white;
@@ -1272,7 +1268,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 }
 
 #show-language-picker-btn:hover {
-  color: var(--supporting-red-1);
+  color: var(--content-link-hover);
 }
 
 @media only screen and (width >=48rem) {
@@ -1458,7 +1454,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 .list-filter-menu a:hover,
 .list-sort-menu select:hover,
 .list-filter-menu select:hover {
-  color: var(--supporting-red-1);
+  color: var(--content-link-hover);
   cursor: pointer;
 }
 
@@ -1934,7 +1930,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   }
 
   .list-toggle-btn:hover {
-    color: var(--supporting-red-1);
+    color: var(--content-link-hover);
   }
 
   .list-toggle-nav {
@@ -2047,7 +2043,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   }
 
   .access .menu>li>.btn:hover {
-    color: var(--supporting-red-1);
+    color: var(--content-link-hover);
   }
 
   .access li:hover>ul,
