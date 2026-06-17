@@ -105,7 +105,7 @@
 
 body {
   font-family: var(--body-font);
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
   background-color: var(--iia-fog-grey);
 }
 
@@ -223,7 +223,7 @@ a.close-btn {
 }
 
 #add-place-btn-container {
-  background-color: var(--charles-blue);
+  background-color: var(--iia-dark-blue);
 }
 
 .btn,
@@ -248,7 +248,7 @@ a.close-btn {
 }
 
 .btn:hover {
-  background-color: var(--freedom-trail-red);
+  background-color: var(--content-link);
 }
 
 .btn-small:visited,
@@ -289,7 +289,7 @@ a.close-btn {
   left: 0;
   width: 100%;
   height: var(--pre-banner-height);
-  background-color: var(--charles-blue);
+  background-color: var(--iia-dark-blue);
   color: white;
   font-family: var(--header-font);
   font-size: 0.9rem;
@@ -336,7 +336,7 @@ a.close-btn {
   float: none;
   margin-right: 9rem;
   font-family: var(--header-font);
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
   text-shadow: none;
 }
 
@@ -350,7 +350,7 @@ a.close-btn {
   float: none;
   margin: 0.5rem -0.5rem;
   width: calc(100% + 1rem);
-  background-color: var(--charles-blue);
+  background-color: var(--iia-dark-blue);
 }
 
 .access .btn {
@@ -383,7 +383,7 @@ a.close-btn {
   display: flex;
   align-items: center;
   font-size: 1rem;
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
 }
 
 #site-title .boston-icon {
@@ -396,7 +396,7 @@ a.close-btn {
   margin: -0.5rem 0.5rem -0.5rem -0.5rem;
   padding:
     calc(var(--banner-height) / 2 - var(--icon-height) / 2) calc(var(--banner-height) / 2 - var(--icon-height) * var(--aspect-ratio) / 2);
-  background-color: var(--charles-blue);
+  background-color: var(--iia-dark-blue);
 }
 
 #site-title .pb-icon {
@@ -512,8 +512,8 @@ body .select2-container--default .select2-selection--single {
   padding: 0.5em;
   border-width: 0.25em;
   border-radius: 0;
-  border-color: var(--charles-blue);
-  color: var(--charles-blue);
+  border-color: var(--iia-dark-blue);
+  color: var(--iia-dark-blue);
   font-family: var(--body-font);
   font-weight: normal;
   text-transform: none;
@@ -559,8 +559,8 @@ label {
 :focus+.checkbox-label-text,
 .checkbox-label-text:hover {
   background-color: var(--supporting-gray-4);
-  color: var(--charles-blue);
-  border-color: var(--charles-blue);
+  color: var(--iia-dark-blue);
+  border-color: var(--iia-dark-blue);
   cursor: pointer;
 }
 
@@ -716,8 +716,8 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 
 [name="location_type"]+.label-text:hover {
   background-color: var(--supporting-gray-4);
-  border-color: var(--charles-blue);
-  color: var(--charles-blue);
+  border-color: var(--iia-dark-blue);
+  color: var(--iia-dark-blue);
 }
 
 [name="location_type"][value="arts_culture"]+.label-text:hover {
@@ -816,7 +816,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   background-color: var(--icon-color-07);
   background-image: url("/static/img/categories/human_services-dark-square.svg");
   border-color: var(--icon-color-07);
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
 }
 
 [name="location_type"][value="public_safety"]:checked+.label-text {
@@ -837,7 +837,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   background-color: var(--icon-color-10);
   background-image: url("/static/img/categories/other-dark-square.svg");
   border-color: var(--icon-color-10);
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
 }
 
 .fullname-field-wrapper {
@@ -1010,7 +1010,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   width: 100%;
   margin: 0.5rem 0;
   box-sizing: border-box;
-  border: 1px solid var(--charles-blue);
+  border: 1px solid var(--iia-dark-blue);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -1123,29 +1123,25 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   width: 100%;
   height: 100%;
   background-color: white;
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
   font-weight: normal;
   text-align: center;
   border: 2px solid transparent;
-  /* border-bottom-color: var(--optimistic-blue) */
 }
 
 .activity-filters .display-choice label:hover {
   cursor: pointer;
-  color: var(--freedom-trail-red);
+  color: var(--content-link-hover);
   border-style: dashed;
-  border-color: var(--freedom-trail-red);
+  border-color: var(--content-link-hover);
 }
 
 .activity-filters .display-choice input[type="radio"]:checked+label {
-  background-color: var(--charles-blue);
+  background-color: var(--iia-dark-blue);
   color: white;
   font-weight: bold;
   text-decoration: underline;
   border-color: transparent;
-  /* border-top-color: var(--optimistic-blue);
-  border-right-color: var(--optimistic-blue);
-  border-left-color: var(--optimistic-blue); */
   border-style: solid;
   cursor: default;
 }
@@ -1257,7 +1253,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   background-color: transparent;
   background-size: 1.5rem;
   background-position: right center;
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
   font-weight: normal;
 }
 
@@ -1307,7 +1303,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
     background-size: 1.5rem;
     background-repeat: no-repeat;
     background-position: left center;
-    color: var(--charles-blue);
+    color: var(--iia-dark-blue);
     font-weight: normal;
   }
 
@@ -1332,7 +1328,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   background-color: transparent;
   border: none;
   box-shadow: none;
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
   font-weight: normal;
 }
 
@@ -1355,7 +1351,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 }
 
 .place-list-header {
-  background-color: var(--charles-blue);
+  background-color: var(--iia-dark-blue);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1396,7 +1392,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   padding: 0;
   border: none;
   border-bottom: 1px solid currentColor;
-  background-color: var(--charles-blue);
+  background-color: var(--iia-dark-blue);
   text-transform: inherit;
   text-overflow: ellipsis;
   margin-right: 1em;
@@ -1483,7 +1479,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   z-index: 1000;
   width: 250px;
   background-color: var(--iia-fog-grey);
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
   font-family: var(--header-font);
   font-size: 0.8em;
   border-radius: 0.5rem;
@@ -1830,12 +1826,12 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   }
 
   .menu {
-    border: 2px solid var(--charles-blue);
+    border: 2px solid var(--iia-dark-blue);
     min-width: 20rem;
   }
 
   .menu-item {
-    border-bottom: 2px solid var(--charles-blue);
+    border-bottom: 2px solid var(--iia-dark-blue);
   }
 
   .menu-item:last-child {
@@ -1870,7 +1866,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   .access li:hover>ul,
   .access li:hover>form>ul {
     display: block;
-    background: var(--charles-blue);
+    background: var(--iia-dark-blue);
     box-shadow: none;
     border: none;
     border-radius: 0;
@@ -1890,7 +1886,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   }
 
   .access li li .btn:hover {
-    background-color: var(--freedom-trail-red);
+    background-color: var(--content-link-hover);
   }
 }
 
@@ -1912,10 +1908,6 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   a.close-btn {
     box-shadow:
       calc(var(--shadow-offset) * -1) var(--shadow-offset) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
-  }
-
-  ul.recent-points {
-    /* border-left: 2px solid var(--optimistic-blue); */
   }
 
   #site-header {
@@ -2037,7 +2029,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
     padding: 0;
     margin-left: 1.25rem;
     background: none;
-    color: var(--charles-blue);
+    color: var(--iia-dark-blue);
     font-weight: normal;
     width: unset;
   }
@@ -2052,7 +2044,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
     left: 1.25rem;
     border: none;
     box-shadow: none;
-    background-color: var(--charles-blue);
+    background-color: var(--iia-dark-blue);
     top: 215%;
   }
 
