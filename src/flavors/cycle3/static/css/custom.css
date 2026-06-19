@@ -342,8 +342,6 @@ a.close-btn {
 
 .menu .btn-block {
   padding: 1.275em 1.5em;
-  background-color: var(--supporting-blue-5);
-  color: white;
 }
 
 .access {
@@ -2066,7 +2064,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
     padding-bottom: 0.75rem;
   }
 
-  #current-filter-type {
+/*   #current-filter-type {
     position: absolute;
     width: 250%;
     transform: translateX(-30%);
@@ -2076,7 +2074,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
     font-weight: normal;
     font-style: italic;
     color: var(--supporting-blue-3);
-  }
+  } */
 
   .access li li {
     padding: 0 2px 2px 2px;
