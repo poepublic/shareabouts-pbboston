@@ -569,8 +569,8 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "Dunk the Vote (fiscal sponsor Circle of Nations Inc.)"
-          value: "Dunk the Vote (fiscal sponsor Circle of Nations Inc.)"
+        - label: "Dunk the Vote"
+          value: "Dunk the Vote"
           attrs:
             - key: translate
               value: "no"
