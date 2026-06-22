@@ -525,8 +525,8 @@ place:
       options:
         - label: _(Select an organization…)
           value: ''
-        - label: "African Community Economic Development of New England (ACEDONE)"
-          value: "African Community Economic Development of New England (ACEDONE)"
+        - label: "ACEDONE"
+          value: "ACEDONE"
           attrs:
             - key: translate
               value: "no"
@@ -540,18 +540,18 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "Boston Center for Independent Living"
-          value: "Boston Center for Independent Living"
+        - label: "Blue Star Families of New England"
+          value: "Blue Star Families of New England"
           attrs:
             - key: translate
               value: "no"
-        - label: "Brazilian Women's Group"
-          value: "Brazilian Women's Group"
+        - label: "Brazilian Women’s Group"
+          value: "Brazilian Women’s Group"
           attrs:
             - key: translate
               value: "no"
-        - label: "Center for Economic Democracy"
-          value: "Center for Economic Democracy"
+        - label: "Breaktime"
+          value: "Breaktime"
           attrs:
             - key: translate
               value: "no"
@@ -560,28 +560,23 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "De Nosotros Foundation"
-          value: "De Nosotros Foundation"
+        - label: "Dominican Development Center, Inc"
+          value: "Dominican Development Center, Inc"
           attrs:
             - key: translate
               value: "no"
-        - label: "Eagle Hill Civic Association"
-          value: "Eagle Hill Civic Association"
+        - label: "Dudley Street Neighborhood Initiative"
+          value: "Dudley Street Neighborhood Initiative"
           attrs:
             - key: translate
               value: "no"
-        - label: "East Boston Community Council, Inc."
-          value: "East Boston Community Council, Inc."
+        - label: "Dunk the Vote"
+          value: "Dunk the Vote"
           attrs:
             - key: translate
               value: "no"
-        - label: "EASTIE Coalition"
-          value: "EASTIE Coalition"
-          attrs:
-            - key: translate
-              value: "no"
-        - label: "Fields Corner Crossroads Collaborative"
-          value: "Fields Corner Crossroads Collaborative"
+        - label: "EASTIE Coalition - NeighborHealth"
+          value: "EASTIE Coalition - NeighborHealth"
           attrs:
             - key: translate
               value: "no"
@@ -590,13 +585,13 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "Maverick Landing Community Services"
-          value: "Maverick Landing Community Services"
+        - label: "Kings Amongst Kings"
+          value: "Kings Amongst Kings"
           attrs:
             - key: translate
               value: "no"
-        - label: "Neighbors United for a Better East Boston (NUBE)"
-          value: "Neighbors United for a Better East Boston (NUBE)"
+        - label: "Madison Park Development Corporation"
+          value: "Madison Park Development Corporation"
           attrs:
             - key: translate
               value: "no"
@@ -605,18 +600,13 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "True Alliance Center"
-          value: "True Alliance Center"
+        - label: "True Alliance Center (TAC)"
+          value: "True Alliance Center (TAC)"
           attrs:
             - key: translate
               value: "no"
         - label: "Turkish American Cultural Society of New England (TACS)"
           value: "Turkish American Cultural Society of New England (TACS)"
-          attrs:
-            - key: translate
-              value: "no"
-        - label: "Union Capital Boston"
-          value: "Union Capital Boston"
           attrs:
             - key: translate
               value: "no"
