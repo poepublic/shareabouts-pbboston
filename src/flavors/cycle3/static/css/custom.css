@@ -81,7 +81,7 @@
   --attention-bg: var(--iia-callout-blue);
   --attention-fg: white;
 
-  --selection-bg: var(--iia-electric-purple-alt);
+  --selection-bg: var(--iia-callout-blue);
   --selection-fg: white;
 
   --map-bg: var(--iia-dark-blue);
@@ -2114,7 +2114,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
     --content-link: var(--iia-electric-purple);
     --content-link-hover: var(--iia-urban-pink);
 
-    --selection-bg: var(--iia-electric-purple);
+    --selection-bg: var(--iia-callout-blue);
 
     --map-bg: var(--iia-fog-grey);
   }
