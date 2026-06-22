@@ -2118,23 +2118,24 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 @media only screen and (width >=1300px) {}
 
 #centerpoint.newpin {
-  margin: -44px 0 0 -15px;
+  margin: -44px 0 0 -23px;
 }
 
 #centerpoint.newpin .x {
-  left: 6px;
+  left: 14px;
 }
 
 #centerpoint.newpin .shadow {
-  left: 3px;
+  left: 9px;
+  top: 7px;
 }
 
 #centerpoint.newpin .marker {
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   background: transparent url(/static/css/images/marker-plus-dark.svg) 0 0 no-repeat scroll;
-  background-size: 30px 30px;
-  top: 17px;
+  background-size: 45px 45px;
+  top: 10px;
 }
 
 #centerpoint.newpin:hover .marker,
