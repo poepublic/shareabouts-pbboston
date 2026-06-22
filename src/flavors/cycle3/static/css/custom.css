@@ -2117,7 +2117,37 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 
 @media only screen and (width >=1300px) {}
 
+#centerpoint.newpin {
+  margin: -44px 0 0 -23px;
+}
+
+#centerpoint.newpin .x {
+  left: 14px;
+}
+
+#centerpoint.newpin .shadow {
+  left: 9px;
+  top: 7px;
+}
+
+#centerpoint.newpin .marker {
+  width: 45px;
+  height: 45px;
+  background: transparent url(/static/css/images/marker-plus-dark.svg) 0 0 no-repeat scroll;
+  background-size: 45px 45px;
+  top: 10px;
+}
+
+#centerpoint.newpin:hover .marker,
+#centerpoint.newpin.dragging .marker {
+  top: -6px;
+}
+
 @media (prefers-color-scheme: light) {
+  #centerpoint.newpin .marker {
+    background-image: url(/static/css/images/marker-plus-light.svg);
+  }
+
   :root {
     --instructions-bg: var(--iia-urban-pink);
     --instructions-fg: white;
