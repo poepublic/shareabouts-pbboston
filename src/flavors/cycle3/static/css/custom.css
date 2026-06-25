@@ -617,6 +617,7 @@ label {
   display: block;
   padding: 0.5rem 0;
   border: none;
+  text-align: left;
   font-size: 1rem;
 }
 
