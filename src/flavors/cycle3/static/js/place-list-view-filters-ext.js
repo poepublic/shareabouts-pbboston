@@ -108,7 +108,10 @@
   };
 
   Shareabouts.PlaceListView.prototype.updateEmptyState = function () {
-    this.ui.emptyState.toggle(this.$('.place-list li:visible').length === 0);
+    const hasResults = this.$('.place-list li').filter(function () {
+      return this.style.display !== 'none';
+    }).length > 0;
+    this.ui.emptyState.toggle(!hasResults);
   };
 
   Shareabouts.PlaceListView.prototype.handleClearAllFilters = function () {
@@ -117,6 +120,7 @@
     this.ui.searchField.val('');
     this.applyFilters({}, '');
     this.updateFilterLinks();
+    Backbone.history.navigate('/filter/all', { trigger: true });
   };
 
   const original_applyFilters = Shareabouts.PlaceListView.prototype.applyFilters;
