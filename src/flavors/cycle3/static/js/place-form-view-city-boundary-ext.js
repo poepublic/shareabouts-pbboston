@@ -16,13 +16,17 @@ compares the currently-selected location to those boundaries using turf.js. */
     // Make sure that the center point has been set after the form was
     // rendered. If not, this is a good indication that the user neglected
     // to move the map to set it in the correct location.
-    this.$('.drag-marker-instructions').addClass('is-visuallyhidden');
-    this.$('.out-of-bounds-warning').removeClass('is-visuallyhidden');
+    this.el.querySelector('.drag-marker-instructions').classList.add('is-visuallyhidden');
 
-    // Scroll to the top of the panel if desktop
-    this.$el.parent('article').scrollTop(0);
-    // Scroll to the top of the window, if mobile
-    window.scrollTo(0, 0);
+    const warningEl = this.el.querySelector('.out-of-bounds-warning')
+    warningEl.classList.remove('is-visuallyhidden');
+
+    // Scroll to the top of the form if desktop
+    warningEl.scrollIntoView({behavior: 'smooth', block: 'start'});
+
+    // For good measure, ensure that the map is visible as well. Useful
+    // for mobile, where the map maybe above the form.
+    window.app.appView.mapView.el.scrollIntoView({behavior: 'smooth', block: 'start'});
   };
 
   const Shareabouts_PlaceFormView_setLocation = Shareabouts.PlaceFormView.prototype.setLocation;
@@ -51,7 +55,7 @@ compares the currently-selected location to those boundaries using turf.js. */
   const Shareabouts_PlaceFormView_setLatLng = Shareabouts.PlaceFormView.prototype.setLatLng;
   Shareabouts.PlaceFormView.prototype.setLatLng = function(latLng) {
     Shareabouts_PlaceFormView_setLatLng.call(this, latLng);
-    this.$('.out-of-bounds-warning').addClass('is-visuallyhidden');
+    this.el.querySelector('.out-of-bounds-warning').classList.add('is-visuallyhidden');
   }
 
   const Shareabouts_PlaceFormView_onSubmit = Shareabouts.PlaceFormView.prototype.onSubmit;
