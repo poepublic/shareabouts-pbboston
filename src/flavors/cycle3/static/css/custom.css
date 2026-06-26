@@ -904,9 +904,23 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   font-style: italic;
 }
 
+.drag-marker-warning,
+.out-of-bounds-warning,
 .drag-marker-instructions {
   background-color: var(--instructions-bg);
   color: var(--instructions-fg);
+
+  font-weight: bold;
+  text-shadow: none;
+  text-align: center;
+  margin-bottom: 1em;
+  padding: 0.75em 1em 0.875em;
+  border-radius: 0.325em;
+}
+
+.drag-marker-warning,
+.out-of-bounds-warning {
+  text-decoration: underline;
 }
 
 .awaiting-location {
