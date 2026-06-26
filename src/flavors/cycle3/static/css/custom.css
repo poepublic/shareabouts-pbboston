@@ -81,8 +81,10 @@
   --attention-bg: var(--iia-callout-blue);
   --attention-fg: white;
 
-  --selection-bg: var(--iia-callout-blue);
+  --selection-bg: var(--iia-electric-purple-alt);
   --selection-fg: white;
+
+  --hover-bg: var(--iia-callout-blue);
 
   --map-bg: var(--iia-dark-blue);
 
@@ -1093,9 +1095,9 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 }
 
 .recent-points a:hover {
-  color: var(--selection-fg);
-  background: var(--selection-bg);
-  border-color: var(--selection-bg);
+  color: var(--hover-fg);
+  background: var(--hover-bg);
+  border-color: var(--hover-bg);
 }
 
 .recent-points .avatar {
@@ -2169,7 +2171,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
     --content-link: var(--iia-electric-purple);
     --content-link-hover: var(--iia-urban-pink);
 
-    --selection-bg: var(--iia-callout-blue);
+    --selection-bg: var(--iia-electric-purple);
 
     --map-bg: var(--iia-fog-grey);
   }
