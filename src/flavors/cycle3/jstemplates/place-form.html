@@ -1,6 +1,7 @@
       <div class="iia-content-container">
         <p class="drag-marker-instructions">{{ place_config.unset_location_label }}</p>
         <p class="drag-marker-warning is-visuallyhidden">{{#_}}It looks like you didn't set your location yet.{{/_}} {{ place_config.unset_location_label }}</p>
+        <p class="out-of-bounds-warning is-visuallyhidden">{{> place-form-out-of-bounds-message }}</p>
 
         <!-- <h4 class="">{{ place_config.title }}</h4> -->
         <h4>{{#_}}How would <img class="inline-scribble" src="/static/img/iia/Scribble_Wavey_04_Pink.svg"> you spend <span class="bigger-text"><span class="scribble-text scribble-text-pink">$</span><span class="scribble-underline">2 million</span></span> to <img class="inline-scribble" src="/static/img/iia/Scribble_Arrow_02_Pink.svg" alt=""> benefit our <span class="bigger-text">communities<span class="scribble-text scribble-text-pink">?</span></span>{{/_}}</h4>

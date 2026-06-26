@@ -11,12 +11,18 @@ compares the currently-selected location to those boundaries using turf.js. */
     // rendered. If not, this is a good indication that the user neglected
     // to move the map to set it in the correct location.
     this.$('.drag-marker-instructions').addClass('is-visuallyhidden');
-    this.$('.drag-marker-warning').removeClass('is-visuallyhidden');
+    this.$('.out-of-bounds-warning').removeClass('is-visuallyhidden');
 
     // Scroll to the top of the panel if desktop
     this.$el.parent('article').scrollTop(0);
     // Scroll to the top of the window, if mobile
     window.scrollTo(0, 0);
+  };
+
+  const Shareabouts_PlaceFormView_initialize = Shareabouts.PlaceFormView.prototype.initialize;
+  Shareabouts.PlaceFormView.prototype.initialize = function(options) {
+    Shareabouts_PlaceFormView_initialize.call(this, options);
+    this.isOutOfBounds = false;
   };
       
   const Shareabouts_PlaceFormView_setLocation = Shareabouts.PlaceFormView.prototype.setLocation;
@@ -32,19 +38,25 @@ compares the currently-selected location to those boundaries using turf.js. */
     locationReceiver.classList.toggle('is-invalid', !isWithinCityBoundaries);
 
     if (isWithinCityBoundaries) {
-      this.isLocationValid = true;
+      this.isOutOfBounds = false;
       Shareabouts_PlaceFormView_setLocation.call(this, location);
     } else {
-      this.isLocationValid = false;
+      this.isOutOfBounds = true;
       this.location = null;
       locationReceiver.classList.add('awaiting-location');
       locationReceiver.innerHTML = Handlebars.templates['place-form-out-of-bounds-message']();
     }
   }
 
+  const Shareabouts_PlaceFormView_setLatLng = Shareabouts.PlaceFormView.prototype.setLatLng;
+  Shareabouts.PlaceFormView.prototype.setLatLng = function(latLng) {
+    Shareabouts_PlaceFormView_setLatLng.call(this, latLng);
+    this.$('.out-of-bounds-warning').addClass('is-visuallyhidden');
+  }
+
   const Shareabouts_PlaceFormView_onSubmit = Shareabouts.PlaceFormView.prototype.onSubmit;
   Shareabouts.PlaceFormView.prototype.onSubmit = function(evt) {
-    if (this.isLocationValid) {
+    if (!this.isOutOfBounds) {
       return Shareabouts_PlaceFormView_onSubmit.call(this, evt);
     } else {
       evt.preventDefault();
