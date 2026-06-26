@@ -6,6 +6,12 @@ compares the currently-selected location to those boundaries using turf.js. */
 (function() {
   'use strict';
 
+  const Shareabouts_PlaceFormView_initialize = Shareabouts.PlaceFormView.prototype.initialize;
+  Shareabouts.PlaceFormView.prototype.initialize = function(options) {
+    Shareabouts_PlaceFormView_initialize.call(this, options);
+    this.isOutOfBounds = false;
+  };
+      
   Shareabouts.PlaceFormView.prototype.showOutOfBoundsWarning = function() {
     // Make sure that the center point has been set after the form was
     // rendered. If not, this is a good indication that the user neglected
@@ -19,12 +25,6 @@ compares the currently-selected location to those boundaries using turf.js. */
     window.scrollTo(0, 0);
   };
 
-  const Shareabouts_PlaceFormView_initialize = Shareabouts.PlaceFormView.prototype.initialize;
-  Shareabouts.PlaceFormView.prototype.initialize = function(options) {
-    Shareabouts_PlaceFormView_initialize.call(this, options);
-    this.isOutOfBounds = false;
-  };
-      
   const Shareabouts_PlaceFormView_setLocation = Shareabouts.PlaceFormView.prototype.setLocation;
   Shareabouts.PlaceFormView.prototype.setLocation = function(location) {
     // Check whether the current center point is within the city boundaries. If
