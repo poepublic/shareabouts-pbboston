@@ -7,6 +7,7 @@
     clearScopeFilter: '.clear-scope-filter',
     clearNeighborhoodFilter: '.clear-neighborhood-filter',
     clearCategoryFilter: '.clear-category-filter',
+    emptyState: '.place-list-empty',
   };
 
   Shareabouts.PlaceListView.prototype.events = {
@@ -17,6 +18,7 @@
     'click @ui.clearScopeFilter': 'handleClearScope',
     'click @ui.clearNeighborhoodFilter': 'handleClearNeighborhood',
     'click @ui.clearCategoryFilter': 'handleClearCategory',
+    'click .clear-all-filters': 'handleClearAllFilters',
   };
 
   Shareabouts.PlaceListView.prototype.handleClearScope = function () {
@@ -102,6 +104,28 @@
   Shareabouts.PlaceListView.prototype.handleCategoryChange = function (evt) {
     var val = this.ui.categoryFilter.val();
     Backbone.history.navigate(val ? '/filter/' + val : '/filter/all', { trigger: true });
+  };
+
+  Shareabouts.PlaceListView.prototype.updateEmptyState = function () {
+    const hasResults = this.$('.place-list li').filter(function () {
+      return this.style.display !== 'none';
+    }).length > 0;
+    this.ui.emptyState.toggle(!hasResults);
+  };
+
+  Shareabouts.PlaceListView.prototype.handleClearAllFilters = function () {
+    this.collectionFilters = {};
+    this.searchTerm = '';
+    this.ui.searchField.val('');
+    this.applyFilters({}, '');
+    this.updateFilterLinks();
+    Backbone.history.navigate('/filter/all', { trigger: true });
+  };
+
+  const original_applyFilters = Shareabouts.PlaceListView.prototype.applyFilters;
+  Shareabouts.PlaceListView.prototype.applyFilters = function (filters, term) {
+    original_applyFilters.call(this, filters, term);
+    this.updateEmptyState();
   };
 
   const original_filter = Shareabouts.PlaceListView.prototype.filter;
