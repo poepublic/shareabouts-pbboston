@@ -210,6 +210,22 @@ a.close-btn {
   background-color: var(--map-bg);
 }
 
+#map-progress {
+  top: 57px;
+}
+
+@media only screen and (width >= 60rem) {
+  body.content-visible.activity-enabled #map-progress {
+    right: calc(70% - var(--ticker-width) * .1);
+  }
+}
+
+@media only screen and (width >= 80rem) {
+  body.content-visible.activity-enabled #map-progress {
+    right: calc(55% - var(--ticker-width) * .2);
+  }
+}
+
 .leaflet-light-pane {
   display: block;
 }
