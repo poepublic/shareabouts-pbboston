@@ -4,7 +4,6 @@
     scopeFilter: '.scope-filter',
     categoryFilter: '.category-filter',
     neighborhoodField: '#list-neighborhood',
-    searchField: '#list-search',
     clearScopeFilter: '.clear-scope-filter',
     clearNeighborhoodFilter: '.clear-neighborhood-filter',
     clearCategoryFilter: '.clear-category-filter',
