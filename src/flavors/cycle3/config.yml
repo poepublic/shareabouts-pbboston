@@ -879,7 +879,7 @@ place:
         - label: _(Prefer not to answer)
           value: 'prefer_not_to_answer'
     - prompt: _(How did you hear about Ideas in Action?)
-      label: _(How they heard about Idead in Action)
+      label: _(How they heard about Ideas in Action)
       name: private_submitter_how_heard
       optional: true
       sticky: true
