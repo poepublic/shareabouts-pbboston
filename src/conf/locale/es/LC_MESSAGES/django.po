@@ -5,16 +5,18 @@
 #
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2026
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 21:46-0400\n"
+"POT-Creation-Date: 2026-06-29 14:17-0400\n"
 "PO-Revision-Date: 2026-06-09 16:33+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2026\n"
-"Language-Team: Spanish (https://app.transifex.com/mjumbewu/teams/189006/es/)\n"
+"Language-Team: Spanish (https://app.transifex.com/mjumbewu/teams/189006/"
+"es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1016,8 +1018,8 @@ msgstr "Prefiero no responder"
 #: src/flavors/cycle3/_config.translations.py:39
 msgid "Citywide ideas apply to the entire City of Boston."
 msgstr ""
-"Las ideas que se aplican a toda la ciudad son válidas para toda la ciudad de"
-" Boston."
+"Las ideas que se aplican a toda la ciudad son válidas para toda la ciudad de "
+"Boston."
 
 #: src/flavors/cycle3/_config.translations.py:40
 msgid "Your idea will appear at City Hall."
@@ -1082,8 +1084,8 @@ msgstr "Participó en Ideas en Acción en el pasado."
 
 #: src/flavors/cycle3/_config.translations.py:141
 msgid ""
-"Examples include: submitting ideas online, attending a workshop or forum, or"
-" voting for project proposals on the ballot."
+"Examples include: submitting ideas online, attending a workshop or forum, or "
+"voting for project proposals on the ballot."
 msgstr ""
 "Algunos ejemplos son: enviar ideas en línea, asistir a un taller o foro, o "
 "votar por propuestas de proyectos en la papeleta electoral."
@@ -1099,24 +1101,6 @@ msgstr "No, esta es mi primera vez."
 #: src/flavors/cycle3/_config.translations.py:144
 msgid "Not sure"
 msgstr "No estoy seguro"
-
-#: src/flavors/cycle3/jstemplates/activity-list-item.html:1
-msgid ""
-"Examples include: submitting ideas online, attending a workshop or forum, or "
-"voting for project proposals on the ballot."
-msgstr ""
-
-#: src/flavors/cycle3/_config.translations.py:142
-msgid "Yes, I have participated in the past"
-msgstr ""
-
-#: src/flavors/cycle3/_config.translations.py:143
-msgid "No, this is my first time"
-msgstr ""
-
-#: src/flavors/cycle3/_config.translations.py:144
-msgid "Not sure"
-msgstr ""
 
 #: src/flavors/cycle3/jstemplates/activity-list-item.html:1
 msgid ""
@@ -1155,8 +1139,8 @@ msgid ""
 "City-wide ideas apply to all of Boston, not a specific location or "
 "neighborhood."
 msgstr ""
-"Las ideas que se aplican a toda la ciudad se aplican a todo Boston, no a una"
-" ubicación o barrio específico."
+"Las ideas que se aplican a toda la ciudad se aplican a todo Boston, no a una "
+"ubicación o barrio específico."
 
 #: src/flavors/cycle3/jstemplates/city-hall-info.html:3
 #: src/sa_web/templates/base.html:114
@@ -1247,18 +1231,17 @@ msgid ""
 "<a href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
 "action#newsletter\" target=\"_blank\">Sign up for our newsletter!</a> For "
 "more information about Participatory Budgeting, please visit <a "
-"href=\"https://boston.gov/participate\" "
-"target=\"_blank\">Boston.gov/participate</a> or contact the Office of "
-"Participatory Budgeting at <a "
+"href=\"https://boston.gov/participate\" target=\"_blank\">Boston.gov/"
+"participate</a> or contact the Office of Participatory Budgeting at <a "
 "href=\"mailto:pb@boston.gov\">pb@boston.gov</a>."
 msgstr ""
 "<a href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
 "action#newsletter\" target=\"_blank\">¡Suscríbase a nuestro boletín "
 "informativo!</a> Para obtener más información sobre el Presupuesto "
 "Participativo, visite <a href=\"https://boston.gov/participate\" "
-"target=\"_blank\">Boston.gov/participate</a> o comuníquese con la Oficina de"
-" Presupuesto Participativo a través de <a "
-"href=\"mailto:pb@boston.gov\">pb@boston.gov</a> ."
+"target=\"_blank\">Boston.gov/participate</a> o comuníquese con la Oficina de "
+"Presupuesto Participativo a través de <a href=\"mailto:pb@boston."
+"gov\">pb@boston.gov</a> ."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:2
 msgid ""
@@ -1280,16 +1263,15 @@ msgstr ""
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:4
 msgid ""
-"As part of this process, residents inform the City about their priorities to"
-" help decide future budget investments."
+"As part of this process, residents inform the City about their priorities to "
+"help decide future budget investments."
 msgstr ""
 "Como parte de este proceso, los residentes informan a la ciudad sobre sus "
 "prioridades para ayudar a decidir las futuras inversiones presupuestarias."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:5
 msgid ""
-"Decide on the top projects that will appear on the PB Ballot for voting; "
-"and,"
+"Decide on the top projects that will appear on the PB Ballot for voting; and,"
 msgstr ""
 "Decidir cuáles serán los principales proyectos que aparecerán en la boleta "
 "de votación del PB; y,"
@@ -1329,24 +1311,22 @@ msgstr ""
 msgid ""
 "For an update on the implementation of awarded PB projects, visit: <a "
 "href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
-"action-project-implementation\" "
-"target=\"_blank\">Boston.gov/departments/participatory-budgeting/ideas-"
-"action-project-implementation</a>"
+"action-project-implementation\" target=\"_blank\">Boston.gov/departments/"
+"participatory-budgeting/ideas-action-project-implementation</a>"
 msgstr ""
 "Para obtener información actualizada sobre la implementación de los "
 "proyectos de presupuesto participativo adjudicados, visite: <a "
 "href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
-"action-project-implementation\" "
-"target=\"_blank\">Boston.gov/departments/participatory-budgeting/ideas-"
-"action-project-implementation</a>"
+"action-project-implementation\" target=\"_blank\">Boston.gov/departments/"
+"participatory-budgeting/ideas-action-project-implementation</a>"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:12
 msgid ""
 "From August through September 2026, the City will review all the submitted "
-"project ideas. Then, in the fall, the Office of Participatory Budgeting will"
-" host public workshops for residents to review, prioritize, and develop "
-"these ideas into project proposals for the PB ballot. Voting will take place"
-" in January of 2027!"
+"project ideas. Then, in the fall, the Office of Participatory Budgeting will "
+"host public workshops for residents to review, prioritize, and develop these "
+"ideas into project proposals for the PB ballot. Voting will take place in "
+"January of 2027!"
 msgstr ""
 "De agosto a septiembre de 2026, la ciudad revisará todas las ideas de "
 "proyectos presentadas. Luego, en otoño, la Oficina de Presupuesto "
@@ -1438,8 +1418,8 @@ msgid ""
 "Project ideas that are limited to a one-time expense, and do not create new "
 "permanent positions;"
 msgstr ""
-"Ideas de proyectos que se limitan a un gasto único y no crean nuevos puestos"
-" de trabajo permanentes;"
+"Ideas de proyectos que se limitan a un gasto único y no crean nuevos puestos "
+"de trabajo permanentes;"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:26
 msgid "Repairing a privately owned building;"
@@ -1448,8 +1428,7 @@ msgstr "Reparación de un edificio de propiedad privada;"
 #: src/flavors/cycle3/jstemplates/pages/overview.html:27
 msgid "Share project ideas that help advance social and racial equity;"
 msgstr ""
-"Comparta ideas de proyectos que ayuden a promover la equidad social y "
-"racial;"
+"Comparta ideas de proyectos que ayuden a promover la equidad social y racial;"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:28
 msgid ""
@@ -1467,8 +1446,8 @@ msgstr ""
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:30
 msgid ""
-"Thanks to all who submitted project ideas for how to spend $2 million of the"
-" City’s budget! "
+"Thanks to all who submitted project ideas for how to spend $2 million of the "
+"City’s budget! "
 msgstr ""
 "¡Gracias a todos los que presentaron ideas de proyectos sobre cómo gastar "
 "los 2 millones de dólares del presupuesto de la ciudad! "
@@ -1491,18 +1470,18 @@ msgid ""
 "1st and July 31</strong>, you can share project ideas through this website, "
 "over the phone by calling <a href=\"tel:+16176353059\">(617) 635-3059</a>, "
 "or in-person at Boston Public Library Branches, selected BCYF Community "
-"Centers, and through <a "
-"href=\"https://www.boston.gov/departments/participatory-budgeting/idea-"
-"collection\" target=\"_blank\">community events across the City</a>."
+"Centers, and through <a href=\"https://www.boston.gov/departments/"
+"participatory-budgeting/idea-collection\" target=\"_blank\">community events "
+"across the City</a>."
 msgstr ""
 "¡El próximo ciclo de Ideas en Acción comienza este verano! Entre <strong>el "
 "1 y el 31 de julio</strong> , puedes compartir ideas de proyectos a través "
-"de este sitio web, por teléfono llamando al <a "
-"href=\"tel:+16176353059\">(617) 635-3059</a> o en persona en las sucursales "
-"de la Biblioteca Pública de Boston, en centros comunitarios seleccionados de"
-" BCYF y a través de <a "
-"href=\"https://www.boston.gov/departments/participatory-budgeting/idea-"
-"collection\" target=\"_blank\">eventos comunitarios en toda la ciudad</a> ."
+"de este sitio web, por teléfono llamando al <a href=\"tel:"
+"+16176353059\">(617) 635-3059</a> o en persona en las sucursales de la "
+"Biblioteca Pública de Boston, en centros comunitarios seleccionados de BCYF "
+"y a través de <a href=\"https://www.boston.gov/departments/participatory-"
+"budgeting/idea-collection\" target=\"_blank\">eventos comunitarios en toda "
+"la ciudad</a> ."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:33
 msgid ""
@@ -1565,8 +1544,8 @@ msgid ""
 "elligible for consideration. Please move the map to a location within the "
 "City of Boston to submit your idea."
 msgstr ""
-"Las ideas para ubicaciones fuera de los límites de la ciudad de Boston no se"
-" tendrán en cuenta. Mueva el mapa a una ubicación dentro de la ciudad de "
+"Las ideas para ubicaciones fuera de los límites de la ciudad de Boston no se "
+"tendrán en cuenta. Mueva el mapa a una ubicación dentro de la ciudad de "
 "Boston para enviar su idea."
 
 #: src/flavors/cycle3/jstemplates/place-form-submission-confirmation.html:1
@@ -1582,13 +1561,6 @@ msgstr ""
 "Visite <a href=\"https://www.boston.gov/participate\" "
 "target=\"_blank\">Boston.gov/participate</a> para obtener más información y "
 "manténgase al tanto de las próximas actualizaciones del ciclo."
-
-#: src/flavors/cycle3/jstemplates/place-form.html:1
-msgid ""
-"Visit <a href=\"https://www.boston.gov/participate\" "
-"target=\"_blank\">Boston.gov/participate</a> for more information and stay "
-"tuned for upcoming cycle updates."
-msgstr ""
 
 #: src/flavors/cycle3/jstemplates/place-form.html:1
 msgid ""
@@ -1785,3 +1757,35 @@ msgid ""
 msgstr ""
 "No podemos conectarnos al servidor en este momento. Esperad mientras "
 "restablecemos la comunicación."
+
+#, fuzzy
+#~| msgid "Show the Map"
+#~ msgid "Site Maps"
+#~ msgstr "Mostrar el mapa"
+
+#, fuzzy
+#~| msgid "Enter a location…"
+#~ msgid "Enter a valid duration."
+#~ msgstr "Ingrese una ubicación…"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgid "March"
+#~ msgstr "Buscar"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "abbrev. month"
+#~ msgid "March"
+#~ msgstr "Buscar"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "alt. month"
+#~ msgid "March"
+#~ msgstr "Buscar"
+
+#, fuzzy
+#~| msgid "optional"
+#~ msgid "optional arguments"
+#~ msgstr "opcional"

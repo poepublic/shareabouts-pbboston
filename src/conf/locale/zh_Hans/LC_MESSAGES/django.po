@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 21:46-0400\n"
+"POT-Creation-Date: 2026-06-29 14:17-0400\n"
 "PO-Revision-Date: 2025-06-07 22:19+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2025\n"
 "Language-Team: Chinese (https://app.transifex.com/mjumbewu/teams/189006/"
@@ -1766,6 +1766,38 @@ msgid ""
 "We can't connect to the server at the moment. Hang tight while we re-"
 "establish communication."
 msgstr "我们目前无法连接到服务器。请稍等片刻，我们正在重新建立通信。"
+
+#, fuzzy
+#~| msgid "Show the Map"
+#~ msgid "Site Maps"
+#~ msgstr "显示地图"
+
+#, fuzzy
+#~| msgid "Enter a location…"
+#~ msgid "Enter a valid duration."
+#~ msgstr "输入位置..."
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgid "March"
+#~ msgstr "搜索"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "abbrev. month"
+#~ msgid "March"
+#~ msgstr "搜索"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "alt. month"
+#~ msgid "March"
+#~ msgstr "搜索"
+
+#, fuzzy
+#~| msgid "optional"
+#~ msgid "optional arguments"
+#~ msgstr "选修的"
 
 #, fuzzy
 #~| msgid "City of Boston Participatory Budgeting"

@@ -5,13 +5,13 @@
 #
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2026
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 21:46-0400\n"
+"POT-Creation-Date: 2026-06-29 14:17-0400\n"
 "PO-Revision-Date: 2026-06-09 16:33+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2026\n"
 "Language-Team: Somali (https://app.transifex.com/mjumbewu/teams/189006/so/)\n"
@@ -1020,8 +1020,7 @@ msgstr "Doorbida inaadan ka jawaabin"
 
 #: src/flavors/cycle3/_config.translations.py:39
 msgid "Citywide ideas apply to the entire City of Boston."
-msgstr ""
-"Fikradaha magaalada oo dhan waxay khuseeyaan Magaalada Boston oo dhan."
+msgstr "Fikradaha magaalada oo dhan waxay khuseeyaan Magaalada Boston oo dhan."
 
 #: src/flavors/cycle3/_config.translations.py:40
 msgid "Your idea will appear at City Hall."
@@ -1085,8 +1084,8 @@ msgstr "Ka qayb qaatay Fikradaha Ficilka waagii hore"
 
 #: src/flavors/cycle3/_config.translations.py:141
 msgid ""
-"Examples include: submitting ideas online, attending a workshop or forum, or"
-" voting for project proposals on the ballot."
+"Examples include: submitting ideas online, attending a workshop or forum, or "
+"voting for project proposals on the ballot."
 msgstr ""
 "Tusaalooyinka waxaa ka mid ah: soo gudbinta fikradaha khadka tooska ah, ka "
 "qaybgalka aqoon-is-weydaarsi ama madal, ama u codaynta soo jeedinta "
@@ -1103,24 +1102,6 @@ msgstr "Maya, kani waa markii ugu horreysay ee aan arko"
 #: src/flavors/cycle3/_config.translations.py:144
 msgid "Not sure"
 msgstr "Ma hubo"
-
-#: src/flavors/cycle3/jstemplates/activity-list-item.html:1
-msgid ""
-"Examples include: submitting ideas online, attending a workshop or forum, or "
-"voting for project proposals on the ballot."
-msgstr ""
-
-#: src/flavors/cycle3/_config.translations.py:142
-msgid "Yes, I have participated in the past"
-msgstr ""
-
-#: src/flavors/cycle3/_config.translations.py:143
-msgid "No, this is my first time"
-msgstr ""
-
-#: src/flavors/cycle3/_config.translations.py:144
-msgid "Not sure"
-msgstr ""
 
 #: src/flavors/cycle3/jstemplates/activity-list-item.html:1
 msgid ""
@@ -1258,17 +1239,15 @@ msgid ""
 "<a href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
 "action#newsletter\" target=\"_blank\">Sign up for our newsletter!</a> For "
 "more information about Participatory Budgeting, please visit <a "
-"href=\"https://boston.gov/participate\" "
-"target=\"_blank\">Boston.gov/participate</a> or contact the Office of "
-"Participatory Budgeting at <a "
+"href=\"https://boston.gov/participate\" target=\"_blank\">Boston.gov/"
+"participate</a> or contact the Office of Participatory Budgeting at <a "
 "href=\"mailto:pb@boston.gov\">pb@boston.gov</a>."
 msgstr ""
 "<a href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
 "action#newsletter\" target=\"_blank\">Isku qor warsideena!</a> Wixii "
 "macluumaad dheeraad ah oo ku saabsan Miisaaniyadda Ka-qaybgalka, fadlan "
-"booqo <a href=\"https://boston.gov/participate\" "
-"target=\"_blank\">Boston.gov/participate</a> ama la xiriir Xafiiska "
-"Miisaaniyadda Ka-qaybgalka <a "
+"booqo <a href=\"https://boston.gov/participate\" target=\"_blank\">Boston."
+"gov/participate</a> ama la xiriir Xafiiska Miisaaniyadda Ka-qaybgalka <a "
 "href=\"mailto:pb@boston.gov\">pb@boston.gov</a> ."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:2
@@ -1292,8 +1271,8 @@ msgstr ""
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:4
 msgid ""
-"As part of this process, residents inform the City about their priorities to"
-" help decide future budget investments."
+"As part of this process, residents inform the City about their priorities to "
+"help decide future budget investments."
 msgstr ""
 "Qayb ka mid ah geeddi-socodkan, dadka degan waxay Magaalada ku wargeliyaan "
 "waxyaabaha ay mudnaanta siinayaan si ay uga caawiyaan go&#39;aansashada "
@@ -1301,8 +1280,7 @@ msgstr ""
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:5
 msgid ""
-"Decide on the top projects that will appear on the PB Ballot for voting; "
-"and,"
+"Decide on the top projects that will appear on the PB Ballot for voting; and,"
 msgstr ""
 "Go&#39;aan ka gaar mashaariicda ugu sarreeya ee ka soo muuqan doona "
 "codbixinta PB Codbixinta; iyo,"
@@ -1342,30 +1320,28 @@ msgstr ""
 msgid ""
 "For an update on the implementation of awarded PB projects, visit: <a "
 "href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
-"action-project-implementation\" "
-"target=\"_blank\">Boston.gov/departments/participatory-budgeting/ideas-"
-"action-project-implementation</a>"
+"action-project-implementation\" target=\"_blank\">Boston.gov/departments/"
+"participatory-budgeting/ideas-action-project-implementation</a>"
 msgstr ""
 "Wixii warar ah ee ku saabsan hirgelinta mashaariicda PB ee la bixiyay, "
-"booqo: <a href=\"https://www.boston.gov/departments/participatory-"
-"budgeting/ideas-action-project-implementation\" "
-"target=\"_blank\">Boston.gov/departments/participatory-budgeting/ideas-"
-"action-project-implementation</a>"
+"booqo: <a href=\"https://www.boston.gov/departments/participatory-budgeting/"
+"ideas-action-project-implementation\" target=\"_blank\">Boston.gov/"
+"departments/participatory-budgeting/ideas-action-project-implementation</a>"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:12
 msgid ""
 "From August through September 2026, the City will review all the submitted "
-"project ideas. Then, in the fall, the Office of Participatory Budgeting will"
-" host public workshops for residents to review, prioritize, and develop "
-"these ideas into project proposals for the PB ballot. Voting will take place"
-" in January of 2027!"
+"project ideas. Then, in the fall, the Office of Participatory Budgeting will "
+"host public workshops for residents to review, prioritize, and develop these "
+"ideas into project proposals for the PB ballot. Voting will take place in "
+"January of 2027!"
 msgstr ""
-"Laga bilaabo Agoosto ilaa Sebtembar 2026, Magaaladu waxay dib u eegi doontaa"
-" dhammaan fikradaha mashruuca ee la soo gudbiyay. Kadib, dayrta, Xafiiska "
+"Laga bilaabo Agoosto ilaa Sebtembar 2026, Magaaladu waxay dib u eegi doontaa "
+"dhammaan fikradaha mashruuca ee la soo gudbiyay. Kadib, dayrta, Xafiiska "
 "Miisaaniyadda Ka-qaybgalka wuxuu martigelin doonaa aqoon-is-weydaarsiyo "
 "dadweyne si dadka deegaanka ay dib ugu eegaan, u kala hormariyaan, una "
-"horumariyaan fikradahan soo-jeedimaha mashruuca ee codbixinta PB. Codbixintu"
-" waxay dhici doontaa Janaayo 2027!"
+"horumariyaan fikradahan soo-jeedimaha mashruuca ee codbixinta PB. Codbixintu "
+"waxay dhici doontaa Janaayo 2027!"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:13
 msgid "Helping a religious institution repair its sanctuary;"
@@ -1443,16 +1419,16 @@ msgid ""
 "Ordinance;"
 msgstr ""
 "Fikradaha mashruuca ee suurtogalka ah in la hirgeliyo, isla markaana "
-"waafaqsan siyaasadaha Magaalada ee jira, sharciyada, qawaaniinta, iyo Xeerka"
-" Miisaaniyadda Ka-qaybgalka;"
+"waafaqsan siyaasadaha Magaalada ee jira, sharciyada, qawaaniinta, iyo Xeerka "
+"Miisaaniyadda Ka-qaybgalka;"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:25
 msgid ""
 "Project ideas that are limited to a one-time expense, and do not create new "
 "permanent positions;"
 msgstr ""
-"Fikradaha mashruuca oo ku kooban kharash hal mar ah, oo aan abuurin jagooyin"
-" cusub oo joogto ah;"
+"Fikradaha mashruuca oo ku kooban kharash hal mar ah, oo aan abuurin jagooyin "
+"cusub oo joogto ah;"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:26
 msgid "Repairing a privately owned building;"
@@ -1480,8 +1456,8 @@ msgstr ""
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:30
 msgid ""
-"Thanks to all who submitted project ideas for how to spend $2 million of the"
-" City’s budget! "
+"Thanks to all who submitted project ideas for how to spend $2 million of the "
+"City’s budget! "
 msgstr ""
 "Mahadsanid dhammaan dadkii soo gudbiyay fikradaha mashruuca ee ku saabsan "
 "sida loo isticmaalo $2 milyan oo ka mid ah miisaaniyadda Magaalada! "
@@ -1505,19 +1481,18 @@ msgid ""
 "1st and July 31</strong>, you can share project ideas through this website, "
 "over the phone by calling <a href=\"tel:+16176353059\">(617) 635-3059</a>, "
 "or in-person at Boston Public Library Branches, selected BCYF Community "
-"Centers, and through <a "
-"href=\"https://www.boston.gov/departments/participatory-budgeting/idea-"
-"collection\" target=\"_blank\">community events across the City</a>."
+"Centers, and through <a href=\"https://www.boston.gov/departments/"
+"participatory-budgeting/idea-collection\" target=\"_blank\">community events "
+"across the City</a>."
 msgstr ""
 "Wareegga xiga ee Fikradaha Ficilka ayaa bilaabanaya xagaagan! Inta u "
 "dhaxaysa <strong>Luulyo 1 iyo Luulyo 31</strong> , waxaad fikradaha "
 "mashruuca kula wadaagi kartaa mareegtan, taleefanka adoo wacaya <a "
 "href=\"tel:+16176353059\">(617) 635-3059</a> , ama shaqsi ahaan Laamaha "
 "Maktabadda Dadweynaha ee Boston, Xarumaha Bulshada BCYF ee la xushay, iyo "
-"iyada oo loo marayo <a "
-"href=\"https://www.boston.gov/departments/participatory-budgeting/idea-"
-"collection\" target=\"_blank\">dhacdooyinka bulshada ee Magaalada oo "
-"dhan</a> ."
+"iyada oo loo marayo <a href=\"https://www.boston.gov/departments/"
+"participatory-budgeting/idea-collection\" target=\"_blank\">dhacdooyinka "
+"bulshada ee Magaalada oo dhan</a> ."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:33
 msgid ""
@@ -1602,9 +1577,13 @@ msgstr ""
 
 #: src/flavors/cycle3/jstemplates/place-form.html:1
 msgid ""
-"Visit <a href=\"https://www.boston.gov/participate\" "
-"target=\"_blank\">Boston.gov/participate</a> for more information and stay "
-"tuned for upcoming cycle updates."
+"How would <img class=\"inline-scribble\" src=\"/static/img/iia/"
+"Scribble_Wavey_04_Pink.svg\"> you spend <span class=\"bigger-text\"><span "
+"class=\"scribble-text scribble-text-pink\">$</span><span class=\"scribble-"
+"underline\">2 million</span></span> to <img class=\"inline-scribble\" src=\"/"
+"static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> benefit our <span "
+"class=\"bigger-text\">communities<span class=\"scribble-text scribble-text-"
+"pink\">?</span></span>"
 msgstr ""
 
 #: src/flavors/cycle3/jstemplates/place-form.html:2
@@ -1786,3 +1765,35 @@ msgid ""
 msgstr ""
 "Ma ku xidhi karno serverka wakhtigan Dheji inta aan dib u hagaajinayno "
 "isgaarsiinta."
+
+#, fuzzy
+#~| msgid "Show the Map"
+#~ msgid "Site Maps"
+#~ msgstr "Tus khariidada"
+
+#, fuzzy
+#~| msgid "Enter a location…"
+#~ msgid "Enter a valid duration."
+#~ msgstr "Geli goob..."
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgid "March"
+#~ msgstr "Raadi"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "abbrev. month"
+#~ msgid "March"
+#~ msgstr "Raadi"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgctxt "alt. month"
+#~ msgid "March"
+#~ msgstr "Raadi"
+
+#, fuzzy
+#~| msgid "optional"
+#~ msgid "optional arguments"
+#~ msgstr "ikhtiyaari ah"
