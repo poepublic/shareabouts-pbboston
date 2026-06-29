@@ -5,16 +5,30 @@
   </form>
   <nav class="list-filter-menu">
     <span class="list-filter-prompt"></span>
-    <a href="#" class="all-ideas-filter is-selected">{{#_}}All Ideas{{/_}}</a> |
-    <a href="#" class="city-wide-filter">{{#_}}City-wide Ideas{{/_}}</a> |
-    <a href="#" class="location-specific-filter">{{#_}}Location-specific Ideas{{/_}}</a> |
-    <select id="list-neighborhood" class="neighborhood-filter" name="list_neighborhood">
+    <button class="clear-filter clear-scope-filter" title="{{#_}}Clear filter{{/_}}">×</button><select id="list-scope" class="scope-filter" name="list_scope">
+      <option value="">{{#_}}Filter by scope...{{/_}}</option>
+      <option value="city_wide">{{#_}}City-wide only{{/_}}</option>
+      <option value="location_specific">{{#_}}Location-specific only{{/_}}</option>
+    </select> 
+    <button class="clear-filter clear-neighborhood-filter" title="{{#_}}Clear filter{{/_}}">×</button><select id="list-neighborhood" class="neighborhood-filter" name="list_neighborhood">
       <option value="">{{#_}}Choose a neighborhood...{{/_}}</option>
       {{#each neighborhoods}}
       <option value="{{properties.name}}" translate="no">{{properties.name}}</option>
+      {{/each}}
+    </select> 
+    <button class="clear-filter clear-category-filter" title="{{#_}}Clear filter{{/_}}">×</button><select id="list-category" class="category-filter" name="list_category">
+      <option value="">{{#_}}Filter by category...{{/_}}</option>
+      {{#each categories}}
+      <option value="{{value}}" data-label="{{label}}">{{label}}</option>
       {{/each}}
     </select>
   </nav>
 </div>
 
 <ul class="place-list unstyled-list"></ul>
+<div class="place-list-empty" style="display:none">
+  <img src="/static/css/images/iia-search-icon-electric-pink.svg" width="120px">
+  <h3>{{#_}}No results found.{{/_}}</h3>
+  <p>{{#_}}Please try a different set of filters.{{/_}}</p>
+  <button class="clear-all-filters btn">{{#_}}Clear all filters{{/_}}</button>
+</div>

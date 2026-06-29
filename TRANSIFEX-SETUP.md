@@ -7,7 +7,7 @@ git:
     file_format: PO
     source_file_extension: po
     source_language: en
-    source_file_dir: src/conf/locale/en_US/LC_MESSAGES
+    source_file_dir: src/conf/locale/en/LC_MESSAGES
     translation_files_expression: 'src/conf/locale/<lang>/LC_MESSAGES/'
 ```
 

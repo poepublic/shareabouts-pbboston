@@ -407,8 +407,9 @@ place:
   submit_button_label: _(Submit)
 
   location_item_name: location
-  city_wide_location_label: _(Multiple locations throughout the city)
-  city_wide_location_center:  [-71.05804664749975, 42.36058038175507]  # <- Boston City Hall
+  city_wide_location_prompt: _(Citywide ideas apply to the entire City of Boston.)
+  city_wide_location_label: _(Your idea will appear at City Hall.)
+  city_wide_location_center:  [-71.05798753720381, 42.360394484137274]  # <- Boston City Hall (footprint centroid)
   city_wide_location_offset: 50  # Within 50 meters of City Hall
   unset_location_label: _(Please use the map's search box or drag the map to set the location.)
 
@@ -524,8 +525,8 @@ place:
       options:
         - label: _(Select an organization…)
           value: ''
-        - label: "African Community Economic Development of New England (ACEDONE)"
-          value: "African Community Economic Development of New England (ACEDONE)"
+        - label: "ACEDONE"
+          value: "ACEDONE"
           attrs:
             - key: translate
               value: "no"
@@ -539,18 +540,18 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "Boston Center for Independent Living"
-          value: "Boston Center for Independent Living"
+        - label: "Blue Star Families of New England"
+          value: "Blue Star Families of New England"
           attrs:
             - key: translate
               value: "no"
-        - label: "Brazilian Women's Group"
-          value: "Brazilian Women's Group"
+        - label: "Brazilian Women’s Group"
+          value: "Brazilian Women’s Group"
           attrs:
             - key: translate
               value: "no"
-        - label: "Center for Economic Democracy"
-          value: "Center for Economic Democracy"
+        - label: "Breaktime"
+          value: "Breaktime"
           attrs:
             - key: translate
               value: "no"
@@ -559,28 +560,23 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "De Nosotros Foundation"
-          value: "De Nosotros Foundation"
+        - label: "Dominican Development Center, Inc"
+          value: "Dominican Development Center, Inc"
           attrs:
             - key: translate
               value: "no"
-        - label: "Eagle Hill Civic Association"
-          value: "Eagle Hill Civic Association"
+        - label: "Dudley Street Neighborhood Initiative"
+          value: "Dudley Street Neighborhood Initiative"
           attrs:
             - key: translate
               value: "no"
-        - label: "East Boston Community Council, Inc."
-          value: "East Boston Community Council, Inc."
+        - label: "Dunk the Vote"
+          value: "Dunk the Vote"
           attrs:
             - key: translate
               value: "no"
-        - label: "EASTIE Coalition"
-          value: "EASTIE Coalition"
-          attrs:
-            - key: translate
-              value: "no"
-        - label: "Fields Corner Crossroads Collaborative"
-          value: "Fields Corner Crossroads Collaborative"
+        - label: "EASTIE Coalition - NeighborHealth"
+          value: "EASTIE Coalition - NeighborHealth"
           attrs:
             - key: translate
               value: "no"
@@ -589,13 +585,13 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "Maverick Landing Community Services"
-          value: "Maverick Landing Community Services"
+        - label: "Kings Amongst Kings"
+          value: "Kings Amongst Kings"
           attrs:
             - key: translate
               value: "no"
-        - label: "Neighbors United for a Better East Boston (NUBE)"
-          value: "Neighbors United for a Better East Boston (NUBE)"
+        - label: "Madison Park Development Corporation"
+          value: "Madison Park Development Corporation"
           attrs:
             - key: translate
               value: "no"
@@ -604,18 +600,13 @@ place:
           attrs:
             - key: translate
               value: "no"
-        - label: "True Alliance Center"
-          value: "True Alliance Center"
+        - label: "True Alliance Center (TAC)"
+          value: "True Alliance Center (TAC)"
           attrs:
             - key: translate
               value: "no"
         - label: "Turkish American Cultural Society of New England (TACS)"
           value: "Turkish American Cultural Society of New England (TACS)"
-          attrs:
-            - key: translate
-              value: "no"
-        - label: "Union Capital Boston"
-          value: "Union Capital Boston"
           attrs:
             - key: translate
               value: "no"
@@ -888,7 +879,7 @@ place:
         - label: _(Prefer not to answer)
           value: 'prefer_not_to_answer'
     - prompt: _(How did you hear about Ideas in Action?)
-      label: _(How they heard about Idead in Action)
+      label: _(How they heard about Ideas in Action)
       name: private_submitter_how_heard
       optional: true
       sticky: true
@@ -997,43 +988,6 @@ pages:
   - title: _(Boston PB Home)
     external: true
     url: https://boston.gov/participate
-
-  - title: _(Filter Ideas)
-    slug: filter-type
-    pages:
-      - title: _(All)
-        url: /filter/all
-        external: true
-      - title: _(Arts & Culture)
-        url: /filter/arts_culture
-        external: true
-      - title: _(Community Resources)
-        url: /filter/community
-        external: true
-      - title: _(Local Economy & Worker Empowerment)
-        url: /filter/economy_workers
-        external: true
-      - title: _(Education, Youth, Families, & Older Adults)
-        url: /filter/education_youth
-        external: true
-      - title: _(Environment, Sustainability, and Food Access)
-        url: /filter/sustainability
-        external: true
-      - title: _(Facilities, Parks & Recreation  )
-        url: /filter/facilities
-        external: true
-      - title: _(Health & Well-being)
-        url: /filter/human_services
-        external: true
-      - title: _(Public Safety)
-        url: /filter/public_safety
-        external: true
-      - title: _(Streets & Sidewalks)
-        url: /filter/streets_sidewalks
-        external: true
-      - title: _(Other / Not Sure)
-        url: /filter/other
-        external: true
 
 languages:
   # English

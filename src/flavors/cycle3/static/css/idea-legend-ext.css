@@ -6,9 +6,9 @@
   width: 100%;
   box-sizing: border-box;
   font-size: 0.875em;
-  --selection-bg: var(--supporting-red-1);
-  background-color: var(--charles-blue);
-  padding: 0.5em 0.5em 0.75em;
+  --selection-bg: var(--iia-callout-blue);
+  padding: 0.5em 0.5em;
+  background-color: var(--iia-dark-blue);
 }
 
 .content-visible .legend-wrapper {
@@ -26,11 +26,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   position: relative;
   width: 100%;
   padding: 0.75em 1em 0.5em;
   font-size: 1.25em;
-  background-color: var(--supporting-red-1);
   color: white;
   border: none;
   cursor: pointer;
@@ -38,13 +38,7 @@
 }
 
 .legend-toggle:hover {
-  background-color: var(--freedom-trail-red);
-}
-
-.legend-toggle-button {
-  position: absolute;
-  padding: 0.5rem;
-  right: 0;
+  background-color: var(--iia-indigo-blue);
 }
 
 .hamburger-icon {
@@ -89,7 +83,7 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
 }
 
 .open .place-type-legend {
@@ -113,7 +107,7 @@
   padding: 0.5rem;
   border: none;
   text-decoration: none;
-  color: var(--charles-blue);
+  color: var(--iia-dark-blue);
   background-color: var(--iia-fog-grey);
 }
 
@@ -179,7 +173,7 @@
   }
 
   .legend-toggle {
-    background-color: var(--charles-blue);
+    background-color: var(--iia-dark-blue);
     font-size: 1em;
     padding: 0.5rem;
   }

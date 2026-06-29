@@ -7,7 +7,7 @@ import hashlib
 
 from sa_util.api import make_auth_root, make_resource_uri, ShareaboutsApi
 from sa_util.config import get_shareabouts_config
-from pbboston.geodata import load_neighborhoods
+from pbboston.geodata import load_neighborhoods, load_city
 from django.shortcuts import render
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
@@ -161,6 +161,7 @@ def index(request, place_id=None):
     except KeyError:
         uses_mapbox_layers = False
 
+    city_boundary = load_city()
     neighborhoods = load_neighborhoods()
     path_prefix = settings.BASE_URL
 
@@ -182,6 +183,7 @@ def index(request, place_id=None):
                'uses_mapbox_layers': uses_mapbox_layers,
 
                 # Geo-data for Boston
+               'city_boundary': city_boundary,
                'neighborhoods': neighborhoods,
 
                # Site root useful for automatic translation
