@@ -4,6 +4,7 @@
 @import url('/static/css/idea-legend-ext.css');
 @import url('/static/css/list-view-mobile.css');
 @import url('/static/css/map-view-mobile.css');
+@import url('/static/css/content-suggest-btn-ext.css');
 
 /*
  * This CSS file follows the default Shareabouts style.css.
@@ -204,6 +205,10 @@ a:hover {
 
 #content,
 a.close-btn {
+  position: sticky;
+  top: calc(var(--pre-banner-height) + 1rem);
+  margin-top: -2.2em;
+  border-radius: 0.325em;
   background-color: var(--content-bg);
   color: var(--content-fg);
 }
@@ -335,7 +340,8 @@ a.close-btn {
 }
 
 #site-header {
-  position: relative;
+  position: sticky;
+  top: calc(-1 * var(--pre-banner-height));
   box-sizing: border-box;
   padding: 0.5rem;
   padding-top: calc(var(--pre-banner-height) + 0.5rem);
@@ -345,6 +351,7 @@ a.close-btn {
 
 @media only screen and (width >=480px) {
   #site-header {
+    top: 0;
     padding-top: 0.5rem;
     height: var(--banner-height);
   }
@@ -1946,6 +1953,11 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 
   #content,
   a.close-btn {
+    position: absolute;
+    margin: 0;
+    top: 1rem;
+    border-radius: 0.325em 0 0 0.325em;
+    padding: 0.125em 0.3em 0.125em 0.625em;
     box-shadow:
       calc(var(--shadow-offset) * -1) var(--shadow-offset) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
   }
@@ -1953,6 +1965,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   #site-header {
     display: flex;
     justify-content: left;
+    position: relative;
   }
 
   .has-pages #site-title {
