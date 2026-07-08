@@ -979,9 +979,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 }
 
 .place-location_type-option-description {
-  position: sticky;
-  top: calc(var(--pre-banner-height) + 1rem);
-  z-index: 10000;
+  position: static;
   background-color: var(--attention-bg);
   color: var(--attention-fg);
 }
