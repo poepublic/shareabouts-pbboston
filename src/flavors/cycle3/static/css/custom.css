@@ -986,6 +986,15 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   color: var(--attention-fg);
 }
 
+@media only screen and (width >= 60rem) {
+    /* 960px */
+    .place-location_type-option-description {
+      position: static;
+      top: unset;
+      z-index: unset;
+    }
+  }
+
 @media (hover: hover) and (width >=1024px) {
   .hidden-if-no-hover {
     display: revert;
