@@ -101,6 +101,13 @@
   --body-font: 'Montserrat', sans-serif;
 }
 
+@media only screen and (width >= 60rem) {
+  /* 960px */
+  :root {
+    --pre-banner-height: 0px;
+  }
+}
+
 .inline-scribble {
   display: inline-block;
   height: 0.75em;
@@ -1000,6 +1007,10 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
     display: revert;
   }
 
+  .place-location_type-option-description {
+    top: -1rem;
+  }
+
   .place-location_type-option-description-hover-wrapper {
     position: relative;
   }
@@ -1065,7 +1076,7 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   display: none;
 }
 
-@media (hover: hover) and (width >=1024px) {
+@media (hover: hover) and (width >= 60rem) {
   .if-hoverable {
     display: block;
   }
@@ -1963,12 +1974,13 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   #content,
   a.close-btn {
     position: absolute;
-    margin: 0;
-    top: 1rem;
-    border-radius: 0.325em 0 0 0.325em;
-    padding: 0.125em 0.3em 0.125em 0.625em;
     box-shadow:
       calc(var(--shadow-offset) * -1) var(--shadow-offset) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+  }
+
+  a.close-btn {
+    margin: 0;
+    border-radius: 0.325em 0 0 0.325em;
   }
 
   #site-header {
