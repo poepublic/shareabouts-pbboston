@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideas in Action Admin Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="www/favicon.ico">
+</head>
+
+<body>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js?v=cachebust1" type="module"></script>
+    
+    <div class="grid-container">
+        <div class="header">
+            <div id="header-left">
+                <img class="pb-icon" alt="" src="/src/pbboston/static/css/images/pbboston-icon.svg">
+                <div id="header-left-text">
+                    <img class="boston-icon" alt="" src="/src/pbboston/static/css/images/boston-logo.svg">
+                    <span class="pb-label">Participatory Budgeting Admin</span>
+                </div>
+            </div>
+            <div id="header-right">
+                <button id="btnAdd" class="tablink">edit ballot</button>
+                <button id="btnMain" class="tablink">view dashboard</button>
+            </div>
+        </div>
+
+
+        <!-- Main page (charts) -->
+        <div id="dashboard" class="dashboard">
+            <div id="dashboard-left">
+                <!-- Overview -->
+                <div id="overview" class="dashboard-section">
+                    <div id="overview-top" class="section-top">
+                        <h1 id="overview-title" class="section-title">Voting trends</h1>
+                        <h3 id="overview-text" class="section-text"><span id="votes-today" class="highlighted">29</span> residents voted today, bringing the total to <span id="votes-total" class="highlighted">12,500</span> votes. <span id="votes-total" class="highlighted">39%</span> of voters have responded to the survey.</h3>
+                    </div>
+                    <div id="overview-bottom" class="section-bottom">
+                        <div id="overview-graph" class="graph">
+                        </div>
+                    </div>
+                </div>
+                <!-- Neighborhoods -->
+                <div id="neighborhood" class="dashboard-section">
+                    <div id="neighborhood-top" class="section-top">
+                        <h1 id="neighborhood-title" class="section-title">Neighborhoods</h1>
+                        <h3 id="neighborhood-text" class="section-text"><span class="highlighted">East Boston</span> residents submitted the most votes (921), followed by <span class="highlighted">Dorchester</span>(309) and <span class="highlighted">Jamaica Plain</span>(298).</h3>
+                    </div>
+                    <div id="neighborhood-bottom" class="section-bottom">
+                        <svg width="800" height="400">
+                            <g id="neighborhood-map" class="map" transform="translate(50, 0)">
+                            </g>
+                          </svg>
+                    </div>
+                </div>
+                <!-- Age -->
+                <div id="age" class="dashboard-section">
+                    <div id="age-top" class="section-top">
+                        <h1 id="age-title" class="section-title">Age</h1>
+                        <h3 id="age-text" class="section-text">The median voter is <span class="highlighted">35 years old</span>-- slightly older than Boston's median, 33.5. Children voted at a higher rate than their share of the population, making up <span class="highlighted">12%</span> of votes, while seniors made up less.</h3>
+                    </div>
+                    <div id="age-bottom" class="section-bottom">
+                        <p class="age-cat-note">voter age group:</p>
+                        <div id="age-visual" class="visual-text">
+                            <div class="age-group">
+                                <div class="age-group-top">
+                                    <p class="age-cat-label">11-17 years</p>
+                                </div>
+                                <div class="age-group-bottom">
+                                    <p class="age-cat-pct">12%</p>
+                                    <p class="age-pct-note">of all votes</p>
+                                </div>
+                            </div>
+                            <div class="age-group">
+                                <div class="age-group-top">
+                                    <p class="age-cat-label">18-34 years</p>
+                                </div>
+                                <div class="age-group-bottom">
+                                    <p class="age-cat-pct">38%</p>
+                                </div>
+                            </div>
+                            <div class="age-group">
+                                <div class="age-group-top">
+                                    <p class="age-cat-label">35-64 years</p>
+                                </div>
+                                <div class="age-group-bottom">
+                                    <p class="age-cat-pct">19%</p>
+                                </div>
+                            </div>
+                            <div class="age-group">
+                                <div class="age-group-top">
+                                    <p class="age-cat-label">65 years +</p>
+                                </div>
+                                <div class="age-group-bottom">
+                                    <p class="age-cat-pct">14%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Race -->
+                <div id="race" class="dashboard-section">
+                    <div id="race-top" class="section-top">
+                        <h1 id="race-title" class="section-title">Race</h1>
+                        <h3 id="race-text" class="section-text">Of <span class="highlighted">789</span> survey respondents, the majority were <span class="highlighted">white (65%)</span>, compared to 45% of Boston residents. <span class="highlighted">20% were Latinx</span>, compared to 23% of residents.</h3>
+                    </div>
+                    <div id="race-bottom" class="section-bottom">
+                        <div id="race-graph" class="graph">
+                        </div>
+                    </div>
+                </div>
+                <!-- Outreach method -->
+                <div id="outreach" class="dashboard-section">
+                    <div id="outreach-top" class="section-top">
+                        <h1 id="outreach-title" class="section-title">Outreach method</h1>
+                        <h3 id="outreach-text" class="section-text">The most common way that voters hear about IIA is through <span class="highlighted">word of mouth (34%)</span>. The next way is official <span class="highlighted">City communications (26%)</span>.</h3>
+                    </div>
+                    <div id="outreach-bottom" class="section-bottom">
+                        <div id="outreach-visual" class="visual-text">
+                            <div id="outreach-1" class="outreach-group">
+                                <div class="group-left">
+                                    <h1 class="outreach-cat-icon">🗣️</h1>
+                                </div>
+                                <div class="group-right">
+                                    <h1 class="outreach-cat-pct">34%</h1>
+                                    <p class="outreach-cat-label">Word of mouth</p>
+                                </div>
+                            </div>
+
+                            <div id="outreach-2" class="outreach-group">
+                                <div class="group-left">
+                                    <h1 class="outreach-cat-icon">🏢</h1>
+                                </div>
+                                <div class="group-right">
+                                    <h1 class="outreach-cat-pct">26%</h1>
+                                    <p class="outreach-cat-label">City outreach</p>
+                                </div>
+                            </div>
+
+                            <div id="outreach-3" class="outreach-group">
+                                <div class="group-left">
+                                    <h1 class="outreach-cat-icon">🏘️</h1>
+                                </div>
+                                <div class="group-right">
+                                    <h1 class="outreach-cat-pct">20%</h1>
+                                    <p class="outreach-cat-label">Community groups</p>
+                                </div>
+                            </div>
+
+                            <div id="outreach-4" class="outreach-group">
+                                <div class="group-left">
+                                    <h1 class="outreach-cat-icon">📱</h1>
+                                </div>
+                                <div class="group-right">
+                                    <h1 class="outreach-cat-pct">9%</h1>
+                                    <p class="outreach-cat-label">Social media</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Voting history -->
+                <div id="history" class="dashboard-section">
+                    <div id="history-top" class="section-top">
+                        <h1 id="history-title" class="section-title">Voting history</h1>
+                        <h3 id="history-text" class="section-text"><span class="highlighted">39%</span> of voters have participated in previous cycles. This is up from 36% in the 2025 cycle.</h3>
+                    </div>
+                    <div id="history-bottom" class="section-bottom">
+                        <div id="history-graph" class="graph">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Outline -->
+            <div id="outline">
+                <a href="#overview">Voting trends</a>
+                <a href="#neighborhood">Neighborhoods</a>
+                <a href="#age">Age</a>
+                <a href="#race">Race</a>
+                <a href="#outreach">Outreach</a>
+                <a href="#history">Voting history</a>
+            </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</body>
+
+</html>

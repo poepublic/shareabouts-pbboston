@@ -1,0 +1,267 @@
+/* Common components */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@400;700&family=Mada:wght@400;700&family=Markazi+Text&family=Montserrat:ital,wght@0,500;0,700;1,700&display=swap');
+@import url('../src/flavors/cycle3/static/css/custom.css');
+
+html {
+    background-color: var(--iia-dark-blue);
+    overflow-x: hidden;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: transparent;
+    color: black;
+    font-family: var(--header-font);
+    font-weight: 100;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+  }
+
+  button:hover {
+    color: var(--iia-vibrant-green);
+    cursor: pointer;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+      'header header'
+      'content content';
+    background-color: var(--iia-dark-blue);
+  }
+
+  #header-left {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #header-left-text {
+    display: flex;
+    flex-direction: column;
+    justify-items: left;
+  }
+
+  .pb-icon {
+    height: 50px;
+  }
+
+  .boston-icon {
+    height: 30px;
+  }
+
+  .dashboard {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+  }
+
+  .dashboard-section {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    color:var(--iia-fog-grey);
+    gap: 5rem;
+  }
+
+  .section-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  h1 {
+    color: var(--iia-fog-grey);
+  }
+  
+  .section-title {
+    color: var(--iia-vibrant-green);
+    font-size: 3rem;
+  }
+
+  .section-text {
+    font-family: var(--callout-font);
+    line-height: 1.1;
+    font-weight: 100 !important;
+    line-height: 1.5;
+    font-size: 2rem;
+    text-transform: unset;
+  }
+
+  .highlighted {
+    background: var(--iia-urban-pink);
+    padding:0.1rem;
+    font-weight: 600;
+  }
+
+  .header {
+    padding: 1rem;
+    grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+  }
+  
+  /* Chart page */
+  .graph {
+    height: 100%;
+    background-color: transparent;
+    margin: 1rem;
+  }
+
+
+  
+  #banner-main {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #main-right > div {
+    background-color: var(--iia-fog-grey);
+    max-width: 20vw;
+    height: 35vh;
+    border-radius: 1vw;
+  }
+  
+  #main-right > div:hover {
+    transform: scale(1.05);
+  }
+  
+  #main-right #radar-chart {
+    background-color: transparent;
+  }
+  
+  /* billboard options */
+.bb-axis line, 
+.bb-axis .domain {
+    stroke: transparent;
+}
+
+#overview-graph .bb-data-labels text, .bb-texts text.bb-text{
+  text-anchor: end;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  font-weight: 900;
+  color: white !important;
+}
+
+.bb-target-votes path.bb-line {
+  stroke: var(--iia-urban-pink-alt) !important;
+}
+
+.bb-tooltip, 
+.bb-tooltip th, 
+.bb-tooltip td {
+  color: #333333; 
+}
+
+/* axis text/labels */
+.bb-axis .tick text, .bb-legend-item text {
+    fill: var(--iia-fog-grey); 
+    font-size: 1rem;
+    font-family: var(--body-font);
+}
+
+.bb-target-votes .bb-line {
+  stroke-width: 3px;
+}
+
+#age-visual {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+#age-bottom {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.age-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: start; 
+  gap: 0.2rem;
+}
+
+.age-cat-note {
+  color: white;
+  font-weight: 300;
+}
+
+.age-cat-label {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.age-cat-pct {
+  font-family: var(--header-font);
+  font-weight: 800;
+  font-size: 4rem;
+  color: var(--iia-fog-grey);
+}
+
+div.age-group:nth-child(2) > div:nth-child(1) > p:nth-child(1), 
+div.age-group:nth-child(2) > div:nth-child(2) > p:nth-child(1) {
+  color: var(--iia-urban-pink-alt);
+}
+
+#outreach-1 > .group-right > .outreach-cat-pct,  #outreach-1 > .group-right > .outreach-cat-label {
+  color: var(--iia-urban-pink-alt);
+}
+
+
+#outreach-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+}
+
+.outreach-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  width: 60%;
+}
+
+.outreach-cat-pct {
+  font-size: 3.5rem;
+}
+
+.outreach-cat-icon {
+  font-size: 3.5rem;
+}
+
+  /* TOC/outline */
+#outline {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  justify-self: right;
+  text-align: right;
+  padding: 3rem;
+}
+
+#outline a {
+  color: var(--iia-fog-grey);
+  font-size: 2em !important;
+  font-family: var(--body-font);
+}
+
+#outline a:hover, #outline a:target {
+  color: var(--iia-vibrant-green);
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.25s ease;
+}
