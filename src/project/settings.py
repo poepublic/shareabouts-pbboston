@@ -173,6 +173,7 @@ INSTALLED_APPS = (
     'jstemplate',
     'compressor',
     'django_extensions',
+    'django_vite',
 
     # Project apps
     'sa_web',
@@ -180,6 +181,18 @@ INSTALLED_APPS = (
     'sa_admin',
     'proxy',
 )
+
+# Django Vite configuration
+DJANGO_VITE = {
+    'default': {
+        'dev_mode': DEBUG,
+        'dev_server_host': 'localhost',
+        'dev_server_port': 5173,
+        'static_url_prefix': 'sa_admin/dist',
+        'manifest_path': abspath(pathjoin(dirname(__file__), '..', 'sa_admin', 'static', 'sa_admin', 'dist', '.vite', 'manifest.json')),
+    }
+}
+
 
 # Use a test runner that does not use a database.
 TEST_RUNNER = 'sa_web.test_runner.DatabaselessTestSuiteRunner'

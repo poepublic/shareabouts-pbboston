@@ -15,8 +15,11 @@ COPY Gruntfile.js ./
 # need to do this here so that we have access to the static files to build)
 COPY src ./src
 
-# Install Node.js dependencies and run postinstall script
+# Install Node.js dependencies and run postinstall script (builds sa_web)
 RUN npm install
+
+# Install Vite dependencies and build sa_admin
+RUN cd src/sa_admin && npm install && npm run build
 
 ### Stage 2 -- Python
 ### =================

@@ -128,14 +128,18 @@ main, form {
   margin: 0.5rem 0;
 }
 
-@media screen and (width >= 768px) {
+.places-dashboard-app,
+.place-detail-app {
+  display: contents;
+}
+
+@media screen and (min-width: 768px) {
   .dashboard,
   .place-detail {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     margin: 0;
-    /* padding: 0.5rem; */
     height: 100vh;
   }
 
@@ -144,6 +148,8 @@ main, form {
     grid-template-areas: "overview overview"
                           "table map";
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    flex: 1;
     overflow: hidden;
     min-height: 400px;
   }
