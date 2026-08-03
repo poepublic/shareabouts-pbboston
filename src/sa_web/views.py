@@ -99,29 +99,70 @@ def apply_language(viewfunc):
     return view_wrapper
 
 
+def process_shareabouts_config(viewfunc):
+    """
+    Decorator to load/process the Shareabouts config and cache it on the request
+    object.
+    """
+    def view_wrapper(request, *args, **kwargs):
+        request.shareabouts_config = get_shareabouts_config()
+        return viewfunc(request, *args, **kwargs)
+    return view_wrapper
+
+
+def show_prelaunch_until_go_live_date(viewfunc):
+    def view_wrapper(request, *args, **kwargs):
+        config = request.shareabouts_config
+        go_live_date = config.get('app', {}).get('go_live_date')
+        if go_live_date:
+            try:
+                go_live_date = dateutil.parser.parse(go_live_date)
+            except Exception as e:
+                raise ImproperlyConfigured(f'Invalid go_live_date: {go_live_date} -- {e}')
+
+            # Make the go_live_date timezone-aware if it's not already.
+            if not go_live_date.tzinfo:
+                go_live_date = make_aware(go_live_date)
+
+            if go_live_date > now():
+                return render(request, 'prelaunch.html', {
+                    'config': config,
+                    'go_live_date': go_live_date,
+                    'site_root': settings.SITE_ROOT,
+                })
+
+        return viewfunc(request, *args, **kwargs)
+    return view_wrapper
+
+
+def get_shareabouts_user_token(request):
+    """
+    Return the user token for the current request, which is either a session
+    token or a username-based token.
+
+    The user token will be a pair, with the first element being the type
+    of identification, and the second being an identifier. It could be
+    'username:mjumbewu' or 'ip:123.231.132.213', etc.  If the user is
+    unauthenticated, the token will be session-based.
+    """
+    if 'user_token' not in request.session:
+        t = int(time.time() * 1000)
+        ip = request.META['REMOTE_ADDR']
+        unique_string = (str(t) + str(ip)).encode()
+        session_token = 'session:' + hashlib.md5(unique_string).hexdigest()
+        request.session['user_token'] = session_token
+        request.session.set_expiry(0)
+
+    return request.session['user_token']
+
+
 @ensure_csrf_cookie
 @apply_language
+@process_shareabouts_config
+@show_prelaunch_until_go_live_date
 def index(request, place_id=None):
-    config = get_shareabouts_config()
+    config = request.shareabouts_config
     api = ShareaboutsApi(config, request)
-
-    go_live_date = config.get('app', {}).get('go_live_date')
-    if go_live_date:
-        try:
-            go_live_date = dateutil.parser.parse(go_live_date)
-        except Exception as e:
-            raise ImproperlyConfigured(f'Invalid go_live_date: {go_live_date} -- {e}')
-
-        # Make the go_live_date timezone-aware if it's not already.
-        if not go_live_date.tzinfo:
-            go_live_date = make_aware(go_live_date)
-
-        if go_live_date > now():
-            return render(request, 'prelaunch.html', {
-                'config': config,
-                'go_live_date': go_live_date,
-                'site_root': settings.SITE_ROOT,
-            })
 
     # Get the content of the static pages linked in the menu.
     pages_config = config.get('pages', [])
@@ -136,19 +177,7 @@ def index(request, place_id=None):
     survey_config['adding_supported'] = calc_adding_support(survey_config.get('adding_supported'))
     support_config['adding_supported'] = calc_adding_support(support_config.get('adding_supported'))
 
-    # The user token will be a pair, with the first element being the type
-    # of identification, and the second being an identifier. It could be
-    # 'username:mjumbewu' or 'ip:123.231.132.213', etc.  If the user is
-    # unauthenticated, the token will be session-based.
-    if 'user_token' not in request.session:
-        t = int(time.time() * 1000)
-        ip = request.META['REMOTE_ADDR']
-        unique_string = (str(t) + str(ip)).encode()
-        session_token = 'session:' + hashlib.md5(unique_string).hexdigest()
-        request.session['user_token'] = session_token
-        request.session.set_expiry(0)
-
-    user_token_json = u'"{0}"'.format(request.session['user_token'])
+    user_token_json = u'"{0}"'.format(get_shareabouts_user_token(request))
 
     place = None
     if place_id and place_id != 'new':
@@ -298,7 +327,18 @@ def send_place_created_notifications(request, response):
 def proxy_view(request, url, requests_args={}):
     # For full URLs, use a real proxy.
     if url.startswith('http:') or url.startswith('https:'):
-        return remote_proxy_view(request, url, requests_args=requests_args)
+        response = remote_proxy_view(request, url, requests_args=requests_args)
+
+        # Cookies will already have been parsed into the response.cookies
+        # attribute, so we can remove the Set-Cookie header to avoid
+        # duplication.
+        response.headers.pop('Set-Cookie', None)
+
+        # Do not pass on csrf cookies from proxied requests.
+        if 'csrftoken' in response.cookies:
+            del response.cookies['csrftoken']
+        
+        return response
 
     # For local paths, use a simpler proxy. If there are headers specified
     # in the requests_args, keep those.
