@@ -82,9 +82,8 @@ To run the development server:
 
 The server will, by default, be started at [http://localhost:8000/](http://localhost:8000/).
 
-If you are developing the admin interface (`sa_admin`), you will also need to run the Vite development server to serve frontend assets with Hot Module Replacement (HMR). In a separate terminal window, run:
+If you are developing the frontend interfaces (like the admin dashboard), you will also need to run the Vite development server to serve frontend assets with Hot Module Replacement (HMR). In a separate terminal window at the project root, run:
 
-    cd src/sa_admin
     npm install
     npm run dev
 
