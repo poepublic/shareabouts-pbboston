@@ -100,9 +100,7 @@ COMPRESS_URL = STATIC_URL
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    abspath(pathjoin(dirname(__file__), '..', 'static')),
 )
 
 # Cache-busting static assets
@@ -190,6 +188,7 @@ INSTALLED_APPS = (
     'jstemplate',
     'compressor',
     'django_extensions',
+    'django_vite',
     'corsheaders',
 
     # Instance-specific app
@@ -201,6 +200,7 @@ INSTALLED_APPS = (
     'sa_admin',
     'proxy',
 )
+
 
 # Use a test runner that does not use a database.
 TEST_RUNNER = 'sa_web.test_runner.DatabaselessTestSuiteRunner'
@@ -362,6 +362,17 @@ import re
 RAVEN_CONFIG = {
     'dsn': os.environ.get('SENTRY_DSN'),
     'public_dsn': re.sub(':[^/@]+', '', os.environ.get('SENTRY_DSN', '')),
+}
+
+# Django Vite configuration
+DJANGO_VITE = {
+    'default': {
+        'dev_mode': DEBUG,
+        'dev_server_host': 'localhost',
+        'dev_server_port': 5173,
+        'static_url_prefix': 'dist',
+        'manifest_path': abspath(pathjoin(dirname(__file__), '..', 'static', 'dist', '.vite', 'manifest.json')),
+    }
 }
 
 ##############################################################################

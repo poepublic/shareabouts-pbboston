@@ -7,16 +7,20 @@ FROM node:18 as staticlayer
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Copy package.json, package-lock.json, Gruntfile.cjs, and vite.config.js
 COPY package*.json ./
-COPY Gruntfile.js ./
+COPY Gruntfile.cjs ./
+COPY vite.config.js ./
 
 # Copy the rest of the application code to the working directory (note that we
 # need to do this here so that we have access to the static files to build)
 COPY src ./src
 
-# Install Node.js dependencies and run postinstall script
+# Install Node.js dependencies and run postinstall script (i.e. run grunt)
 RUN npm install
+
+# Build Vite assets
+RUN npm run build
 
 ### Stage 2 -- Python
 ### =================
