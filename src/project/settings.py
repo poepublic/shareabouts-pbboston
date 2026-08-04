@@ -180,17 +180,6 @@ INSTALLED_APPS = (
     'proxy',
 )
 
-# Django Vite configuration
-DJANGO_VITE = {
-    'default': {
-        'dev_mode': DEBUG,
-        'dev_server_host': 'localhost',
-        'dev_server_port': 5173,
-        'static_url_prefix': 'dist',
-        'manifest_path': abspath(pathjoin(dirname(__file__), '..', 'static', 'dist', '.vite', 'manifest.json')),
-    }
-}
-
 
 # Use a test runner that does not use a database.
 TEST_RUNNER = 'sa_web.test_runner.DatabaselessTestSuiteRunner'
@@ -345,6 +334,17 @@ import re
 RAVEN_CONFIG = {
     'dsn': os.environ.get('SENTRY_DSN'),
     'public_dsn': re.sub(':[^/@]+', '', os.environ.get('SENTRY_DSN', '')),
+}
+
+# Django Vite configuration
+DJANGO_VITE = {
+    'default': {
+        'dev_mode': DEBUG,
+        'dev_server_host': 'localhost',
+        'dev_server_port': 5173,
+        'static_url_prefix': 'dist',
+        'manifest_path': abspath(pathjoin(dirname(__file__), '..', 'static', 'dist', '.vite', 'manifest.json')),
+    }
 }
 
 ##############################################################################
