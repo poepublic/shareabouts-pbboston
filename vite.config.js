@@ -1,19 +1,23 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
+import { djangoStaticFiles, djangoStatic } from './src/vite-plugin-django-staticfiles.js';
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    djangoStaticFiles(),
+  ],
   root: resolve(__dirname, 'src'),
-  base: '/static/sa_admin/dist/',
+  base: '/static/dist/',
   build: {
-    outDir: resolve(__dirname, 'static/sa_admin/dist'),
+    outDir: resolve(__dirname, 'src/static/dist'),
     emptyOutDir: true,
     manifest: true,
     rollupOptions: {
       input: {
-        dashboard: resolve(__dirname, 'src/dashboard/main.js'),
-        detail: resolve(__dirname, 'src/detail/main.js'),
+        'sa_admin-dashboard': djangoStatic('sa_admin/dashboard/main.js'),
+        'sa_admin-detail': djangoStatic('sa_admin/detail/main.js'),
       },
       external: ['leaflet'],
       output: {

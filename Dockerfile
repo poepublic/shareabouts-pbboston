@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
-COPY Gruntfile.js ./
+COPY Gruntfile.cjs ./
 
 # Copy the rest of the application code to the working directory (note that we
 # need to do this here so that we have access to the static files to build)

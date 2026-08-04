@@ -84,9 +84,7 @@ COMPRESS_URL = STATIC_URL
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    abspath(pathjoin(dirname(__file__), '..', 'static')),
 )
 
 # Cache-busting static assets
@@ -188,8 +186,8 @@ DJANGO_VITE = {
         'dev_mode': DEBUG,
         'dev_server_host': 'localhost',
         'dev_server_port': 5173,
-        'static_url_prefix': 'sa_admin/dist',
-        'manifest_path': abspath(pathjoin(dirname(__file__), '..', 'sa_admin', 'static', 'sa_admin', 'dist', '.vite', 'manifest.json')),
+        'static_url_prefix': 'dist',
+        'manifest_path': abspath(pathjoin(dirname(__file__), '..', 'static', 'dist', '.vite', 'manifest.json')),
     }
 }
 

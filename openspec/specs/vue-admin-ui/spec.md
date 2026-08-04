@@ -98,15 +98,19 @@ Vue components SHALL observe Backbone Model and Collection events (add, remove, 
 - **THEN** Vue components observing that model SHALL re-render to reflect the updated attribute
 
 ### Requirement: Vite-built assets are served by Django
-The Vite build output SHALL be placed in a location that Django's `collectstatic` discovers via `AppDirectoriesFinder`. In development, HMR SHALL be supported via the Vite dev server alongside Django's `runserver`.
+The Vite build output SHALL be placed in a shared output directory (`src/static/dist/`) that Django discovers via `FileSystemFinder` using `STATICFILES_DIRS`. A single root-level `vite.config.js` SHALL build all vite-managed apps. In development, HMR SHALL be supported via a single Vite dev server alongside Django's `runserver`.
 
 #### Scenario: Production build
 - **WHEN** `vite build` is run followed by `manage.py collectstatic`
-- **THEN** the built Vue application assets SHALL be collected into `STATIC_ROOT` and served by Django at the configured `STATIC_URL`
+- **THEN** the built assets for all vite-managed apps SHALL be collected from `src/static/dist/` into `STATIC_ROOT` and served by Django at the configured `STATIC_URL`
 
 #### Scenario: Development with HMR
 - **WHEN** the Vite dev server is running alongside Django's `runserver`
-- **THEN** changes to Vue SFC files SHALL be hot-reloaded in the browser without a full page refresh
+- **THEN** changes to Vue SFC files in any app's `static/` directory SHALL be hot-reloaded in the browser without a full page refresh
+
+#### Scenario: Multiple apps built by a single vite invocation
+- **WHEN** multiple Django apps have vite entry points configured in the root `vite.config.js`
+- **THEN** a single `npm run dev` or `npm run build` SHALL build all of them, producing a single manifest file in the shared output directory
 
 ### Requirement: Django templates inject bootstrap data for Vue
 Django templates SHALL inject the Shareabouts configuration and authentication context as a global JavaScript variable (`window.__SA_BOOTSTRAP__`) so that Vue components can access it without additional API calls.

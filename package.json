@@ -3,6 +3,7 @@
   "version": "3.19.1",
   "description": "Standalone Shareabouts client and server package",
   "main": "index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/openplans/shareabouts.git"
@@ -19,7 +20,14 @@
   },
   "homepage": "https://github.com/openplans/shareabouts",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "postinstall": "npx grunt"
+  },
+  "dependencies": {
+    "csv-stringify": "^6.5.0",
+    "vue": "^3.4.0"
   },
   "devDependencies": {
     "grunt": "^1.6.1",
@@ -28,6 +36,8 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-uglify": "^5.2.2",
     "grunt-contrib-watch": "^1.1.0",
-    "uglify-js": "~3.17.0"
+    "uglify-js": "~3.17.0",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^5.0.0"
   }
 }
