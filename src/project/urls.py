@@ -22,6 +22,7 @@ urlpatterns = staticfiles_urlpatterns() + [
     path(base_path + 'users/begin/<provider>', auth_views.oauth_begin, name='oauth_begin'),
     path(base_path + 'users/complete/<provider>', auth_views.oauth_complete, name='oauth_complete'),
     path(base_path + 'admin/', include('sa_admin.urls')),
+    path(base_path + 'vote', include('sa_vote.urls')),
     path(base_path + '', include('sa_web.urls')),
 ]
 

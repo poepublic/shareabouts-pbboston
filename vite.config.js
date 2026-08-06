@@ -18,6 +18,7 @@ export default defineConfig({
       input: {
         'sa_admin-dashboard': djangoStatic('sa_admin/dashboard/main.js'),
         'sa_admin-detail': djangoStatic('sa_admin/detail/main.js'),
+        'sa_vote': djangoStatic('sa_vote/main.js'),
       },
       external: ['leaflet'],
       output: {

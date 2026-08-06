@@ -193,6 +193,7 @@ INSTALLED_APPS = (
 
     # Instance-specific app
     'pbboston',
+    'sa_vote',
 
     # Project apps
     'sa_web',
