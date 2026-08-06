@@ -1,6 +1,8 @@
 # user-specific
 db/*.sqlite3
 log/*.log
+.vscode/
+*.code-workspace
 
 # tmp
 tmp/
