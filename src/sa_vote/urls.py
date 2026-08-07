@@ -8,6 +8,7 @@ urlpatterns = [
     path("unverify", views.unverify),
 
     # Any paths not matched by some other explicit patter will fall back to the
-    # following rule:
+    # following rules:
+    path("", views.index),
     path("<path:frontend_path>", views.index),
 ]
