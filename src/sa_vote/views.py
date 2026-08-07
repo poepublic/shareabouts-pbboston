@@ -1,5 +1,6 @@
 import json
 from hashlib import sha256
+from collections.abc import Callable
 
 from django.conf import settings
 from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
@@ -12,7 +13,7 @@ from pbboston.geodata import load_neighborhoods, load_city
 from sa_web.views import apply_language, calc_adding_support, get_shareabouts_user_token, process_shareabouts_config, show_prelaunch_until_go_live_date
 
 
-def normalize_phone_number(country_code: str,phone_number: str) -> str:
+def normalize_phone_number(country_code: str, phone_number: str) -> str:
     """
     Normalize a phone number to a standard E.164 format for comparison.
     """
@@ -21,20 +22,31 @@ def normalize_phone_number(country_code: str,phone_number: str) -> str:
     return f'+{cc_digits}{pn_digits}'
 
 
+def init_voter_verification_session(view_func: Callable[..., HttpResponse]) -> Callable[..., HttpResponse]:
+    """
+    A decorator to ensure that the session has the voter_id_hash and voter_verified keys.
+    If they are not present, they will be initialized to None and False respectively.
+    """
+    def wrapped_view(request: HttpRequest, *args, **kwargs):
+        if 'voter_id_hash' not in request.session:
+            request.session['voter_id_hash'] = None
+        if 'voter_verified' not in request.session:
+            request.session['voter_verified'] = False
+        return view_func(request, *args, **kwargs)
+    return wrapped_view
+
+
+@init_voter_verification_session
 def verify_code(request: HttpRequest) -> HttpResponse:
-    return JsonResponse({'error': 'Not implemented'}, status=400)
-
-
-def unverify(request: HttpRequest) -> HttpResponse:
     """
-    A view to unverify a voter.
-    - Should remove the voter_id_hash and voter_verified from the session.
+    A view to verify a voter code. Accepts code via POST. If code is valid
+    should set the voter_id_hash and voter_verified in the session and return a
+    204 response. If code is invalid should return a 404.
     """
-    request.session.pop('voter_id_hash', None)
-    request.session.pop('voter_verified', None)
-    return HttpResponse(status=204)
+    return JsonResponse({'error': 'Not implemented'}, status=501)
 
 
+@init_voter_verification_session
 def verify_code_test(request: HttpRequest) -> HttpResponse:
     """
     A test view to verify a voter code.
@@ -61,11 +73,21 @@ def verify_code_test(request: HttpRequest) -> HttpResponse:
         return JsonResponse({'error': 'Invalid code'}, status=404)
 
 
-# Create your views here.
+def unverify(request: HttpRequest) -> HttpResponse:
+    """
+    A view to unverify a voter.
+    - Should remove the voter_id_hash and voter_verified from the session.
+    """
+    request.session['voter_id_hash'] = None
+    request.session['voter_verified'] = False
+    return HttpResponse(status=204)
+
+
 @ensure_csrf_cookie
 @apply_language
 @process_shareabouts_config
 @show_prelaunch_until_go_live_date
+@init_voter_verification_session
 def index(request, frontend_path=None):
     api = ShareaboutsApi(request.shareabouts_config, request)
 
