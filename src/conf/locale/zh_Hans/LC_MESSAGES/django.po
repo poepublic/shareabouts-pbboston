@@ -1310,11 +1310,11 @@ msgid ""
 "ideas into project proposals for the PB ballot. Voting will take place in "
 "January of 2027!"
 msgstr ""
-"从 2025 年 8 月到 9 月，市政府将审查所有\n"
+"从 2026 年 8 月到 9 月，市政府将审查所有\n"
 "提交了项目构想。然后，在秋季，参与性办公室\n"
 "预算将举办公共研讨会，供居民审查、确定优先事项和\n"
 "将这些想法发展成项目提案，供 PB 投票。投票将需要\n"
-"将于 2026 年 1 月举行！"
+"将于 2027 年 1 月举行！"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:13
 msgid "Helping a religious institution repair its sanctuary;"

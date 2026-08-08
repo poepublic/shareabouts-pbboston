@@ -1413,11 +1413,11 @@ msgid ""
 "The City will host proposal development forums this fall. These meetings "
 "will allow residents to review, prioritize, and develop the collected ideas "
 "into project proposals for the PB ballot. Voting will take place in January "
-"of 2026! "
+"of 2027! "
 msgstr ""
 "Vil la pral òganize fowòm devlopman pwopozisyon otòn sa a. Reyinyon sa yo "
 "pral pèmèt rezidan yo revize, priyorize, epi devlope ide yo kolekte an "
-"pwopozisyon pwojè pou bilten vòt PB a. Vòt la ap fèt nan mwa janvye 2026! "
+"pwopozisyon pwojè pou bilten vòt PB a. Vòt la ap fèt nan mwa janvye 2027! "
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:32
 msgid ""
