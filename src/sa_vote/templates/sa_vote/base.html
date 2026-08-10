@@ -127,6 +127,9 @@
       mapboxToken: '{{ settings.MAPBOX_TOKEN }}',
       routePrefix: {{ route_prefix | as_json }},
       apiPrefix:  {{ api_prefix | as_json }},
+      
+      voterIdHash: {{ request.session.voter_id_hash | as_json }},
+      voterVerified: {{ request.session.voter_verified | as_json }},
     };
 
     function bootstrapCurrentUser(data) {
