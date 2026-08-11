@@ -1,0 +1,15 @@
+#ballot-banner {
+    background-color: var(--iia-urban-pink);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    color: white;
+}
+
+#home-page, #ballot-page, #auth-page, #faq-page {
+    padding: 1rem;
+}
