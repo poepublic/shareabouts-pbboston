@@ -47,6 +47,9 @@
   <!-- Flavor's Custom Stylesheet -->
   <link rel="stylesheet" href="{% static 'css/custom.css' %}?_={{settings.LAST_DEPLOY_DATE}}">
 
+  <!-- Vote app-specific Stylesheet -->
+  <link rel="stylesheet" href="{% static 'sa_vote/css/default.css' %}">
+
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />
 
@@ -67,7 +70,28 @@
     {% block post_auth_nav %}{% endblock %}
 
     {% block pre_pages_nav %}{% endblock %}
-    <div id="pages-nav-container"></div>
+    <div id="pages-nav-container">
+      <a href="#" id="nav-btn">&equiv;</a>
+      <nav class="access" aria-label="Vote app navigation">
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="/vote" data-internal="true">{% translate "Home" %}</a>
+          </li>
+          <li class="menu-item">
+            <a href="/vote/ballot" data-internal="true">{% translate "Ballot" %}</a>
+          </li>
+          <li class="menu-item">
+            <a href="/vote/faq" data-internal="true">{% translate "FAQ" %}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <script>
+      document.getElementById('nav-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('nav.access').classList.toggle('is-exposed');
+      });
+    </script>
     {% block post_pages_nav %}{% endblock %}
 
     {% if config.languages %}
@@ -171,7 +195,8 @@
       support:    {{ config.support|as_json }},
       map:        {{ config.map|as_json }},
       activity:   {{ config.activity|as_json }},
-      pages:      {{ pages_config_json|safe }}
+      pages:      {{ pages_config_json|safe }},
+      ballot:     {{ ballot_config_json|safe }},
     };
   </script>
 
