@@ -18,7 +18,6 @@ const Router = Backbone.Router.extend({
     'faq': 'faq',
     'ballot': 'ballot', // doesn't need to be a separate place for logged in, just dependent on user state
     'auth': 'auth',
-    'ballot/selections': 'editVotes',
   },
 
   initialize: function (options) {
@@ -80,10 +79,6 @@ const Router = Backbone.Router.extend({
     this.appView.showAuth();
   },
 
-
-  selections: function () {
-    console.log("selections route")
-  },
 });
 
 export { Router };
