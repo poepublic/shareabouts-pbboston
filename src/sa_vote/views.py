@@ -1,15 +1,18 @@
-import json
-from hashlib import sha256
 from collections.abc import Callable
+from hashlib import sha256
+import json
+import pathlib
 
 from django.conf import settings
 from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.utils.translation import get_language
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 from sa_util.api import ShareaboutsApi
 from sa_util.config import get_shareabouts_config
 from pbboston.geodata import load_neighborhoods, load_city
+from sa_vote.ballots import Ballot
 from sa_web.views import apply_language, calc_adding_support, get_shareabouts_user_token, process_shareabouts_config, show_prelaunch_until_go_live_date
 
 
@@ -102,6 +105,17 @@ def index(request, frontend_path=None):
 
     ballot_config['adding_supported'] = calc_adding_support(ballot_config.get('adding_supported'))
 
+    # Load the ballot proposals. The proposal director should, by default, be in
+    # the "ballot" directory in the shareabouts flavor, but that can be
+    # overridden with the ballot.proposals_folder configuration option, which
+    # will be a path relative to the shareabouts flavor directory. Note that
+    # this can be set via the SHAREABOUTS__BALLOT__PROPOSALS_FOLDER environment
+    # variable as well.
+    flavor_dir = pathlib.Path(settings.SHAREABOUTS['CONFIG'])
+    proposals_dir = flavor_dir / ballot_config.get('proposals_folder', 'ballot')
+    ballot = Ballot.from_directory(proposals_dir, lang=get_language())
+    ballot_json = ballot.to_json()
+
     user_token_json = json.dumps(get_shareabouts_user_token(request))
 
     neighborhoods = load_neighborhoods()
@@ -123,6 +137,9 @@ def index(request, frontend_path=None):
 
                # Geo-data for Boston
                'neighborhoods': neighborhoods,
+
+               # Ballot proposal data
+               'ballot_json': ballot_json,
 
                # Site root useful for automatic translation
                'site_root': settings.SITE_ROOT,
