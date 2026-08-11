@@ -2,7 +2,7 @@ import { VotingAppView } from './js/views/voting-app-view.js';
 
 const S = Shareabouts;
 
-const MOCK_BALLOT = { // to do: replace with data fetched from shareabouts api
+const MOCK_BALLOT = { // to do: replace with ballot info in md files
   proposals: [
     { id: 1, title: 'New Playground Equipment at Franklin Park', cost: '$450,000', description: 'Replace aging play structures with accessible, all-ages playground equipment and rubberized safety surfacing.' },
     { id: 2, title: 'Protected Bike Lanes on Blue Hill Ave', cost: '$1,200,000', description: 'Add physically separated bike lanes and upgraded crosswalks along a one-mile stretch of Blue Hill Avenue.' },
