@@ -4,11 +4,10 @@ const S = Shareabouts;
 
 const MOCK_BALLOT = { // to do: replace with data fetched from shareabouts api
   proposals: [
-    { id: 1, title: 'Placeholder Proposal A', cost: '$500k', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
-    { id: 2, title: 'Placeholder Proposal B', cost: '$1M', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
-    { id: 3, title: 'Placeholder Proposal C', cost: '$750k', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
-    { id: 4, title: 'Placeholder Proposal D', cost: '$250k', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
-
+    { id: 1, title: 'New Playground Equipment at Franklin Park', cost: '$450,000', description: 'Replace aging play structures with accessible, all-ages playground equipment and rubberized safety surfacing.' },
+    { id: 2, title: 'Protected Bike Lanes on Blue Hill Ave', cost: '$1,200,000', description: 'Add physically separated bike lanes and upgraded crosswalks along a one-mile stretch of Blue Hill Avenue.' },
+    { id: 3, title: 'Roxbury Branch Library Renovation', cost: '$800,000', description: 'Upgrade HVAC, lighting, and accessibility features at the Roxbury branch of the Boston Public Library.' },
+    { id: 4, title: 'Community Garden Expansion', cost: '$150,000', description: 'Add raised beds, a tool shed, and a rainwater collection system to three neighborhood community gardens.' },
   ],
 };
 

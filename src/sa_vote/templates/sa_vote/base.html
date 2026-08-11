@@ -196,7 +196,7 @@
       map:        {{ config.map|as_json }},
       activity:   {{ config.activity|as_json }},
       pages:      {{ pages_config_json|safe }},
-      ballot:     {{ ballot_config_json|safe }},
+      ballot:     {{ ballot_config|as_json }},
     };
   </script>
 
