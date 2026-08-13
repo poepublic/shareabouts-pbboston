@@ -1,11 +1,12 @@
 <div id="ballot-page" class="ballot-page">
     <h1>This year, your neighbors came up with 15 proposals. Read about them below then register and vote by 3/1/2027.</h1>
-    <a href="/vote/faq" data-internal="true">Who can vote?</a>  
+    <a href="/vote/faq" data-internal="true">Who can vote?</a>
     {{# ballot.proposals }}
-    <div class="proposal">
-      <h3>{{title}}</h3>
-      <p class="proposal-cost">Estimated cost: {{cost}}</p>
-      <p>{{description}}</p>
+    <div class="proposal-container">
+      <h3 class="proposal-title">{{title}}</h3>
+      <p class="proposal-cost">Estimated cost: {{amount}}</p>
+      <p class="proposal-description">{{description}}</p>
+      <img class="proposal-image" src="{{image}}" alt="{{title}}">
     </div>
     {{/ ballot.proposals }}
     <a id = "ballot-banner" href="/vote/auth" data-internal="true">Register to vote today!</a>
