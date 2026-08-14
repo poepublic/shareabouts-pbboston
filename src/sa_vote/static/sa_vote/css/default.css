@@ -32,20 +32,27 @@ body {
 
 /* Welcome page */
 .read-ballot-link {
-    background: white;
-    color: var(--iia-dark-blue) !important;
-    font-size: 1.5rem;
-    font-weight: 500;
+    background-color: var(--iia-urban-pink-alt);
     display: flex;
     margin: 0 auto; 
     flex-direction: row;
-    width: 70vw;
-    height: 15vh;
+    height: fit-content;
+    width: 55vw;
     align-content: center;
     justify-content: center;
-    align-items: center;
-    border:rgba(5, 4, 4, 0.869);
-    border-radius: 0.35rem;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.read-ballot-link p {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.read-ballot-link:hover {
+    background-color: var(--iia-electric-purple-alt) !important;
 }
 
 /* Ballot page */
@@ -75,3 +82,47 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* Auth page */ 
+.voter-attestation-list {
+    list-style: none;
+    padding: 0.5rem;
+  }
+  
+  .voter-attestation-list input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .voter-attestation-list input[type="checkbox"]:hover {
+    border-color: var(--iia-vibrant-green);
+    background-color: #f8fafc;
+  }
+  
+  .voter-attestation-list li {
+    display: flex;
+    align-items: top;
+    margin-bottom: 10px;
+  }
+
+  .voter-attestation-list li > label {
+    align-items: top;
+  }
+  
+  .voter-attestation-list input[type="checkbox"]:checked {
+    background-color: var(--iia-vibrant-green);
+    border-color: white;
+  }
+  
+
+/* FAQ page */

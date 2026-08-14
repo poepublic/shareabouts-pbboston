@@ -1,4 +1,27 @@
 <div id="auth-page" class="auth-page">
-    <h1>Sign up to vote!</h1>
+    <h1>Register to vote today!</h1>
+    
+    <span class="secondary-emphasis">To vote in the 2026 cycle, please confirm the following:</span>
+
+    <ul class="voter-attestation-list">
+        <li>
+            <input type="checkbox"/>
+            <label>I live in the City of Boston</label>
+        </li>
+        <li>
+            <input type="checkbox"/>
+            <label>I am at least 11 years old or in the 6th grade</label>
+        </li>
+        <li>
+            <input type="checkbox"/>
+            <label>I have not voted in this year's IIA cycle</label>
+        </li>
+    </ul>
+
+    <span class="secondary-emphasis">Type in your name to continue:</span>
+
+    <input type="text" id="voter-name" placeholder="First and Last Name" />
+
+    <button id="register-to-vote" class="button button-primary">Next</button>
     <p>Take me back to the <a href="/vote/ballot" data-internal="true">ballot</a></p>
 </div> 
