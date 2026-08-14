@@ -67,22 +67,18 @@ const Router = Backbone.Router.extend({
   },
 
   home: function () {
-    console.log("home route")
     this.appView.showHome();
   },
 
   faq: function () {
-    console.log("faq route")
     this.appView.showFaq();
   },
 
   ballot: function () {
-    console.log("ballot route")
     this.appView.showBallot(MOCK_BALLOT);
   },
 
   auth: function () {
-    console.log("auth route")
     this.appView.showAuth();
   },
 
