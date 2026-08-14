@@ -1,6 +1,7 @@
 
 #home-page, #ballot-page, #auth-page, #faq-page {
     padding: 1rem;
+    margin-top: 5vh;
 }
 
 html {
@@ -17,11 +18,39 @@ body {
     flex: 1;
 }
 
+/* Text formatting */
+.secondary-emphasis {
+    color: var(--iia-vibrant-green);
+    display: block;      
+    width: fit-content;
+    margin: 0 auto; 
+    font-weight: 500;
+    font-size: 1.2rem;
+    border-radius: 0.1rem;
+    padding: 0.1rem;
+}
+
+/* Welcome page */
+.read-ballot-link {
+    background: white;
+    color: var(--iia-dark-blue) !important;
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    margin: 0 auto; 
+    flex-direction: row;
+    width: 70vw;
+    height: 15vh;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border:rgba(5, 4, 4, 0.869);
+    border-radius: 0.35rem;
+}
+
 /* Ballot page */
 
-#ballot-page {
-    margin-top: 5vh;
-}
+
 #ballot-banner {
     box-sizing: border-box;
     background-color: var(--iia-urban-pink);
