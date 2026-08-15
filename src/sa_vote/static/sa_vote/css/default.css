@@ -78,6 +78,12 @@ input[type="checkbox"]:checked {
     background-color: var(--iia-electric-purple-alt) !important;
 }
 
+#home-vote-deadline {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
 /* Ballot page */
 #ballot-banner {
     box-sizing: border-box;
