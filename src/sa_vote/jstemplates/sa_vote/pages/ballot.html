@@ -1,14 +1,20 @@
 <div id="ballot-page" class="ballot-page">
-    <h1>This year, your neighbors created <span class = "bigger-text">15 proposals</span> to benefit Boston.</h1>
-    <span class="secondary-emphasis">Read about them below then <a href="/vote/auth" data-internal="true">vote</a> by 3/1/2027.
-    For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a></span>
+  <h1>This year, your <img class="inline-scribble" src="/static/img/iia/Scribble_Wavey_04_Pink.svg"><span class="bigger-text">neighbors</span> came up with <span class="scribble-text scribble-text-pink bigger-text">15 projects</span> to<img class="inline-scribble" src="/static/img/iia/Scribble_Arrow_02_Pink.svg" alt=""> <span class="bigger-text">Benefit Boston</span></h1>
+  
+  <span>Read them below and <a href="/vote/auth" data-internal="true">vote</a> by 3/1/2027.</span>
+  
+  <p>For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a></p>
+  <div class="proposal-container">
     {{# ballot.proposals }}
-    <div class="proposal-container">
-      <h3 class="proposal-title">{{title}}</h3>
-      <p class="proposal-cost">Estimated cost: {{amount}}</p>
-      <p class="proposal-description">{{description}}</p>
-      <img class="proposal-image" src="{{image}}" alt="{{title}}">
-    </div>
+        <div class="proposal-card">
+          <div class="proposal-card-top">
+            <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" value="{{slug}}"></span> {{slug}}</h3>
+          </div>
+          <span class="proposal-cost">${{amount}}</span>
+          <span class="proposal-description">{{description}}</span>
+          <img class="proposal-image" src="{{image}}" alt="{{title}}">
+        </div>
     {{/ ballot.proposals }}
+  </div>
     <a id = "ballot-banner" href="/vote/auth" data-internal="true">Register to vote today!</a>
 </div>
