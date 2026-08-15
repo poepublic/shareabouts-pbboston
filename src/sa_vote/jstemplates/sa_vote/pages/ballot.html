@@ -8,9 +8,9 @@
     {{# ballot.proposals }}
         <div class="proposal-card">
           <div class="proposal-card-top">
-            <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" value="{{slug}}"></span> {{slug}}</h3>
+            <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" value="{{slug}}"></span> {{title}}</h3>
           </div>
-          <span class="proposal-cost">${{amount}}</span>
+          <span class="proposal-cost">{{currency amount}}</span>
           <span class="proposal-description">{{description}}</span>
           <img class="proposal-image" src="{{image}}" alt="{{title}}">
         </div>

@@ -34,7 +34,7 @@ export const VotingAppView = Backbone.View.extend({
       this.currentView.remove();
     } 
 
-    this.currentView = new BallotView({ballot: ballot }).render();
+    this.currentView = new BallotView({ballot: ballot}).render();
     this.el.append(this.currentView.el);
   },
 
