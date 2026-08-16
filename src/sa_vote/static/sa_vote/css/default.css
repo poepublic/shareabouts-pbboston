@@ -86,6 +86,8 @@ input[type="checkbox"]:checked {
 
 /* Ballot page */
 #ballot-banner {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     background-color: var(--iia-urban-pink);
     padding: 20px;
@@ -95,6 +97,12 @@ input[type="checkbox"]:checked {
     left: 0;
     width: 100%;
     color: white;
+}
+
+
+#ballot-banner-remaining {
+    font-weight: 200;
+    font-size: 1rem;
 }
 
 .proposal-container {
