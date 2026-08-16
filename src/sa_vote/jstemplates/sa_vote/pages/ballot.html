@@ -5,7 +5,7 @@
   
   <p>For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a></p>
   <div class="proposal-container">
-    {{# ballot.proposals }}
+    {{#each (randomize ballot.proposals)}}
         <div class="proposal-card">
           <div class="proposal-card-top">
             <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" value="{{slug}}"></span> {{title}}</h3>
@@ -14,7 +14,7 @@
           <span class="proposal-description">{{description}}</span>
           <img class="proposal-image" src="{{image}}" alt="{{title}}">
         </div>
-    {{/ ballot.proposals }}
+    {{/each}}
   </div>
     <a id = "ballot-banner" href="/vote/auth" data-internal="true">Register to vote today!</a>
 </div>
