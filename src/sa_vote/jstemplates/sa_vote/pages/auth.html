@@ -1,4 +1,11 @@
 <div id="auth-page" class="auth-page">
+    {{# if verified}}
+        <h1>You're all set to vote!</h1>
+        <p>Time to cast your <a href="/vote/ballot" data-internal="true">vote</a>.</p>
+
+        <button id="unverify-button" class="button button-primary">Un-verify me</button>
+    {{else}}
+
     <h1>Register to vote today!</h1>
     
     <span class="secondary-emphasis">To vote in the 2026 cycle, please confirm the following:</span>
@@ -20,8 +27,11 @@
 
     <span class="secondary-emphasis">Type in your name to continue:</span>
 
-    <input type="text" id="voter-name" placeholder="First and Last Name" />
+    <input type="text" id="voter-name-input" placeholder="First and Last Name" />
 
-    <button id="register-to-vote" class="button button-primary">Next</button>
-    <p>Take me back to the <a href="/vote/ballot" data-internal="true">ballot</a></p>
+    <button id="verify-button" class="button button-primary">Verify me</button>
+
+    <p>Not eligible to vote but still curious about the ballots? Return to <a href="/vote/ballot" data-internal="true">ballot</a></p>
+
+    {{/if}}
 </div> 

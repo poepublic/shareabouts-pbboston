@@ -43,6 +43,8 @@ const FAQs = {
   ],
 };
 
+const verified = Shareabouts.bootstrapped.voterVerified;
+
 
 export const VotingAppView = Backbone.View.extend({
   initialize: function (options) {
@@ -77,8 +79,6 @@ export const VotingAppView = Backbone.View.extend({
       this.currentView.remove();
     }
 
-    const verified = Shareabouts.bootstrapped.voterVerified
-
     this.currentView = new BallotView({ballot: MOCK_BALLOT, verified: verified}).render();
     this.el.append(this.currentView.el);
   },
@@ -97,7 +97,7 @@ export const VotingAppView = Backbone.View.extend({
       this.currentView.remove();
     } 
 
-    this.currentView = new AuthView().render();
+    this.currentView = new AuthView({verified: verified}).render();
     this.el.append(this.currentView.el);
   },
 });
