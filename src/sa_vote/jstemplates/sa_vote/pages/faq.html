@@ -1,16 +1,20 @@
 <div id="faq-page" class="faq-page">
-    <h1>Frequently asked questions</h1>
-    <br>
-    <br>
-    <h1>Voting</h1>
-    <p>How is the ballot generated?</p>
-    <p>Who is eligible to vote?</p>
-    <p>How long do I have to vote?</p>
-    <p>Is my vote private?</p>
-    <br>
-    <h1>About Ideas in Action</h1>
-    <p>What is IAA?</p>
-    <p>Whose ideas are these?</p>
+    <h1 class="faq-page-header">Frequently asked questions</h1>
+    <p>Not sure how voting works or want to learn more about this initiative? This guide will help get you started.</p>
+
+    {{#each faqs.sections}}
+    <div class="faq-section">
+        <h1 class="faq-title scribble-text scribble-text-pink bigger-text">{{title}}</h1>
+        {{#each questions}}
+        <details class="faq-item">
+            <summary class="faq-question">
+                {{question}}
+            </summary>
+            <div class="faq-answer">{{answer}}</div>
+        </details>
+        {{/each}}
+    </div>
+    {{/each}}
     <p>Ready to get started? Read this year's <a href="/vote/ballot" data-internal="true">ballot</a></p>
 
 </div>
