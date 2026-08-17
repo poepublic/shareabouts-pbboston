@@ -58,6 +58,8 @@ export const VotingAppView = Backbone.View.extend({
           fragment = href.replace(Shareabouts.bootstrapped.routePrefix, '').replace(/^\//, '');
 
       this.router.navigate(fragment, { trigger: true });
+
+      $('nav.access').removeClass('is-exposed');
     });
   },
 
