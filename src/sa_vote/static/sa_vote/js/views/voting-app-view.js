@@ -26,7 +26,7 @@ const FAQs = {
       title: "Voting in this cycle",
       questions: [
         { question: "Who can vote in this cycle?", answer: "All residents of the city who are 18 years or older and registered to vote are eligible to participate in this cycle." },
-        { question: "How do I submit my vote?", answer: "You can submit your vote online through our secure voting platform or in person at designated voting centers." },
+        { question: "How do I submit my vote?", answer: "You can submit your vote online through our secure voting platform after registering to vote." },
         { question: "Can I change my vote after submitting it?", answer: "No, once your vote is submitted, it cannot be changed. Please review your choices carefully before finalizing your vote." },
         { question: "When will the results be announced?", answer: "The results will be announced on the official election website and through local media outlets after the voting period ends." },
         { question: "Is my vote public?", answer: "No, all votes are confidential and will not be disclosed to the public. Your privacy is protected throughout the voting process." },
