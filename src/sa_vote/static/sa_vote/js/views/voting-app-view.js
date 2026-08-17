@@ -77,7 +77,7 @@ export const VotingAppView = Backbone.View.extend({
 
     const verified = Shareabouts.bootstrapped.voterVerified
 
-    this.currentView = new BallotView({ballot: ballot, verified: verified}).render();
+    this.currentView = new BallotView({ballot: MOCK_BALLOT, verified: verified}).render();
     this.el.append(this.currentView.el);
   },
 
