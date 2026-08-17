@@ -158,3 +158,35 @@ input[type="checkbox"]:checked {
 
 
 /* FAQ page */
+.faq-section {
+    margin-bottom: 2rem;
+}
+
+.faq-item {
+    background: white;
+}
+
+summary.faq-question {
+    list-style: none;
+    display: flex;
+    justify-content: space-between; 
+    border: 1px solid var(--iia-callout-blue);
+    padding: 0.5rem;
+    font-weight: 500;
+    transition: height 1s ease;
+}
+
+summary.faq-question:after{
+    content: "\002B";
+  }
+
+.faq-answer {
+    border: 1px solid var(--iia-callout-blue);
+    padding: 0.5rem;
+}
+
+
+details[open] summary:after{
+    content: "\00D7";
+  }
+  

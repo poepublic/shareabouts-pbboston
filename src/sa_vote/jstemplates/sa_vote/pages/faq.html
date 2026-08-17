@@ -1,14 +1,17 @@
 <div id="faq-page" class="faq-page">
-    <h1 class="bigger-text">Frequently asked questions</h1>
-    <br>
+    <h1 class="faq-page-header">Frequently asked questions</h1>
+    <p>Not sure how voting works or want to learn more about this initiative? This guide will help get you started.</p>
+
     {{#each faqs.sections}}
-    <div class = "faq-section">
-        <h1 class="faq-title">{{title}}</h1>
+    <div class="faq-section">
+        <h1 class="faq-title scribble-text scribble-text-pink bigger-text">{{title}}</h1>
         {{#each questions}}
-        <div class = "faq-question">
-            <h2 class="question">{{question}}</h2>
-            <p class="answer">{{answer}}</p>
-        </div>
+        <details class="faq-item">
+            <summary class="faq-question">
+                {{question}}
+            </summary>
+            <div class="faq-answer">{{answer}}</div>
+        </details>
         {{/each}}
     </div>
     {{/each}}
