@@ -118,12 +118,18 @@ input[type="checkbox"]:checked {
     background-color: white;
     padding: 20px;
     text-align: center;
+    align-items: center;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     color: var(--iia-vibrant-green);
     box-shadow: 0 0 0.325em rgba(0,0,0,0.1);
+}
+
+#ballot-banner-verified-summary {
+    display: grid;
+    grid-template-rows: 5fr 1fr;
 }
 
 #ballot-banner-verified-contents {
@@ -136,6 +142,52 @@ input[type="checkbox"]:checked {
     font-size: 1rem;
 }
 
+
+summary.ballot-banner-verified-summary:after{
+    content: "\002B";
+    display: inline-block;
+    text-align: center;
+    text-justify: center;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+details[open] summary.ballot-banner-verified-summary {
+    padding-bottom: 1rem;
+}
+
+details[open] summary.ballot-banner-verified-summary:after{
+    transform: rotate(45deg);
+  }
+
+.no-proposal-selections { /* lock the banner expansion when no proposals are selected */
+    pointer-events: none;
+}
+
+summary.ballot-banner-verified-summary.no-proposal-selections:after{
+    content: none;
+  }
+
+details[open] summary.ballot-banner-verified-summary.no-proposal-selections:after{
+    content: none;
+  }
+
+.selected-proposals {
+    padding: 0;
+    margin: 0;
+}
+
+.selected-proposal{
+    margin: 0.5rem;
+    list-style: none;
+    width: 70vw;
+    color: var(--iia-dark-blue);
+    font-weight: 500;
+    background: var(--iia-vibrant-green);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
 .proposal-container {
     display: flex;
     flex-direction: column;
@@ -144,9 +196,6 @@ input[type="checkbox"]:checked {
     margin-bottom: 1rem;
 }
 
-.no-proposal-selections {
-    pointer-events: none;
-}
 
 .proposal-card {
     display: flex;
@@ -245,6 +294,9 @@ input[type="checkbox"]:checked {
 }
 
 summary.faq-question {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     list-style: none;
     border: 1px solid var(--iia-callout-blue);
     padding: 0.5rem;
@@ -258,11 +310,13 @@ summary.faq-question {
     padding: 0.5rem;
 }
 
-.faq-question summary:after{
+summary.faq-question:after{
     content: "\002B";
+    display: inline-block;
+    transition: transform 0.3s ease;
   }
 
-.faq-question details[open] summary:after{
-    content: "\00D7";
+details[open] summary.faq-question:after{
+    transform: rotate(45deg);
   }
   
