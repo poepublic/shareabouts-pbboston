@@ -21,18 +21,40 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showHome: function () {
-    this.currentView = new HomeView({ el: this.el }).render();
+    if (this.currentView) {
+      this.currentView.remove();
+    } 
+
+    this.currentView = new HomeView().render();
+    this.el.append(this.currentView.el);
   },
 
   showBallot: function (ballot) {
-    this.currentView = new BallotView({ el: this.el, ballot: ballot }).render();
+    if (this.currentView) {
+      this.currentView.remove();
+    } 
+
+    const verified = Shareabouts.bootstrapped.voterVerified
+
+    this.currentView = new BallotView({ballot: ballot, verified: verified}).render();
+    this.el.append(this.currentView.el);
   },
 
   showFaq: function () {
-    this.currentView = new FaqView({ el: this.el }).render();
+    if (this.currentView) {
+      this.currentView.remove();
+    } 
+
+    this.currentView = new FaqView().render();
+    this.el.append(this.currentView.el);
   },
 
   showAuth: function () {
-    this.currentView = new AuthView({ el: this.el }).render();
+    if (this.currentView) {
+      this.currentView.remove();
+    } 
+
+    this.currentView = new AuthView().render();
+    this.el.append(this.currentView.el);
   },
 });
