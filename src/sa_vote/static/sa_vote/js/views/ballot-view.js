@@ -17,12 +17,15 @@ export const BallotView = Backbone.View.extend({
 
       if (this.options.verified) {
         this.$('.proposal-checkbox:not(:checked)').prop('disabled', count >= MAX_SELECTIONS);
-      }
+      } else { this.$('.selected-proposals').text(''); }
 
+
+      // Update the banner text based on number of selections
       // Case 1: no proposals selected
       if (count === 0) {
         this.$('#ballot-banner-count').text(`Select up to ${MAX_SELECTIONS} proposals`);
         this.$('#ballot-banner-subtext').text('');
+        this.$('#ballot-banner-verified-summary').addClass('no-proposal-selections');
       // Case 2: 1-4 proposals selected
       } else if (0 < count && count < MAX_SELECTIONS) {
         this.$('#ballot-banner-count').text(`${count} proposals selected`);
@@ -34,5 +37,21 @@ export const BallotView = Backbone.View.extend({
       }
 
 
+      // Insert / update selected proposals list 
+      if (count > 0) {
+
+        this.$('#ballot-banner-verified-summary').removeClass('no-proposal-selections');
+
+        const selected = this.$('.proposal-checkbox:checked').map(function() {
+          return $(this).val();
+        }
+        ).get();
+  
+        this.$('.selected-proposals').text(JSON.stringify(selected));
+      }  
+
     },
+
+
+
   });

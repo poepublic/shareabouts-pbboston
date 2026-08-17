@@ -50,6 +50,13 @@ input[type="checkbox"]:checked {
   }
 
 
+  summary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+
 /* Text formatting */
 .secondary-emphasis {
     color: var(--iia-vibrant-green);
@@ -119,6 +126,11 @@ input[type="checkbox"]:checked {
     box-shadow: 0 0 0.325em rgba(0,0,0,0.1);
 }
 
+#ballot-banner-verified-contents {
+    display: flex;
+    flex-direction: column;
+}
+
 #ballot-banner-subtext {
     font-weight: 200;
     font-size: 1rem;
@@ -132,6 +144,9 @@ input[type="checkbox"]:checked {
     margin-bottom: 1rem;
 }
 
+.no-proposal-selections {
+    pointer-events: none;
+}
 
 .proposal-card {
     display: flex;
@@ -231,25 +246,23 @@ input[type="checkbox"]:checked {
 
 summary.faq-question {
     list-style: none;
-    display: flex;
-    justify-content: space-between; 
     border: 1px solid var(--iia-callout-blue);
     padding: 0.5rem;
     font-weight: 500;
     transition: height 1s ease;
 }
 
-summary.faq-question:after{
-    content: "\002B";
-  }
 
 .faq-answer {
     border: 1px solid var(--iia-callout-blue);
     padding: 0.5rem;
 }
 
+.faq-question summary:after{
+    content: "\002B";
+  }
 
-details[open] summary:after{
+.faq-question details[open] summary:after{
     content: "\00D7";
   }
   
