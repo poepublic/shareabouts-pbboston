@@ -1,14 +1,25 @@
 <div id="ballot-page" class="ballot-page">
   <h1 class="ballot-page-header">This year, your <img class="inline-scribble" src="/static/img/iia/Scribble_Wavey_04_Pink.svg"><span class="bigger-text">neighbors</span> came up with <span class="scribble-text scribble-text-pink bigger-text">15 projects</span> to <img class="inline-scribble" src="/static/img/iia/Scribble_Arrow_02_Pink.svg" alt=""><span class="bigger-text">Benefit Boston</span></h1>
-  
-  <span>Read them below and <a href="/vote/auth" data-internal="true">vote</a> by 3/1/2027.</span>
-  
+
+
+  {{#if verified}}
+  <span>Read them below and vote by 3/1/2027.</span>
+  {{else}}
+  <span>Read them below, <a href="/vote/auth" data-internal="true">register,</a> and vote by 3/1/2027.</span>
+  {{/if}}
+
   <p>For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a></p>
   <div class="proposal-container">
     {{#each (randomize ballot.proposals)}}
         <div class="proposal-card">
           <div class="proposal-card-top">
+
+            {{#if ../verified}}
             <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" value="{{slug}}"></span> {{title}}</h3>
+            {{else}}
+            <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" disabled></span> {{title}}</h3>
+            {{/if}}
+
           </div>
           <span class="proposal-cost">{{currency amount}}</span>
           <span class="proposal-description">{{description}}</span>
@@ -18,22 +29,22 @@
   </div>
 
   {{#if verified}}
-  <a id = "ballot-banner" href="/vote/auth" data-internal="true">
-    <span id="ballot-banner-count" class="bigger-text">3 ideas selected</span>
-    <span id="ballot-banner-remaining">You may select 2 more</span>
-  </a>
+  <div id = "ballot-banner-verified">
+    <span id="ballot-banner-count" class="bigger-text">3 proposals selected</span>
+    <span id="ballot-banner-subtext">You may select 2 more</span>
+  </div>
   {{else}}
-  <a id = "ballot-banner" href="/vote/auth" data-internal="true">Register to vote today!</a>
+  <a id = "ballot-banner-unverified" class = "bigger-text" href="/vote/auth" data-internal="true">Register to vote today!</a>
   {{/if}}
 
 
   {{#if verified}}
-  <a id = "ballot-banner" href="/vote/auth" data-internal="true">
-    <span id="ballot-banner-count" class="bigger-text">3 ideas selected</span>
-    <span id="ballot-banner-remaining">You may select 2 more</span>
-  </a>
+  <div id = "ballot-banner-verified">
+    <span id="ballot-banner-count" class="bigger-text">3 proposals selected</span>
+    <span id="ballot-banner-subtext">You may select 2 more</span>
+  </div>
   {{else}}
-  <a id = "ballot-banner" href="/vote/auth" data-internal="true">Register to vote today!</a>
+  <a id = "ballot-banner-unverified" class = "bigger-text" href="/vote/auth" data-internal="true">Register to vote today!</a>
   {{/if}}
 
 </div>
