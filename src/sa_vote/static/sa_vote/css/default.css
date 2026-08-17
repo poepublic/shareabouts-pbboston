@@ -178,6 +178,12 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 }
 
 .selected-proposal{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
     margin: 0.5rem;
     list-style: none;
     width: 70vw;
@@ -186,6 +192,21 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     background: var(--iia-vibrant-green);
     padding: 0.5rem;
     border-radius: 0.5rem;
+}
+
+.selected-proposal-amt {
+    font-size: 0.75rem;
+    font-weight: 300;
+}
+
+.selected-proposal:after {
+    content: "\00D7";
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 
 .proposal-container {
@@ -235,6 +256,13 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 
 .proposal-description {
     margin-bottom: 0.5rem;
+}
+
+.proposal-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 /* Auth page */ 
@@ -308,6 +336,7 @@ summary.faq-question {
 .faq-answer {
     border: 1px solid var(--iia-callout-blue);
     padding: 0.5rem;
+    background: var(--iia-fog-grey);
 }
 
 summary.faq-question:after{

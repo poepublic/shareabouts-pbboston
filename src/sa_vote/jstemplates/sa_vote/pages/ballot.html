@@ -15,7 +15,7 @@
           <div class="proposal-card-top">
 
             {{#if ../verified}}
-            <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" value="{{slug}}"></span> {{title}}</h3>
+            <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" value="{{slug}}" data-amount="{{currency amount}}"></span> {{title}}</h3>
             {{else}}
             <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" disabled></span> {{title}}</h3>
             {{/if}}

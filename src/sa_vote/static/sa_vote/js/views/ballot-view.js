@@ -3,6 +3,7 @@ const MAX_SELECTIONS = 5;
 export const BallotView = Backbone.View.extend({
     events: {
       'change .proposal-checkbox': 'updateSelectionCount',
+      'click .selected-proposal': 'removeSelection',
     },
 
     render: function() {
@@ -48,17 +49,21 @@ export const BallotView = Backbone.View.extend({
         this.$('.ballot-banner-verified-summary').removeClass('no-proposal-selections');
 
         const selected = this.$('.proposal-checkbox:checked').map(function() {
-          return $(this).val();
+          return { slug: $(this).val(), amount: $(this).data('amount') };
         }
         ).get();
 
         selected.forEach(function(proposal) {
-          $list.append(`<li class="selected-proposal">${proposal}</li>`);
+          $list.append(`<li class="selected-proposal" data-slug="${proposal.slug}">${proposal.slug}<span class="selected-proposal-amt">${proposal.amount}</span></li>`);
         });
       }
 
     },
 
-
+    removeSelection: function(evt) {
+      const slug = $(evt.currentTarget).data('slug');
+      this.$(`.proposal-checkbox[value="${slug}"]`).prop('checked', false);
+      this.updateSelectionCount();
+    },
 
   });
