@@ -51,31 +51,35 @@ const verified = Shareabouts.bootstrapped.voterVerified;
 
 
 export const VotingAppView = Backbone.View.extend({
-  initialize: function (options) {
-    this.router = options.router;
-
-    // Intercept internal link clicks and route them through Backbone navigate method
-    $(document).on('click', 'a[data-internal="true"]', (evt) => {
-      if (evt.altKey || evt.ctrlKey || evt.metaKey || evt.shiftKey) return;
-
-      evt.preventDefault();
-
-      var href = $(evt.currentTarget).attr('href'),
-          fragment = href.replace(Shareabouts.bootstrapped.routePrefix, '').replace(/^\//, '');
-
-      this.router.navigate(fragment, { trigger: true });
-
-      $('nav.access').removeClass('is-exposed');
-    });
+  events: {
+    'click a[data-internal="true"]': 'handleInternalLinkClick',
   },
 
+  initialize: function (options) {
+    this.router = options.router;
+  },
+
+  handleInternalLinkClick: function (evt) {
+  // Intercept internal link clicks and route them through Backbone navigate method
+  if (evt.altKey || evt.ctrlKey || evt.metaKey || evt.shiftKey) return;
+  
+    evt.preventDefault();
+  
+    var href = $(evt.currentTarget).attr('href'),
+    fragment = href.replace(Shareabouts.bootstrapped.routePrefix, '').replace(/^\//, '');
+  
+  this.router.navigate(fragment, { trigger: true });
+    },
   showHome: function () {
     if (this.currentView) {
       this.currentView.remove();
-    } 
-
-    this.currentView = new HomeView().render();
+    }
+    this.currentView = view.render();
     this.el.append(this.currentView.el);
+  },
+
+  showHome: function () {
+    this._replaceCurrentView(new HomeView());
   },
 
   showBallot: function () {
@@ -83,17 +87,12 @@ export const VotingAppView = Backbone.View.extend({
       this.currentView.remove();
     }
 
-    this.currentView = new BallotView({ballot: MOCK_BALLOT, verified: verified}).render();
+    this.currentView = new BallotView({ballot: MOCK_BALLOT}).render();
     this.el.append(this.currentView.el);
   },
 
   showFaq: function () {
-    if (this.currentView) {
-      this.currentView.remove();
-    } 
-
-    this.currentView = new FaqView({faqs: FAQs}).render();
-    this.el.append(this.currentView.el);
+    this._replaceCurrentView(new FaqView({faqs: FAQs}));
   },
 
   showAuth: function () {
@@ -101,7 +100,7 @@ export const VotingAppView = Backbone.View.extend({
       this.currentView.remove();
     } 
 
-    this.currentView = new AuthView({verified: verified, neighborhoods: Shareabouts.bootstrapped.neighborhoods.features}).render();
+    this.currentView = new AuthView().render();
     this.el.append(this.currentView.el);
   },
 });
