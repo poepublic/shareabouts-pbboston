@@ -1,4 +1,4 @@
-const MAX_SELECTIONS = 5;
+const MAX_SELECTIONS = Shareabouts.config.ballot.max_selections;
 
 export const BallotView = Backbone.View.extend({
     events: {
