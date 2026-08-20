@@ -28,7 +28,10 @@
   {% endblock app_icons %}
 
   <!-- Google WebFonts -->
-  <link href='//fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:ital@0;1&family=Mada:wght@400;700&family=Markazi+Text&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
 
   {% if settings.DEBUG %}
   <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
@@ -37,14 +40,17 @@
   <link rel="stylesheet" href="{% static 'dist/app.css' %}?_={{settings.LAST_DEPLOY_DATE}}">
   {% endif %}
 
+  <!-- Base PB Boston Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/pbboston.css' %}?_={{settings.LAST_DEPLOY_DATE}}">
+
   <!-- Flavor's Custom Stylesheet -->
   <link rel="stylesheet" href="{% static 'css/custom.css' %}?_={{settings.LAST_DEPLOY_DATE}}">
 
 
   <link rel="profile" href="http://gmpg.org/xfn/11" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/perliedman-leaflet-control-geocoder/1.13.0/Control.Geocoder.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
 </head>
 <body class="{% if config.map.geocoding_enabled %} geocoding-enabled{% endif %}">
   {% block sentry_init %}
@@ -52,6 +58,8 @@
   {% endblock %}
 
   <header id="site-header" class="clearfix{% if pages_config %} has-pages{% endif %}">
+    {% block header_intro %}{% endblock %}
+
     <h1 id="site-title">{% block site-title %}{% endblock %}</h1>
 
     {% block pre_auth_nav %}{% endblock %}
@@ -122,12 +130,12 @@
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}libs/jquery-1.10.2.js"><\/script>')</script><!-- FIXME: Maybe this should be pulled into the repo as a git submodule-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/perliedman-leaflet-control-geocoder/1.13.0/Control.Geocoder.js"></script>
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 
   {% if uses_mapbox_layers %}
-  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel='stylesheet' />
-  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.24.0/mapbox-gl.css" rel='stylesheet' />
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.24.0/mapbox-gl.js"></script>
   <script src="https://unpkg.com/mapbox-gl-leaflet@0.0.16/leaflet-mapbox-gl.js"></script>
   {% endif %}
 
@@ -173,7 +181,9 @@
       staticUrl: '{{ STATIC_URL }}',
       languageCode: '{{ LANGUAGE_CODE }}',
       mapQuestKey: '{{ settings.MAPQUEST_KEY }}',
-      mapboxToken: '{{ settings.MAPBOX_TOKEN }}'
+      mapboxToken: '{{ settings.MAPBOX_TOKEN }}',
+      routePrefix: {{ route_prefix | as_json }},
+      apiPrefix:  {{ api_prefix | as_json }},
     };
 
     function bootstrapCurrentUser(data) {
@@ -217,6 +227,9 @@
         'user:' + S.bootstrapped.currentUser.id :
         {{ user_token_json|safe }}),
 
+      routePrefix: S.bootstrapped.routePrefix,
+      apiPrefix: S.bootstrapped.apiPrefix,
+
       flavor:     {{ config.data|as_json }},
       place:      {{ config.place|as_json }},
       placeTypes: {{ config.place_types|as_json }},
@@ -235,6 +248,7 @@
         defaultPlaceTypeName: S.Config.defaultPlaceTypeName,
         userToken: S.Config.userToken,
 
+        routePrefix: S.Config.routePrefix,
         config: S.Config.flavor,
         placeConfig: S.Config.place,
         placeTypes: S.Config.placeTypes,

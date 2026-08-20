@@ -402,6 +402,13 @@ var Shareabouts = Shareabouts || {};
 
       return placeDetailView;
     },
+    getLayerView: function(model) {
+      return this.mapView.layerViews[model.cid];
+    },
+    getLayer(model) {
+      const layerView = this.getLayerView(model);
+      return layerView ? layerView.layer : null;
+    },
     setLocationRoute: function(zoom, lat, lng) {
       this.options.router.navigate('/' + zoom + '/' +
         parseFloat(lat).toFixed(5) + '/' + parseFloat(lng).toFixed(5));
@@ -453,7 +460,7 @@ var Shareabouts = Shareabouts || {};
           model = self.places.get(model.id);
         }
 
-        layer = self.mapView.layerViews[model.cid].layer;
+        layer = self.getLayer(model);
         placeDetailView = self.getPlaceDetailView(model);
 
         if (layer) {

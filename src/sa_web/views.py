@@ -7,6 +7,7 @@ import hashlib
 
 from sa_util.api import make_auth_root, make_resource_uri, ShareaboutsApi
 from sa_util.config import get_shareabouts_config
+from pbboston.geodata import load_neighborhoods, load_city
 from django.shortcuts import render
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
@@ -98,25 +99,70 @@ def apply_language(viewfunc):
     return view_wrapper
 
 
+def process_shareabouts_config(viewfunc):
+    """
+    Decorator to load/process the Shareabouts config and cache it on the request
+    object.
+    """
+    def view_wrapper(request, *args, **kwargs):
+        request.shareabouts_config = get_shareabouts_config()
+        return viewfunc(request, *args, **kwargs)
+    return view_wrapper
+
+
+def show_prelaunch_until_go_live_date(viewfunc):
+    def view_wrapper(request, *args, **kwargs):
+        config = request.shareabouts_config
+        go_live_date = config.get('app', {}).get('go_live_date')
+        if go_live_date:
+            try:
+                go_live_date = dateutil.parser.parse(go_live_date)
+            except Exception as e:
+                raise ImproperlyConfigured(f'Invalid go_live_date: {go_live_date} -- {e}')
+
+            # Make the go_live_date timezone-aware if it's not already.
+            if not go_live_date.tzinfo:
+                go_live_date = make_aware(go_live_date)
+
+            if go_live_date > now():
+                return render(request, 'prelaunch.html', {
+                    'config': config,
+                    'go_live_date': go_live_date,
+                    'site_root': settings.SITE_ROOT,
+                })
+
+        return viewfunc(request, *args, **kwargs)
+    return view_wrapper
+
+
+def get_shareabouts_user_token(request):
+    """
+    Return the user token for the current request, which is either a session
+    token or a username-based token.
+
+    The user token will be a pair, with the first element being the type
+    of identification, and the second being an identifier. It could be
+    'username:mjumbewu' or 'ip:123.231.132.213', etc.  If the user is
+    unauthenticated, the token will be session-based.
+    """
+    if 'user_token' not in request.session:
+        t = int(time.time() * 1000)
+        ip = request.META['REMOTE_ADDR']
+        unique_string = (str(t) + str(ip)).encode()
+        session_token = 'session:' + hashlib.md5(unique_string).hexdigest()
+        request.session['user_token'] = session_token
+        request.session.set_expiry(0)
+
+    return request.session['user_token']
+
+
 @ensure_csrf_cookie
 @apply_language
+@process_shareabouts_config
+@show_prelaunch_until_go_live_date
 def index(request, place_id=None):
-    config = get_shareabouts_config()
+    config = request.shareabouts_config
     api = ShareaboutsApi(config, request)
-
-    go_live_date = config.get('app', {}).get('go_live_date')
-    if go_live_date:
-        try:
-            go_live_date = dateutil.parser.parse(go_live_date)
-        except Exception as e:
-            raise ImproperlyConfigured(f'Invalid go_live_date: {go_live_date} -- {e}')
-
-        # Make the go_live_date timezone-aware if it's not already.
-        if not go_live_date.tzinfo:
-            go_live_date = make_aware(go_live_date)
-
-        if go_live_date > now():
-            return render(request, 'prelaunch.html', {'config': config, 'go_live_date': go_live_date})
 
     # Get the content of the static pages linked in the menu.
     pages_config = config.get('pages', [])
@@ -131,19 +177,7 @@ def index(request, place_id=None):
     survey_config['adding_supported'] = calc_adding_support(survey_config.get('adding_supported'))
     support_config['adding_supported'] = calc_adding_support(support_config.get('adding_supported'))
 
-    # The user token will be a pair, with the first element being the type
-    # of identification, and the second being an identifier. It could be
-    # 'username:mjumbewu' or 'ip:123.231.132.213', etc.  If the user is
-    # unauthenticated, the token will be session-based.
-    if 'user_token' not in request.session:
-        t = int(time.time() * 1000)
-        ip = request.META['REMOTE_ADDR']
-        unique_string = (str(t) + str(ip)).encode()
-        session_token = 'session:' + hashlib.md5(unique_string).hexdigest()
-        request.session['user_token'] = session_token
-        request.session.set_expiry(0)
-
-    user_token_json = u'"{0}"'.format(request.session['user_token'])
+    user_token_json = u'"{0}"'.format(get_shareabouts_user_token(request))
 
     place = None
     if place_id and place_id != 'new':
@@ -156,7 +190,14 @@ def index(request, place_id=None):
     except KeyError:
         uses_mapbox_layers = False
 
+    city_boundary = load_city()
+    neighborhoods = load_neighborhoods()
+    path_prefix = settings.BASE_URL
+
     context = {'config': config,
+
+               'route_prefix': path_prefix,
+               'api_prefix': path_prefix + '/api',
 
                'user_token_json': user_token_json,
                'pages_config': pages_config,
@@ -169,6 +210,13 @@ def index(request, place_id=None):
 
                'api_user': api.current_user(default=None),
                'uses_mapbox_layers': uses_mapbox_layers,
+
+                # Geo-data for Boston
+               'city_boundary': city_boundary,
+               'neighborhoods': neighborhoods,
+
+               # Site root useful for automatic translation
+                'site_root': settings.SITE_ROOT,
                }
 
     return api.respond_with_session_cookie(render(request, 'index.html', context))
@@ -239,10 +287,11 @@ def send_place_created_notifications(request, response):
 
     # If we didn't find any errors, then render the email and send.
     context_data = {
+        'requested_place': requested_place,
         'place': place,
         'email': recipient_email,
         'config': config,
-        'site_root': request.build_absolute_uri('/'),
+        'site_root': request.build_absolute_uri(settings.BASE_URL),
     }
     subject = render_to_string('new_place_email_subject.txt', context_data, request)
     body = render_to_string('new_place_email_body.txt', context_data, request)
@@ -418,6 +467,7 @@ def readonly_file_api(request, path, datafilename='data.json'):
             raise Http404
 
 
+@csrf_exempt
 def api(request, path):
     """
     A small proxy for a Shareabouts API server, exposing only
@@ -445,6 +495,13 @@ def api(request, path):
     # Clear cookies from the current domain, so that they don't interfere with
     # our settings here.
     request.META.pop('HTTP_COOKIE', None)
+
+    # Ignore requests for text/html, and assume the client wants
+    # application/json instead. This is so that other proxies that don't
+    # request JSON still get it back.
+    if not request.META.get('HTTP_ACCEPT', '').startswith('application/'):
+        headers['ACCEPT'] = 'application/json'
+
     response = proxy_view(request, url, requests_args={
         'headers': headers,
         'cookies': cookies
@@ -457,6 +514,29 @@ def api(request, path):
 
 
 def users(request, path):
+    """
+    A small proxy for a Shareabouts API server, exposing only
+    user authentication.
+    """
+    if settings.SHAREABOUTS.get('DATASET_ROOT').startswith('file://'):
+        return readonly_response(request, None)
+
+    root = make_auth_root(settings.SHAREABOUTS.get('DATASET_ROOT'))
+    api_key = settings.SHAREABOUTS.get('DATASET_KEY')
+    api_session_cookie = request.COOKIES.get('sa-api-session')
+
+    url = make_resource_uri(path, root)
+    headers = {'X-Shareabouts-Key': api_key} if api_key else {}
+    cookies = {'sessionid': api_session_cookie} if api_session_cookie else {}
+    response = proxy_view(request, url, requests_args={
+        'headers': headers,
+        'allow_redirects': False,
+        'cookies': cookies
+    })
+    return response
+
+
+def users_sso_start(request, path):
     """
     A small proxy for a Shareabouts API server, exposing only
     user authentication.
