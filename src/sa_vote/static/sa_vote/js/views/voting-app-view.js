@@ -64,39 +64,28 @@ export const VotingAppView = Backbone.View.extend({
 
     this.router.navigate(fragment, { trigger: true });
   },
-  showHome: function () {
-    if (this.currentView) {
-      this.currentView.remove();
-    } 
 
-    this.currentView = new HomeView().render();
-    this.el.append(this.currentView.el);
-  },
-
-  showBallot: function () {
+  _replaceCurrentView: function (view) {
     if (this.currentView) {
       this.currentView.remove();
     }
-
-    this.currentView = new BallotView({ballot: MOCK_BALLOT}).render();
+    this.currentView = view.render();
     this.el.append(this.currentView.el);
+  },
+
+  showHome: function () {
+    this._replaceCurrentView(new HomeView());
+  },
+
+  showBallot: function () {
+    this._replaceCurrentView(new BallotView({ballot: MOCK_BALLOT}));
   },
 
   showFaq: function () {
-    if (this.currentView) {
-      this.currentView.remove();
-    } 
-
-    this.currentView = new FaqView({faqs: FAQs}).render();
-    this.el.append(this.currentView.el);
+    this._replaceCurrentView(new FaqView({faqs: FAQs}));
   },
 
   showAuth: function () {
-    if (this.currentView) {
-      this.currentView.remove();
-    } 
-
-    this.currentView = new AuthView().render();
-    this.el.append(this.currentView.el);
+    this._replaceCurrentView(new AuthView());
   },
 });
