@@ -27,25 +27,5 @@
         </div>
     {{/each}}
   </div>
-
-  {{#if verified}} 
-  <!-- Bottom banner: OPEN -->
-  <div id = "ballot-banner-verified">
-    <details>
-      <summary class="ballot-banner-verified-summary">
-        <div id="ballot-banner-verified-contents">
-          <span id="ballot-banner-count" class="bigger-text"></span>
-          <span id="ballot-banner-subtext"></span>
-        </div>
-      </summary>
-        <ul class="selected-proposals"></ul>
-        <div class="ballot-vote-button"></div>
-    </details>
-  </div>
-
-  {{else}} 
-  <!-- Bottom banner: LOCKED -->
-  <a id = "ballot-banner-unverified" class = "bigger-text" href="/vote/auth" data-internal="true">Vote now!</a>
-  {{/if}}
-
+  <div class="ballot-banner-container"></div>
 </div>
