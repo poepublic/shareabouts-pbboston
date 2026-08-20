@@ -1,9 +1,9 @@
 <div id="ballot-page" class="ballot-page">
-  <h1 class="ballot-page-header">This year, your <img class="inline-scribble" src="/static/img/iia/Scribble_Wavey_04_Pink.svg"><span class="bigger-text">neighbors</span> came up with <span class="scribble-text scribble-text-pink bigger-text">15 projects</span> to <img class="inline-scribble" src="/static/img/iia/Scribble_Arrow_02_Pink.svg" alt=""><span class="bigger-text">Benefit Boston</span></h1>
-  
-  <span>Read them below and <a href="/vote/auth" data-internal="true">vote</a> by 3/1/2027.</span>
-  
-  <p>For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a></p>
+  <h1 class="ballot-page-header">{{#_}}This year, your <img class="inline-scribble" src="/static/img/iia/Scribble_Wavey_04_Pink.svg"><span class="bigger-text">neighbors</span> came up with <span class="scribble-text scribble-text-pink bigger-text">15 projects</span> to <img class="inline-scribble" src="/static/img/iia/Scribble_Arrow_02_Pink.svg" alt=""><span class="bigger-text">Benefit Boston</span>{{/_}}</h1>
+
+  <span>{{#_}}Read them below and <a href="/vote/auth" data-internal="true">vote</a> by 3/1/2027.{{/_}}</span>
+
+  <p>{{#_}}For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a>{{/_}}</p>
   <div class="proposal-container">
     {{# ballot.proposals }}
         <div class="proposal-card">
@@ -16,5 +16,5 @@
         </div>
     {{/ ballot.proposals }}
   </div>
-    <a id = "ballot-banner" href="/vote/auth" data-internal="true">Register to vote today!</a>
+    <a id = "ballot-banner" href="/vote/auth" data-internal="true">{{#_}}Register to vote today!{{/_}}</a>
 </div>
