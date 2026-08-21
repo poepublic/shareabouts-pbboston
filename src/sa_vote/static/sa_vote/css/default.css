@@ -1,0 +1,192 @@
+
+#home-page, #ballot-page, #auth-page, #faq-page {
+    padding: 1.5rem;
+    margin-top: 5vh;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+#app {
+    flex: 1;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--iia-fog-grey);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+input[type="checkbox"]:hover {
+    border-color: var(--iia-vibrant-green);
+    background-color: var(--iia-fog-grey);
+  }
+  
+
+input[type="checkbox"]:checked {
+    background-color: var(--iia-vibrant-green);
+    border-color: white;
+  }
+
+
+/* Text formatting */
+.secondary-emphasis {
+    color: var(--iia-vibrant-green);
+    font-weight: 500;
+    font-size: 1.2rem;
+    border-radius: 0.1rem;
+}
+
+/* Welcome page */
+.read-ballot-link {
+    background-color: var(--iia-urban-pink-alt);
+    display: flex;
+    margin: 0 auto; 
+    flex-direction: row;
+    height: fit-content;
+    width: 50vw;
+    align-content: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.read-ballot-link p {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.read-ballot-link:hover {
+    background-color: var(--iia-electric-purple-alt) !important;
+}
+
+#home-vote-deadline {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Ballot page */
+#ballot-banner {
+    box-sizing: border-box;
+    background-color: var(--iia-urban-pink);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+}
+
+.proposal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.proposal-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.proposal-card-top {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.proposal-card-top input[type="checkbox"] {
+    width: 25px;
+    height: 15px;
+  }
+
+
+.proposal-title {
+    font-weight: 600;
+}
+
+.proposal-cost {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--iia-vibrant-green);
+}
+
+.proposal-description {
+    margin-bottom: 0.5rem;
+}
+
+/* Auth page */ 
+.voter-attestation-list {
+    list-style: none;
+    padding: 0.5rem;
+  }
+  
+  .voter-attestation-list li {
+    display: flex;
+    align-items: top;
+    margin-bottom: 10px;
+  }
+
+  .voter-attestation-list li > label {
+    align-items: top;
+  }
+  
+
+
+/* FAQ page */
+.faq-section {
+    margin-bottom: 2rem;
+}
+
+.faq-item {
+    background: white;
+}
+
+summary.faq-question {
+    list-style: none;
+    display: flex;
+    justify-content: space-between; 
+    border: 1px solid var(--iia-callout-blue);
+    padding: 0.5rem;
+    font-weight: 500;
+    transition: height 1s ease;
+}
+
+summary.faq-question:after{
+    content: "\002B";
+  }
+
+.faq-answer {
+    border: 1px solid var(--iia-callout-blue);
+    padding: 0.5rem;
+}
+
+
+details[open] summary:after{
+    content: "\00D7";
+  }
+  
