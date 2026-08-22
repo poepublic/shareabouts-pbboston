@@ -1,30 +1,42 @@
 <div id="ballot-page" class="ballot-page">
-  <h1 class="ballot-page-header">This year, your <img class="inline-scribble" src="/static/img/iia/Scribble_Wavey_04_Pink.svg"><span class="bigger-text">neighbors</span> came up with <span class="scribble-text scribble-text-pink bigger-text">15 projects</span> to <img class="inline-scribble" src="/static/img/iia/Scribble_Arrow_02_Pink.svg" alt=""><span class="bigger-text">Benefit Boston</span></h1>
+  <h1 class="ballot-page-header">{{#_}}This year, your <img class="inline-scribble" src="/static/img/iia/Scribble_Wavey_04_Pink.svg"><span class="bigger-text">neighbors</span> came up with <span class="scribble-text scribble-text-pink bigger-text">15 projects</span> to <img class="inline-scribble" src="/static/img/iia/Scribble_Arrow_02_Pink.svg" alt=""><span class="bigger-text">Benefit Boston</span>{{/_}}</h1>
 
 
   {{#if verified}}
-  <span>Read them below and vote by 3/1/2027.</span>
+  <span>{{#_}}Read them below and vote by 3/1/2027.{{/_}}</span>
   {{else}}
-  <span>Read them below, <a href="/vote/auth" data-internal="true">register,</a> and vote by 3/1/2027.</span>
+  <span>{{#_}}Read them below, <a href="/vote/auth" data-internal="true">register,</a> and vote by 3/1/2027.{{/_}}</span>
   {{/if}}
 
-  <p>For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a></p>
+  <p>{{#_}}For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a>{{/_}}</p>
   <div class="proposal-container">
     {{#each (randomize ballot.proposals)}}
-        <div class="proposal-card">
-          <div class="proposal-card-top">
+    {{#if ../verified}}
+    {{else}}
+    {{/if}}
+        <label for="checkbox-{{slug}}">
+          <div class="proposal-card">
+            <div class="proposal-card-top">
+              {{#if ../verified}}
+              <h3 class="proposal-title">
+                <span class = "proposal-card-top-left"><input type="checkbox" id="checkbox-{{slug}}" class="proposal-checkbox" value="{{slug}}" data-amount="{{currency amount}}"></span>
+                {{title}}
+              </h3>
+              {{else}}
+              <h3 class="proposal-title">
+                <span class = "proposal-card-top-left"><input type="checkbox" id="checkbox-{{slug}}" class="proposal-checkbox" disabled></span>
+                {{title}}
+              </h3>
+              {{/if}}
 
-            {{#if ../verified}}
-            <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" value="{{slug}}" data-amount="{{currency amount}}"></span> {{title}}</h3>
-            {{else}}
-            <h3 class="proposal-title"><span><input type="checkbox" class="proposal-checkbox" disabled></span> {{title}}</h3>
-            {{/if}}
-
+            </div>
+            <span class="proposal-cost">{{currency amount}}</span>
+            <span class="proposal-description">{{description}}</span>
+            <img class="proposal-image" src="{{image}}" alt="{{title}}">
           </div>
-          <span class="proposal-cost">{{currency amount}}</span>
-          <span class="proposal-description">{{description}}</span>
-          <img class="proposal-image" src="{{image}}" alt="{{title}}">
-        </div>
+        </label>
+      </span>
+
     {{/each}}
   </div>
   <div class="ballot-banner-container"></div>

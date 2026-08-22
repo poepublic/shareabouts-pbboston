@@ -18,17 +18,12 @@ body {
     flex: 1;
 }
 
-.proposal-checkbox:disabled {
-    cursor: not-allowed;
-    opacity: 0.4;
-}
-
 input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
     width: 15px;
     height: 15px;
-    border: 2px solid var(--iia-fog-grey);
+    border: 2px solid var(--iia-dark-blue);
     border-radius: 4px;
     outline: none;
     cursor: pointer;
@@ -36,6 +31,7 @@ input[type="checkbox"] {
     position: relative;
     margin-right: 10px;
     flex-shrink: 0;
+    justify-self: center;
   }
 
 input[type="checkbox"]:hover {
@@ -46,7 +42,7 @@ input[type="checkbox"]:hover {
 
 input[type="checkbox"]:checked {
     background-color: var(--iia-vibrant-green);
-    border-color: white;
+    border-color: var(--iia-vibrant-green);
   }
 
 
@@ -110,14 +106,14 @@ input[type="checkbox"]:checked {
     bottom: 0;
     left: 0;
     width: 100%;
-    color: white;
+    background: var(--iia-dark-blue);
 }
 
 #ballot-banner-verified {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background-color: white;
+    background: var(--iia-dark-blue);
     padding: 20px;
     text-align: center;
     align-items: center;
@@ -127,6 +123,22 @@ input[type="checkbox"]:checked {
     width: 100%;
     color: var(--iia-vibrant-green);
     box-shadow: 0 0 0.325em rgba(0,0,0,0.1);
+}
+
+.proposal-card-top {
+    display: flex;
+    flex-direction: row;
+  }
+
+.proposal-card-top-left > .proposal-checkbox {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+  }
+
+.proposal-checkbox:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
 }
 
 #ballot-banner-verified-summary {
@@ -227,6 +239,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     padding: 1rem;
     background: white;
     border-radius: 8px;
+    border: 4px solid white;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -234,18 +247,12 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     border: 4px solid var(--iia-vibrant-green);
   }
 
-
-.proposal-card-top {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
-
-.proposal-card-top input[type="checkbox"] {
-    width: 25px;
-    height: 15px;
+.proposal-card-top-left {
+    display: inline-flex;
+    width: 2rem;
+    height: 1rem;
+    align-content: center;
   }
-
 
 .proposal-title {
     font-weight: 600;
@@ -269,18 +276,12 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 }
 
 /* Auth page */ 
-
-.voter-attestation-list input[type="checkbox"] {
-    border-color: var(--iia-callout-blue);
-}
 .voter-attestation-list {
-    list-style: none;
+    list-style-type: disc;
     padding: 0.5rem;
   }
   
   .voter-attestation-list li {
-    display: flex;
-    align-items: top;
     margin-bottom: 10px;
   }
 
