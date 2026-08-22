@@ -6,7 +6,7 @@
     <details>
         <summary class="ballot-banner-verified-summary no-proposal-selections">
             <div id="ballot-banner-verified-contents">
-                <span id="ballot-banner-count" class="bigger-text">Select up to {{MAX_SELECTIONS}} proposals</span>
+                <span id="ballot-banner-count" class="bigger-text">{{#_}}Select up to {{MAX_SELECTIONS}} proposals{{/_}}</span>
                 <span id="ballot-banner-subtext"></span>
             </div>
         </summary>
@@ -19,12 +19,12 @@
     <details>
         <summary class="ballot-banner-verified-summary">
             <div id="ballot-banner-verified-contents">
-                <span id="ballot-banner-count" class="bigger-text">{{MAX_SELECTIONS}} proposals selected</span>
-                <span id="ballot-banner-subtext">Ready to vote?</span>
+                <span id="ballot-banner-count" class="bigger-text">{{#_}}{{MAX_SELECTIONS}} proposals selected{{/_}}</span>
+                <span id="ballot-banner-subtext">{{#_}}Ready to vote?{{/_}}</span>
             </div>
         </summary>
         <ul class="selected-proposals"></ul>
-        <div class="ballot-vote-button btn btn-primary" id="submit-ballot">Vote</div>
+        <div class="ballot-vote-button btn btn-primary" id="submit-ballot">{{#_}}Vote{{/_}}</div>
     </details>
 </div>
 
@@ -34,12 +34,12 @@
     <details>
         <summary class="ballot-banner-verified-summary">
             <div id="ballot-banner-verified-contents">
-                <span id="ballot-banner-count" class="bigger-text">{{count}} proposal(s) selected</span>
-                <span id="ballot-banner-subtext">You may pick up to {{remaining}} more</span>
+                <span id="ballot-banner-count" class="bigger-text">{{#_}}{{count}} proposal(s) selected{{/_}}</span>
+                <span id="ballot-banner-subtext">{{#_}}You may pick up to {{remaining}} more{{/_}}</span>
             </div>
         </summary>
         <ul class="selected-proposals"></ul>
-        <div class="ballot-vote-button btn btn-primary" id="submit-ballot">Vote</div>
+        <div class="ballot-vote-button btn btn-primary" id="submit-ballot">{{#_}}Vote{{/_}}</div>
     </details>
 </div>
 
@@ -47,5 +47,5 @@
 {{else}}
 
 <!-- LOCKED -->
-<a id="ballot-banner-unverified" class="bigger-text" href="/vote/auth" data-internal="true">Vote now!</a>
+<a id="ballot-banner-unverified" class="bigger-text" href="/vote/auth" data-internal="true">{{#_}}Vote now!{{/_}}</a>
 {{/if}}
