@@ -192,8 +192,8 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 }
 
 .selected-proposal{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     gap: 0.25rem;
     position: relative;
     text-align: center;
@@ -202,11 +202,18 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     list-style: none;
     width: 70vw;
     color: var(--iia-dark-blue);
-    font-weight: 600;
-    font-size: 1.2rem;
     background: var(--iia-vibrant-green);
     padding: 0.5rem;
     border-radius: 0.5rem;
+}
+
+.selected-proposal-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow: ellipsis;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 .selected-proposal-amt {

@@ -43,20 +43,20 @@ export const BallotView = Backbone.View.extend({
         this.$('.ballot-banner-verified-summary').removeClass('no-proposal-selections');
 
         const selected = this.$('.proposal-checkbox:checked').map(function() {
-          return { slug: $(this).val(), amount: $(this).data('amount') };
+          return { title: $(this).val(), amount: $(this).data('amount') };
         }
         ).get();
 
         selected.forEach(function(proposal) {
-          $list.append(`<li class="selected-proposal" data-slug="${proposal.slug}">${proposal.slug}<span class="selected-proposal-amt">${proposal.amount}</span></li>`);
+          $list.append(`<li class="selected-proposal" data-title="${proposal.title}"><span class="selected-proposal-title">${proposal.title}</span><span class="selected-proposal-amount">${proposal.amount}</span></li>`);
         });
       }
 
     },
 
     removeSelection: function(evt) {
-      const slug = $(evt.currentTarget).data('slug');
-      this.$(`.proposal-checkbox[value="${slug}"]`).prop('checked', false);
+      const title = $(evt.currentTarget).data('title');
+      this.$(`.proposal-checkbox[value="${title}"]`).prop('checked', false);
       this.updateSelectionCount();
     },
 
