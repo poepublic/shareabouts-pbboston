@@ -1,72 +1,90 @@
 const MAX_SELECTIONS = Shareabouts.config.ballot.max_selections;
 
 export const BallotView = Backbone.View.extend({
-    events: {
-      'change .proposal-checkbox': 'updateSelectionCount',
-      'click .selected-proposal': 'scrollToProposal',
-    },
+  events: {
+    'change .proposal-checkbox': 'updateBannerSummary',
+    'click .selected-proposal-info': 'scrollToProposal',
+    'click .selected-proposal-remove': 'removeSelection',
+  },
 
-    getTemplateContext: function(count, remaining) {
-      return _.extend({
-        count: count,
-        remaining: remaining,
-        MAX_SELECTIONS: MAX_SELECTIONS,
-        ballotEmpty: count === 0,
-        ballotFull: count === MAX_SELECTIONS,
-      }, this.options);
-    },
+  getBannerSummaryContext: function (count, remaining) {
+    return _.extend({
+      count: count,
+      remaining: remaining,
+      MAX_SELECTIONS: MAX_SELECTIONS,
+      ballotEmpty: count === 0,
+      ballotFull: count === MAX_SELECTIONS,
+    }, this.options);
+  },
 
-    render: function() {
-      this.$el.html(Handlebars.templates['sa_vote/pages/ballot'](this.options));
-      this.updateSelectionCount();
-      return this;
-    },
+  getBannerDetailsContext: function (title, amount, slug) {
+    return _.extend({
+      title: title,
+      amount: amount,
+      slug: slug,
+    }, this.options);
+  },
 
-    updateSelectionCount: function() {
-      const count = this.$('.proposal-checkbox:checked').length;
-      const remaining = MAX_SELECTIONS - count;
+  // Update the list of selected proposals in the expanded ballot banner (details) every time a proposal is selected/deselected
+  updateBannerDetails: function (selected) {
+    const $list = this.$('.selected-proposals');
+    selected.forEach(function (proposal) {
+      const ballotDetailsTemplate = Handlebars.templates['sa_vote/includes/selected-proposal'];
+      const context = this.getBannerDetailsContext(proposal.title, proposal.amount, proposal.slug);
+      $list.append(ballotDetailsTemplate(context));
+    }, this);
+  },
 
-      if (this.options.verified) {
-        this.$('.proposal-checkbox:not(:checked)').prop('disabled', count >= MAX_SELECTIONS);
-      } else { this.$('.selected-proposals').text(''); }
+  render: function () {
+    this.$el.html(Handlebars.templates['sa_vote/pages/ballot'](this.options));
+    this.updateBannerSummary();
+    return this;
+  },
 
-      const ballotBannerTemplate = Handlebars.templates['sa_vote/includes/ballot-banner'];
-      const context = this.getTemplateContext(count, remaining);
-      this.$('.ballot-banner-container').html(ballotBannerTemplate(context))
+  updateBannerSummary: function () {
+    const count = this.$('.proposal-checkbox:checked').length;
+    const remaining = MAX_SELECTIONS - count;
 
-      // Insert / update selected proposals list
-      const $list = this.$('.selected-proposals');
-      $list.empty();
+    // Disable unchecked checkboxes if maximum proposals selected
+    if (this.options.verified) {
+      this.$('.proposal-checkbox:not(:checked)').prop('disabled', count >= MAX_SELECTIONS);
+    } else { this.$('.selected-proposals').text(''); }
 
-      if (count > 0) {
+    const ballotBannerTemplate = Handlebars.templates['sa_vote/includes/ballot-banner'];
+    const context = this.getBannerSummaryContext(count, remaining);
+    this.$('.ballot-banner-container').html(ballotBannerTemplate(context))
 
-        this.$('.ballot-banner-verified-summary').removeClass('no-proposal-selections');
+    // Insert / update selected proposals list
+    const $list = this.$('.selected-proposals');
+    $list.empty();
 
-        const selected = this.$('.proposal-checkbox:checked').map(function() {
-          return { title: $(this).val(), amount: $(this).data('amount'), slug: $(this).data('slug')};
-        }
-        ).get();
+    if (count > 0) {
+      // ballot banner only expands if 1 or more proposals selected
+      this.$('.ballot-banner-verified-summary').removeClass('no-proposal-selections');
 
-        selected.forEach(function(proposal) {
-          $list.append(`<li class="selected-proposal" data-title="${proposal.title}"  data-slug="${proposal.slug}"><span class="selected-proposal-title">${proposal.title}</span><span class="selected-proposal-amount">${proposal.amount}</span></li>`);
-        });
+      const selected = this.$('.proposal-checkbox:checked').map(function () {
+        return { title: $(this).val(), amount: $(this).data('amount'), slug: $(this).data('slug') };
       }
+      ).get();
 
-    },
+      this.updateBannerDetails(selected);
+    }
+  },
 
-    scrollToProposal: function(evt) {
-      const details = document.querySelector('.ballot-banner-details');
-      details.open = false;
+  // Scroll to a proposal when it is selected in the ballot banner list
+  scrollToProposal: function (evt) {
+    const details = document.querySelector('.ballot-banner-details');
+    details.open = false;
 
-      const slug = $(evt.currentTarget).data('slug');
-      const card = document.getElementById("proposal-card-" + slug);
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    },
+    const slug = $(evt.currentTarget).data('slug');
+    const card = document.getElementById("proposal-card-" + slug);
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  },
 
-    removeSelection: function(evt) {
-      const title = $(evt.currentTarget).data('title');
-      this.$(`.proposal-checkbox[value="${title}"]`).prop('checked', false);
-      this.updateSelectionCount();
-    },
+  removeSelection: function (evt) {
+    const slug = $(evt.currentTarget).data('slug');
+    this.$(`.proposal-checkbox[data-slug="${slug}"]`).prop('checked', false);
+    this.updateBannerSummary();
+  },
 
-  });
+});

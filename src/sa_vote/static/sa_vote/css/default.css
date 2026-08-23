@@ -1,5 +1,7 @@
-
-#home-page, #ballot-page, #auth-page, #faq-page {
+#home-page,
+#ballot-page,
+#auth-page,
+#faq-page {
     padding: 1.5rem;
     margin-top: 5vh;
 }
@@ -32,25 +34,25 @@ input[type="checkbox"] {
     margin-right: 10px;
     flex-shrink: 0;
     justify-self: center;
-  }
+}
 
 input[type="checkbox"]:hover {
     border-color: var(--iia-vibrant-green);
     background-color: var(--iia-fog-grey);
-  }
-  
+}
+
 
 input[type="checkbox"]:checked {
     background-color: var(--iia-vibrant-green);
     border-color: var(--iia-vibrant-green);
-  }
+}
 
 
-  summary {
+summary {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-  }
+}
 
 
 /* Text formatting */
@@ -65,7 +67,7 @@ input[type="checkbox"]:checked {
 .vote-now-link {
     background-color: var(--iia-urban-pink-alt);
     display: flex;
-    margin: 0 auto; 
+    margin: 0 auto;
     flex-direction: row;
     height: fit-content;
     width: 65vw;
@@ -122,19 +124,19 @@ input[type="checkbox"]:checked {
     left: 0;
     width: 100%;
     color: var(--iia-vibrant-green);
-    box-shadow: 0 0 0.325em rgba(0,0,0,0.1);
+    box-shadow: 0 0 0.325em rgba(0, 0, 0, 0.1);
 }
 
 .proposal-card-top {
     display: flex;
     flex-direction: row;
-  }
+}
 
-.proposal-card-top-left > .proposal-checkbox {
+.proposal-card-top-left>.proposal-checkbox {
     width: 100%;
     height: 100%;
     border-radius: 1rem;
-  }
+}
 
 .proposal-checkbox:disabled {
     cursor: not-allowed;
@@ -157,44 +159,44 @@ input[type="checkbox"]:checked {
 }
 
 
-summary.ballot-banner-verified-summary:after{
+summary.ballot-banner-verified-summary:after {
     content: "\002B";
     display: inline-block;
     text-align: center;
     text-justify: center;
     font-size: 1.5rem;
     transition: transform 0.3s ease;
-  }
+}
 
 details[open] summary.ballot-banner-verified-summary {
     padding-bottom: 1rem;
 }
 
-details[open] summary.ballot-banner-verified-summary:after{
+details[open] summary.ballot-banner-verified-summary:after {
     transform: rotate(45deg);
-  }
+}
 
-.no-proposal-selections { /* lock the banner expansion when no proposals are selected */
+.no-proposal-selections {
+    /* lock the banner expansion when no proposals are selected */
     pointer-events: none;
 }
 
-summary.ballot-banner-verified-summary.no-proposal-selections:after{
+summary.ballot-banner-verified-summary.no-proposal-selections:after {
     content: none;
-  }
+}
 
-details[open] summary.ballot-banner-verified-summary.no-proposal-selections:after{
+details[open] summary.ballot-banner-verified-summary.no-proposal-selections:after {
     content: none;
-  }
+}
 
 .selected-proposals {
     padding: 0;
     margin: 0;
 }
 
-.selected-proposal{
+.selected-proposal {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 0.25rem;
+    grid-template-columns: 5fr 1fr;
     position: relative;
     text-align: center;
     cursor: pointer;
@@ -205,6 +207,22 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     background: var(--iia-vibrant-green);
     padding: 0.5rem;
     border-radius: 0.5rem;
+}
+
+.selected-proposal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 100%;
+    overflow: hidden;
+}
+
+.selected-proposal-remove {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-left: 1px solid var(--iia-dark-blue);
 }
 
 .selected-proposal-title {
@@ -221,14 +239,11 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     font-weight: 400;
 }
 
-.selected-proposal:after {
+.selected-proposal-remove:after {
     content: "\00D7";
     position: absolute;
-    right: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 2.5rem;
 }
 
 .proposal-container {
@@ -250,16 +265,16 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 
-.proposal-card:has(input[type="checkbox"]:checked){
+.proposal-card:has(input[type="checkbox"]:checked) {
     border: 4px solid var(--iia-vibrant-green);
-  }
+}
 
 .proposal-card-top-left {
     display: inline-flex;
     width: 2rem;
     height: 1rem;
     align-content: center;
-  }
+}
 
 .proposal-title {
     font-weight: 600;
@@ -282,28 +297,28 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     border-radius: 8px;
 }
 
-/* Auth page */ 
+/* Auth page */
 .voter-attestation-list {
     list-style-type: disc;
     padding: 0.5rem;
-  }
-  
-  .voter-attestation-list li {
-    margin-bottom: 10px;
-  }
+}
 
-  .voter-attestation-list li > label {
+.voter-attestation-list li {
+    margin-bottom: 10px;
+}
+
+.voter-attestation-list li>label {
     align-items: top;
-  }
-  
-  #voter-name-input {
+}
+
+#voter-name-input {
     width: 60%;
     border: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
-  }
+}
 
-  #verify-button {
+#verify-button {
     background-color: var(--iia-vibrant-green);
     color: white;
     border: none;
@@ -311,9 +326,9 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+}
 
-  #unverify-button {
+#unverify-button {
     background-color: var(--iia-urban-pink-alt);
     color: white;
     border: none;
@@ -321,7 +336,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+}
 
 /* FAQ page */
 .faq-section {
@@ -350,13 +365,12 @@ summary.faq-question {
     background: var(--iia-fog-grey);
 }
 
-summary.faq-question:after{
+summary.faq-question:after {
     content: "\002B";
     display: inline-block;
     transition: transform 0.3s ease;
-  }
+}
 
-details[open] summary.faq-question:after{
+details[open] summary.faq-question:after {
     transform: rotate(45deg);
-  }
-  
+}
