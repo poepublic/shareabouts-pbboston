@@ -15,11 +15,11 @@
     {{else}}
     {{/if}}
         <label for="checkbox-{{slug}}">
-          <div class="proposal-card">
+          <div class="proposal-card" id="proposal-card-{{slug}}">
             <div class="proposal-card-top">
               {{#if ../verified}}
               <h3 class="proposal-title">
-                <span class = "proposal-card-top-left"><input type="checkbox" id="checkbox-{{slug}}" class="proposal-checkbox" value="{{title}}" data-amount="{{currency amount}}"></span>
+                <span class = "proposal-card-top-left"><input type="checkbox" id="checkbox-{{slug}}" class="proposal-checkbox" value="{{title}}" data-amount="{{currency amount}}" data-slug="{{slug}}"></span>
                 {{title}}
               </h3>
               {{else}}

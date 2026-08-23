@@ -3,7 +3,7 @@ const MAX_SELECTIONS = Shareabouts.config.ballot.max_selections;
 export const BallotView = Backbone.View.extend({
     events: {
       'change .proposal-checkbox': 'updateSelectionCount',
-      'click .selected-proposal': 'removeSelection',
+      'click .selected-proposal': 'scrollToProposal',
     },
 
     getTemplateContext: function(count, remaining) {
@@ -43,15 +43,24 @@ export const BallotView = Backbone.View.extend({
         this.$('.ballot-banner-verified-summary').removeClass('no-proposal-selections');
 
         const selected = this.$('.proposal-checkbox:checked').map(function() {
-          return { title: $(this).val(), amount: $(this).data('amount') };
+          return { title: $(this).val(), amount: $(this).data('amount'), slug: $(this).data('slug')};
         }
         ).get();
 
         selected.forEach(function(proposal) {
-          $list.append(`<li class="selected-proposal" data-title="${proposal.title}"><span class="selected-proposal-title">${proposal.title}</span><span class="selected-proposal-amount">${proposal.amount}</span></li>`);
+          $list.append(`<li class="selected-proposal" data-title="${proposal.title}"  data-slug="${proposal.slug}"><span class="selected-proposal-title">${proposal.title}</span><span class="selected-proposal-amount">${proposal.amount}</span></li>`);
         });
       }
 
+    },
+
+    scrollToProposal: function(evt) {
+      const details = document.querySelector('.ballot-banner-details');
+      details.open = false;
+
+      const slug = $(evt.currentTarget).data('slug');
+      const card = document.getElementById("proposal-card-" + slug);
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     },
 
     removeSelection: function(evt) {

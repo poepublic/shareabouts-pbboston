@@ -16,7 +16,7 @@
 <!-- 5 proposals selected -->
 {{else if ballotFull}}
 <div id="ballot-banner-verified">
-    <details>
+    <details class="ballot-banner-details">
         <summary class="ballot-banner-verified-summary">
             <div id="ballot-banner-verified-contents">
                 <span id="ballot-banner-count" class="bigger-text">{{#_}}{{MAX_SELECTIONS}} proposals selected{{/_}}</span>
@@ -31,7 +31,7 @@
 <!-- 1-4 proposals selected -->
 {{else}}
 <div id="ballot-banner-verified">
-    <details>
+    <details class="ballot-banner-details">
         <summary class="ballot-banner-verified-summary">
             <div id="ballot-banner-verified-contents">
                 <span id="ballot-banner-count" class="bigger-text">{{#_}}{{count}} proposal(s) selected{{/_}}</span>
