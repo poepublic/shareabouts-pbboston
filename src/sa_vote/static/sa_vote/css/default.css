@@ -101,14 +101,14 @@ summary {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background-color: var(--iia-urban-pink);
     padding: 20px;
     text-align: center;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: var(--iia-dark-blue);
+    background: var(--iia-urban-pink);
+    color: white;
 }
 
 #ballot-banner-verified {
