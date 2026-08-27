@@ -265,6 +265,9 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 
+.proposal-title, .proposal-description {
+    color: var(--iia-dark-blue);
+}
 .proposal-card:has(input[type="checkbox"]:checked) {
     border: 4px solid var(--iia-vibrant-green);
 }
