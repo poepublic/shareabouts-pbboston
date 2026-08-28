@@ -36,6 +36,10 @@ input[type="checkbox"] {
     justify-self: center;
 }
 
+label {
+    color: var(--iia-dark-blue);
+}
+
 input[type="checkbox"]:hover {
     border-color: var(--iia-vibrant-green);
     background-color: var(--iia-fog-grey);
