@@ -19,7 +19,7 @@ export const AuthView = Backbone.View.extend({
     },
 
     unverify: function() {
-      fetch('http://localhost:8000/vote/unverify').then(
+      fetch('/vote/unverify').then(
         // reload auth page
         () => {
           window.location.reload()

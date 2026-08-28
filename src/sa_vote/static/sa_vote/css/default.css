@@ -312,6 +312,20 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     border-radius: 8px;
 }
 
+.vote-confirm-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#vote-confirm-cancel {
+    color: var(--iia-electric-purple);
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+}
+
 /* Auth page */
 .voter-attestation-list {
     list-style-type: disc;
@@ -461,4 +475,37 @@ summary.survey-select-input,
 .survey-race-options > li > label {
     font-weight: normal;
     text-transform: capitalize;
+}
+
+.vote-confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.vote-confirm-modal {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    max-width: 400px;
+    width: 90%;
+}
+
+.vote-confirm-list {
+    margin: 1rem 0;
+    padding-left: 1.25rem;
+}
+
+.vote-confirm-modal .button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.75rem;
 }

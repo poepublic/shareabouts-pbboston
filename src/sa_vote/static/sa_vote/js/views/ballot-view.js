@@ -5,6 +5,8 @@ export const BallotView = Backbone.View.extend({
     'change .proposal-checkbox': 'updateBannerSummary',
     'click .selected-proposal-info': 'scrollToProposal',
     'click .selected-proposal-remove': 'removeSelection',
+    'click #submit-ballot': 'openVoteConfirmModal',
+    'click #vote-confirm-cancel': 'closeVoteConfirmModal',
   },
 
   getBannerSummaryContext: function (count, remaining) {
@@ -85,6 +87,19 @@ export const BallotView = Backbone.View.extend({
     const slug = $(evt.currentTarget).data('slug');
     this.$(`.proposal-checkbox[data-slug="${slug}"]`).prop('checked', false);
     this.updateBannerSummary();
+  },
+
+  openVoteConfirmModal: function () {
+    const selected = this.$('.proposal-checkbox:checked').map(function () {
+      return { title: $(this).val() };
+    }).get();
+
+    const modalTemplate = Handlebars.templates['sa_vote/includes/vote-confirm-modal'];
+    this.$el.append(modalTemplate({ proposals: selected }));
+  },
+
+  closeVoteConfirmModal: function () {
+    this.$('#vote-confirm-overlay').remove();
   },
 
 });
