@@ -122,6 +122,8 @@ def index(request, frontend_path=None):
     path_prefix = settings.BASE_URL
 
     context = {'config': request.shareabouts_config,
+               
+               'ballot_config': ballot_config,
 
                'route_prefix': path_prefix + '/vote',
                'api_prefix': path_prefix + '/api',
