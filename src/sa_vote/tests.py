@@ -1,5 +1,6 @@
 import json
 from hashlib import sha256
+from unittest.mock import MagicMock, patch
 
 from django.http import Http404
 from django.test import Client, override_settings, RequestFactory, SimpleTestCase
@@ -173,4 +174,348 @@ class VerifyCodeTestIntegrationTests(SimpleTestCase):
     def test_verify_code_stub_via_url(self):
         client = Client()
         response = client.get('/vote/verify-code')
+        self.assertEqual(response.status_code, 501)
+
+
+class ShareaboutsApiTests(SimpleTestCase):
+    """Unit tests for the ShareaboutsApi client extensions."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_missing_request_and_sessioninfo_raises_value_error(self):
+        from sa_util.api import ShareaboutsApi
+        with self.assertRaises(ValueError):
+            ShareaboutsApi(dataset_root='http://example.com/owner/datasets/test/')
+
+    def test_api_key_header_attached_to_session(self):
+        from sa_util.api import ShareaboutsApi
+        api = ShareaboutsApi(dataset_root='http://example.com/owner/datasets/test/', sessioninfo={}, api_key='test-key-123')
+        self.assertEqual(api.session.headers.get('X-Shareabouts-Key'), 'test-key-123')
+
+    @patch('requests.Session.get')
+    def test_get_returns_json_on_200(self, mock_get):
+        from sa_util.api import ShareaboutsApi
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = {'key': 'value'}
+
+        api = ShareaboutsApi(dataset_root='http://example.com/owner/datasets/test/', sessioninfo={})
+        result = api.get('test-resource')
+        self.assertEqual(result, {'key': 'value'})
+
+    @patch('requests.Session.get')
+    def test_get_returns_default_on_404(self, mock_get):
+        from sa_util.api import ShareaboutsApi
+        mock_get.return_value.status_code = 404
+
+        api = ShareaboutsApi(dataset_root='http://example.com/owner/datasets/test/', sessioninfo={})
+        result = api.get('missing-resource', default=None)
+        self.assertIsNone(result)
+
+    @patch('requests.Session.post')
+    def test_create_returns_json_on_201(self, mock_post):
+        from sa_util.api import ShareaboutsApi
+        mock_post.return_value.status_code = 201
+        mock_post.return_value.content = b'{"id": 1}'
+        mock_post.return_value.json.return_value = {'id': 1}
+
+        api = ShareaboutsApi(dataset_root='http://example.com/owner/datasets/test/', sessioninfo={})
+        result = api.create('places/1/ballots', json={'data': 'test'})
+        self.assertEqual(result, {'id': 1})
+
+    @patch('requests.Session.post')
+    def test_create_sets_silent_header_when_true(self, mock_post):
+        from sa_util.api import ShareaboutsApi
+        mock_post.return_value.status_code = 204
+        mock_post.return_value.content = b''
+        api = ShareaboutsApi(dataset_root='http://example.com/owner/datasets/test/', sessioninfo={})
+        result = api.create('places/1/ballots', json={'data': 'test'}, silent=True)
+
+        mock_post.assert_called_once()
+        _, kwargs = mock_post.call_args
+        self.assertEqual(kwargs.get('headers', {}).get('X-Shareabouts-Silent'), 'true')
+        self.assertIsNone(result)
+
+
+class BallotFromConfigTests(SimpleTestCase):
+    """Unit tests for Ballot.from_config and slugs property."""
+
+    def test_ballot_from_config_loads_proposals_and_slugs(self):
+        from sa_vote.ballots import Ballot
+        from sa_util.config import get_shareabouts_config
+        config = get_shareabouts_config()
+        ballot = Ballot.from_config(config)
+        self.assertIn('immigration-legal-defense', ballot.slugs)
+        self.assertIn('neighborhood-fresh-food', ballot.slugs)
+
+
+class SubmitBallotTests(SimpleTestCase):
+    """Unit and functional tests for the /vote/api/submit-ballot endpoint."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.valid_payload = {'proposals': ['immigration-legal-defense']}
+
+    def test_get_request_returns_405(self):
+        from sa_vote.views import submit_ballot
+        request = self.factory.get('/vote/api/submit-ballot')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_ballot(request)
+        self.assertEqual(response.status_code, 405)
+
+    def test_unverified_session_returns_403(self):
+        from sa_vote.views import submit_ballot
+        request = self.factory.post(
+            '/vote/api/submit-ballot',
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
+        )
+        request.session = {}
+        response = submit_ballot(request)
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_invalid_json_returns_400(self):
+        from sa_vote.views import submit_ballot
+        request = self.factory.post(
+            '/vote/api/submit-ballot',
+            data='not valid json',
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_ballot(request)
         self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_empty_proposals_returns_400(self):
+        from sa_vote.views import submit_ballot
+        request = self.factory.post(
+            '/vote/api/submit-ballot',
+            data=json.dumps({'proposals': []}),
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_ballot(request)
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_more_than_five_proposals_returns_400(self):
+        from sa_vote.views import submit_ballot
+        request = self.factory.post(
+            '/vote/api/submit-ballot',
+            data=json.dumps({'proposals': ['p1', 'p2', 'p3', 'p4', 'p5', 'p6']}),
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_ballot(request)
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_duplicate_proposals_in_payload_returns_400(self):
+        from sa_vote.views import submit_ballot
+        request = self.factory.post(
+            '/vote/api/submit-ballot',
+            data=json.dumps({'proposals': ['immigration-legal-defense', 'immigration-legal-defense']}),
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_ballot(request)
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_invalid_proposal_slug_returns_400(self):
+        from sa_vote.views import submit_ballot
+        request = self.factory.post(
+            '/vote/api/submit-ballot',
+            data=json.dumps({'proposals': ['invalid-slug-xyz']}),
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_ballot(request)
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_duplicate_ballot_upstream_returns_409(self, mock_get):
+        from sa_vote.views import submit_ballot
+        mock_get.return_value = {
+            'length': 1,
+            'results': [{'id': 100, 'id_hash': 'test_hash'}]
+        }
+
+        request = self.factory.post(
+            '/vote/api/submit-ballot',
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_ballot(request)
+        self.assertEqual(response.status_code, 409)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    @patch('sa_util.api.ShareaboutsApi.create')
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_successful_ballot_submission_returns_201_and_preserves_session(self, mock_get, mock_create):
+        from sa_vote.views import submit_ballot
+        mock_get.return_value = {'length': 0, 'results': []}
+        mock_create.return_value = {'id': 1}
+
+        request = self.factory.post(
+            '/vote/api/submit-ballot',
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_ballot(request)
+
+        self.assertEqual(response.status_code, 201)
+        data = json.loads(response.content)
+        self.assertEqual(data.get('status'), 'success')
+
+        # Verify session is still intact for survey
+        self.assertTrue(request.session.get('voter_verified'))
+        self.assertEqual(request.session.get('voter_id_hash'), 'test_hash')
+
+        # Verify payload sent to create
+        mock_create.assert_called_once()
+        args, kwargs = mock_create.call_args
+        sent_payload = kwargs.get('json')
+        self.assertEqual(sent_payload['id_hash'], 'test_hash')
+        self.assertEqual(sent_payload['anonymous_proposals'], ['immigration-legal-defense'])
+        self.assertIn('lang', sent_payload)
+
+
+class SubmitSurveyTests(SimpleTestCase):
+    """Unit and functional tests for the /vote/api/submit-survey endpoint."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.valid_payload = {'age': 30, 'neighborhood': 'Dorchester', 'anonymous_income': '50k-75k'}
+
+    def test_get_request_returns_405(self):
+        from sa_vote.views import submit_survey
+        request = self.factory.get('/vote/api/submit-survey')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_survey(request)
+        self.assertEqual(response.status_code, 405)
+
+    def test_unverified_session_returns_403(self):
+        from sa_vote.views import submit_survey
+        request = self.factory.post(
+            '/vote/api/submit-survey',
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
+        )
+        request.session = {}
+        response = submit_survey(request)
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_invalid_json_returns_400(self):
+        from sa_vote.views import submit_survey
+        request = self.factory.post(
+            '/vote/api/submit-survey',
+            data='not valid json',
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_survey(request)
+        self.assertEqual(response.status_code, 400)
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_duplicate_survey_upstream_returns_409(self, mock_get):
+        from sa_vote.views import submit_survey
+        mock_get.return_value = {
+            'length': 1,
+            'results': [{'id': 200, 'id_hash': 'test_hash'}]
+        }
+
+        request = self.factory.post(
+            '/vote/api/submit-survey',
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_survey(request)
+        self.assertEqual(response.status_code, 409)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    @patch('sa_util.api.ShareaboutsApi.create')
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_successful_survey_submission_transforms_keys_and_invalidates_session(self, mock_get, mock_create):
+        from sa_vote.views import submit_survey
+        mock_get.return_value = {'length': 0, 'results': []}
+        mock_create.return_value = {'id': 2}
+
+        request = self.factory.post(
+            '/vote/api/submit-survey',
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
+        )
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = submit_survey(request)
+
+        self.assertEqual(response.status_code, 201)
+        data = json.loads(response.content)
+        self.assertEqual(data.get('status'), 'success')
+
+        # Verify session is invalidated
+        self.assertNotIn('voter_verified', request.session)
+        self.assertNotIn('voter_id_hash', request.session)
+
+        # Verify payload sent to create
+        mock_create.assert_called_once()
+        args, kwargs = mock_create.call_args
+        sent_payload = kwargs.get('json')
+        self.assertEqual(sent_payload['id_hash'], 'test_hash')
+        self.assertEqual(sent_payload['anonymous_age'], 30)
+        self.assertEqual(sent_payload['anonymous_neighborhood'], 'Dorchester')
+        self.assertEqual(sent_payload['anonymous_income'], '50k-75k')
+        self.assertIn('lang', sent_payload)
+
+
+@override_settings(DEBUG=True)
+class SubmitIntegrationTests(SimpleTestCase):
+    """Integration tests via Django test client testing URL routing and end-to-end flows."""
+
+    @patch('sa_util.api.ShareaboutsApi.create')
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_full_ballot_and_survey_flow_via_client(self, mock_get, mock_create):
+        mock_get.return_value = {'length': 0, 'results': []}
+        mock_create.return_value = {'id': 1}
+
+        client = Client()
+        # Verify code first using verify-code-test
+        v_res = client.get('/vote/verify-code-test', {'code': '123456'})
+        self.assertEqual(v_res.status_code, 204)
+        self.assertTrue(client.session.get('voter_verified'))
+
+        # Submit ballot
+        b_res = client.post(
+            '/vote/api/submit-ballot',
+            data=json.dumps({'proposals': ['immigration-legal-defense']}),
+            content_type='application/json'
+        )
+        self.assertEqual(b_res.status_code, 201)
+        self.assertTrue(client.session.get('voter_verified'))
+
+        # Submit survey
+        s_res = client.post(
+            '/vote/api/submit-survey',
+            data=json.dumps({'age': 25, 'ethnicity': ['Asian']}),
+            content_type='application/json'
+        )
+        self.assertEqual(s_res.status_code, 201)
+
+        # Verified session is now cleared
+        self.assertIsNone(client.session.get('voter_verified'))
+        self.assertIsNone(client.session.get('voter_id_hash'))

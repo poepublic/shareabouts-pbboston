@@ -20,6 +20,8 @@ SHAREABOUTS = {
     'DATASET_ROOT': 'http://data.shareabouts.org/api/v2/demo-user/'
                     'datasets/demo-data/',
     'DATASET_KEY': 'NTNhODE3Y2IzODlmZGZjMWU4NmU3NDhj',
+    'BALLOTBOX_ID': '123456',
+    'BALLOTBOX_KEY': 'NjQ4YjAxZDlmZjUwOGQzMWNkZDYwNmE1',
 }
 
 # For geocoding...
