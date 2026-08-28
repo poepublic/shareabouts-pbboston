@@ -15,7 +15,11 @@
     submissionType: 'ballots'
   });
 
-  // Fetch all pages from the API
+  // Fetch all pages from the API (NOTE: you don't have to pass any options to
+  // fetchAllPages, but it can be useful for things like showing loading
+  // progress; the `pageSuccess` callback is called after each page is
+  // successfully fetched, and the `success` callback is called after all pages
+  // have been fetched.)
   ballotsCollection.fetchAllPages({
     pageSuccess: (page) => console.log(`Fetched ${page.length} ballots...`),
     success: () => console.log('All non-anonymous data for ballots loaded! Total:', ballotsCollection.length)
