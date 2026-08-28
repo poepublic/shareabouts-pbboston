@@ -17,7 +17,7 @@ const MOCK_BALLOT = { // to do: replace with ballot info in md files
     { slug: 'traffic-calming-measures', title: 'Traffic Calming Measures', image_alt: 'Speed bumps on a residential street', amount: 250000, description: 'Implement traffic calming measures such as speed bumps, curb extensions, and pedestrian islands to improve safety in residential areas.' },
     { slug: 'enhance-recycling', title: 'Enhanced Recycling Program', image_alt: 'Recycling bins in a public area', amount: 100000, description: 'Expand recycling services to include more materials and provide educational programs to encourage community participation.' },
     { slug: 'expand-public-wifi', title: 'Public Wi-Fi Expansion', image_alt: 'People using laptops in a public park', amount: 150000, description: 'Install public Wi-Fi hotspots in parks and community centers to improve internet access for residents.' },
-  ].map(function(proposal) {
+  ].map(function (proposal) {
     return Object.assign({}, proposal, {
       image: Shareabouts.bootstrapped.staticUrl + 'css/images/mock-ballot-images/' + proposal.slug + '.jpg',
     });
@@ -60,17 +60,19 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   handleInternalLinkClick: function (evt) {
-  // Intercept internal link clicks and route them through Backbone navigate method
-  if (evt.altKey || evt.ctrlKey || evt.metaKey || evt.shiftKey) return;
-  
+    // Intercept internal link clicks and route them through Backbone navigate method
+    if (evt.altKey || evt.ctrlKey || evt.metaKey || evt.shiftKey) return;
+
     evt.preventDefault();
-  
+
     var href = $(evt.currentTarget).attr('href'),
-    fragment = href.replace(Shareabouts.bootstrapped.routePrefix, '').replace(/^\//, '');
-  
-  this.router.navigate(fragment, { trigger: true });
-    },
-  showHome: function () {
+      fragment = href.replace(Shareabouts.bootstrapped.routePrefix, '').replace(/^\//, '');
+
+    this.router.navigate(fragment, { trigger: true });
+  },
+
+
+  _replaceCurrentView: function (view) {
     if (this.currentView) {
       this.currentView.remove();
     }
@@ -83,24 +85,14 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showBallot: function () {
-    if (this.currentView) {
-      this.currentView.remove();
-    }
-
-    this.currentView = new BallotView({ballot: MOCK_BALLOT}).render();
-    this.el.append(this.currentView.el);
+    this._replaceCurrentView(new BallotView({ ballot: MOCK_BALLOT, verified: verified }));
   },
 
   showFaq: function () {
-    this._replaceCurrentView(new FaqView({faqs: FAQs}));
+    this._replaceCurrentView(new FaqView({ faqs: FAQs }));
   },
 
   showAuth: function () {
-    if (this.currentView) {
-      this.currentView.remove();
-    } 
-
-    this.currentView = new AuthView().render();
-    this.el.append(this.currentView.el);
+    this._replaceCurrentView(new AuthView({ verified: verified }));
   },
 });
