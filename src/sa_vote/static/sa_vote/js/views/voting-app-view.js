@@ -94,7 +94,7 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showAuth: function () {
-    this._replaceCurrentView(new AuthView({ verified: verified }));
+    this._replaceCurrentView(new AuthView({ verified: verified, neighborhoods: Shareabouts.bootstrapped.neighborhoods.features }));
   },
 
   showSurvey: function () {
