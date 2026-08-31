@@ -460,7 +460,6 @@ details[open] summary.faq-question:after {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
     padding: 0;
     margin: 0.5rem 0;
 }
