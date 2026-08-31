@@ -1,6 +1,6 @@
 export const SurveyView = Backbone.View.extend({
     events: {
-      'click #submit-survey': 'submitSurvey',
+      'submit #survey-form': 'submitSurvey',
     },
 
     render: function() {
@@ -10,6 +10,7 @@ export const SurveyView = Backbone.View.extend({
 
     submitSurvey: function(evt) {
       evt.preventDefault();
+
       fetch('/vote/unverify').then(
         () => {
           window.location.href = '/vote';

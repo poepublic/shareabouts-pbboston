@@ -17,7 +17,7 @@
 
             <fieldset class="survey-question">
                 <label class="regular-prompt">{{#_}}What is your age (in years)?{{/_}}</label>
-                <input type="number" id="survey-age-input" class="survey-number-input" name="age">
+                <input type="number" id="survey-age-input" class="survey-number-input" name="age" min="11" max="120">
             </fieldset>
 
             <fieldset class="survey-question">
@@ -123,8 +123,8 @@
             your answers to the questions above.{{/_}}</p>
 
         <label for="newsletter-email-input">{{#_}}Your email address:{{/_}}</label>
-        <input type="email" id="newsletter-email-input" class="survey-text-input" name="newsletter-email">
+        <input type="email" id="newsletter-email-input" class="survey-text-input" name="newsletter-email" form="survey-form">
     </div>
-    <a class="ballot-vote-button btn btn-primary" id="submit-survey" href="/vote">{{#_}}Submit{{/_}}</a>
+    <button type="submit" form="survey-form" class="ballot-vote-button btn btn-primary" id="submit-survey">{{#_}}Submit{{/_}}</button>
     <img class="success-background" src="/static/css/images/iia-background-vertical.png">
 </div>
