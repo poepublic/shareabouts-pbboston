@@ -90,6 +90,10 @@ summary {
     margin: 0;
 }
 
+.vote-link img {
+    width: 60px;
+}
+
 .vote-link:hover {
     background-color: var(--iia-electric-purple-alt) !important;
 }
