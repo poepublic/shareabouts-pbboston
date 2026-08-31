@@ -154,7 +154,7 @@
       
       ballot: {{ ballot_json | safe }},
       voterIdHash: {{ request.session.voter_id_hash | as_json }},
-      voterVerified: {{ request.session.voter_verified | as_json }},
+      voterVerified: {{ request.session.voter_verified | default: False | as_json }},
     };
 
     function bootstrapCurrentUser(data) {

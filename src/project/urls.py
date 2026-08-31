@@ -28,7 +28,7 @@ urlpatterns = staticfiles_urlpatterns() + [
     path(base_path + '', include('sa_web.urls')),
 ]
 
-if settings.SHAREABOUTS['DATASET_ROOT'].startswith('/'):
+if settings.SHAREABOUTS.get('DATASET_ROOT', '').startswith('/'):
     urlpatterns = [
         path(base_path + 'full-api/', include('sa_api_v2.urls')),
     ] + urlpatterns
