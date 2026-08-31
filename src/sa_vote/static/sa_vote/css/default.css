@@ -54,7 +54,7 @@ input[type="checkbox"]:checked {
 }
 
 /* Welcome page */
-.read-ballot-link {
+.vote-link {
     background-color: var(--iia-urban-pink-alt);
     display: flex;
     margin: 0 auto; 
@@ -67,14 +67,18 @@ input[type="checkbox"]:checked {
     gap: 1rem;
 }
 
-.read-ballot-link p {
+.vote-link img {
+    width: 60px;
+}
+
+.vote-link p {
     color: white;
     font-size: 1.5rem;
     font-weight: 500;
     margin: 0;
 }
 
-.read-ballot-link:hover {
+.vote-link:hover {
     background-color: var(--iia-electric-purple-alt) !important;
 }
 
