@@ -376,8 +376,8 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 .auth-header-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    justify-items: center;
+    align-items: center;
     text-align: center;
 }
 
