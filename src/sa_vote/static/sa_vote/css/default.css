@@ -81,7 +81,7 @@ summary {
 .home-header {
     margin-left: 1rem;
 }
-.vote-now-link {
+.vote-link {
     background-color: var(--iia-urban-pink-alt);
     display: flex;
     margin: 0 auto;
@@ -94,7 +94,7 @@ summary {
     gap: 1.5rem;
 }
 
-.vote-now-link p {
+.vote-link p {
     color: white;
     font-size: 2rem;
     font-weight: 550;
@@ -103,7 +103,11 @@ summary {
     margin: 0;
 }
 
-.vote-now-link:hover {
+.vote-link img {
+    width: 60px;
+}
+
+.vote-link:hover {
     background-color: var(--iia-electric-purple-alt) !important;
 }
 
