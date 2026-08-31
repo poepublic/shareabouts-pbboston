@@ -1,12 +1,13 @@
 <div id="vote-confirm-overlay" class="vote-confirm-overlay">
   <div id="vote-confirm-modal" class="vote-confirm-modal">
-    <h2>{{#_}}Confirm your choices{{/_}}</h2>
+    <h2 class="vote-confirm-message">{{#_}}Your selections:{{/_}}</h2>
     <ul class="vote-confirm-list">
       {{#each proposals}}
       <li>{{title}}</li>
       {{/each}}
     </ul>
+    <h2 class="vote-confirm-message">{{#_}}Ready to vote?{{/_}}</h2>
     <a class="btn btn-primary" id="vote-confirm-button" href="/vote/success">{{#_}}Confirm{{/_}}</a>
-    <button id="vote-confirm-cancel">{{#_}}Bring me back to the ballot{{/_}}</button>
+    <button id="vote-confirm-cancel">{{#_}}Take me back to the ballot{{/_}}</button>
   </div>
 </div>

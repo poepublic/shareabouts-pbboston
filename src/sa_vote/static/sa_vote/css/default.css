@@ -38,7 +38,9 @@ input[type="checkbox"] {
 }
 
 label {
+    display: block;
     color: var(--iia-dark-blue);
+    margin-bottom: 0.5rem;
 }
 
 input[type="checkbox"]:hover {
@@ -52,6 +54,9 @@ input[type="checkbox"]:checked {
     border-color: var(--iia-vibrant-green);
 }
 
+.btn, .btn-primary {
+    border-radius: 1rem !important;
+}
 
 summary {
     display: flex;
@@ -312,6 +317,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     border-radius: 8px;
 }
 
+/* Vote confirm modal */
 .vote-confirm-modal {
     display: flex;
     flex-direction: column;
@@ -324,6 +330,50 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     -webkit-appearance: none;
     border: none;
     background: none;
+}
+
+
+.vote-confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.vote-confirm-modal {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    max-width: 400px;
+    width: 90%;
+}
+
+.vote-confirm-list {
+    list-style-type:decimal;
+    margin: 1rem 0;
+    padding-left: 1.25rem;
+}
+
+.vote-confirm-modal .button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.75rem;
+}
+
+.vote-confirm-message {
+    text-transform: none;
+    margin-top: 0.5rem;
+}
+
+#vote-confirm-button {
+    margin: 1rem;
 }
 
 /* Auth page */
@@ -424,7 +474,7 @@ details[open] summary.faq-question:after {
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    gap: 5rem;
+    gap: 2rem;
     background-image: url(/static/css/images/iia-background-repeat.png);
     background-repeat: repeat;
     background-size: 100% auto;
@@ -469,43 +519,11 @@ summary.survey-select-input,
 }
 
 .survey-race-options > li {
-    padding: 0;
+    padding-left: 0.5rem;
 }
 
 .survey-race-options > li > label {
     font-weight: normal;
     text-transform: capitalize;
-}
-
-.vote-confirm-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.vote-confirm-modal {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    max-width: 400px;
-    width: 90%;
-}
-
-.vote-confirm-list {
-    margin: 1rem 0;
-    padding-left: 1.25rem;
-}
-
-.vote-confirm-modal .button {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
 }
