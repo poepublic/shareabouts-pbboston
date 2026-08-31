@@ -346,7 +346,6 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     background: none;
 }
 
-
 .vote-confirm-overlay {
     position: fixed;
     top: 0;
@@ -379,27 +378,61 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 
 
 /* Auth page */
-.voter-attestation-list {
-    list-style-type: disc;
-    padding: 0.5rem;
+#auth-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-content: center;
 }
 
+.auth-header-container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.auth-bottom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+#auth-page img {
+    width: 85px;
+    padding-bottom: 1rem;
+    margin: 0;
+}
+
+.voter-attestation-list {
+    list-style-type: decimal;
+}
+
+.voter-attestation-label {
+    margin: 0;
+    padding: 0;
+}
 .voter-attestation-list li {
-    margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .voter-attestation-list li>label {
     align-items: top;
 }
 
-#voter-name-input {
-    width: 60%;
+#voter-neighborhood-input {
+    width: 90%;
     border: none;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 1rem;
+    
 }
 
-#verify-button {
+#verify-button, #unverify-button {
     background-color: var(--iia-vibrant-green);
     color: white;
     border: none;
@@ -407,6 +440,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 0.5rem;
 }
 
 #unverify-button {

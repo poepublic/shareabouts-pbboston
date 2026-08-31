@@ -1,41 +1,50 @@
 <div id="auth-page" class="auth-page">
     {{# if verified}}
-        <h1>{{#_}}You're all set to vote!{{/_}}</h1>
-        <p>{{#_}}<a href="/vote/ballot" data-internal="true">Vote now</a>.{{/_}}</p>
+    <h1>{{#_}}You're all set to vote!{{/_}}</h1>
+    <p>{{#_}}<a href="/vote/ballot" data-internal="true">Vote now</a>.{{/_}}</p>
 
-        <button id="unverify-button" class="button button-primary">{{#_}}Un-verify me{{/_}}</button>
+    <button id="unverify-button" class="button button-primary">{{#_}}Un-verify me{{/_}}</button>
     {{else}}
 
-    <h1>{{#_}}Register to vote today!{{/_}}</h1>
+    <div class="auth-header-container">
+        <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
+        <h1>{{#_}}Sign up to vote!{{/_}}</h1>
+    </div>
 
-    <span class="secondary-emphasis">{{#_}}To vote in the 2026 cycle, please confirm the following:{{/_}}</span>
+    <div class="auth-attestation-container">
+        <span class="secondary-emphasis">{{#_}}To vote in the 2026 cycle, please confirm the following:{{/_}}</span>
 
-    <ul class="voter-attestation-list">
-        <li>
-            {{#_}}I live in the City of Boston{{/_}}
-        </li>
-        <li>
-            {{#_}}I am at least 11 years old or in the 6th grade{{/_}}
-        </li>
-        <li>
-            {{#_}}I have not voted in this year's IIA cycle{{/_}}
-        </li>
-    </ul>
+        <ul class="voter-attestation-list">
+            <li>
+                {{#_}}I live in the City of Boston{{/_}}
+            </li>
+            <li>
+                {{#_}}I am at least 11 years old or in the 6th grade{{/_}}
+            </li>
+            <li>
+                {{#_}}I have not voted in this year's IIA cycle{{/_}}
+            </li>
+        </ul>
+        <label class="voter-attestation-label" for="voter-attestation-checkbox"><span><input type="checkbox"
+                    id="voter-attestation-checkbox" /></span>{{#_}}I confirm that I meet the requirements{{/_}}</label>
+    </div>
+    <div class="auth-neighborhood-entry-container">
+        <span class="secondary-emphasis">{{#_}}Select your neighborhood to continue:{{/_}}</span>
 
-    <input type="checkbox" id="voter-attestation-checkbox"/>
-    <label for="voter-attestation-checkbox">{{#_}}I confirm that I meet the above requirements{{/_}}</label>
+        <select id="voter-neighborhood-input">
+            {{#each neighborhoods}}
+            <option value="{{properties.name}}" translate="no">{{properties.name}}</option>
+            {{/each}}
+        </select>
+    </div>
 
-    <p class="secondary-emphasis">{{#_}}Select your neighborhood to continue:{{/_}}</p>
+    <div class="auth-bottom-container">
 
-    <select id="voter-neighborhood-input">
-        {{#each neighborhoods}}
-        <option value="{{properties.name}}" translate="no">{{properties.name}}</option>
-        {{/each}}
-    </select>
+        <button id="verify-button" class="button button-primary">{{#_}}Verify me{{/_}}</button>
 
-    <button id="verify-button" class="button button-primary">{{#_}}Verify me{{/_}}</button>
-
-    <p>{{#_}}Not eligible to vote but still curious about the ballots? Return to <a href="/vote/ballot" data-internal="true">ballot</a>{{/_}}</p>
+        <p>{{#_}}Not eligible to vote but still curious about the ballots? Return to <a href="/vote/ballot"
+                data-internal="true">ballot</a>{{/_}}</p>
+    </div>
 
     {{/if}}
-</div> 
+</div>
