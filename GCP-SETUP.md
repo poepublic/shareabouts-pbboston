@@ -28,3 +28,16 @@ gcloud run services update shareabouts-pbboston-staging --env-vars-file=<(cat .e
 # View vars
 gcloud run services describe shareabouts-pbboston-staging
 ```
+
+### VPC Access for Cloud Run (Deployment Command)
+
+To connect the PB Boston app to the Shareabouts API's Redis server (which lives in a private VPC network), you'll attach the Cloud Run service to the existing Serverless VPC Access connector that your API uses.
+
+If you're deploying via gcloud, you'll use the --vpc-connector flag:
+
+gcloud run deploy <pb-boston-service-name> \
+    --image <your-image> \
+    --vpc-connector <vpc_connector_id> \
+    --region <region>
+
+(You can get the exact <vpc_connector_id> from your Terraform outputs in ../shareabouts-api/infra/gcp/envs/prod/)
