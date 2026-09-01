@@ -395,7 +395,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 }
 
 .voter-attestation-list {
-    list-style-type: decimal;
+    list-style-type: disc;
 }
 
 .voter-attestation-label {
