@@ -85,6 +85,10 @@ export const BallotView = Backbone.View.extend({
     const slug = $(evt.currentTarget).data('slug');
     this.$(`.proposal-checkbox[data-slug="${slug}"]`).prop('checked', false);
     this.updateBannerSummary();
+
+    const details = document.querySelector('.ballot-banner-details');
+    const count = this.$('.proposal-checkbox:checked').length;
+    if (count > 0) {details.open = true}
   },
 
 });
