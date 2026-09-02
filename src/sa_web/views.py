@@ -4,9 +4,10 @@ import logging
 import os
 import time
 import hashlib
+import typing
 
 from sa_util.api import make_auth_root, make_resource_uri, ShareaboutsApi
-from sa_util.config import get_shareabouts_config
+from sa_util.config import _ShareaboutsConfig, get_shareabouts_config
 from pbboston.geodata import load_neighborhoods, load_city
 from django.shortcuts import render
 from django.conf import settings
@@ -99,6 +100,10 @@ def apply_language(viewfunc):
     return view_wrapper
 
 
+class HttpRequestWithConfig (HttpRequest):
+    shareabouts_config: _ShareaboutsConfig
+
+
 def process_shareabouts_config(viewfunc):
     """
     Decorator to load/process the Shareabouts config and cache it on the request
@@ -106,7 +111,7 @@ def process_shareabouts_config(viewfunc):
     """
     def view_wrapper(request, *args, **kwargs):
         request.shareabouts_config = get_shareabouts_config()
-        return viewfunc(request, *args, **kwargs)
+        return viewfunc(typing.cast(HttpRequestWithConfig, request), *args, **kwargs)
     return view_wrapper
 
 
