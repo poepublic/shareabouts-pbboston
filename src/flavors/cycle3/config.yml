@@ -969,6 +969,9 @@ support:
   action_text: supported
   anonymous_name: _(Someone)
 
+ballot:
+  voter_support_group: admin
+
 pages:
   - title: _(About)
     slug: about

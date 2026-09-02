@@ -1,7 +1,9 @@
 import json
+import os
 from hashlib import sha256
 from unittest.mock import MagicMock, patch
 
+from django.conf import settings
 from django.http import Http404
 from django.test import Client, override_settings, RequestFactory, SimpleTestCase
 
@@ -131,20 +133,334 @@ class UnverifyViewUnitTests(SimpleTestCase):
         self.assertEqual(response.status_code, 204)
 
 
+from django.core.cache import cache
+from django.contrib.auth.models import AnonymousUser
+
+
 class VerifyCodeUnitTests(SimpleTestCase):
-    """Tests for the verify_code endpoint."""
-    pass
+    """Tests for the verify_code endpoint using RequestFactory."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        cache.clear()
+
+    def test_non_post_returns_405(self):
+        from sa_vote.views import verify_code
+        request = self.factory.get('/vote/verify-code')
+        response = verify_code(request)
+        self.assertEqual(response.status_code, 405)
+
+    def test_missing_code_returns_400(self):
+        from sa_vote.views import verify_code
+        request = self.factory.post(
+            '/vote/verify-code',
+            data=json.dumps({}),
+            content_type='application/json'
+        )
+        response = verify_code(request)
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_invalid_or_expired_code_returns_404(self):
+        from sa_vote.views import verify_code
+        request = self.factory.post(
+            '/vote/verify-code',
+            data=json.dumps({'code': 'deadbeef'}),
+            content_type='application/json'
+        )
+        response = verify_code(request)
+        self.assertEqual(response.status_code, 404)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_valid_code_sets_session_and_returns_204(self):
+        from sa_vote.views import verify_code
+        cache.set('voter_code:a1b2c3', 'hashed_voter_id', timeout=1800)
+
+        request = self.factory.post(
+            '/vote/verify-code',
+            data=json.dumps({'code': 'a1b2c3'}),
+            content_type='application/json'
+        )
+        request.session = {}
+        response = verify_code(request)
+        self.assertEqual(response.status_code, 204)
+        self.assertEqual(request.session.get('voter_id_hash'), 'hashed_voter_id')
+        self.assertTrue(request.session.get('voter_verified'))
+
+    def test_code_is_case_insensitive_and_whitespace_stripped(self):
+        from sa_vote.views import verify_code
+        cache.set('voter_code:a1b2c3', 'hashed_voter_id', timeout=1800)
+
+        request = self.factory.post(
+            '/vote/verify-code',
+            data=json.dumps({'code': '  A1B2C3  '}),
+            content_type='application/json'
+        )
+        request.session = {}
+        response = verify_code(request)
+        self.assertEqual(response.status_code, 204)
+        self.assertEqual(request.session.get('voter_id_hash'), 'hashed_voter_id')
+        self.assertTrue(request.session.get('voter_verified'))
+
+    def test_post_form_encoded_code_supported(self):
+        from sa_vote.views import verify_code
+        cache.set('voter_code:123456', 'hashed_form_id', timeout=1800)
+
+        request = self.factory.post(
+            '/vote/verify-code',
+            data={'code': '123456'}
+        )
+        request.session = {}
+        response = verify_code(request)
+        self.assertEqual(response.status_code, 204)
+        self.assertEqual(request.session.get('voter_id_hash'), 'hashed_form_id')
+        self.assertTrue(request.session.get('voter_verified'))
+
+
+class GenerateCodeUnitTests(SimpleTestCase):
+    """Tests for the /vote/generate-code endpoint."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        cache.clear()
+
+    def test_non_post_returns_405(self):
+        from sa_vote.views import generate_code
+        request = self.factory.get('/vote/generate-code')
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 405)
+
+    def test_missing_phone_number_returns_400(self):
+        from sa_vote.views import generate_code
+        request = self.factory.post(
+            '/vote/generate-code',
+            data=json.dumps({}),
+            content_type='application/json'
+        )
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_invalid_phone_number_returns_400(self):
+        from sa_vote.views import generate_code
+        request = self.factory.post(
+            '/vote/generate-code',
+            data=json.dumps({'phone_number': 'no-digits-here'}),
+            content_type='application/json'
+        )
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 400)
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_already_voted_phone_number_returns_400(self, mock_get):
+        from sa_vote.views import generate_code
+        mock_get.return_value = {'length': 1, 'results': [{'id': 10}]}
+
+        request = self.factory.post(
+            '/vote/generate-code',
+            data=json.dumps({'phone_number': '555-123-4567'}),
+            content_type='application/json'
+        )
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('already been submitted', data.get('error', ''))
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_upstream_api_failure_returns_502(self, mock_get):
+        from sa_vote.views import generate_code
+        mock_get.side_effect = Exception('Upstream timeout')
+
+        request = self.factory.post(
+            '/vote/generate-code',
+            data=json.dumps({'phone_number': '555-123-4567'}),
+            content_type='application/json'
+        )
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 502)
+
+    @patch('sa_vote.views.send_verification_sms')
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_successful_generation_stores_in_cache_and_sends_sms(self, mock_get, mock_sms):
+        from sa_vote.views import generate_code, normalize_phone_number
+        mock_get.return_value = {'length': 0, 'results': []}
+
+        request = self.factory.post(
+            '/vote/generate-code',
+            data=json.dumps({'phone_number': '555-123-4567', 'country_code': '1'}),
+            content_type='application/json'
+        )
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 201)
+        data = json.loads(response.content)
+        self.assertEqual(data.get('status'), 'success')
+
+        # Verify SMS was dispatched
+        mock_sms.assert_called_once()
+        sent_phone, sent_code = mock_sms.call_args[0]
+        self.assertEqual(sent_phone, '+15551234567')
+        self.assertEqual(len(sent_code), 6)
+
+        # Verify cache has voter_code mapped to hashed phone
+        expected_hash = sha256('+15551234567'.encode('utf-8')).hexdigest()
+        self.assertEqual(cache.get(f'voter_code:{sent_code}'), expected_hash)
+
+    @patch('sa_vote.views.send_verification_sms')
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_twilio_failure_returns_502(self, mock_get, mock_sms):
+        from sa_vote.views import generate_code
+        mock_get.return_value = {'length': 0, 'results': []}
+        mock_sms.side_effect = Exception('Twilio authentication failed')
+
+        request = self.factory.post(
+            '/vote/generate-code',
+            data=json.dumps({'phone_number': '555-123-4567'}),
+            content_type='application/json'
+        )
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 502)
+        data = json.loads(response.content)
+        self.assertIn('Failed to send verification SMS', data.get('error', ''))
+
+
+class AdminGenerateCodeUnitTests(SimpleTestCase):
+    """Tests for the /vote/admin/generate-code endpoint."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        cache.clear()
+
+    def test_non_post_returns_405(self):
+        from sa_vote.views import admin_generate_code
+        request = self.factory.get('/vote/admin/generate-code')
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 405)
+
+    def test_anonymous_unauthorized_user_returns_403(self):
+        from sa_vote.views import admin_generate_code
+        request = self.factory.post('/vote/admin/generate-code')
+        request.user = AnonymousUser()
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 403)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    @patch.dict(os.environ, {
+        'SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP': 'voter_support_admin',
+    })
+    @override_settings(SHAREABOUTS={
+        **settings.SHAREABOUTS,
+        'DATASET_ROOT': 'http://localtest/api/v2/testowner/datasets/testdataset',
+    })
+    def test_shareabouts_voter_support_user_generates_code(self, mock_current_user):
+        from sa_vote.views import admin_generate_code
+        mock_current_user.return_value = {
+            'username': 'voter_support_user',
+            'groups': [
+                {
+                    'name': 'voter_support_admin',
+                    'dataset': 'http://localtest/api/v2/testowner/datasets/testdataset',
+                }
+            ]
+        }
+
+        request = self.factory.post('/vote/admin/generate-code')
+        request.user = AnonymousUser()
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 201)
+        data = json.loads(response.content)
+        code = data.get('code')
+        self.assertIsNotNone(code)
+        self.assertEqual(len(code), 6)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    @patch.dict(os.environ, {
+        'SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP': 'voter_support_admin',
+    })
+    @override_settings(SHAREABOUTS={
+        **settings.SHAREABOUTS,
+        'DATASET_ROOT': 'http://localtest/api/v2/testowner/datasets/testdataset',
+    })
+    def test_shareabouts_voter_support_user_other_dataset_returns_403(self, mock_current_user):
+        from sa_vote.views import admin_generate_code
+        mock_current_user.return_value = {
+            'username': 'voter_support_user',
+            'groups': [
+                {
+                    'name': 'voter_support_admin',
+                    'dataset': 'http://localtest/api/v2/testowner/datasets/otherdataset',
+                }
+            ]
+        }
+
+        request = self.factory.post('/vote/admin/generate-code')
+        request.user = AnonymousUser()
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 403)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    @patch.dict(os.environ, {
+        'SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP': 'voter_support_admin',
+    })
+    @override_settings(SHAREABOUTS={
+        **settings.SHAREABOUTS,
+        'DATASET_ROOT': 'http://localtest/api/v2/testowner/datasets/testdataset',
+    })
+    def test_shareabouts_non_voter_support_user_returns_403(self, mock_current_user):
+        from sa_vote.views import admin_generate_code
+        mock_current_user.return_value = {
+            'username': 'regular_user',
+            'groups': [
+                {
+                    'name': 'other_group',
+                    'dataset': 'http://localtest/api/v2/testowner/datasets/testdataset',
+                }
+            ]
+        }
+
+        request = self.factory.post('/vote/admin/generate-code')
+        request.user = AnonymousUser()
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 403)
+
+
+class SendVerificationSmsUnitTests(SimpleTestCase):
+    """Unit tests for send_verification_sms helper."""
+
+    @override_settings(TWILIO_ACCOUNT_SID='', TWILIO_AUTH_TOKEN='', TWILIO_PHONE_NUMBER='')
+    def test_missing_settings_raises_improperly_configured(self):
+        from sa_vote.views import send_verification_sms
+        from django.core.exceptions import ImproperlyConfigured
+        with self.assertRaises(ImproperlyConfigured):
+            send_verification_sms('+15551234567', 'a1b2c3')
+
+    @override_settings(TWILIO_ACCOUNT_SID='AC123', TWILIO_AUTH_TOKEN='token', TWILIO_PHONE_NUMBER='+15550000000')
+    @patch('twilio.rest.Client')
+    def test_calls_twilio_client_messages_create(self, mock_twilio_client):
+        from sa_vote.views import send_verification_sms
+        mock_instance = MagicMock()
+        mock_twilio_client.return_value = mock_instance
+
+        send_verification_sms('+15551234567', 'a1b2c3')
+
+        mock_twilio_client.assert_called_once_with('AC123', 'token')
+        mock_instance.messages.create.assert_called_once_with(
+            body='Your Boston Participatory Budgeting voting login code is: a1b2c3',
+            from_='+15550000000',
+            to='+15551234567',
+        )
 
 
 @override_settings(DEBUG=True)
 class VerifyCodeTestIntegrationTests(SimpleTestCase):
     """
     Integration tests hitting the actual URL routing via Django test Client.
-
-    Note: sa_vote.urls is included under path('vote', ...) with no trailing
-    slash, so the resolved paths are /vote/verify-code-test, /vote/verify-code,
-    and /vote/unverify.
     """
+
+    def setUp(self):
+        cache.clear()
 
     def test_valid_code_sets_session_via_url(self):
         client = Client()
@@ -171,10 +487,32 @@ class VerifyCodeTestIntegrationTests(SimpleTestCase):
         self.assertIsNone(client.session.get('voter_id_hash'))
         self.assertIsNone(client.session.get('voter_verified'))
 
-    def test_verify_code_stub_via_url(self):
+    @patch('sa_vote.views.send_verification_sms')
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_generate_and_verify_code_flow_via_urls(self, mock_get, mock_sms):
+        mock_get.return_value = {'length': 0, 'results': []}
+
         client = Client()
-        response = client.get('/vote/verify-code')
-        self.assertEqual(response.status_code, 501)
+        gen_res = client.post(
+            '/vote/generate-code',
+            data=json.dumps({'phone_number': '555-987-6543'}),
+            content_type='application/json'
+        )
+        self.assertEqual(gen_res.status_code, 201)
+
+        # Extract generated code from mock_sms
+        _, sent_code = mock_sms.call_args[0]
+
+        # Verify code
+        ver_res = client.post(
+            '/vote/verify-code',
+            data=json.dumps({'code': sent_code}),
+            content_type='application/json'
+        )
+        self.assertEqual(ver_res.status_code, 204)
+        self.assertTrue(client.session.get('voter_verified'))
+        expected_hash = sha256('+15559876543'.encode('utf-8')).hexdigest()
+        self.assertEqual(client.session.get('voter_id_hash'), expected_hash)
 
 
 class ShareaboutsApiTests(SimpleTestCase):
