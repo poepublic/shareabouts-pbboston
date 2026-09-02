@@ -969,6 +969,10 @@ support:
   action_text: supported
   anonymous_name: _(Someone)
 
+ballot:
+  voter_support_group: admin
+  max_selections: 5
+
 # Admin report configuration options
 report:
   submission_sets:
@@ -979,9 +983,6 @@ report:
       anonymous_fields:
         - age_range
         - neighborhood
-
-ballot:
-  max_selections: 5
 
 pages:
   - title: _(About)

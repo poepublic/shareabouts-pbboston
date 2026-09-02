@@ -8,6 +8,7 @@ Replace this with more appropriate tests for your application.
 from contextlib import contextmanager
 from django.conf import settings
 from django.test import Client, override_settings, SimpleTestCase, RequestFactory
+from os import environ
 from os.path import abspath, dirname, join as path_join
 from pathlib import Path
 from threading import Thread
@@ -193,6 +194,10 @@ class APIServerBackend (SimpleTestCase):
             self.assertEqual(response.content, places_data)
 
 
+@mock.patch.dict(environ, {
+    'SHAREABOUTS__NOTIFICATIONS__ON_NEW_PLACE': 'True',
+    'SHAREABOUTS__NOTIFICATIONS__SUBMITTER_EMAIL_FIELD': 'private-submitter_email',
+})
 @override_settings(
     EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend',
     EMAIL_ADDRESS='campaign@city.gov',

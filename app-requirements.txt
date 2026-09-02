@@ -30,3 +30,4 @@ jasmine
 django-cors-headers
 python-frontmatter
 markdown
+twilio
