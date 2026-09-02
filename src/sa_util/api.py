@@ -108,7 +108,6 @@ class ShareaboutsApi:
             if not request:
                 raise ValueError('A request object is required to dynamically get the sessioninfo.')
             sessioninfo = get_api_sessioninfo(request)
-            print(f'Got sessioninfo: {sessioninfo}')
 
         if api_key is None:
             api_key = settings.SHAREABOUTS.get('DATASET_KEY')
@@ -265,9 +264,7 @@ class ShareaboutsApi:
         if self.sessioninfo:
             response.set_cookie('sa-api-sessionid', self.sessioninfo['id'])
             response.set_cookie('sa-api-sessiondomain', self.sessioninfo['domain'])
-            print(f'Updating session cookie: {self.sessioninfo}')
         else:
             response.delete_cookie('sa-api-sessionid')
             response.delete_cookie('sa-api-sessiondomain')
-            print('Deleting session cookie')
         return response
