@@ -1,0 +1,130 @@
+<div id="survey-page" class="survey-page">
+    <div class="survey-page-top">
+        <img class="success-icon" src="/static/img/iia/ProcessIcon_04_Color.svg">
+        <h1>{{#_}}<img class="inline-scribble" src="/static/img/iia/Scribble_Star_Pink.svg">Thanks for voting!<img
+                class="inline-scribble" src="/static/img/iia/Scribble_Star_Pink.svg">{{/_}}</h1>
+        <p>{{#_}}Your vote has been counted.{{/_}}</p>
+    </div>
+
+    <div class="survey">
+
+        <h2 class="survey-page-headers">{{#_}}Optional Survey{{/_}}</h2>
+        <p>{{#_}}Please answer a few short questions to help the City of Boston understand who is participating and how.
+            Your responses to the questions below will be anonymous. <strong>You can skip any questions you do not want
+                to answer.</strong>{{/_}}</p>
+
+        <form id="survey-form" class="survey-form">
+
+            <fieldset class="survey-question">
+                <label class="regular-prompt">{{#_}}What is your age (in years)?{{/_}}</label>
+                <input type="number" id="survey-age-input" class="survey-number-input" name="age" min="11" max="120">
+            </fieldset>
+
+            <fieldset class="survey-question">
+                <label class="regular-prompt">{{#_}}Do you identify with any of the following in terms of your race
+                    and/or ethnicity?{{/_}}
+                </label>
+                <p>{{#_}}Check all that apply. Some choices below may not be perfect for you, but please answer as best
+                    you can. Use the write-in option to add more details or add another group you identify with.{{/_}}
+                </p>
+
+                <ul class="survey-race-options">
+                    <li>
+                        <input type="checkbox" id="survey-race-american-indian" name="race"
+                            value="American Indian or Alaska Native">
+                        <label for="survey-race-american-indian">{{#_}}American Indian or Alaska Native{{/_}}</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="survey-race-asian" name="race" value="Asian">
+                        <label for="survey-race-asian">{{#_}}Asian{{/_}}</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="survey-race-black" name="race" value="Black or African American">
+                        <label for="survey-race-black">{{#_}}Black or African American{{/_}}</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="survey-race-hispanic" name="race"
+                            value="Hispanic or Latino/-a/-e/-x">
+                        <label for="survey-race-hispanic">{{#_}}Hispanic or Latino/-a/-e/-x{{/_}}</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="survey-race-pacific-islander" name="race"
+                            value="Native Hawaiian or other Pacific Islander">
+                        <label for="survey-race-pacific-islander">{{#_}}Native Hawaiian or other Pacific
+                            Islander{{/_}}</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="survey-race-white" name="race" value="White">
+                        <label for="survey-race-white">{{#_}}White{{/_}}</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="survey-race-prefer-not-to-answer" name="race"
+                            value="Prefer not to answer">
+                        <label for="survey-race-prefer-not-to-answer">{{#_}}Prefer not to answer{{/_}}</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="survey-race-not-listed" name="race"
+                            value="Race or ethnicity not listed here">
+                        <label for="survey-race-not-listed">{{#_}}Race or ethnicity not listed here{{/_}}</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="survey-race-other" name="race" value="Other">
+                        <label for="survey-race-other">{{#_}}Other (write-in){{/_}}</label>
+                        <input type="text" id="survey-race-other-input" name="race-other">
+                    </li>
+                </ul>
+            </fieldset>
+
+            <fieldset class="survey-question">
+                <label class="regular-prompt">{{#_}}What was your household income in the past 12 months? Choose
+                    one:{{/_}}</label>
+
+                <select id="survey-income-input" class="survey-select-input" name="income">
+                    <option value="" selected disabled>{{#_}}Select an option{{/_}}</option>
+                    <option value="Less than $14,999">{{#_}}Less than $14,999{{/_}}</option>
+                    <option value="$15,000 to $34,999">{{#_}}$15,000 to $34,999{{/_}}</option>
+                    <option value="$35,000 to $49,999">{{#_}}$35,000 to $49,999{{/_}}</option>
+                    <option value="$50,000 to $74,999">{{#_}}$50,000 to $74,999{{/_}}</option>
+                    <option value="$75,000 to $99,999">{{#_}}$75,000 to $99,999{{/_}}</option>
+                    <option value="$100,000 to $149,999">{{#_}}$100,000 to $149,999{{/_}}</option>
+                    <option value="$150,000 or more">{{#_}}$150,000 or more{{/_}}</option>
+                    <option value="I don't know">{{#_}}I don't know{{/_}}</option>
+                    <option value="Prefer not to answer">{{#_}}Prefer not to answer{{/_}}</option>
+                </select>
+            </fieldset>
+
+            <fieldset class="survey-question">
+                <label class="regular-prompt">{{#_}}Have you participated in Ideas in Action in the past?{{/_}}</label>
+                <p>{{#_}}Examples include: submitting ideas online, attending a workshop or forum, or voting for project
+                    proposals on the ballot.{{/_}}</p>
+
+                <select id="survey-participated-input" class="survey-select-input" name="participated">
+                    <option value="" selected disabled>{{#_}}Select an option{{/_}}</option>
+                    <option value="Yes, I have participated in the past">{{#_}}Yes, I have participated in the
+                        past{{/_}}</option>
+                    <option value="No, this is my first time">{{#_}}No, this is my first time{{/_}}</option>
+                    <option value="Not sure">{{#_}}Not sure{{/_}}</option>
+                </select>
+            </fieldset>
+        </form>
+    </div>
+    <div class="newsletter-signup">
+        <h2 class="survey-page-headers">{{#_}}Stay updated!{{/_}}</h2>
+        <p>{{#_}}If you are interested in receiving our newsletter with important PB
+            updates, share your email address below. Your email address will not be connected with your vote or
+            your answers to the questions above.{{/_}}</p>
+
+        <label for="newsletter-email-input">{{#_}}Your email address:{{/_}}</label>
+        <input type="email" id="newsletter-email-input" class="survey-text-input" name="newsletter-email" form="survey-form">
+    </div>
+    <button type="submit" form="survey-form" class="ballot-vote-button btn btn-primary" id="submit-survey">{{#_}}Submit{{/_}}</button>
+    <img class="success-background" src="/static/css/images/iia-background-vertical.png">
+</div>

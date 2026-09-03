@@ -2,6 +2,7 @@ import { HomeView } from './home-view.js';
 import { BallotView } from './ballot-view.js';
 import { FaqView } from './faq-view.js';
 import { AuthView } from './auth-view.js';
+import { SurveyView } from './survey-view.js';
 
 const MOCK_BALLOT = { // to do: replace with ballot info in md files
   proposals: [
@@ -93,6 +94,15 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showAuth: function () {
-    this._replaceCurrentView(new AuthView({ verified: verified }));
+    this._replaceCurrentView(new AuthView({ verified: verified, neighborhoods: Shareabouts.bootstrapped.neighborhoods.features }));
   },
+
+  showSurvey: function () {
+    if (this.currentView) {
+      this.currentView.remove();
+    } 
+
+    this.currentView = new SurveyView().render();
+    this.el.append(this.currentView.el);
+  }
 });

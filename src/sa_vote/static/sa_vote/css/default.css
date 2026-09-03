@@ -1,7 +1,8 @@
 #home-page,
 #ballot-page,
 #auth-page,
-#faq-page {
+#faq-page,
+#survey-page {
     padding: 1.5rem;
     margin-top: 5vh;
 }
@@ -37,7 +38,9 @@ input[type="checkbox"] {
 }
 
 label {
+    display: block;
     color: var(--iia-dark-blue);
+    margin-bottom: 0.5rem;
 }
 
 input[type="checkbox"]:hover {
@@ -51,6 +54,9 @@ input[type="checkbox"]:checked {
     border-color: var(--iia-vibrant-green);
 }
 
+.btn, .btn-primary {
+    border-radius: 1rem !important;
+}
 
 summary {
     display: flex;
@@ -58,6 +64,10 @@ summary {
     justify-content: space-evenly;
 }
 
+.inline-scribble {
+    display: inline-block;
+    height: 0.75em;
+  }  
 
 /* Text formatting */
 .secondary-emphasis {
@@ -68,6 +78,9 @@ summary {
 }
 
 /* Welcome page */
+.home-header {
+    margin-left: 1rem;
+}
 .vote-link {
     background-color: var(--iia-urban-pink-alt);
     display: flex;
@@ -475,4 +488,77 @@ summary.faq-question:after {
 
 details[open] summary.faq-question:after {
     transform: rotate(45deg);
+}
+
+.survey-race-options {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.survey-race-options li {
+    display: flex;
+    align-items: center;
+}
+
+/* Success/survey page */
+.survey-page {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 2rem;
+    background-image: url(/static/css/images/iia-background-repeat.png);
+    background-repeat: repeat;
+    background-size: 100% auto;
+    background-position: center top;
+}
+
+.survey-page-top {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.survey-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.success-icon {
+    margin: 1rem;
+    width: 150px;
+    align-self: center;
+    justify-self: center;
+}
+
+.success-background {
+    width: 100%;
+}
+
+input.survey-text-input,
+input.survey-number-input,
+select.survey-select-input,
+summary.survey-select-input,
+#survey-race-other-input {
+    border-radius: 1rem;
+    appearance: none;
+    -webkit-appearance: none;
+    border:rgba(0, 0, 0, 0.1) solid 1px;
+}
+
+.survey-race-options > li {
+    padding-left: 0.5rem;
+}
+
+.survey-race-options > li > label {
+    font-weight: normal;
+    text-transform: capitalize;
+    margin-top: 0.5rem;
 }
