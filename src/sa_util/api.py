@@ -52,13 +52,16 @@ def get_api_sessioninfo(django_http_request: HttpRequest) -> ApiSessionInfo:
     }
 
 
-def make_api_session(dataset_root, api_sessioninfo: ApiSessionInfo):
+def make_api_session(dataset_root, api_sessioninfo: ApiSessionInfo, api_key: str | None = None):
     """
     Create a requests session for the Shareabouts API.
     """
     api_session = requests.Session()
     api_session.headers['Content-type'] = 'application/json'
     api_session.headers['Accept'] = 'application/json'
+
+    if api_key:
+        api_session.headers['X-Shareabouts-Key'] = api_key
 
     if api_sessioninfo:
         api_session.cookies.set(
@@ -83,10 +86,11 @@ class ShareaboutsAuthProviderError (ShareaboutsApiError):
 class ShareaboutsApi:
     def __init__(
         self,
-        config: _ShareaboutsConfig,
-        request: HttpRequest,
+        config: _ShareaboutsConfig | None = None,
+        request: HttpRequest | None = None,
         dataset_root: str | None = None,
-        sessioninfo: dict | None = None
+        sessioninfo: dict | None = None,
+        api_key: str | None = None,
     ):
         if config is None:
             config = get_shareabouts_config(settings.SHAREABOUTS.get('CONFIG'))
@@ -106,19 +110,42 @@ class ShareaboutsApi:
             sessioninfo = get_api_sessioninfo(request)
             print(f'Got sessioninfo: {sessioninfo}')
 
+        if api_key is None:
+            api_key = settings.SHAREABOUTS.get('DATASET_KEY')
+
         self.request = request
         self.config = config
         self.dataset_root = dataset_root
         self.auth_root = make_auth_root(dataset_root)
         self.root = make_api_root(dataset_root)
         self.sessioninfo = sessioninfo
-        self.session = make_api_session(dataset_root, sessioninfo)
+        self.api_key = api_key
+        self.session = make_api_session(dataset_root, sessioninfo, api_key=api_key)
 
     def get(self, resource, default=None, **kwargs):
         uri = make_resource_uri(resource, root=self.dataset_root)
         res = self.session.get(uri, params=kwargs)
         self.update_session_cookie()
-        return (res.text if res.status_code == 200 else default)
+        if res.status_code == 200:
+            return res.json()
+        elif res.status_code == 404:
+            return default
+        else:
+            res.raise_for_status()
+
+    def create(self, resource, json=None, data=None, silent: bool = False, **kwargs):
+        uri = make_resource_uri(resource, root=self.dataset_root)
+        if not uri.endswith('/'):
+            uri += '/'
+        headers = kwargs.pop('headers', {})
+        if silent:
+            headers['X-Shareabouts-Silent'] = 'true'
+        res = self.session.post(uri, json=json, data=data, headers=headers, **kwargs)
+        self.update_session_cookie()
+        if res.status_code in (200, 201, 204):
+            return res.json() if res.content else None
+        else:
+            res.raise_for_status()
 
     def current_user(self, default=None, **kwargs):
         if not hasattr(self, '_cached_user'):

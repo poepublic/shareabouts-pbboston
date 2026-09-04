@@ -94,6 +94,39 @@ class Ballot:
 
         return cls(proposals)
 
+    @classmethod
+    def from_config(
+        cls,
+        config,
+        lang: str = DEFAULT_LANG,
+        fallback_langs: list[str] | None = None
+    ) -> Self:
+        """
+        Load a ballot from a Shareabouts configuration instance.
+        """
+        if hasattr(config, 'path'):
+            flavor_dir = pathlib.Path(config.path)
+        elif isinstance(config, dict) and 'path' in config:
+            flavor_dir = pathlib.Path(config['path'])
+        else:
+            flavor_dir = pathlib.Path(settings.SHAREABOUTS['CONFIG'])
+
+        ballot_config = config.get('ballot', {}) if hasattr(config, 'get') else {}
+        proposals_folder = ballot_config.get('proposals_folder', 'ballot') if isinstance(ballot_config, dict) else 'ballot'
+        proposals_dir = flavor_dir / proposals_folder
+
+        if not proposals_dir.is_dir():
+            return cls([])
+
+        return cls.from_directory(proposals_dir, lang=lang, fallback_langs=fallback_langs)
+
+    @property
+    def slugs(self) -> set[str]:
+        """
+        Return the set of proposal slugs in this ballot.
+        """
+        return {p['slug'] for p in self.proposals}
+
     def to_dict(self) -> dict[str, list[BallotProposal]]:
         """
         Convert the Ballot instance to a dictionary representation.

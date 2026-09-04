@@ -182,8 +182,6 @@ def index(request, place_id=None):
     place = None
     if place_id and place_id != 'new':
         place = api.get('places/' + place_id)
-        if place:
-            place = json.loads(place)
 
     try:
         uses_mapbox_layers = 'mapbox' in {layer['type'] for layer in config['map']['layers']}
