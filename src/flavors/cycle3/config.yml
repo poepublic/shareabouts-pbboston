@@ -969,6 +969,17 @@ support:
   action_text: supported
   anonymous_name: _(Someone)
 
+# Admin report configuration options
+report:
+  submission_sets:
+    - name: ballots
+      anonymous_fields:
+        - proposals
+    - name: surveys
+      anonymous_fields:
+        - age_range
+        - neighborhood
+
 pages:
   - title: _(About)
     slug: about

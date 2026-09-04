@@ -110,9 +110,26 @@ var Shareabouts = Shareabouts || {};
     }
   });
 
+  S.AnonymousCollection = S.PaginatedCollection.extend({
+    initialize: function(models, options) {
+      this.options = options || {};
+    },
+
+    url: function() {
+      var submissionType = this.options.submissionType;
+
+      return submissionType ?
+        S.Util.prefixApiEndpoint('/' + submissionType + '/anonymous') :
+        S.Util.prefixApiEndpoint('/places/anonymous');
+    }
+  });
+
   S.SubmissionCollection = S.PaginatedCollection.extend({
     initialize: function(models, options) {
-      this.options = options;
+      this.options = options || {};
+      this.anonymous = new S.AnonymousCollection([], {
+        submissionType: this.options.submissionType
+      });
     },
 
     url: function() {
@@ -122,11 +139,9 @@ var Shareabouts = Shareabouts || {};
       if (!submissionType) { throw new Error('submissionType option' +
                                                      ' is required.'); }
 
-      if (!placeId) { throw new Error('Place model id is not defined. You ' +
-                                      'must save the place before saving ' +
-                                      'its ' + submissionType + '.'); }
-
-      return S.Util.prefixApiEndpoint('/places/' + placeId + '/' + submissionType);
+      return placeId ?
+        S.Util.prefixApiEndpoint('/places/' + placeId + '/' + submissionType) :
+        S.Util.prefixApiEndpoint('/' + submissionType);
     },
 
     comparator: 'created_datetime'
@@ -253,6 +268,11 @@ var Shareabouts = Shareabouts || {};
     url: S.Util.prefixApiEndpoint('/places'),
     model: S.PlaceModel,
     resultsAttr: 'features',
+
+    initialize: function(models, options) {
+      this.options = options || {};
+      this.anonymous = new S.AnonymousCollection([], {});
+    },
 
     fetchByIds: function(ids, options) {
       var base = _.result(this, 'url');

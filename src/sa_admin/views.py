@@ -32,6 +32,18 @@ def admin_home(request, config, api):
 
 
 @shareabouts_loggedin
+def report(request, config, api):
+    path_prefix = settings.BASE_URL
+
+    return render(request, 'sa_admin/report.html', {
+        'route_prefix': path_prefix,
+        'api_prefix': path_prefix + '/api',
+        'api': api,
+        'config': config,
+    })
+
+
+@shareabouts_loggedin
 def place_detail(request, config, api, place_id):
     path_prefix = settings.BASE_URL
 
