@@ -1,0 +1,19 @@
+/* =City-wide toggle
+-------------------------------------------------------------- */
+
+.drag-marker-instructions { display: none; }
+.approx-address { display: none; }
+#centerpoint.newpin { display: none; }
+
+body[data-city_wide="false"] .drag-marker-instructions { display: block; }
+body[data-city_wide="false"] .approx-address { display: block; }
+body[data-city_wide="false"] #centerpoint.newpin { display: inline; }
+
+.place-city_wide-field .radio-group {
+  margin-top: 0.5rem;
+}
+
+/* If the city-wide status hasn't been set yet, hide the address display. */
+body:not([data-city_wide]) .place-address-field {
+  display: none;
+}

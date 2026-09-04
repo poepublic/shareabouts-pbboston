@@ -1,0 +1,15 @@
+@media only screen and (width < 960px) {
+  #map {
+    /*
+      - The pre-banner is the area above the main header
+      - The banner is the main header
+      - The "Share an Idea" button area takes up about 4rem.
+      - The remaining 3rem is for the all ideas/city-wide ideas toggle, and a bit of the ideas list.
+    */
+    height: calc(90vh - var(--pre-banner-height) - var(--banner-height) - 4rem - 3rem);
+  }
+
+  body.content-visible #map {
+    height: 40vh;
+  }
+}
