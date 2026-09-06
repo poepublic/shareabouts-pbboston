@@ -6,9 +6,6 @@
   <p>{{#_}}For more information about this process, see <a href="/vote/faq" data-internal="true">FAQs</a>{{/_}}</p>
   <div class="proposal-container">
     {{#each (randomize ballot.proposals)}}
-    {{#if ../verified}}
-    {{else}}
-    {{/if}}
         <label for="checkbox-{{slug}}">
           <div class="proposal-card" id="proposal-card-{{slug}}">
             <div class="proposal-card-top">
