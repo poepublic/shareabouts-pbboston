@@ -241,11 +241,6 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     font-size: 1.2rem;
 }
 
-.selected-proposal-amt {
-    font-size: 1rem;
-    font-weight: 400;
-}
-
 .selected-proposal-remove:after {
     content: "\00D7";
     position: absolute;
