@@ -10,7 +10,7 @@ export const AuthView = Backbone.View.extend({
     },
 
     verify: function() {
-      fetch('/vote/verify-code-test?code=123456').then(
+      fetch(Shareabouts.Util.prefixRoute('/verify-code-test?code=123456')).then(
         // reload auth page
         () => {
           window.location.reload()
