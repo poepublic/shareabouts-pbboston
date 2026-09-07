@@ -231,16 +231,23 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     display: flex;
     justify-content: center;
     align-content: center;
+    border: none;
     border-left: 1px solid var(--iia-dark-blue);
+    background-color: transparent;
 }
 
 .selected-proposal-title {
+    color: var(--iia-dark-blue);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     overflow: ellipsis;
     font-weight: 600;
     font-size: 1.2rem;
+}
+
+.selected-proposal-amount {
+    color: var(--iia-dark-blue);
 }
 
 .selected-proposal-remove:after {
