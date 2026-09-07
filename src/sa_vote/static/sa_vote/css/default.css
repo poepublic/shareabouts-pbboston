@@ -126,6 +126,8 @@ summary {
     background: var(--iia-dark-blue);
     padding: 20px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -170,7 +172,7 @@ summary.ballot-banner-verified-summary:after {
     content: "\002B";
     display: inline-block;
     text-align: center;
-    text-justify: center;
+    justify-content: center;
     font-size: 1.5rem;
     transition: transform 0.3s ease;
 }
