@@ -980,6 +980,9 @@ report:
         - age_range
         - neighborhood
 
+ballot:
+  max_selections: 5
+
 pages:
   - title: _(About)
     slug: about
