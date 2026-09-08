@@ -1,0 +1,16 @@
+{% extends 'sa_admin/base.html' %}
+{% load static %}
+{% load django_vite %}
+
+{% block title %}Report{% endblock %}
+
+{% block body_classes %}report{% endblock %}
+
+{% block heading %}Report{% endblock %}
+
+{% block vite_assets %}
+  {% vite_asset 'sa_admin/report/main.js' %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}

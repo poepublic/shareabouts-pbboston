@@ -139,6 +139,7 @@ summary {
     background: var(--iia-dark-blue);
     padding: 20px;
     text-align: center;
+    justify-content: center;
     align-items: center;
     position: fixed;
     bottom: 0;
@@ -184,7 +185,7 @@ summary.ballot-banner-verified-summary:after {
     content: "\002B";
     display: inline-block;
     text-align: center;
-    text-justify: center;
+    justify-content: center;
     font-size: 1.5rem;
     transition: transform 0.3s ease;
 }
@@ -243,10 +244,13 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     display: flex;
     justify-content: center;
     align-content: center;
+    border: none;
     border-left: 1px solid var(--iia-dark-blue);
+    background-color: transparent;
 }
 
 .selected-proposal-title {
+    color: var(--iia-dark-blue);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -255,9 +259,8 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     font-size: 1.2rem;
 }
 
-.selected-proposal-amt {
-    font-size: 1rem;
-    font-weight: 400;
+.selected-proposal-amount {
+    color: var(--iia-dark-blue);
 }
 
 .selected-proposal-remove:after {
@@ -408,7 +411,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 }
 
 .voter-attestation-list {
-    list-style-type: decimal;
+    list-style-type: disc;
 }
 
 .voter-attestation-label {
