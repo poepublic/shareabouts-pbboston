@@ -361,6 +361,11 @@ if 'GOOGLE_ANALYTICS_DOMAIN' in env:
 MAPQUEST_KEY = env.get('MAPQUEST_KEY', '')
 MAPBOX_TOKEN = env.get('MAPBOX_TOKEN', '')
 
+TWILIO_ACCOUNT_SID = env.get('TWILIO_ACCOUNT_SID', '')
+TWILIO_API_KEY = env.get('TWILIO_API_KEY', '')
+TWILIO_API_SECRET = env.get('TWILIO_API_SECRET', '')
+TWILIO_PHONE_NUMBER = env.get('TWILIO_PHONE_NUMBER', '')
+
 # Error logging
 import raven
 import re
