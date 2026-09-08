@@ -98,11 +98,6 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showSurvey: function () {
-    if (this.currentView) {
-      this.currentView.remove();
-    } 
-
-    this.currentView = new SurveyView().render();
-    this.el.append(this.currentView.el);
+    this._replaceCurrentView(new SurveyView());
   }
 });
