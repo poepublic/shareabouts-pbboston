@@ -207,14 +207,24 @@ def admin_generate_code(request: HttpRequestWithConfig) -> HttpResponse:
     voter_support_group = request.shareabouts_config['ballot']['voter_support_group']
 
     can_generate_admin_code = False
+
+    config = request.shareabouts_config
+    api = ShareaboutsApi(config, request)
     try:
-        config = request.shareabouts_config
-        api = ShareaboutsApi(config, request)
         api_user = api.current_user()
-        groups = [group['name'] for group in api_user['groups'] if group['dataset'] == api.dataset_root]
-        can_generate_admin_code = voter_support_group in groups
-    except Exception:
-        logger.exception('Failed to determine if user can generate admin code')
+    except Exception as exc:
+        logger.exception('Failed to retrieve current user information')
+        return JsonResponse({'error': f'Failed to retrieve current user information: {exc}'}, status=502)
+
+    if not api_user:
+        return JsonResponse({'error': 'Unauthenticated'}, status=401)
+
+    groups = [
+        group['name']
+        for group in api_user['groups']
+        if group['dataset'] == api.dataset_root
+    ]
+    can_generate_admin_code = voter_support_group in groups
 
     if not can_generate_admin_code:
         return JsonResponse({'error': 'Unauthorized'}, status=403)

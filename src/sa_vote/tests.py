@@ -339,12 +339,12 @@ class AdminGenerateCodeUnitTests(SimpleTestCase):
         response = admin_generate_code(request)
         self.assertEqual(response.status_code, 405)
 
-    def test_anonymous_unauthorized_user_returns_403(self):
+    def test_anonymous_unauthorized_user_returns_401(self):
         from sa_vote.views import admin_generate_code
         request = self.factory.post('/vote/admin/generate-code')
         request.user = AnonymousUser()
         response = admin_generate_code(request)
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 401)
 
     @patch('sa_util.api.ShareaboutsApi.current_user')
     @patch.dict(os.environ, {
