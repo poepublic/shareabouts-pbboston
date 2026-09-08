@@ -491,7 +491,6 @@ details[open] summary.faq-question:after {
 }
 
 /* Post-vote survey */
-
 .survey-form p {
     margin: 0;
 }
@@ -515,7 +514,7 @@ details[open] summary.faq-question:after {
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     background-image: url(/static/css/images/iia-background-repeat.png);
     background-repeat: repeat;
     background-size: 100% auto;
@@ -534,7 +533,7 @@ details[open] summary.faq-question:after {
 .survey-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .success-icon {
