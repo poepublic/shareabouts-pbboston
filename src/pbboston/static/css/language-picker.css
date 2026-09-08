@@ -1,0 +1,70 @@
+#language-picker-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.language-picker__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(40 139 228 / .75);
+}
+
+.language-picker__dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80vw;
+  max-height: 80vh;
+  background-color: white;
+  padding: 1rem;
+}
+
+.language-picker__dialog-header {
+  text-align: center;
+}
+
+.btn.language-picker__hide-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  line-height: 3rem;
+  font-size: 2.5rem;
+  font-weight: normal;
+}
+
+.language-picker__options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+
+.language-picker__option {
+  max-width: 10rem;
+}
+
+.language-picker__option button {
+  background: none;
+  color: #1871bd;
+  font-weight: normal;
+}
+
+.language-picker__option button:hover {
+  background: none;
+  color: #d22d23;
+  text-decoration: underline;
+}

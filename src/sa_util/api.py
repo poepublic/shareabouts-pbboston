@@ -1,5 +1,6 @@
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse
+import os
 import requests
 from urllib.parse import urlparse
 
@@ -8,7 +9,19 @@ from .config import get_shareabouts_config, _ShareaboutsConfig
 
 
 def make_api_root(dataset_root):
+    """
+    Construct the API root URL based on the dataset root.
+
+    If we're hitting an API server (as opposed to using a file backend), then
+    the dataset_root should be a URL of the form:
+    <api_root>/<dataset_owner>/datasets/<dataset_name>/
+
+    Thus the API root should be everything before the dataset owner.
+    """
     components = dataset_root.split('/')
+    if dataset_root.startswith('http') and (components[-2] != 'datasets' and components[-3] != 'datasets'):
+        raise ValueError(f'dataset_root expected to be a URL of the form http[s]://<api_root>/<dataset_owner>/datasets/<dataset_name>/; got {dataset_root!r}')
+    
     if dataset_root.endswith('/'):
         return '/'.join(components[:-4]) + '/'
     else:
@@ -39,13 +52,16 @@ def get_api_sessioninfo(django_http_request: HttpRequest) -> ApiSessionInfo:
     }
 
 
-def make_api_session(dataset_root, api_sessioninfo: ApiSessionInfo):
+def make_api_session(dataset_root, api_sessioninfo: ApiSessionInfo, api_key: str | None = None):
     """
     Create a requests session for the Shareabouts API.
     """
     api_session = requests.Session()
     api_session.headers['Content-type'] = 'application/json'
     api_session.headers['Accept'] = 'application/json'
+
+    if api_key:
+        api_session.headers['X-Shareabouts-Key'] = api_key
 
     if api_sessioninfo:
         api_session.cookies.set(
@@ -63,13 +79,18 @@ class ShareaboutsApiError (Exception):
         self.errors = errors
 
 
+class ShareaboutsAuthProviderError (ShareaboutsApiError):
+    pass
+
+
 class ShareaboutsApi:
     def __init__(
         self,
-        config: _ShareaboutsConfig,
-        request: HttpRequest,
+        config: _ShareaboutsConfig | None = None,
+        request: HttpRequest | None = None,
         dataset_root: str | None = None,
-        sessioninfo: dict | None = None
+        sessioninfo: dict | None = None,
+        api_key: str | None = None,
     ):
         if config is None:
             config = get_shareabouts_config(settings.SHAREABOUTS.get('CONFIG'))
@@ -87,20 +108,43 @@ class ShareaboutsApi:
             if not request:
                 raise ValueError('A request object is required to dynamically get the sessioninfo.')
             sessioninfo = get_api_sessioninfo(request)
-            print(f'Got sessioninfo: {sessioninfo}')
 
+        if api_key is None:
+            api_key = settings.SHAREABOUTS.get('DATASET_KEY')
+
+        self.request = request
         self.config = config
         self.dataset_root = dataset_root
         self.auth_root = make_auth_root(dataset_root)
         self.root = make_api_root(dataset_root)
         self.sessioninfo = sessioninfo
-        self.session = make_api_session(dataset_root, sessioninfo)
+        self.api_key = api_key
+        self.session = make_api_session(dataset_root, sessioninfo, api_key=api_key)
 
     def get(self, resource, default=None, **kwargs):
         uri = make_resource_uri(resource, root=self.dataset_root)
         res = self.session.get(uri, params=kwargs)
         self.update_session_cookie()
-        return (res.text if res.status_code == 200 else default)
+        if res.status_code == 200:
+            return res.json()
+        elif res.status_code == 404:
+            return default
+        else:
+            res.raise_for_status()
+
+    def create(self, resource, json=None, data=None, silent: bool = False, **kwargs):
+        uri = make_resource_uri(resource, root=self.dataset_root)
+        if not uri.endswith('/'):
+            uri += '/'
+        headers = kwargs.pop('headers', {})
+        if silent:
+            headers['X-Shareabouts-Silent'] = 'true'
+        res = self.session.post(uri, json=json, data=data, headers=headers, **kwargs)
+        self.update_session_cookie()
+        if res.status_code in (200, 201, 204):
+            return res.json() if res.content else None
+        else:
+            res.raise_for_status()
 
     def current_user(self, default=None, **kwargs):
         if not hasattr(self, '_cached_user'):
@@ -125,6 +169,65 @@ class ShareaboutsApi:
             return True
         else:
             raise ShareaboutsApiError(res.text, res.json().get('errors'))
+
+    def get_provider_client_id(self, provider):
+        try:
+            return os.environ[f'SOCIAL_AUTH_{provider.upper()}_KEY']
+        except KeyError:
+            raise ShareaboutsAuthProviderError(f'No client_id found for provider "{provider}"', {})
+
+    def get_provider_client_secret(self, provider):
+        try:
+            return os.environ[f'SOCIAL_AUTH_{provider.upper()}_SECRET']
+        except KeyError:
+            raise ShareaboutsAuthProviderError(f'No client_secret found for provider "{provider}"', {})
+
+    def get_provider_redirect_uri(self, provider):
+        return os.environ.get(
+            f'SOCIAL_AUTH_{provider.upper()}_REDIRECT',
+            self.request.build_absolute_uri(
+                reverse('oauth_complete', args=[provider])
+            )
+        )
+
+    def oauth_begin(self, provider, **kwargs) -> str:
+        """
+        Begin the OAuth process for the given provider. Returns the URL to
+        redirect to. May raise a ShareaboutsApiError if the request fails, or
+        ShareaboutsAuthProviderError if the provider is not configured.
+        """
+        uri = make_resource_uri(f'login/{provider}/', root=self.auth_root)
+        params = {
+            'client_id': self.get_provider_client_id(provider),
+            'client_secret': self.get_provider_client_secret(provider),
+            'redirect_uri': self.get_provider_redirect_uri(provider),
+        }
+
+        res = self.session.get(uri, params=params, allow_redirects=False, **kwargs)
+        self.update_session_cookie()
+
+        if res.status_code == 302:
+            return res.headers['Location']
+        else:
+            raise ShareaboutsApiError(res.text, {})
+
+    def oauth_complete(self, provider, params, **kwargs):
+        uri = make_resource_uri(f'complete/{provider}/', root=self.auth_root)
+        params = {
+            'client_id': self.get_provider_client_id(provider),
+            'client_secret': self.get_provider_client_secret(provider),
+            'redirect_uri': self.get_provider_redirect_uri(provider),
+            **params,
+        }
+
+        res = self.session.get(uri, params=params, **kwargs)
+        self.update_session_cookie()
+
+        if res.status_code == 200:
+            self._cache_user(res.json())
+            return True
+        else:
+            raise ShareaboutsApiError(res.text, {})
 
     def logout(self, **kwargs):
         uri = make_resource_uri('current', root=self.auth_root)
@@ -161,9 +264,7 @@ class ShareaboutsApi:
         if self.sessioninfo:
             response.set_cookie('sa-api-sessionid', self.sessioninfo['id'])
             response.set_cookie('sa-api-sessiondomain', self.sessioninfo['domain'])
-            print(f'Updating session cookie: {self.sessioninfo}')
         else:
             response.delete_cookie('sa-api-sessionid')
             response.delete_cookie('sa-api-sessiondomain')
-            print('Deleting session cookie')
         return response

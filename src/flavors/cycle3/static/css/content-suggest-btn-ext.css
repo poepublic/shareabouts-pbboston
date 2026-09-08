@@ -1,0 +1,34 @@
+.content-suggest-btn {
+  display: none;
+}
+
+body.content-visible .content-suggest-btn {
+	display: flex;
+	gap: 0.5rem;
+	position: sticky;
+  top: calc(var(--pre-banner-height) + 1rem);
+  z-index: 1;
+	float: right;
+	margin-top: -2.75rem;
+  margin-right: 2.5rem;
+	padding: 0.5rem;
+  box-shadow: 0 -0.4rem 0 rgba(0,0,0,0.1);
+  border-radius: 0.4rem;
+  font-weight: bold;
+}
+
+body.place-form-visible .content-suggest-btn {
+  display: none;
+}
+
+.content-suggest-btn:after {
+  content: '+';
+  font-size: 1.5rem;
+  line-height: 0.66;
+}
+
+@media screen and (width >= 60rem) {
+  body.content-visible .content-suggest-btn {
+    display: none;
+  }
+}

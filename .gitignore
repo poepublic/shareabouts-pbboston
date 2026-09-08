@@ -1,6 +1,8 @@
 # user-specific
 db/*.sqlite3
 log/*.log
+.vscode/
+*.code-workspace
 
 # tmp
 tmp/
@@ -24,6 +26,9 @@ coverage.data
 staticfiles/
 src/sa_web/static/build/
 src/sa_web/static/dist/
+src/sa_admin/static/sa_admin/dist/
+src/static/dist/
+
 
 # installed packages
 env/
@@ -38,3 +43,7 @@ src/project/config.yml
 
 # sqlite database
 *.db
+
+# Agent tools & skills
+.agent/
+.claude/
