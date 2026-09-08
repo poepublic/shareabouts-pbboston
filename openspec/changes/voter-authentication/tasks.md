@@ -15,3 +15,9 @@
 - [x] 3.1 Write tests for `/vote/generate-code` verifying successful generation, SMS dispatch, and rejection if a ballot exists.
 - [x] 3.2 Write tests for `/admin/generate-code` verifying voter support group requirements (matching dataset vs other dataset / non-members) and long TTL code caching.
 - [x] 3.3 Write tests for `/vote/verify-code` verifying session state mutation upon successful login, and 404 behavior for invalid codes.
+
+## 4. Twilio API Key Migration
+
+- [x] 4.1 Update `src/project/settings.py` to read `TWILIO_API_KEY` and `TWILIO_API_SECRET` instead of `TWILIO_AUTH_TOKEN`.
+- [x] 4.2 Update `send_verification_sms` in `src/sa_vote/views.py` to instantiate `Client(api_key, api_secret, account_sid=account_sid)` and require API key credentials.
+- [x] 4.3 Update unit tests in `src/sa_vote/tests.py` to verify API key authentication and improper configuration handling.

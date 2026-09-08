@@ -429,14 +429,30 @@ class AdminGenerateCodeUnitTests(SimpleTestCase):
 class SendVerificationSmsUnitTests(SimpleTestCase):
     """Unit tests for send_verification_sms helper."""
 
-    @override_settings(TWILIO_ACCOUNT_SID='', TWILIO_AUTH_TOKEN='', TWILIO_PHONE_NUMBER='')
+    @override_settings(TWILIO_ACCOUNT_SID='', TWILIO_API_KEY='', TWILIO_API_SECRET='', TWILIO_PHONE_NUMBER='')
     def test_missing_settings_raises_improperly_configured(self):
         from sa_vote.views import send_verification_sms
         from django.core.exceptions import ImproperlyConfigured
         with self.assertRaises(ImproperlyConfigured):
             send_verification_sms('+15551234567', 'a1b2c3')
 
-    @override_settings(TWILIO_ACCOUNT_SID='AC123', TWILIO_AUTH_TOKEN='token', TWILIO_PHONE_NUMBER='+15550000000')
+    def test_missing_each_individual_setting_raises_improperly_configured(self):
+        from sa_vote.views import send_verification_sms
+        from django.core.exceptions import ImproperlyConfigured
+        valid = {
+            'TWILIO_ACCOUNT_SID': 'AC123',
+            'TWILIO_API_KEY': 'SK123',
+            'TWILIO_API_SECRET': 'secret456',
+            'TWILIO_PHONE_NUMBER': '+15550000000',
+        }
+        for key in valid:
+            missing_config = valid.copy()
+            missing_config[key] = ''
+            with self.settings(**missing_config):
+                with self.assertRaises(ImproperlyConfigured):
+                    send_verification_sms('+15551234567', 'a1b2c3')
+
+    @override_settings(TWILIO_ACCOUNT_SID='AC123', TWILIO_API_KEY='SK123', TWILIO_API_SECRET='secret456', TWILIO_PHONE_NUMBER='+15550000000')
     @patch('twilio.rest.Client')
     def test_calls_twilio_client_messages_create(self, mock_twilio_client):
         from sa_vote.views import send_verification_sms
@@ -445,7 +461,7 @@ class SendVerificationSmsUnitTests(SimpleTestCase):
 
         send_verification_sms('+15551234567', 'a1b2c3')
 
-        mock_twilio_client.assert_called_once_with('AC123', 'token')
+        mock_twilio_client.assert_called_once_with('SK123', 'secret456', account_sid='AC123')
         mock_instance.messages.create.assert_called_once_with(
             body='Your Boston Participatory Budgeting voting login code is: a1b2c3',
             from_='+15550000000',

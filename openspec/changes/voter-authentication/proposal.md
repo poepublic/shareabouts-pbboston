@@ -21,5 +21,5 @@ We need a secure and anonymous voter authentication system for the Participatory
 
 - Modifies `src/sa_vote/views.py` and `src/sa_vote/urls.py` for new endpoints.
 - Introduces `ballot.voter_support_group` in flavor config (overridable via `SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP`).
-- Requires adding `twilio` to `app-requirements.txt` and defining new environment variables (`TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_PHONE_NUMBER`).
+- Requires adding `twilio` to `app-requirements.txt` and defining new environment variables (`TWILIO_ACCOUNT_SID`, `TWILIO_API_KEY`, `TWILIO_API_SECRET`, `TWILIO_PHONE_NUMBER`).
 - Requires configuring the Cloud Run service with a Serverless VPC Access connector to reach the private Redis instance.

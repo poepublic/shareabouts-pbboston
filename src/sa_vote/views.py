@@ -62,14 +62,15 @@ def send_verification_sms(phone_number: str, code: str) -> None:
     Send an SMS containing the verification code to the phone number using Twilio.
     """
     account_sid = getattr(settings, 'TWILIO_ACCOUNT_SID', None)
-    auth_token = getattr(settings, 'TWILIO_AUTH_TOKEN', None)
+    api_key = getattr(settings, 'TWILIO_API_KEY', None)
+    api_secret = getattr(settings, 'TWILIO_API_SECRET', None)
     from_number = getattr(settings, 'TWILIO_PHONE_NUMBER', None)
 
-    if not account_sid or not auth_token or not from_number:
-        raise ImproperlyConfigured('Twilio settings (TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER) must be configured.')
+    if not account_sid or not api_key or not api_secret or not from_number:
+        raise ImproperlyConfigured('Twilio settings (TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET, TWILIO_PHONE_NUMBER) must be configured.')
 
     from twilio.rest import Client
-    client = Client(account_sid, auth_token)
+    client = Client(api_key, api_secret, account_sid=account_sid)
     message_body = _('Your Boston Participatory Budgeting voting login code is: {code}').format(code=code)
     client.messages.create(
         body=message_body,
