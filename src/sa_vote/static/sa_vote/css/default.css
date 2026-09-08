@@ -490,6 +490,12 @@ details[open] summary.faq-question:after {
     transform: rotate(45deg);
 }
 
+/* Post-vote survey */
+
+.survey-form p {
+    margin: 0;
+}
+
 .survey-race-options {
     list-style: none;
     display: flex;
