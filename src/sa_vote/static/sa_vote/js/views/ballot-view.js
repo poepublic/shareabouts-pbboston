@@ -90,6 +90,11 @@ export const BallotView = Backbone.View.extend({
   },
 
   openVoteConfirmModal: function () {
+    // If the `vote-confirm-overlay` is already shown, don't show again.
+    if (this.$('#vote-confirm-overlay').length >= 1) {
+      return;
+    }
+    
     const selected = this.$('.proposal-checkbox:checked').map(function () {
       return { title: $(this).val() };
     }).get();
