@@ -93,7 +93,10 @@ export const BallotView = Backbone.View.extend({
     if (count > 0) {details.open = true}
   },
 
-  openVoteConfirmModal: function () {
+  openVoteConfirmModal: function (evt) {
+    // Don't trigger the form to submit yet.
+    evt.preventDefault();
+    
     // If the `vote-confirm-overlay` is already shown, don't show again.
     if (this.$('#vote-confirm-overlay').length >= 1) {
       return;
