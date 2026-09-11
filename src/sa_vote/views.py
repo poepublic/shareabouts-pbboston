@@ -323,16 +323,16 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
 
     proposals = body.get('proposals')
     if not isinstance(proposals, list) or len(proposals) < 1 or len(proposals) > 5:
-        return JsonResponse({'error': 'Must select between 1 and 5 proposals'}, status=400)
+        return JsonResponse({'error': f'Invalid proposals count: {proposals!r}', 'label': _('Must select between 1 and 5 proposals')}, status=400)
 
     if len(set(proposals)) != len(proposals):
-        return JsonResponse({'error': 'Proposals must not contain duplicate selections'}, status=400)
+        return JsonResponse({'error': 'Duplicate proposals', 'label': _('Proposals must not contain duplicate selections')}, status=400)
 
     ballot = Ballot.from_config(request.shareabouts_config, lang=get_language() or 'en')
     valid_slugs = ballot.slugs
     for slug in proposals:
         if not isinstance(slug, str) or slug not in valid_slugs:
-            return JsonResponse({'error': f"Invalid proposal slug: '{slug}'"}, status=400)
+            return JsonResponse({'error': f'Proposal not found: {slug!r}', 'label': _('Proposal not found: %(slug)s') % {'slug': slug}}, status=400)
 
     ballotbox_id = settings.SHAREABOUTS.get('BALLOTBOX_ID')
     ballotbox_key = settings.SHAREABOUTS.get('BALLOTBOX_KEY')

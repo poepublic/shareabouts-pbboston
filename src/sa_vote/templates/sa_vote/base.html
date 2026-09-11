@@ -153,6 +153,8 @@
       apiPrefix:  {{ api_prefix | as_json }},
       
       ballot: {{ ballot_json | safe }},
+      submitBallotEndpoint: '{% url "submit_ballot" %}',
+      submitSurveyEndpoint: '{% url "submit_survey" %}',
       voterIdHash: {{ request.session.voter_id_hash | as_json }},
       voterVerified: {{ request.session.voter_verified | default:False | as_json }},
     };

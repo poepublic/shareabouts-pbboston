@@ -44,6 +44,12 @@ export const BallotView = Backbone.View.extend({
     return this;
   },
 
+  getSelectedProposals: function () {
+    return this.$('.proposal-checkbox:checked').map(function () {
+      return { title: $(this).val(), amount: $(this).data('amount'), slug: $(this).data('slug') };
+    }).get();
+  },
+
   updateBannerSummary: function () {
     const count = this.$('.proposal-checkbox:checked').length;
     const remaining = MAX_SELECTIONS - count;
@@ -65,11 +71,7 @@ export const BallotView = Backbone.View.extend({
       // ballot banner only expands if 1 or more proposals selected
       this.$('.ballot-banner-verified-summary').removeClass('no-proposal-selections');
 
-      const selected = this.$('.proposal-checkbox:checked').map(function () {
-        return { title: $(this).val(), amount: $(this).data('amount'), slug: $(this).data('slug') };
-      }
-      ).get();
-
+      const selected = this.getSelectedProposals();
       this.updateBannerDetails(selected);
     }
   },
@@ -103,10 +105,7 @@ export const BallotView = Backbone.View.extend({
       return;
     }
     
-    const selected = this.$('.proposal-checkbox:checked').map(function () {
-      return { title: $(this).val() };
-    }).get();
-
+    const selected = this.getSelectedProposals();
     const modalTemplate = Handlebars.templates['sa_vote/includes/vote-confirm-modal'];
     this.$('form').append(modalTemplate({ proposals: selected }));
   },
@@ -115,10 +114,54 @@ export const BallotView = Backbone.View.extend({
     this.$('#vote-confirm-overlay').remove();
   },
 
-  submitVote: function (evt) {
+  submitVote: async function (evt) {
     evt.preventDefault();
-    console.log('submitted the form')
-    // window.location.href = '/vote/success';
+
+    const selected = this.getSelectedProposals();
+    const endpoint = Shareabouts.bootstrapped.submitBallotEndpoint;
+
+    console.log('Submitting vote to endpoint:', endpoint);
+    console.log('Selected proposals:', selected);
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ proposals: selected.map(p => p.slug) })
+      });
+
+      if (response.status >= 500) {
+        return await this.onSubmitVoteServerError(response);
+      }
+
+      else if (response.status >= 400) {
+        return await this.onSubmitVoteClientError(response);
+      }
+
+      else if (response.ok) {
+        return await this.onSubmitVoteSuccess(response);
+      }
+
+    } catch (error) {
+      console.error('Error submitting vote:', error);
+      alert('Something went wrong while submitting your vote.')
+    }
+  },
+
+  onSubmitVoteSuccess: async function (response) {
+    this.options.router.navigate('/vote/success');
+  },
+
+  onSubmitVoteClientError: async function (response) {
+    const data = await response.json();
+    alert(data.label || 'Unknown error');
+  },
+
+  onSubmitVoteServerError: async function (response) {
+    const data = await response.json();
+    alert('Something went wrong while submitting your vote. Please try again later.');
   },
 
 });
