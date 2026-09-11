@@ -1,3 +1,4 @@
+@import url('/static/css/iia.css');
 @import url('/static/sa_admin/css/vote-report.css');
 
 :root {
@@ -9,9 +10,6 @@
   --border-color: var(--dark-bg-color);
   --highlight-color: #fff3cd;
   --filtered-color: #0faf00;
-
-  --iia-dark-blue: #0E0E30;
-  --iia-fog-grey: #efeff4;
 }
 
 body {

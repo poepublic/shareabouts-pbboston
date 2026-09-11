@@ -1,0 +1,16 @@
+:root {
+  /* Ideas in Action colors -- from the style guide */
+  --iia-dark-blue: #0E0E30;
+  --iia-indigo-blue: #1900B0;
+  --iia-fog-grey: #efeff4;
+  --iia-vibrant-green: #00cd5f;
+  --iia-electric-purple: #B11FFF;
+  --iia-electric-purple-alt: #BF49FF;
+  /* For dark backgrounds */
+  --iia-urban-pink: #E90055;
+  --iia-urban-pink-alt: #FF1E71;
+  /* For dark backgrounds */
+  --iia-callout-blue: #303392;
+  /* Not listed in the style guide colors, but used in samples */
+  --iia-gradient: linear-gradient(90deg, #E90055 0%, #1A1E4C 50%, #0E0E30 100%);
+}

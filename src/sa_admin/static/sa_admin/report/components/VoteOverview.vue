@@ -4,8 +4,8 @@
   Voting trends
   </h1>
   <p class="stat-line">
-    {{ votesToday }} residents voted today, for a total of {{ totalVotes }} votes this cycle.
-    {{ surveyResponseRate }}% of voters have responded to the survey.
+    <span class="stat-callout">{{ votesToday }}</span> residents voted today, for a total of <span class="stat-callout">{{ totalVotes }}</span> votes this cycle.
+    <span class="stat-callout">{{ surveyResponseRate }}%</span> of voters have responded to the survey.
   </p>
   </div>
 </template>
