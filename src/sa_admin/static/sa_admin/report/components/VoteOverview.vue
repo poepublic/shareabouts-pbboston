@@ -1,8 +1,13 @@
 <template>
-  <p class="vote-counts">
-    {{ votesToday }} residents voted today, bringing the total to {{ totalVotes }} votes.
+  <div class="stat-card">
+  <h1 class="stat-title">
+  Voting trends
+  </h1>
+  <p class="stat-line">
+    {{ votesToday }} residents voted today, for a total of {{ totalVotes }} votes this cycle.
     {{ surveyResponseRate }}% of voters have responded to the survey.
   </p>
+  </div>
 </template>
 
 <script setup>
