@@ -1,5 +1,22 @@
+<template>
+  <div class="voting-report-app">
+    <div class="report-header">
+    </div>
+    <div class="report-wrapper">
+      <div class="table-of-contents-wrapper">
+      </div>
+      <VoteOverview :ballots="ballotsCollection" :surveys="surveysCollection" />
+      <VoteDemographics />
+      <SurveyDemographics />
+    </div>
+  </div>
+</template>
+
 <script setup>
   import { useBackboneCollection } from '../composables/useBackboneCollection.js';
+  import VoteOverview from './components/VoteOverview.vue';
+  import VoteDemographics from './components/VoteDemographics.vue';
+  import SurveyDemographics from './components/SurveyDemographics.vue';
 
   // Non-anonymous Ballot Data
   // -------------------------
