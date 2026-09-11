@@ -7,6 +7,7 @@ export const BallotView = Backbone.View.extend({
     'click .selected-proposal-remove': 'removeSelection',
     'click #submit-ballot': 'openVoteConfirmModal',
     'click #vote-confirm-cancel': 'closeVoteConfirmModal',
+    'submit form': 'submitVote',
   },
 
   getBannerSummaryContext: function (count, remaining) {
@@ -96,7 +97,7 @@ export const BallotView = Backbone.View.extend({
   openVoteConfirmModal: function (evt) {
     // Don't trigger the form to submit yet.
     evt.preventDefault();
-    
+
     // If the `vote-confirm-overlay` is already shown, don't show again.
     if (this.$('#vote-confirm-overlay').length >= 1) {
       return;
@@ -107,11 +108,17 @@ export const BallotView = Backbone.View.extend({
     }).get();
 
     const modalTemplate = Handlebars.templates['sa_vote/includes/vote-confirm-modal'];
-    this.$el.append(modalTemplate({ proposals: selected }));
+    this.$('form').append(modalTemplate({ proposals: selected }));
   },
 
   closeVoteConfirmModal: function () {
     this.$('#vote-confirm-overlay').remove();
+  },
+
+  submitVote: function (evt) {
+    evt.preventDefault();
+    console.log('submitted the form')
+    // window.location.href = '/vote/success';
   },
 
 });

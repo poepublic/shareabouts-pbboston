@@ -368,7 +368,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     padding-left: 1.25rem;
 }
 
-#vote-confirm-button {
+#vote-confirm-submit {
     display: block;
     text-align: center;
     margin-bottom: 1rem;
