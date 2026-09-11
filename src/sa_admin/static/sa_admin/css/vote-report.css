@@ -1,0 +1,46 @@
+.report {
+    padding: 1.5rem;
+    margin-top: 5vh;
+}
+
+header {
+    padding: 0 !important;
+    margin: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+body {
+    background: var(--iia-dark-blue);
+}
+
+p {
+    color: var(--iia-fog-grey);
+}
+
+h1 {
+    color: white;
+}
+
+/* Stat cards*/
+.stat-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5rem;
+    color: white;
+}
+
+.stat-line {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--iia-fog-grey);
+}
+
