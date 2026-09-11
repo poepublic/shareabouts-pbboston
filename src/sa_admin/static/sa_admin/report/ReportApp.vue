@@ -6,8 +6,8 @@
       <div class="table-of-contents-wrapper">
       </div>
       <VoteOverview :ballots="ballotsCollection" :surveys="surveysCollection" />
-      <VoteDemographics />
-      <SurveyDemographics />
+      <BallotDemographics  :ballots="ballotsCollection" />
+      <SurveyDemographics  :surveys="surveysCollection.anonymous" />
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
 <script setup>
   import { useBackboneCollection } from '../composables/useBackboneCollection.js';
   import VoteOverview from './components/VoteOverview.vue';
-  import VoteDemographics from './components/VoteDemographics.vue';
+  import BallotDemographics from './components/BallotDemographics.vue';
   import SurveyDemographics from './components/SurveyDemographics.vue';
 
   // Non-anonymous Ballot Data
@@ -68,7 +68,13 @@
   });
   surveysCollection.anonymous.fetchAllPages({
     pageSuccess: (page) => console.log(`Fetched ${page.length} anonymous surveys...`),
-    success: () => console.log('All anonymous data for surveys loaded! Total:', surveysCollection.anonymous.length)
+    success: () => {
+      console.log('All anonymous data for surveys loaded! Total:', surveysCollection.anonymous.length);
+      const surveyResponses = surveysCollection.anonymous.toJSON();
+      console.log("First survey response:", surveyResponses[0]);
+      const respondentAges2 = surveyResponses.map(response => response.age);
+      console.log('Respondent ages (from toJSON):', respondentAges2);
+    }
   });
 
   // Working with the Data
@@ -88,10 +94,7 @@
   const respondentAges1 = surveysCollection.anonymous.map(response => response.get('age'));
 
   // If you prefer, you can also convert a collection of models to a plain array
-  // of objects using the `toJSON` method. For example:
-
-  const surveyResponses = surveysCollection.anonymous.toJSON();
-  const respondentAges2 = surveyResponses.map(response => response.age);
+  // of objects using the `toJSON` method.
 
   // For convenience, in case you want to experiment, I'm attaching the
   // collections to the window object, so that you can access them from the

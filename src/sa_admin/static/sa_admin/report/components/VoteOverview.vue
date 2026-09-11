@@ -1,12 +1,13 @@
 <template>
   <div class="stat-card">
-  <h1 class="stat-title">
-  Voting trends
-  </h1>
-  <p class="stat-line">
-    <span class="stat-callout">{{ votesToday }}</span> residents voted today, for a total of <span class="stat-callout">{{ totalVotes }}</span> votes this cycle.
-    <span class="stat-callout">{{ surveyResponseRate }}%</span> of voters have responded to the survey.
-  </p>
+    <h1 class="stat-title">
+      Voting trends
+    </h1>
+    <p class="stat-line">
+      <span class="stat-callout">{{ votesToday }}</span> residents voted today, for a total of <span
+        class="stat-callout">{{ totalVotes }}</span> votes this cycle.
+      <span class="stat-callout">{{ surveyResponseRate }}%</span> of voters have responded to the survey.
+    </p>
   </div>
 </template>
 
