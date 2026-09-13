@@ -1,6 +1,7 @@
 import { HomeView } from './home-view.js';
 import { BallotView } from './ballot-view.js';
 import { FaqView } from './faq-view.js';
+import { PrivacyView } from './privacy-view.js';
 import { AuthView } from './auth-view.js';
 import { SurveyView } from './survey-view.js';
 
@@ -70,6 +71,10 @@ export const VotingAppView = Backbone.View.extend({
 
   showFaq: function () {
     this._replaceCurrentView(new FaqView({ faqs: FAQs }));
+  },
+
+  showPrivacy: function () {
+    this._replaceCurrentView(new PrivacyView());
   },
 
   showAuth: function () {

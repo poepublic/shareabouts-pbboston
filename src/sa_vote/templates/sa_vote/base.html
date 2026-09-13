@@ -83,6 +83,9 @@
           <li class="menu-item">
             <a href="/vote/faq" data-internal="true">{% translate "FAQ" %}</a>
           </li>
+          <li class="menu-item">
+            <a href="/vote/privacy" data-internal="true">{% translate "Privacy" %}</a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -151,7 +154,7 @@
       mapboxToken: '{{ settings.MAPBOX_TOKEN }}',
       routePrefix: {{ route_prefix | as_json }},
       apiPrefix:  {{ api_prefix | as_json }},
-      
+
       ballot: {{ ballot_json | safe }},
       submitBallotEndpoint: '{% url "submit_ballot" %}',
       submitSurveyEndpoint: '{% url "submit_survey" %}',
@@ -211,7 +214,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '{{ settings.GOOGLE_ANALYTICS_ID }}', { 
+    gtag('config', '{{ settings.GOOGLE_ANALYTICS_ID }}', {
       'cookie_flags': 'SameSite=None; Secure',
       'send_page_view': false,
     });
