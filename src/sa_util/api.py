@@ -134,8 +134,6 @@ class ShareaboutsApi:
 
     def create(self, resource, json=None, data=None, silent: bool = False, **kwargs):
         uri = make_resource_uri(resource, root=self.dataset_root)
-        if not uri.endswith('/'):
-            uri += '/'
         headers = kwargs.pop('headers', {})
         if silent:
             headers['X-Shareabouts-Silent'] = 'true'

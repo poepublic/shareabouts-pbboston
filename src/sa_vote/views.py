@@ -349,7 +349,7 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
         return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
 
     if existing and isinstance(existing, dict) and (existing.get('length', 0) > 0 or len(existing.get('results', [])) > 0):
-        return JsonResponse({'error': 'A ballot has already been submitted for this voter'}, status=409)
+        return JsonResponse({'error': 'A ballot has already been submitted for this voter', 'label': _('It appears that you have already submitted a ballot.')}, status=409)
 
     lang = get_language() or 'en'
     payload = {

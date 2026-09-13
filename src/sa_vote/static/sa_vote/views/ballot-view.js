@@ -136,6 +136,10 @@ export const BallotView = Backbone.View.extend({
         return await this.onSubmitVoteServerError(response);
       }
 
+      else if (response.status === 409) {
+        return await this.onSubmitVoteDupBallotError(response);
+      }
+
       else if (response.status >= 400) {
         return await this.onSubmitVoteClientError(response);
       }
@@ -151,7 +155,7 @@ export const BallotView = Backbone.View.extend({
   },
 
   onSubmitVoteSuccess: async function (response) {
-    this.options.router.navigate('/vote/success');
+    window.app.navigate('/success', {trigger: true});
   },
 
   onSubmitVoteClientError: async function (response) {
@@ -162,6 +166,12 @@ export const BallotView = Backbone.View.extend({
   onSubmitVoteServerError: async function (response) {
     const data = await response.json();
     alert('Something went wrong while submitting your vote. Please try again later.');
+  },
+
+  onSubmitVoteDupBallotError: async function (response) {
+    const data = await response.json();
+    alert('It looks like you have already submitted a ballot.');
+    window.app.navigate('/success', {trigger: true});
   },
 
 });
