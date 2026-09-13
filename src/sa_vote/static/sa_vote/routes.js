@@ -1,4 +1,4 @@
-import { VotingAppView } from './js/views/voting-app-view.js';
+import { VotingAppView } from './views/voting-app-view.js';
 
 const S = Shareabouts;
 

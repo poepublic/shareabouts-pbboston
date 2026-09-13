@@ -323,16 +323,16 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
 
     proposals = body.get('proposals')
     if not isinstance(proposals, list) or len(proposals) < 1 or len(proposals) > 5:
-        return JsonResponse({'error': 'Must select between 1 and 5 proposals'}, status=400)
+        return JsonResponse({'error': f'Invalid proposals count: {proposals!r}', 'label': _('Must select between 1 and 5 proposals')}, status=400)
 
     if len(set(proposals)) != len(proposals):
-        return JsonResponse({'error': 'Proposals must not contain duplicate selections'}, status=400)
+        return JsonResponse({'error': 'Duplicate proposals', 'label': _('Proposals must not contain duplicate selections')}, status=400)
 
     ballot = Ballot.from_config(request.shareabouts_config, lang=get_language() or 'en')
     valid_slugs = ballot.slugs
     for slug in proposals:
         if not isinstance(slug, str) or slug not in valid_slugs:
-            return JsonResponse({'error': f"Invalid proposal slug: '{slug}'"}, status=400)
+            return JsonResponse({'error': f'Proposal not found: {slug!r}', 'label': _('Proposal not found: %(slug)s') % {'slug': slug}}, status=400)
 
     ballotbox_id = settings.SHAREABOUTS.get('BALLOTBOX_ID')
     ballotbox_key = settings.SHAREABOUTS.get('BALLOTBOX_KEY')
@@ -349,7 +349,7 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
         return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
 
     if existing and isinstance(existing, dict) and (existing.get('length', 0) > 0 or len(existing.get('results', [])) > 0):
-        return JsonResponse({'error': 'A ballot has already been submitted for this voter'}, status=409)
+        return JsonResponse({'error': 'A ballot has already been submitted for this voter', 'label': _('It appears that you have already submitted a ballot.')}, status=409)
 
     lang = get_language() or 'en'
     payload = {
@@ -409,14 +409,10 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
 
     lang = get_language() or 'en'
     payload = {
+        **body,
         'id_hash': voter_id_hash,
         'lang': lang,
     }
-    for key, value in body.items():
-        if key in ('id_hash', 'lang'):
-            continue
-        target_key = key if key.startswith('anonymous_') else f'anonymous_{key}'
-        payload[target_key] = value
 
     try:
         api.create(f'places/{ballotbox_id}/surveys', json=payload)

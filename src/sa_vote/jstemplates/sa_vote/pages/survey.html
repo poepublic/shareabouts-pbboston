@@ -17,7 +17,7 @@
 
             <div class="survey-question">
                 <label for="survey-age-input" class="regular-prompt">{{#_}}What is your age (in years)?{{/_}}</label>
-                <input type="number" id="survey-age-input" class="survey-number-input" name="age" min="11" max="120">
+                <input type="number" id="survey-age-input" class="survey-number-input" name="anonymous_age" min="11" max="120">
             </div>
 
             <div class="survey-question">
@@ -32,55 +32,55 @@
             <div class="survey-question">
                 <ul class="survey-race-options">
                     <li>
-                        <input type="checkbox" id="survey-race-american-indian" name="race"
+                        <input type="checkbox" id="survey-race-american-indian" name="anonymous_race"
                             value="American Indian or Alaska Native">
                         <label for="survey-race-american-indian">{{#_}}American Indian or Alaska Native{{/_}}</label>
                     </li>
 
                     <li>
-                        <input type="checkbox" id="survey-race-asian" name="race" value="Asian">
+                        <input type="checkbox" id="survey-race-asian" name="anonymous_race" value="Asian">
                         <label for="survey-race-asian">{{#_}}Asian{{/_}}</label>
                     </li>
 
                     <li>
-                        <input type="checkbox" id="survey-race-black" name="race" value="Black or African American">
+                        <input type="checkbox" id="survey-race-black" name="anonymous_race" value="Black or African American">
                         <label for="survey-race-black">{{#_}}Black or African American{{/_}}</label>
                     </li>
 
                     <li>
-                        <input type="checkbox" id="survey-race-hispanic" name="race"
+                        <input type="checkbox" id="survey-race-hispanic" name="anonymous_race"
                             value="Hispanic or Latino/-a/-e/-x">
                         <label for="survey-race-hispanic">{{#_}}Hispanic or Latino/-a/-e/-x{{/_}}</label>
                     </li>
 
                     <li>
-                        <input type="checkbox" id="survey-race-pacific-islander" name="race"
+                        <input type="checkbox" id="survey-race-pacific-islander" name="anonymous_race"
                             value="Native Hawaiian or other Pacific Islander">
                         <label for="survey-race-pacific-islander">{{#_}}Native Hawaiian or other Pacific
                             Islander{{/_}}</label>
                     </li>
 
                     <li>
-                        <input type="checkbox" id="survey-race-white" name="race" value="White">
+                        <input type="checkbox" id="survey-race-white" name="anonymous_race" value="White">
                         <label for="survey-race-white">{{#_}}White{{/_}}</label>
                     </li>
 
                     <li>
-                        <input type="checkbox" id="survey-race-prefer-not-to-answer" name="race"
+                        <input type="checkbox" id="survey-race-prefer-not-to-answer" name="anonymous_race"
                             value="Prefer not to answer">
                         <label for="survey-race-prefer-not-to-answer">{{#_}}Prefer not to answer{{/_}}</label>
                     </li>
 
                     <li>
-                        <input type="checkbox" id="survey-race-not-listed" name="race"
+                        <input type="checkbox" id="survey-race-not-listed" name="anonymous_race"
                             value="Race or ethnicity not listed here">
                         <label for="survey-race-not-listed">{{#_}}Race or ethnicity not listed here{{/_}}</label>
                     </li>
 
                     <li>
-                        <input type="checkbox" id="survey-race-other" name="race" value="Other">
+                        <input type="checkbox" id="survey-race-other" name="anonymous_race" value="Other">
                         <label for="survey-race-other">{{#_}}Other (write-in){{/_}}</label>
-                        <input type="text" id="survey-race-other-input" name="race-other">
+                        <input type="text" id="survey-race-other-input" name="anonymous_race-other">
                     </li>
                 </ul>
             </div>
@@ -88,7 +88,7 @@
             <div class="survey-question">
                 <label for="survey-income-input">{{#_}}What was your household income in the past 12 months? Choose
                     one:{{/_}}</label>
-                <select id="survey-income-input" class="survey-select-input" name="income">
+                <select id="survey-income-input" class="survey-select-input" name="anonymous_income">
                     <option value="" selected disabled>{{#_}}Select an option{{/_}}</option>
                     <option value="Less than $14,999">{{#_}}Less than $14,999{{/_}}</option>
                     <option value="$15,000 to $34,999">{{#_}}$15,000 to $34,999{{/_}}</option>
@@ -107,7 +107,7 @@
                     past?{{/_}}</label>
                 <p>{{#_}}Examples include: submitting ideas online, attending a workshop or forum, or voting for project
                     proposals on the ballot.{{/_}}</p>
-                <select id="survey-participated-input" class="survey-select-input" name="participated">
+                <select id="survey-participated-input" class="survey-select-input" name="anonymous_participated">
                     <option value="" selected disabled>{{#_}}Select an option{{/_}}</option>
                     <option value="Yes, I have participated in the past">{{#_}}Yes, I have participated in the
                         past{{/_}}</option>
@@ -124,7 +124,7 @@
             your answers to the questions above.{{/_}}</p>
 
         <label for="newsletter-email-input">{{#_}}Your email address:{{/_}}</label>
-        <input type="email" id="newsletter-email-input" class="survey-text-input" name="newsletter-email"
+        <input type="email" id="newsletter-email-input" class="survey-text-input" name="private_newsletter-email"
             form="survey-form">
     </div>
     <button type="submit" form="survey-form" class="ballot-vote-button btn btn-primary"
