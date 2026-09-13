@@ -4,6 +4,7 @@
 #ballot-page,
 #auth-page,
 #faq-page,
+#privacy-page,
 #survey-page {
     padding: 1.5rem;
     margin-top: 5vh;
@@ -69,7 +70,7 @@ summary {
 .inline-scribble {
     display: inline-block;
     height: 0.75em;
-  }  
+  }
 
 /* Text formatting */
 .secondary-emphasis {
@@ -434,7 +435,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 1rem;
-    
+
 }
 
 #verify-button, #unverify-button {
