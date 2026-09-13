@@ -409,14 +409,10 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
 
     lang = get_language() or 'en'
     payload = {
+        **body,
         'id_hash': voter_id_hash,
         'lang': lang,
     }
-    for key, value in body.items():
-        if key in ('id_hash', 'lang'):
-            continue
-        target_key = key if key.startswith('anonymous_') else f'anonymous_{key}'
-        payload[target_key] = value
 
     try:
         api.create(f'places/{ballotbox_id}/surveys', json=payload)

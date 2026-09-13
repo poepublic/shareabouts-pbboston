@@ -751,7 +751,7 @@ class SubmitSurveyTests(SimpleTestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
-        self.valid_payload = {'age': 30, 'neighborhood': 'Dorchester', 'anonymous_income': '50k-75k'}
+        self.valid_payload = {'anonymous_age': 30, 'anonymous_neighborhood': 'Dorchester', 'anonymous_income': '50k-75k', 'private_email': 'test@example.com'}
 
     def test_get_request_returns_405(self):
         from sa_vote.views import submit_survey
@@ -805,7 +805,7 @@ class SubmitSurveyTests(SimpleTestCase):
 
     @patch('sa_util.api.ShareaboutsApi.create')
     @patch('sa_util.api.ShareaboutsApi.get')
-    def test_successful_survey_submission_transforms_keys_and_invalidates_session(self, mock_get, mock_create):
+    def test_successful_survey_submission_sends_data_and_invalidates_session(self, mock_get, mock_create):
         from sa_vote.views import submit_survey
         mock_get.return_value = {'length': 0, 'results': []}
         mock_create.return_value = {'id': 2}
@@ -834,6 +834,7 @@ class SubmitSurveyTests(SimpleTestCase):
         self.assertEqual(sent_payload['anonymous_age'], 30)
         self.assertEqual(sent_payload['anonymous_neighborhood'], 'Dorchester')
         self.assertEqual(sent_payload['anonymous_income'], '50k-75k')
+        self.assertEqual(sent_payload['private_email'], 'test@example.com')
         self.assertIn('lang', sent_payload)
 
 
