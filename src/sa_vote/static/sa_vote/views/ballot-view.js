@@ -120,9 +120,6 @@ export const BallotView = Backbone.View.extend({
     const selected = this.getSelectedProposals();
     const endpoint = Shareabouts.bootstrapped.submitBallotEndpoint;
 
-    console.log('Submitting vote to endpoint:', endpoint);
-    console.log('Selected proposals:', selected);
-
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -137,7 +134,11 @@ export const BallotView = Backbone.View.extend({
       }
 
       else if (response.status === 409) {
-        return await this.onSubmitVoteDupBallotError(response);
+        return await this.onSubmitVoteDuplicateError(response);
+      }
+
+      else if (response.status === 403) {
+        return await this.onSubmitVoteUnverifiedError(response);
       }
 
       else if (response.status >= 400) {
@@ -154,8 +155,13 @@ export const BallotView = Backbone.View.extend({
     }
   },
 
-  onSubmitVoteSuccess: async function (response) {
+  goToSurvey: function () {
     window.app.navigate('/success', {trigger: true});
+    window.scrollTo(0, 0);
+  },
+
+  onSubmitVoteSuccess: async function (response) {
+    this.goToSurvey();
   },
 
   onSubmitVoteClientError: async function (response) {
@@ -168,10 +174,15 @@ export const BallotView = Backbone.View.extend({
     alert('Something went wrong while submitting your vote. Please try again later.');
   },
 
-  onSubmitVoteDupBallotError: async function (response) {
+  onSubmitVoteDuplicateError: async function (response) {
     const data = await response.json();
     alert('It looks like you have already submitted a ballot.');
-    window.app.navigate('/success', {trigger: true});
+    this.goToSurvey();
+  },
+
+  onSubmitVoteUnverifiedError: async function (response) {
+    const data = await response.json();
+    alert('It looks like you are not verified as a voter.');
   },
 
 });
