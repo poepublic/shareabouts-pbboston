@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block header_intro %}
+<div id="boston-small-screen-lead-in" class="boston-small-screen-lead-in">
+  <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo-white.png' %}"><br>
+  <span class="pb-label">{% translate "Participatory Budgeting" %}</span>
+</div>
+{% endblock %}
+
+{% block site-title %}
+<a href="{{ site_root }}">
+  <img class="boston-icon" alt="" src="{% static 'css/images/boston-icon-light.svg' %}">
+  <img class="pb-icon" alt="" src="{% static 'css/images/pbboston-icon.svg' %}">
+  <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo.svg' %}">
+  <span class="pb-label">{% translate "Participatory Budgeting" %}</span>
+</a>
+{% endblock %}
+
+{% block meta %}
+  {% if place %}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ place.properties.name }}">
+    <meta name="twitter:description" content="{{ place.properties.description }}">
+    {% with attachment=place.properties.attachments|first %}
+    <meta name="twitter:image:src" content="{{ attachment.file }}">
+    {% endwith %}
+    {% comment %} TODO: Fill this in when we know if the username is from twitter
+      <meta name="twitter:creator" content="place.submitter.username">
+    {% endcomment %}
+
+    <!-- Facebook -->
+    <meta property="og:site_name" content="{{ config.app.title }}" />
+    <meta property="og:title" content="{{ place.properties.name }}" />
+    <meta property="og:description" content="{{ place.properties.description }}" />
+    {% with attachment=place.properties.attachments|first %}
+    <meta name="og:image" content="{{ attachment.file }}">
+    {% endwith %}
+  {% else %}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ config.app.title }}">
+    <meta name="twitter:description" content="{{ config.app.meta_description }}">
+
+    <!-- Facebook -->
+    <meta property="og:site_name" content="{{ config.app.title }}" />
+    <meta property="og:title" content="{{ config.app.title }}" />
+    <meta property="og:description" content="{{ config.app.meta_description }}" />
+  {% endif%}
+{% endblock %}
+
+{% block pre_pages_nav %}
+  {% if config.place.adding_supported %}
+    <a class="btn btn-primary navbar-suggest-btn" rel="internal" href="{{route_prefix}}/place/new">{% blocktrans %}Suggest an Idea{% endblocktrans %}</a>
+  {% endif %}
+{% endblock %}
+
+<!--
+  This will place content at the top of the side bar
+ -->
+{% block sidebar %}
+<form class="activity-filters">
+  <div class="display-choice">
+    <input type="radio" name="activity_display_choice" value="all-ideas" id="activity-show-all-ideas" checked>
+    <label for="activity-show-all-ideas">{% translate "All Ideas" %}</label>
+  </div>
+  <div class="display-choice">
+    <input type="radio" name="activity_display_choice" value="city-wide" id="activity-show-city-wide">
+    <label for="activity-show-city-wide">{% translate "City-wide Only" %}</label>
+  </div>
+</form>
+{% endblock %}
+
+<!--
+  This will place content in the colophon below the map
+ -->
+{% block colophon %}
+
+<p id="powered-by">
+  <span class="nobreak">{% blocktrans with Shareabouts='<a href="https://github.com/openplans/shareabouts" class="shareabouts-logo" target="_blank">Shareabouts</a>' %}Powered by {{Shareabouts}}{% endblocktrans %}</span>,
+  <span class="nobreak">{% blocktrans with PoePublic='<a href="mailto:hello@poepublic.com" class="poepublic-logo" target="_blank">Poe<strong>Public</strong></a>' %}built by {{PoePublic}}{% endblocktrans %}</span></p>
+{% endblock %}
+
+<!--
+  Analytics, custom JS, and such go here
+ -->
+{% block includes %}
+<link rel="stylesheet" href="https://unpkg.com/select2@4.1.0-rc.0/dist/css/select2.min.css">
+
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+<script src="https://unpkg.com/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+  Shareabouts.bootstrapped.neighborhoods = {{ neighborhoods|safe }};
+  Shareabouts.bootstrapped.site_root = '{{ site_root }}';
+</script>
+
+<script src="{% static 'js/language-picker.js' %}"></script>
+<script src="{% static 'js/pages-nav-previous-cycles-menu-ext.js' %}"></script>
+<script src="{% static 'js/place-form-view-city-wide-ext.js' %}"></script>
+<script src="{% static 'js/place-form-view-select2-ext.js' %}"></script>
+<script src="{% static 'js/place-form-view-fullname-ext.js' %}"></script>
+<script src="{% static 'js/place-form-view-category-ext.js' %}"></script>
+<script src="{% static 'js/place-form-view-tooltip-ext.js' %}"></script>
+<script src="{% static 'js/place-list-view-filters-ext.js' %}"></script>
+<script src="{% static 'js/activity-view-filters-ext.js' %}"></script>
+<script src="{% static 'js/map-view-initial-extents-ext.js' %}"></script>
+{% endblock %}

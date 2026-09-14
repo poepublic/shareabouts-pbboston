@@ -1,0 +1,23 @@
+{{#if is_first_personal_info_field}}
+  <h3 class="personal-info-title">{{{ form_config.place_config.personal_info_title }}}</h3>
+  <p>{{{ form_config.place_config.personal_info_intro }}}</p>
+{{/if}}
+
+{{#if is_first_demographic_field}}
+  <h3 class="demographic-info-title">{{{ form_config.place_config.demographic_info_title }}}</h3>
+  <p>{{{ form_config.place_config.demographic_info_intro }}}</p>
+{{/if}}
+
+{{#if is_first_contact_info_field}}
+  <h3 class="contact-info-title">{{{ form_config.place_config.contact_info_title }}}</h3>
+  <p>{{{ form_config.place_config.contact_info_intro }}}</p>
+{{/if}}
+
+<div class="field {{ type }}-field {{ default submission_type 'place' }}-{{ name }}-field">
+  {{> form-field-label }}
+  {{#if help_text }}
+  <div class="help-text {{ default submission_type 'place' }}-{{ name }}-help-text">{{{ help_text }}}</div>
+  {{/if}}
+
+  {{> form-field-widget }}
+</div>

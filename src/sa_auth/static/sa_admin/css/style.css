@@ -1,0 +1,56 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+
+  --hover-color: #dededf;
+}
+
+main {
+  max-width: 60rem;
+  margin: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.login-method-chooser {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.login-method-chooser input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tab {
+  display: block;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  border-width: 3px;
+  border-radius: 0.25rem 0.25rem 0 0;
+  border-style: solid;
+  border-color: transparent transparent var(--primary-color) transparent;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tab:hover,
+input[type="radio"]:focus + .tab {
+  background-color: var(--hover-color);
+}
+
+input[type="radio"]:checked + .tab {
+  /* background-color: white; */
+  border-color: var(--primary-color) var(--primary-color) transparent var(--primary-color);
+}

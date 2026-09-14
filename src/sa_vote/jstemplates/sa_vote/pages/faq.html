@@ -1,0 +1,20 @@
+<div id="faq-page" class="faq-page">
+    <h1 class="faq-page-header">{{#_}}Frequently asked questions{{/_}}</h1>
+    <p>{{#_}}Not sure how voting works or want to learn more about this initiative? This guide will help get you started.{{/_}}</p>
+
+    {{#each faqs.sections}}
+    <div class="faq-section">
+        <h1 class="faq-title scribble-text scribble-text-pink bigger-text">{{title}}</h1>
+        {{#each questions}}
+        <details class="faq-item">
+            <summary class="faq-question">
+                {{question}}
+            </summary>
+            <div class="faq-answer">{{answer}}</div>
+        </details>
+        {{/each}}
+    </div>
+    {{/each}}
+    <p>{{#_}}Ready to get started? Read this year's <a href="/vote/ballot" data-internal="true">ballot</a>{{/_}}</p>
+
+</div>

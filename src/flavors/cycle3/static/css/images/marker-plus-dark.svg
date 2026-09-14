@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pinGradient" x1="57.735027" y1="20.784611" x2="57.735027" y2="200.91789" gradientTransform="matrix(0.73413113,0,0,1.1547005,18.795413,0)" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#CF6FFF" />
+      <stop offset="100%" stop-color="#BF49FF" />
+    </linearGradient>
+  </defs>
+  <path d="M 127.30122,24 C 90.782234,24 61.742957,50.108486 61.742957,93.188486 61.742957,126.18848 80.929649,150.81951 127.30122,232 176.46792,149.42194 192.72316,124.94444 192.72316,90.819506 192.72316,51.625176 163.8202,24 127.30122,24 Z" fill="url(#pinGradient)" />
+  <rect x="117" y="60" width="22" height="68" fill="#ffffff" />
+  <rect x="94" y="83" width="68" height="22" fill="#ffffff" />
+</svg>
