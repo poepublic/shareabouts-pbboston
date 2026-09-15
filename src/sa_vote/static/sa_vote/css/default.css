@@ -61,6 +61,18 @@ input[type="checkbox"]:checked {
     border-radius: 1rem !important;
 }
 
+button .disabled-label {
+    display: none;
+}
+
+button:disabled .enabled-label {
+    display: none;
+}
+
+button:disabled .disabled-label {
+    display: unset;
+}
+
 summary {
     display: flex;
     flex-direction: row;
@@ -412,6 +424,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 .auth-bottom-container {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     align-items: center;
     justify-items: center;
 }

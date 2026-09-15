@@ -156,6 +156,8 @@
       apiPrefix:  {{ api_prefix | as_json }},
 
       ballot: {{ ballot_json | safe }},
+      generateVoterCodeEndpoint: '{% url "generate_code" %}',
+      verifyVoterCodeEndpoint: '{% url "verify_code" %}',
       submitBallotEndpoint: '{% url "submit_ballot" %}',
       submitSurveyEndpoint: '{% url "submit_survey" %}',
       voterIdHash: {{ request.session.voter_id_hash | as_json }},
