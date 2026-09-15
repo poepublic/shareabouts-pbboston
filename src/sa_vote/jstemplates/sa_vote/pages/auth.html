@@ -53,7 +53,7 @@
         </div>
 
         <div class="auth-bottom-container">
-            <button id="verify-button" class="button button-primary" type="submit">{{#_}}Verify me{{/_}}</button>
+            <button id="verify-button" class="button button-primary" type="submit">{{#_}}Continue{{/_}}</button>
 
             <p>{{#_}}Not eligible to vote but still curious about the ballots? Return to <a href="/vote/ballot"
                     data-internal="true">ballot</a>{{/_}}</p>
@@ -68,20 +68,39 @@
 
         <div class="auth-phone-number-container">
             <label for="voter-phone-number-input" class="secondary-emphasis">{{#_}}Enter your phone number to receive a voter code:{{/_}}</label>
-            <input type="tel" id="voter-phone-number-input" required />
+            <input type="tel" id="voter-phone-number-input" required data-validation-message="{{#_}}You must provide a phone number to receive a voter code{{/_}}" />
 
             <p>{{#_}}We will send a voter code to this phone number. Standard messaging rates may apply. Read about how we handle your data in our <a href="/vote/privacy" target="_blank">privacy policy</a>.{{/_}}</p>
-
-            <label for="voter-text-message-consent-checkbox" class="auth-checkbox-label">
-                <input type="checkbox" id="voter-text-message-consent-checkbox" required />
-                {{#_}}I consent to receive a text message with my voter code{{/_}}
-            </label>
+            <p>{{#_}}If you cannot receive text messages, or do not wish to provide your phone number, you can still request a voter code by contacting <a href="mailto:pb@boston.gov">pb@boston.gov</a>.{{/_}}</p>
         </div>
 
         <div class="auth-bottom-container">
-            <button id="verify-button" class="button button-primary" type="submit">{{#_}}Send me a code{{/_}}</button>
+            <button id="verify-button" class="button button-primary" type="submit">
+                <span class="enabled-label">{{#_}}Send me a code{{/_}}</span>
+                <span class="disabled-label">{{#_}}Sending...{{/_}}</span>
+            </button>
 
-            <button id="skip-to-voter-code" class="button button-secondary" type="button">{{#_}}I already have a voter code{{/_}}</button>
+            <a data-internal="true" href="/vote/auth/verify-code">{{#_}}I already have a voter code{{/_}}</a>
+        </div>
+    </form>
+
+    <form class="auth-step auth-verify-code-container" data-state="verifying_code">
+        <header class="auth-header-container">
+            <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
+            <h1>{{#_}}Verify your voter code&hellip;{{/_}}</h1>
+        </header>
+
+        <div class="auth-phone-number-container">
+            <label for="voter-code-input" class="secondary-emphasis">{{#_}}Enter your voter code:{{/_}}</label>
+            <input type="text" id="voter-code-input" autocomplete="one-time-code" required data-validation-message="{{#_}}You must provide a voter code{{/_}}" />
+
+            <p>{{#_}}Enter the voter code you received via text message. If you did not receive a voter code, you can request a new one by providing your phone number.{{/_}}</p>
+        </div>
+
+        <div class="auth-bottom-container">
+            <button id="verify-button" class="button button-primary" type="submit">{{#_}}Verify my code{{/_}}</button>
+
+            <a data-internal="true" href="/vote/auth/request-code">{{#_}}I need a voter code{{/_}}</a>
         </div>
     </form>
 
