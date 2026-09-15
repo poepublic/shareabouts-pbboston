@@ -77,6 +77,7 @@ def send_verification_sms(phone_number: str, code: str) -> None:
         from_=from_number,
         to=phone_number,
     )
+    logging.info(f'Sent message to {phone_number}: {message_body!r}')
 
 
 def normalize_phone_number(country_code: str, phone_number: str) -> str:
