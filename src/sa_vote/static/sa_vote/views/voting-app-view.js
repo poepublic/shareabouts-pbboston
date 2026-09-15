@@ -38,6 +38,22 @@ export const VotingAppView = Backbone.View.extend({
 
   initialize: function (options) {
     this.router = options.router;
+
+    this.voterData = this.loadVoterData();
+    this.voterData.on('change', this.saveVoterData, this);
+  },
+
+  loadVoterData: function() {
+    const model = new Backbone.Model();
+    const storedVoterData = localStorage.getItem('voterData');
+    if (storedVoterData) {
+      model.set(JSON.parse(storedVoterData));
+    }
+    return model;
+  },
+
+  saveVoterData: function() {
+    localStorage.setItem('voterData', JSON.stringify(this.voterData.toJSON()));
   },
 
   handleInternalLinkClick: function (evt) {
@@ -66,19 +82,19 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showBallot: function () {
-    this._replaceCurrentView(new BallotView({ ballot: Shareabouts.bootstrapped.ballot, verified: verified }));
+    this._replaceCurrentView(new BallotView({ app: this,ballot: Shareabouts.bootstrapped.ballot, verified: verified }));
   },
 
   showFaq: function () {
-    this._replaceCurrentView(new FaqView({ faqs: FAQs }));
+    this._replaceCurrentView(new FaqView({ app: this,faqs: FAQs }));
   },
 
   showPrivacy: function () {
     this._replaceCurrentView(new PrivacyView());
   },
 
-  showAuth: function () {
-    this._replaceCurrentView(new AuthView({ verified: verified, neighborhoods: Shareabouts.bootstrapped.neighborhoods.features }));
+  showAuth: function (state) {
+    this._replaceCurrentView(new AuthView({ app: this, state: state, verified: verified, neighborhoods: Shareabouts.bootstrapped.neighborhoods.features }));
   },
 
   showSurvey: function () {

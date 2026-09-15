@@ -15,7 +15,7 @@
 
     {{else}}
 
-    <form class="auth-step auth-attestation-container {{#if state.isAttesting}}auth-current-step{{/if}}" data-state="attesting">
+    <form class="auth-step auth-attestation-container" data-state="attesting">
         <header class="auth-header-container">
             <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
             <h1>{{#_}}Sign up to vote!{{/_}}</h1>
@@ -35,8 +35,10 @@
                     {{#_}}I have not voted in this year's IIA cycle{{/_}}
                 </li>
             </ul>
-            <label class="auth-checkbox-label voter-attestation-label" for="voter-attestation-checkbox"><span><input type="checkbox"
-                        id="voter-attestation-checkbox" required data-validation-message="{{#_}}You must meet these eligibility requirements in order to vote{{/_}}" /></span>{{#_}}I confirm that I meet the requirements{{/_}}</label>
+            <label class="auth-checkbox-label voter-attestation-label" for="voter-attestation-checkbox">
+                <input type="checkbox" id="voter-attestation-checkbox" required data-validation-message="{{#_}}You must meet these eligibility requirements in order to vote{{/_}}" />
+                {{#_}}I confirm that I meet the requirements{{/_}}
+            </label>
         </div>
 
         <div class="auth-neighborhood-entry-container">
@@ -58,7 +60,7 @@
         </div>
     </form>
 
-    <form class="auth-step auth-request-code-container {{#if state.isRequestingCode}}auth-current-step{{/if}}" data-state="requesting_code">
+    <form class="auth-step auth-request-code-container" data-state="requesting_code">
         <header class="auth-header-container">
             <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
             <h1>{{#_}}Request a voter code&hellip;{{/_}}</h1>
