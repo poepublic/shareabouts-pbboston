@@ -10,6 +10,10 @@ export const BallotView = Backbone.View.extend({
     'submit form': 'submitVote',
   },
 
+  initialize: function (options) {
+    this.app = options.app;
+  },
+
   getBannerSummaryContext: function (count, remaining) {
     return _.extend({
       count: count,
@@ -104,7 +108,7 @@ export const BallotView = Backbone.View.extend({
     if (this.$('#vote-confirm-overlay').length >= 1) {
       return;
     }
-    
+
     const selected = this.getSelectedProposals();
     const modalTemplate = Handlebars.templates['sa_vote/includes/vote-confirm-modal'];
     this.$('form').append(modalTemplate({ proposals: selected }));

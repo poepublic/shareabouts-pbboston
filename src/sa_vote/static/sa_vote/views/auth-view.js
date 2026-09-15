@@ -2,15 +2,19 @@ export const AuthView = Backbone.View.extend({
     events: {
       'change input,select,textarea': 'clearValidityReport',
       'submit form.auth-step': 'advanceAuthStep',
+      'change #voter-attestation-checkbox': 'updateVoterData',
+      'change #voter-neighborhood-input': 'updateVoterData',
     },
 
-    initialize: function() {
+    initialize: function(options) {
+      this.app = options.app;
+
       // Possible states are:
       // 'attesting' - user should be presented with the attestation form
       // 'requesting_code' - user should be presented with the request code form
       // 'verifying_code' - user should be presented with the code verification form
       // 'verified' - user has successfully verified and is ready to vote
-      this.currentState = 'attesting';
+      this.currentState = options.state || 'attesting';
     },
 
     getTemplateContext: function () {
@@ -28,6 +32,8 @@ export const AuthView = Backbone.View.extend({
     render: function() {
       const context = this.getTemplateContext();
       this.$el.html(Handlebars.templates['sa_vote/pages/auth'](context));
+      this.updateVisibleStep();
+      this.syncFromVoterData();
       return this;
     },
 
@@ -78,7 +84,22 @@ export const AuthView = Backbone.View.extend({
       }
     },
 
-    updateStep: function() {
+    syncFromVoterData: function() {
+      this.el.querySelector('#voter-attestation-checkbox').checked = this.app.voterData.get('has_confirmed_requirements');
+      this.el.querySelector('#voter-neighborhood-input').value = this.app.voterData.get('neighborhood');
+    },
+
+    updateVoterData: function() {
+      this.app.voterData.set('has_confirmed_requirements', this.el.querySelector('#voter-attestation-checkbox').checked);
+      this.app.voterData.set('neighborhood', this.el.querySelector('#voter-neighborhood-input').value);
+    },
+
+    updateVisibleStep: function() {
+      // Do not allow any state beyond "attesting" if no attestation has been made.
+      if (!this.app.voterData.get('has_confirmed_requirements') || !this.app.voterData.get('neighborhood')) {
+        this.currentState = 'attesting';
+      }
+
       for (const authStepEl of this.el.querySelectorAll('.auth-step')) {
         const state = authStepEl.dataset.state;
         authStepEl.classList.toggle('auth-current-step', state === this.currentState);
@@ -89,8 +110,12 @@ export const AuthView = Backbone.View.extend({
       evt.preventDefault();
 
       if (this.currentState === 'attesting') {
+        this.app.voterData.set('has_confirmed_requirements', true);
+        this.app.voterData.set('neighborhood', this.el.querySelector('#voter-neighborhood-input').value);
+
         this.currentState = 'requesting_code';
-        this.render();
+        this.updateVisibleStep();
+        this.app.router.navigate('/auth/request-code', { trigger: false });
       }
     },
   });
