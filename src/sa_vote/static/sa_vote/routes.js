@@ -10,6 +10,7 @@ const Router = Backbone.Router.extend({
     'ballot': 'ballot', // doesn't need to be a separate place for logged in, just dependent on user state
     'auth': 'auth',
     'auth/request-code': 'authRequestCode',
+    'auth/verify-code': 'authVerifyCode',
     'success': 'success',
   },
 
@@ -74,6 +75,10 @@ const Router = Backbone.Router.extend({
 
   authRequestCode: function () {
     this.appView.showAuth('requesting_code');
+  },
+
+  authVerifyCode: function () {
+    this.appView.showAuth('verifying_code');
   },
 
   success: function () {
