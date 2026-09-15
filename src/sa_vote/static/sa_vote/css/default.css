@@ -392,6 +392,15 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
     align-content: center;
 }
 
+.auth-step {
+    display: none;
+}
+
+.auth-current-step {
+    display: flex;
+    flex-direction: column;
+}
+
 .auth-header-container {
     display: flex;
     flex-direction: column;
