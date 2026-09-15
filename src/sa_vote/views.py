@@ -166,7 +166,7 @@ def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
     ballotbox_key = settings.SHAREABOUTS.get('BALLOTBOX_KEY')
     if not ballotbox_key:
         raise ImproperlyConfigured('Missing BALLOTBOX_KEY in SHAREABOUTS settings')
-    
+
     config = request.shareabouts_config
     api = ShareaboutsApi(config, request, api_key=ballotbox_key)
     try:
@@ -176,10 +176,11 @@ def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
         return JsonResponse({'error': 'Failed to query API server'}, status=502)
 
     if existing is None:
+        logger.error('Failed to find ballots submission set on API server')
         return JsonResponse({'error': 'Failed to find ballots on API server'}, status=502)
 
     if len(existing['results']) > 0:
-        return JsonResponse({'error': 'A ballot has already been submitted for this phone number'}, status=400)
+        return JsonResponse({'error': 'A ballot has already been submitted for this phone number'}, status=403)
 
     code = map_voter_code_to_id(id_hash, VOTER_CODE_TTL_SECONDS)
 
@@ -272,7 +273,7 @@ def verify_code_test(request: HttpRequest) -> HttpResponse:
     """
     if not settings.DEBUG:
         raise Http404
-    
+
     code = request.GET.get('code')
 
     if code is None:
@@ -453,7 +454,7 @@ def index(request, frontend_path=None):
     path_prefix = settings.BASE_URL
 
     context = {'config': request.shareabouts_config,
-               
+
                'ballot_config': ballot_config,
 
                'route_prefix': path_prefix + '/vote',

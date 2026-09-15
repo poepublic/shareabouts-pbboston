@@ -255,7 +255,7 @@ class GenerateCodeUnitTests(SimpleTestCase):
         self.assertEqual(response.status_code, 400)
 
     @patch('sa_util.api.ShareaboutsApi.get')
-    def test_already_voted_phone_number_returns_400(self, mock_get):
+    def test_already_voted_phone_number_returns_403(self, mock_get):
         from sa_vote.views import generate_code
         mock_get.return_value = {'length': 1, 'results': [{'id': 10}]}
 
@@ -265,7 +265,7 @@ class GenerateCodeUnitTests(SimpleTestCase):
             content_type='application/json'
         )
         response = generate_code(request)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 403)
         data = json.loads(response.content)
         self.assertIn('already been submitted', data.get('error', ''))
 
