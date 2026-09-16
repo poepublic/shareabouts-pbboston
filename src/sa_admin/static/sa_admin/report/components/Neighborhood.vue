@@ -67,7 +67,7 @@
       maxZoom: 19,
     }).addTo(map);
   
-    topo.value = await fetch('/static/sa_admin/report/data/votes-by-neighborhoods.geojson').then(res => res.json());
+    topo.value = await fetch(Shareabouts.bootstrapped.staticUrl + 'data/neighborhoods.geojson').then(res => res.json());
   });
   
   watchEffect(() => {
