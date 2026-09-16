@@ -1,8 +1,6 @@
 <template>
     <div id="neighborhood" class="stat-card">
-    <h1 class="stat-title">
-    Neighborhoods
-    </h1>
+    <h1 class="stat-title">Neighborhoods</h1>
     <p class="stat-line">
       <span class="stat-callout">{{ top3Neighborhoods[0]?.[0] }}</span> residents submitted the most votes ({{ top3Neighborhoods[0]?.[1] }}), followed by <span class="stat-callout">{{ top3Neighborhoods[1]?.[0] }}</span> ({{ top3Neighborhoods[1]?.[1] }}) and <span class="stat-callout">{{ top3Neighborhoods[2]?.[0] }}</span> ({{ top3Neighborhoods[2]?.[1] }}).
     </p>
