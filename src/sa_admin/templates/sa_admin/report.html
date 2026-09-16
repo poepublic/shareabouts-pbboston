@@ -6,7 +6,26 @@
 
 {% block body_classes %}report{% endblock %}
 
-{% block heading %}Voting report{% endblock %}
+{% block header %}
+<header class="report-header">
+  <div class="report-header-logos">
+    <a href="/">
+      <img class="pb-icon" alt="" src="{% static 'css/images/pbboston-icon.svg' %}">
+      <img class="boston-logo" alt="" src="{% static 'css/images/boston-logo.svg' %}">
+    </a>
+  </div>
+  <h1>Voting report</h1>
+  <div class="report-header-user">
+    <p>You are logged in as {{ api.current_user.name }} ({{ api.current_user.username }}).</p>
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <input type="hidden" name="shadowmethod" value="DELETE">
+      <input type="hidden" name="next" value="{% url 'admin_home' %}">
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+</header>
+{% endblock %}
 
 {% block vite_assets %}
   {% vite_asset 'sa_admin/report/main.js' %}

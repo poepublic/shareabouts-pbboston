@@ -23,6 +23,7 @@
   </head>
 
   <body class="{% block body_classes %}{% endblock %}">
+    {% block header %}
     <header>
       <h1>{% block heading %}Shareabouts Admin{% endblock %}</h1>
       <p>You are logged in as {{ api.current_user.name }} ({{ api.current_user.username }}).</p>
@@ -33,6 +34,7 @@
         <button type="submit">Logout</button>
       </form>
     </header>
+    {% endblock %}
 
     <main id="app">
       {% block content %}{% endblock %}
