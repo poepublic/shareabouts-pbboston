@@ -91,8 +91,8 @@ surveysCollection.anonymous.fetchAllPages({
 // their attributes, but indirectly using the `get` method. For example, if I
 // wanted to get an array of all the respondent ages (which are in the
 // anonymous data) from the survey responses, I could do something like this:
-
-const respondentAges1 = surveysCollection.anonymous.map(response => response.get('age'));
+//
+//   const respondentAges = surveysCollection.anonymous.map(response => response.get('age'));
 
 // If you prefer, you can also convert a collection of models to a plain array
 // of objects using the `toJSON` method.

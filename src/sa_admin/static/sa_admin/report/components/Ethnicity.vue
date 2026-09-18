@@ -45,7 +45,6 @@ const latinPct = computed(() => ethnicities.value.filter(ethnicity => ethnicity.
 const blackPct = computed(() => ethnicities.value.filter(ethnicity => ethnicity.includes('Black or African American')).length / totalSurveys.value);
 const asianPct = computed(() => ethnicities.value.filter(ethnicity => ethnicity.includes('Asian')).length / totalSurveys.value);
 const hiPacificPct = computed(() => ethnicities.value.filter(ethnicity => ethnicity.includes('Native Hawaiian or other Pacific Islander')).length / totalSurveys.value);
-const otherPct = computed(() => ethnicities.value.filter(ethnicity => ethnicity.includes('Other')).length / totalSurveys.value);
 const bostonLatinPct = 0.193
 const bostonBlackPct = 0.205
 const bostonAsianPct = 0.104
