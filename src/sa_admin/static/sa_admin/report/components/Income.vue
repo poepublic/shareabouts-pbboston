@@ -5,7 +5,8 @@
       Income
     </h1>
     <p class="stat-line">
-      The most common household income bracket among survey respondents was <span class="stat-callout">{{ modeIncomeLabel }}</span>.
+      The most common household income bracket among survey respondents was <span class="stat-callout">{{
+        modeIncomeLabel }}</span>.
     </p>
     <div ref="incomeGraphEl" class="graph"></div>
     <CsvDownloadButton filename="income.csv" :rows="incomeCsvRows" />

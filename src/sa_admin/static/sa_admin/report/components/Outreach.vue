@@ -6,7 +6,7 @@
     </h1>
     <p class="stat-line">
       The most common way that respondents heard about IIA is through <span class="stat-callout">{{ howHeardMode
-        }}</span>.
+      }}</span>.
     </p>
     <div id="outreach-visual">
       <div v-for="([label, pct], i) in topHowHeard" :key="label" class="outreach-group"

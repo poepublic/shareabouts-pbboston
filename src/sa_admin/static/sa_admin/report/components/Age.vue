@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { computed} from 'vue';
+import { computed } from 'vue';
 import { useBackboneCollection } from '../../composables/useBackboneCollection.js';
 import CsvDownloadButton from './CsvDownloadButton.vue';
 
