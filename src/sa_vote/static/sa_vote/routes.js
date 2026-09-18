@@ -66,19 +66,23 @@ const Router = Backbone.Router.extend({
   },
 
   ballot: function () {
-    this.appView.showBallot();
+    if (!Shareabouts.bootstrapped.voterVerified) {
+      this.navigate('/auth', { trigger: true });
+    } else {
+      this.appView.showBallot();
+    }
   },
 
-  auth: function () {
-    this.appView.showAuth();
+  auth: function (state = 'attesting') {
+    this.appView.showAuth(state);
   },
 
   authRequestCode: function () {
-    this.appView.showAuth('requesting_code');
+    this.auth('requesting_code');
   },
 
   authVerifyCode: function () {
-    this.appView.showAuth('verifying_code');
+    this.auth('verifying_code');
   },
 
   success: function () {

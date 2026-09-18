@@ -98,7 +98,10 @@
         </div>
 
         <div class="auth-bottom-container">
-            <button id="verify-button" class="button button-primary" type="submit">{{#_}}Verify my code{{/_}}</button>
+            <button id="verify-button" class="button button-primary" type="submit">
+                <span class="enabled-label">{{#_}}Verify my code{{/_}}</span>
+                <span class="disabled-label">{{#_}}Verifying...{{/_}}</span>
+            </button>
 
             <a data-internal="true" href="/vote/auth/request-code">{{#_}}I need a voter code{{/_}}</a>
         </div>

@@ -129,34 +129,63 @@ export const AuthView = Backbone.View.extend({
           body: JSON.stringify({ phone_number: phoneNumber })
         });
 
-        if (response.status === 403) {
+        if (response.ok) {
+          this.currentState = 'verifying_code';
+          this.updateVisibleStep();
+          this.app.router.navigate('/auth/verify-code', { trigger: false });
+        } else if (response.status === 403) {
           // The phone number has already been used to submit a ballot.
           alert('A ballot has already been submitted for this phone number.');
-          submitButtons.forEach(button => button.disabled = false);
-          return;
-        }
-        if (response.status === 400) {
+        } else if (response.status === 400) {
           // Something is wrong with the data we sent to the endpoint. We should
           // never receive a 400 response from here, since we control the input
           // format and validation on the client side. But just in case, we
           // should let the user know that something went wrong and that they
           // should try again.
           alert('Something went wrong. Please try again.');
-          submitButtons.forEach(button => button.disabled = false);
-          return;
         } else if (response.status === 502) {
           // The server encountered an error while processing our request.
           // Anything that caused a 502 error should also have written an error
           // to the logs; we should get a notification. We should inform the
           // user and ask them to try again later.
           alert('The server is currently unavailable. Please try again later.');
-          submitButtons.forEach(button => button.disabled = false);
-          return;
+        } else {
+          alert('An unexpected error occurred. Please try again.');
         }
 
-        this.currentState = 'verifying_code';
-        this.updateVisibleStep();
-        this.app.router.navigate('/auth/verify-code', { trigger: false });
+        submitButtons.forEach(button => button.disabled = false);
+
+      } else if (this.currentState === 'verifying_code') {
+        const submitButtons = this.el.querySelectorAll('button[type="submit"]');
+        submitButtons.forEach(button => button.disabled = true);
+
+        const voterCode = this.el.querySelector('#voter-code-input').value;
+        const response = await fetch(Shareabouts.bootstrapped.verifyVoterCodeEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ code: voterCode })
+        });
+
+        if (response.ok) {
+          this.currentState = 'success';
+          this.updateVisibleStep();
+
+          window.location = '/vote/ballot';
+          // this.app.router.navigate('/ballot', { trigger: true });
+          // window.location.reload();
+        } else if (response.status === 404) {
+          // The voter code was not found. This likely means the user entered an
+          // incorrect code, or that the code has expired.
+          alert('Invalid voter code. Please try again.');
+        } else if (response.status === 400) {
+          // The request was malformed. This should not happen under normal
+          // circumstances.
+          alert('Invalid request. Please try again.');
+        }
+
+        submitButtons.forEach(button => button.disabled = false);
       }
     },
   });
