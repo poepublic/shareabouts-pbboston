@@ -51,26 +51,6 @@ const bostonBlackPct = 0.205
 const bostonAsianPct = 0.104
 const bostonHiPacificPct = 0.001
 
-const top2ethnicity = computed(() => {
-  const ethnicityCounts = {
-    'Hispanic or Latino/-a/-e/-x': latinPct.value,
-    'Black or African American': blackPct.value,
-    'Asian': asianPct.value,
-    'Native Hawaiian or other Pacific Islander': hiPacificPct.value
-  };
-  const sortedEthnicities = Object.entries(ethnicityCounts).sort((a, b) => b[1] - a[1]);
-  return sortedEthnicities.slice(0, 2).map(entry => entry[0]);
-});
-const top2ethnicityPct = computed(() => {
-  const ethnicityCounts = {
-    'Hispanic or Latino/-a/-e/-x': latinPct.value,
-    'Black or African American': blackPct.value,
-    'Asian': asianPct.value,
-    'Native Hawaiian or other Pacific Islander': hiPacificPct.value
-  };
-  const sortedEthnicities = Object.entries(ethnicityCounts).sort((a, b) => b[1] - a[1]);
-  return sortedEthnicities.slice(0, 2).map(entry => entry[1]);
-});
 const ethnicityCsvRows = computed(() => [
   ['Category', 'Voters %', 'Boston %'],
   ['White', whitePct.value * 100, bostonWhitePct * 100],
@@ -80,16 +60,21 @@ const ethnicityCsvRows = computed(() => [
   ['Native Hawaiian or other Pacific Islander', hiPacificPct.value * 100, bostonHiPacificPct * 100],
 ]);
 
-// Order the non-White categories by voter share
+// Order the non-White categories by voter share. `raw` is the full survey
+// category text (used in the prose summary); `label` is the shortened form
+// used for the chart legend.
 const rankedEthnicities = computed(() => {
-  const entries = {
-    'Latinx': [latinPct.value, bostonLatinPct],
-    'Black/African American': [blackPct.value, bostonBlackPct],
-    'Asian': [asianPct.value, bostonAsianPct],
-    'Native Hawaiian or other Pacific Islander': [hiPacificPct.value, bostonHiPacificPct],
-  };
-  return Object.entries(entries).sort((a, b) => b[1][0] - a[1][0]);
+  const entries = [
+    { raw: 'Hispanic or Latino/-a/-e/-x', label: 'Latinx', pct: latinPct.value, bostonPct: bostonLatinPct },
+    { raw: 'Black or African American', label: 'Black/African American', pct: blackPct.value, bostonPct: bostonBlackPct },
+    { raw: 'Asian', label: 'Asian', pct: asianPct.value, bostonPct: bostonAsianPct },
+    { raw: 'Native Hawaiian or other Pacific Islander', label: 'Native Hawaiian or other Pacific Islander', pct: hiPacificPct.value, bostonPct: bostonHiPacificPct },
+  ];
+  return entries.sort((a, b) => b.pct - a.pct);
 });
+
+const top2ethnicity = computed(() => rankedEthnicities.value.slice(0, 2).map(e => e.raw));
+const top2ethnicityPct = computed(() => rankedEthnicities.value.slice(0, 2).map(e => e.pct));
 
 const ethnicityGraphEl = ref(null);
 let ethnicityChart = null;
@@ -108,11 +93,11 @@ watchEffect(() => {
       order: null,
       columns: [
         ["White", whitePct.value * 100, bostonWhitePct * 100],
-        ...rankedEthnicities.value.map(([label, [pct, bostonPct]]) => [label, pct * 100, bostonPct * 100]),
+        ...rankedEthnicities.value.map(({ label, pct, bostonPct }) => [label, pct * 100, bostonPct * 100]),
       ],
       type: bar(),
       groups: [
-        ["White", ...rankedEthnicities.value.map(([label]) => label)]
+        ["White", ...rankedEthnicities.value.map(({ label }) => label)]
       ],
       colors: {
         "White": "var(--iia-urban-pink)",
