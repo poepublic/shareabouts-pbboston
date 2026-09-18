@@ -37,7 +37,6 @@ const props = defineProps({
 
 const surveyModels = useBackboneCollection(props.surveys);
 
-// Common
 const totalSurveys = computed(() => surveyModels.value.length);
 
 // Age

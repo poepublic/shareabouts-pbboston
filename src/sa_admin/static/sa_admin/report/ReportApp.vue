@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-import { useBackboneCollection } from '../composables/useBackboneCollection.js';
 import Overview from './components/Overview.vue';
 import Neighborhood from './components/Neighborhood.vue';
 import Age from './components/Age.vue';
@@ -76,10 +75,6 @@ surveysCollection.anonymous.fetchAllPages({
   pageSuccess: (page) => console.log(`Fetched ${page.length} anonymous surveys...`),
   success: () => {
     console.log('All anonymous data for surveys loaded! Total:', surveysCollection.anonymous.length);
-    const surveyResponses = surveysCollection.anonymous.toJSON();
-    console.log("First survey response:", surveyResponses[0]);
-    const respondentAges2 = surveyResponses.map(response => response.age);
-    console.log('Respondent ages (from toJSON):', respondentAges2);
   }
 });
 
@@ -128,8 +123,5 @@ const sectionProps = {
   Income: { surveys: surveysCollection.anonymous },
   Outreach: { surveys: surveysCollection.anonymous },
 };
-
-window.ballots = ballotsCollection;
-window.surveys = surveysCollection;
 
 </script>
