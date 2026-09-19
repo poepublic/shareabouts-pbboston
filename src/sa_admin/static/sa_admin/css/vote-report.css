@@ -1,0 +1,368 @@
+.report {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background: var(--iia-dark-blue);
+}
+
+#app {
+    padding: 1rem;
+}
+
+.voting-report-app {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+/* Table of contents */
+.table-of-contents-wrapper {
+    position: sticky;
+    top: 0;
+    align-self: start;
+}
+
+@media (max-width: 900px) {
+    .voting-report-app {
+        grid-template-columns: 1fr;
+    }
+
+    .table-of-contents-wrapper {
+        display: none;
+    }
+}
+
+
+#outline {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding: 3rem;
+}
+
+#outline a {
+    color: var(--iia-fog-grey);
+    font-size: 2em !important;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+
+#outline a:hover, #outline a:target {
+    color: var(--iia-vibrant-green);
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.25s ease;
+}
+
+p {
+    color: var(--iia-fog-grey);
+}
+
+h1 {
+    color: white;
+}
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    background: white;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    color: var(--iia-dark-blue);
+    text-transform: uppercase;
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.report-header {
+    height: 65px;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+
+.report-header-logos a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.report-header-logos img {
+    height: 2rem;
+    width: auto;
+    max-height: 2rem;
+    display: block;
+}
+
+.report-header-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.report-header-user p {
+    margin: 0;
+    color: var(--iia-dark-blue);
+    font-size: 0.85rem;
+}
+
+.report-header-user form {
+    margin: 0;
+}
+
+/* Stat cards*/
+.stat-card {
+    padding: 1rem;
+}
+
+.stat-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    color: var(--iia-vibrant-green);
+    text-transform: uppercase;
+}
+
+.stat-line {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--iia-fog-grey);
+}
+
+.stat-callout {
+    background: var(--iia-urban-pink);
+}
+
+.csv-download-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--iia-fog-grey);
+    cursor: pointer;
+}
+
+.csv-download-button:hover {
+    color: var(--iia-vibrant-green);
+}
+
+/* Chart page */
+.graph {
+    height: 400px;
+    background-color: transparent;
+    margin: 1rem;
+}
+
+/* Neighborhood map */
+.neighborhood-map {
+    height: 400px;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 4px;
+}
+
+.neighborhood-map .leaflet-tile-pane {
+    filter: grayscale(1);
+}
+
+.neighborhood-label {
+    color: black;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.neighborhood-map-legend {
+    background-color: #fff;
+    color: #333333;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 7px 7px 12px -9px rgb(119, 119, 119);
+    line-height: 1.4;
+}
+
+.neighborhood-map-legend span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+/* Age */
+#age-visual {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.age-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.2rem;
+}
+
+.age-cat-label {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.age-cat-pct {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 4rem;
+    color: var(--iia-fog-grey);
+}
+
+.age-pct-note {
+    margin: 0;
+    color: var(--iia-fog-grey);
+}
+
+.age-top .age-cat-pct,
+.age-top .age-cat-label {
+    color: var(--iia-urban-pink-alt);
+}
+
+/* Outreach method */
+#outreach-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.outreach-group {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    min-width: 0;
+}
+
+.outreach-cat-pct {
+    margin: 0;
+    font-size: 3.5rem;
+}
+
+.outreach-cat-icon {
+    margin: 0;
+    font-size: 3.5rem;
+}
+
+.outreach-cat-label {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: white;
+    overflow-wrap: break-word;
+}
+
+.outreach-top .outreach-cat-pct,
+.outreach-top .outreach-cat-label {
+    color: var(--iia-urban-pink-alt);
+}
+
+/* billboard options */
+.bb-axis line,
+.bb-axis .domain {
+    stroke: transparent;
+}
+
+.bb-texts text.bb-text {
+    text-anchor: end;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    color: white !important;
+}
+
+.bb-target-votes path.bb-line {
+    stroke: var(--iia-urban-pink-alt) !important;
+}
+
+.bb-tooltip,x
+.bb-tooltip th,
+.bb-tooltip td {
+    color: #333333;
+}
+
+/* axis text/labels */
+.bb-axis .tick text, .bb-legend-item text {
+    fill: var(--iia-fog-grey);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bb-target-votes .bb-line {
+    stroke-width: 3px;
+}
+
+@media (max-width: 700px) {
+    .report-header-logos .boston-logo {
+        display: none;
+    }
+
+    .report-header-user p {
+        display: none;
+    }
+
+    .stat-title {
+        font-size: 2rem;
+    }
+
+    .stat-line {
+        font-size: 1rem;
+    }
+
+    #age-visual {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .age-cat-pct {
+        font-size: 2.5rem;
+    }
+
+    .age-cat-label {
+        font-size: 1.1rem;
+    }
+
+    #outreach-visual {
+        grid-template-columns: 1fr;
+    }
+
+    .outreach-cat-pct,
+    .outreach-cat-icon {
+        font-size: 2rem;
+    }
+
+    .outreach-cat-label {
+        font-size: 1.1rem;
+    }
+}

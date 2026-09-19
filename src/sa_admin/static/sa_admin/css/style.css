@@ -1,3 +1,6 @@
+@import url('/static/css/iia.css');
+@import url('/static/sa_admin/css/vote-report.css');
+
 :root {
   --content-font-family: sans-serif;
 
