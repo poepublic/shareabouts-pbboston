@@ -218,6 +218,7 @@ header h1 {
 #age-visual {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 3rem;
 }
 
@@ -332,7 +333,7 @@ header h1 {
         display: none;
     }
 
-    .report-header-user {
+    .report-header-user p {
         display: none;
     }
 
