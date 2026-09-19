@@ -79,7 +79,7 @@ header {
 header h1 {
     color: var(--iia-dark-blue);
     text-transform: uppercase;
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 0.5rem;
 }
 
@@ -92,11 +92,6 @@ header h1 {
     overflow: hidden;
 }
 
-.report-header h1 {
-    margin: 0;
-    padding: 0;
-    font-size: 1.25rem;
-}
 
 .report-header-logos a {
     display: flex;
@@ -311,7 +306,7 @@ header h1 {
     stroke: var(--iia-urban-pink-alt) !important;
 }
 
-.bb-tooltip,
+.bb-tooltip,x
 .bb-tooltip th,
 .bb-tooltip td {
     color: #333333;
