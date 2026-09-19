@@ -102,7 +102,9 @@ watchEffect(() => {
       x: {
         type: "timeseries",
         tick: {
-          format: "%b %d",
+          format: "%-m/%-d",
+          rotate: 45,
+          multiline: false,
         }
       }
     },
