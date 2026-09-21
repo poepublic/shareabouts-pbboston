@@ -57,6 +57,11 @@ export const VotingAppView = Backbone.View.extend({
     localStorage.setItem('voterData', JSON.stringify(this.voterData.toJSON()));
   },
 
+  clearVoterData: function() {
+    localStorage.removeItem('voterData');
+    this.voterData.clear();
+  },
+
   handleInternalLinkClick: function (evt) {
     // Intercept internal link clicks and route them through Backbone navigate method
     if (evt.altKey || evt.ctrlKey || evt.metaKey || evt.shiftKey) return;
@@ -79,6 +84,7 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showHome: function () {
+    this.clearVoterData();
     this._replaceCurrentView(new HomeView());
   },
 
