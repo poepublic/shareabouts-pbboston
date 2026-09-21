@@ -7,6 +7,7 @@ const Router = Backbone.Router.extend({
     '': 'home',
     'faq': 'faq',
     'privacy': 'privacy',
+    'terms': 'terms',
     'ballot': 'ballot', // doesn't need to be a separate place for logged in, just dependent on user state
     'auth': 'auth',
     'auth/request-code': 'authRequestCode',
@@ -63,6 +64,10 @@ const Router = Backbone.Router.extend({
 
   privacy: function () {
     this.appView.showPrivacy();
+  },
+
+  terms: function () {
+    this.appView.showTerms();
   },
 
   ballot: function () {

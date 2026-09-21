@@ -5,6 +5,7 @@
 #auth-page,
 #faq-page,
 #privacy-page,
+#terms-page,
 #survey-page {
     padding: 1.5rem;
     margin-top: 5vh;
@@ -56,7 +57,7 @@ dialog {
     color: white;
 }
 
-.dialog-header, .privacy-page-header {
+.dialog-header, .page-header {
 	display: flex;
 	flex-direction: column;
 	justify-items: center;
@@ -64,7 +65,7 @@ dialog {
 	text-align: center;
 }
 
-.yield-icon-header, .lock-icon-header {
+.yield-icon-header, .lock-icon-header, .bulb-icon-header {
     background-size: auto 5.5rem;
     background-repeat: no-repeat;
     background-position: center top;
@@ -80,6 +81,10 @@ dialog {
 
 .lock-icon-header {
     background-image: url('/static/img/other-graphics/CustomIcon_Padlock_Black.svg');
+}
+
+.bulb-icon-header {
+    background-image: url('/static/img/iia/ProcessIcon_01_Black.svg');
 }
 
 .dialog-actions {
