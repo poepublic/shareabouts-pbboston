@@ -112,87 +112,97 @@ export const AuthView = Backbone.View.extend({
       evt.preventDefault();
 
       if (this.currentState === 'attesting') {
-        this.app.voterData.set('has_confirmed_requirements', true);
-        this.app.voterData.set('neighborhood', this.el.querySelector('#voter-neighborhood-input').value);
-
-        this.currentState = 'requesting_code';
-        this.updateVisibleStep();
-        this.app.router.navigate('/auth/request-code', { trigger: false });
+        await this._advanceToRequestCode();
       } else if (this.currentState === 'requesting_code') {
-        const submitButtons = this.el.querySelectorAll('button[type="submit"]');
-        submitButtons.forEach(button => button.disabled = true);
-
-        const phoneNumber = this.el.querySelector('#voter-phone-number-input').value;
-        const response = await fetch(Shareabouts.bootstrapped.generateVoterCodeEndpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ phone_number: phoneNumber })
-        });
-
-        if (response.ok) {
-          this.currentState = 'verifying_code';
-          this.updateVisibleStep();
-          this.app.router.navigate('/auth/verify-code', { trigger: false });
-        } else if (response.status === 403) {
-          // The phone number has already been used to submit a ballot.
-          const data = await response.json();
-          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-403'](data) });
-        } else if (response.status === 400) {
-          // Something is wrong with the data we sent to the endpoint. We should
-          // never receive a 400 response from here, since we control the input
-          // format and validation on the client side. But just in case, we
-          // should let the user know that something went wrong and that they
-          // should try again.
-          const data = await response.json();
-          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-400'](data) });
-        } else if (response.status === 502) {
-          // The server encountered an error while processing our request.
-          // Anything that caused a 502 error should also have written an error
-          // to the logs; we should get a notification. We should inform the
-          // user and ask them to try again later.
-          const data = await response.json();
-          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-502'](data) });
-        } else {
-          alert('An unexpected error occurred. Please try again.');
-        }
-
-        submitButtons.forEach(button => button.disabled = false);
-
+        await this._advanceToVerifyCode();
       } else if (this.currentState === 'verifying_code') {
-        const submitButtons = this.el.querySelectorAll('button[type="submit"]');
-        submitButtons.forEach(button => button.disabled = true);
-
-        const voterCode = this.el.querySelector('#voter-code-input').value;
-        const response = await fetch(Shareabouts.bootstrapped.verifyVoterCodeEndpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ code: voterCode })
-        });
-
-        if (response.ok) {
-          this.currentState = 'success';
-          this.updateVisibleStep();
-
-          window.location = '/vote/ballot';
-          // this.app.router.navigate('/ballot', { trigger: true });
-          // window.location.reload();
-        } else if (response.status === 404) {
-          // The voter code was not found. This likely means the user entered an
-          // incorrect code, or that the code has expired.
-          const data = await response.json();
-          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-verify-code-404'](data) });
-        } else if (response.status === 400) {
-          // The request was malformed. This should not happen under normal
-          // circumstances.
-          const data = await response.json();
-          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-verify-code-400'](data) });
-        }
-
-        submitButtons.forEach(button => button.disabled = false);
+        await this._advanceToBallot();
       }
+    },
+
+    _advanceToRequestCode: function() {
+      this.app.voterData.set('has_confirmed_requirements', true);
+      this.app.voterData.set('neighborhood', this.el.querySelector('#voter-neighborhood-input').value);
+
+      this.currentState = 'requesting_code';
+      this.updateVisibleStep();
+      this.app.router.navigate('/auth/request-code', { trigger: false });
+    },
+
+    _advanceToVerifyCode: async function() {
+      const submitButtons = this.el.querySelectorAll('button[type="submit"]');
+      submitButtons.forEach(button => button.disabled = true);
+
+      const phoneNumber = this.el.querySelector('#voter-phone-number-input').value;
+      const response = await fetch(Shareabouts.bootstrapped.generateVoterCodeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ phone_number: phoneNumber })
+      });
+
+      if (response.ok) {
+        this.currentState = 'verifying_code';
+        this.updateVisibleStep();
+        this.app.router.navigate('/auth/verify-code', { trigger: false });
+      } else if (response.status === 403) {
+        // The phone number has already been used to submit a ballot.
+        const data = await response.json();
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-403'](data) });
+      } else if (response.status === 400) {
+        // Something is wrong with the data we sent to the endpoint. We should
+        // never receive a 400 response from here, since we control the input
+        // format and validation on the client side. But just in case, we
+        // should let the user know that something went wrong and that they
+        // should try again.
+        const data = await response.json();
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-400'](data) });
+      } else if (response.status === 502) {
+        // The server encountered an error while processing our request.
+        // Anything that caused a 502 error should also have written an error
+        // to the logs; we should get a notification. We should inform the
+        // user and ask them to try again later.
+        const data = await response.json();
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-502'](data) });
+      } else {
+        alert('An unexpected error occurred. Please try again.');
+      }
+
+      submitButtons.forEach(button => button.disabled = false);
+    },
+
+    _advanceToBallot: async function() {
+      const submitButtons = this.el.querySelectorAll('button[type="submit"]');
+      submitButtons.forEach(button => button.disabled = true);
+
+      const voterCode = this.el.querySelector('#voter-code-input').value;
+      const response = await fetch(Shareabouts.bootstrapped.verifyVoterCodeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ code: voterCode })
+      });
+
+      if (response.ok) {
+        this.currentState = 'success';
+        this.updateVisibleStep();
+
+        // Hard refresh to the ballot page after successful verification.
+        window.location = '/vote/ballot';
+      } else if (response.status === 404) {
+        // The voter code was not found. This likely means the user entered an
+        // incorrect code, or that the code has expired.
+        const data = await response.json();
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-verify-code-404'](data) });
+      } else if (response.status === 400) {
+        // The request was malformed. This should not happen under normal
+        // circumstances.
+        const data = await response.json();
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-verify-code-400'](data) });
+      }
+
+      submitButtons.forEach(button => button.disabled = false);
     },
   });
