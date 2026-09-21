@@ -169,9 +169,10 @@ summary {
 }
 
 /* Welcome page */
-.home-header {
-    margin-left: 1rem;
+.home-header, .ballot-page-header {
+    font-size: 1.75rem;
 }
+
 .vote-link {
     background-color: var(--iia-urban-pink-alt);
     display: flex;
