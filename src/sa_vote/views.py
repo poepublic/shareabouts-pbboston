@@ -361,11 +361,17 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
     api = ShareaboutsApi(request.shareabouts_config, request, api_key=ballotbox_key)
 
     try:
-        existing = api.get('ballots', id_hash=voter_id_hash)
+        ballots = api.get('ballots', id_hash=voter_id_hash)
     except Exception as exc:
         return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
 
-    if existing and isinstance(existing, dict) and (existing.get('length', 0) > 0 or len(existing.get('results', [])) > 0):
+    try:
+        ballot_count = len(ballots.get('results', [])) if ballots else 0
+    except Exception as exc:
+        logger.exception('Failed to process existing ballots')
+        return JsonResponse({'error': f'Failed to process existing ballots: {exc}'}, status=500)
+
+    if ballot_count > 0:
         return JsonResponse({'error': 'A ballot has already been submitted for this voter', 'label': _('It appears that you have already submitted a ballot.')}, status=409)
 
     lang = get_language() or 'en'
@@ -382,6 +388,34 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
 
     return JsonResponse({'status': 'success', 'message': 'Ballot submitted successfully'}, status=201)
 
+
+@ensure_csrf_cookie
+@apply_language
+@process_shareabouts_config
+def check_ballot(request: HttpRequestWithConfig) -> HttpResponse:
+    """
+    Retrieve whether there is an existing ballot for the current voter.
+    Requires an active verified session (voter_verified=True, voter_id_hash present).
+    """
+    if not request.session.get('voter_verified') or not request.session.get('voter_id_hash'):
+        return JsonResponse({'error': 'Session is not verified'}, status=403)
+
+    voter_id_hash = request.session['voter_id_hash']
+    ballotbox_key = settings.SHAREABOUTS.get('BALLOTBOX_KEY')
+    api = ShareaboutsApi(request.shareabouts_config, request, api_key=ballotbox_key)
+
+    try:
+        ballots = api.get('ballots', id_hash=voter_id_hash)
+    except Exception as exc:
+        return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
+
+    try:
+        exists = ballots and len(ballots.get('results', [])) > 0
+    except Exception as exc:
+        logger.exception('Failed to process existing ballots')
+        return JsonResponse({'error': f'Failed to process existing ballots: {exc}'}, status=500)
+
+    return JsonResponse({'exists': exists}, status=200)
 
 @ensure_csrf_cookie
 @apply_language
@@ -417,11 +451,11 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
     api = ShareaboutsApi(request.shareabouts_config, request, api_key=ballotbox_key)
 
     try:
-        existing = api.get('surveys', id_hash=voter_id_hash)
+        surveys = api.get('surveys', id_hash=voter_id_hash)
     except Exception as exc:
         return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
 
-    if existing and isinstance(existing, dict) and (existing.get('length', 0) > 0 or len(existing.get('results', [])) > 0):
+    if surveys and len(surveys.get('results', [])) > 0:
         return JsonResponse({'error': 'A survey has already been submitted for this voter'}, status=409)
 
     lang = get_language() or 'en'
@@ -440,6 +474,30 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
     request.session.pop('voter_id_hash', None)
     request.session.pop('voter_verified', None)
     return JsonResponse({'status': 'success', 'message': 'Survey submitted successfully'}, status=201)
+
+
+@ensure_csrf_cookie
+@apply_language
+@process_shareabouts_config
+def check_survey(request: HttpRequestWithConfig) -> HttpResponse:
+    if not request.session.get('voter_verified') or not request.session.get('voter_id_hash'):
+        return JsonResponse({'error': 'Session is not verified'}, status=403)
+
+    voter_id_hash = request.session['voter_id_hash']
+    api = ShareaboutsApi(request.shareabouts_config, request, api_key=settings.SHAREABOUTS.get('BALLOTBOX_KEY'))
+
+    try:
+        surveys = api.get('surveys', id_hash=voter_id_hash)
+    except Exception as exc:
+        return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
+
+    try:
+        exists = surveys and len(surveys.get('results', [])) > 0
+    except Exception as exc:
+        logger.exception('Failed to process existing surveys')
+        return JsonResponse({'error': f'Failed to process existing surveys: {exc}'}, status=500)
+
+    return JsonResponse({'exists': exists})
 
 
 @ensure_csrf_cookie
