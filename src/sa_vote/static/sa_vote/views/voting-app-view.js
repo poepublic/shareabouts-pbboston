@@ -89,7 +89,7 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showBallot: function () {
-    this._replaceCurrentView(new BallotView({ app: this,ballot: Shareabouts.bootstrapped.ballot, verified: verified }));
+    this._replaceCurrentView(new BallotView({ app: this, ballot: Shareabouts.bootstrapped.ballot, verified: verified }));
   },
 
   showFaq: function () {

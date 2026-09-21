@@ -152,7 +152,8 @@ button:disabled .disabled-label {
 summary {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 0.25rem;
 }
 
 .inline-scribble {
@@ -210,9 +211,11 @@ summary {
 }
 
 /* Ballot page */
-#ballot-banner-unverified {
+.ballot-banner {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     padding: 20px;
     text-align: center;
@@ -220,25 +223,50 @@ summary {
     bottom: 0;
     left: 0;
     width: 100%;
+}
+
+.ballot-banner-headline {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* The ballot-banner-checking background color should pulse between iia-callout-blue and iia-urban-pink */
+@keyframes pulse-checking {
+    0% {
+        background: var(--iia-callout-blue);
+    }
+    50% {
+        background: var(--iia-urban-pink);
+    }
+    100% {
+        background: var(--iia-callout-blue);
+    }
+}
+
+.ballot-banner-checking {
+    background: var(--iia-callout-blue);
+    color: white;
+    animation: pulse-checking 2s infinite;
+}
+
+.ballot-banner-voted {
+    background: var(--iia-dark-blue);
+    color: white;
+}
+
+.ballot-banner-unverified {
     background: var(--iia-urban-pink);
     color: white;
 }
 
-#ballot-banner-verified {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+.ballot-banner-verified {
     background: var(--iia-dark-blue);
-    padding: 20px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     color: var(--iia-vibrant-green);
     box-shadow: 0 0 0.325em rgba(0, 0, 0, 0.1);
+}
+
+.ballot-banner a {
+    color: white;
 }
 
 .proposal-card-top {
@@ -257,17 +285,12 @@ summary {
     opacity: 0.4;
 }
 
-#ballot-banner-verified-summary {
-    display: grid;
-    grid-template-rows: 5fr 1fr;
-}
-
-#ballot-banner-verified-contents {
+.ballot-banner-verified-contents {
     display: flex;
     flex-direction: column;
 }
 
-#ballot-banner-subtext {
+.ballot-banner-subtext {
     font-weight: 400;
     font-size: 1.2rem;
 }
@@ -275,10 +298,12 @@ summary {
 
 summary.ballot-banner-verified-summary:after {
     content: "\002B";
-    display: inline-block;
-    text-align: center;
+    display: flex;
     justify-content: center;
-    font-size: 1.5rem;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    transform: translateY(-25%);
     transition: transform 0.3s ease;
 }
 
@@ -287,7 +312,7 @@ details[open] summary.ballot-banner-verified-summary {
 }
 
 details[open] summary.ballot-banner-verified-summary:after {
-    transform: rotate(45deg);
+    transform: translateY(-25%) rotate(45deg);
 }
 
 .no-proposal-selections {
