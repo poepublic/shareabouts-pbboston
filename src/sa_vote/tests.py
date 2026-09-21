@@ -463,7 +463,7 @@ class SendVerificationSmsUnitTests(SimpleTestCase):
 
         mock_twilio_client.assert_called_once_with('SK123', 'secret456', account_sid='AC123')
         mock_instance.messages.create.assert_called_once_with(
-            body='Your Boston Participatory Budgeting voting login code is: a1b2c3',
+            body='Your Boston Ideas in Action voter code is: A1B2C3. This code will expire in 30 minutes.',
             from_='+15550000000',
             to='+15551234567',
         )
