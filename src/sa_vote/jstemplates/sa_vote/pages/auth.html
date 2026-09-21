@@ -94,7 +94,7 @@
             <label for="voter-code-input" class="secondary-emphasis">{{#_}}Enter your voter code:{{/_}}</label>
             <input type="text" id="voter-code-input" autocomplete="one-time-code" required data-validation-message="{{#_}}You must provide a voter code{{/_}}" />
 
-            <p>{{#_}}Enter the voter code you received via text message. If you did not receive a voter code, you can request a new one by providing your phone number.{{/_}}</p>
+            <p>{{#_}}Enter the voter code you received via text message. If you did not receive a voter code, or the code you received has expired, you can <a data-internal="true" href="/vote/auth/request-code">request a new one</a> by providing your phone number.{{/_}}</p>
         </div>
 
         <div class="auth-bottom-container">

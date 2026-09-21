@@ -66,15 +66,15 @@ const Router = Backbone.Router.extend({
   },
 
   ballot: function () {
-    if (!Shareabouts.bootstrapped.voterVerified) {
-      this.navigate('/auth', { trigger: true });
-    } else {
-      this.appView.showBallot();
-    }
+    this.appView.showBallot();
   },
 
   auth: function (state = 'attesting') {
-    this.appView.showAuth(state);
+    if (Shareabouts.bootstrapped.voterVerified) {
+      this.navigate('/ballot', { trigger: true });
+    } else {
+      this.appView.showAuth(state);
+    }
   },
 
   authRequestCode: function () {

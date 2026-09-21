@@ -135,10 +135,12 @@ def parse_voter_code(request: HttpRequest) -> str:
     if not code and request.POST:
         code = request.POST.get('code')
 
+    code = str(code).strip().lower() if code else None
+
     if not code:
         raise ValueError('Missing "code" parameter')
 
-    return str(code).strip().lower()
+    return code
 
 
 @process_shareabouts_config
@@ -174,14 +176,23 @@ def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
         existing = api.get('ballots', id_hash=id_hash)
     except:
         logger.exception('Failed to query API server')
-        return JsonResponse({'error': 'Failed to query API server'}, status=502)
+        return JsonResponse({
+            'error': 'Failed to query API server',
+            'label': _('Failed to query API server'),
+        }, status=502)
 
     if existing is None:
         logger.error('Failed to find ballots submission set on API server')
-        return JsonResponse({'error': 'Failed to find ballots on API server'}, status=502)
+        return JsonResponse({
+            'error': 'Failed to find ballots on API server',
+            'label': _('Failed to find ballots on API server'),
+        }, status=502)
 
     if len(existing['results']) > 0:
-        return JsonResponse({'error': 'A ballot has already been submitted for this phone number'}, status=403)
+        return JsonResponse({
+            'error': 'A ballot has already been submitted for this phone number',
+            'phone_number': normalized_phone,
+        }, status=403)
 
     code = map_voter_code_to_id(id_hash, VOTER_CODE_TTL_SECONDS)
 
@@ -189,7 +200,10 @@ def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
         send_verification_sms(normalized_phone, code)
     except:
         logger.exception('Failed to send verification SMS')
-        return JsonResponse({'error': 'Failed to send verification SMS'}, status=502)
+        return JsonResponse({
+            'error': 'Failed to send verification SMS',
+            'label': _('Failed to send verification SMS to %(phone_number)s') % {'phone_number': normalized_phone},
+        }, status=502)
 
     return JsonResponse({'status': 'success', 'message': 'Verification code sent'}, status=201)
 

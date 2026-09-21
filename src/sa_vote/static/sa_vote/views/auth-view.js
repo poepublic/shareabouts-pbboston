@@ -1,3 +1,5 @@
+import { showModalPopup } from './modal-popup-view';
+
 export const AuthView = Backbone.View.extend({
     events: {
       'change input,select,textarea': 'clearValidityReport',
@@ -135,20 +137,23 @@ export const AuthView = Backbone.View.extend({
           this.app.router.navigate('/auth/verify-code', { trigger: false });
         } else if (response.status === 403) {
           // The phone number has already been used to submit a ballot.
-          alert('A ballot has already been submitted for this phone number.');
+          const data = await response.json();
+          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-403'](data) });
         } else if (response.status === 400) {
           // Something is wrong with the data we sent to the endpoint. We should
           // never receive a 400 response from here, since we control the input
           // format and validation on the client side. But just in case, we
           // should let the user know that something went wrong and that they
           // should try again.
-          alert('Something went wrong. Please try again.');
+          const data = await response.json();
+          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-400'](data) });
         } else if (response.status === 502) {
           // The server encountered an error while processing our request.
           // Anything that caused a 502 error should also have written an error
           // to the logs; we should get a notification. We should inform the
           // user and ask them to try again later.
-          alert('The server is currently unavailable. Please try again later.');
+          const data = await response.json();
+          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-502'](data) });
         } else {
           alert('An unexpected error occurred. Please try again.');
         }
@@ -178,11 +183,13 @@ export const AuthView = Backbone.View.extend({
         } else if (response.status === 404) {
           // The voter code was not found. This likely means the user entered an
           // incorrect code, or that the code has expired.
-          alert('Invalid voter code. Please try again.');
+          const data = await response.json();
+          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-verify-code-404'](data) });
         } else if (response.status === 400) {
           // The request was malformed. This should not happen under normal
           // circumstances.
-          alert('Invalid request. Please try again.');
+          const data = await response.json();
+          showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-verify-code-400'](data) });
         }
 
         submitButtons.forEach(button => button.disabled = false);
