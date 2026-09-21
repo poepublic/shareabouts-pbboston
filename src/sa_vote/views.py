@@ -13,11 +13,13 @@ from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.utils.translation import get_language, gettext as _
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.http import require_POST
 
 from sa_util.api import ShareaboutsApi
 from sa_util.config import get_shareabouts_config
 from pbboston.geodata import load_neighborhoods, load_city
 from sa_vote.ballots import Ballot
+from sa_vote.decorators import require_voter_session_info
 from sa_web.views import HttpRequestWithConfig, apply_language, calc_adding_support, get_shareabouts_user_token, process_shareabouts_config, show_prelaunch_until_go_live_date
 
 VOTER_CODE_TTL_SECONDS = 30 * 60  # 30 minutes
@@ -315,6 +317,8 @@ def unverify(request: HttpRequest) -> HttpResponse:
 
 
 @ensure_csrf_cookie
+@require_POST
+@require_voter_session_info
 @apply_language
 @process_shareabouts_config
 def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
@@ -324,12 +328,6 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
     Validates proposals (1-5 valid slugs), checks for upstream duplicates, and
     posts anonymous ballot data to the ballot box place.
     """
-    if request.method != 'POST':
-        return HttpResponse(status=405)
-
-    if not request.session.get('voter_verified') or not request.session.get('voter_id_hash'):
-        return JsonResponse({'error': 'Session is not verified'}, status=403)
-
     try:
         body = json.loads(request.body.decode('utf-8'))
     except (ValueError, UnicodeDecodeError):
@@ -390,6 +388,7 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
 
 
 @ensure_csrf_cookie
+@require_voter_session_info
 @apply_language
 @process_shareabouts_config
 def check_ballot(request: HttpRequestWithConfig) -> HttpResponse:
@@ -397,9 +396,6 @@ def check_ballot(request: HttpRequestWithConfig) -> HttpResponse:
     Retrieve whether there is an existing ballot for the current voter.
     Requires an active verified session (voter_verified=True, voter_id_hash present).
     """
-    if not request.session.get('voter_verified') or not request.session.get('voter_id_hash'):
-        return JsonResponse({'error': 'Session is not verified'}, status=403)
-
     voter_id_hash = request.session['voter_id_hash']
     ballotbox_key = settings.SHAREABOUTS.get('BALLOTBOX_KEY')
     api = ShareaboutsApi(request.shareabouts_config, request, api_key=ballotbox_key)
@@ -418,6 +414,8 @@ def check_ballot(request: HttpRequestWithConfig) -> HttpResponse:
     return JsonResponse({'exists': exists}, status=200)
 
 @ensure_csrf_cookie
+@require_POST
+@require_voter_session_info
 @apply_language
 @process_shareabouts_config
 def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
@@ -427,12 +425,6 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
     Transforms incoming keys to anonymous_<key>, checks for upstream duplicates,
     posts anonymous survey data to the ballot box place, and invalidates session.
     """
-    if request.method != 'POST':
-        return HttpResponse(status=405)
-
-    if not request.session.get('voter_verified') or not request.session.get('voter_id_hash'):
-        return JsonResponse({'error': 'Session is not verified'}, status=403)
-
     try:
         body = json.loads(request.body.decode('utf-8'))
     except (ValueError, UnicodeDecodeError):
@@ -477,12 +469,10 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
 
 
 @ensure_csrf_cookie
+@require_voter_session_info
 @apply_language
 @process_shareabouts_config
 def check_survey(request: HttpRequestWithConfig) -> HttpResponse:
-    if not request.session.get('voter_verified') or not request.session.get('voter_id_hash'):
-        return JsonResponse({'error': 'Session is not verified'}, status=403)
-
     voter_id_hash = request.session['voter_id_hash']
     api = ShareaboutsApi(request.shareabouts_config, request, api_key=settings.SHAREABOUTS.get('BALLOTBOX_KEY'))
 
