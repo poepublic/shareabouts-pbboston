@@ -20,7 +20,7 @@ from sa_util.api import ShareaboutsApi
 from sa_util.config import get_shareabouts_config
 from pbboston.geodata import load_neighborhoods, load_city
 from sa_vote.ballots import Ballot
-from sa_vote.decorators import require_voter_session_info
+from sa_vote.decorators import rate_limit_ip, require_voter_session_info
 from sa_web.views import HttpRequestWithConfig, apply_language, calc_adding_support, get_shareabouts_user_token, process_shareabouts_config, show_prelaunch_until_go_live_date
 
 VOTER_CODE_TTL_SECONDS = 30 * 60  # 30 minutes
@@ -147,6 +147,7 @@ def parse_voter_code(request: HttpRequest) -> str:
     return code
 
 
+@rate_limit_ip(count=5, period=3600, key_prefix='generate_code')
 @process_shareabouts_config
 def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
     """
@@ -258,6 +259,7 @@ def admin_generate_code(request: HttpRequestWithConfig) -> HttpResponse:
     return JsonResponse({'status': 'success', 'code': code, 'id_hash': id_hash}, status=201)
 
 
+@rate_limit_ip(count=10, period=60, key_prefix='verify_code')
 def verify_code(request: HttpRequest) -> HttpResponse:
     """
     A view to verify a voter code. Accepts code via POST. If code is valid

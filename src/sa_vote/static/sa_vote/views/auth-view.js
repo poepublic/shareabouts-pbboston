@@ -165,6 +165,10 @@ export const AuthView = Backbone.View.extend({
         // user and ask them to try again later.
         const data = await response.json();
         showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-502'](data) });
+      } else if (response.status === 429) {
+        // Too many requests. Rate limit exceeded.
+        const data = await response.json();
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-request-code-429'](data) });
       } else {
         alert('An unexpected error occurred. Please try again.');
       }
@@ -200,6 +204,12 @@ export const AuthView = Backbone.View.extend({
         // circumstances.
         const data = await response.json();
         showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-verify-code-400'](data) });
+      } else if (response.status === 429) {
+        // Too many verification attempts. Rate limit exceeded.
+        const data = await response.json();
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/auth-verify-code-429'](data) });
+      } else {
+        alert('An unexpected error occurred. Please try again.');
       }
 
       submitButtons.forEach(button => button.disabled = false);

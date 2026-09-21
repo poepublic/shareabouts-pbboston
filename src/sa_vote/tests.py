@@ -4,7 +4,8 @@ from hashlib import sha256
 from unittest.mock import MagicMock, patch
 
 from django.conf import settings
-from django.http import Http404
+from django.core.cache import cache
+from django.http import Http404, HttpResponse
 from django.test import Client, override_settings, RequestFactory, SimpleTestCase
 
 
@@ -35,6 +36,127 @@ class NormalizePhoneNumberTests(SimpleTestCase):
         from sa_vote.views import normalize_phone_number
         result = normalize_phone_number('1', '555.123.4567')
         self.assertEqual(result, '+15551234567')
+
+
+class RateLimitIpDecoratorTests(SimpleTestCase):
+    """Unit tests for the rate_limit_ip decorator."""
+
+    def setUp(self):
+        cache.clear()
+
+    def test_requests_within_limit_allowed(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=2, period=60, key_prefix='test_limit')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req2 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+
+        res1 = dummy_view(req1)
+        res2 = dummy_view(req2)
+
+        self.assertEqual(res1.status_code, 200)
+        self.assertEqual(res2.status_code, 200)
+
+    def test_requests_exceeding_limit_blocked_with_429(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=2, period=60, key_prefix='test_block')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req2 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req3 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+
+        res1 = dummy_view(req1)
+        res2 = dummy_view(req2)
+        res3 = dummy_view(req3)
+
+        self.assertEqual(res1.status_code, 200)
+        self.assertEqual(res2.status_code, 200)
+        self.assertEqual(res3.status_code, 429)
+        self.assertEqual(res3.headers.get('Retry-After'), '60')
+        data = json.loads(res3.content)
+        self.assertIn('error', data)
+
+    def test_different_ips_have_independent_limits(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=1, period=60, key_prefix='test_ips')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req_ip1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req_ip2 = factory.post('/', REMOTE_ADDR='5.6.7.8')
+
+        res1 = dummy_view(req_ip1)
+        res2 = dummy_view(req_ip2)
+
+        self.assertEqual(res1.status_code, 200)
+        self.assertEqual(res2.status_code, 200)
+
+    def test_proxied_ip_from_x_forwarded_for_used(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=1, period=60, key_prefix='test_proxy')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        # REMOTE_ADDR is proxy, HTTP_X_FORWARDED_FOR is client
+        req1 = factory.post('/', REMOTE_ADDR='10.0.0.1', HTTP_X_FORWARDED_FOR='203.0.113.195')
+        req2 = factory.post('/', REMOTE_ADDR='10.0.0.1', HTTP_X_FORWARDED_FOR='203.0.113.195')
+        req3 = factory.post('/', REMOTE_ADDR='10.0.0.1', HTTP_X_FORWARDED_FOR='198.51.100.10')
+
+        self.assertEqual(dummy_view(req1).status_code, 200)
+        self.assertEqual(dummy_view(req2).status_code, 429)
+        self.assertEqual(dummy_view(req3).status_code, 200)
+
+    def test_retry_after_uses_cache_ttl_when_available(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=1, period=60, key_prefix='test_ttl')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req2 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+
+        dummy_view(req1)
+
+        # Mock ttl method on cache backend
+        with patch.object(cache, 'ttl', create=True, return_value=27):
+            res = dummy_view(req2)
+            self.assertEqual(res.status_code, 429)
+            self.assertEqual(res.headers.get('Retry-After'), '27')
+            data = json.loads(res.content)
+            self.assertIn('27 seconds', data.get('detail', ''))
+
+    def test_retry_after_falls_back_to_period_when_ttl_fails_or_invalid(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=1, period=60, key_prefix='test_fallback')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req2 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+
+        dummy_view(req1)
+
+        # When ttl returns -1 or raises an error, fallback to period
+        with patch.object(cache, 'ttl', create=True, return_value=-1):
+            res = dummy_view(req2)
+            self.assertEqual(res.status_code, 429)
+            self.assertEqual(res.headers.get('Retry-After'), '60')
 
 
 @override_settings(DEBUG=True)
@@ -218,6 +340,31 @@ class VerifyCodeUnitTests(SimpleTestCase):
         self.assertEqual(request.session.get('voter_id_hash'), 'hashed_form_id')
         self.assertTrue(request.session.get('voter_verified'))
 
+    def test_rate_limit_blocks_excessive_verify_requests(self):
+        from sa_vote.views import verify_code
+        cache.set('voter_code:123456', 'hashed_id', timeout=1800)
+
+        for _ in range(10):
+            request = self.factory.post(
+                '/vote/verify-code',
+                data={'code': 'wrong'},
+                REMOTE_ADDR='198.51.100.2'
+            )
+            request.session = {}
+            response = verify_code(request)
+            self.assertEqual(response.status_code, 404)
+
+        # 11th request from same IP should be blocked with 429
+        request = self.factory.post(
+            '/vote/verify-code',
+            data={'code': '123456'},
+            REMOTE_ADDR='198.51.100.2'
+        )
+        request.session = {}
+        response = verify_code(request)
+        self.assertEqual(response.status_code, 429)
+        self.assertEqual(response.headers.get('Retry-After'), '60')
+
 
 class GenerateCodeUnitTests(SimpleTestCase):
     """Tests for the /vote/generate-code endpoint."""
@@ -324,6 +471,33 @@ class GenerateCodeUnitTests(SimpleTestCase):
         self.assertEqual(response.status_code, 502)
         data = json.loads(response.content)
         self.assertIn('Failed to send verification SMS', data.get('error', ''))
+
+    @patch('sa_vote.views.send_verification_sms')
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_rate_limit_blocks_excessive_requests(self, mock_get, mock_sms):
+        from sa_vote.views import generate_code
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
+
+        for i in range(5):
+            request = self.factory.post(
+                '/vote/generate-code',
+                data=json.dumps({'phone_number': f'555-123-{i:04d}'}),
+                content_type='application/json',
+                REMOTE_ADDR='198.51.100.1'
+            )
+            response = generate_code(request)
+            self.assertEqual(response.status_code, 201)
+
+        # 6th request from same IP should be blocked with 429
+        request = self.factory.post(
+            '/vote/generate-code',
+            data=json.dumps({'phone_number': '555-123-9999'}),
+            content_type='application/json',
+            REMOTE_ADDR='198.51.100.1'
+        )
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 429)
+        self.assertEqual(response.headers.get('Retry-After'), '3600')
 
 
 class AdminGenerateCodeUnitTests(SimpleTestCase):
