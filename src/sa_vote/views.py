@@ -72,7 +72,7 @@ def send_verification_sms(phone_number: str, code: str) -> None:
     from twilio.rest import Client
     client = Client(api_key, api_secret, account_sid=account_sid)
     code = code.upper()
-    message_body = _('Your Boston Participatory Budgeting voting login code is: {code}. This code will expire in 30 minutes.').format(code=code)
+    message_body = _('Your Boston Ideas in Action voter code is: {code}. This code will expire in 30 minutes.').format(code=code)
     client.messages.create(
         body=message_body,
         from_=from_number,
