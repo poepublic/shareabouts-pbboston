@@ -188,9 +188,8 @@ export const AuthView = Backbone.View.extend({
       if (response.ok) {
         this.currentState = 'success';
         this.updateVisibleStep();
-
-        // Hard refresh to the ballot page after successful verification.
-        window.location = '/vote/ballot';
+        this.app.setVoterVerified(true);
+        this.app.router.navigate('/ballot', { trigger: true });
       } else if (response.status === 404) {
         // The voter code was not found. This likely means the user entered an
         // incorrect code, or that the code has expired.

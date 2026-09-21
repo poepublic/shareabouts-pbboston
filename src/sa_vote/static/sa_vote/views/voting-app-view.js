@@ -29,9 +29,6 @@ const FAQs = {
   ],
 };
 
-const verified = Shareabouts.bootstrapped.voterVerified;
-
-
 export const VotingAppView = Backbone.View.extend({
   events: {
     'click a[data-internal="true"]': 'handleInternalLinkClick',
@@ -62,6 +59,10 @@ export const VotingAppView = Backbone.View.extend({
     this.voterData.clear();
   },
 
+  setVoterVerified: function(verified) {
+    Shareabouts.bootstrapped.voterVerified = verified;
+  },
+
   handleInternalLinkClick: function (evt) {
     // Intercept internal link clicks and route them through Backbone navigate method
     if (evt.altKey || evt.ctrlKey || evt.metaKey || evt.shiftKey) return;
@@ -89,7 +90,11 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showBallot: function () {
-    this._replaceCurrentView(new BallotView({ app: this, ballot: Shareabouts.bootstrapped.ballot, verified: verified }));
+    this._replaceCurrentView(new BallotView({
+      app: this,
+      ballot: Shareabouts.bootstrapped.ballot,
+      verified: Shareabouts.bootstrapped.voterVerified,
+    }));
   },
 
   showFaq: function () {
@@ -105,10 +110,15 @@ export const VotingAppView = Backbone.View.extend({
   },
 
   showAuth: function (state) {
-    this._replaceCurrentView(new AuthView({ app: this, state: state, verified: verified, neighborhoods: Shareabouts.bootstrapped.neighborhoods.features }));
+    this._replaceCurrentView(new AuthView({
+      app: this,
+      state: state,
+      verified: Shareabouts.bootstrapped.voterVerified,
+      neighborhoods: Shareabouts.bootstrapped.neighborhoods.features
+    }));
   },
 
   showSurvey: function () {
-    this._replaceCurrentView(new SurveyView());
+    this._replaceCurrentView(new SurveyView({ app: this }));
   }
 });
