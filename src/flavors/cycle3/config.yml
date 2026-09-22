@@ -977,24 +977,42 @@ faq:
   sections:
     - title: _(Voting in this cycle)
       questions:
-        - question: _(Who can vote in this cycle?)
-          answer: _(All residents of the city who are 18 years or older and registered to vote are eligible to participate in this cycle.)
+        - question: _(Who can vote?)
+          answer: _(All residents of the city of Boston who are 11 years or older are eligible to participate.)
         - question: _(How do I submit my vote?)
-          answer: _(You can submit your vote online through our secure voting platform after registering to vote.)
+          answer: >-
+            _(You can submit your vote online through our secure voting platform.
+            <a href="/vote/auth" data-internal="true">Click here to vote</a>.)
         - question: _(Can I change my vote after submitting it?)
           answer: _(No, once your vote is submitted, it cannot be changed. Please review your choices carefully before finalizing your vote.)
         - question: _(When will the results be announced?)
-          answer: _(The results will be announced on the official election website and through local media outlets after the voting period ends.)
+          answer: _(The results will be announced in late February on the Office of Participatory Budgeting's website, newsletter, and the City's social media accounts.)
         - question: _(Is my vote public?)
           answer: _(No, all votes are confidential and will not be disclosed to the public. Your privacy is protected throughout the voting process.)
+        - question: _(How many ideas can I vote for?)
+          answer: _(You can vote for up to 5 project ideas. All votes must be submitted at the same time.)
+        - question: _(Can I vote more than once?)
+          answer: _(No, each resident can submit just one ballot. After submitting, you will not be able to vote again this cycle.)
+        - question: _(How long is voting open for?)
+          answer: _(The voting phase starts January 15, 2027, and runs through February 15, 2027.)
     - title: _(About Ideas in Action (IIA))
       questions:
-        - question: _(What is Ideas in Action (IIA)?)
-          answer: _(Ideas in Action (IIA) is a community-driven initiative that allows residents to propose and vote on projects that will improve their neighborhoods.)
+        - question: _(What is Ideas in Action?)
+          answer: _(Ideas in Action is the City of Boston's Participatory Budgeting initiative, which allows Boston residents to propose and vote on projects to benefit their communities.)
         - question: _(How are projects selected for the ballot?)
-          answer: _(Projects are selected based on community input, feasibility, and alignment with city priorities. A committee reviews proposals and determines which ones will be included on the ballot.)
+          answer: _(Proposals are constructed through community engagement forums that turn ideas submitted by your neighbors into projects.)
         - question: _(What is participatory budgeting?)
-          answer: _(Participatory budgeting is a democratic process in which community members directly decide how to allocate a portion of the public budget for local projects and initiatives.)
+          answer: _(Participatory budgeting is a democratic process in which community members directly decide how to allocate a portion of the public budget for local projects and initiatives. In Boston, residents decide where $2 million of Boston's budget goes, so multiple projects will be funded.)
+        - question: _(How can I get involved beyond voting?)
+          answer: >-
+            _(Stay tuned for an announcement of winning projects in the spring. We will reopen for 2027-28 year idea
+            proposals in the summer of 2027. Check out <a href="https://boston.gov/participate" target="_blank"
+            rel="noopener noreferrer">boston.gov/Participate</a> for updated ways on how to stay engaged.)
+        - question: _(What projects have been selected in previous years?)
+          answer: >-
+            _(Check out projects funded in previous cycles here:
+            <a href="https://boston.gov/departments/participatory-budgeting/ideas-action-project-implementation" target="_blank"
+            rel="noopener noreferrer">boston.gov/departments/participatory-budgeting/ideas-action-project-implementation</a>.)
 
 # Admin report configuration options
 report:
