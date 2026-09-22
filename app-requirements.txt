@@ -31,3 +31,4 @@ django-cors-headers
 python-frontmatter
 markdown
 twilio
+django-ipware

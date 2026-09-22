@@ -11,13 +11,16 @@ from django.core.cache import cache
 from django.core.exceptions import ImproperlyConfigured
 from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.utils.translation import get_language, gettext as _
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.http import require_POST
 
 from sa_util.api import ShareaboutsApi
 from sa_util.config import get_shareabouts_config
 from pbboston.geodata import load_neighborhoods, load_city
 from sa_vote.ballots import Ballot
+from sa_vote.decorators import rate_limit_ip, require_voter_session_info
 from sa_web.views import HttpRequestWithConfig, apply_language, calc_adding_support, get_shareabouts_user_token, process_shareabouts_config, show_prelaunch_until_go_live_date
 
 VOTER_CODE_TTL_SECONDS = 30 * 60  # 30 minutes
@@ -71,12 +74,14 @@ def send_verification_sms(phone_number: str, code: str) -> None:
 
     from twilio.rest import Client
     client = Client(api_key, api_secret, account_sid=account_sid)
-    message_body = _('Your Boston Participatory Budgeting voting login code is: {code}').format(code=code)
+    code = code.upper()
+    message_body = render_to_string('sa_vote/sms_verification_message.txt', {'code': code}).strip()
     client.messages.create(
         body=message_body,
         from_=from_number,
         to=phone_number,
     )
+    logging.info(f'Sent message to {phone_number}: {message_body!r}')
 
 
 def normalize_phone_number(country_code: str, phone_number: str) -> str:
@@ -134,12 +139,16 @@ def parse_voter_code(request: HttpRequest) -> str:
     if not code and request.POST:
         code = request.POST.get('code')
 
+    code = str(code).strip().lower() if code else None
+
     if not code:
         raise ValueError('Missing "code" parameter')
 
-    return str(code).strip().lower()
+    return code
 
 
+@rate_limit_ip(count=2, period=60, key_prefix='generate_code_2perminute')
+@rate_limit_ip(count=5, period=3600, key_prefix='generate_code_5perhour')
 @process_shareabouts_config
 def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
     """
@@ -166,20 +175,30 @@ def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
     ballotbox_key = settings.SHAREABOUTS.get('BALLOTBOX_KEY')
     if not ballotbox_key:
         raise ImproperlyConfigured('Missing BALLOTBOX_KEY in SHAREABOUTS settings')
-    
+
     config = request.shareabouts_config
     api = ShareaboutsApi(config, request, api_key=ballotbox_key)
     try:
         existing = api.get('ballots', id_hash=id_hash)
     except:
         logger.exception('Failed to query API server')
-        return JsonResponse({'error': 'Failed to query API server'}, status=502)
+        return JsonResponse({
+            'error': 'Failed to query API server',
+            'label': _('Failed to query API server'),
+        }, status=502)
 
     if existing is None:
-        return JsonResponse({'error': 'Failed to find ballots on API server'}, status=502)
+        logger.error('Failed to find ballots submission set on API server')
+        return JsonResponse({
+            'error': 'Failed to find ballots on API server',
+            'label': _('Failed to find ballots on API server'),
+        }, status=502)
 
     if len(existing['results']) > 0:
-        return JsonResponse({'error': 'A ballot has already been submitted for this phone number'}, status=400)
+        return JsonResponse({
+            'error': 'A ballot has already been submitted for this phone number',
+            'phone_number': normalized_phone,
+        }, status=403)
 
     code = map_voter_code_to_id(id_hash, VOTER_CODE_TTL_SECONDS)
 
@@ -187,7 +206,10 @@ def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
         send_verification_sms(normalized_phone, code)
     except:
         logger.exception('Failed to send verification SMS')
-        return JsonResponse({'error': 'Failed to send verification SMS'}, status=502)
+        return JsonResponse({
+            'error': 'Failed to send verification SMS',
+            'label': _('Failed to send verification SMS to %(phone_number)s') % {'phone_number': normalized_phone},
+        }, status=502)
 
     return JsonResponse({'status': 'success', 'message': 'Verification code sent'}, status=201)
 
@@ -238,6 +260,7 @@ def admin_generate_code(request: HttpRequestWithConfig) -> HttpResponse:
     return JsonResponse({'status': 'success', 'code': code, 'id_hash': id_hash}, status=201)
 
 
+@rate_limit_ip(count=10, period=60, key_prefix='verify_code')
 def verify_code(request: HttpRequest) -> HttpResponse:
     """
     A view to verify a voter code. Accepts code via POST. If code is valid
@@ -272,7 +295,7 @@ def verify_code_test(request: HttpRequest) -> HttpResponse:
     """
     if not settings.DEBUG:
         raise Http404
-    
+
     code = request.GET.get('code')
 
     if code is None:
@@ -298,6 +321,8 @@ def unverify(request: HttpRequest) -> HttpResponse:
 
 
 @ensure_csrf_cookie
+@require_POST
+@require_voter_session_info
 @apply_language
 @process_shareabouts_config
 def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
@@ -307,12 +332,6 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
     Validates proposals (1-5 valid slugs), checks for upstream duplicates, and
     posts anonymous ballot data to the ballot box place.
     """
-    if request.method != 'POST':
-        return HttpResponse(status=405)
-
-    if not request.session.get('voter_verified') or not request.session.get('voter_id_hash'):
-        return JsonResponse({'error': 'Session is not verified'}, status=403)
-
     try:
         body = json.loads(request.body.decode('utf-8'))
     except (ValueError, UnicodeDecodeError):
@@ -344,11 +363,17 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
     api = ShareaboutsApi(request.shareabouts_config, request, api_key=ballotbox_key)
 
     try:
-        existing = api.get('ballots', id_hash=voter_id_hash)
+        ballots = api.get('ballots', id_hash=voter_id_hash)
     except Exception as exc:
         return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
 
-    if existing and isinstance(existing, dict) and (existing.get('length', 0) > 0 or len(existing.get('results', [])) > 0):
+    try:
+        ballot_count = len(ballots.get('results', [])) if ballots else 0
+    except Exception as exc:
+        logger.exception('Failed to process existing ballots')
+        return JsonResponse({'error': f'Failed to process existing ballots: {exc}'}, status=500)
+
+    if ballot_count > 0:
         return JsonResponse({'error': 'A ballot has already been submitted for this voter', 'label': _('It appears that you have already submitted a ballot.')}, status=409)
 
     lang = get_language() or 'en'
@@ -367,6 +392,34 @@ def submit_ballot(request: HttpRequestWithConfig) -> HttpResponse:
 
 
 @ensure_csrf_cookie
+@require_voter_session_info
+@apply_language
+@process_shareabouts_config
+def check_ballot(request: HttpRequestWithConfig) -> HttpResponse:
+    """
+    Retrieve whether there is an existing ballot for the current voter.
+    Requires an active verified session (voter_verified=True, voter_id_hash present).
+    """
+    voter_id_hash = request.session['voter_id_hash']
+    ballotbox_key = settings.SHAREABOUTS.get('BALLOTBOX_KEY')
+    api = ShareaboutsApi(request.shareabouts_config, request, api_key=ballotbox_key)
+
+    try:
+        ballots = api.get('ballots', id_hash=voter_id_hash)
+    except Exception as exc:
+        return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
+
+    try:
+        exists = ballots and len(ballots.get('results', [])) > 0
+    except Exception as exc:
+        logger.exception('Failed to process existing ballots')
+        return JsonResponse({'error': f'Failed to process existing ballots: {exc}'}, status=500)
+
+    return JsonResponse({'exists': exists}, status=200)
+
+@ensure_csrf_cookie
+@require_POST
+@require_voter_session_info
 @apply_language
 @process_shareabouts_config
 def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
@@ -376,12 +429,6 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
     Transforms incoming keys to anonymous_<key>, checks for upstream duplicates,
     posts anonymous survey data to the ballot box place, and invalidates session.
     """
-    if request.method != 'POST':
-        return HttpResponse(status=405)
-
-    if not request.session.get('voter_verified') or not request.session.get('voter_id_hash'):
-        return JsonResponse({'error': 'Session is not verified'}, status=403)
-
     try:
         body = json.loads(request.body.decode('utf-8'))
     except (ValueError, UnicodeDecodeError):
@@ -400,11 +447,11 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
     api = ShareaboutsApi(request.shareabouts_config, request, api_key=ballotbox_key)
 
     try:
-        existing = api.get('surveys', id_hash=voter_id_hash)
+        surveys = api.get('surveys', id_hash=voter_id_hash)
     except Exception as exc:
         return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
 
-    if existing and isinstance(existing, dict) and (existing.get('length', 0) > 0 or len(existing.get('results', [])) > 0):
+    if surveys and len(surveys.get('results', [])) > 0:
         return JsonResponse({'error': 'A survey has already been submitted for this voter'}, status=409)
 
     lang = get_language() or 'en'
@@ -423,6 +470,28 @@ def submit_survey(request: HttpRequestWithConfig) -> HttpResponse:
     request.session.pop('voter_id_hash', None)
     request.session.pop('voter_verified', None)
     return JsonResponse({'status': 'success', 'message': 'Survey submitted successfully'}, status=201)
+
+
+@ensure_csrf_cookie
+@require_voter_session_info
+@apply_language
+@process_shareabouts_config
+def check_survey(request: HttpRequestWithConfig) -> HttpResponse:
+    voter_id_hash = request.session['voter_id_hash']
+    api = ShareaboutsApi(request.shareabouts_config, request, api_key=settings.SHAREABOUTS.get('BALLOTBOX_KEY'))
+
+    try:
+        surveys = api.get('surveys', id_hash=voter_id_hash)
+    except Exception as exc:
+        return JsonResponse({'error': f'Failed to query API server: {exc}'}, status=502)
+
+    try:
+        exists = surveys and len(surveys.get('results', [])) > 0
+    except Exception as exc:
+        logger.exception('Failed to process existing surveys')
+        return JsonResponse({'error': f'Failed to process existing surveys: {exc}'}, status=500)
+
+    return JsonResponse({'exists': exists})
 
 
 @ensure_csrf_cookie
@@ -453,7 +522,7 @@ def index(request, frontend_path=None):
     path_prefix = settings.BASE_URL
 
     context = {'config': request.shareabouts_config,
-               
+
                'ballot_config': ballot_config,
 
                'route_prefix': path_prefix + '/vote',

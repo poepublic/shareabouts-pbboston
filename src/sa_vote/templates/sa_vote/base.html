@@ -83,6 +83,12 @@
           <li class="menu-item">
             <a href="/vote/faq" data-internal="true">{% translate "FAQ" %}</a>
           </li>
+          <li class="menu-item">
+            <a href="/vote/privacy" data-internal="true">{% translate "Privacy Policy" %}</a>
+          </li>
+          <li class="menu-item">
+            <a href="/vote/terms" data-internal="true">{% translate "Terms of Service" %}</a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -107,6 +113,10 @@
   <footer id="colophon">
     {% block colophon %}{% endblock %}
   </footer>
+
+  <dialog id="modal-popup">
+    {% block modal_popup %}{% endblock %}
+  </dialog>
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -151,11 +161,15 @@
       mapboxToken: '{{ settings.MAPBOX_TOKEN }}',
       routePrefix: {{ route_prefix | as_json }},
       apiPrefix:  {{ api_prefix | as_json }},
-      
+
       ballot: {{ ballot_json | safe }},
+      generateVoterCodeEndpoint: '{% url "generate_code" %}',
+      verifyVoterCodeEndpoint: '{% url "verify_code" %}',
+      unverifyVoterEndpoint: '{% url "unverify" %}',
       submitBallotEndpoint: '{% url "submit_ballot" %}',
+      checkBallotEndpoint: '{% url "check_ballot" %}',
       submitSurveyEndpoint: '{% url "submit_survey" %}',
-      voterIdHash: {{ request.session.voter_id_hash | as_json }},
+      checkSurveyEndpoint: '{% url "check_survey" %}',
       voterVerified: {{ request.session.voter_verified | default:False | as_json }},
     };
 
@@ -211,7 +225,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '{{ settings.GOOGLE_ANALYTICS_ID }}', { 
+    gtag('config', '{{ settings.GOOGLE_ANALYTICS_ID }}', {
       'cookie_flags': 'SameSite=None; Secure',
       'send_page_view': false,
     });

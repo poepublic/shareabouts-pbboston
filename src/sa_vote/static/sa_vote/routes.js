@@ -6,8 +6,12 @@ const Router = Backbone.Router.extend({
   routes: {
     '': 'home',
     'faq': 'faq',
+    'privacy': 'privacy',
+    'terms': 'terms',
     'ballot': 'ballot', // doesn't need to be a separate place for logged in, just dependent on user state
     'auth': 'auth',
+    'auth/request-code': 'authRequestCode',
+    'auth/verify-code': 'authVerifyCode',
     'success': 'success',
   },
 
@@ -58,12 +62,32 @@ const Router = Backbone.Router.extend({
     this.appView.showFaq();
   },
 
+  privacy: function () {
+    this.appView.showPrivacy();
+  },
+
+  terms: function () {
+    this.appView.showTerms();
+  },
+
   ballot: function () {
     this.appView.showBallot();
   },
 
-  auth: function () {
-    this.appView.showAuth();
+  auth: function (state = 'attesting') {
+    if (Shareabouts.bootstrapped.voterVerified) {
+      this.navigate('/ballot', { trigger: true });
+    } else {
+      this.appView.showAuth(state);
+    }
+  },
+
+  authRequestCode: function () {
+    this.auth('requesting_code');
+  },
+
+  authVerifyCode: function () {
+    this.auth('verifying_code');
   },
 
   success: function () {
