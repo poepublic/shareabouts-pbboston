@@ -973,6 +973,29 @@ ballot:
   voter_support_group: admin
   max_selections: 5
 
+faq:
+  sections:
+    - title: _(Voting in this cycle)
+      questions:
+        - question: _(Who can vote in this cycle?)
+          answer: _(All residents of the city who are 18 years or older and registered to vote are eligible to participate in this cycle.)
+        - question: _(How do I submit my vote?)
+          answer: _(You can submit your vote online through our secure voting platform after registering to vote.)
+        - question: _(Can I change my vote after submitting it?)
+          answer: _(No, once your vote is submitted, it cannot be changed. Please review your choices carefully before finalizing your vote.)
+        - question: _(When will the results be announced?)
+          answer: _(The results will be announced on the official election website and through local media outlets after the voting period ends.)
+        - question: _(Is my vote public?)
+          answer: _(No, all votes are confidential and will not be disclosed to the public. Your privacy is protected throughout the voting process.)
+    - title: _(About Ideas in Action (IIA))
+      questions:
+        - question: _(What is Ideas in Action (IIA)?)
+          answer: _(Ideas in Action (IIA) is a community-driven initiative that allows residents to propose and vote on projects that will improve their neighborhoods.)
+        - question: _(How are projects selected for the ballot?)
+          answer: _(Projects are selected based on community input, feasibility, and alignment with city priorities. A committee reviews proposals and determines which ones will be included on the ballot.)
+        - question: _(What is participatory budgeting?)
+          answer: _(Participatory budgeting is a democratic process in which community members directly decide how to allocate a portion of the public budget for local projects and initiatives.)
+
 # Admin report configuration options
 report:
   submission_sets:
