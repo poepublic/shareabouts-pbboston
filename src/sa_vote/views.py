@@ -11,6 +11,7 @@ from django.core.cache import cache
 from django.core.exceptions import ImproperlyConfigured
 from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.utils.translation import get_language, gettext as _
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
@@ -74,7 +75,7 @@ def send_verification_sms(phone_number: str, code: str) -> None:
     from twilio.rest import Client
     client = Client(api_key, api_secret, account_sid=account_sid)
     code = code.upper()
-    message_body = _('Hi, it\'s Poe Public on behalf of Ideas in Action! Your voter code is: {code}. This code will expire in 30 minutes.').format(code=code)
+    message_body = render_to_string('sa_vote/sms_verification_message.txt', {'code': code}).strip()
     client.messages.create(
         body=message_body,
         from_=from_number,
