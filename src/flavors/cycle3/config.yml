@@ -1000,7 +1000,10 @@ faq:
         - question: _(What is Ideas in Action?)
           answer: _(Ideas in Action is the City of Boston's Participatory Budgeting initiative, which allows Boston residents to propose and vote on projects to benefit their communities.)
         - question: _(How are projects selected for the ballot?)
-          answer: _(Proposals are constructed through community engagement forums that turn ideas submitted by your neighbors into projects.)
+          answer: >-
+            _(Proposals are constructed through community engagement forums that turn
+            <a href="https://participate.boston.gov/page/about" target="_blank"
+            rel="noopener noreferrer">ideas submitted</a> by your neighbors into projects.)
         - question: _(What is participatory budgeting?)
           answer: _(Participatory budgeting is a democratic process in which community members directly decide how to allocate a portion of the public budget for local projects and initiatives. In Boston, residents decide where $2 million of Boston's budget goes, so multiple projects will be funded.)
         - question: _(How can I get involved beyond voting?)
