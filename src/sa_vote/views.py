@@ -147,7 +147,8 @@ def parse_voter_code(request: HttpRequest) -> str:
     return code
 
 
-@rate_limit_ip(count=5, period=3600, key_prefix='generate_code')
+@rate_limit_ip(count=2, period=60, key_prefix='generate_code_2perminute')
+@rate_limit_ip(count=5, period=3600, key_prefix='generate_code_5perhour')
 @process_shareabouts_config
 def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
     """

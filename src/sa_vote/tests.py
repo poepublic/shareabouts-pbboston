@@ -478,7 +478,7 @@ class GenerateCodeUnitTests(SimpleTestCase):
         from sa_vote.views import generate_code
         mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
 
-        for i in range(5):
+        for i in range(2):
             request = self.factory.post(
                 '/vote/generate-code',
                 data=json.dumps({'phone_number': f'555-123-{i:04d}'}),
@@ -488,7 +488,7 @@ class GenerateCodeUnitTests(SimpleTestCase):
             response = generate_code(request)
             self.assertEqual(response.status_code, 201)
 
-        # 6th request from same IP should be blocked with 429
+        # 3rd request from same IP should be blocked with 429
         request = self.factory.post(
             '/vote/generate-code',
             data=json.dumps({'phone_number': '555-123-9999'}),
@@ -497,7 +497,7 @@ class GenerateCodeUnitTests(SimpleTestCase):
         )
         response = generate_code(request)
         self.assertEqual(response.status_code, 429)
-        self.assertEqual(response.headers.get('Retry-After'), '3600')
+        self.assertEqual(response.headers.get('Retry-After'), '60')
 
 
 class AdminGenerateCodeUnitTests(SimpleTestCase):
@@ -637,7 +637,7 @@ class SendVerificationSmsUnitTests(SimpleTestCase):
 
         mock_twilio_client.assert_called_once_with('SK123', 'secret456', account_sid='AC123')
         mock_instance.messages.create.assert_called_once_with(
-            body='Your Boston Ideas in Action voter code is: A1B2C3. This code will expire in 30 minutes.',
+            body="Hi, it's Poe Public on behalf of Ideas in Action! Your voter code is: A1B2C3. This code will expire in 30 minutes.\n\n@participate.boston.gov #A1B2C3",
             from_='+15550000000',
             to='+15551234567',
         )
