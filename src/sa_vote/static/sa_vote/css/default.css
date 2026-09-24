@@ -19,6 +19,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    height: auto;
+}
+
+#colophon {
+    position: static;
+    height: auto;
 }
 
 h1 {
