@@ -185,6 +185,7 @@ summary {
     justify-content: center;
     padding: 1rem;
     gap: 1.5rem;
+    border-radius: 1rem;
 }
 
 .vote-link p {
@@ -696,4 +697,52 @@ summary.survey-select-input,
     font-weight: normal;
     text-transform: capitalize;
     margin-top: 0.5rem;
+}
+
+
+/* Tablet */
+@media (min-width: 768px) {
+
+}
+
+/* Desktop */
+@media (min-width: 960px) {
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .home-page {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .home-header, .ballot-page-header {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .bigger-text {
+        font-size: 4rem;
+    }
+
+    .secondary-emphasis {
+        font-size: 1.5rem;
+    }
+
+    .vote-link {
+        width: 18vw;
+    }
+
+
+
+}
+
+/* Large screen */
+@media (min-width: 1280px) {
+
 }
