@@ -714,13 +714,32 @@ summary.survey-select-input,
 /* Desktop */
 @media (min-width: 960px) {
 
+    #home-page,
+    #ballot-page,
+    #auth-page,
+    #faq-page,
+    #privacy-page,
+    #terms-page,
+    #survey-page {
+        padding: 3rem;
+        margin-top: 7vh;
+    }
+
+    span {
+        font-size: 1.25rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+
     .menu {
         display: flex;
         flex-direction: row;
         gap: 1rem;
     }
 
-    .home-page {
+    #home-page {
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -743,6 +762,8 @@ summary.survey-select-input,
     .vote-link {
         width: 18vw;
     }
+
+
 
 
 
