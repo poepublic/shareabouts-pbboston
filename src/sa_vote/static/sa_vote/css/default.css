@@ -230,6 +230,7 @@ summary {
     bottom: 0;
     left: 0;
     width: 100%;
+    z-index: 1000;
 }
 
 .ballot-banner-headline {
@@ -721,8 +722,32 @@ summary.survey-select-input,
     #privacy-page,
     #terms-page,
     #survey-page {
-        padding: 3rem;
+        padding: 5rem;
         margin-top: 7vh;
+    }
+
+    #ballot-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ballot-page-content-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        gap: 3rem;
+    }
+
+    /* Left half: header and info text stay put while the cards scroll */
+    .ballot-page-content-top {
+        position: sticky;
+        top: 7vh;
+        text-align: center;
+    }
+
+    /* Right half: ballot cards */
+    .proposal-container {
+        margin-top: 0;
     }
 
     span {
@@ -746,7 +771,7 @@ summary.survey-select-input,
         gap: 1rem;
     }
 
-    .home-header, .ballot-page-header {
+    .home-header, .ballot-page-header, .faq-page-header {
         font-size: 3rem;
         text-align: center;
     }
