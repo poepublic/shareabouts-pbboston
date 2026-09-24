@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     min-height: 100%;
     height: auto;
+    background-color: white;
 }
 
 #colophon {
@@ -37,6 +38,10 @@ h2 {
 
 #app {
     flex: 1;
+    background-image: linear-gradient(45deg,
+        color-mix(in srgb, var(--iia-indigo-blue) 15%, transparent) 0%,
+        color-mix(in srgb, var(--iia-electric-purple) 15%, transparent) 50%,
+        color-mix(in srgb, var(--iia-urban-pink) 15%, transparent) 100%);
 }
 
 input[type="checkbox"] {
@@ -748,10 +753,6 @@ summary.survey-select-input,
     /* Right half: ballot cards */
     .proposal-container {
         margin-top: 0;
-    }
-
-    span {
-        font-size: 1.25rem;
     }
 
     p {
