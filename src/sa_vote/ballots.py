@@ -10,7 +10,7 @@ repository.
 from datetime import date, datetime
 import json
 import pathlib
-from typing import TypedDict, Self
+from typing import TypedDict
 
 import frontmatter
 import markdown
@@ -40,7 +40,7 @@ class Ballot:
         self.proposals = proposals
 
     @classmethod
-    def from_directory(cls, directory: str | pathlib.Path, lang: str = DEFAULT_LANG, fallback_langs: list[str] | None = None) -> Self:
+    def from_directory(cls, directory: str | pathlib.Path, lang: str = DEFAULT_LANG, fallback_langs: list[str] | None = None) -> 'Ballot':
         """
         Load a ballot from a directory containing proposal files.
 
@@ -100,7 +100,7 @@ class Ballot:
         config,
         lang: str = DEFAULT_LANG,
         fallback_langs: list[str] | None = None
-    ) -> Self:
+    ) -> 'Ballot':
         """
         Load a ballot from a Shareabouts configuration instance.
         """
@@ -146,7 +146,7 @@ class Ballot:
             if isinstance(obj, (datetime, date)):
                 return obj.isoformat()
             raise TypeError("Type %s not serializable" % type(obj))
-        
+
         json_kwargs.setdefault('ensure_ascii', False)
         json_kwargs.setdefault('default', json_serial)
         return json.dumps(self.to_dict(), **json_kwargs)
