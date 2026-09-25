@@ -757,7 +757,7 @@ summary.survey-select-input,
         margin-top: 0;
     }
 
-    p, li {
+    p, li, .info-text {
         font-size: 1.25rem;
     }
 
