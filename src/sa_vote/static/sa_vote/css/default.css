@@ -7,7 +7,7 @@
 #privacy-page,
 #terms-page,
 #survey-page {
-    padding: 1.5rem;
+    padding: 3rem;
     margin-top: 5vh;
 }
 
@@ -727,8 +727,10 @@ summary.survey-select-input,
     #privacy-page,
     #terms-page,
     #survey-page {
-        padding: 5rem;
+        padding: 3rem;
         margin-top: 7vh;
+        margin-left: 10vw;
+        margin-right: 10vw;
     }
 
     #ballot-page {
@@ -755,9 +757,10 @@ summary.survey-select-input,
         margin-top: 0;
     }
 
-    p {
+    p, li {
         font-size: 1.25rem;
     }
+
 
     .menu {
         display: flex;
@@ -772,7 +775,7 @@ summary.survey-select-input,
         gap: 1rem;
     }
 
-    .home-header, .ballot-page-header, .faq-page-header {
+    .home-header, .ballot-page-header, .faq-page-header, .terms-page-header, .privacy-page-header {
         font-size: 3rem;
         text-align: center;
     }
