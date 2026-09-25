@@ -983,6 +983,13 @@ report:
       anonymous_fields:
         - age_range
         - neighborhood
+  sections:
+    - Overview
+    - Neighborhood
+    - Age
+    - Ethnicity
+    - Income
+    - Outreach
 
 pages:
   - title: _(About)
