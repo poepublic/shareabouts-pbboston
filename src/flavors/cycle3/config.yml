@@ -976,6 +976,7 @@ support:
 
 ballot:
   voter_support_group: admin
+  manager_group: admin
   max_selections: 5
 
 faq:
