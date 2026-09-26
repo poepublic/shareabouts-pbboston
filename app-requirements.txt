@@ -22,8 +22,7 @@ ujson>=5.0.0
 # Config
 pyyaml
 django-extensions==2.1.0
-pyjwt
-cryptography
+pygithub
 
 # Testing
 jasmine

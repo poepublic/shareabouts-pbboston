@@ -3,10 +3,11 @@ import json
 from unittest.mock import MagicMock, patch
 
 from django.test import SimpleTestCase, RequestFactory
-from django.conf import settings
 
 from sa_admin.github import GitHubContentManager, GitConflictError
 from sa_admin.views import ballot_proposals_api, ballot_proposal_save_api
+from sa_util.config import get_shareabouts_config
+from sa_util.api import ShareaboutsApi
 
 
 class GitHubContentManagerUnitTests(SimpleTestCase):
@@ -18,85 +19,40 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
             flavor='cycle3',
             token='test-token',
         )
+        self.mock_repo = MagicMock()
+        self.mgr._gh_repo = self.mock_repo
 
-    @patch('requests.request')
-    def test_get_head_sha(self, mock_req):
-        mock_resp = MagicMock()
-        mock_resp.status_code = 200
-        mock_resp.json.return_value = {'object': {'sha': 'abc123commit'}}
-        mock_req.return_value = mock_resp
+    def test_get_head_sha(self):
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'abc123commit'
+        self.mock_repo.get_git_ref.return_value = mock_ref
 
         head_sha = self.mgr.get_head_sha()
         self.assertEqual(head_sha, 'abc123commit')
-        mock_req.assert_called_with(
-            'GET',
-            'https://api.github.com/repos/poepublic/shareabouts-pbboston/git/refs/heads/test-branch',
-            headers={'Authorization': 'Bearer test-token', 'Accept': 'application/vnd.github+json'},
-            timeout=20,
-        )
+        self.mock_repo.get_git_ref.assert_called_with('heads/test-branch')
 
-    @patch('requests.request')
-    def test_create_blob_text_and_binary(self, mock_req):
-        mock_resp = MagicMock()
-        mock_resp.status_code = 201
-        mock_resp.json.return_value = {'sha': 'blob123'}
-        mock_req.return_value = mock_resp
+    def test_get_ballot_state_parsing(self):
+        # 1. get_git_ref
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'headsha'
+        self.mock_repo.get_git_ref.return_value = mock_ref
 
-        sha_text = self.mgr.create_blob('hello world', is_binary=False)
-        self.assertEqual(sha_text, 'blob123')
-        mock_req.assert_called_with(
-            'POST',
-            'https://api.github.com/repos/poepublic/shareabouts-pbboston/git/blobs',
-            headers={'Authorization': 'Bearer test-token', 'Accept': 'application/vnd.github+json'},
-            json={'content': 'hello world', 'encoding': 'utf-8'},
-            timeout=20,
-        )
+        # 2. get_git_commit
+        mock_commit = MagicMock()
+        mock_commit.tree.sha = 'treesha'
+        self.mock_repo.get_git_commit.return_value = mock_commit
 
-        sha_bin = self.mgr.create_blob(b'binary-data', is_binary=True)
-        self.assertEqual(sha_bin, 'blob123')
+        # 3. get_git_tree
+        item1 = MagicMock(path='src/flavors/cycle3/ballot/test-prop/info.yaml', type='blob', sha='infosha')
+        item2 = MagicMock(path='src/flavors/cycle3/ballot/test-prop/en.md', type='blob', sha='mdsha')
+        mock_tree = MagicMock()
+        mock_tree.tree = [item1, item2]
+        self.mock_repo.get_git_tree.return_value = mock_tree
 
-    @patch('requests.request')
-    def test_get_ballot_state_parsing(self, mock_req):
-        # 1. get_head_sha
-        head_resp = MagicMock(status_code=200)
-        head_resp.json.return_value = {'object': {'sha': 'headsha'}}
-
-        # 2. get_commit
-        commit_resp = MagicMock(status_code=200)
-        commit_resp.json.return_value = {'tree': {'sha': 'treesha'}}
-
-        # 3. get_tree
-        tree_resp = MagicMock(status_code=200)
-        tree_resp.json.return_value = {
-            'tree': [
-                {
-                    'path': 'src/flavors/cycle3/ballot/test-prop/info.yaml',
-                    'type': 'blob',
-                    'sha': 'infosha',
-                },
-                {
-                    'path': 'src/flavors/cycle3/ballot/test-prop/en.md',
-                    'type': 'blob',
-                    'sha': 'mdsha',
-                },
-            ]
-        }
-
-        # 4. get_blob for info.yaml
-        blob_info_resp = MagicMock(status_code=200)
-        blob_info_resp.json.return_value = {
-            'content': 'amount: 250000\nimage: /static/ballot/test.png\n',
-            'encoding': 'utf-8',
-        }
-
-        # 5. get_blob for en.md
-        blob_md_resp = MagicMock(status_code=200)
-        blob_md_resp.json.return_value = {
-            'content': '---\nlanguage: en\ntitle: Test Proposal\nimage_alt: Alt text\n---\n\nTest description body.\n',
-            'encoding': 'utf-8',
-        }
-
-        mock_req.side_effect = [head_resp, commit_resp, tree_resp, blob_info_resp, blob_md_resp]
+        # 4. get_git_blob
+        blob_info = MagicMock(content='amount: 250000\nimage: /static/ballot/test.png\n', encoding='utf-8')
+        blob_md = MagicMock(content='---\nlanguage: en\ntitle: Test Proposal\nimage_alt: Alt text\n---\n\nTest description body.\n', encoding='utf-8')
+        self.mock_repo.get_git_blob.side_effect = lambda sha: blob_info if sha == 'infosha' else blob_md
 
         state = self.mgr.get_ballot_state()
         self.assertEqual(state['head_sha'], 'headsha')
@@ -109,32 +65,30 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
         self.assertEqual(prop['translations']['en']['title'], 'Test Proposal')
         self.assertEqual(prop['translations']['en']['content'], 'Test description body.')
 
-    @patch('requests.request')
-    def test_commit_proposal_changes_success(self, mock_req):
-        # 1. create_blob for info.yaml
-        blob_resp = MagicMock(status_code=201)
-        blob_resp.json.return_value = {'sha': 'newblob1'}
+    def test_commit_proposal_changes_success(self):
+        # 1. get_git_ref
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
 
-        # 2. get_head_sha
-        head_resp = MagicMock(status_code=200)
-        head_resp.json.return_value = {'object': {'sha': 'basehead'}}
+        # 2. create_git_blob
+        blob = MagicMock(sha='blobsha1')
+        self.mock_repo.create_git_blob.return_value = blob
 
-        # 3. get_commit
-        commit_resp = MagicMock(status_code=200)
-        commit_resp.json.return_value = {'tree': {'sha': 'basetree'}}
+        # 3. get_git_commit
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'basetreesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
 
-        # 4. create_tree
-        tree_resp = MagicMock(status_code=201)
-        tree_resp.json.return_value = {'sha': 'newtree'}
+        # 4. create_git_tree
+        new_tree = MagicMock()
+        new_tree.sha = 'newtreesha'
+        self.mock_repo.create_git_tree.return_value = new_tree
 
-        # 5. create_commit
-        new_commit_resp = MagicMock(status_code=201)
-        new_commit_resp.json.return_value = {'sha': 'newcommit'}
-
-        # 6. update_ref
-        ref_resp = MagicMock(status_code=200)
-
-        mock_req.side_effect = [blob_resp, head_resp, commit_resp, tree_resp, new_commit_resp, ref_resp]
+        # 5. create_git_commit
+        new_commit = MagicMock()
+        new_commit.sha = 'newcommitsha'
+        self.mock_repo.create_git_commit.return_value = new_commit
 
         result = self.mgr.commit_proposal_changes(
             base_sha='basehead',
@@ -144,37 +98,39 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
         )
 
         self.assertEqual(result['status'], 'success')
-        self.assertEqual(result['commit_sha'], 'newcommit')
+        self.assertEqual(result['commit_sha'], 'newcommitsha')
+        mock_ref.edit.assert_called_with(sha='newcommitsha', force=False)
 
-    @patch('requests.request')
-    def test_commit_proposal_changes_conflict(self, mock_req):
-        # 1. create_blob
-        blob_resp = MagicMock(status_code=201)
-        blob_resp.json.return_value = {'sha': 'newblob1'}
+    def test_commit_proposal_changes_conflict(self):
+        # 1. get_git_ref returns moved head
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'movedhead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
 
-        # 2. get_head_sha returns moved head
-        head_resp = MagicMock(status_code=200)
-        head_resp.json.return_value = {'object': {'sha': 'movedhead'}}
+        # 2. create_git_blob
+        blob = MagicMock(sha='blobsha1')
+        self.mock_repo.create_git_blob.return_value = blob
 
         # 3. compare returns changed file intersecting with target_files
-        compare_resp = MagicMock(status_code=200)
-        compare_resp.json.return_value = {
-            'files': [{'filename': 'src/flavors/cycle3/ballot/prop1/info.yaml'}]
-        }
+        mock_comp = MagicMock()
+        file_change = MagicMock()
+        file_change.filename = 'src/flavors/cycle3/ballot/prop1/info.yaml'
+        mock_comp.files = [file_change]
+        self.mock_repo.compare.return_value = mock_comp
 
-        # In _check_conflicts: get_commit, compare, get_tree, get_blob
-        commit2_resp = MagicMock(status_code=200)
-        commit2_resp.json.return_value = {'tree': {'sha': 'movedtree'}}
+        # 4. get_git_commit for movedhead
+        head_commit = MagicMock()
+        head_commit.tree.sha = 'movedtree'
+        self.mock_repo.get_git_commit.return_value = head_commit
 
-        tree2_resp = MagicMock(status_code=200)
-        tree2_resp.json.return_value = {
-            'tree': [{'path': 'src/flavors/cycle3/ballot/prop1/info.yaml', 'type': 'blob', 'sha': 'server_blob'}]
-        }
+        # 5. get_git_tree for movedtree
+        item = MagicMock(path='src/flavors/cycle3/ballot/prop1/info.yaml', type='blob', sha='server_blob')
+        mock_tree = MagicMock()
+        mock_tree.tree = [item]
+        self.mock_repo.get_git_tree.return_value = mock_tree
 
-        blob2_resp = MagicMock(status_code=200)
-        blob2_resp.json.return_value = {'content': 'amount: 9999\n', 'encoding': 'utf-8'}
-
-        mock_req.side_effect = [blob_resp, head_resp, commit2_resp, compare_resp, tree2_resp, blob2_resp]
+        blob2 = MagicMock(content='amount: 9999\n', encoding='utf-8')
+        self.mock_repo.get_git_blob.return_value = blob2
 
         with self.assertRaises(GitConflictError) as cm:
             self.mgr.commit_proposal_changes(
@@ -192,21 +148,32 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
 class BallotApiViewsUnitTests(SimpleTestCase):
     def setUp(self):
         self.factory = RequestFactory()
-        self.dataset_root = getattr(settings, 'SHAREABOUTS', {}).get('DATASET_ROOT', 'dataset_root')
+        config = get_shareabouts_config()
+        self.api = ShareaboutsApi(config, self.factory.get('/'))
 
-    def test_unauthenticated_request_returns_401(self):
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_unauthenticated_request_returns_401(self, mock_current_user):
+        mock_current_user.return_value = None
         req = self.factory.get('/admin/ballot/proposals/', HTTP_ACCEPT='application/json')
         resp = ballot_proposals_api(req)
         self.assertEqual(resp.status_code, 401)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_unauthorized_request_returns_403(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'normal_user',
+            'groups': [{'name': 'other_group', 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.get('/admin/ballot/proposals/', HTTP_ACCEPT='application/json')
+        resp = ballot_proposals_api(req)
+        self.assertEqual(resp.status_code, 403)
 
     @patch('sa_admin.views.GitHubContentManager.get_ballot_state')
     @patch('sa_util.api.ShareaboutsApi.current_user')
     def test_authenticated_get_proposals_returns_200(self, mock_current_user, mock_get_state):
         mock_current_user.return_value = {
-            'username': 'boston_sso:ballot_manager',
-            'name': 'Boston Ballot Manager User',
-            'email': 'pb@boston.gov',
-            'groups': [{'name': 'admin', 'dataset': self.dataset_root}],
+            'username': 'ballot_admin',
+            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
         }
         mock_get_state.return_value = {
             'head_sha': 'h123',
@@ -214,10 +181,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
             'proposals': [{'slug': 'prop1'}],
             'files': {},
         }
-        req = self.factory.get(
-            '/admin/ballot/proposals/',
-            HTTP_ACCEPT='application/json',
-        )
+        req = self.factory.get('/admin/ballot/proposals/', HTTP_ACCEPT='application/json')
         resp = ballot_proposals_api(req)
         self.assertEqual(resp.status_code, 200)
         data = json.loads(resp.content)
@@ -229,10 +193,8 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     @patch('sa_util.api.ShareaboutsApi.current_user')
     def test_authenticated_save_proposal_returns_200(self, mock_current_user, mock_commit):
         mock_current_user.return_value = {
-            'username': 'boston_sso:ballot_manager',
-            'name': 'Boston Ballot Manager User',
-            'email': 'pb@boston.gov',
-            'groups': [{'name': 'admin', 'dataset': self.dataset_root}],
+            'username': 'ballot_admin',
+            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
         }
         mock_commit.return_value = {
             'status': 'success',
@@ -256,6 +218,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
             '/admin/ballot/proposals/save/',
             data=json.dumps(payload),
             content_type='application/json',
+            HTTP_ACCEPT='application/json',
         )
         resp = ballot_proposal_save_api(req)
         self.assertEqual(resp.status_code, 200)
@@ -265,18 +228,16 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
     @patch('sa_util.api.ShareaboutsApi.current_user')
     def test_save_proposal_conflict_returns_409(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+        }
         mock_commit.side_effect = GitConflictError(
             'Conflict detected',
             head_sha='newhead',
             tree_sha='newtree',
             conflicting_files={'path': {'sha': 's'}},
         )
-        mock_current_user.return_value = {
-            'username': 'boston_sso:ballot_manager',
-            'name': 'Boston Ballot Manager User',
-            'email': 'pb@boston.gov',
-            'groups': [{'name': 'admin', 'dataset': self.dataset_root}],
-        }
         payload = {
             'base_sha': 'stalesha',
             'slug': 'test-prop',
@@ -286,6 +247,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
             '/admin/ballot/proposals/save/',
             data=json.dumps(payload),
             content_type='application/json',
+            HTTP_ACCEPT='application/json',
         )
         resp = ballot_proposal_save_api(req)
         self.assertEqual(resp.status_code, 409)
