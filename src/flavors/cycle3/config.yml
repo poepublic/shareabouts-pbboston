@@ -863,9 +863,9 @@ place:
         - label: _(Less than $14,999)
           value: 'under_15000'
         - label: _($15,000 to $34,999)
-          value: '25000-49999'
+          value: '15000-34999'
         - label: _($35,000 to $49,999)
-          value: '50000-74999'
+          value: '35000-49999'
         - label: _($50,000 to $74,999)
           value: '50000-74999'
         - label: _($75,000 to $99,999)
@@ -886,11 +886,14 @@ place:
       help_text: >-
         _(Select all that apply.)
       type: checkboxgroup
+      # `icon` is shown next to the option in the admin report's outreach section.
       options:
         - label: _(City of Boston newsletter, event, or public official)
           value: city_of_boston
+          icon: 🏛️
         - label: _(Local community organization or event)
           value: local_community_organization
+          icon: 🏘️
         - label: _(Boston Public Library)
           value: boston_public_library
         - label: _(Boston Centers for Youth and Families (BCYF))
@@ -901,10 +904,12 @@ place:
           value: social_media
         - label: _(Word of mouth (family, friends, neighbors))
           value: word_of_mouth
+          icon: 🗣️
         - label: _(Newspaper, radio, billboard, or bus advertisement)
           value: newspaper_radio_billboard_bus
         - label: _(Other (write-in))
           value: other_write_in
+          icon: ✍️
       attrs:
         - key: data-has-children
     - prompt: _(Please specify)
@@ -983,6 +988,13 @@ report:
       anonymous_fields:
         - age_range
         - neighborhood
+  sections:
+    - Overview
+    - Neighborhood
+    - Age
+    - Ethnicity
+    - Income
+    - Outreach
 
 pages:
   - title: _(About)
