@@ -26,10 +26,13 @@
     "postinstall": "npx grunt"
   },
   "dependencies": {
+    "billboard.js": "^4.1.0",
     "csv-stringify": "^6.5.0",
+    "d3": "^7.9.0",
     "vue": "^3.4.0"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
     "grunt": "^1.6.1",
     "grunt-cli": "^1.4.3",
     "grunt-contrib-concat": "^2.1.0",
@@ -37,7 +40,6 @@
     "grunt-contrib-uglify": "^5.2.2",
     "grunt-contrib-watch": "^1.1.0",
     "uglify-js": "~3.17.0",
-    "@vitejs/plugin-vue": "^5.0.0",
     "vite": "^5.0.0"
   }
 }
