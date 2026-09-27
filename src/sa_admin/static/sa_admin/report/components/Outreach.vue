@@ -28,6 +28,7 @@
 import { computed } from 'vue';
 import CsvDownloadButton from './CsvDownloadButton.vue';
 import { useBackboneCollection } from '../../composables/useBackboneCollection.js';
+import { useBootstrap } from '../../composables/useBootstrap.js';
 
 const props = defineProps({
   surveys: { type: Object, required: true },
@@ -55,12 +56,13 @@ const topHowHeard = computed(() =>
 );
 const outreachCsvRows = computed(() => [['Category', 'Percent'], ...topHowHeard.value]);
 
-const howHeardIcons = {
-  'Word of mouth (family, friends, neighbors)': '🗣️',
-  'City of Boston newsletter, social media, event, or public official': '🏛️',
-  'Other (write-in)': '✍️',
-  'Local community organization or event': '🏘️',
-};
+// Icons come from the `private_submitter_how_heard` field in config.yml
+const { config } = useBootstrap();
+const howHeardIcons = Object.fromEntries(
+  config.place.items
+    .find(item => item.name === 'private_submitter_how_heard')
+    .options.map(option => [option.label, option.icon])
+);
 function howHeardIcon(label) {
   return howHeardIcons[label] || '📣';
 }
