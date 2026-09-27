@@ -41,8 +41,6 @@ const ballotsCollection = new window.Shareabouts.SubmissionCollection([], {
 // successfully fetched, and the `success` callback is called after all pages
 // have been fetched.)
 ballotsCollection.fetchAllPages({
-  pageSuccess: (page) => console.log(`Fetched ${page.length} ballots...`),
-  success: () => console.log('All non-anonymous data for ballots loaded! Total:', ballotsCollection.length)
 });
 
 // Anonymous Ballot Data
@@ -51,8 +49,6 @@ ballotsCollection.fetchAllPages({
 // can access the anonymous data on the ballotsCollections:
 
 ballotsCollection.anonymous.fetchAllPages({
-  pageSuccess: (page) => console.log(`Fetched ${page.length} anonymous ballots...`),
-  success: () => console.log('All anonymous data for ballots loaded! Total:', ballotsCollection.anonymous.length)
 });
 
 // Survey Data
@@ -67,15 +63,9 @@ const surveysCollection = new window.Shareabouts.SubmissionCollection([], {
 });
 
 surveysCollection.fetchAllPages({
-  pageSuccess: (page) => console.log(`Fetched ${page.length} surveys...`),
-  success: () => console.log('All survey data loaded! Total:', surveysCollection.length)
 });
 
 surveysCollection.anonymous.fetchAllPages({
-  pageSuccess: (page) => console.log(`Fetched ${page.length} anonymous surveys...`),
-  success: () => {
-    console.log('All anonymous data for surveys loaded! Total:', surveysCollection.anonymous.length);
-  }
 });
 
 // Working with the Data
