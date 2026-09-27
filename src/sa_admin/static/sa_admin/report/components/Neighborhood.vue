@@ -17,6 +17,7 @@ import { computed, ref, shallowRef, watchEffect, onMounted, onUnmounted } from '
 import { scaleThreshold } from 'd3-scale';
 import { schemePuRd } from 'd3-scale-chromatic';
 import { useBackboneCollection } from '../../composables/useBackboneCollection.js';
+import { useBootstrap } from '../../composables/useBootstrap.js';
 import CsvDownloadButton from './CsvDownloadButton.vue';
 
 // Common
