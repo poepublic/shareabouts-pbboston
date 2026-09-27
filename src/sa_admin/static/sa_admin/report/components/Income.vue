@@ -18,6 +18,7 @@ import { computed, ref, watchEffect } from 'vue';
 import bb, { bar, grid } from 'billboard.js';
 import 'billboard.js/dist/billboard.css';
 import { useBackboneCollection } from '../../composables/useBackboneCollection.js';
+import { useBootstrap } from '../../composables/useBootstrap.js';
 import CsvDownloadButton from './CsvDownloadButton.vue';
 
 const props = defineProps({
@@ -28,20 +29,18 @@ const surveyModels = useBackboneCollection(props.surveys);
 
 const totalSurveys = computed(() => surveyModels.value.length);
 
-// Income brackets in ascending order. The API stores the option's label text
-// directly (e.g. "$150,000 or more"), not the `value` slug from config.yml,
-// so we match against label text here.
-const INCOME_BRACKETS = [
-  'Less than $14,999',
-  '$15,000 to $34,999',
-  '$35,000 to $49,999',
-  '$50,000 to $74,999',
-  '$75,000 to $99,999',
-  '$100,000 to $149,999',
-  '$150,000 or more',
-];
-const NO_ANSWER_VALUES = ["I don't know", 'Prefer not to answer'];
+// Income buckets come from the `private_submitter_income` field in config.yml
+const NO_ANSWER_OPTION_VALUES = ['dont_know', 'prefer_not_to_answer'];
 const NO_ANSWER_LABEL = 'No Answer';
+
+const { config } = useBootstrap();
+const incomeOptions = config.place.items
+  .find(item => item.name === 'private_submitter_income')
+  .options.filter(option => option.value !== '');
+const isNoAnswer = option => NO_ANSWER_OPTION_VALUES.includes(option.value);
+
+const INCOME_BRACKETS = incomeOptions.filter(option => !isNoAnswer(option)).map(option => option.label);
+const NO_ANSWER_VALUES = incomeOptions.filter(isNoAnswer).map(option => option.label);
 
 const incomes = computed(() => surveyModels.value.map(survey => survey.get('income')).filter(income => income !== undefined && income !== ''));
 
