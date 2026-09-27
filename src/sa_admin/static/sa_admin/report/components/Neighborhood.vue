@@ -67,10 +67,12 @@ onMounted(async () => {
   if (!neighborhoodMapEl.value) return;
 
   map = window.L.map(neighborhoodMapEl.value).setView([42.3601, -71.0589], 12);
-  window.L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19,
+  window.L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}{r}.png?access_token={accessToken}', {
+    attribution: '© <a href="https://www.mapbox.com/about/maps">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://apps.mapbox.com/feedback/" target="_blank">Improve this map</a></strong>',
+    id: 'mapbox/light-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: mapboxToken
   }).addTo(map);
 
   topo.value = await fetch(Shareabouts.bootstrapped.staticUrl + 'data/neighborhoods.geojson').then(res => res.json());
