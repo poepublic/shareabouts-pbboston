@@ -60,6 +60,8 @@ let labelsLayer = null;
 let legendControl = null;
 let hasFitBounds = false;
 
+const { mapboxToken } = useBootstrap();
+
 onMounted(async () => {
   if (!neighborhoodMapEl.value) return;
 
