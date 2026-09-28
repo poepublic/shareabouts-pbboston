@@ -759,6 +759,21 @@ summary.survey-select-input,
         margin-top: 0;
     }
 
+    .selected-proposals {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .selected-proposal {
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+        position: relative;
+        margin: 0.5rem;
+        list-style: none;
+        max-width: 15vw;
+        max-height: 8vh;
+    }
+    
     .vote-confirm-modal {
         max-width: 30vw;
         width: 90%;
