@@ -1,3 +1,5 @@
+import { showModalPopup } from './modal-popup-view';
+
 const MAX_SELECTIONS = Shareabouts.config.ballot.max_selections;
 
 export const BallotView = Backbone.View.extend({
@@ -10,6 +12,10 @@ export const BallotView = Backbone.View.extend({
     'submit form': 'submitVote',
   },
 
+  initialize: function (options) {
+    this.app = options.app;
+  },
+
   getBannerSummaryContext: function (count, remaining) {
     return _.extend({
       count: count,
@@ -17,6 +23,8 @@ export const BallotView = Backbone.View.extend({
       MAX_SELECTIONS: MAX_SELECTIONS,
       ballotEmpty: count === 0,
       ballotFull: count === MAX_SELECTIONS,
+      isCheckingHasVoted: this.isCheckingHasVoted || false,
+      hasVoted: this.hasVoted || false,
     }, this.options);
   },
 
@@ -50,13 +58,49 @@ export const BallotView = Backbone.View.extend({
     }).get();
   },
 
+  wait: function (ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  },
+
+  checkHasVoted: async function () {
+    if (this.hasVoted === undefined) {
+      if (this.isCheckingHasVoted) {
+        await this.wait(100);
+        return this.checkHasVoted();
+      }
+
+      this.isCheckingHasVoted = true;
+      try {
+        const response = await fetch(Shareabouts.bootstrapped.checkBallotEndpoint);
+        const data = await response.json();
+        this.hasVoted = data.exists;
+      } catch (error) {
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/ballot-check-voted-error']() });
+      } finally {
+        this.isCheckingHasVoted = false;
+        if (this.hasVoted !== undefined) {
+          this.updateBannerSummary();
+        }
+      }
+    }
+    return this.hasVoted;
+  },
+
   updateBannerSummary: function () {
     const count = this.$('.proposal-checkbox:checked').length;
     const remaining = MAX_SELECTIONS - count;
 
     // Disable unchecked checkboxes if maximum proposals selected
     if (this.options.verified) {
-      this.$('.proposal-checkbox:not(:checked)').prop('disabled', count >= MAX_SELECTIONS);
+      this.checkHasVoted()
+      .then((hasVoted) => {
+        if (!hasVoted) {
+          this.$('.proposal-checkbox:not(:checked)').prop('disabled', count >= MAX_SELECTIONS);
+        }
+      })
+      .catch((error) => {
+        showModalPopup({ content: Handlebars.templates['sa_vote/includes/ballot-check-voted-error']() });
+      });
     } else { this.$('.selected-proposals').text(''); }
 
     const ballotBannerTemplate = Handlebars.templates['sa_vote/includes/ballot-banner'];
@@ -104,7 +148,7 @@ export const BallotView = Backbone.View.extend({
     if (this.$('#vote-confirm-overlay').length >= 1) {
       return;
     }
-    
+
     const selected = this.getSelectedProposals();
     const modalTemplate = Handlebars.templates['sa_vote/includes/vote-confirm-modal'];
     this.$('form').append(modalTemplate({ proposals: selected }));

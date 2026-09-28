@@ -1,51 +1,61 @@
-{{#if verified}} <!-- UNLOCKED -->
+{{#if isCheckingHasVoted}} <!-- Show a loading state if we're checking the vote status -->
 
-<!-- 0 proposals selected -->
-{{#if ballotEmpty}}
-<div id="ballot-banner-verified">
-    <details>
-        <summary class="ballot-banner-verified-summary no-proposal-selections">
-            <div id="ballot-banner-verified-contents">
-                <span id="ballot-banner-count" class="bigger-text">{{#_}}Select up to {{MAX_SELECTIONS}} proposals{{/_}}</span>
-                <span id="ballot-banner-subtext"></span>
-            </div>
-        </summary>
-    </details>
+<div class="ballot-banner ballot-banner-checking">
+    <span class="ballot-banner-headline">{{#_}}Checking vote status&hellip;{{/_}}</span>
 </div>
 
-<!-- 5 proposals selected -->
-{{else if ballotFull}}
-<div id="ballot-banner-verified">
-    <details class="ballot-banner-details">
-        <summary class="ballot-banner-verified-summary">
-            <div id="ballot-banner-verified-contents">
-                <span id="ballot-banner-count" class="bigger-text">{{#_}}{{MAX_SELECTIONS}} proposals selected{{/_}}</span>
-                <span id="ballot-banner-subtext">{{#_}}Ready to vote?{{/_}}</span>
-            </div>
-        </summary>
-        <ul class="selected-proposals"></ul>
-        <button class="ballot-vote-button btn btn-primary" id="submit-ballot" aria-label="{{#_}}Submit ballot{{/_}}">{{#_}}Vote{{/_}}</button>
-    </details>
+{{else if hasVoted}} <!-- LOCKED because the user has already voted -->
+
+<div class="ballot-banner ballot-banner-voted">
+    <span class="ballot-banner-headline">{{#_}}Thank you for voting!{{/_}}</span>
+    <span id="ballot-banner-subtext"><a href="/vote/success" data-internal="true">{{#_}}Continue to the survey{{/_}}</a></span>
 </div>
 
-<!-- 1-4 proposals selected -->
-{{else}}
-<div id="ballot-banner-verified">
-    <details class="ballot-banner-details">
-        <summary class="ballot-banner-verified-summary">
-            <div id="ballot-banner-verified-contents">
-                <span id="ballot-banner-count" class="bigger-text">{{#_}}{{count}} proposal(s) selected{{/_}}</span>
-                <span id="ballot-banner-subtext">{{#_}}You may pick up to {{remaining}} more{{/_}}</span>
-            </div>
-        </summary>
-        <ul class="selected-proposals"></ul>
-        <button class="ballot-vote-button btn btn-primary" id="submit-ballot" aria-label="{{#_}}Submit ballot{{/_}}">{{#_}}Vote{{/_}}</button>
-    </details>
+{{else if verified}} <!-- UNLOCKED -->
+
+    {{#if ballotEmpty}} <!-- 0 proposals selected -->
+    <div class="ballot-banner ballot-banner-verified">
+        <details>
+            <summary class="ballot-banner-verified-summary no-proposal-selections">
+                <div class="ballot-banner-verified-contents">
+                    <span id="ballot-banner-count" class="ballot-banner-headline">{{#_}}Select up to {{MAX_SELECTIONS}} proposals{{/_}}</span>
+                    <span id="ballot-banner-subtext"></span>
+                </div>
+            </summary>
+        </details>
+    </div>
+
+    {{else if ballotFull}} <!-- 5 proposals selected -->
+    <div class="ballot-banner ballot-banner-verified">
+        <details class="ballot-banner-details">
+            <summary class="ballot-banner-verified-summary">
+                <div class="ballot-banner-verified-contents">
+                    <span id="ballot-banner-count" class="ballot-banner-headline">{{#_}}{{MAX_SELECTIONS}} proposals selected{{/_}}</span>
+                    <span id="ballot-banner-subtext">{{#_}}Ready to vote?{{/_}}</span>
+                </div>
+            </summary>
+            <ul class="selected-proposals"></ul>
+            <button class="ballot-vote-button btn btn-primary" id="submit-ballot" aria-label="{{#_}}Submit ballot{{/_}}">{{#_}}Vote{{/_}}</button>
+        </details>
+    </div>
+
+    {{else}} <!-- 1-4 proposals selected -->
+    <div class="ballot-banner ballot-banner-verified">
+        <details class="ballot-banner-details">
+            <summary class="ballot-banner-verified-summary">
+                <div class="ballot-banner-verified-contents">
+                    <span id="ballot-banner-count" class="ballot-banner-headline">{{#_}}{{count}} proposal(s) selected{{/_}}</span>
+                    <span id="ballot-banner-subtext">{{#_}}You may pick up to {{remaining}} more{{/_}}</span>
+                </div>
+            </summary>
+            <ul class="selected-proposals"></ul>
+            <button class="ballot-vote-button btn btn-primary" id="submit-ballot" aria-label="{{#_}}Submit ballot{{/_}}">{{#_}}Vote{{/_}}</button>
+        </details>
+    </div>
+
+    {{/if}}
+{{else}} <!-- LOCKED because the user is not verified -->
+<div class="ballot-banner ballot-banner-unverified">
+    <a class="ballot-banner-headline" href="/vote/auth" data-internal="true">{{#_}}Vote now!{{/_}}</a>
 </div>
-
-{{/if}}
-{{else}}
-
-<!-- LOCKED -->
-<a id="ballot-banner-unverified" class="bigger-text" href="/vote/auth" data-internal="true">{{#_}}Vote now!{{/_}}</a>
 {{/if}}

@@ -4,7 +4,8 @@ from hashlib import sha256
 from unittest.mock import MagicMock, patch
 
 from django.conf import settings
-from django.http import Http404
+from django.core.cache import cache
+from django.http import Http404, HttpResponse
 from django.test import Client, override_settings, RequestFactory, SimpleTestCase
 
 
@@ -35,6 +36,127 @@ class NormalizePhoneNumberTests(SimpleTestCase):
         from sa_vote.views import normalize_phone_number
         result = normalize_phone_number('1', '555.123.4567')
         self.assertEqual(result, '+15551234567')
+
+
+class RateLimitIpDecoratorTests(SimpleTestCase):
+    """Unit tests for the rate_limit_ip decorator."""
+
+    def setUp(self):
+        cache.clear()
+
+    def test_requests_within_limit_allowed(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=2, period=60, key_prefix='test_limit')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req2 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+
+        res1 = dummy_view(req1)
+        res2 = dummy_view(req2)
+
+        self.assertEqual(res1.status_code, 200)
+        self.assertEqual(res2.status_code, 200)
+
+    def test_requests_exceeding_limit_blocked_with_429(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=2, period=60, key_prefix='test_block')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req2 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req3 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+
+        res1 = dummy_view(req1)
+        res2 = dummy_view(req2)
+        res3 = dummy_view(req3)
+
+        self.assertEqual(res1.status_code, 200)
+        self.assertEqual(res2.status_code, 200)
+        self.assertEqual(res3.status_code, 429)
+        self.assertEqual(res3.headers.get('Retry-After'), '60')
+        data = json.loads(res3.content)
+        self.assertIn('error', data)
+
+    def test_different_ips_have_independent_limits(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=1, period=60, key_prefix='test_ips')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req_ip1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req_ip2 = factory.post('/', REMOTE_ADDR='5.6.7.8')
+
+        res1 = dummy_view(req_ip1)
+        res2 = dummy_view(req_ip2)
+
+        self.assertEqual(res1.status_code, 200)
+        self.assertEqual(res2.status_code, 200)
+
+    def test_proxied_ip_from_x_forwarded_for_used(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=1, period=60, key_prefix='test_proxy')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        # REMOTE_ADDR is proxy, HTTP_X_FORWARDED_FOR is client
+        req1 = factory.post('/', REMOTE_ADDR='10.0.0.1', HTTP_X_FORWARDED_FOR='203.0.113.195')
+        req2 = factory.post('/', REMOTE_ADDR='10.0.0.1', HTTP_X_FORWARDED_FOR='203.0.113.195')
+        req3 = factory.post('/', REMOTE_ADDR='10.0.0.1', HTTP_X_FORWARDED_FOR='198.51.100.10')
+
+        self.assertEqual(dummy_view(req1).status_code, 200)
+        self.assertEqual(dummy_view(req2).status_code, 429)
+        self.assertEqual(dummy_view(req3).status_code, 200)
+
+    def test_retry_after_uses_cache_ttl_when_available(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=1, period=60, key_prefix='test_ttl')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req2 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+
+        dummy_view(req1)
+
+        # Mock ttl method on cache backend
+        with patch.object(cache, 'ttl', create=True, return_value=27):
+            res = dummy_view(req2)
+            self.assertEqual(res.status_code, 429)
+            self.assertEqual(res.headers.get('Retry-After'), '27')
+            data = json.loads(res.content)
+            self.assertIn('27 seconds', data.get('detail', ''))
+
+    def test_retry_after_falls_back_to_period_when_ttl_fails_or_invalid(self):
+        from sa_vote.decorators import rate_limit_ip
+
+        @rate_limit_ip(count=1, period=60, key_prefix='test_fallback')
+        def dummy_view(request):
+            return HttpResponse('ok', status=200)
+
+        factory = RequestFactory()
+        req1 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+        req2 = factory.post('/', REMOTE_ADDR='1.2.3.4')
+
+        dummy_view(req1)
+
+        # When ttl returns -1 or raises an error, fallback to period
+        with patch.object(cache, 'ttl', create=True, return_value=-1):
+            res = dummy_view(req2)
+            self.assertEqual(res.status_code, 429)
+            self.assertEqual(res.headers.get('Retry-After'), '60')
 
 
 @override_settings(DEBUG=True)
@@ -218,6 +340,31 @@ class VerifyCodeUnitTests(SimpleTestCase):
         self.assertEqual(request.session.get('voter_id_hash'), 'hashed_form_id')
         self.assertTrue(request.session.get('voter_verified'))
 
+    def test_rate_limit_blocks_excessive_verify_requests(self):
+        from sa_vote.views import verify_code
+        cache.set('voter_code:123456', 'hashed_id', timeout=1800)
+
+        for _ in range(10):
+            request = self.factory.post(
+                '/vote/verify-code',
+                data={'code': 'wrong'},
+                REMOTE_ADDR='198.51.100.2'
+            )
+            request.session = {}
+            response = verify_code(request)
+            self.assertEqual(response.status_code, 404)
+
+        # 11th request from same IP should be blocked with 429
+        request = self.factory.post(
+            '/vote/verify-code',
+            data={'code': '123456'},
+            REMOTE_ADDR='198.51.100.2'
+        )
+        request.session = {}
+        response = verify_code(request)
+        self.assertEqual(response.status_code, 429)
+        self.assertEqual(response.headers.get('Retry-After'), '60')
+
 
 class GenerateCodeUnitTests(SimpleTestCase):
     """Tests for the /vote/generate-code endpoint."""
@@ -255,9 +402,9 @@ class GenerateCodeUnitTests(SimpleTestCase):
         self.assertEqual(response.status_code, 400)
 
     @patch('sa_util.api.ShareaboutsApi.get')
-    def test_already_voted_phone_number_returns_400(self, mock_get):
+    def test_already_voted_phone_number_returns_403(self, mock_get):
         from sa_vote.views import generate_code
-        mock_get.return_value = {'length': 1, 'results': [{'id': 10}]}
+        mock_get.return_value = {'metadata': {'length': 1}, 'results': [{'id': 10}]}
 
         request = self.factory.post(
             '/vote/generate-code',
@@ -265,7 +412,7 @@ class GenerateCodeUnitTests(SimpleTestCase):
             content_type='application/json'
         )
         response = generate_code(request)
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 403)
         data = json.loads(response.content)
         self.assertIn('already been submitted', data.get('error', ''))
 
@@ -286,7 +433,7 @@ class GenerateCodeUnitTests(SimpleTestCase):
     @patch('sa_util.api.ShareaboutsApi.get')
     def test_successful_generation_stores_in_cache_and_sends_sms(self, mock_get, mock_sms):
         from sa_vote.views import generate_code, normalize_phone_number
-        mock_get.return_value = {'length': 0, 'results': []}
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
 
         request = self.factory.post(
             '/vote/generate-code',
@@ -312,7 +459,7 @@ class GenerateCodeUnitTests(SimpleTestCase):
     @patch('sa_util.api.ShareaboutsApi.get')
     def test_twilio_failure_returns_502(self, mock_get, mock_sms):
         from sa_vote.views import generate_code
-        mock_get.return_value = {'length': 0, 'results': []}
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
         mock_sms.side_effect = Exception('Twilio authentication failed')
 
         request = self.factory.post(
@@ -324,6 +471,33 @@ class GenerateCodeUnitTests(SimpleTestCase):
         self.assertEqual(response.status_code, 502)
         data = json.loads(response.content)
         self.assertIn('Failed to send verification SMS', data.get('error', ''))
+
+    @patch('sa_vote.views.send_verification_sms')
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_rate_limit_blocks_excessive_requests(self, mock_get, mock_sms):
+        from sa_vote.views import generate_code
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
+
+        for i in range(2):
+            request = self.factory.post(
+                '/vote/generate-code',
+                data=json.dumps({'phone_number': f'555-123-{i:04d}'}),
+                content_type='application/json',
+                REMOTE_ADDR='198.51.100.1'
+            )
+            response = generate_code(request)
+            self.assertEqual(response.status_code, 201)
+
+        # 3rd request from same IP should be blocked with 429
+        request = self.factory.post(
+            '/vote/generate-code',
+            data=json.dumps({'phone_number': '555-123-9999'}),
+            content_type='application/json',
+            REMOTE_ADDR='198.51.100.1'
+        )
+        response = generate_code(request)
+        self.assertEqual(response.status_code, 429)
+        self.assertEqual(response.headers.get('Retry-After'), '60')
 
 
 class AdminGenerateCodeUnitTests(SimpleTestCase):
@@ -463,7 +637,7 @@ class SendVerificationSmsUnitTests(SimpleTestCase):
 
         mock_twilio_client.assert_called_once_with('SK123', 'secret456', account_sid='AC123')
         mock_instance.messages.create.assert_called_once_with(
-            body='Your Boston Participatory Budgeting voting login code is: a1b2c3',
+            body="Hi, it's Poe Public on behalf of Ideas in Action! Your voter code is: A1B2C3. This code will expire in 30 minutes.\n\n@participate.boston.gov #A1B2C3",
             from_='+15550000000',
             to='+15551234567',
         )
@@ -506,7 +680,7 @@ class VerifyCodeTestIntegrationTests(SimpleTestCase):
     @patch('sa_vote.views.send_verification_sms')
     @patch('sa_util.api.ShareaboutsApi.get')
     def test_generate_and_verify_code_flow_via_urls(self, mock_get, mock_sms):
-        mock_get.return_value = {'length': 0, 'results': []}
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
 
         client = Client()
         gen_res = client.post(
@@ -699,7 +873,7 @@ class SubmitBallotTests(SimpleTestCase):
     def test_duplicate_ballot_upstream_returns_409(self, mock_get):
         from sa_vote.views import submit_ballot
         mock_get.return_value = {
-            'length': 1,
+            'metadata': {'length': 1},
             'results': [{'id': 100, 'id_hash': 'test_hash'}]
         }
 
@@ -718,7 +892,7 @@ class SubmitBallotTests(SimpleTestCase):
     @patch('sa_util.api.ShareaboutsApi.get')
     def test_successful_ballot_submission_returns_201_and_preserves_session(self, mock_get, mock_create):
         from sa_vote.views import submit_ballot
-        mock_get.return_value = {'length': 0, 'results': []}
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
         mock_create.return_value = {'id': 1}
 
         request = self.factory.post(
@@ -788,7 +962,7 @@ class SubmitSurveyTests(SimpleTestCase):
     def test_duplicate_survey_upstream_returns_409(self, mock_get):
         from sa_vote.views import submit_survey
         mock_get.return_value = {
-            'length': 1,
+            'metadata': {'length': 1},
             'results': [{'id': 200, 'id_hash': 'test_hash'}]
         }
 
@@ -807,7 +981,7 @@ class SubmitSurveyTests(SimpleTestCase):
     @patch('sa_util.api.ShareaboutsApi.get')
     def test_successful_survey_submission_sends_data_and_invalidates_session(self, mock_get, mock_create):
         from sa_vote.views import submit_survey
-        mock_get.return_value = {'length': 0, 'results': []}
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
         mock_create.return_value = {'id': 2}
 
         request = self.factory.post(
@@ -838,6 +1012,168 @@ class SubmitSurveyTests(SimpleTestCase):
         self.assertIn('lang', sent_payload)
 
 
+class CheckBallotTests(SimpleTestCase):
+    """Unit and functional tests for the /vote/api/check-ballot endpoint."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_unverified_session_returns_403(self):
+        from sa_vote.views import check_ballot
+        request = self.factory.get('/vote/api/check-ballot')
+        request.session = {}
+        response = check_ballot(request)
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_unverified_session_missing_id_hash_returns_403(self):
+        from sa_vote.views import check_ballot
+        request = self.factory.get('/vote/api/check-ballot')
+        request.session = {'voter_verified': True}
+        response = check_ballot(request)
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_upstream_api_failure_returns_502(self, mock_get):
+        from sa_vote.views import check_ballot
+        mock_get.side_effect = Exception('Upstream timeout')
+
+        request = self.factory.get('/vote/api/check-ballot')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = check_ballot(request)
+        self.assertEqual(response.status_code, 502)
+        data = json.loads(response.content)
+        self.assertIn('Failed to query API server', data.get('error', ''))
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_ballot_exists_returns_true(self, mock_get):
+        from sa_vote.views import check_ballot
+        mock_get.return_value = {
+            'metadata': {'length': 1},
+            'results': [{'id': 100, 'id_hash': 'test_hash'}]
+        }
+
+        request = self.factory.get('/vote/api/check-ballot')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = check_ballot(request)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertEqual(data, {'exists': True})
+        mock_get.assert_called_once_with('ballots', id_hash='test_hash')
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_ballot_does_not_exist_returns_false(self, mock_get):
+        from sa_vote.views import check_ballot
+        mock_get.return_value = {
+            'metadata': {'length': 0},
+            'results': []
+        }
+
+        request = self.factory.get('/vote/api/check-ballot')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = check_ballot(request)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertEqual(data, {'exists': False})
+        mock_get.assert_called_once_with('ballots', id_hash='test_hash')
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_processing_error_returns_500(self, mock_get):
+        from sa_vote.views import check_ballot
+        mock_get.return_value = {'results': 12345}
+
+        request = self.factory.get('/vote/api/check-ballot')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = check_ballot(request)
+        self.assertEqual(response.status_code, 500)
+        data = json.loads(response.content)
+        self.assertIn('Failed to process existing ballots', data.get('error', ''))
+
+
+class CheckSurveyTests(SimpleTestCase):
+    """Unit and functional tests for the /vote/api/check-survey endpoint."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_unverified_session_returns_403(self):
+        from sa_vote.views import check_survey
+        request = self.factory.get('/vote/api/check-survey')
+        request.session = {}
+        response = check_survey(request)
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    def test_unverified_session_missing_id_hash_returns_403(self):
+        from sa_vote.views import check_survey
+        request = self.factory.get('/vote/api/check-survey')
+        request.session = {'voter_verified': True}
+        response = check_survey(request)
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_upstream_api_failure_returns_502(self, mock_get):
+        from sa_vote.views import check_survey
+        mock_get.side_effect = Exception('Upstream timeout')
+
+        request = self.factory.get('/vote/api/check-survey')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = check_survey(request)
+        self.assertEqual(response.status_code, 502)
+        data = json.loads(response.content)
+        self.assertIn('Failed to query API server', data.get('error', ''))
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_survey_exists_returns_true(self, mock_get):
+        from sa_vote.views import check_survey
+        mock_get.return_value = {
+            'metadata': {'length': 1},
+            'results': [{'id': 200, 'id_hash': 'test_hash'}]
+        }
+
+        request = self.factory.get('/vote/api/check-survey')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = check_survey(request)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertEqual(data, {'exists': True})
+        mock_get.assert_called_once_with('surveys', id_hash='test_hash')
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_survey_does_not_exist_returns_false(self, mock_get):
+        from sa_vote.views import check_survey
+        mock_get.return_value = {
+            'metadata': {'length': 0},
+            'results': []
+        }
+
+        request = self.factory.get('/vote/api/check-survey')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = check_survey(request)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertEqual(data, {'exists': False})
+        mock_get.assert_called_once_with('surveys', id_hash='test_hash')
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_processing_error_returns_500(self, mock_get):
+        from sa_vote.views import check_survey
+        mock_get.return_value = {'results': 12345}
+
+        request = self.factory.get('/vote/api/check-survey')
+        request.session = {'voter_verified': True, 'voter_id_hash': 'test_hash'}
+        response = check_survey(request)
+        self.assertEqual(response.status_code, 500)
+        data = json.loads(response.content)
+        self.assertIn('Failed to process existing surveys', data.get('error', ''))
+
+
 @override_settings(DEBUG=True)
 class SubmitIntegrationTests(SimpleTestCase):
     """Integration tests via Django test client testing URL routing and end-to-end flows."""
@@ -845,7 +1181,7 @@ class SubmitIntegrationTests(SimpleTestCase):
     @patch('sa_util.api.ShareaboutsApi.create')
     @patch('sa_util.api.ShareaboutsApi.get')
     def test_full_ballot_and_survey_flow_via_client(self, mock_get, mock_create):
-        mock_get.return_value = {'length': 0, 'results': []}
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
         mock_create.return_value = {'id': 1}
 
         client = Client()
@@ -874,3 +1210,51 @@ class SubmitIntegrationTests(SimpleTestCase):
         # Verified session is now cleared
         self.assertIsNone(client.session.get('voter_verified'))
         self.assertIsNone(client.session.get('voter_id_hash'))
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_check_ballot_via_client(self, mock_get):
+        client = Client()
+
+        # Unverified request returns 403
+        res_unverified = client.get('/vote/api/check-ballot')
+        self.assertEqual(res_unverified.status_code, 403)
+
+        # Verify session
+        v_res = client.get('/vote/verify-code-test', {'code': '123456'})
+        self.assertEqual(v_res.status_code, 204)
+
+        # When ballot does not exist
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
+        res_not_found = client.get('/vote/api/check-ballot')
+        self.assertEqual(res_not_found.status_code, 200)
+        self.assertEqual(json.loads(res_not_found.content), {'exists': False})
+
+        # When ballot exists
+        mock_get.return_value = {'metadata': {'length': 1}, 'results': [{'id': 100}]}
+        res_found = client.get('/vote/api/check-ballot')
+        self.assertEqual(res_found.status_code, 200)
+        self.assertEqual(json.loads(res_found.content), {'exists': True})
+
+    @patch('sa_util.api.ShareaboutsApi.get')
+    def test_check_survey_via_client(self, mock_get):
+        client = Client()
+
+        # Unverified request returns 403
+        res_unverified = client.get('/vote/api/check-survey')
+        self.assertEqual(res_unverified.status_code, 403)
+
+        # Verify session
+        v_res = client.get('/vote/verify-code-test', {'code': '123456'})
+        self.assertEqual(v_res.status_code, 204)
+
+        # When survey does not exist
+        mock_get.return_value = {'metadata': {'length': 0}, 'results': []}
+        res_not_found = client.get('/vote/api/check-survey')
+        self.assertEqual(res_not_found.status_code, 200)
+        self.assertEqual(json.loads(res_not_found.content), {'exists': False})
+
+        # When survey exists
+        mock_get.return_value = {'metadata': {'length': 1}, 'results': [{'id': 200}]}
+        res_found = client.get('/vote/api/check-survey')
+        self.assertEqual(res_found.status_code, 200)
+        self.assertEqual(json.loads(res_found.content), {'exists': True})

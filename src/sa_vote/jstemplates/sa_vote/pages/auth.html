@@ -1,50 +1,111 @@
 <div id="auth-page" class="auth-page">
     {{# if verified}}
-    <h1>{{#_}}You're all set to vote!{{/_}}</h1>
-    <p>{{#_}}<a href="/vote/ballot" data-internal="true">Vote now</a>.{{/_}}</p>
 
-    <button id="unverify-button" class="button button-primary">{{#_}}Un-verify me{{/_}}</button>
+    <div class="auth-step auth-current-step auth-verified-container" data-state="verified">
+        <header class="auth-header-container">
+            <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
+            <h1>{{#_}}You're all set to vote!{{/_}}</h1>
+        </header>
+
+        <h1>{{#_}}You're all set to vote!{{/_}}</h1>
+        <p>{{#_}}<a href="/vote/ballot" data-internal="true">Vote now</a>.{{/_}}</p>
+
+        <button id="unverify-button" class="button button-primary">{{#_}}Un-verify me{{/_}}</button>
+    </div>
+
     {{else}}
 
-    <div class="auth-header-container">
-        <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
-        <h1>{{#_}}Sign up to vote!{{/_}}</h1>
-    </div>
+    <form class="auth-step auth-attestation-container" data-state="attesting">
+        <header class="auth-header-container">
+            <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
+            <h1>{{#_}}Sign up to vote!{{/_}}</h1>
+        </header>
 
-    <div class="auth-attestation-container">
-        <span class="secondary-emphasis">{{#_}}To vote in the 2026 cycle, please confirm the following:{{/_}}</span>
+        <div class="auth-elligibility-attestation-container">
+            <span class="secondary-emphasis">{{#_}}To vote in the 2026 cycle, please confirm the following:{{/_}}</span>
 
-        <ul class="voter-attestation-list">
-            <li>
-                {{#_}}I live in the City of Boston{{/_}}
-            </li>
-            <li>
-                {{#_}}I am at least 11 years old or in the 6th grade{{/_}}
-            </li>
-            <li>
-                {{#_}}I have not voted in this year's IIA cycle{{/_}}
-            </li>
-        </ul>
-        <label class="voter-attestation-label" for="voter-attestation-checkbox"><span><input type="checkbox"
-                    id="voter-attestation-checkbox" /></span>{{#_}}I confirm that I meet the requirements{{/_}}</label>
-    </div>
-    <div class="auth-neighborhood-entry-container">
-        <span class="secondary-emphasis">{{#_}}Select your neighborhood to continue:{{/_}}</span>
+            <ul class="voter-attestation-list">
+                <li>
+                    {{#_}}I live in the City of Boston{{/_}}
+                </li>
+                <li>
+                    {{#_}}I am at least 11 years old or in the 6th grade{{/_}}
+                </li>
+                <li>
+                    {{#_}}I have not voted in this year's IIA cycle{{/_}}
+                </li>
+            </ul>
+            <label class="auth-checkbox-label voter-attestation-label" for="voter-attestation-checkbox">
+                <input type="checkbox" id="voter-attestation-checkbox" required data-validation-message="{{#_}}You must meet these eligibility requirements in order to vote{{/_}}" />
+                {{#_}}I confirm that I meet the requirements{{/_}}
+            </label>
+        </div>
 
-        <select id="voter-neighborhood-input">
-            {{#each neighborhoods}}
-            <option value="{{properties.name}}" translate="no">{{properties.name}}</option>
-            {{/each}}
-        </select>
-    </div>
+        <div class="auth-neighborhood-entry-container">
+            <span class="secondary-emphasis">{{#_}}Select your neighborhood to continue:{{/_}}</span>
 
-    <div class="auth-bottom-container">
+            <select id="voter-neighborhood-input" required data-validation-message="{{#_}}You must live in one of these neighborhoods in order to vote{{/_}}">
+                <option value="" disabled selected>{{#_}}Select your neighborhood...{{/_}}</option>
+                {{#each neighborhoods}}
+                <option value="{{properties.name}}" translate="no">{{properties.name}}</option>
+                {{/each}}
+            </select>
+        </div>
 
-        <button id="verify-button" class="button button-primary">{{#_}}Verify me{{/_}}</button>
+        <div class="auth-bottom-container">
+            <button id="verify-button" class="button button-primary" type="submit">{{#_}}Continue{{/_}}</button>
 
-        <p>{{#_}}Not eligible to vote but still curious about the ballots? Return to <a href="/vote/ballot"
-                data-internal="true">ballot</a>{{/_}}</p>
-    </div>
+            <p>{{#_}}Not eligible to vote but still curious about the ballots? Return to <a href="/vote/ballot"
+                    data-internal="true">ballot</a>{{/_}}</p>
+        </div>
+    </form>
+
+    <form class="auth-step auth-request-code-container" data-state="requesting_code">
+        <header class="auth-header-container">
+            <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
+            <h1>{{#_}}Request a voter code&hellip;{{/_}}</h1>
+        </header>
+
+        <div class="auth-phone-number-container">
+            <label for="voter-phone-number-input" class="secondary-emphasis">{{#_}}Enter your phone number to receive a voter code:{{/_}}</label>
+            <input type="tel" id="voter-phone-number-input" required data-validation-message="{{#_}}You must provide a phone number to receive a voter code{{/_}}" />
+
+            <p>{{#_}}We will send a one-time voter code to this phone number. Standard messaging rates may apply. Read about how we use your phone number in our <a href="/vote/terms" target="_blank">terms of service</a> and how we handle your data in our <a href="/vote/privacy" target="_blank">privacy policy</a>.{{/_}}</p>
+            <p>{{#_}}If you cannot receive text messages, or do not wish to provide your phone number, you can still request a voter code by contacting <a href="mailto:pb@boston.gov">pb@boston.gov</a>.{{/_}}</p>
+        </div>
+
+        <div class="auth-bottom-container">
+            <button id="verify-button" class="button button-primary" type="submit">
+                <span class="enabled-label">{{#_}}Send me a code{{/_}}</span>
+                <span class="disabled-label">{{#_}}Sending...{{/_}}</span>
+            </button>
+
+            <a data-internal="true" href="/vote/auth/verify-code">{{#_}}I already have a voter code{{/_}}</a>
+        </div>
+    </form>
+
+    <form class="auth-step auth-verify-code-container" data-state="verifying_code">
+        <header class="auth-header-container">
+            <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg">
+            <h1>{{#_}}Verify your voter code&hellip;{{/_}}</h1>
+        </header>
+
+        <div class="auth-phone-number-container">
+            <label for="voter-code-input" class="secondary-emphasis">{{#_}}Enter your voter code:{{/_}}</label>
+            <input type="text" id="voter-code-input" autocapitalize="characters" autocomplete="one-time-code" required data-validation-message="{{#_}}You must provide a voter code{{/_}}" />
+
+            <p>{{#_}}Enter the voter code you received via text message. If you did not receive a voter code, or the code you received has expired, you can <a data-internal="true" href="/vote/auth/request-code">request a new one</a> by providing your phone number.{{/_}}</p>
+        </div>
+
+        <div class="auth-bottom-container">
+            <button id="verify-button" class="button button-primary" type="submit">
+                <span class="enabled-label">{{#_}}Verify my code{{/_}}</span>
+                <span class="disabled-label">{{#_}}Verifying...{{/_}}</span>
+            </button>
+
+            <a data-internal="true" href="/vote/auth/request-code">{{#_}}I need a voter code{{/_}}</a>
+        </div>
+    </form>
 
     {{/if}}
 </div>

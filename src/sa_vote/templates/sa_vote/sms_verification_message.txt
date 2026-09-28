@@ -1,0 +1,11 @@
+{% load i18n %}
+
+{% comment %}
+For information on how to format the message so that it's appropriate for one-time-code autocomplete,
+refer to https://developer.mozilla.org/en-US/docs/Web/Security/Authentication/OTP#sms_otp.
+{% endcomment %}
+
+{% blocktranslate %}
+Hi, it's Poe Public on behalf of Ideas in Action! Your voter code is: {{code}}. This code will expire in 30 minutes.
+{% endblocktranslate %}
+@participate.boston.gov #{{code}}

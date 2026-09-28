@@ -13,7 +13,10 @@ for line in sys.stdin:
     if val.lower() in ('true', 'false'):
         val = f'"{val}"'
 
-    if re.match(r'\d{4}-\d{2}-\d{2}', val):
+    if re.match(r'^\d{4}-\d{2}-\d{2}', val):
+        val = f'"{val}"'
+
+    if re.match(r'^[-+]?\d+(\.\d+)?$', val):
         val = f'"{val}"'
 
     sys.stdout.write(f'{key}: {val}\n')

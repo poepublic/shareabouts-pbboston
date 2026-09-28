@@ -3,6 +3,10 @@ export const SurveyView = Backbone.View.extend({
     'submit #survey-form': 'submitSurvey',
   },
 
+  initialize: function(options) {
+    this.app = options.app;
+  },
+
   render: function() {
     this.$el.html(Handlebars.templates['sa_vote/pages/survey'](this.options));
     return this;
@@ -51,12 +55,13 @@ export const SurveyView = Backbone.View.extend({
   },
 
   goToHome: async function () {
-    await fetch(Shareabouts.Util.prefixRoute('/unverify'), {
+    await fetch(Shareabouts.bootstrapped.unverifyVoterEndpoint, {
       method: 'POST'
     });
 
-    // Hard redirect to the home page so that bootstrapped data is reloaded correctly.
-    window.location.href = Shareabouts.Util.prefixRoute('/');
+    this.app.setVoterVerified(false);
+    this.app.clearVoterData();
+    this.app.router.navigate('', { trigger: true });
   },
 
   onSubmitSurveySuccess: async function (response) {
@@ -78,7 +83,7 @@ export const SurveyView = Backbone.View.extend({
     alert('It looks like you have already submitted a survey.');
     this.goToHome();
   },
-  
+
   onSubmitSurveyUnverifiedError: async function (response) {
     const data = await response.json();
     alert('It looks like you are not verified as a voter.');
