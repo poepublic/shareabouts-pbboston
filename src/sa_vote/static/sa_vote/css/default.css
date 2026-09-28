@@ -739,6 +739,7 @@ summary.survey-select-input,
         flex-direction: column;
     }
 
+    /* Ballot page */ 
     .ballot-page-content-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -748,16 +749,19 @@ summary.survey-select-input,
         gap: 10rem;
     }
 
-    /* Left half: header and info text stay put while the cards scroll */
-    .ballot-page-content-top {
+    .ballot-page-content-top { /* ballot page left */
         position: sticky;
         top: 20vh;
         text-align: center;
     }
 
-    /* Right half: ballot cards */
-    .proposal-container {
+    .proposal-container { /* ballot page right */
         margin-top: 0;
+    }
+
+    .vote-confirm-modal {
+        max-width: 30vw;
+        width: 90%;
     }
 
     p, li, .info-text {
