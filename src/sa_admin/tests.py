@@ -2,10 +2,10 @@ import base64
 import json
 from unittest.mock import MagicMock, patch
 
-from django.test import SimpleTestCase, RequestFactory
+from django.test import SimpleTestCase, RequestFactory, override_settings
 
 from sa_admin.github import GitHubContentManager, GitConflictError
-from sa_admin.views import ballot_proposals_api, ballot_proposal_save_api
+from sa_admin.views import ballot_editor, ballot_proposals_api, ballot_proposal_save_api
 from sa_util.config import get_shareabouts_config
 from sa_util.api import ShareaboutsApi
 
@@ -254,6 +254,51 @@ class BallotApiViewsUnitTests(SimpleTestCase):
         data = json.loads(resp.content)
         self.assertEqual(data['error'], 'conflict')
         self.assertEqual(data['head_sha'], 'newhead')
+
+    @override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_editor_view_authenticated(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.get('/admin/ballot/')
+        resp = ballot_editor(req)
+        self.assertEqual(resp.status_code, 200)
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_delete_proposal_calls_commit_with_files_to_delete(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.return_value = {
+            'status': 'success',
+            'commit_sha': 'del123',
+            'tree_sha': 'deltree123',
+            'head_sha': 'del123',
+        }
+        payload = {
+            'base_sha': 'basesha123',
+            'delete_slug': 'old-proposal',
+            'files_to_delete': [
+                'src/flavors/cycle3/ballot/old-proposal/info.yaml',
+                'src/flavors/cycle3/ballot/old-proposal/en.md',
+            ],
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 200)
+        mock_commit.assert_called_once()
+        call_kwargs = mock_commit.call_args[1]
+        self.assertEqual(call_kwargs['files_to_delete'], payload['files_to_delete'])
+        self.assertEqual(call_kwargs['slug'], 'old-proposal')
 
     def test_get_private_key_str_formats(self):
         pem_content = "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA0...\n-----END RSA PRIVATE KEY-----\n"

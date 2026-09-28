@@ -228,7 +228,8 @@ class GitHubContentManager:
     def commit_proposal_changes(
         self,
         base_sha: str,
-        files_to_update: Dict[str, Union[str, bytes]],
+        files_to_update: Optional[Dict[str, Union[str, bytes]]] = None,
+        files_to_delete: Optional[List[str]] = None,
         message: Optional[str] = None,
         slug: Optional[str] = None,
         user_sso_id: Optional[str] = None,
@@ -239,9 +240,12 @@ class GitHubContentManager:
         """
         Commits changes to the repository with rebase-and-retry logic for concurrent edits.
         files_to_update: {repo_relative_path: content_str_or_bytes}
+        files_to_delete: [repo_relative_path, ...]
         """
         repo = self.gh_repo
         current_base_sha = base_sha
+        files_to_update = files_to_update or {}
+        files_to_delete = files_to_delete or []
 
         now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         author = InputGitAuthor(
@@ -283,13 +287,25 @@ class GitHubContentManager:
                 )
             )
 
+        for path in files_to_delete:
+            tree_elements.append(
+                InputGitTreeElement(
+                    path=path,
+                    mode="100644",
+                    type="blob",
+                    sha=None,
+                )
+            )
+
+        all_target_paths = list(files_to_update.keys()) + list(files_to_delete)
+
         for attempt in range(max_retries):
             ref = repo.get_git_ref(f"heads/{self.branch}")
             head_sha = ref.object.sha
 
             if head_sha != current_base_sha and attempt == 0:
                 # Concurrent update occurred before push
-                conflicts, tree_sha = self._check_conflicts(repo, current_base_sha, head_sha, list(files_to_update.keys()))
+                conflicts, tree_sha = self._check_conflicts(repo, current_base_sha, head_sha, all_target_paths)
                 if conflicts:
                     raise GitConflictError(
                         "Another admin has saved changes since you opened this page. Conflicting updates detected.",
@@ -323,7 +339,7 @@ class GitHubContentManager:
                 if exc.status == 422:
                     new_ref = repo.get_git_ref(f"heads/{self.branch}")
                     new_head_sha = new_ref.object.sha
-                    conflicts, tree_sha = self._check_conflicts(repo, current_base_sha, new_head_sha, list(files_to_update.keys()))
+                    conflicts, tree_sha = self._check_conflicts(repo, current_base_sha, new_head_sha, all_target_paths)
                     if conflicts:
                         raise GitConflictError(
                             "Another admin has saved changes since you opened this page. Conflicting updates detected.",

@@ -7,6 +7,8 @@ register = Library()
 
 @register.filter
 def as_json(data):
+    if callable(data):
+        data = data()
     return mark_safe(json.dumps(data))
 
 
