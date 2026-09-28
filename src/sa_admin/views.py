@@ -52,13 +52,11 @@ def shareabouts_loggedin(viewfunc, required_group=None):
             if not has_perm:
                 if should_return_json:
                     return JsonResponse({'error': 'Unauthorized', 'detail': f'Missing required group: {required_group}'}, status=403)
-                return HttpResponseForbidden(
-                    f"<h1>403 Forbidden</h1>"
-                    f"<p>You are logged in as <strong>{api_user.get('username')}</strong>, but you do not have permission to access the Ballot Content Manager.</p>"
-                    f"<p>Required group for this dataset (<em>{api.dataset_root}</em>): <strong>{required_group}</strong>.</p>"
-                    f"<p>Your groups on this dataset: {groups if groups else 'None'}.</p>"
-                    f"<p><a href='{reverse('admin_home')}'>Return to Admin Dashboard</a></p>"
-                )
+                return render(request, 'sa_admin/403.html', {
+                    'api': api,
+                    'required_group': required_group,
+                    'groups': groups,
+                }, status=403)
 
         return viewfunc(request, config, api, *args, **kwargs)
 
