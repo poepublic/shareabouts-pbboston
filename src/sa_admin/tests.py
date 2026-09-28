@@ -254,3 +254,29 @@ class BallotApiViewsUnitTests(SimpleTestCase):
         data = json.loads(resp.content)
         self.assertEqual(data['error'], 'conflict')
         self.assertEqual(data['head_sha'], 'newhead')
+
+    def test_get_private_key_str_formats(self):
+        pem_content = "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA0...\n-----END RSA PRIVATE KEY-----\n"
+        # 1. Plain multiline string
+        mgr1 = GitHubContentManager(
+            owner='test', repo='repo', branch='main', flavor='cycle3',
+            app_id='123', installation_id='456', private_key=pem_content,
+        )
+        self.assertEqual(mgr1._get_private_key_str(), pem_content)
+
+        # 2. Escaped newlines (e.g. from single-line environment variable)
+        escaped_pem = "-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEA0...\\n-----END RSA PRIVATE KEY-----\\n"
+        mgr2 = GitHubContentManager(
+            owner='test', repo='repo', branch='main', flavor='cycle3',
+            app_id='123', installation_id='456', private_key=escaped_pem,
+        )
+        self.assertEqual(mgr2._get_private_key_str(), pem_content)
+
+        # 3. Base64 encoded string
+        b64_pem = base64.b64encode(pem_content.encode('utf-8')).decode('ascii')
+        mgr3 = GitHubContentManager(
+            owner='test', repo='repo', branch='main', flavor='cycle3',
+            app_id='123', installation_id='456', private_key=b64_pem,
+        )
+        self.assertEqual(mgr3._get_private_key_str(), pem_content)
+

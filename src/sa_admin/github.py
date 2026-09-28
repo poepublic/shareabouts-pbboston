@@ -82,8 +82,25 @@ class GitHubContentManager:
     def _get_private_key_str(self) -> str:
         if self.private_key:
             if isinstance(self.private_key, bytes):
-                return self.private_key.decode('utf-8')
-            return self.private_key
+                key = self.private_key.decode('utf-8')
+            else:
+                key = str(self.private_key)
+
+            # If base64 encoded (e.g. from an environment variable without newlines)
+            if "-----BEGIN" not in key:
+                try:
+                    decoded = base64.b64decode(key.strip()).decode('utf-8')
+                    if "-----BEGIN" in decoded:
+                        return decoded
+                except Exception:
+                    pass
+
+            # Handle literal escaped \n (e.g. key passed in single-line env var)
+            if "\\n" in key:
+                key = key.replace("\\n", "\n")
+
+            return key
+
         if self.private_key_path and os.path.exists(self.private_key_path):
             with open(self.private_key_path, 'r', encoding='utf-8') as f:
                 return f.read()
