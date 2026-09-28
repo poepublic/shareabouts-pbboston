@@ -721,7 +721,6 @@ summary.survey-select-input,
 @media (min-width: 960px) {
 
     #home-page,
-    #ballot-page,
     #auth-page,
     #faq-page,
     #privacy-page,
@@ -729,11 +728,13 @@ summary.survey-select-input,
     #survey-page {
         padding: 3rem;
         margin-top: 7vh;
-        margin-left: 10vw;
-        margin-right: 10vw;
+        margin-left: 15vw;
+        margin-right: 15vw;
     }
 
+
     #ballot-page {
+        margin-top: 7vh;
         display: flex;
         flex-direction: column;
     }
@@ -742,13 +743,15 @@ summary.survey-select-input,
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: start;
-        gap: 3rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        gap: 10rem;
     }
 
     /* Left half: header and info text stay put while the cards scroll */
     .ballot-page-content-top {
         position: sticky;
-        top: 7vh;
+        top: 20vh;
         text-align: center;
     }
 
