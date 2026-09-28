@@ -40,6 +40,11 @@
             <div class="item-left">
               <span class="selection-indicator">●</span>
               <span class="item-title">{{ getProposalTitle(prop) }}</span>
+              <span
+                v-if="isProposalDirty(prop)"
+                class="dirty-indicator-dot"
+                title="Unsaved changes in local storage"
+              >●</span>
             </div>
             <div class="item-right">
               <span class="item-amount">${{ formatNumber(prop.info?.amount || 0) }}</span>
@@ -69,30 +74,49 @@
           <div class="editor-top-bar">
             <div class="lang-selector">
               <span class="lang-badge">English (en)</span>
+              <span v-if="isProposalDirty(activeProposal)" class="unsaved-changes-pill">
+                Unsaved Edits
+              </span>
             </div>
             <div class="editor-actions">
               <span v-if="isSaving" class="status-indicator saving">Saving to GitHub...</span>
               <span v-else-if="saveSuccess" class="status-indicator success">Saved ✓</span>
+
+              <!-- Discard / Reset button (#173) -->
+              <button
+                v-if="isProposalDirty(activeProposal)"
+                class="reset-btn"
+                :disabled="isSaving"
+                @click="resetCurrentProposal"
+                title="Discard unsaved local changes and revert to GitHub version"
+              >
+                Discard Changes
+              </button>
+
               <button
                 class="save-btn"
                 :disabled="isSaving"
                 @click="saveCurrentProposal"
               >
-                <span class="save-icon">💾</span> Save
+                <span class="save-icon">💾</span> Save Changes
               </button>
             </div>
           </div>
 
           <!-- Slug field (Above the preview frame, per user feedback) -->
           <div class="external-field-row">
-            <label class="external-field-label" for="proposal-slug-input">Slug:</label>
+            <div class="field-label-row">
+              <label class="external-field-label" for="proposal-slug-input">Slug:</label>
+              <span v-if="isFieldDirty(activeProposal, 'slug')" class="dirty-tag">modified</span>
+            </div>
             <input
               id="proposal-slug-input"
               type="text"
               class="external-field-input slug-input"
+              :class="{ 'is-dirty': isFieldDirty(activeProposal, 'slug') }"
               v-model="activeProposal.slug"
               placeholder="e.g. bus-shelter-upgrades"
-              @input="activeProposal.customSlugSet = true"
+              @input="onSlugInput"
             />
           </div>
 
@@ -134,6 +158,7 @@
                     <textarea
                       ref="titleInputRef"
                       class="proposal-title-input"
+                      :class="{ 'is-dirty': isFieldDirty(activeProposal, 'title') }"
                       v-model="activeProposal.translations.en.title"
                       placeholder="PROPOSAL TITLE"
                       rows="1"
@@ -148,6 +173,7 @@
                   <input
                     type="text"
                     class="proposal-cost-input"
+                    :class="{ 'is-dirty': isFieldDirty(activeProposal, 'amount') }"
                     :value="displayAmount"
                     @input="onAmountInput"
                     @blur="onAmountBlur"
@@ -161,6 +187,7 @@
                   <textarea
                     ref="descInputRef"
                     class="proposal-description-input"
+                    :class="{ 'is-dirty': isFieldDirty(activeProposal, 'content') }"
                     v-model="activeProposal.translations.en.content"
                     placeholder="ENTER PROPOSAL DESCRIPTION (PLAIN TEXT PARAGRAPHS)..."
                     rows="3"
@@ -171,7 +198,11 @@
                 <!-- Proposal Image Area (Hover Picker per user feedback) -->
                 <div
                   class="proposal-image-wrapper"
-                  :class="{ 'has-image': !!currentImageUrl, 'is-empty': !currentImageUrl }"
+                  :class="{
+                    'has-image': !!currentImageUrl,
+                    'is-empty': !currentImageUrl,
+                    'is-dirty': isFieldDirty(activeProposal, 'image'),
+                  }"
                   @click="triggerImageUpload"
                   title="Click to choose or change image"
                 >
@@ -215,11 +246,15 @@
 
           <!-- Image Alternative Text field (Below the preview frame, per user feedback) -->
           <div class="external-field-row alt-field-row">
-            <label class="external-field-label" for="proposal-alt-input">Image Alternative Text:</label>
+            <div class="field-label-row">
+              <label class="external-field-label" for="proposal-alt-input">Image Alternative Text:</label>
+              <span v-if="isFieldDirty(activeProposal, 'image_alt')" class="dirty-tag">modified</span>
+            </div>
             <input
               id="proposal-alt-input"
               type="text"
               class="external-field-input"
+              :class="{ 'is-dirty': isFieldDirty(activeProposal, 'image_alt') }"
               v-model="activeProposal.translations.en.image_alt"
               placeholder="Describe the image for screen readers..."
             />
@@ -227,13 +262,102 @@
         </div>
       </main>
     </div>
+
+    <!-- Conflict Resolution Modal (#173 / Task 2.3) -->
+    <div v-if="showConflictModal" class="conflict-modal-overlay">
+      <div class="conflict-modal-dialog">
+        <div class="conflict-modal-header">
+          <h3>⚠️ Concurrent Edit Conflict</h3>
+          <button class="modal-close-btn" @click="showConflictModal = false">×</button>
+        </div>
+
+        <div class="conflict-modal-body">
+          <p class="conflict-notice">
+            Another admin has saved changes since you opened this page. We have loaded the current proposals.
+            Please carefully verify your updates against the current proposals, make any new updates as necessary,
+            and re-save your changes.
+          </p>
+
+          <div class="conflict-comparison" v-if="conflictHeadProposal && conflictLocalProposal">
+            <h4>Comparison: Latest on GitHub vs Your Local Changes</h4>
+            <div class="diff-table">
+              <div class="diff-row diff-header-row">
+                <div class="diff-col field-name">Field</div>
+                <div class="diff-col col-head">Latest on GitHub (HEAD)</div>
+                <div class="diff-col col-local">Your Unsaved Changes</div>
+              </div>
+
+              <!-- Title Diff -->
+              <div class="diff-row">
+                <div class="diff-col field-name">Title</div>
+                <div class="diff-col col-head">{{ conflictHeadProposal.translations?.en?.title || '—' }}</div>
+                <div
+                  class="diff-col col-local"
+                  :class="{ 'has-diff': conflictHeadProposal.translations?.en?.title !== conflictLocalProposal.translations?.en?.title }"
+                >
+                  {{ conflictLocalProposal.translations?.en?.title || '—' }}
+                </div>
+              </div>
+
+              <!-- Amount Diff -->
+              <div class="diff-row">
+                <div class="diff-col field-name">Estimated Cost</div>
+                <div class="diff-col col-head">${{ formatNumber(conflictHeadProposal.info?.amount || 0) }}</div>
+                <div
+                  class="diff-col col-local"
+                  :class="{ 'has-diff': Number(conflictHeadProposal.info?.amount) !== Number(conflictLocalProposal.info?.amount) }"
+                >
+                  ${{ formatNumber(conflictLocalProposal.info?.amount || 0) }}
+                </div>
+              </div>
+
+              <!-- Description Diff -->
+              <div class="diff-row">
+                <div class="diff-col field-name">Description</div>
+                <div class="diff-col col-head">{{ conflictHeadProposal.translations?.en?.content || '—' }}</div>
+                <div
+                  class="diff-col col-local"
+                  :class="{ 'has-diff': conflictHeadProposal.translations?.en?.content !== conflictLocalProposal.translations?.en?.content }"
+                >
+                  {{ conflictLocalProposal.translations?.en?.content || '—' }}
+                </div>
+              </div>
+
+              <!-- Image Alt Diff -->
+              <div class="diff-row">
+                <div class="diff-col field-name">Alt Text</div>
+                <div class="diff-col col-head">{{ conflictHeadProposal.translations?.en?.image_alt || '—' }}</div>
+                <div
+                  class="diff-col col-local"
+                  :class="{ 'has-diff': conflictHeadProposal.translations?.en?.image_alt !== conflictLocalProposal.translations?.en?.image_alt }"
+                >
+                  {{ conflictLocalProposal.translations?.en?.image_alt || '—' }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="conflict-modal-footer">
+          <button class="btn-conflict-revert" @click="resolveConflictUseHead">
+            Discard My Changes & Use Latest HEAD
+          </button>
+          <button class="btn-conflict-keep" @click="resolveConflictKeepLocal">
+            Keep My Local Changes
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, watch, nextTick, onMounted } from 'vue';
 
+const LOCAL_STORAGE_KEY = 'pbboston_ballot_drafts';
+
 const proposals = ref([]);
+const serverProposals = ref([]);
 const activeProposal = ref(null);
 const baseSha = ref('');
 const loading = ref(true);
@@ -241,6 +365,11 @@ const isSaving = ref(false);
 const saveSuccess = ref(false);
 const notification = ref(null);
 const searchQuery = ref('');
+
+// Conflict resolution modal state (#173)
+const showConflictModal = ref(false);
+const conflictHeadProposal = ref(null);
+const conflictLocalProposal = ref(null);
 
 const titleInputRef = ref(null);
 const descInputRef = ref(null);
@@ -256,7 +385,188 @@ function autoResizeTextarea(el) {
   el.style.height = `${el.scrollHeight}px`;
 }
 
-// Computed filtered proposals based on search input
+// -------------------------------------------------------------
+// Slug Generation with Collision Resolution (Task 2.1)
+// -------------------------------------------------------------
+function slugify(text) {
+  return (text || '')
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .substring(0, 50);
+}
+
+function generateUniqueSlug(title, currentSlug = null) {
+  const base = slugify(title) || 'new-ballot-proposal';
+  let candidate = base;
+  let counter = 1;
+
+  const existingSlugs = new Set(
+    proposals.value
+      .filter((p) => p.slug !== currentSlug)
+      .map((p) => p.slug)
+  );
+
+  while (existingSlugs.has(candidate)) {
+    candidate = `${base}-${counter}`;
+    counter++;
+  }
+  return candidate;
+}
+
+function onSlugInput() {
+  if (activeProposal.value) {
+    activeProposal.value.customSlugSet = true;
+  }
+}
+
+// Auto-derive unique slug if proposal is newly created and slug wasn't manually edited
+function onTitleInput(e) {
+  autoResizeTextarea(e.target);
+  if (activeProposal.value && activeProposal.value.isNew && !activeProposal.value.customSlugSet) {
+    const title = activeProposal.value.translations.en.title;
+    activeProposal.value.slug = generateUniqueSlug(title, activeProposal.value.slug);
+  }
+}
+
+// -------------------------------------------------------------
+// Local Storage Persistence & Dirty State Tracking (Task 2.2)
+// -------------------------------------------------------------
+function getStoredDrafts() {
+  try {
+    const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (err) {
+    console.warn('Failed to parse drafts from localStorage:', err);
+    return {};
+  }
+}
+
+function saveDrafts(drafts) {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(drafts));
+  } catch (err) {
+    console.warn('Failed to save drafts to localStorage:', err);
+  }
+}
+
+function updateDraftForProposal(prop) {
+  if (!prop) return;
+  const drafts = getStoredDrafts();
+  if (isProposalDirty(prop)) {
+    drafts[prop.slug] = {
+      slug: prop.slug,
+      info: JSON.parse(JSON.stringify(prop.info || {})),
+      translations: JSON.parse(JSON.stringify(prop.translations || {})),
+      pendingImage: prop.pendingImage ? {
+        filename: prop.pendingImage.filename,
+        dataUrl: prop.pendingImage.dataUrl,
+      } : null,
+      isNew: !!prop.isNew,
+      customSlugSet: !!prop.customSlugSet,
+    };
+  } else {
+    delete drafts[prop.slug];
+  }
+  saveDrafts(drafts);
+}
+
+function clearDraftForProposal(slug) {
+  const drafts = getStoredDrafts();
+  if (drafts[slug]) {
+    delete drafts[slug];
+    saveDrafts(drafts);
+  }
+}
+
+function getServerProposal(slug) {
+  return serverProposals.value.find((p) => p.slug === slug);
+}
+
+function isFieldDirty(prop, field) {
+  if (!prop) return false;
+  if (prop.isNew) return true;
+  const server = getServerProposal(prop.slug);
+  if (!server) return true;
+
+  switch (field) {
+    case 'slug':
+      return prop.slug !== server.slug;
+    case 'title':
+      return (prop.translations?.en?.title || '') !== (server.translations?.en?.title || '');
+    case 'amount':
+      return Number(prop.info?.amount || 0) !== Number(server.info?.amount || 0);
+    case 'content':
+      return (prop.translations?.en?.content || '') !== (server.translations?.en?.content || '');
+    case 'image_alt':
+      return (prop.translations?.en?.image_alt || '') !== (server.translations?.en?.image_alt || '');
+    case 'image':
+      return (prop.info?.image || '') !== (server.info?.image || '') || !!prop.pendingImage;
+    default:
+      return false;
+  }
+}
+
+function isProposalDirty(prop) {
+  if (!prop) return false;
+  if (prop.isNew) return true;
+  return (
+    isFieldDirty(prop, 'slug') ||
+    isFieldDirty(prop, 'title') ||
+    isFieldDirty(prop, 'amount') ||
+    isFieldDirty(prop, 'content') ||
+    isFieldDirty(prop, 'image_alt') ||
+    isFieldDirty(prop, 'image')
+  );
+}
+
+// Reset / Discard changes to proposal (#173)
+function resetCurrentProposal() {
+  if (!activeProposal.value) return;
+  const title = getProposalTitle(activeProposal.value);
+  if (!confirm(`Are you sure you want to discard unsaved changes to "${title}"?`)) {
+    return;
+  }
+
+  const slug = activeProposal.value.slug;
+  clearDraftForProposal(slug);
+
+  if (activeProposal.value.isNew) {
+    proposals.value = proposals.value.filter((p) => p.slug !== slug);
+    activeProposal.value = proposals.value[0] || null;
+    notification.value = {
+      type: 'warning',
+      message: `Discarded new proposal "${title}".`,
+    };
+    return;
+  }
+
+  const server = getServerProposal(slug);
+  if (server) {
+    activeProposal.value.slug = server.slug;
+    activeProposal.value.info = JSON.parse(JSON.stringify(server.info || {}));
+    activeProposal.value.translations = JSON.parse(JSON.stringify(server.translations || {}));
+    activeProposal.value.pendingImage = null;
+    activeProposal.value.customSlugSet = false;
+
+    const idx = proposals.value.findIndex((p) => p.slug === slug);
+    if (idx !== -1) {
+      proposals.value[idx] = activeProposal.value;
+    }
+
+    notification.value = {
+      type: 'success',
+      message: `Reverted "${title}" to the version saved on GitHub.`,
+    };
+  }
+}
+
+// -------------------------------------------------------------
+// Filter & Format Utilities
+// -------------------------------------------------------------
 const filteredProposals = computed(() => {
   if (!searchQuery.value.trim()) return proposals.value;
   const q = searchQuery.value.toLowerCase();
@@ -267,13 +577,11 @@ const filteredProposals = computed(() => {
   });
 });
 
-// Helper to extract display title
 function getProposalTitle(prop) {
   if (!prop) return '';
   return prop.translations?.en?.title || prop.slug || '(Untitled Proposal)';
 }
 
-// Format numbers with commas (e.g. 200000 -> 200,000)
 function formatNumber(num) {
   if (num === null || num === undefined || isNaN(num)) return '0';
   return Number(num).toLocaleString();
@@ -296,7 +604,6 @@ function onAmountBlur(e) {
   e.target.value = formatNumber(activeProposal.value?.info?.amount ?? 0);
 }
 
-// Compute current preview image URL
 const currentImageUrl = computed(() => {
   if (!activeProposal.value) return '';
   if (activeProposal.value.pendingImage?.dataUrl) {
@@ -305,28 +612,9 @@ const currentImageUrl = computed(() => {
   return activeProposal.value.info?.image || '';
 });
 
-// Slug generation utility from title
-function slugify(text) {
-  return (text || '')
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-    .substring(0, 50);
-}
-
-// Auto-derive slug if proposal is newly created and slug wasn't manually edited
-function onTitleInput(e) {
-  autoResizeTextarea(e.target);
-  if (activeProposal.value && activeProposal.value.isNew && !activeProposal.value.customSlugSet) {
-    const title = activeProposal.value.translations.en.title;
-    activeProposal.value.slug = slugify(title) || 'new-ballot-proposal';
-  }
-}
-
-// Fetch ballot proposals from GitHub API via backend proxy
+// -------------------------------------------------------------
+// Load Proposals with LocalStorage Drafts Rehydration
+// -------------------------------------------------------------
 async function loadProposals() {
   loading.value = true;
   try {
@@ -339,10 +627,36 @@ async function loadProposals() {
     }
     const data = await res.json();
     baseSha.value = data.head_sha || data.tree_sha;
-    proposals.value = (data.proposals || []).map(normalizeProposal);
+
+    // Deep clone server proposals for baseline dirty comparison
+    serverProposals.value = (data.proposals || []).map((p) => normalizeProposal(JSON.parse(JSON.stringify(p))));
+    const workingProposals = (data.proposals || []).map((p) => normalizeProposal(JSON.parse(JSON.stringify(p))));
+
+    // Rehydrate local storage drafts
+    const drafts = getStoredDrafts();
+    for (const prop of workingProposals) {
+      if (drafts[prop.slug]) {
+        const draft = drafts[prop.slug];
+        prop.info = { ...prop.info, ...(draft.info || {}) };
+        prop.translations = { ...prop.translations, ...(draft.translations || {}) };
+        if (draft.pendingImage) prop.pendingImage = draft.pendingImage;
+        if (draft.customSlugSet) prop.customSlugSet = true;
+      }
+    }
+
+    // Add any drafts that were newly created proposals not yet on server
+    for (const [slug, draft] of Object.entries(drafts)) {
+      if (draft.isNew && !workingProposals.some((p) => p.slug === slug)) {
+        workingProposals.unshift(normalizeProposal({
+          ...draft,
+          isNew: true,
+        }));
+      }
+    }
+
+    proposals.value = workingProposals;
 
     if (proposals.value.length > 0) {
-      // Retain active proposal if still present, or pick first
       const currentSlug = activeProposal.value?.slug;
       const found = proposals.value.find((p) => p.slug === currentSlug);
       activeProposal.value = found || proposals.value[0];
@@ -360,7 +674,6 @@ async function loadProposals() {
   }
 }
 
-// Ensure proposal has all required nested objects
 function normalizeProposal(raw) {
   const prop = {
     slug: raw.slug || '',
@@ -380,22 +693,20 @@ function normalizeProposal(raw) {
       ...(raw.translations || {}),
     },
     files: raw.files || {},
-    isNew: false,
-    customSlugSet: false,
-    pendingImage: null,
+    isNew: !!raw.isNew,
+    customSlugSet: !!raw.customSlugSet,
+    pendingImage: raw.pendingImage || null,
   };
   return prop;
 }
 
-// Select a proposal in sidebar
 function selectProposal(prop) {
   activeProposal.value = prop;
   saveSuccess.value = false;
 }
 
-// Add a new proposal
 function addNewProposal() {
-  const newSlug = `new-proposal-${Date.now().toString().slice(-4)}`;
+  const newSlug = generateUniqueSlug('New Ballot Proposal');
   const newProp = {
     slug: newSlug,
     info: {
@@ -419,9 +730,9 @@ function addNewProposal() {
   proposals.value.unshift(newProp);
   activeProposal.value = newProp;
   saveSuccess.value = false;
+  updateDraftForProposal(newProp);
 }
 
-// Handle image selection via input
 function onImageSelected(event) {
   const file = event.target.files?.[0];
   if (!file || !activeProposal.value) return;
@@ -437,11 +748,14 @@ function onImageSelected(event) {
       dataUrl: dataUrl,
     };
     activeProposal.value.info.image = `/static/ballot/${filename}`;
+    updateDraftForProposal(activeProposal.value);
   };
   reader.readAsDataURL(file);
 }
 
-// Save active proposal to GitHub
+// -------------------------------------------------------------
+// Save Proposal to GitHub & Conflict Handling (Task 2.3)
+// -------------------------------------------------------------
 async function saveCurrentProposal() {
   if (!activeProposal.value) return;
 
@@ -484,11 +798,23 @@ async function saveCurrentProposal() {
 
     const data = await res.json();
 
+    // 409 Conflict Handling (#173 / Task 2.3)
     if (res.status === 409) {
-      notification.value = {
-        type: 'warning',
-        message: 'Concurrent change conflict detected on GitHub! Please reload to see updated content.',
-      };
+      const currentLocalCopy = JSON.parse(JSON.stringify(prop));
+      conflictLocalProposal.value = currentLocalCopy;
+
+      // Re-fetch current server state
+      const freshRes = await fetch('/admin/ballot/proposals/', {
+        headers: { 'Accept': 'application/json' },
+        credentials: 'same-origin',
+      });
+      if (freshRes.ok) {
+        const freshData = await freshRes.json();
+        baseSha.value = freshData.head_sha || freshData.tree_sha;
+        serverProposals.value = (freshData.proposals || []).map(normalizeProposal);
+        conflictHeadProposal.value = serverProposals.value.find((p) => p.slug === prop.slug) || null;
+      }
+      showConflictModal.value = true;
       return;
     }
 
@@ -500,6 +826,18 @@ async function saveCurrentProposal() {
     baseSha.value = data.commit_sha || data.head_sha || baseSha.value;
     prop.isNew = false;
     prop.pendingImage = null;
+
+    // Update server baseline so dirty highlight clears
+    const updatedServerCopy = normalizeProposal(JSON.parse(JSON.stringify(prop)));
+    const serverIdx = serverProposals.value.findIndex((p) => p.slug === prop.slug);
+    if (serverIdx !== -1) {
+      serverProposals.value[serverIdx] = updatedServerCopy;
+    } else {
+      serverProposals.value.unshift(updatedServerCopy);
+    }
+
+    // Clear local storage draft on successful save
+    clearDraftForProposal(prop.slug);
     saveSuccess.value = true;
 
     notification.value = {
@@ -521,14 +859,39 @@ async function saveCurrentProposal() {
   }
 }
 
-// Confirm and delete proposal
+// Conflict Resolution Actions (#173)
+function resolveConflictKeepLocal() {
+  showConflictModal.value = false;
+  notification.value = {
+    type: 'warning',
+    message: 'Loaded the latest repository state. You kept your local edits; click "Save Changes" to commit them on top of the latest HEAD.',
+  };
+}
+
+function resolveConflictUseHead() {
+  if (conflictHeadProposal.value && activeProposal.value) {
+    const head = conflictHeadProposal.value;
+    activeProposal.value.info = JSON.parse(JSON.stringify(head.info || {}));
+    activeProposal.value.translations = JSON.parse(JSON.stringify(head.translations || {}));
+    activeProposal.value.pendingImage = null;
+    clearDraftForProposal(activeProposal.value.slug);
+  }
+  showConflictModal.value = false;
+  notification.value = {
+    type: 'success',
+    message: 'Reverted to the latest version from GitHub.',
+  };
+}
+
 async function confirmDeleteProposal(prop) {
   const title = getProposalTitle(prop);
   if (!confirm(`Are you sure you want to delete proposal "${title}"?`)) {
     return;
   }
 
-  // If proposal was newly created and never saved to GitHub:
+  // Clear any draft from localStorage
+  clearDraftForProposal(prop.slug);
+
   if (prop.isNew) {
     proposals.value = proposals.value.filter((p) => p.slug !== prop.slug);
     if (activeProposal.value?.slug === prop.slug) {
@@ -565,6 +928,7 @@ async function confirmDeleteProposal(prop) {
 
     baseSha.value = data.commit_sha || data.head_sha || baseSha.value;
     proposals.value = proposals.value.filter((p) => p.slug !== prop.slug);
+    serverProposals.value = serverProposals.value.filter((p) => p.slug !== prop.slug);
     if (activeProposal.value?.slug === prop.slug) {
       activeProposal.value = proposals.value[0] || null;
     }
@@ -584,13 +948,20 @@ async function confirmDeleteProposal(prop) {
   }
 }
 
-// Auto-adjust textareas on proposal activation
-watch(activeProposal, () => {
-  nextTick(() => {
-    autoResizeTextarea(titleInputRef.value);
-    autoResizeTextarea(descInputRef.value);
-  });
-});
+// Watch active proposal changes to persist to localStorage & auto-resize
+watch(
+  () => activeProposal.value,
+  (newVal) => {
+    if (newVal) {
+      updateDraftForProposal(newVal);
+      nextTick(() => {
+        autoResizeTextarea(titleInputRef.value);
+        autoResizeTextarea(descInputRef.value);
+      });
+    }
+  },
+  { deep: true }
+);
 
 onMounted(() => {
   loadProposals();
@@ -765,6 +1136,13 @@ onMounted(() => {
   opacity: 1;
 }
 
+.dirty-indicator-dot {
+  color: #f59e0b;
+  font-size: 0.85rem;
+  margin-left: 2px;
+  flex-shrink: 0;
+}
+
 .item-title {
   font-size: 0.9rem;
   font-weight: 500;
@@ -847,6 +1225,12 @@ onMounted(() => {
   align-items: center;
 }
 
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .lang-badge {
   background: #ffffff;
   border: 1px solid #ced4da;
@@ -855,6 +1239,16 @@ onMounted(() => {
   font-size: 0.85rem;
   font-weight: 600;
   color: #495057;
+}
+
+.unsaved-changes-pill {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .editor-actions {
@@ -872,6 +1266,23 @@ onMounted(() => {
 }
 .status-indicator.success {
   color: #28a745;
+}
+
+.reset-btn {
+  background-color: #ffffff;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reset-btn:hover:not(:disabled) {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
 }
 
 .save-btn {
@@ -906,10 +1317,25 @@ onMounted(() => {
   width: 100%;
 }
 
+.field-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .external-field-label {
   font-size: 0.95rem;
   font-weight: 600;
   color: #1e293b;
+}
+
+.dirty-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #b45309;
+  background-color: #fef3c7;
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 
 .external-field-input {
@@ -922,7 +1348,7 @@ onMounted(() => {
   color: #1e293b;
   box-sizing: border-box;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .slug-input {
@@ -932,6 +1358,24 @@ onMounted(() => {
 .external-field-input:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Dirty-State Visual Highlighting (#173) */
+.is-dirty {
+  background-color: #fef9c3 !important;
+  border-color: #f59e0b !important;
+}
+
+.proposal-title-input.is-dirty,
+.proposal-cost-input.is-dirty,
+.proposal-description-input.is-dirty {
+  background-color: #fef9c3 !important;
+  border: 1px dashed #f59e0b !important;
+  border-radius: 4px;
+}
+
+.proposal-image-wrapper.is-dirty {
+  box-shadow: 0 0 0 3px #f59e0b !important;
 }
 
 /* Ballot Preview Frame (mimics /vote/ballot) */
@@ -1161,7 +1605,7 @@ onMounted(() => {
   overflow: hidden;
   cursor: pointer;
   background-color: #cbd5e1;
-  transition: filter 0.2s ease;
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 .proposal-image {
@@ -1248,5 +1692,171 @@ onMounted(() => {
 
 .file-input-hidden {
   display: none;
+}
+
+/* -------------------------------------------------------------
+ * Conflict Resolution Modal (#173 / Task 2.3)
+ * ------------------------------------------------------------- */
+.conflict-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.conflict-modal-dialog {
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 650px;
+  width: 100%;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 90vh;
+}
+
+.conflict-modal-header {
+  padding: 16px 20px;
+  background-color: #fff1f2;
+  border-bottom: 1px solid #fecdd3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conflict-modal-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #9f1239;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #9f1239;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.conflict-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  color: #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.conflict-notice {
+  margin: 0;
+  line-height: 1.5;
+  background-color: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  padding: 12px 14px;
+  border-radius: 4px;
+  color: #92400e;
+}
+
+.conflict-comparison h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.diff-table {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+
+.diff-row {
+  display: flex;
+  border-bottom: 1px solid #f1f5f9;
+}
+.diff-row:last-child {
+  border-bottom: none;
+}
+
+.diff-header-row {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #475569;
+}
+
+.diff-col {
+  padding: 8px 12px;
+  flex: 1;
+  word-break: break-word;
+}
+
+.diff-col.field-name {
+  flex: 0 0 110px;
+  font-weight: 600;
+  color: #64748b;
+  background-color: #f8fafc;
+  border-right: 1px solid #f1f5f9;
+}
+
+.diff-col.col-head {
+  border-right: 1px solid #f1f5f9;
+  background-color: #ffffff;
+}
+
+.diff-col.col-local.has-diff {
+  background-color: #fef9c3;
+  color: #854d0e;
+  font-weight: 600;
+}
+
+.conflict-modal-footer {
+  padding: 14px 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-conflict-revert {
+  background-color: #ffffff;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-conflict-revert:hover {
+  background-color: #fee2e2;
+}
+
+.btn-conflict-keep {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-conflict-keep:hover {
+  background-color: #0056b3;
 }
 </style>
