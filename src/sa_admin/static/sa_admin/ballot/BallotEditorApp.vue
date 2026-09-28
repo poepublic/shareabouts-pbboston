@@ -58,15 +58,15 @@
         </ul>
       </aside>
 
-      <!-- Right Pane: Mobile Preview Editor -->
+      <!-- Right Pane: WYSIWYG Preview Editor -->
       <main class="preview-workspace">
         <div v-if="!activeProposal" class="empty-selection">
           <p>Select a proposal from the left pane to edit, or click "+ Add a new ballot proposal".</p>
         </div>
 
-        <div v-else class="mobile-device-container">
-          <!-- Mobile Controls Bar -->
-          <div class="mobile-controls-bar">
+        <div v-else class="mobile-editor-container">
+          <!-- Top Action / Status Bar -->
+          <div class="editor-top-bar">
             <div class="lang-selector">
               <span class="lang-badge">English (en)</span>
             </div>
@@ -83,107 +83,146 @@
             </div>
           </div>
 
-          <!-- Mobile Phone Simulation Frame -->
-          <div class="mobile-phone-frame">
-            <div class="phone-screen">
-              <div class="phone-status-bar">
-                <span class="time">9:41</span>
-                <span class="phone-notch"></span>
-                <span class="battery">100%</span>
+          <!-- Slug field (Above the preview frame, per user feedback) -->
+          <div class="external-field-row">
+            <label class="external-field-label" for="proposal-slug-input">Slug:</label>
+            <input
+              id="proposal-slug-input"
+              type="text"
+              class="external-field-input slug-input"
+              v-model="activeProposal.slug"
+              placeholder="e.g. bus-shelter-upgrades"
+              @input="activeProposal.customSlugSet = true"
+            />
+          </div>
+
+          <!-- Ballot Preview Frame (Mimics /vote/ballot) -->
+          <div class="ballot-preview-frame">
+            <!-- Simulated Boston Header -->
+            <div class="ballot-frame-header">
+              <!-- Pink Hamburger Icon Box -->
+              <div class="header-hamburger-box" title="Menu">
+                <div class="hamburger-lines">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
               </div>
 
-              <div class="phone-content">
-                <!-- Proposal Ballot Card (WYSIWYG Inline Editor) -->
-                <div class="proposal-card">
-                  <div class="proposal-card-top">
-                    <span class="proposal-checkbox-mock">✓</span>
-                    <input
-                      type="text"
-                      class="wysiwyg-title-input"
-                      v-model="activeProposal.translations.en.title"
-                      placeholder="Proposal Title..."
-                      @input="onTitleInput"
-                    />
-                  </div>
+              <!-- Navy Boston 'B' Logo Box with Red/Orange Underline -->
+              <div class="header-boston-logo-box" title="City of Boston">
+                <svg viewBox="136 0 32 40" class="boston-b-logo" width="22" height="28">
+                  <path fill="#ffffff" d="M151.59,27.21h-11.6V.61h10.31c1.79,0,3.34.22,4.65.65,1.3.43,2.28,1.02,2.94,1.75,1.19,1.37,1.78,2.92,1.78,4.64,0,2.08-.67,3.63-2.01,4.65-.45.35-.77.58-.95.67s-.49.24-.95.44c1.64.36,2.95,1.1,3.93,2.23.97,1.13,1.46,2.53,1.46,4.2,0,1.85-.63,3.49-1.9,4.91-1.47,1.65-4.02,2.47-7.66,2.47ZM145.9,11.38h2.81c1.64,0,2.86-.18,3.66-.53.8-.35,1.19-1.12,1.19-2.3s-.37-1.96-1.1-2.34c-.73-.38-1.97-.57-3.72-.57h-2.84v5.75h0ZM145.9,22.19h4.06c1.69,0,2.96-.21,3.81-.63.85-.42,1.27-1.24,1.27-2.48s-.45-2.04-1.34-2.43c-.9-.4-2.33-.59-4.3-.59h-3.49v6.13h0Z" />
+                  <rect x="139" y="33" width="26" height="5" fill="#FB4D42" />
+                </svg>
+              </div>
 
-                  <!-- Slug details (inline editable for custom URLs) -->
-                  <div class="proposal-slug-row">
-                    <label class="slug-label">Slug:</label>
-                    <input
-                      type="text"
-                      class="slug-input"
-                      v-model="activeProposal.slug"
-                      placeholder="proposal-slug"
-                    />
-                  </div>
+              <!-- Header Fill -->
+              <div class="header-fill-area"></div>
+            </div>
 
-                  <!-- Cost / Budget Amount -->
-                  <div class="proposal-cost-row">
-                    <label class="cost-label">Estimated:</label>
-                    <div class="cost-input-wrapper">
-                      <span class="dollar-sign">$</span>
-                      <input
-                        type="number"
-                        step="10000"
-                        min="100000"
-                        max="500000"
-                        class="wysiwyg-amount-input"
-                        v-model.number="activeProposal.info.amount"
-                        placeholder="500000"
-                      />
-                    </div>
-                  </div>
-
-                  <!-- Plain Text Description Body -->
-                  <div class="proposal-description-wrapper">
-                    <label class="section-label">Description (Plain Text Paragraphs):</label>
+            <!-- Frame Body (Fog grey background matching /vote/ballot) -->
+            <div class="ballot-frame-body">
+              <!-- Proposal Card -->
+              <div class="proposal-card">
+                <!-- Proposal Title Row with Pill Checkbox -->
+                <div class="proposal-card-top">
+                  <span class="proposal-card-top-left">
+                    <span class="proposal-pill-checkbox"></span>
+                  </span>
+                  <div class="proposal-title-container">
                     <textarea
-                      class="wysiwyg-description-input"
-                      v-model="activeProposal.translations.en.content"
-                      placeholder="Enter proposal description..."
-                      rows="6"
+                      ref="titleInputRef"
+                      class="proposal-title-input"
+                      v-model="activeProposal.translations.en.title"
+                      placeholder="PROPOSAL TITLE"
+                      rows="1"
+                      @input="onTitleInput"
                     ></textarea>
                   </div>
+                </div>
 
-                  <!-- Image Alt Text -->
-                  <div class="proposal-alt-wrapper">
-                    <label class="section-label">Image Alt Text (Accessibility):</label>
-                    <input
-                      type="text"
-                      class="wysiwyg-alt-input"
-                      v-model="activeProposal.translations.en.image_alt"
-                      placeholder="Describe the image for screen readers..."
-                    />
+                <!-- Proposal Cost (Green bold amount, editable) -->
+                <div class="proposal-cost-row">
+                  <span class="cost-dollar">$</span>
+                  <input
+                    type="text"
+                    class="proposal-cost-input"
+                    :value="displayAmount"
+                    @input="onAmountInput"
+                    @blur="onAmountBlur"
+                    @focus="$event.target.select()"
+                    placeholder="200,000"
+                  />
+                </div>
+
+                <!-- Proposal Description (Uppercase bold Montserrat plain text) -->
+                <div class="proposal-description-container">
+                  <textarea
+                    ref="descInputRef"
+                    class="proposal-description-input"
+                    v-model="activeProposal.translations.en.content"
+                    placeholder="ENTER PROPOSAL DESCRIPTION (PLAIN TEXT PARAGRAPHS)..."
+                    rows="3"
+                    @input="autoResizeTextarea($event.target)"
+                  ></textarea>
+                </div>
+
+                <!-- Proposal Image Area (Hover Picker per user feedback) -->
+                <div
+                  class="proposal-image-wrapper"
+                  :class="{ 'has-image': !!currentImageUrl, 'is-empty': !currentImageUrl }"
+                  @click="triggerImageUpload"
+                  title="Click to choose or change image"
+                >
+                  <img
+                    v-if="currentImageUrl"
+                    class="proposal-image"
+                    :src="currentImageUrl"
+                    :alt="activeProposal.translations.en.image_alt || getProposalTitle(activeProposal)"
+                  />
+                  <div v-else class="image-empty-placeholder">
+                    <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                    <span class="placeholder-text">Click to choose image</span>
                   </div>
 
-                  <!-- Image Preview and Upload Area -->
-                  <div class="proposal-image-section">
-                    <label class="section-label">Proposal Image:</label>
-                    <div v-if="currentImageUrl" class="image-preview-box">
-                      <img :src="currentImageUrl" :alt="activeProposal.translations.en.image_alt" class="preview-img" />
-                    </div>
-                    <div v-else class="image-placeholder-box">
-                      <span>No image uploaded yet</span>
-                    </div>
-
-                    <div class="image-upload-controls">
-                      <label class="upload-btn">
-                        <span>📁 Choose Image</span>
-                        <input
-                          type="file"
-                          accept="image/png, image/jpeg, image/jpg, image/webp"
-                          class="file-input-hidden"
-                          @change="onImageSelected"
-                        />
-                      </label>
-                      <span v-if="activeProposal.pendingImage" class="pending-filename">
-                        New: {{ activeProposal.pendingImage.filename }}
-                      </span>
+                  <!-- Hover overlay with pencil icon badge (Image 4) -->
+                  <div class="image-hover-overlay">
+                    <div class="pencil-badge">
+                      <svg class="pencil-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                      </svg>
                     </div>
                   </div>
+
+                  <!-- Hidden native file input -->
+                  <input
+                    ref="fileInputRef"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg, image/webp"
+                    class="file-input-hidden"
+                    @change="onImageSelected"
+                    @click.stop
+                  />
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- Image Alternative Text field (Below the preview frame, per user feedback) -->
+          <div class="external-field-row alt-field-row">
+            <label class="external-field-label" for="proposal-alt-input">Image Alternative Text:</label>
+            <input
+              id="proposal-alt-input"
+              type="text"
+              class="external-field-input"
+              v-model="activeProposal.translations.en.image_alt"
+              placeholder="Describe the image for screen readers..."
+            />
           </div>
         </div>
       </main>
@@ -192,7 +231,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch, nextTick, onMounted } from 'vue';
 
 const proposals = ref([]);
 const activeProposal = ref(null);
@@ -202,6 +241,20 @@ const isSaving = ref(false);
 const saveSuccess = ref(false);
 const notification = ref(null);
 const searchQuery = ref('');
+
+const titleInputRef = ref(null);
+const descInputRef = ref(null);
+const fileInputRef = ref(null);
+
+function triggerImageUpload() {
+  fileInputRef.value?.click();
+}
+
+function autoResizeTextarea(el) {
+  if (!el) return;
+  el.style.height = 'auto';
+  el.style.height = `${el.scrollHeight}px`;
+}
 
 // Computed filtered proposals based on search input
 const filteredProposals = computed(() => {
@@ -220,10 +273,27 @@ function getProposalTitle(prop) {
   return prop.translations?.en?.title || prop.slug || '(Untitled Proposal)';
 }
 
-// Format numbers with commas (e.g. 500,000)
+// Format numbers with commas (e.g. 200000 -> 200,000)
 function formatNumber(num) {
   if (num === null || num === undefined || isNaN(num)) return '0';
   return Number(num).toLocaleString();
+}
+
+const displayAmount = computed(() => {
+  return formatNumber(activeProposal.value?.info?.amount ?? 0);
+});
+
+function onAmountInput(e) {
+  const raw = e.target.value.replace(/[^\d]/g, '');
+  const val = raw ? parseInt(raw, 10) : 0;
+  if (activeProposal.value) {
+    if (!activeProposal.value.info) activeProposal.value.info = {};
+    activeProposal.value.info.amount = val;
+  }
+}
+
+function onAmountBlur(e) {
+  e.target.value = formatNumber(activeProposal.value?.info?.amount ?? 0);
 }
 
 // Compute current preview image URL
@@ -248,7 +318,8 @@ function slugify(text) {
 }
 
 // Auto-derive slug if proposal is newly created and slug wasn't manually edited
-function onTitleInput() {
+function onTitleInput(e) {
+  autoResizeTextarea(e.target);
   if (activeProposal.value && activeProposal.value.isNew && !activeProposal.value.customSlugSet) {
     const title = activeProposal.value.translations.en.title;
     activeProposal.value.slug = slugify(title) || 'new-ballot-proposal';
@@ -310,6 +381,7 @@ function normalizeProposal(raw) {
     },
     files: raw.files || {},
     isNew: false,
+    customSlugSet: false,
     pendingImage: null,
   };
   return prop;
@@ -333,7 +405,7 @@ function addNewProposal() {
     translations: {
       en: {
         language: 'en',
-        title: 'New ballot proposal...',
+        title: 'New Ballot Proposal',
         image_alt: '',
         content: '',
       },
@@ -511,6 +583,14 @@ async function confirmDeleteProposal(prop) {
     isSaving.value = false;
   }
 }
+
+// Auto-adjust textareas on proposal activation
+watch(activeProposal, () => {
+  nextTick(() => {
+    autoResizeTextarea(titleInputRef.value);
+    autoResizeTextarea(descInputRef.value);
+  });
+});
 
 onMounted(() => {
   loadProposals();
@@ -735,7 +815,7 @@ onMounted(() => {
 /* Right Pane: Preview Workspace */
 .preview-workspace {
   flex: 1;
-  padding: 24px;
+  padding: 24px 32px;
   overflow-y: auto;
   display: flex;
   justify-content: center;
@@ -749,22 +829,22 @@ onMounted(() => {
   font-size: 1.1rem;
 }
 
-/* Mobile Device Container */
-.mobile-device-container {
+/* Mobile Editor Container */
+.mobile-editor-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
+  gap: 14px;
+  margin: 0 auto;
 }
 
-/* Mobile Controls Bar */
-.mobile-controls-bar {
+/* Top Action / Status Bar */
+.editor-top-bar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
 }
 
 .lang-badge {
@@ -818,288 +898,355 @@ onMounted(() => {
   cursor: not-allowed;
 }
 
-/* Mobile Phone Frame */
-.mobile-phone-frame {
-  width: 380px;
-  max-width: 100%;
-  background: #ffffff;
-  border: 10px solid #1a1a1a;
-  border-radius: 36px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
-  position: relative;
-}
-
-.phone-screen {
-  background: #f7f9fa;
-  min-height: 600px;
+/* External Field Rows (Slug above, Alt Text below) */
+.external-field-row {
   display: flex;
   flex-direction: column;
-}
-
-.phone-status-bar {
-  height: 24px;
-  background: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: #495057;
-  border-bottom: 1px solid #f1f3f5;
-}
-
-.phone-notch {
-  width: 70px;
-  height: 12px;
-  background: #1a1a1a;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-.phone-content {
-  padding: 16px;
-  flex: 1;
-  overflow-y: auto;
-}
-
-/* Proposal Card inside phone */
-.proposal-card {
-  background: #ffffff;
-  border-radius: 8px;
-  border: 4px solid #ffffff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.proposal-card-top {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.proposal-checkbox-mock {
-  display: inline-flex;
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  border: 2px solid #28a745;
-  color: #28a745;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 0.85rem;
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-.wysiwyg-title-input {
-  width: 100%;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #091f2f;
-  border: 1px dashed transparent;
-  border-radius: 4px;
-  padding: 4px 6px;
-  box-sizing: border-box;
-  background: transparent;
-  transition: all 0.2s;
-}
-
-.wysiwyg-title-input:hover,
-.wysiwyg-title-input:focus {
-  border-color: #007bff;
-  background-color: #fbfdff;
-  outline: none;
-}
-
-.proposal-slug-row {
-  display: flex;
-  align-items: center;
   gap: 6px;
-  font-size: 0.8rem;
-  color: #6c757d;
-  padding: 0 6px;
+  width: 100%;
 }
 
-.slug-label {
+.external-field-label {
+  font-size: 0.95rem;
   font-weight: 600;
+  color: #1e293b;
+}
+
+.external-field-input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #1e293b;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #1e293b;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .slug-input {
   font-family: monospace;
-  font-size: 0.8rem;
-  border: 1px solid #ced4da;
+}
+
+.external-field-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Ballot Preview Frame (mimics /vote/ballot) */
+.ballot-preview-frame {
+  width: 100%;
+  border: 2px solid #0E0E30;
   border-radius: 4px;
-  padding: 2px 6px;
+  background-color: #efeff4;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Header inside frame */
+.ballot-frame-header {
+  height: 48px;
+  display: flex;
+  align-items: stretch;
+  background-color: #ffffff;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.header-hamburger-box {
+  width: 48px;
+  background-color: #E90055;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hamburger-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 14px;
+}
+
+.hamburger-lines span {
+  display: block;
+  height: 2.5px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 1px;
+}
+
+.header-boston-logo-box {
+  width: 48px;
+  background-color: #0E0E30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.boston-b-logo {
+  display: block;
+}
+
+.header-fill-area {
+  flex: 1;
+  background-color: #ffffff;
+}
+
+/* Body inside frame */
+.ballot-frame-body {
+  padding: 16px 14px;
+  background-color: #efeff4;
+}
+
+/* Proposal Card matching sa_vote style */
+.proposal-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 4px solid #ffffff;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'Montserrat', sans-serif;
+  gap: 0.65rem;
+}
+
+/* Card Top: Pill and Title */
+.proposal-card-top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.proposal-card-top-left {
+  display: inline-flex;
+  align-items: center;
+  padding-top: 3px;
+}
+
+.proposal-pill-checkbox {
+  width: 2rem;
+  height: 1rem;
+  border: 2px solid #0E0E30;
+  border-radius: 1rem;
+  background: transparent;
+  display: inline-block;
+}
+
+.proposal-title-container {
   flex: 1;
 }
 
+.proposal-title-input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0E0E30;
+  text-transform: uppercase;
+  line-height: 1.2;
+  width: 100%;
+  border: 1px dashed transparent;
+  border-radius: 4px;
+  background: transparent;
+  resize: none;
+  outline: none;
+  padding: 2px 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.proposal-title-input:hover {
+  border-color: #94a3b8;
+  background-color: #f8fafc;
+}
+
+.proposal-title-input:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Proposal Cost */
 .proposal-cost-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 6px;
-}
-
-.cost-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #495057;
-}
-
-.cost-input-wrapper {
-  display: flex;
-  align-items: center;
-  font-size: 1.25rem;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #28a745;
+  font-size: 1.5rem;
+  color: #00cd5f;
+  line-height: 1.2;
 }
 
-.dollar-sign {
-  margin-right: 2px;
-}
-
-.wysiwyg-amount-input {
-  font-size: 1.2rem;
+.cost-dollar {
   font-weight: 700;
-  color: #28a745;
+  color: #00cd5f;
+  margin-right: 1px;
+}
+
+.proposal-cost-input {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #00cd5f;
   border: 1px dashed transparent;
   border-radius: 4px;
-  padding: 2px 6px;
-  width: 140px;
   background: transparent;
-}
-
-.wysiwyg-amount-input:hover,
-.wysiwyg-amount-input:focus {
-  border-color: #28a745;
-  background-color: #fbfdff;
   outline: none;
+  width: 180px;
+  padding: 0 4px;
+  transition: border-color 0.2s, background-color 0.2s;
 }
 
-.section-label {
+.proposal-cost-input:hover {
+  border-color: #94a3b8;
+  background-color: #f8fafc;
+}
+
+.proposal-cost-input:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Proposal Description */
+.proposal-description-container {
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.proposal-description-input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0E0E30;
+  text-transform: uppercase;
+  line-height: 1.35;
+  width: 100%;
+  border: 1px dashed transparent;
+  border-radius: 4px;
+  background: transparent;
+  resize: none;
+  outline: none;
+  padding: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.proposal-description-input:hover {
+  border-color: #94a3b8;
+  background-color: #f8fafc;
+}
+
+.proposal-description-input:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Proposal Image & Hover Overlay */
+.proposal-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #cbd5e1;
+  transition: filter 0.2s ease;
+}
+
+.proposal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
   display: block;
-  font-size: 0.75rem;
+}
+
+.image-empty-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #475569;
+  background-color: #cbd5e1;
+}
+
+.placeholder-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.placeholder-text {
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #6c757d;
-  margin-bottom: 4px;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.proposal-description-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.wysiwyg-description-input {
-  width: 100%;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #091f2f;
-  border: 1px dashed transparent;
-  border-radius: 4px;
-  padding: 6px;
-  box-sizing: border-box;
-  resize: vertical;
-  background: transparent;
-  font-family: inherit;
-  transition: all 0.2s;
-}
-
-.wysiwyg-description-input:hover,
-.wysiwyg-description-input:focus {
-  border-color: #007bff;
-  background-color: #fbfdff;
-  outline: none;
-}
-
-.proposal-alt-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.wysiwyg-alt-input {
-  width: 100%;
-  font-size: 0.85rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  padding: 6px;
-  box-sizing: border-box;
-}
-
-.proposal-image-section {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.image-preview-box {
-  width: 100%;
-  height: 160px;
-  border-radius: 6px;
-  overflow: hidden;
-  background-color: #000;
-}
-
-.preview-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.image-placeholder-box {
-  width: 100%;
-  height: 120px;
-  border: 2px dashed #ced4da;
-  border-radius: 6px;
+.image-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #adb5bd;
-  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  border-radius: 8px;
 }
 
-.image-upload-controls {
+.proposal-image-wrapper:hover .image-hover-overlay {
+  opacity: 1;
+}
+
+/* When empty, show the overlay/badge by default per user feedback */
+.proposal-image-wrapper.is-empty .image-hover-overlay {
+  opacity: 0.6;
+}
+
+.proposal-image-wrapper.is-empty:hover .image-hover-overlay {
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.pencil-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 4px;
+  justify-content: center;
+  color: #0E0E30;
+  transition: transform 0.15s ease;
 }
 
-.upload-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 12px;
-  background: #ffffff;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s;
+.proposal-image-wrapper:hover .pencil-badge {
+  transform: scale(1.1);
 }
 
-.upload-btn:hover {
-  background: #f1f3f5;
+.pencil-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .file-input-hidden {
   display: none;
-}
-
-.pending-filename {
-  font-size: 0.75rem;
-  color: #007bff;
-  font-style: italic;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 180px;
 }
 </style>

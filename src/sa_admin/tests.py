@@ -150,6 +150,8 @@ class BallotApiViewsUnitTests(SimpleTestCase):
         self.factory = RequestFactory()
         config = get_shareabouts_config()
         self.api = ShareaboutsApi(config, self.factory.get('/'))
+        ballot_cfg = (config.get('ballot') if hasattr(config, 'get') else {}) or {}
+        self.manager_group = ballot_cfg.get('manager_group') or 'admin'
 
     @patch('sa_util.api.ShareaboutsApi.current_user')
     def test_unauthenticated_request_returns_401(self, mock_current_user):
@@ -173,7 +175,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     def test_authenticated_get_proposals_returns_200(self, mock_current_user, mock_get_state):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
-            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
         }
         mock_get_state.return_value = {
             'head_sha': 'h123',
@@ -194,7 +196,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     def test_authenticated_save_proposal_returns_200(self, mock_current_user, mock_commit):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
-            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
         }
         mock_commit.return_value = {
             'status': 'success',
@@ -230,7 +232,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     def test_save_proposal_conflict_returns_409(self, mock_current_user, mock_commit):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
-            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
         }
         mock_commit.side_effect = GitConflictError(
             'Conflict detected',
@@ -260,8 +262,9 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     def test_ballot_editor_view_authenticated(self, mock_current_user):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
-            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
         }
+        mock_current_user.do_not_call_in_templates = False
         req = self.factory.get('/admin/ballot/')
         resp = ballot_editor(req)
         self.assertEqual(resp.status_code, 200)
@@ -271,7 +274,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     def test_delete_proposal_calls_commit_with_files_to_delete(self, mock_current_user, mock_commit):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
-            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
         }
         mock_commit.return_value = {
             'status': 'success',
