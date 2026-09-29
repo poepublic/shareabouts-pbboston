@@ -11,6 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import base64
 import logging
+import mimetypes
 import os
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -224,6 +225,43 @@ class GitHubContentManager:
             "proposals": list(proposals_by_slug.values()),
             "files": files_map,
         }
+
+    def get_image_blob(self, filename: str) -> Optional[Tuple[bytes, str]]:
+        """
+        Fetches an image file from the GitHub repository at
+        src/flavors/{flavor}/static/ballot/{filename}.
+        Returns a tuple of (bytes, content_type) if found, or None if not found (404).
+        """
+        clean_filename = os.path.basename(filename)
+        if not clean_filename or clean_filename != filename or clean_filename in ('.', '..'):
+            return None
+
+        rel_path = f"{self.static_ballot_folder}/{clean_filename}"
+        repo = self.gh_repo
+
+        try:
+            content_file = repo.get_contents(rel_path, ref=self.branch)
+            if isinstance(content_file, list):
+                return None
+            if content_file.content is not None:
+                raw_bytes = content_file.decoded_content
+            elif content_file.sha:
+                blob = repo.get_git_blob(content_file.sha)
+                if blob.encoding == 'base64':
+                    raw_bytes = base64.b64decode(blob.content)
+                else:
+                    raw_bytes = blob.content.encode('utf-8')
+            else:
+                return None
+
+            content_type, _ = mimetypes.guess_type(clean_filename)
+            content_type = content_type or 'application/octet-stream'
+            return raw_bytes, content_type
+        except GithubException as e:
+            if e.status == 404:
+                return None
+            logger.exception("Failed to fetch image blob %s from GitHub", rel_path)
+            raise
 
     def commit_proposal_changes(
         self,

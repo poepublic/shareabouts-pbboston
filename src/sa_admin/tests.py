@@ -4,8 +4,14 @@ from unittest.mock import MagicMock, patch
 
 from django.test import SimpleTestCase, RequestFactory, override_settings
 
+from github import GithubException
 from sa_admin.github import GitHubContentManager, GitConflictError
-from sa_admin.views import ballot_editor, ballot_proposals_api, ballot_proposal_save_api
+from sa_admin.views import (
+    ballot_editor,
+    ballot_proposals_api,
+    ballot_proposal_save_api,
+    ballot_image_proxy,
+)
 from sa_util.config import get_shareabouts_config
 from sa_util.api import ShareaboutsApi
 
@@ -207,6 +213,51 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
                 slug='already-exists',
             )
         self.assertIn("already exists", str(cm.exception))
+
+    def test_get_image_blob_found(self):
+        mock_content = MagicMock()
+        mock_content.content = "base64content"
+        mock_content.decoded_content = b"fake-jpeg-bytes"
+        self.mock_repo.get_contents.return_value = mock_content
+
+        result = self.mgr.get_image_blob("test-image.jpg")
+        self.assertIsNotNone(result)
+        raw_bytes, ct = result
+        self.assertEqual(raw_bytes, b"fake-jpeg-bytes")
+        self.assertEqual(ct, "image/jpeg")
+        self.mock_repo.get_contents.assert_called_with(
+            "src/flavors/cycle3/static/ballot/test-image.jpg",
+            ref="test-branch"
+        )
+
+    def test_get_image_blob_large_file_falls_back_to_git_blob(self):
+        mock_content = MagicMock()
+        mock_content.content = None
+        mock_content.sha = "blobsha999"
+        self.mock_repo.get_contents.return_value = mock_content
+
+        mock_blob = MagicMock()
+        mock_blob.encoding = "base64"
+        mock_blob.content = base64.b64encode(b"large-blob-bytes").decode("ascii")
+        self.mock_repo.get_git_blob.return_value = mock_blob
+
+        result = self.mgr.get_image_blob("large-image.png")
+        self.assertIsNotNone(result)
+        raw_bytes, ct = result
+        self.assertEqual(raw_bytes, b"large-blob-bytes")
+        self.assertEqual(ct, "image/png")
+        self.mock_repo.get_git_blob.assert_called_with("blobsha999")
+
+    def test_get_image_blob_not_found(self):
+        self.mock_repo.get_contents.side_effect = GithubException(404, {"message": "Not Found"})
+        result = self.mgr.get_image_blob("nonexistent.jpg")
+        self.assertIsNone(result)
+
+    def test_get_image_blob_invalid_filename(self):
+        result = self.mgr.get_image_blob("../../secret.png")
+        self.assertIsNone(result)
+        self.mock_repo.get_contents.assert_not_called()
+
 
 
 class BallotApiViewsUnitTests(SimpleTestCase):
@@ -423,6 +474,94 @@ class BallotApiViewsUnitTests(SimpleTestCase):
         self.assertEqual(resp.status_code, 400)
         data = json.loads(resp.content)
         self.assertIn("already exists", data['error'])
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_unauthenticated_returns_401(self, mock_current_user):
+        mock_current_user.return_value = None
+        req = self.factory.get('/admin/ballot/images/test.jpg', HTTP_ACCEPT='application/json')
+        resp = ballot_image_proxy(req, filename='test.jpg')
+        self.assertEqual(resp.status_code, 401)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_unauthorized_returns_403(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'normal_user',
+            'groups': [{'name': 'other_group', 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.get('/admin/ballot/images/test.jpg', HTTP_ACCEPT='application/json')
+        resp = ballot_image_proxy(req, filename='test.jpg')
+        self.assertEqual(resp.status_code, 403)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_non_get_returns_405(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.post('/admin/ballot/images/test.jpg')
+        resp = ballot_image_proxy(req, filename='test.jpg')
+        self.assertEqual(resp.status_code, 405)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_invalid_filename_returns_403(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.get('/admin/ballot/images/../test.jpg')
+        resp = ballot_image_proxy(req, filename='../test.jpg')
+        self.assertEqual(resp.status_code, 403)
+
+    @patch('sa_admin.views.finders.find')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_local_disk_hit(self, mock_current_user, mock_find):
+        import tempfile
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        with tempfile.NamedTemporaryFile(suffix='.jpg') as f:
+            f.write(b"local-image-data")
+            f.flush()
+            mock_find.return_value = f.name
+            req = self.factory.get('/admin/ballot/images/local-prop.jpg')
+            resp = ballot_image_proxy(req, filename='local-prop.jpg')
+            self.assertEqual(resp.status_code, 200)
+            self.assertEqual(resp['Cache-Control'], 'public, max-age=3600')
+            self.assertEqual(resp['Content-Type'], 'image/jpeg')
+
+    @patch('sa_admin.views.GitHubContentManager.get_image_blob')
+    @patch('sa_admin.views.finders.find')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_github_fallback_hit(self, mock_current_user, mock_find, mock_get_blob):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_find.return_value = None
+        mock_get_blob.return_value = (b"github-blob-bytes", "image/png")
+
+        req = self.factory.get('/admin/ballot/images/remote-only.png')
+        resp = ballot_image_proxy(req, filename='remote-only.png')
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.content, b"github-blob-bytes")
+        self.assertEqual(resp['Content-Type'], 'image/png')
+        self.assertEqual(resp['Cache-Control'], 'public, max-age=3600')
+
+    @patch('sa_admin.views.GitHubContentManager.get_image_blob')
+    @patch('sa_admin.views.finders.find')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_not_found_returns_404(self, mock_current_user, mock_find, mock_get_blob):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_find.return_value = None
+        mock_get_blob.return_value = None
+
+        req = self.factory.get('/admin/ballot/images/missing.jpg')
+        resp = ballot_image_proxy(req, filename='missing.jpg')
+        self.assertEqual(resp.status_code, 404)
 
     def test_get_private_key_str_formats(self):
         pem_content = "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA0...\n-----END RSA PRIVATE KEY-----\n"

@@ -1,9 +1,12 @@
 import base64
 import json
 import logging
+import mimetypes
+import os
 from urllib.parse import urlparse
 from django.conf import settings
-from django.http import JsonResponse, HttpResponseNotAllowed, HttpResponseForbidden
+from django.contrib.staticfiles import finders
+from django.http import JsonResponse, HttpResponseNotAllowed, HttpResponseForbidden, FileResponse, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
@@ -266,3 +269,45 @@ def ballot_proposal_save_api(request, config, api):
     except Exception as e:
         logger.exception('Failed to commit proposal changes')
         return JsonResponse({'error': str(e)}, status=500)
+
+
+@ballot_manager_required
+def ballot_image_proxy(request, config, api, filename):
+    """
+    GET /admin/ballot/images/<filename>
+    Serves ballot images to the admin editor.
+    First checks local staticfiles on disk (sub-millisecond delivery).
+    If not found on disk, fetches from GitHub branch and streams with caching headers.
+    """
+    if request.method != 'GET':
+        return HttpResponseNotAllowed(['GET'])
+
+    clean_filename = os.path.basename(filename)
+    if not clean_filename or clean_filename != filename or clean_filename in ('.', '..'):
+        return HttpResponseForbidden("Invalid filename")
+
+    content_type, _ = mimetypes.guess_type(clean_filename)
+    content_type = content_type or 'application/octet-stream'
+
+    # 1. Check local static files on disk
+    local_path = finders.find(f"ballot/{clean_filename}")
+    if local_path and os.path.exists(local_path):
+        response = FileResponse(open(local_path, 'rb'), content_type=content_type)
+        response['Cache-Control'] = 'public, max-age=3600'
+        return response
+
+    # 2. Check GitHub repository
+    mgr = GitHubContentManager()
+    try:
+        blob_data = mgr.get_image_blob(clean_filename)
+        if blob_data:
+            raw_bytes, ct = blob_data
+            response = HttpResponse(raw_bytes, content_type=ct or content_type)
+            response['Cache-Control'] = 'public, max-age=3600'
+            return response
+    except Exception as e:
+        logger.exception("Error proxying ballot image %s from GitHub: %s", clean_filename, e)
+        return JsonResponse({'error': f'Failed to fetch image: {e}'}, status=500)
+
+    return HttpResponseNotFound("Image not found")
+

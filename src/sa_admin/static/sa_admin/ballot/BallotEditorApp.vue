@@ -352,7 +352,16 @@ const currentImageUrl = computed(() => {
   if (activeProposal.value.pendingImage?.dataUrl) {
     return activeProposal.value.pendingImage.dataUrl;
   }
-  return activeProposal.value.info?.image || '';
+  const imgPath = activeProposal.value.info?.image || '';
+  if (imgPath.startsWith('/static/ballot/')) {
+    const filename = imgPath.slice('/static/ballot/'.length);
+    return `/admin/ballot/images/${filename}`;
+  }
+  if (imgPath.startsWith('static/ballot/')) {
+    const filename = imgPath.slice('static/ballot/'.length);
+    return `/admin/ballot/images/${filename}`;
+  }
+  return imgPath;
 });
 
 // -------------------------------------------------------------
@@ -488,13 +497,48 @@ function addNewProposal() {
   updateDraftForProposal(newProp);
 }
 
-function onImageSelected(file) {
+function resizeImageIfNeeded(file, maxWidth = 800) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('Failed to read image file.'));
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('Failed to load image for resizing.'));
+      img.onload = () => {
+        if (img.width <= maxWidth) {
+          resolve(e.target.result);
+          return;
+        }
+
+        const scale = maxWidth / img.width;
+        const targetWidth = maxWidth;
+        const targetHeight = Math.round(img.height * scale);
+
+        const canvas = document.createElement('canvas');
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+
+        const mimeType = file.type || 'image/jpeg';
+        const quality = mimeType === 'image/png' ? undefined : 0.85;
+        const resizedDataUrl = canvas.toDataURL(mimeType, quality);
+        resolve(resizedDataUrl);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function onImageSelected(file) {
   if (!file || !activeProposal.value) return;
 
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const dataUrl = e.target.result;
-    const extension = file.name.split('.').pop() || 'jpg';
+  try {
+    const dataUrl = await resizeImageIfNeeded(file, 800);
+    let extension = (file.name.split('.').pop() || 'jpg').toLowerCase();
+    if (extension === 'jpeg') extension = 'jpg';
     const filename = `${activeProposal.value.slug || 'proposal'}-${Date.now()}.${extension}`;
 
     activeProposal.value.pendingImage = {
@@ -503,8 +547,13 @@ function onImageSelected(file) {
     };
     activeProposal.value.info.image = `/static/ballot/${filename}`;
     updateDraftForProposal(activeProposal.value);
-  };
-  reader.readAsDataURL(file);
+  } catch (err) {
+    console.error('Failed to process image:', err);
+    notification.value = {
+      type: 'error',
+      message: `Failed to process image: ${err.message || err}`,
+    };
+  }
 }
 
 // -------------------------------------------------------------
