@@ -5,4 +5,4 @@ language: en
 title: Bus Shelter Upgrades In the City
 ---
 
-Install new bus shelters with seating, lighting, and real-time arrival information at key transit stops.
+Install new bus shelters with seating, lighting, and real-time arrival information at key transit stops. It'll be grand!
