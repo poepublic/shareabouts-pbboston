@@ -24,15 +24,24 @@
 
   <body class="{% block body_classes %}{% endblock %}">
     {% block header %}
-    <header>
-      <h1>{% block heading %}Shareabouts Admin{% endblock %}</h1>
-      <p>You are logged in as {{ api.current_user.name }} ({{ api.current_user.username }}).</p>
-      <form method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
-        <input type="hidden" name="shadowmethod" value="DELETE">
-        <input type="hidden" name="next" value="{% url 'admin_home' %}">
-        <button type="submit">Logout</button>
-      </form>
+    <header class="admin-header">
+      <div class="admin-header-main">
+        <h1>{% block heading %}Shareabouts Admin{% endblock %}</h1>
+        <nav class="admin-nav-tabs">
+          <a href="{% url 'admin_home' %}" class="admin-tab {% if request.resolver_match.url_name == 'admin_home' %}active{% endif %}">Ideas</a>
+          <a href="{% url 'admin_report' %}" class="admin-tab {% if request.resolver_match.url_name == 'admin_report' %}active{% endif %}">Votes</a>
+          <a href="{% url 'admin_ballot_editor' %}" class="admin-tab {% if request.resolver_match.url_name == 'admin_ballot_editor' %}active{% endif %}">Ballot</a>
+        </nav>
+      </div>
+      <div class="admin-header-user">
+        <p>You are logged in as {{ api.current_user.name }} ({{ api.current_user.username }}).</p>
+        <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+          <input type="hidden" name="shadowmethod" value="DELETE">
+          <input type="hidden" name="next" value="{% url 'admin_home' %}">
+          <button type="submit">Logout</button>
+        </form>
+      </div>
     </header>
     {% endblock %}
 

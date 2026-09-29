@@ -11,6 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import base64
 import logging
+import mimetypes
 import os
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -225,23 +226,92 @@ class GitHubContentManager:
             "files": files_map,
         }
 
+    def get_image_blob(self, filename: str) -> Optional[Tuple[bytes, str]]:
+        """
+        Fetches an image file from the GitHub repository at
+        src/flavors/{flavor}/static/ballot/{filename}.
+        Returns a tuple of (bytes, content_type) if found, or None if not found (404).
+        """
+        clean_filename = os.path.basename(filename)
+        if not clean_filename or clean_filename != filename or clean_filename in ('.', '..'):
+            return None
+
+        rel_path = f"{self.static_ballot_folder}/{clean_filename}"
+        repo = self.gh_repo
+
+        try:
+            content_file = repo.get_contents(rel_path, ref=self.branch)
+            if isinstance(content_file, list):
+                return None
+            if content_file.content is not None:
+                raw_bytes = content_file.decoded_content
+            elif content_file.sha:
+                blob = repo.get_git_blob(content_file.sha)
+                if blob.encoding == 'base64':
+                    raw_bytes = base64.b64decode(blob.content)
+                else:
+                    raw_bytes = blob.content.encode('utf-8')
+            else:
+                return None
+
+            content_type, _ = mimetypes.guess_type(clean_filename)
+            content_type = content_type or 'application/octet-stream'
+            return raw_bytes, content_type
+        except GithubException as e:
+            if e.status == 404:
+                return None
+            logger.exception("Failed to fetch image blob %s from GitHub", rel_path)
+            raise
+
     def commit_proposal_changes(
         self,
         base_sha: str,
-        files_to_update: Dict[str, Union[str, bytes]],
+        files_to_update: Optional[Dict[str, Union[str, bytes]]] = None,
+        files_to_delete: Optional[List[str]] = None,
+        original_slug: Optional[str] = None,
+        is_new: bool = False,
         message: Optional[str] = None,
         slug: Optional[str] = None,
         user_sso_id: Optional[str] = None,
         user_name: Optional[str] = None,
         user_email: Optional[str] = None,
         max_retries: int = 3,
+        allow_empty: bool = False,
     ) -> Dict[str, Any]:
         """
         Commits changes to the repository with rebase-and-retry logic for concurrent edits.
         files_to_update: {repo_relative_path: content_str_or_bytes}
+        files_to_delete: [repo_relative_path, ...]
         """
         repo = self.gh_repo
         current_base_sha = base_sha
+        files_to_update = files_to_update or {}
+        files_to_delete = list(files_to_delete or [])
+
+        if not allow_empty and not files_to_update and not files_to_delete and not (original_slug and original_slug != slug):
+            raise ValueError("No changes detected; cannot create an empty commit.")
+
+        # Validate collision and prune old files if renaming or creating a new proposal
+        if slug:
+            base_commit = repo.get_git_commit(current_base_sha)
+            tree_data = repo.get_git_tree(base_commit.tree.sha, recursive=True)
+            ballot_items = [
+                item for item in tree_data.tree
+                if item.type == "blob" and item.path.startswith(f"{self.ballot_folder}/")
+            ]
+
+            # Check collision: if new or renaming to a different slug
+            if is_new or (original_slug and original_slug != slug):
+                new_prefix = f"{self.ballot_folder}/{slug}/"
+                if any(item.path.startswith(new_prefix) for item in ballot_items):
+                    raise ValueError(f"A proposal with slug '{slug}' already exists in the repository.")
+
+            # If renaming an existing proposal, find all files under original_slug to delete
+            if original_slug and original_slug != slug:
+                old_prefix = f"{self.ballot_folder}/{original_slug}/"
+                for item in ballot_items:
+                    if item.path.startswith(old_prefix) and item.path not in files_to_delete:
+                        files_to_delete.append(item.path)
 
         now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         author = InputGitAuthor(
@@ -283,13 +353,25 @@ class GitHubContentManager:
                 )
             )
 
+        for path in files_to_delete:
+            tree_elements.append(
+                InputGitTreeElement(
+                    path=path,
+                    mode="100644",
+                    type="blob",
+                    sha=None,
+                )
+            )
+
+        all_target_paths = list(files_to_update.keys()) + list(files_to_delete)
+
         for attempt in range(max_retries):
             ref = repo.get_git_ref(f"heads/{self.branch}")
             head_sha = ref.object.sha
 
             if head_sha != current_base_sha and attempt == 0:
                 # Concurrent update occurred before push
-                conflicts, tree_sha = self._check_conflicts(repo, current_base_sha, head_sha, list(files_to_update.keys()))
+                conflicts, tree_sha = self._check_conflicts(repo, current_base_sha, head_sha, all_target_paths)
                 if conflicts:
                     raise GitConflictError(
                         "Another admin has saved changes since you opened this page. Conflicting updates detected.",
@@ -303,6 +385,9 @@ class GitHubContentManager:
             base_tree = parent_commit.tree
 
             new_tree = repo.create_git_tree(tree_elements, base_tree)
+            if not allow_empty and new_tree.sha == base_tree.sha:
+                raise ValueError("No changes detected; cannot create an empty commit.")
+
             new_commit = repo.create_git_commit(
                 message=commit_msg,
                 tree=new_tree,
@@ -323,7 +408,7 @@ class GitHubContentManager:
                 if exc.status == 422:
                     new_ref = repo.get_git_ref(f"heads/{self.branch}")
                     new_head_sha = new_ref.object.sha
-                    conflicts, tree_sha = self._check_conflicts(repo, current_base_sha, new_head_sha, list(files_to_update.keys()))
+                    conflicts, tree_sha = self._check_conflicts(repo, current_base_sha, new_head_sha, all_target_paths)
                     if conflicts:
                         raise GitConflictError(
                             "Another admin has saved changes since you opened this page. Conflicting updates detected.",

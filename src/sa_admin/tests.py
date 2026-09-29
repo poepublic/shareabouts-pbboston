@@ -2,10 +2,16 @@ import base64
 import json
 from unittest.mock import MagicMock, patch
 
-from django.test import SimpleTestCase, RequestFactory
+from django.test import SimpleTestCase, RequestFactory, override_settings
 
+from github import GithubException
 from sa_admin.github import GitHubContentManager, GitConflictError
-from sa_admin.views import ballot_proposals_api, ballot_proposal_save_api
+from sa_admin.views import (
+    ballot_editor,
+    ballot_proposals_api,
+    ballot_proposal_save_api,
+    ballot_image_proxy,
+)
 from sa_util.config import get_shareabouts_config
 from sa_util.api import ShareaboutsApi
 
@@ -101,6 +107,75 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
         self.assertEqual(result['commit_sha'], 'newcommitsha')
         mock_ref.edit.assert_called_with(sha='newcommitsha', force=False)
 
+    def test_commit_proposal_changes_empty_raises_value_error(self):
+        # 1. get_git_ref
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
+
+        # 2. create_git_blob
+        blob = MagicMock(sha='blobsha1')
+        self.mock_repo.create_git_blob.return_value = blob
+
+        # 3. get_git_commit
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'same_treesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
+
+        # 4. create_git_tree returns same sha as base_tree
+        new_tree = MagicMock()
+        new_tree.sha = 'same_treesha'
+        self.mock_repo.create_git_tree.return_value = new_tree
+
+        with self.assertRaises(ValueError) as cm:
+            self.mgr.commit_proposal_changes(
+                base_sha='basehead',
+                files_to_update={'src/flavors/cycle3/ballot/prop1/info.yaml': 'amount: 1000'},
+                slug='prop1',
+                allow_empty=False,
+            )
+
+        self.assertIn("No changes detected", str(cm.exception))
+        self.mock_repo.create_git_commit.assert_not_called()
+        mock_ref.edit.assert_not_called()
+
+    def test_commit_proposal_changes_allow_empty_true(self):
+        # 1. get_git_ref
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
+
+        # 2. create_git_blob
+        blob = MagicMock(sha='blobsha1')
+        self.mock_repo.create_git_blob.return_value = blob
+
+        # 3. get_git_commit
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'same_treesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
+
+        # 4. create_git_tree returns same sha as base_tree
+        new_tree = MagicMock()
+        new_tree.sha = 'same_treesha'
+        self.mock_repo.create_git_tree.return_value = new_tree
+
+        # 5. create_git_commit
+        new_commit = MagicMock()
+        new_commit.sha = 'emptycommitsha'
+        self.mock_repo.create_git_commit.return_value = new_commit
+
+        result = self.mgr.commit_proposal_changes(
+            base_sha='basehead',
+            files_to_update={'src/flavors/cycle3/ballot/prop1/info.yaml': 'amount: 1000'},
+            slug='prop1',
+            allow_empty=True,
+        )
+
+        self.assertEqual(result['status'], 'success')
+        self.assertEqual(result['commit_sha'], 'emptycommitsha')
+        self.mock_repo.create_git_commit.assert_called_once()
+        mock_ref.edit.assert_called_with(sha='emptycommitsha', force=False)
+
     def test_commit_proposal_changes_conflict(self):
         # 1. get_git_ref returns moved head
         mock_ref = MagicMock()
@@ -144,12 +219,123 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
         self.assertEqual(err.head_sha, 'movedhead')
         self.assertIn('src/flavors/cycle3/ballot/prop1/info.yaml', err.conflicting_files)
 
+    def test_commit_proposal_changes_rename_prunes_old_files(self):
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
+
+        blob = MagicMock(sha='newblobsha')
+        self.mock_repo.create_git_blob.return_value = blob
+
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'basetreesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
+
+        # Mock base_tree containing old proposal files
+        old_item1 = MagicMock(path='src/flavors/cycle3/ballot/prop-old/info.yaml', type='blob', sha='oldblob1')
+        old_item2 = MagicMock(path='src/flavors/cycle3/ballot/prop-old/en.md', type='blob', sha='oldblob2')
+        other_item = MagicMock(path='src/flavors/cycle3/ballot/other-prop/info.yaml', type='blob', sha='otherblob')
+        mock_tree = MagicMock()
+        mock_tree.tree = [old_item1, old_item2, other_item]
+        self.mock_repo.get_git_tree.return_value = mock_tree
+
+        new_tree = MagicMock(sha='newtreesha')
+        self.mock_repo.create_git_tree.return_value = new_tree
+
+        new_commit = MagicMock(sha='newcommitsha')
+        self.mock_repo.create_git_commit.return_value = new_commit
+
+        result = self.mgr.commit_proposal_changes(
+            base_sha='basehead',
+            files_to_update={'src/flavors/cycle3/ballot/prop-new/info.yaml': 'amount: 2000'},
+            original_slug='prop-old',
+            slug='prop-new',
+            user_sso_id='user123',
+        )
+
+        self.assertEqual(result['status'], 'success')
+        # Verify create_git_tree was called with deletions for the old proposal files
+        tree_elements = self.mock_repo.create_git_tree.call_args[0][0]
+        paths_to_delete = [elem._InputGitTreeElement__path for elem in tree_elements if elem._InputGitTreeElement__sha is None]
+        self.assertIn('src/flavors/cycle3/ballot/prop-old/info.yaml', paths_to_delete)
+        self.assertIn('src/flavors/cycle3/ballot/prop-old/en.md', paths_to_delete)
+
+    def test_commit_proposal_changes_collision_raises_error(self):
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
+
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'basetreesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
+
+        existing_item = MagicMock(path='src/flavors/cycle3/ballot/already-exists/info.yaml', type='blob')
+        mock_tree = MagicMock()
+        mock_tree.tree = [existing_item]
+        self.mock_repo.get_git_tree.return_value = mock_tree
+
+        with self.assertRaises(ValueError) as cm:
+            self.mgr.commit_proposal_changes(
+                base_sha='basehead',
+                files_to_update={'src/flavors/cycle3/ballot/already-exists/info.yaml': 'amount: 2000'},
+                original_slug='prop-old',
+                slug='already-exists',
+            )
+        self.assertIn("already exists", str(cm.exception))
+
+    def test_get_image_blob_found(self):
+        mock_content = MagicMock()
+        mock_content.content = "base64content"
+        mock_content.decoded_content = b"fake-jpeg-bytes"
+        self.mock_repo.get_contents.return_value = mock_content
+
+        result = self.mgr.get_image_blob("test-image.jpg")
+        self.assertIsNotNone(result)
+        raw_bytes, ct = result
+        self.assertEqual(raw_bytes, b"fake-jpeg-bytes")
+        self.assertEqual(ct, "image/jpeg")
+        self.mock_repo.get_contents.assert_called_with(
+            "src/flavors/cycle3/static/ballot/test-image.jpg",
+            ref="test-branch"
+        )
+
+    def test_get_image_blob_large_file_falls_back_to_git_blob(self):
+        mock_content = MagicMock()
+        mock_content.content = None
+        mock_content.sha = "blobsha999"
+        self.mock_repo.get_contents.return_value = mock_content
+
+        mock_blob = MagicMock()
+        mock_blob.encoding = "base64"
+        mock_blob.content = base64.b64encode(b"large-blob-bytes").decode("ascii")
+        self.mock_repo.get_git_blob.return_value = mock_blob
+
+        result = self.mgr.get_image_blob("large-image.png")
+        self.assertIsNotNone(result)
+        raw_bytes, ct = result
+        self.assertEqual(raw_bytes, b"large-blob-bytes")
+        self.assertEqual(ct, "image/png")
+        self.mock_repo.get_git_blob.assert_called_with("blobsha999")
+
+    def test_get_image_blob_not_found(self):
+        self.mock_repo.get_contents.side_effect = GithubException(404, {"message": "Not Found"})
+        result = self.mgr.get_image_blob("nonexistent.jpg")
+        self.assertIsNone(result)
+
+    def test_get_image_blob_invalid_filename(self):
+        result = self.mgr.get_image_blob("../../secret.png")
+        self.assertIsNone(result)
+        self.mock_repo.get_contents.assert_not_called()
+
+
 
 class BallotApiViewsUnitTests(SimpleTestCase):
     def setUp(self):
         self.factory = RequestFactory()
         config = get_shareabouts_config()
         self.api = ShareaboutsApi(config, self.factory.get('/'))
+        ballot_cfg = (config.get('ballot') if hasattr(config, 'get') else {}) or {}
+        self.manager_group = ballot_cfg.get('manager_group') or 'admin'
 
     @patch('sa_util.api.ShareaboutsApi.current_user')
     def test_unauthenticated_request_returns_401(self, mock_current_user):
@@ -173,7 +359,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     def test_authenticated_get_proposals_returns_200(self, mock_current_user, mock_get_state):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
-            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
         }
         mock_get_state.return_value = {
             'head_sha': 'h123',
@@ -194,7 +380,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     def test_authenticated_save_proposal_returns_200(self, mock_current_user, mock_commit):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
-            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
         }
         mock_commit.return_value = {
             'status': 'success',
@@ -230,7 +416,7 @@ class BallotApiViewsUnitTests(SimpleTestCase):
     def test_save_proposal_conflict_returns_409(self, mock_current_user, mock_commit):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
-            'groups': [{'name': 'admin', 'dataset': self.api.dataset_root}],
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
         }
         mock_commit.side_effect = GitConflictError(
             'Conflict detected',
@@ -254,6 +440,222 @@ class BallotApiViewsUnitTests(SimpleTestCase):
         data = json.loads(resp.content)
         self.assertEqual(data['error'], 'conflict')
         self.assertEqual(data['head_sha'], 'newhead')
+
+    @override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_editor_view_authenticated(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_current_user.do_not_call_in_templates = False
+        req = self.factory.get('/admin/ballot/')
+        resp = ballot_editor(req)
+        self.assertEqual(resp.status_code, 200)
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_delete_proposal_calls_commit_with_files_to_delete(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.return_value = {
+            'status': 'success',
+            'commit_sha': 'del123',
+            'tree_sha': 'deltree123',
+            'head_sha': 'del123',
+        }
+        payload = {
+            'base_sha': 'basesha123',
+            'delete_slug': 'old-proposal',
+            'files_to_delete': [
+                'src/flavors/cycle3/ballot/old-proposal/info.yaml',
+                'src/flavors/cycle3/ballot/old-proposal/en.md',
+            ],
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 200)
+        mock_commit.assert_called_once()
+        call_kwargs = mock_commit.call_args[1]
+        self.assertEqual(call_kwargs['files_to_delete'], payload['files_to_delete'])
+        self.assertEqual(call_kwargs['slug'], 'old-proposal')
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_save_proposal_api_with_original_slug(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.return_value = {
+            'status': 'success',
+            'commit_sha': 'rename123',
+            'tree_sha': 'renametree123',
+            'head_sha': 'rename123',
+        }
+        payload = {
+            'base_sha': 'basesha123',
+            'slug': 'new-slug',
+            'original_slug': 'old-slug',
+            'info': {'amount': 150000},
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 200)
+        mock_commit.assert_called_once()
+        call_kwargs = mock_commit.call_args[1]
+        self.assertEqual(call_kwargs['slug'], 'new-slug')
+        self.assertEqual(call_kwargs['original_slug'], 'old-slug')
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_save_proposal_api_collision_returns_400(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.side_effect = ValueError("A proposal with slug 'existing' already exists in the repository.")
+        payload = {
+            'base_sha': 'basesha123',
+            'slug': 'existing',
+            'original_slug': 'old-slug',
+            'info': {'amount': 150000},
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 400)
+        data = json.loads(resp.content)
+        self.assertIn("already exists", data['error'])
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_save_proposal_api_empty_changes_returns_400(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.side_effect = ValueError("No changes detected; cannot create an empty commit.")
+        payload = {
+            'base_sha': 'basesha123',
+            'slug': 'test-prop',
+            'info': {'amount': 100000},
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 400)
+        data = json.loads(resp.content)
+        self.assertIn("No changes detected", data['error'])
+
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_unauthenticated_returns_401(self, mock_current_user):
+        mock_current_user.return_value = None
+        req = self.factory.get('/admin/ballot/images/test.jpg', HTTP_ACCEPT='application/json')
+        resp = ballot_image_proxy(req, filename='test.jpg')
+        self.assertEqual(resp.status_code, 401)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_unauthorized_returns_403(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'normal_user',
+            'groups': [{'name': 'other_group', 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.get('/admin/ballot/images/test.jpg', HTTP_ACCEPT='application/json')
+        resp = ballot_image_proxy(req, filename='test.jpg')
+        self.assertEqual(resp.status_code, 403)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_non_get_returns_405(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.post('/admin/ballot/images/test.jpg')
+        resp = ballot_image_proxy(req, filename='test.jpg')
+        self.assertEqual(resp.status_code, 405)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_invalid_filename_returns_403(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.get('/admin/ballot/images/../test.jpg')
+        resp = ballot_image_proxy(req, filename='../test.jpg')
+        self.assertEqual(resp.status_code, 403)
+
+    @patch('sa_admin.views.finders.find')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_local_disk_hit(self, mock_current_user, mock_find):
+        import tempfile
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        with tempfile.NamedTemporaryFile(suffix='.jpg') as f:
+            f.write(b"local-image-data")
+            f.flush()
+            mock_find.return_value = f.name
+            req = self.factory.get('/admin/ballot/images/local-prop.jpg')
+            resp = ballot_image_proxy(req, filename='local-prop.jpg')
+            self.assertEqual(resp.status_code, 200)
+            self.assertEqual(resp['Cache-Control'], 'public, max-age=3600')
+            self.assertEqual(resp['Content-Type'], 'image/jpeg')
+
+    @patch('sa_admin.views.GitHubContentManager.get_image_blob')
+    @patch('sa_admin.views.finders.find')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_github_fallback_hit(self, mock_current_user, mock_find, mock_get_blob):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_find.return_value = None
+        mock_get_blob.return_value = (b"github-blob-bytes", "image/png")
+
+        req = self.factory.get('/admin/ballot/images/remote-only.png')
+        resp = ballot_image_proxy(req, filename='remote-only.png')
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.content, b"github-blob-bytes")
+        self.assertEqual(resp['Content-Type'], 'image/png')
+        self.assertEqual(resp['Cache-Control'], 'public, max-age=3600')
+
+    @patch('sa_admin.views.GitHubContentManager.get_image_blob')
+    @patch('sa_admin.views.finders.find')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_image_proxy_not_found_returns_404(self, mock_current_user, mock_find, mock_get_blob):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_find.return_value = None
+        mock_get_blob.return_value = None
+
+        req = self.factory.get('/admin/ballot/images/missing.jpg')
+        resp = ballot_image_proxy(req, filename='missing.jpg')
+        self.assertEqual(resp.status_code, 404)
 
     def test_get_private_key_str_formats(self):
         pem_content = "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA0...\n-----END RSA PRIVATE KEY-----\n"

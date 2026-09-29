@@ -19,8 +19,71 @@ body {
   line-height: 1.5;
 }
 
-header {
-  padding: 0 1rem;
+header.admin-header {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.admin-header-main {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.admin-header-main h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #212529;
+}
+
+.admin-nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-tab {
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #495057;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.15s ease;
+}
+
+.admin-tab:hover {
+  background-color: #f1f3f5;
+  color: #007bff;
+}
+
+.admin-tab.active {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.admin-header-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.admin-header-user p {
+  margin: 0;
+}
+
+.admin-header-user button {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  border: 1px solid #ced4da;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .table-wrapper {
