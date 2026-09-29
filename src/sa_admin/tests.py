@@ -107,6 +107,75 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
         self.assertEqual(result['commit_sha'], 'newcommitsha')
         mock_ref.edit.assert_called_with(sha='newcommitsha', force=False)
 
+    def test_commit_proposal_changes_empty_raises_value_error(self):
+        # 1. get_git_ref
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
+
+        # 2. create_git_blob
+        blob = MagicMock(sha='blobsha1')
+        self.mock_repo.create_git_blob.return_value = blob
+
+        # 3. get_git_commit
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'same_treesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
+
+        # 4. create_git_tree returns same sha as base_tree
+        new_tree = MagicMock()
+        new_tree.sha = 'same_treesha'
+        self.mock_repo.create_git_tree.return_value = new_tree
+
+        with self.assertRaises(ValueError) as cm:
+            self.mgr.commit_proposal_changes(
+                base_sha='basehead',
+                files_to_update={'src/flavors/cycle3/ballot/prop1/info.yaml': 'amount: 1000'},
+                slug='prop1',
+                allow_empty=False,
+            )
+
+        self.assertIn("No changes detected", str(cm.exception))
+        self.mock_repo.create_git_commit.assert_not_called()
+        mock_ref.edit.assert_not_called()
+
+    def test_commit_proposal_changes_allow_empty_true(self):
+        # 1. get_git_ref
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
+
+        # 2. create_git_blob
+        blob = MagicMock(sha='blobsha1')
+        self.mock_repo.create_git_blob.return_value = blob
+
+        # 3. get_git_commit
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'same_treesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
+
+        # 4. create_git_tree returns same sha as base_tree
+        new_tree = MagicMock()
+        new_tree.sha = 'same_treesha'
+        self.mock_repo.create_git_tree.return_value = new_tree
+
+        # 5. create_git_commit
+        new_commit = MagicMock()
+        new_commit.sha = 'emptycommitsha'
+        self.mock_repo.create_git_commit.return_value = new_commit
+
+        result = self.mgr.commit_proposal_changes(
+            base_sha='basehead',
+            files_to_update={'src/flavors/cycle3/ballot/prop1/info.yaml': 'amount: 1000'},
+            slug='prop1',
+            allow_empty=True,
+        )
+
+        self.assertEqual(result['status'], 'success')
+        self.assertEqual(result['commit_sha'], 'emptycommitsha')
+        self.mock_repo.create_git_commit.assert_called_once()
+        mock_ref.edit.assert_called_with(sha='emptycommitsha', force=False)
+
     def test_commit_proposal_changes_conflict(self):
         # 1. get_git_ref returns moved head
         mock_ref = MagicMock()
@@ -474,6 +543,31 @@ class BallotApiViewsUnitTests(SimpleTestCase):
         self.assertEqual(resp.status_code, 400)
         data = json.loads(resp.content)
         self.assertIn("already exists", data['error'])
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_save_proposal_api_empty_changes_returns_400(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.side_effect = ValueError("No changes detected; cannot create an empty commit.")
+        payload = {
+            'base_sha': 'basesha123',
+            'slug': 'test-prop',
+            'info': {'amount': 100000},
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 400)
+        data = json.loads(resp.content)
+        self.assertIn("No changes detected", data['error'])
+
 
     @patch('sa_util.api.ShareaboutsApi.current_user')
     def test_ballot_image_proxy_unauthenticated_returns_401(self, mock_current_user):

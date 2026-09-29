@@ -276,6 +276,7 @@ class GitHubContentManager:
         user_name: Optional[str] = None,
         user_email: Optional[str] = None,
         max_retries: int = 3,
+        allow_empty: bool = False,
     ) -> Dict[str, Any]:
         """
         Commits changes to the repository with rebase-and-retry logic for concurrent edits.
@@ -286,6 +287,9 @@ class GitHubContentManager:
         current_base_sha = base_sha
         files_to_update = files_to_update or {}
         files_to_delete = list(files_to_delete or [])
+
+        if not allow_empty and not files_to_update and not files_to_delete and not (original_slug and original_slug != slug):
+            raise ValueError("No changes detected; cannot create an empty commit.")
 
         # Validate collision and prune old files if renaming or creating a new proposal
         if slug:
@@ -381,6 +385,9 @@ class GitHubContentManager:
             base_tree = parent_commit.tree
 
             new_tree = repo.create_git_tree(tree_elements, base_tree)
+            if not allow_empty and new_tree.sha == base_tree.sha:
+                raise ValueError("No changes detected; cannot create an empty commit.")
+
             new_commit = repo.create_git_commit(
                 message=commit_msg,
                 tree=new_tree,

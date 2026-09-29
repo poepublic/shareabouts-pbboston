@@ -53,9 +53,9 @@
 
               <button
                 class="save-btn"
-                :disabled="isSaving || isSlugDuplicate"
+                :disabled="!canSave"
                 @click="saveCurrentProposal"
-                :title="isSlugDuplicate ? 'Cannot save: slug is already in use by another proposal' : 'Save changes to GitHub'"
+                :title="saveButtonTitle"
               >
                 <span class="save-icon">💾</span> Save Changes
               </button>
@@ -283,6 +283,23 @@ function isProposalDirty(prop) {
     isFieldDirty(prop, 'image')
   );
 }
+
+const canSave = computed(() => {
+  if (isSaving.value) return false;
+  if (isSlugDuplicate.value) return false;
+  if (!activeProposal.value) return false;
+  return isProposalDirty(activeProposal.value);
+});
+
+const saveButtonTitle = computed(() => {
+  if (isSlugDuplicate.value) {
+    return 'Cannot save: slug is already in use by another proposal';
+  }
+  if (!activeProposal.value || !isProposalDirty(activeProposal.value)) {
+    return 'No unsaved changes to save';
+  }
+  return 'Save changes to GitHub';
+});
 
 // Reset / Discard changes to proposal (#173)
 function resetCurrentProposal() {
@@ -560,7 +577,7 @@ async function onImageSelected(file) {
 // Save Proposal to GitHub & Conflict Handling (Task 2.3)
 // -------------------------------------------------------------
 async function saveCurrentProposal() {
-  if (!activeProposal.value) return;
+  if (!activeProposal.value || !canSave.value) return;
 
   if (isSlugDuplicate.value) {
     notification.value = {
