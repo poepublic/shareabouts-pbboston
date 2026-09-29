@@ -53,8 +53,9 @@
 
               <button
                 class="save-btn"
-                :disabled="isSaving"
+                :disabled="isSaving || isSlugDuplicate"
                 @click="saveCurrentProposal"
+                :title="isSlugDuplicate ? 'Cannot save: slug is already in use by another proposal' : 'Save changes to GitHub'"
               >
                 <span class="save-icon">💾</span> Save Changes
               </button>
@@ -66,6 +67,7 @@
             :proposal="activeProposal"
             :current-image-url="currentImageUrl"
             :is-field-dirty="isFieldDirty"
+            :is-slug-duplicate="isSlugDuplicate"
             :format-number="formatNumber"
             :get-proposal-title="getProposalTitle"
             @title-input="onTitleInput"
@@ -143,16 +145,36 @@ function generateUniqueSlug(title, currentSlug = null) {
   return candidate;
 }
 
+const isSlugDuplicate = computed(() => {
+  if (!activeProposal.value || !activeProposal.value.slug) return false;
+  const current = (activeProposal.value.slug || '').trim().toLowerCase();
+  return proposals.value.some(
+    (p) => p !== activeProposal.value && (p.slug || '').trim().toLowerCase() === current
+  );
+});
+
 function onSlugInput() {
   if (activeProposal.value) {
     activeProposal.value.customSlugSet = true;
+    const oldSlug = activeProposal.value.previous_slug;
+    const newSlug = activeProposal.value.slug;
+    if (oldSlug && oldSlug !== newSlug) {
+      clearDraftForProposal(oldSlug);
+      activeProposal.value.previous_slug = newSlug;
+    }
   }
 }
 
 function onTitleInput() {
   if (activeProposal.value && activeProposal.value.isNew && !activeProposal.value.customSlugSet) {
+    const oldSlug = activeProposal.value.slug;
     const title = activeProposal.value.translations.en.title;
-    activeProposal.value.slug = generateUniqueSlug(title, activeProposal.value.slug);
+    const newSlug = generateUniqueSlug(title, activeProposal.value.slug);
+    if (oldSlug !== newSlug) {
+      clearDraftForProposal(oldSlug);
+      activeProposal.value.slug = newSlug;
+      activeProposal.value.previous_slug = newSlug;
+    }
   }
 }
 
@@ -180,9 +202,17 @@ function saveDrafts(drafts) {
 function updateDraftForProposal(prop) {
   if (!prop) return;
   const drafts = getStoredDrafts();
+
+  if (prop.previous_slug && prop.previous_slug !== prop.slug) {
+    delete drafts[prop.previous_slug];
+    prop.previous_slug = prop.slug;
+  }
+
   if (isProposalDirty(prop)) {
     drafts[prop.slug] = {
       slug: prop.slug,
+      original_slug: prop.original_slug,
+      previous_slug: prop.slug,
       info: JSON.parse(JSON.stringify(prop.info || {})),
       translations: JSON.parse(JSON.stringify(prop.translations || {})),
       pendingImage: prop.pendingImage ? {
@@ -194,11 +224,13 @@ function updateDraftForProposal(prop) {
     };
   } else {
     delete drafts[prop.slug];
+    if (prop.original_slug) delete drafts[prop.original_slug];
   }
   saveDrafts(drafts);
 }
 
 function clearDraftForProposal(slug) {
+  if (!slug) return;
   const drafts = getStoredDrafts();
   if (drafts[slug]) {
     delete drafts[slug];
@@ -206,14 +238,19 @@ function clearDraftForProposal(slug) {
   }
 }
 
-function getServerProposal(slug) {
-  return serverProposals.value.find((p) => p.slug === slug);
+function getServerProposal(propOrSlug) {
+  if (!propOrSlug) return null;
+  if (typeof propOrSlug === 'string') {
+    return serverProposals.value.find((p) => p.slug === propOrSlug);
+  }
+  const lookup = propOrSlug.original_slug || propOrSlug.slug;
+  return serverProposals.value.find((p) => p.slug === lookup);
 }
 
 function isFieldDirty(prop, field) {
   if (!prop) return false;
   if (prop.isNew) return true;
-  const server = getServerProposal(prop.slug);
+  const server = getServerProposal(prop);
   if (!server) return true;
 
   switch (field) {
@@ -255,11 +292,16 @@ function resetCurrentProposal() {
     return;
   }
 
-  const slug = activeProposal.value.slug;
-  clearDraftForProposal(slug);
+  const currentSlug = activeProposal.value.slug;
+  const originalSlug = activeProposal.value.original_slug;
+  const previousSlug = activeProposal.value.previous_slug;
+
+  clearDraftForProposal(currentSlug);
+  if (previousSlug) clearDraftForProposal(previousSlug);
+  if (originalSlug) clearDraftForProposal(originalSlug);
 
   if (activeProposal.value.isNew) {
-    proposals.value = proposals.value.filter((p) => p.slug !== slug);
+    proposals.value = proposals.value.filter((p) => p !== activeProposal.value);
     activeProposal.value = proposals.value[0] || null;
     notification.value = {
       type: 'warning',
@@ -268,15 +310,19 @@ function resetCurrentProposal() {
     return;
   }
 
-  const server = getServerProposal(slug);
+  const server = getServerProposal(activeProposal.value);
   if (server) {
     activeProposal.value.slug = server.slug;
+    activeProposal.value.original_slug = server.slug;
+    activeProposal.value.previous_slug = server.slug;
     activeProposal.value.info = JSON.parse(JSON.stringify(server.info || {}));
     activeProposal.value.translations = JSON.parse(JSON.stringify(server.translations || {}));
     activeProposal.value.pendingImage = null;
     activeProposal.value.customSlugSet = false;
 
-    const idx = proposals.value.findIndex((p) => p.slug === slug);
+    const idx = proposals.value.findIndex(
+      (p) => p === activeProposal.value || p.slug === currentSlug || (originalSlug && p.slug === originalSlug)
+    );
     if (idx !== -1) {
       proposals.value[idx] = activeProposal.value;
     }
@@ -332,8 +378,16 @@ async function loadProposals() {
     // Rehydrate local storage drafts
     const drafts = getStoredDrafts();
     for (const prop of workingProposals) {
-      if (drafts[prop.slug]) {
-        const draft = drafts[prop.slug];
+      // Find matching draft by either current slug or original_slug
+      const draftKey = Object.keys(drafts).find(
+        (key) => key === prop.slug || drafts[key]?.original_slug === prop.slug
+      );
+      if (draftKey && drafts[draftKey]) {
+        const draft = drafts[draftKey];
+        if (draft.slug && draft.slug !== prop.slug) {
+          prop.slug = draft.slug;
+          prop.previous_slug = draft.slug;
+        }
         prop.info = { ...prop.info, ...(draft.info || {}) };
         prop.translations = { ...prop.translations, ...(draft.translations || {}) };
         if (draft.pendingImage) prop.pendingImage = draft.pendingImage;
@@ -343,7 +397,7 @@ async function loadProposals() {
 
     // Add any drafts that were newly created proposals not yet on server
     for (const [slug, draft] of Object.entries(drafts)) {
-      if (draft.isNew && !workingProposals.some((p) => p.slug === slug)) {
+      if (draft.isNew && !workingProposals.some((p) => p.slug === slug || (draft.original_slug && p.original_slug === draft.original_slug))) {
         workingProposals.unshift(normalizeProposal({
           ...draft,
           isNew: true,
@@ -374,6 +428,8 @@ async function loadProposals() {
 function normalizeProposal(raw) {
   const prop = {
     slug: raw.slug || '',
+    original_slug: raw.original_slug !== undefined ? raw.original_slug : (raw.isNew ? null : raw.slug || null),
+    previous_slug: raw.previous_slug || raw.slug || '',
     info: {
       amount: raw.info?.amount ?? 100000,
       image: raw.info?.image || '',
@@ -406,6 +462,8 @@ function addNewProposal() {
   const newSlug = generateUniqueSlug('New Ballot Proposal');
   const newProp = {
     slug: newSlug,
+    original_slug: null,
+    previous_slug: newSlug,
     info: {
       amount: 100000,
       image: '',
@@ -455,6 +513,14 @@ function onImageSelected(file) {
 async function saveCurrentProposal() {
   if (!activeProposal.value) return;
 
+  if (isSlugDuplicate.value) {
+    notification.value = {
+      type: 'error',
+      message: `Cannot save: slug "${activeProposal.value.slug}" is already in use by another proposal.`,
+    };
+    return;
+  }
+
   isSaving.value = true;
   saveSuccess.value = false;
   notification.value = null;
@@ -464,6 +530,8 @@ async function saveCurrentProposal() {
     const payload = {
       base_sha: baseSha.value,
       slug: prop.slug,
+      original_slug: prop.isNew ? null : prop.original_slug,
+      is_new: !!prop.isNew,
       info: {
         amount: parseInt(prop.info.amount, 10) || 0,
         image: prop.info.image || '',
@@ -508,7 +576,7 @@ async function saveCurrentProposal() {
         const freshData = await freshRes.json();
         baseSha.value = freshData.head_sha || freshData.tree_sha;
         serverProposals.value = (freshData.proposals || []).map(normalizeProposal);
-        conflictHeadProposal.value = serverProposals.value.find((p) => p.slug === prop.slug) || null;
+        conflictHeadProposal.value = serverProposals.value.find((p) => p.slug === (prop.original_slug || prop.slug)) || null;
       }
       showConflictModal.value = true;
       return;
@@ -520,20 +588,29 @@ async function saveCurrentProposal() {
 
     // Success: update base_sha with new commit SHA
     baseSha.value = data.commit_sha || data.head_sha || baseSha.value;
+    
+    // Clear drafts for all versions of this slug
+    clearDraftForProposal(prop.slug);
+    if (prop.original_slug) clearDraftForProposal(prop.original_slug);
+    if (prop.previous_slug) clearDraftForProposal(prop.previous_slug);
+
+    const oldOriginalSlug = prop.original_slug;
     prop.isNew = false;
+    prop.original_slug = prop.slug;
+    prop.previous_slug = prop.slug;
     prop.pendingImage = null;
 
     // Update server baseline so dirty highlight clears
     const updatedServerCopy = normalizeProposal(JSON.parse(JSON.stringify(prop)));
-    const serverIdx = serverProposals.value.findIndex((p) => p.slug === prop.slug);
+    const serverIdx = serverProposals.value.findIndex(
+      (p) => p.slug === prop.slug || (oldOriginalSlug && p.slug === oldOriginalSlug)
+    );
     if (serverIdx !== -1) {
       serverProposals.value[serverIdx] = updatedServerCopy;
     } else {
       serverProposals.value.unshift(updatedServerCopy);
     }
 
-    // Clear local storage draft on successful save
-    clearDraftForProposal(prop.slug);
     saveSuccess.value = true;
 
     notification.value = {
@@ -567,6 +644,9 @@ function resolveConflictKeepLocal() {
 function resolveConflictUseHead() {
   if (conflictHeadProposal.value && activeProposal.value) {
     const head = conflictHeadProposal.value;
+    activeProposal.value.slug = head.slug;
+    activeProposal.value.original_slug = head.slug;
+    activeProposal.value.previous_slug = head.slug;
     activeProposal.value.info = JSON.parse(JSON.stringify(head.info || {}));
     activeProposal.value.translations = JSON.parse(JSON.stringify(head.translations || {}));
     activeProposal.value.pendingImage = null;

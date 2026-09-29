@@ -10,11 +10,14 @@
         id="proposal-slug-input"
         type="text"
         class="external-field-input slug-input"
-        :class="{ 'is-dirty': isFieldDirty(proposal, 'slug') }"
+        :class="{ 'is-dirty': isFieldDirty(proposal, 'slug'), 'has-error': isSlugDuplicate }"
         v-model="proposal.slug"
         placeholder="e.g. bus-shelter-upgrades"
         @input="$emit('slug-input')"
       />
+      <div v-if="isSlugDuplicate" class="field-error-message">
+        ⚠️ This slug is already in use by another proposal.
+      </div>
     </div>
 
     <!-- Ballot Preview Frame (Mimics /vote/ballot) -->
@@ -183,6 +186,10 @@ const props = defineProps({
     type: Function,
     required: true,
   },
+  isSlugDuplicate: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits([
@@ -299,6 +306,18 @@ watch(
 
 .slug-input {
   font-family: monospace;
+}
+
+.external-field-input.has-error {
+  border-color: #dc3545 !important;
+  background-color: #fff8f8 !important;
+}
+
+.field-error-message {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #dc3545;
+  font-weight: 600;
 }
 
 .external-field-input:focus {

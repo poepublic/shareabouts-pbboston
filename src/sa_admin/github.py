@@ -230,6 +230,8 @@ class GitHubContentManager:
         base_sha: str,
         files_to_update: Optional[Dict[str, Union[str, bytes]]] = None,
         files_to_delete: Optional[List[str]] = None,
+        original_slug: Optional[str] = None,
+        is_new: bool = False,
         message: Optional[str] = None,
         slug: Optional[str] = None,
         user_sso_id: Optional[str] = None,
@@ -245,7 +247,29 @@ class GitHubContentManager:
         repo = self.gh_repo
         current_base_sha = base_sha
         files_to_update = files_to_update or {}
-        files_to_delete = files_to_delete or []
+        files_to_delete = list(files_to_delete or [])
+
+        # Validate collision and prune old files if renaming or creating a new proposal
+        if slug:
+            base_commit = repo.get_git_commit(current_base_sha)
+            tree_data = repo.get_git_tree(base_commit.tree.sha, recursive=True)
+            ballot_items = [
+                item for item in tree_data.tree
+                if item.type == "blob" and item.path.startswith(f"{self.ballot_folder}/")
+            ]
+
+            # Check collision: if new or renaming to a different slug
+            if is_new or (original_slug and original_slug != slug):
+                new_prefix = f"{self.ballot_folder}/{slug}/"
+                if any(item.path.startswith(new_prefix) for item in ballot_items):
+                    raise ValueError(f"A proposal with slug '{slug}' already exists in the repository.")
+
+            # If renaming an existing proposal, find all files under original_slug to delete
+            if original_slug and original_slug != slug:
+                old_prefix = f"{self.ballot_folder}/{original_slug}/"
+                for item in ballot_items:
+                    if item.path.startswith(old_prefix) and item.path not in files_to_delete:
+                        files_to_delete.append(item.path)
 
         now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         author = InputGitAuthor(

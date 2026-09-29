@@ -191,6 +191,8 @@ def ballot_proposal_save_api(request, config, api):
     delete_slug = body.get('delete_slug')
     message = body.get('message')
 
+    original_slug = body.get('original_slug')
+    is_new = body.get('is_new', False)
     if delete_slug and not message:
         message = f"Delete proposal {delete_slug}"
 
@@ -229,7 +231,7 @@ def ballot_proposal_save_api(request, config, api):
         for path, content in files.items():
             files_to_update[path] = content
 
-    if not files_to_update and not files_to_delete:
+    if not files_to_update and not files_to_delete and not (original_slug and original_slug != slug):
         return JsonResponse({'error': 'No files or proposal changes provided to commit.'}, status=400)
 
     user = api.current_user()
@@ -242,6 +244,8 @@ def ballot_proposal_save_api(request, config, api):
             base_sha=base_sha,
             files_to_update=files_to_update,
             files_to_delete=files_to_delete,
+            original_slug=original_slug,
+            is_new=is_new,
             message=message,
             slug=slug or delete_slug,
             user_sso_id=user_sso_id,
@@ -249,6 +253,8 @@ def ballot_proposal_save_api(request, config, api):
             user_email=user_email,
         )
         return JsonResponse(result, status=200)
+    except ValueError as e:
+        return JsonResponse({'error': str(e)}, status=400)
     except GitConflictError as e:
         return JsonResponse({
             'error': 'conflict',

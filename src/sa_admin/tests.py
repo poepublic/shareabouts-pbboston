@@ -144,6 +144,70 @@ class GitHubContentManagerUnitTests(SimpleTestCase):
         self.assertEqual(err.head_sha, 'movedhead')
         self.assertIn('src/flavors/cycle3/ballot/prop1/info.yaml', err.conflicting_files)
 
+    def test_commit_proposal_changes_rename_prunes_old_files(self):
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
+
+        blob = MagicMock(sha='newblobsha')
+        self.mock_repo.create_git_blob.return_value = blob
+
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'basetreesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
+
+        # Mock base_tree containing old proposal files
+        old_item1 = MagicMock(path='src/flavors/cycle3/ballot/prop-old/info.yaml', type='blob', sha='oldblob1')
+        old_item2 = MagicMock(path='src/flavors/cycle3/ballot/prop-old/en.md', type='blob', sha='oldblob2')
+        other_item = MagicMock(path='src/flavors/cycle3/ballot/other-prop/info.yaml', type='blob', sha='otherblob')
+        mock_tree = MagicMock()
+        mock_tree.tree = [old_item1, old_item2, other_item]
+        self.mock_repo.get_git_tree.return_value = mock_tree
+
+        new_tree = MagicMock(sha='newtreesha')
+        self.mock_repo.create_git_tree.return_value = new_tree
+
+        new_commit = MagicMock(sha='newcommitsha')
+        self.mock_repo.create_git_commit.return_value = new_commit
+
+        result = self.mgr.commit_proposal_changes(
+            base_sha='basehead',
+            files_to_update={'src/flavors/cycle3/ballot/prop-new/info.yaml': 'amount: 2000'},
+            original_slug='prop-old',
+            slug='prop-new',
+            user_sso_id='user123',
+        )
+
+        self.assertEqual(result['status'], 'success')
+        # Verify create_git_tree was called with deletions for the old proposal files
+        tree_elements = self.mock_repo.create_git_tree.call_args[0][0]
+        paths_to_delete = [elem._InputGitTreeElement__path for elem in tree_elements if elem._InputGitTreeElement__sha is None]
+        self.assertIn('src/flavors/cycle3/ballot/prop-old/info.yaml', paths_to_delete)
+        self.assertIn('src/flavors/cycle3/ballot/prop-old/en.md', paths_to_delete)
+
+    def test_commit_proposal_changes_collision_raises_error(self):
+        mock_ref = MagicMock()
+        mock_ref.object.sha = 'basehead'
+        self.mock_repo.get_git_ref.return_value = mock_ref
+
+        parent_commit = MagicMock()
+        parent_commit.tree.sha = 'basetreesha'
+        self.mock_repo.get_git_commit.return_value = parent_commit
+
+        existing_item = MagicMock(path='src/flavors/cycle3/ballot/already-exists/info.yaml', type='blob')
+        mock_tree = MagicMock()
+        mock_tree.tree = [existing_item]
+        self.mock_repo.get_git_tree.return_value = mock_tree
+
+        with self.assertRaises(ValueError) as cm:
+            self.mgr.commit_proposal_changes(
+                base_sha='basehead',
+                files_to_update={'src/flavors/cycle3/ballot/already-exists/info.yaml': 'amount: 2000'},
+                original_slug='prop-old',
+                slug='already-exists',
+            )
+        self.assertIn("already exists", str(cm.exception))
+
 
 class BallotApiViewsUnitTests(SimpleTestCase):
     def setUp(self):
@@ -302,6 +366,63 @@ class BallotApiViewsUnitTests(SimpleTestCase):
         call_kwargs = mock_commit.call_args[1]
         self.assertEqual(call_kwargs['files_to_delete'], payload['files_to_delete'])
         self.assertEqual(call_kwargs['slug'], 'old-proposal')
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_save_proposal_api_with_original_slug(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.return_value = {
+            'status': 'success',
+            'commit_sha': 'rename123',
+            'tree_sha': 'renametree123',
+            'head_sha': 'rename123',
+        }
+        payload = {
+            'base_sha': 'basesha123',
+            'slug': 'new-slug',
+            'original_slug': 'old-slug',
+            'info': {'amount': 150000},
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 200)
+        mock_commit.assert_called_once()
+        call_kwargs = mock_commit.call_args[1]
+        self.assertEqual(call_kwargs['slug'], 'new-slug')
+        self.assertEqual(call_kwargs['original_slug'], 'old-slug')
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_save_proposal_api_collision_returns_400(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.side_effect = ValueError("A proposal with slug 'existing' already exists in the repository.")
+        payload = {
+            'base_sha': 'basesha123',
+            'slug': 'existing',
+            'original_slug': 'old-slug',
+            'info': {'amount': 150000},
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 400)
+        data = json.loads(resp.content)
+        self.assertIn("already exists", data['error'])
 
     def test_get_private_key_str_formats(self):
         pem_content = "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA0...\n-----END RSA PRIVATE KEY-----\n"
