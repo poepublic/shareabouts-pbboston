@@ -8,4 +8,6 @@ urlpatterns = [
     path('generate-code', vote_views.admin_generate_code, name='admin_vote_generate_code'),
     path('report/', views.report, name='admin_report'),
     path('detail/<int:place_id>/', views.place_detail, name='admin_detail'),
+    path('ballot/proposals/', views.ballot_proposals_api, name='admin_ballot_proposals'),
+    path('ballot/proposals/save/', views.ballot_proposal_save_api, name='admin_ballot_proposal_save'),
 ]
