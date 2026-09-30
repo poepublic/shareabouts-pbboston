@@ -41,12 +41,39 @@
           </svg>
         </div>
 
-        <!-- Header Fill -->
-        <div class="header-fill-area"></div>
+        <!-- Header Fill with Language Display -->
+        <div class="header-fill-area">
+          <span class="active-lang-indicator">
+            {{ activeLanguageLabel }} ({{ activeLanguage }})
+          </span>
+        </div>
       </div>
 
       <!-- Frame Body (Fog grey background matching /vote/ballot) -->
       <div class="ballot-frame-body">
+        <!-- Missing Translation Warning Banner for Non-English Views (#175) -->
+        <div v-if="activeLanguage !== 'en' && isCurrentTranslationMissing" class="translation-missing-banner">
+          <span class="banner-icon">⚠️</span>
+          <div class="banner-text-box">
+            <strong>Missing translation for {{ activeLanguageLabel }}.</strong>
+            <span>Enter translation below, or click <strong>Auto-translate</strong> above to generate a first-pass from English.</span>
+          </div>
+        </div>
+
+        <!-- English Source Reference Box when Editing Translations -->
+        <div
+          v-if="activeLanguage !== 'en' && (proposal.translations?.en?.title || proposal.translations?.en?.content)"
+          class="english-reference-box"
+        >
+          <div class="ref-header">
+            <span class="ref-title-badge">English Original</span>
+            <span class="ref-en-title">{{ proposal.translations?.en?.title || '(No English Title)' }}</span>
+          </div>
+          <p v-if="proposal.translations?.en?.content" class="ref-en-content">
+            {{ proposal.translations?.en?.content }}
+          </p>
+        </div>
+
         <!-- Proposal Card -->
         <div class="proposal-card">
           <!-- Proposal Title Row with Pill Checkbox -->
@@ -58,16 +85,16 @@
               <textarea
                 ref="titleInputRef"
                 class="proposal-title-input"
-                :class="{ 'is-dirty': isFieldDirty(proposal, 'title') }"
-                v-model="proposal.translations.en.title"
-                placeholder="PROPOSAL TITLE"
+                :class="{ 'is-dirty': isFieldDirty(proposal, 'title', activeLanguage) }"
+                v-model="currentTranslation.title"
+                :placeholder="activeLanguage === 'en' ? 'PROPOSAL TITLE' : `PROPOSAL TITLE (${activeLanguageLabel.toUpperCase()})`"
                 rows="1"
                 @input="handleTitleInput"
               ></textarea>
             </div>
           </div>
 
-          <!-- Proposal Cost (Green bold amount, editable) -->
+          <!-- Proposal Cost (Green bold amount, editable across all languages) -->
           <div class="proposal-cost-row">
             <span class="cost-dollar">$</span>
             <input
@@ -87,9 +114,9 @@
             <textarea
               ref="descInputRef"
               class="proposal-description-input"
-              :class="{ 'is-dirty': isFieldDirty(proposal, 'content') }"
-              v-model="proposal.translations.en.content"
-              placeholder="ENTER PROPOSAL DESCRIPTION (PLAIN TEXT PARAGRAPHS)..."
+              :class="{ 'is-dirty': isFieldDirty(proposal, 'content', activeLanguage) }"
+              v-model="currentTranslation.content"
+              :placeholder="activeLanguage === 'en' ? 'ENTER PROPOSAL DESCRIPTION (PLAIN TEXT PARAGRAPHS)...' : `ENTER ${activeLanguageLabel.toUpperCase()} DESCRIPTION...`"
               rows="3"
               @input="autoResizeTextarea($event.target)"
             ></textarea>
@@ -110,7 +137,7 @@
               v-if="currentImageUrl"
               class="proposal-image"
               :src="currentImageUrl"
-              :alt="proposal.translations?.en?.image_alt || getProposalTitle(proposal)"
+              :alt="currentTranslation.image_alt || proposal.translations?.en?.image_alt || getProposalTitle(proposal)"
             />
             <div v-else class="image-empty-placeholder">
               <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -121,7 +148,7 @@
               <span class="placeholder-text">Click to choose image</span>
             </div>
 
-            <!-- Hover overlay with pencil icon badge (Image 4) -->
+            <!-- Hover overlay with pencil icon badge -->
             <div class="image-hover-overlay">
               <div class="pencil-badge">
                 <svg class="pencil-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -144,19 +171,21 @@
       </div>
     </div>
 
-    <!-- Image Alternative Text field (Below the preview frame, per user feedback) -->
+    <!-- Image Alternative Text field (Below the preview frame, language-specific) -->
     <div class="external-field-row alt-field-row">
       <div class="field-label-row">
-        <label class="external-field-label" for="proposal-alt-input">Image Alternative Text:</label>
-        <span v-if="isFieldDirty(proposal, 'image_alt')" class="dirty-tag">modified</span>
+        <label class="external-field-label" for="proposal-alt-input">
+          Image Alternative Text ({{ activeLanguageLabel }}):
+        </label>
+        <span v-if="isFieldDirty(proposal, 'image_alt', activeLanguage)" class="dirty-tag">modified</span>
       </div>
       <input
         id="proposal-alt-input"
         type="text"
         class="external-field-input"
-        :class="{ 'is-dirty': isFieldDirty(proposal, 'image_alt') }"
-        v-model="proposal.translations.en.image_alt"
-        placeholder="Describe the image for screen readers..."
+        :class="{ 'is-dirty': isFieldDirty(proposal, 'image_alt', activeLanguage) }"
+        v-model="currentTranslation.image_alt"
+        :placeholder="`Describe the image in ${activeLanguageLabel} for screen readers...`"
       />
     </div>
   </div>
@@ -170,11 +199,23 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  activeLanguage: {
+    type: String,
+    default: 'en',
+  },
+  supportedLanguages: {
+    type: Array,
+    default: () => [],
+  },
   currentImageUrl: {
     type: String,
     default: '',
   },
   isFieldDirty: {
+    type: Function,
+    required: true,
+  },
+  isTranslationMissing: {
     type: Function,
     required: true,
   },
@@ -201,6 +242,34 @@ const emit = defineEmits([
 const titleInputRef = ref(null);
 const descInputRef = ref(null);
 const fileInputRef = ref(null);
+
+const activeLanguageLabel = computed(() => {
+  const match = props.supportedLanguages.find((l) => l.code === props.activeLanguage);
+  return match ? match.label : props.activeLanguage.toUpperCase();
+});
+
+const isCurrentTranslationMissing = computed(() => {
+  return props.isTranslationMissing(props.proposal, props.activeLanguage);
+});
+
+const currentTranslation = computed(() => {
+  if (!props.proposal) {
+    return { title: '', content: '', image_alt: '', language: props.activeLanguage };
+  }
+  if (!props.proposal.translations) {
+    props.proposal.translations = {};
+  }
+  if (!props.proposal.translations[props.activeLanguage]) {
+    props.proposal.translations[props.activeLanguage] = {
+      language: props.activeLanguage,
+      title: '',
+      content: '',
+      image_alt: '',
+      last_updated: '',
+    };
+  }
+  return props.proposal.translations[props.activeLanguage];
+});
 
 function triggerImageUpload() {
   fileInputRef.value?.click();
@@ -241,9 +310,9 @@ function handleFileChange(event) {
   }
 }
 
-// Auto-adjust textareas on proposal change
+// Auto-adjust textareas on proposal change or language change
 watch(
-  () => props.proposal,
+  [() => props.proposal, () => props.activeLanguage],
   () => {
     nextTick(() => {
       autoResizeTextarea(titleInputRef.value);
@@ -405,12 +474,93 @@ watch(
 .header-fill-area {
   flex: 1;
   background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 14px;
+}
+
+.active-lang-indicator {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* Body inside frame */
 .ballot-frame-body {
   padding: 16px 14px;
   background-color: #efeff4;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Translation Missing Banner (#175) */
+.translation-missing-banner {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid #f59e0b;
+  padding: 10px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #92400e;
+}
+
+.banner-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.banner-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.35;
+}
+
+/* English Reference Box */
+.english-reference-box {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+}
+
+.ref-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ref-title-badge {
+  background-color: #0E0E30;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.ref-en-title {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.ref-en-content {
+  margin: 0;
+  color: #475569;
+  line-height: 1.35;
+  font-style: italic;
 }
 
 /* Proposal Card matching sa_vote style */
@@ -623,7 +773,7 @@ watch(
   opacity: 1;
 }
 
-/* When empty, show the overlay/badge by default per user feedback */
+/* When empty, show the overlay/badge by default */
 .proposal-image-wrapper.is-empty .image-hover-overlay {
   opacity: 0.6;
 }

@@ -161,6 +161,7 @@ def ballot_proposals_api(request, config, api):
             'tree_sha': state['tree_sha'],
             'proposals': state['proposals'],
             'files': state['files'],
+            'languages': config.get('languages', []),
         }, status=200)
     except Exception as e:
         logger.exception('Failed to fetch ballot proposals from GitHub')

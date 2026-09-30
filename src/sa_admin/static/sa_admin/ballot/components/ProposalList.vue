@@ -37,6 +37,13 @@
           >●</span>
         </div>
         <div class="item-right">
+          <span
+            v-if="supportedLanguages.length > 0"
+            :class="['trans-indicator', getMissingTranslationsCount(prop) > 0 ? 'missing' : 'complete']"
+            :title="getMissingTranslationsCount(prop) > 0 ? `${getMissingTranslationsCount(prop)} language translation(s) missing` : 'All threshold languages translated'"
+          >
+            {{ getMissingTranslationsCount(prop) > 0 ? '⚠️' : '✓' }} {{ supportedLanguages.length - getMissingTranslationsCount(prop) }}/{{ supportedLanguages.length }}
+          </span>
           <span class="item-amount">${{ formatNumber(prop.info?.amount || 0) }}</span>
           <button
             class="delete-item-btn"
@@ -82,6 +89,10 @@ const props = defineProps({
     type: Function,
     required: true,
   },
+  supportedLanguages: {
+    type: Array,
+    default: () => [],
+  },
 });
 
 defineEmits(['select', 'add', 'delete']);
@@ -97,12 +108,24 @@ const filteredProposals = computed(() => {
     return title.includes(q) || slug.includes(q);
   });
 });
+
+function getMissingTranslationsCount(prop) {
+  if (!prop || !props.supportedLanguages.length) return 0;
+  let missing = 0;
+  for (const lang of props.supportedLanguages) {
+    const t = prop.translations?.[lang.code];
+    if (!t || !t.title || !t.content) {
+      missing++;
+    }
+  }
+  return missing;
+}
 </script>
 
 <style scoped>
 .proposal-sidebar {
-  width: 360px;
-  min-width: 320px;
+  width: 380px;
+  min-width: 340px;
   background-color: #ffffff;
   border-right: 1px solid #dee2e6;
   display: flex;
@@ -238,7 +261,29 @@ const filteredProposals = computed(() => {
 .item-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.trans-indicator {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.trans-indicator.missing {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.trans-indicator.complete {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
 }
 
 .item-amount {

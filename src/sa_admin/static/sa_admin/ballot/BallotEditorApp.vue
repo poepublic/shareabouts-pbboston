@@ -13,6 +13,7 @@
         :proposals="proposals"
         :active-proposal="activeProposal"
         :loading="loading"
+        :supported-languages="supportedLanguages"
         :is-proposal-dirty="isProposalDirty"
         :format-number="formatNumber"
         :get-proposal-title="getProposalTitle"
@@ -30,12 +31,45 @@
         <div v-else class="mobile-editor-container">
           <!-- Top Action / Status Bar -->
           <div class="editor-top-bar">
-            <div class="lang-selector">
-              <span class="lang-badge">English (en)</span>
+            <!-- Language Selector Group (#175) -->
+            <div class="lang-selector-group">
+              <label for="ballot-lang-select" class="lang-select-label">Language:</label>
+              <div class="select-wrapper">
+                <select
+                  id="ballot-lang-select"
+                  v-model="activeLanguage"
+                  class="lang-select-dropdown"
+                  :class="{ 'has-missing': isTranslationMissing(activeProposal, activeLanguage) }"
+                >
+                  <option
+                    v-for="lang in supportedLanguages"
+                    :key="lang.code"
+                    :value="lang.code"
+                  >
+                    {{ lang.label }} ({{ lang.code }}) {{ isTranslationMissing(activeProposal, lang.code) ? '⚠️ [missing]' : '✓' }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Auto-translate Button (#166 / #175) -->
+              <button
+                v-if="activeLanguage !== 'en'"
+                class="auto-translate-btn"
+                :disabled="isTranslating || !hasEnglishSource(activeProposal)"
+                @click="handleAutoTranslate"
+                :title="hasEnglishSource(activeProposal) ? `Auto-translate from English into ${getActiveLanguageLabel()}` : 'English title or content is required to auto-translate'"
+              >
+                <span v-if="isTranslating" class="spinner-sm"></span>
+                <span v-else class="magic-icon">✨</span>
+                {{ isTranslating ? 'Translating...' : 'Auto-translate' }}
+              </button>
+
               <span v-if="isProposalDirty(activeProposal)" class="unsaved-changes-pill">
                 Unsaved Edits
               </span>
             </div>
+
+            <!-- Action Buttons: Discard & Save -->
             <div class="editor-actions">
               <span v-if="isSaving" class="status-indicator saving">Saving to GitHub...</span>
               <span v-else-if="saveSuccess" class="status-indicator success">Saved ✓</span>
@@ -65,8 +99,11 @@
           <!-- WYSIWYG Ballot View Component -->
           <BallotWysiwygView
             :proposal="activeProposal"
+            :active-language="activeLanguage"
+            :supported-languages="supportedLanguages"
             :current-image-url="currentImageUrl"
             :is-field-dirty="isFieldDirty"
+            :is-translation-missing="isTranslationMissing"
             :is-slug-duplicate="isSlugDuplicate"
             :format-number="formatNumber"
             :get-proposal-title="getProposalTitle"
@@ -99,6 +136,21 @@ import ConflictModal from './components/ConflictModal.vue';
 
 const LOCAL_STORAGE_KEY = 'pbboston_ballot_drafts';
 
+const DEFAULT_LANGUAGES = [
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Español' },
+  { code: 'ht', label: 'Kreyòl Ayisyen' },
+  { code: 'zh-hans', label: '简体中文' },
+  { code: 'ar', label: 'العربية' },
+  { code: 'pt-br', label: 'Português' },
+  { code: 'so', label: 'Soomaali' },
+  { code: 'vi', label: 'Tiếng Việt' },
+];
+
+const supportedLanguages = ref([...DEFAULT_LANGUAGES]);
+const activeLanguage = ref('en');
+const isTranslating = ref(false);
+
 const proposals = ref([]);
 const serverProposals = ref([]);
 const activeProposal = ref(null);
@@ -112,6 +164,27 @@ const notification = ref(null);
 const showConflictModal = ref(false);
 const conflictHeadProposal = ref(null);
 const conflictLocalProposal = ref(null);
+
+// -------------------------------------------------------------
+// Language Helpers (#175)
+// -------------------------------------------------------------
+function getActiveLanguageLabel(lang = activeLanguage.value) {
+  const match = supportedLanguages.value.find((l) => l.code === lang);
+  return match ? match.label : lang.toUpperCase();
+}
+
+function isTranslationMissing(prop, langCode) {
+  if (!prop || !prop.translations) return true;
+  const t = prop.translations[langCode];
+  if (!t) return true;
+  return !(t.title && t.title.trim()) || !(t.content && t.content.trim());
+}
+
+function hasEnglishSource(prop) {
+  if (!prop || !prop.translations?.en) return false;
+  const en = prop.translations.en;
+  return !!((en.title && en.title.trim()) || (en.content && en.content.trim()));
+}
 
 // -------------------------------------------------------------
 // Slug Generation with Collision Resolution (Task 2.1)
@@ -166,9 +239,15 @@ function onSlugInput() {
 }
 
 function onTitleInput() {
-  if (activeProposal.value && activeProposal.value.isNew && !activeProposal.value.customSlugSet) {
+  // Only auto-update slug when editing the primary English title
+  if (
+    activeLanguage.value === 'en' &&
+    activeProposal.value &&
+    activeProposal.value.isNew &&
+    !activeProposal.value.customSlugSet
+  ) {
     const oldSlug = activeProposal.value.slug;
-    const title = activeProposal.value.translations.en.title;
+    const title = activeProposal.value.translations?.en?.title;
     const newSlug = generateUniqueSlug(title, activeProposal.value.slug);
     if (oldSlug !== newSlug) {
       clearDraftForProposal(oldSlug);
@@ -179,7 +258,7 @@ function onTitleInput() {
 }
 
 // -------------------------------------------------------------
-// Local Storage Persistence & Dirty State Tracking (Task 2.2)
+// Local Storage Persistence & Dirty State Tracking (Task 2.2 / 3.2)
 // -------------------------------------------------------------
 function getStoredDrafts() {
   try {
@@ -247,7 +326,7 @@ function getServerProposal(propOrSlug) {
   return serverProposals.value.find((p) => p.slug === lookup);
 }
 
-function isFieldDirty(prop, field) {
+function isFieldDirty(prop, field, lang = activeLanguage.value) {
   if (!prop) return false;
   if (prop.isNew) return true;
   const server = getServerProposal(prop);
@@ -256,16 +335,16 @@ function isFieldDirty(prop, field) {
   switch (field) {
     case 'slug':
       return prop.slug !== server.slug;
-    case 'title':
-      return (prop.translations?.en?.title || '') !== (server.translations?.en?.title || '');
     case 'amount':
       return Number(prop.info?.amount || 0) !== Number(server.info?.amount || 0);
-    case 'content':
-      return (prop.translations?.en?.content || '') !== (server.translations?.en?.content || '');
-    case 'image_alt':
-      return (prop.translations?.en?.image_alt || '') !== (server.translations?.en?.image_alt || '');
     case 'image':
       return (prop.info?.image || '') !== (server.info?.image || '') || !!prop.pendingImage;
+    case 'title':
+      return (prop.translations?.[lang]?.title || '') !== (server.translations?.[lang]?.title || '');
+    case 'content':
+      return (prop.translations?.[lang]?.content || '') !== (server.translations?.[lang]?.content || '');
+    case 'image_alt':
+      return (prop.translations?.[lang]?.image_alt || '') !== (server.translations?.[lang]?.image_alt || '');
     default:
       return false;
   }
@@ -274,14 +353,31 @@ function isFieldDirty(prop, field) {
 function isProposalDirty(prop) {
   if (!prop) return false;
   if (prop.isNew) return true;
-  return (
-    isFieldDirty(prop, 'slug') ||
-    isFieldDirty(prop, 'title') ||
-    isFieldDirty(prop, 'amount') ||
-    isFieldDirty(prop, 'content') ||
-    isFieldDirty(prop, 'image_alt') ||
-    isFieldDirty(prop, 'image')
-  );
+  const server = getServerProposal(prop);
+  if (!server) return true;
+
+  if (isFieldDirty(prop, 'slug') || isFieldDirty(prop, 'amount') || isFieldDirty(prop, 'image')) {
+    return true;
+  }
+
+  // Check dirty across all languages
+  const allLangs = new Set([
+    ...Object.keys(prop.translations || {}),
+    ...Object.keys(server.translations || {}),
+    ...supportedLanguages.value.map((l) => l.code),
+  ]);
+
+  for (const lang of allLangs) {
+    if (
+      isFieldDirty(prop, 'title', lang) ||
+      isFieldDirty(prop, 'content', lang) ||
+      isFieldDirty(prop, 'image_alt', lang)
+    ) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 const canSave = computed(() => {
@@ -354,9 +450,14 @@ function resetCurrentProposal() {
 // -------------------------------------------------------------
 // Format Utilities
 // -------------------------------------------------------------
-function getProposalTitle(prop) {
+function getProposalTitle(prop, lang = activeLanguage.value) {
   if (!prop) return '';
-  return prop.translations?.en?.title || prop.slug || '(Untitled Proposal)';
+  return (
+    prop.translations?.[lang]?.title ||
+    prop.translations?.en?.title ||
+    prop.slug ||
+    '(Untitled Proposal)'
+  );
 }
 
 function formatNumber(num) {
@@ -382,6 +483,92 @@ const currentImageUrl = computed(() => {
 });
 
 // -------------------------------------------------------------
+// Automated Translation Service Integration (#166 / #175)
+// -------------------------------------------------------------
+async function handleAutoTranslate() {
+  if (!activeProposal.value || activeLanguage.value === 'en') return;
+
+  const targetLang = activeLanguage.value;
+  const targetLabel = getActiveLanguageLabel(targetLang);
+  const enTrans = activeProposal.value.translations?.en || {};
+
+  if (!enTrans.title && !enTrans.content) {
+    notification.value = {
+      type: 'warning',
+      message: 'English proposal title or description is required to generate translations.',
+    };
+    return;
+  }
+
+  const existingTarget = activeProposal.value.translations?.[targetLang];
+  if (existingTarget && ((existingTarget.title && existingTarget.title.trim()) || (existingTarget.content && existingTarget.content.trim()))) {
+    if (
+      !confirm(
+        `Note: Using automatic translation will override manual translations for ${targetLabel}. Are you sure you want to proceed?`
+      )
+    ) {
+      return;
+    }
+  }
+
+  isTranslating.value = true;
+  notification.value = null;
+
+  try {
+    const payload = {
+      target_language: targetLang,
+      source_language: 'en',
+      texts: {
+        title: enTrans.title || '',
+        content: enTrans.content || '',
+        image_alt: enTrans.image_alt || '',
+      },
+    };
+
+    const res = await fetch('/admin/ballot/translate/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || `HTTP ${res.status}`);
+    }
+
+    if (!activeProposal.value.translations) {
+      activeProposal.value.translations = {};
+    }
+    activeProposal.value.translations[targetLang] = {
+      language: targetLang,
+      title: data.translations?.title || '',
+      content: data.translations?.content || '',
+      image_alt: data.translations?.image_alt || '',
+      last_updated: new Date().toISOString(),
+    };
+
+    updateDraftForProposal(activeProposal.value);
+
+    notification.value = {
+      type: 'success',
+      message: `Successfully auto-translated proposal into ${targetLabel}! Changes are stored locally; click "Save Changes" to commit.`,
+    };
+  } catch (err) {
+    console.error('Translation error:', err);
+    notification.value = {
+      type: 'error',
+      message: `Failed to translate proposal: ${err.message}`,
+    };
+  } finally {
+    isTranslating.value = false;
+  }
+}
+
+// -------------------------------------------------------------
 // Load Proposals with LocalStorage Drafts Rehydration
 // -------------------------------------------------------------
 async function loadProposals() {
@@ -396,6 +583,10 @@ async function loadProposals() {
     }
     const data = await res.json();
     baseSha.value = data.head_sha || data.tree_sha;
+
+    if (data.languages && Array.isArray(data.languages) && data.languages.length > 0) {
+      supportedLanguages.value = data.languages;
+    }
 
     // Deep clone server proposals for baseline dirty comparison
     serverProposals.value = (data.proposals || []).map((p) => normalizeProposal(JSON.parse(JSON.stringify(p))));
@@ -423,11 +614,16 @@ async function loadProposals() {
 
     // Add any drafts that were newly created proposals not yet on server
     for (const [slug, draft] of Object.entries(drafts)) {
-      if (draft.isNew && !workingProposals.some((p) => p.slug === slug || (draft.original_slug && p.original_slug === draft.original_slug))) {
-        workingProposals.unshift(normalizeProposal({
-          ...draft,
-          isNew: true,
-        }));
+      if (
+        draft.isNew &&
+        !workingProposals.some((p) => p.slug === slug || (draft.original_slug && p.original_slug === draft.original_slug))
+      ) {
+        workingProposals.unshift(
+          normalizeProposal({
+            ...draft,
+            isNew: true,
+          })
+        );
       }
     }
 
@@ -452,6 +648,28 @@ async function loadProposals() {
 }
 
 function normalizeProposal(raw) {
+  const translations = {};
+  if (raw.translations) {
+    for (const [lang, t] of Object.entries(raw.translations)) {
+      translations[lang] = {
+        language: t.language || lang,
+        title: t.title || '',
+        image_alt: t.image_alt || '',
+        content: t.content || '',
+        last_updated: t.last_updated || '',
+      };
+    }
+  }
+  if (!translations.en) {
+    translations.en = {
+      language: 'en',
+      title: '',
+      image_alt: '',
+      content: '',
+      last_updated: '',
+    };
+  }
+
   const prop = {
     slug: raw.slug || '',
     original_slug: raw.original_slug !== undefined ? raw.original_slug : (raw.isNew ? null : raw.slug || null),
@@ -461,16 +679,7 @@ function normalizeProposal(raw) {
       image: raw.info?.image || '',
       ...(raw.info || {}),
     },
-    translations: {
-      en: {
-        language: 'en',
-        title: raw.translations?.en?.title || '',
-        image_alt: raw.translations?.en?.image_alt || '',
-        content: raw.translations?.en?.content || '',
-        last_updated: raw.translations?.en?.last_updated || '',
-      },
-      ...(raw.translations || {}),
-    },
+    translations,
     files: raw.files || {},
     isNew: !!raw.isNew,
     customSlugSet: !!raw.customSlugSet,
@@ -510,6 +719,7 @@ function addNewProposal() {
 
   proposals.value.unshift(newProp);
   activeProposal.value = newProp;
+  activeLanguage.value = 'en';
   saveSuccess.value = false;
   updateDraftForProposal(newProp);
 }
@@ -574,7 +784,7 @@ async function onImageSelected(file) {
 }
 
 // -------------------------------------------------------------
-// Save Proposal to GitHub & Conflict Handling (Task 2.3)
+// Save Proposal to GitHub & Conflict Handling (Task 2.3 / 3.2)
 // -------------------------------------------------------------
 async function saveCurrentProposal() {
   if (!activeProposal.value || !canSave.value) return;
@@ -593,6 +803,29 @@ async function saveCurrentProposal() {
 
   try {
     const prop = activeProposal.value;
+
+    // Serialize all language translations that have data (#175)
+    const translationsPayload = {};
+    const allLangs = new Set([
+      'en',
+      ...Object.keys(prop.translations || {}),
+    ]);
+
+    for (const lang of allLangs) {
+      const t = prop.translations?.[lang];
+      if (t && (t.title || t.content || t.image_alt || lang === 'en')) {
+        translationsPayload[lang] = {
+          language: lang,
+          title: t.title || '',
+          content: t.content || '',
+          image_alt: t.image_alt || '',
+        };
+        if (t.last_updated) {
+          translationsPayload[lang].last_updated = t.last_updated;
+        }
+      }
+    }
+
     const payload = {
       base_sha: baseSha.value,
       slug: prop.slug,
@@ -602,14 +835,7 @@ async function saveCurrentProposal() {
         amount: parseInt(prop.info.amount, 10) || 0,
         image: prop.info.image || '',
       },
-      translations: {
-        en: {
-          language: 'en',
-          title: prop.translations.en?.title || '',
-          image_alt: prop.translations.en?.image_alt || '',
-          content: prop.translations.en?.content || '',
-        },
-      },
+      translations: translationsPayload,
       images: prop.pendingImage ? [{
         filename: prop.pendingImage.filename,
         content_base64: prop.pendingImage.dataUrl,
@@ -654,7 +880,7 @@ async function saveCurrentProposal() {
 
     // Success: update base_sha with new commit SHA
     baseSha.value = data.commit_sha || data.head_sha || baseSha.value;
-    
+
     // Clear drafts for all versions of this slug
     clearDraftForProposal(prop.slug);
     if (prop.original_slug) clearDraftForProposal(prop.original_slug);
@@ -681,7 +907,7 @@ async function saveCurrentProposal() {
 
     notification.value = {
       type: 'success',
-      message: `Proposal "${prop.translations.en.title}" saved and committed to GitHub successfully!`,
+      message: `Proposal "${getProposalTitle(prop, activeLanguage.value)}" (${prop.slug}) saved successfully!`,
     };
 
     setTimeout(() => {
@@ -887,32 +1113,107 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.lang-selector {
+/* Language Selector Group (#175) */
+.lang-selector-group {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
-.lang-badge {
-  background: #ffffff;
-  border: 1px solid #ced4da;
-  padding: 5px 12px;
-  border-radius: 16px;
+.lang-select-label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #495057;
+  color: #475569;
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-select-dropdown {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.lang-select-dropdown:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.lang-select-dropdown.has-missing {
+  border-color: #f59e0b;
+  background-color: #fffbeb;
+  color: #92400e;
+}
+
+.auto-translate-btn {
+  background-color: #7c3aed;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.auto-translate-btn:hover:not(:disabled) {
+  background-color: #6d28d9;
+}
+
+.auto-translate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.magic-icon {
+  font-size: 0.85rem;
+}
+
+.spinner-sm {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .unsaved-changes-pill {
   background-color: #fef3c7;
   color: #92400e;
   border: 1px solid #fde68a;
-  padding: 4px 8px;
+  padding: 3px 8px;
   border-radius: 12px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .editor-actions {

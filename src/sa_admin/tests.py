@@ -415,6 +415,53 @@ class BallotApiViewsUnitTests(SimpleTestCase):
 
     @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
     @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_authenticated_save_proposal_multiple_translations(self, mock_current_user, mock_commit):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_commit.return_value = {
+            'status': 'success',
+            'commit_sha': 'c456',
+            'head_sha': 'c456',
+        }
+        payload = {
+            'base_sha': 'basesha123',
+            'slug': 'test-prop',
+            'info': {'amount': 300000},
+            'translations': {
+                'en': {
+                    'title': 'Park Upgrades',
+                    'content': 'English body',
+                    'image_alt': 'Park',
+                },
+                'es': {
+                    'title': 'Mejoras en el parque',
+                    'content': 'Cuerpo en español',
+                    'image_alt': 'Parque',
+                },
+            },
+        }
+        req = self.factory.post(
+            '/admin/ballot/proposals/save/',
+            data=json.dumps(payload),
+            content_type='application/json',
+            HTTP_ACCEPT='application/json',
+        )
+        resp = ballot_proposal_save_api(req)
+        self.assertEqual(resp.status_code, 200)
+
+        mock_commit.assert_called_once()
+        files_to_update = mock_commit.call_args[1]['files_to_update']
+        self.assertTrue(any(k.endswith('test-prop/en.md') for k in files_to_update.keys()))
+        self.assertTrue(any(k.endswith('test-prop/es.md') for k in files_to_update.keys()))
+        en_content = next(v for k, v in files_to_update.items() if k.endswith('test-prop/en.md'))
+        es_content = next(v for k, v in files_to_update.items() if k.endswith('test-prop/es.md'))
+        self.assertIn('Park Upgrades', en_content)
+        self.assertIn('Mejoras en el parque', es_content)
+
+    @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
     def test_save_proposal_conflict_returns_409(self, mock_current_user, mock_commit):
         mock_current_user.return_value = {
             'username': 'ballot_admin',
