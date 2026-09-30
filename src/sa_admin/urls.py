@@ -12,5 +12,6 @@ urlpatterns = [
     path('ballot/proposals/', views.ballot_proposals_api, name='admin_ballot_proposals'),
     path('ballot/proposals/save/', views.ballot_proposal_save_api, name='admin_ballot_proposal_save'),
     path('ballot/images/<str:filename>', views.ballot_image_proxy, name='admin_ballot_image_proxy'),
+    path('ballot/translate/', views.ballot_translate_api, name='admin_ballot_translate'),
 ]
 

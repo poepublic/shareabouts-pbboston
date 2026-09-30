@@ -11,7 +11,9 @@ from sa_admin.views import (
     ballot_proposals_api,
     ballot_proposal_save_api,
     ballot_image_proxy,
+    ballot_translate_api,
 )
+from sa_admin.translation import GoogleTranslationService
 from sa_util.config import get_shareabouts_config
 from sa_util.api import ShareaboutsApi
 
@@ -681,4 +683,164 @@ class BallotApiViewsUnitTests(SimpleTestCase):
             app_id='123', installation_id='456', private_key=b64_pem,
         )
         self.assertEqual(mgr3._get_private_key_str(), pem_content)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_translate_api_unauthenticated_returns_401(self, mock_current_user):
+        mock_current_user.return_value = None
+        req = self.factory.post('/admin/ballot/translate/', data=json.dumps({'target_language': 'es'}), content_type='application/json', HTTP_ACCEPT='application/json')
+        resp = ballot_translate_api(req)
+        self.assertEqual(resp.status_code, 401)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_translate_api_unauthorized_returns_403(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'normal_user',
+            'groups': [{'name': 'other_group', 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.post('/admin/ballot/translate/', data=json.dumps({'target_language': 'es'}), content_type='application/json', HTTP_ACCEPT='application/json')
+        resp = ballot_translate_api(req)
+        self.assertEqual(resp.status_code, 403)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_translate_api_non_post_returns_405(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.get('/admin/ballot/translate/')
+        resp = ballot_translate_api(req)
+        self.assertEqual(resp.status_code, 405)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_translate_api_missing_target_language_returns_400(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.post('/admin/ballot/translate/', data=json.dumps({'title': 'Hello'}), content_type='application/json')
+        resp = ballot_translate_api(req)
+        self.assertEqual(resp.status_code, 400)
+        data = json.loads(resp.content)
+        self.assertIn('target_language', data['error'])
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_translate_api_missing_texts_returns_400(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        req = self.factory.post('/admin/ballot/translate/', data=json.dumps({'target_language': 'es'}), content_type='application/json')
+        resp = ballot_translate_api(req)
+        self.assertEqual(resp.status_code, 400)
+        data = json.loads(resp.content)
+        self.assertIn('No text provided', data['error'])
+
+    @patch('sa_admin.views.GoogleTranslationService.translate_dict')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_translate_api_success(self, mock_current_user, mock_translate_dict):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_translate_dict.return_value = {
+            'title': 'Mejoras en el parque',
+            'content': 'Nuevo parque',
+        }
+        payload = {
+            'target_language': 'es',
+            'title': 'Park Improvements',
+            'content': 'New park',
+        }
+        req = self.factory.post('/admin/ballot/translate/', data=json.dumps(payload), content_type='application/json')
+        resp = ballot_translate_api(req)
+        self.assertEqual(resp.status_code, 200)
+        data = json.loads(resp.content)
+        self.assertEqual(data['status'], 'success')
+        self.assertEqual(data['target_language'], 'es')
+        self.assertEqual(data['translations']['title'], 'Mejoras en el parque')
+
+    @patch('sa_admin.views.GoogleTranslationService.translate_dict')
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    def test_ballot_translate_api_service_error_returns_502(self, mock_current_user, mock_translate_dict):
+        mock_current_user.return_value = {
+            'username': 'ballot_admin',
+            'groups': [{'name': self.manager_group, 'dataset': self.api.dataset_root}],
+        }
+        mock_translate_dict.side_effect = RuntimeError("Upstream API error")
+        payload = {
+            'target_language': 'es',
+            'title': 'Park Improvements',
+        }
+        req = self.factory.post('/admin/ballot/translate/', data=json.dumps(payload), content_type='application/json')
+        resp = ballot_translate_api(req)
+        self.assertEqual(resp.status_code, 502)
+        data = json.loads(resp.content)
+        self.assertIn("Upstream API error", data['error'])
+
+
+class GoogleTranslationServiceUnitTests(SimpleTestCase):
+    def setUp(self):
+        self.service = GoogleTranslationService(api_key="test-api-key", project_id="test-project")
+
+    def test_translate_texts_empty_list(self):
+        result = self.service.translate_texts([], target_language="es")
+        self.assertEqual(result, [])
+
+    def test_translate_texts_empty_strings_preserved(self):
+        result = self.service.translate_texts(["", "   "], target_language="es")
+        self.assertEqual(result, ["", "   "])
+
+    @patch("sa_admin.translation.requests.post")
+    def test_translate_texts_success_with_html_unescaping(self, mock_post):
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = {
+            "data": {
+                "translations": [
+                    {"translatedText": "Mejoras en el parque"},
+                    {"translatedText": "Hospital de Ni&#39;os &amp; Centro"},
+                ]
+            }
+        }
+        mock_resp.raise_for_status.return_value = None
+        mock_post.return_value = mock_resp
+
+        result = self.service.translate_texts(
+            ["Park Improvements", "Children's Hospital & Center"],
+            target_language="es",
+        )
+        self.assertEqual(result, ["Mejoras en el parque", "Hospital de Ni'os & Centro"])
+        mock_post.assert_called_once()
+        call_kwargs = mock_post.call_args[1]
+        self.assertEqual(call_kwargs["params"]["key"], "test-api-key")
+        self.assertEqual(call_kwargs["json"]["target"], "es")
+
+    @patch("sa_admin.translation.requests.post")
+    def test_translate_texts_request_exception_raises_runtime_error(self, mock_post):
+        import requests
+        mock_post.side_effect = requests.exceptions.RequestException("Connection timeout")
+
+        with self.assertRaises(RuntimeError) as cm:
+            self.service.translate_texts(["Hello"], target_language="es")
+        self.assertIn("Google Cloud Translation failed", str(cm.exception))
+
+    def test_translate_dict_success(self):
+        with patch.object(self.service, "translate_texts", return_value=["Hola", "Mundo"]):
+            res = self.service.translate_dict({"title": "Hello", "content": "World"}, target_language="es")
+            self.assertEqual(res, {"title": "Hola", "content": "Mundo"})
+
+    def test_auth_headers_with_access_token(self):
+        svc = GoogleTranslationService(api_key=None, access_token="test-token", project_id="my-proj")
+        headers, params = svc._get_auth_headers_and_params()
+        self.assertEqual(headers["Authorization"], "Bearer test-token")
+        self.assertEqual(headers["X-goog-user-project"], "my-proj")
+        self.assertNotIn("key", params)
+
+    def test_auth_missing_credentials_raises_value_error(self):
+        svc = GoogleTranslationService(api_key=None, access_token=None)
+        with patch("sa_admin.translation.settings") as mock_settings:
+            mock_settings.DEBUG = False
+            with self.assertRaises(ValueError) as cm:
+                svc._get_auth_headers_and_params()
+            self.assertIn("credentials not configured", str(cm.exception))
+
 

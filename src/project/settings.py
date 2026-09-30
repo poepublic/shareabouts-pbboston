@@ -304,6 +304,10 @@ GITHUB_TOKEN = env.get('GITHUB_TOKEN')
 GITHUB_REPO = env.get('GITHUB_REPO')
 GITHUB_BRANCH = env.get('GITHUB_BRANCH')
 
+GOOGLE_TRANSLATE_API_KEY = env.get('GOOGLE_TRANSLATE_API_KEY') or env.get('GOOGLE_API_KEY')
+GOOGLE_TRANSLATE_PROJECT_ID = env.get('GOOGLE_TRANSLATE_PROJECT_ID') or env.get('GOOGLE_CLOUD_PROJECT', 'poepublic-shareabouts')
+GOOGLE_TRANSLATE_ACCESS_TOKEN = env.get('GOOGLE_TRANSLATE_ACCESS_TOKEN')
+
 if all([key in env for key in ('SHAREABOUTS_AWS_KEY',
                                    'SHAREABOUTS_AWS_SECRET',
                                    'SHAREABOUTS_AWS_BUCKET')]):

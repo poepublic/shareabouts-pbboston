@@ -16,6 +16,7 @@ import yaml
 from sa_util.config import get_shareabouts_config
 from sa_util.api import ShareaboutsApi
 from .github import GitHubContentManager, GitConflictError
+from .translation import GoogleTranslationService
 
 logger = logging.getLogger(__name__)
 
@@ -310,4 +311,60 @@ def ballot_image_proxy(request, config, api, filename):
         return JsonResponse({'error': f'Failed to fetch image: {e}'}, status=500)
 
     return HttpResponseNotFound("Image not found")
+
+
+@csrf_exempt
+@ballot_manager_required
+def ballot_translate_api(request, config, api):
+    """
+    POST /admin/ballot/translate/
+    Translates proposal fields (title, content, image_alt) from source to target language
+    using Google Cloud Translation API.
+    """
+    if request.method != 'POST':
+        return HttpResponseNotAllowed(['POST'])
+
+    try:
+        body = json.loads(request.body.decode('utf-8'))
+    except Exception as e:
+        return JsonResponse({'error': f'Invalid JSON payload: {e}'}, status=400)
+
+    target_lang = body.get('target_language')
+    if not target_lang or not str(target_lang).strip():
+        return JsonResponse({'error': 'Missing required target_language parameter.'}, status=400)
+
+    target_lang = str(target_lang).strip().lower().replace('_', '-')
+    source_lang = str(body.get('source_language', 'en')).strip().lower().replace('_', '-')
+
+    # Support either top-level fields (title, content, image_alt) or a texts dict
+    texts_to_translate = {}
+    if 'texts' in body and isinstance(body['texts'], dict):
+        texts_to_translate = {k: str(v) for k, v in body['texts'].items() if v is not None}
+    else:
+        for field in ('title', 'content', 'image_alt'):
+            if field in body and body[field] is not None:
+                texts_to_translate[field] = str(body[field])
+
+    if not texts_to_translate:
+        return JsonResponse({'error': 'No text provided for translation.'}, status=400)
+
+    translator = GoogleTranslationService()
+    try:
+        translated = translator.translate_dict(
+            texts_to_translate,
+            target_language=target_lang,
+            source_language=source_lang,
+        )
+        return JsonResponse({
+            'status': 'success',
+            'target_language': target_lang,
+            'source_language': source_lang,
+            'translations': translated,
+        }, status=200)
+    except ValueError as e:
+        return JsonResponse({'error': str(e)}, status=400)
+    except Exception as e:
+        logger.exception("Failed to execute translation for %s", target_lang)
+        return JsonResponse({'error': f'Translation failed: {e}'}, status=502)
+
 
