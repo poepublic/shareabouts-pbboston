@@ -428,17 +428,19 @@ class BallotApiViewsUnitTests(SimpleTestCase):
         payload = {
             'base_sha': 'basesha123',
             'slug': 'test-prop',
-            'info': {'amount': 300000},
+            'info': {'amount': 300000, 'last_updated': '2026-09-29T12:00:00'},
             'translations': {
                 'en': {
                     'title': 'Park Upgrades',
                     'content': 'English body',
                     'image_alt': 'Park',
+                    'last_updated': '2026-09-29T12:00:00',
                 },
                 'es': {
                     'title': 'Mejoras en el parque',
                     'content': 'Cuerpo en español',
                     'image_alt': 'Parque',
+                    'last_updated': '2026-09-29T12:00:00',
                 },
             },
         }
@@ -453,12 +455,17 @@ class BallotApiViewsUnitTests(SimpleTestCase):
 
         mock_commit.assert_called_once()
         files_to_update = mock_commit.call_args[1]['files_to_update']
+        self.assertTrue(any(k.endswith('test-prop/info.yaml') for k in files_to_update.keys()))
         self.assertTrue(any(k.endswith('test-prop/en.md') for k in files_to_update.keys()))
         self.assertTrue(any(k.endswith('test-prop/es.md') for k in files_to_update.keys()))
+        info_content = next(v for k, v in files_to_update.items() if k.endswith('test-prop/info.yaml'))
         en_content = next(v for k, v in files_to_update.items() if k.endswith('test-prop/en.md'))
         es_content = next(v for k, v in files_to_update.items() if k.endswith('test-prop/es.md'))
         self.assertIn('Park Upgrades', en_content)
         self.assertIn('Mejoras en el parque', es_content)
+        self.assertNotIn('last_updated', info_content)
+        self.assertNotIn('last_updated', en_content)
+        self.assertNotIn('last_updated', es_content)
 
     @patch('sa_admin.views.GitHubContentManager.commit_proposal_changes')
     @patch('sa_util.api.ShareaboutsApi.current_user')

@@ -213,7 +213,6 @@ class GitHubContentManager:
                         "language": post.get("language", lang),
                         "title": post.get("title", ""),
                         "image_alt": post.get("image_alt", ""),
-                        "last_updated": str(post.get("last_updated", "")),
                         "content": post.content,
                     }
                 except Exception as e:

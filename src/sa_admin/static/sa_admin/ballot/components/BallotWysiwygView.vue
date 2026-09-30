@@ -265,7 +265,6 @@ const currentTranslation = computed(() => {
       title: '',
       content: '',
       image_alt: '',
-      last_updated: '',
     };
   }
   return props.proposal.translations[props.activeLanguage];

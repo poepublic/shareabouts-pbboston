@@ -548,7 +548,6 @@ async function handleAutoTranslate() {
       title: data.translations?.title || '',
       content: data.translations?.content || '',
       image_alt: data.translations?.image_alt || '',
-      last_updated: new Date().toISOString(),
     };
 
     updateDraftForProposal(activeProposal.value);
@@ -656,7 +655,6 @@ function normalizeProposal(raw) {
         title: t.title || '',
         image_alt: t.image_alt || '',
         content: t.content || '',
-        last_updated: t.last_updated || '',
       };
     }
   }
@@ -666,7 +664,6 @@ function normalizeProposal(raw) {
       title: '',
       image_alt: '',
       content: '',
-      last_updated: '',
     };
   }
 
@@ -820,9 +817,6 @@ async function saveCurrentProposal() {
           content: t.content || '',
           image_alt: t.image_alt || '',
         };
-        if (t.last_updated) {
-          translationsPayload[lang].last_updated = t.last_updated;
-        }
       }
     }
 

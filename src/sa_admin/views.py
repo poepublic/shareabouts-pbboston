@@ -206,8 +206,9 @@ def ballot_proposal_save_api(request, config, api):
 
     if slug:
         if info is not None:
+            clean_info = {k: v for k, v in info.items() if k != 'last_updated'}
             info_yaml_path = f"{mgr.ballot_folder}/{slug}/info.yaml"
-            files_to_update[info_yaml_path] = yaml.dump(info, sort_keys=False)
+            files_to_update[info_yaml_path] = yaml.dump(clean_info, sort_keys=False)
 
         for lang, t_data in translations.items():
             md_path = f"{mgr.ballot_folder}/{slug}/{lang}.md"
@@ -217,8 +218,6 @@ def ballot_proposal_save_api(request, config, api):
                 'title': t_data.get('title', ''),
                 'image_alt': t_data.get('image_alt', ''),
             }
-            if 'last_updated' in t_data and t_data['last_updated']:
-                metadata['last_updated'] = t_data['last_updated']
             post = frontmatter.Post(content, **metadata)
             files_to_update[md_path] = frontmatter.dumps(post) + "\n"
 
