@@ -2,34 +2,38 @@
 Google Cloud Translation Service for Ballot Proposals
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Interfaces with Google Cloud Translation API v2 to provide automated
-first-pass translations for Boston's threshold languages.
+Interfaces with Google Cloud Translation API v2 via google-cloud-translate
+to provide automated first-pass translations for Boston's threshold languages.
 """
 
 import html
 import logging
 import os
-import subprocess
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Union
 
 from django.conf import settings
-import requests
+from google.cloud import translate_v2 as translate
+import google.auth
+import google.auth.api_key
+from google.auth.exceptions import DefaultCredentialsError
+from google.api_core.exceptions import GoogleAPIError
 
 logger = logging.getLogger(__name__)
-
-TRANSLATE_API_URL = "https://translation.googleapis.com/language/translate/v2"
 
 
 class GoogleTranslationService:
     """
     Service client for Google Cloud Translation API v2.
+    Uses google-cloud-translate with support for:
+      - API key authentication (via GOOGLE_TRANSLATE_API_KEY) for non-GCP hosting
+      - Application Default Credentials (ADC) / Cloud Run service account for GCP
     """
 
     def __init__(
         self,
         api_key: Optional[str] = None,
         project_id: Optional[str] = None,
-        access_token: Optional[str] = None,
+        client: Optional[translate.Client] = None,
     ):
         self.api_key = (
             api_key
@@ -43,45 +47,30 @@ class GoogleTranslationService:
             or os.environ.get("GOOGLE_TRANSLATE_PROJECT_ID")
             or os.environ.get("GOOGLE_CLOUD_PROJECT")
         )
-        self.access_token = (
-            access_token
-            or getattr(settings, "GOOGLE_TRANSLATE_ACCESS_TOKEN", None)
-            or os.environ.get("GOOGLE_TRANSLATE_ACCESS_TOKEN")
-        )
+        self._client = client
 
-    def _get_auth_headers_and_params(self) -> Tuple[Dict[str, str], Dict[str, str]]:
-        headers = {"Content-Type": "application/json; charset=utf-8"}
-        params = {}
+    def get_client(self) -> translate.Client:
+        if self._client is not None:
+            return self._client
 
         if self.api_key:
-            params["key"] = self.api_key
-            return headers, params
+            creds = google.auth.api_key.Credentials(self.api_key)
+            self._client = translate.Client(credentials=creds)
+            return self._client
 
-        token = self.access_token
-        if not token and getattr(settings, "DEBUG", False):
-            # Attempt to obtain gcloud access token in local development
-            try:
-                res = subprocess.run(
-                    ["gcloud", "auth", "print-access-token"],
-                    capture_output=True,
-                    text=True,
-                    timeout=5,
-                )
-                if res.returncode == 0:
-                    token = res.stdout.strip()
-            except Exception as e:
-                logger.debug("Failed to get gcloud token: %s", e)
-
-        if token:
-            headers["Authorization"] = f"Bearer {token}"
-            if self.project_id:
-                headers["X-goog-user-project"] = self.project_id
-            return headers, params
-
-        raise ValueError(
-            "Google Cloud Translation credentials not configured. "
-            "Please configure GOOGLE_TRANSLATE_API_KEY or authenticate with gcloud."
-        )
+        try:
+            creds, _ = google.auth.default()
+            if self.project_id and hasattr(creds, "with_quota_project"):
+                creds = creds.with_quota_project(self.project_id)
+            self._client = translate.Client(credentials=creds)
+            return self._client
+        except (DefaultCredentialsError, Exception) as e:
+            logger.exception("Google Cloud Translation credentials not configured: %s", e)
+            raise ValueError(
+                "Google Cloud Translation credentials not configured. "
+                "Please configure GOOGLE_TRANSLATE_API_KEY, GOOGLE_APPLICATION_CREDENTIALS, "
+                "or run on Cloud Run / authenticate with gcloud."
+            )
 
     def translate_texts(
         self,
@@ -102,43 +91,28 @@ class GoogleTranslationService:
             return list(texts)
 
         payload_queries = [texts[i] for i in indices_to_translate]
-        headers, params = self._get_auth_headers_and_params()
-
-        payload = {
-            "q": payload_queries,
-            "target": target_language,
-            "source": source_language,
-            "format": "text",
-        }
+        client = self.get_client()
 
         try:
-            resp = requests.post(
-                TRANSLATE_API_URL,
-                json=payload,
-                headers=headers,
-                params=params,
-                timeout=15,
+            raw_results = client.translate(
+                payload_queries,
+                target_language=target_language,
+                source_language=source_language,
+                format_="text",
             )
-            resp.raise_for_status()
-            data = resp.json()
-        except requests.exceptions.RequestException as e:
+        except (GoogleAPIError, Exception) as e:
             logger.exception("Google Cloud Translation API request failed: %s", e)
-            error_msg = str(e)
-            if hasattr(e, "response") and e.response is not None:
-                try:
-                    err_json = e.response.json()
-                    error_msg = err_json.get("error", {}).get("message", error_msg)
-                except Exception:
-                    pass
-            raise RuntimeError(f"Google Cloud Translation failed: {error_msg}")
+            raise RuntimeError(f"Google Cloud Translation failed: {e}")
 
-        translations_data = data.get("data", {}).get("translations", [])
-        if len(translations_data) != len(payload_queries):
+        if not isinstance(raw_results, list):
+            raw_results = [raw_results]
+
+        if len(raw_results) != len(payload_queries):
             raise RuntimeError("Unexpected number of translations returned by Google Cloud Translation.")
 
         result = list(texts)
-        for idx, trans in zip(indices_to_translate, translations_data):
-            raw_trans = trans.get("translatedText", "")
+        for idx, trans in zip(indices_to_translate, raw_results):
+            raw_trans = trans.get("translatedText", "") if isinstance(trans, dict) else str(trans)
             # Unescape HTML entities that Google Translate API v2 introduces (e.g. &#39;, &quot;, &amp;)
             result[idx] = html.unescape(raw_trans)
 

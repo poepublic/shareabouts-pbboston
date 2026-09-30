@@ -780,44 +780,39 @@ class BallotApiViewsUnitTests(SimpleTestCase):
 
 class GoogleTranslationServiceUnitTests(SimpleTestCase):
     def setUp(self):
-        self.service = GoogleTranslationService(api_key="test-api-key", project_id="test-project")
+        self.mock_client = MagicMock()
+        self.service = GoogleTranslationService(api_key="test-api-key", project_id="test-project", client=self.mock_client)
 
     def test_translate_texts_empty_list(self):
         result = self.service.translate_texts([], target_language="es")
         self.assertEqual(result, [])
+        self.mock_client.translate.assert_not_called()
 
     def test_translate_texts_empty_strings_preserved(self):
         result = self.service.translate_texts(["", "   "], target_language="es")
         self.assertEqual(result, ["", "   "])
+        self.mock_client.translate.assert_not_called()
 
-    @patch("sa_admin.translation.requests.post")
-    def test_translate_texts_success_with_html_unescaping(self, mock_post):
-        mock_resp = MagicMock()
-        mock_resp.json.return_value = {
-            "data": {
-                "translations": [
-                    {"translatedText": "Mejoras en el parque"},
-                    {"translatedText": "Hospital de Ni&#39;os &amp; Centro"},
-                ]
-            }
-        }
-        mock_resp.raise_for_status.return_value = None
-        mock_post.return_value = mock_resp
+    def test_translate_texts_success_with_html_unescaping(self):
+        self.mock_client.translate.return_value = [
+            {"translatedText": "Mejoras en el parque"},
+            {"translatedText": "Hospital de Ni&#39;os &amp; Centro"},
+        ]
 
         result = self.service.translate_texts(
             ["Park Improvements", "Children's Hospital & Center"],
             target_language="es",
         )
         self.assertEqual(result, ["Mejoras en el parque", "Hospital de Ni'os & Centro"])
-        mock_post.assert_called_once()
-        call_kwargs = mock_post.call_args[1]
-        self.assertEqual(call_kwargs["params"]["key"], "test-api-key")
-        self.assertEqual(call_kwargs["json"]["target"], "es")
+        self.mock_client.translate.assert_called_once_with(
+            ["Park Improvements", "Children's Hospital & Center"],
+            target_language="es",
+            source_language="en",
+            format_="text",
+        )
 
-    @patch("sa_admin.translation.requests.post")
-    def test_translate_texts_request_exception_raises_runtime_error(self, mock_post):
-        import requests
-        mock_post.side_effect = requests.exceptions.RequestException("Connection timeout")
+    def test_translate_texts_request_exception_raises_runtime_error(self):
+        self.mock_client.translate.side_effect = RuntimeError("API connection failure")
 
         with self.assertRaises(RuntimeError) as cm:
             self.service.translate_texts(["Hello"], target_language="es")
@@ -828,19 +823,34 @@ class GoogleTranslationServiceUnitTests(SimpleTestCase):
             res = self.service.translate_dict({"title": "Hello", "content": "World"}, target_language="es")
             self.assertEqual(res, {"title": "Hola", "content": "Mundo"})
 
-    def test_auth_headers_with_access_token(self):
-        svc = GoogleTranslationService(api_key=None, access_token="test-token", project_id="my-proj")
-        headers, params = svc._get_auth_headers_and_params()
-        self.assertEqual(headers["Authorization"], "Bearer test-token")
-        self.assertEqual(headers["X-goog-user-project"], "my-proj")
-        self.assertNotIn("key", params)
+    @patch("sa_admin.translation.translate.Client")
+    @patch("sa_admin.translation.google.auth.api_key.Credentials")
+    def test_get_client_with_api_key(self, mock_api_key_creds, mock_client_cls):
+        svc = GoogleTranslationService(api_key="my-key")
+        client = svc.get_client()
+        mock_api_key_creds.assert_called_once_with("my-key")
+        mock_client_cls.assert_called_once_with(credentials=mock_api_key_creds.return_value)
+        self.assertEqual(client, mock_client_cls.return_value)
 
-    def test_auth_missing_credentials_raises_value_error(self):
-        svc = GoogleTranslationService(api_key=None, access_token=None)
-        with patch("sa_admin.translation.settings") as mock_settings:
-            mock_settings.DEBUG = False
-            with self.assertRaises(ValueError) as cm:
-                svc._get_auth_headers_and_params()
-            self.assertIn("credentials not configured", str(cm.exception))
+    @patch("sa_admin.translation.translate.Client")
+    @patch("sa_admin.translation.google.auth.default")
+    def test_get_client_with_adc(self, mock_auth_default, mock_client_cls):
+        mock_creds = MagicMock()
+        mock_auth_default.return_value = (mock_creds, "default-proj")
+        svc = GoogleTranslationService(api_key=None, project_id="poepublic-shareabouts")
+        client = svc.get_client()
+        mock_creds.with_quota_project.assert_called_once_with("poepublic-shareabouts")
+        mock_client_cls.assert_called_once_with(credentials=mock_creds.with_quota_project.return_value)
+        self.assertEqual(client, mock_client_cls.return_value)
+
+    @patch("sa_admin.translation.google.auth.default")
+    def test_get_client_missing_credentials_raises_value_error(self, mock_auth_default):
+        from google.auth.exceptions import DefaultCredentialsError
+        mock_auth_default.side_effect = DefaultCredentialsError("No credentials")
+        svc = GoogleTranslationService(api_key=None)
+        with self.assertRaises(ValueError) as cm:
+            svc.get_client()
+        self.assertIn("credentials not configured", str(cm.exception))
+
 
 
