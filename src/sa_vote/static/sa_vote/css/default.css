@@ -28,6 +28,11 @@ body {
     height: auto;
 }
 
+a, a:active, a:visited {
+    color: var(--iia-indigo-blue);
+    font-weight: 700;
+}
+
 h1 {
     font-size: 2rem;
 }
@@ -174,11 +179,12 @@ summary {
 
 /* Text formatting */
 .secondary-emphasis {
-    color: var(--iia-vibrant-green);
+    color: var(--iia-indigo-blue);
     font-weight: 500;
     font-size: 1.2rem;
     border-radius: 0.1rem;
 }
+
 
 /* Welcome page */
 .home-header, .ballot-page-header {
@@ -449,7 +455,7 @@ details[open] summary.ballot-banner-verified-summary.no-proposal-selections:afte
 .proposal-cost {
     font-weight: 600;
     font-size: 1.5rem;
-    color: var(--iia-vibrant-green);
+    color: var(--iia-indigo-blue);
 }
 
 .proposal-description {
@@ -793,6 +799,7 @@ summary.survey-select-input,
     }
 
 
+ 
     .menu {
         display: flex;
         flex-direction: row;
