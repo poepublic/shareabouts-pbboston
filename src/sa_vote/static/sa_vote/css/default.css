@@ -746,13 +746,19 @@ summary.survey-select-input,
     }
 
 
+    /* Ballot page */ 
     #ballot-page {
-        margin-top: 7vh;
+        margin: 7vh 10vw 7vh 10vw;
         display: flex;
         flex-direction: column;
     }
+    
+    .ballot-page-content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-    /* Ballot page */ 
     .selected-proposal {
         width: 60vw;
     }
@@ -809,13 +815,6 @@ summary.survey-select-input,
         margin-top: 7vh;
         margin-left: 15vw;
         margin-right: 15vw;
-    }
-
-
-    #ballot-page {
-        margin-top: 7vh;
-        display: flex;
-        flex-direction: column;
     }
 
     /* Ballot page */ 
