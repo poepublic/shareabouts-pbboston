@@ -185,6 +185,10 @@ summary {
     border-radius: 0.1rem;
 }
 
+/* Menu */
+li.menu-item > a {
+    color: var(--iia-electric-purple);
+}
 
 /* Welcome page */
 .home-header, .ballot-page-header {
@@ -729,6 +733,66 @@ summary.survey-select-input,
 
 /* Tablet */
 @media (min-width: 768px) {
+    #home-page,
+    #auth-page,
+    #faq-page,
+    #privacy-page,
+    #terms-page,
+    #survey-page {
+        padding: 2rem;
+        margin-top: 5vh;
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+
+
+    #ballot-page {
+        margin-top: 7vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Ballot page */ 
+    .selected-proposal {
+        width: 60vw;
+    }
+    .vote-confirm-modal {
+        max-width: 30vw;
+        width: 90%;
+    }
+
+    p, li, .info-text {
+        font-size: 1.25rem;
+    }
+
+    #home-page {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .home-header, .ballot-page-header, .faq-page-header, .terms-page-header, .privacy-page-header {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .bigger-text {
+        font-size: 4rem;
+    }
+
+    .secondary-emphasis {
+        font-size: 1.5rem;
+    }
+
+    .vote-link {
+        width: 100%;
+        max-width: 45vw;
+    }
+
+
+
+
 
 }
 
