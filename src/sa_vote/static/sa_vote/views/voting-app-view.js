@@ -77,6 +77,7 @@ export const VotingAppView = Backbone.View.extend({
     }));
   },
 
+  showFaq: function () {
     this._replaceCurrentView(new FaqView({ faqs: Shareabouts.config.faq }));
   },
 

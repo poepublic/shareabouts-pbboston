@@ -1,15 +1,80 @@
-@import url('/static/css/iia.css');
 @import url('/static/sa_admin/css/vote-report.css');
 
 :root {
-  --content-font-family: sans-serif;
+  --content-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
+  /* Legacy aliases for backward compatibility */
   --default-bg-color: #f8f9fa;
   --stripe-bg-color: #f1f3f5;
   --dark-bg-color: #343a40;
   --border-color: var(--dark-bg-color);
   --highlight-color: #fff3cd;
   --filtered-color: #0faf00;
+
+  /* ==========================================================================
+     Admin Semantic Design Tokens (CUBE CSS)
+     ========================================================================== */
+
+  /* Brand / Primary */
+  --admin-color-primary: #007bff;
+  --admin-color-primary-hover: #0056b3;
+  --admin-color-primary-subtle: #e8f4fd;
+  --admin-color-primary-text: #ffffff;
+
+  /* Accent (AI / Specialized Action) */
+  --admin-color-accent: #7c3aed;
+  --admin-color-accent-hover: #6d28d9;
+  --admin-color-accent-text: #ffffff;
+
+  /* State: Warning / Dirty / Missing */
+  --admin-color-warning-bg: #fffbeb;
+  --admin-color-warning-border: #f59e0b;
+  --admin-color-warning-border-subtle: #fde68a;
+  --admin-color-warning-text: #92400e;
+  --admin-color-dirty-bg: #fef9c3;
+  --admin-color-dirty-border: #f59e0b;
+  --admin-color-dirty-text: #78350f;
+
+  /* State: Danger / Revert / Conflict / Error */
+  --admin-color-danger: #dc2626;
+  --admin-color-danger-hover: #b91c1c;
+  --admin-color-danger-bg: #fee2e2;
+  --admin-color-danger-border: #fca5a5;
+  --admin-color-danger-text: #991b1b;
+  --admin-color-danger-banner-bg: #f8d7da;
+  --admin-color-danger-banner-border: #f5c6cb;
+  --admin-color-danger-banner-text: #721c24;
+
+  /* State: Success / Complete */
+  --admin-color-success: #16a34a;
+  --admin-color-success-hover: #15803d;
+  --admin-color-success-bg: #d1fae5;
+  --admin-color-success-border: #a7f3d0;
+  --admin-color-success-text: #065f46;
+  --admin-color-success-banner-bg: #d4edda;
+  --admin-color-success-banner-border: #c3e6cb;
+  --admin-color-success-banner-text: #155724;
+
+  /* Neutrals & Surfaces */
+  --admin-color-bg: #f8f9fa;
+  --admin-color-surface: #ffffff;
+  --admin-color-surface-subtle: #f8fafc;
+  --admin-color-surface-hover: #f1f5f9;
+  --admin-color-border: #dee2e6;
+  --admin-color-border-subtle: #cbd5e1;
+  --admin-color-text: #1e293b;
+  --admin-color-text-muted: #64748b;
+  --admin-color-text-subtle: #94a3b8;
+
+  /* Radii & Shadows */
+  --admin-radius-sm: 4px;
+  --admin-radius-md: 6px;
+  --admin-radius-lg: 12px;
+  --admin-radius-pill: 9999px;
+  --admin-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --admin-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --admin-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --admin-focus-ring: 0 0 0 2px rgba(59, 130, 246, 0.25);
 }
 
 body {
@@ -17,10 +82,329 @@ body {
   font-family: var(--content-font-family);
   font-size: 16px;
   line-height: 1.5;
+  background-color: var(--admin-color-bg);
+  color: var(--admin-color-text);
 }
 
-header {
-  padding: 0 1rem;
+header.admin-header {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--admin-color-surface);
+  border-bottom: 1px solid var(--admin-color-border);
+}
+
+.admin-header-main {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.admin-header-main h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--admin-color-text);
+}
+
+.admin-nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-tab {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--admin-radius-sm);
+  text-decoration: none;
+  color: var(--admin-color-text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.15s ease;
+}
+
+.admin-tab:hover {
+  background-color: var(--admin-color-surface-hover);
+  color: var(--admin-color-primary);
+}
+
+.admin-tab.active {
+  background-color: var(--admin-color-primary);
+  color: var(--admin-color-primary-text);
+}
+
+/* ==========================================================================
+   CUBE CSS: Blocks & Exceptions
+   ========================================================================== */
+
+/* Button Block */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 6px 14px;
+  border-radius: var(--admin-radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: var(--admin-color-surface);
+  color: var(--admin-color-text);
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--admin-focus-ring);
+}
+
+.button:disabled,
+.button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Button Exceptions: Variants */
+.button[data-variant="primary"] {
+  background-color: var(--admin-color-primary);
+  color: var(--admin-color-primary-text);
+  border-color: var(--admin-color-primary);
+}
+.button[data-variant="primary"]:hover:not(:disabled) {
+  background-color: var(--admin-color-primary-hover);
+  border-color: var(--admin-color-primary-hover);
+}
+
+.button[data-variant="secondary"] {
+  background-color: var(--admin-color-surface);
+  color: var(--admin-color-text-muted);
+  border-color: var(--admin-color-border-subtle);
+}
+.button[data-variant="secondary"]:hover:not(:disabled) {
+  background-color: var(--admin-color-surface-hover);
+  color: var(--admin-color-text);
+  border-color: var(--admin-color-border);
+}
+
+.button[data-variant="accent"] {
+  background-color: var(--admin-color-accent);
+  color: var(--admin-color-accent-text);
+  border-color: var(--admin-color-accent);
+}
+.button[data-variant="accent"]:hover:not(:disabled) {
+  background-color: var(--admin-color-accent-hover);
+  border-color: var(--admin-color-accent-hover);
+}
+
+.button[data-variant="danger"] {
+  background-color: var(--admin-color-surface);
+  color: var(--admin-color-danger);
+  border-color: var(--admin-color-danger-border);
+}
+.button[data-variant="danger"]:hover:not(:disabled) {
+  background-color: var(--admin-color-danger-bg);
+  border-color: var(--admin-color-danger);
+  color: var(--admin-color-danger-hover);
+}
+
+.button[data-variant="ghost-dashed"] {
+  background-color: var(--admin-color-surface);
+  color: var(--admin-color-text-muted);
+  border: 1px dashed var(--admin-color-text-muted);
+}
+.button[data-variant="ghost-dashed"]:hover:not(:disabled) {
+  background-color: var(--admin-color-surface-hover);
+  border-color: var(--admin-color-primary);
+  color: var(--admin-color-primary);
+}
+
+/* Button Exceptions: Sizes */
+.button[data-size="sm"] {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: var(--admin-radius-sm);
+}
+
+.button[data-size="lg"] {
+  font-size: 1rem;
+  padding: 8px 18px;
+}
+
+/* Pill & Badge Blocks */
+.pill,
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  line-height: 1.3;
+  border-radius: var(--admin-radius-pill);
+  background-color: var(--admin-color-surface-hover);
+  color: var(--admin-color-text-muted);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge {
+  border-radius: var(--admin-radius-sm);
+}
+
+.pill[data-state="warning"],
+.badge[data-state="warning"] {
+  background-color: var(--admin-color-warning-bg);
+  color: var(--admin-color-warning-text);
+  border-color: var(--admin-color-warning-border-subtle);
+}
+
+.pill[data-state="success"],
+.badge[data-state="success"] {
+  background-color: var(--admin-color-success-bg);
+  color: var(--admin-color-success-text);
+  border-color: var(--admin-color-success-border);
+}
+
+.pill[data-state="danger"],
+.badge[data-state="danger"] {
+  background-color: var(--admin-color-danger-bg);
+  color: var(--admin-color-danger-text);
+  border-color: var(--admin-color-danger-border);
+}
+
+/* Banner Block */
+.banner {
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+}
+
+.banner[data-state="success"] {
+  background-color: var(--admin-color-success-banner-bg);
+  color: var(--admin-color-success-banner-text);
+  border-color: var(--admin-color-success-banner-border);
+}
+
+.banner[data-state="error"],
+.banner[data-state="danger"] {
+  background-color: var(--admin-color-danger-banner-bg);
+  color: var(--admin-color-danger-banner-text);
+  border-color: var(--admin-color-danger-banner-border);
+}
+
+.banner[data-state="warning"] {
+  background-color: var(--admin-color-warning-bg);
+  color: var(--admin-color-warning-text);
+  border-color: var(--admin-color-warning-border-subtle);
+}
+
+/* Modal Scaffolding Blocks */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-dialog {
+  background: var(--admin-color-surface);
+  border-radius: var(--admin-radius-lg);
+  max-width: 620px;
+  width: 100%;
+  box-shadow: var(--admin-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 90vh;
+}
+
+.modal-header {
+  padding: 16px 20px;
+  background-color: var(--admin-color-surface-subtle);
+  border-bottom: 1px solid var(--admin-color-border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--admin-color-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--admin-color-text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+.modal-close-btn:hover:not(:disabled) {
+  color: var(--admin-color-text);
+}
+.modal-close-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  color: var(--admin-color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-footer {
+  padding: 14px 20px;
+  background-color: var(--admin-color-surface-subtle);
+  border-top: 1px solid var(--admin-color-border-subtle);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.admin-header-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.admin-header-user p {
+  margin: 0;
+}
+
+.admin-header-user button {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  border: 1px solid #ced4da;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .table-wrapper {
@@ -103,14 +487,39 @@ main, form {
   z-index: 10000;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem;
-  background: #eee;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--admin-color-surface-subtle);
+  border-bottom: 1px solid var(--admin-color-border);
+}
+
+.download-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.download-buttons.actions-wrapper {
+  position: static;
+  padding: 0;
+  background: transparent;
+  border-bottom: none;
+}
+
+.history-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .dashboard .overview-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+  background: var(--admin-color-surface);
+  border-bottom: 1px solid var(--admin-color-border);
+  gap: 1rem;
 }
 
 .place-detail label {
@@ -189,16 +598,4 @@ main, form {
     width: 50%;
     height: 100%;
   } */
-}
-
-
-/* ==================== */
-/* Flavor-specific CSS  */
-/* ==================== */
-
-
-.description-column,
-.benefit-column,
-.location-column {
-  width: 20rem;
 }

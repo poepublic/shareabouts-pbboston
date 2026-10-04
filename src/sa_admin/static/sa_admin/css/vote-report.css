@@ -58,7 +58,7 @@ body {
     transition: transform 0.25s ease;
 }
 
-p {
+.report p {
     color: var(--iia-fog-grey);
 }
 

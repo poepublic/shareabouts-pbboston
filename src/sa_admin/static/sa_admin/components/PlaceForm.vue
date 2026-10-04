@@ -1,25 +1,30 @@
 <template>
   <form id="place-detail-form" @submit.prevent="saveValues">
     <div class="actions-wrapper">
-      <button
-        type="button"
-        class="undo-button"
-        :disabled="undoBuffer.length === 0"
-        @click="undo"
-      >
-        Undo
-      </button>
-      <button
-        type="button"
-        class="redo-button"
-        :disabled="redoBuffer.length === 0"
-        @click="redo"
-      >
-        Redo
-      </button>
+      <div class="history-buttons">
+        <button
+          type="button"
+          class="button undo-button"
+          data-variant="secondary"
+          :disabled="undoBuffer.length === 0"
+          @click="undo"
+        >
+          Undo
+        </button>
+        <button
+          type="button"
+          class="button redo-button"
+          data-variant="secondary"
+          :disabled="redoBuffer.length === 0"
+          @click="redo"
+        >
+          Redo
+        </button>
+      </div>
       <button
         type="submit"
-        class="save-button"
+        class="button save-button"
+        data-variant="primary"
         :disabled="!canSave"
       >
         Save

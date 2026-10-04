@@ -1,0 +1,16 @@
+{% extends 'sa_admin/base.html' %}
+{% load static %}
+{% load django_vite %}
+
+{% block title %}Unauthorized - Shareabouts Admin{% endblock %}
+
+{% block body_classes %}unauthorized-page{% endblock %}
+
+{% block heading %}Unauthorized (403){% endblock %}
+
+{% block content %}
+    <p>You are logged in as <strong>{{ api.current_user.username }}</strong>, but you do not have permission to access this admin page.</p>
+    <p>Required group for this dataset (<em>{{ api.dataset_root }}</em>): <code>{{ required_group }}</code>.</p>
+    <p>Your groups on this dataset: <code>{{ groups|default:'(None)'|join:'</code>, <code>' }}</code>.</p>
+    <p><a href='{% url 'admin_home' %}'>Return to Admin Dashboard</a></p>
+{% endblock %}

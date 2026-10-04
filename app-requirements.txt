@@ -18,10 +18,12 @@ django-vite>=3.0.0
 django-proxy>=1.2.2
 requests>=1.2.0
 ujson>=5.0.0
+google-cloud-translate>=3.15.0
 
 # Config
 pyyaml
 django-extensions==2.1.0
+pygithub
 
 # Testing
 jasmine
