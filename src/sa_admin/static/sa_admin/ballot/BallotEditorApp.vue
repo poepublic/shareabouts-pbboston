@@ -50,50 +50,12 @@
                   </option>
                 </select>
               </div>
-
-              <!-- Auto-translate Button (#166 / #175) -->
-              <button
-                v-if="activeLanguage !== 'en'"
-                class="auto-translate-btn"
-                :disabled="isTranslating || !hasEnglishSource(activeProposal)"
-                @click="handleAutoTranslate"
-                :title="hasEnglishSource(activeProposal) ? `Auto-translate from English into ${getActiveLanguageLabel()}` : 'English title or content is required to auto-translate'"
-              >
-                <span v-if="isTranslating" class="spinner-sm"></span>
-                <span v-else class="magic-icon">✨</span>
-                {{ isTranslating ? 'Translating...' : 'Auto-translate' }}
-              </button>
-
-              <span v-if="isProposalDirty(activeProposal)" class="unsaved-changes-pill">
-                Unsaved Edits
-              </span>
             </div>
 
-            <!-- Action Buttons: Discard & Save -->
-            <div class="editor-actions">
-              <span v-if="isSaving" class="status-indicator saving">Saving to GitHub...</span>
-              <span v-else-if="saveSuccess" class="status-indicator success">Saved ✓</span>
+            <span v-if="isProposalDirty(activeProposal)" class="unsaved-changes-pill">Unsaved Edits</span>
+            <span v-if="isSaving" class="status-indicator saving">Saving to GitHub...</span>
+            <span v-else-if="saveSuccess" class="status-indicator success">Saved ✓</span>
 
-              <!-- Discard / Reset button (#173) -->
-              <button
-                v-if="isProposalDirty(activeProposal)"
-                class="reset-btn"
-                :disabled="isSaving"
-                @click="resetCurrentProposal"
-                title="Discard unsaved local changes and revert to GitHub version"
-              >
-                Discard Changes
-              </button>
-
-              <button
-                class="save-btn"
-                :disabled="!canSave"
-                @click="saveCurrentProposal"
-                :title="saveButtonTitle"
-              >
-                <span class="save-icon">💾</span> Save Changes
-              </button>
-            </div>
           </div>
 
           <!-- WYSIWYG Ballot View Component -->
@@ -111,6 +73,42 @@
             @slug-input="onSlugInput"
             @image-selected="onImageSelected"
           />
+        </div>
+
+        <!-- Action Buttons: Translate, Discard & Save -->
+        <div v-if="activeProposal" class="editor-actions">
+          <!-- Auto-translate Button (#166 / #175) -->
+          <button
+            v-if="activeLanguage !== 'en'"
+            class="auto-translate-btn"
+            :disabled="isTranslating || !hasEnglishSource(activeProposal)"
+            @click="handleAutoTranslate"
+            :title="hasEnglishSource(activeProposal) ? `Auto-translate from English into ${getActiveLanguageLabel()}` : 'English title or content is required to auto-translate'"
+          >
+            <span v-if="isTranslating" class="spinner-sm"></span>
+            <span v-else class="magic-icon">✨</span>
+            {{ isTranslating ? 'Translating...' : 'Auto-translate' }}
+          </button>
+
+          <button
+            class="save-btn"
+            :disabled="!canSave"
+            @click="saveCurrentProposal"
+            :title="saveButtonTitle"
+          >
+            <span class="save-icon">💾</span> Save Changes
+          </button>
+
+          <!-- Discard / Reset button (#173) -->
+          <button
+            v-if="isProposalDirty(activeProposal)"
+            class="reset-btn"
+            :disabled="isSaving"
+            @click="resetCurrentProposal"
+            title="Discard unsaved local changes and revert to GitHub version"
+          >
+            Discard Changes
+          </button>
         </div>
       </main>
     </div>
@@ -1080,8 +1078,10 @@ onMounted(() => {
   padding: 24px 32px;
   overflow-y: auto;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  gap: 1rem;
   background-color: #eaedf1;
 }
 
@@ -1098,7 +1098,6 @@ onMounted(() => {
   width: 100%;
   max-width: 440px;
   gap: 14px;
-  margin: 0 auto;
 }
 
 /* Top Action / Status Bar */
@@ -1155,17 +1154,23 @@ onMounted(() => {
   color: #92400e;
 }
 
+.editor-actions button {
+  width: 100%;
+  padding: 6px 16px;
+  box-sizing: border-box;
+}
+
 .auto-translate-btn {
   background-color: #7c3aed;
   color: #ffffff;
   border: none;
-  padding: 5px 10px;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   transition: background-color 0.2s, opacity 0.2s;
 }
@@ -1212,6 +1217,7 @@ onMounted(() => {
 
 .editor-actions {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
 }
