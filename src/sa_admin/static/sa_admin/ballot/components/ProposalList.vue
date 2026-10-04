@@ -101,11 +101,17 @@ const searchQuery = ref('');
 
 const filteredProposals = computed(() => {
   if (!searchQuery.value.trim()) return props.proposals;
-  const q = searchQuery.value.toLowerCase();
+  const q = searchQuery.value.toLowerCase().trim();
   return props.proposals.filter((p) => {
-    const title = props.getProposalTitle(p).toLowerCase();
-    const slug = (p.slug || '').toLowerCase();
-    return title.includes(q) || slug.includes(q);
+    if ((p.slug || '').toLowerCase().includes(q)) return true;
+    if (p.translations) {
+      for (const t of Object.values(p.translations)) {
+        if (t?.title && t.title.toLowerCase().includes(q)) return true;
+        if (t?.content && t.content.toLowerCase().includes(q)) return true;
+        if (t?.image_alt && t.image_alt.toLowerCase().includes(q)) return true;
+      }
+    }
+    return false;
   });
 });
 

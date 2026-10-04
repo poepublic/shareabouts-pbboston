@@ -507,11 +507,11 @@ function resetCurrentProposal() {
 // -------------------------------------------------------------
 // Format Utilities
 // -------------------------------------------------------------
-function getProposalTitle(prop, lang = activeLanguage.value) {
+function getProposalTitle(prop, lang = 'en') {
   if (!prop) return '';
   return (
-    prop.translations?.[lang]?.title ||
-    prop.translations?.en?.title ||
+    prop.translations?.[lang]?.title?.trim() ||
+    prop.translations?.en?.title?.trim() ||
     prop.slug ||
     '(Untitled Proposal)'
   );
@@ -984,7 +984,7 @@ async function saveCurrentProposal() {
 
     notification.value = {
       type: 'success',
-      message: `Proposal "${getProposalTitle(prop, activeLanguage.value)}" (${prop.slug}) saved successfully!`,
+      message: `Proposal "${getProposalTitle(prop)}" (${prop.slug}) saved successfully!`,
     };
 
     setTimeout(() => {
