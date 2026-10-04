@@ -39,14 +39,17 @@
                   id="ballot-lang-select"
                   v-model="activeLanguage"
                   class="lang-select-dropdown"
-                  :class="{ 'has-missing': isTranslationMissing(activeProposal, activeLanguage) }"
+                  :class="{
+                    'has-missing': isTranslationMissing(activeProposal, activeLanguage),
+                    'other-lang-dirty': isOtherLanguageDirty,
+                  }"
                 >
                   <option
                     v-for="lang in supportedLanguages"
                     :key="lang.code"
                     :value="lang.code"
                   >
-                    {{ lang.label }} ({{ lang.code }}) {{ isTranslationMissing(activeProposal, lang.code) ? '⚠️ [missing]' : '✓' }}
+                    {{ getLanguageOptionLabel(lang) }}
                   </option>
                 </select>
               </div>
@@ -348,6 +351,46 @@ function isFieldDirty(prop, field, lang = activeLanguage.value) {
   }
 }
 
+function isLanguageDirty(prop, lang) {
+  if (!prop) return false;
+  if (prop.isNew) {
+    const t = prop.translations?.[lang];
+    if (!t) return false;
+    return !!(
+      (t.title && t.title.trim()) ||
+      (t.content && t.content.trim()) ||
+      (t.image_alt && t.image_alt.trim())
+    );
+  }
+  const server = getServerProposal(prop);
+  if (!server) return false;
+  return (
+    isFieldDirty(prop, 'title', lang) ||
+    isFieldDirty(prop, 'content', lang) ||
+    isFieldDirty(prop, 'image_alt', lang)
+  );
+}
+
+const isOtherLanguageDirty = computed(() => {
+  if (!activeProposal.value) return false;
+  return supportedLanguages.value.some(
+    (lang) => lang.code !== activeLanguage.value && isLanguageDirty(activeProposal.value, lang.code)
+  );
+});
+
+function getLanguageOptionLabel(lang) {
+  if (!activeProposal.value) {
+    return `${lang.label} (${lang.code})`;
+  }
+  if (isLanguageDirty(activeProposal.value, lang.code)) {
+    return `${lang.label} (${lang.code}) •`;
+  }
+  if (isTranslationMissing(activeProposal.value, lang.code)) {
+    return `${lang.label} (${lang.code}) ⚠️ [missing]`;
+  }
+  return `${lang.label} (${lang.code}) ✓`;
+}
+
 function isProposalDirty(prop) {
   if (!prop) return false;
   if (prop.isNew) return true;
@@ -366,11 +409,7 @@ function isProposalDirty(prop) {
   ]);
 
   for (const lang of allLangs) {
-    if (
-      isFieldDirty(prop, 'title', lang) ||
-      isFieldDirty(prop, 'content', lang) ||
-      isFieldDirty(prop, 'image_alt', lang)
-    ) {
+    if (isLanguageDirty(prop, lang)) {
       return true;
     }
   }
@@ -1152,6 +1191,12 @@ onMounted(() => {
   border-color: #f59e0b;
   background-color: #fffbeb;
   color: #92400e;
+}
+
+.lang-select-dropdown.other-lang-dirty {
+  background-color: #fef9c3;
+  border-color: #f59e0b;
+  color: #78350f;
 }
 
 .editor-actions button {
