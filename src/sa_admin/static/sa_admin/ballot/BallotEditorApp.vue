@@ -80,13 +80,12 @@
 
         <!-- Action Buttons: Translate, Discard & Save -->
         <div v-if="activeProposal" class="editor-actions">
-          <!-- Auto-translate Button (#166 / #175) -->
+          <!-- Auto-translate Button (#166 / #175 / Multi-language Translation) -->
           <button
-            v-if="activeLanguage !== 'en'"
             class="auto-translate-btn"
-            :disabled="isTranslating || !hasEnglishSource(activeProposal)"
-            @click="handleAutoTranslate"
-            :title="hasEnglishSource(activeProposal) ? `Auto-translate from English into ${getActiveLanguageLabel()}` : 'English title or content is required to auto-translate'"
+            :disabled="isTranslating || !hasSourceContent(activeProposal)"
+            @click="showTranslateModal = true"
+            :title="hasSourceContent(activeProposal) ? 'Auto-translate proposal into multiple languages' : 'Proposal title or description is required to translate'"
           >
             <span v-if="isTranslating" class="spinner-sm"></span>
             <span v-else class="magic-icon">✨</span>
@@ -126,6 +125,16 @@
       @use-head="resolveConflictUseHead"
       @keep-local="resolveConflictKeepLocal"
     />
+
+    <!-- Multi-Language Translation Modal -->
+    <TranslateModal
+      :show="showTranslateModal"
+      :proposal="activeProposal"
+      :supported-languages="supportedLanguages"
+      :is-translating="isTranslating"
+      @close="showTranslateModal = false"
+      @translate="handleBatchTranslate"
+    />
   </div>
 </template>
 
@@ -134,6 +143,7 @@ import { ref, computed, watch, onMounted } from 'vue';
 import ProposalList from './components/ProposalList.vue';
 import BallotWysiwygView from './components/BallotWysiwygView.vue';
 import ConflictModal from './components/ConflictModal.vue';
+import TranslateModal from './components/TranslateModal.vue';
 
 const LOCAL_STORAGE_KEY = 'pbboston_ballot_drafts';
 
@@ -166,6 +176,9 @@ const showConflictModal = ref(false);
 const conflictHeadProposal = ref(null);
 const conflictLocalProposal = ref(null);
 
+// Batch translation modal state
+const showTranslateModal = ref(false);
+
 // -------------------------------------------------------------
 // Language Helpers (#175)
 // -------------------------------------------------------------
@@ -185,6 +198,13 @@ function hasEnglishSource(prop) {
   if (!prop || !prop.translations?.en) return false;
   const en = prop.translations.en;
   return !!((en.title && en.title.trim()) || (en.content && en.content.trim()));
+}
+
+function hasSourceContent(prop) {
+  if (!prop || !prop.translations) return false;
+  return Object.values(prop.translations).some(
+    (t) => (t.title && t.title.trim()) || (t.content && t.content.trim())
+  );
 }
 
 // -------------------------------------------------------------
@@ -520,84 +540,110 @@ const currentImageUrl = computed(() => {
 });
 
 // -------------------------------------------------------------
-// Automated Translation Service Integration (#166 / #175)
+// Automated Batch Translation Service Integration (#166 / #175)
 // -------------------------------------------------------------
-async function handleAutoTranslate() {
-  if (!activeProposal.value || activeLanguage.value === 'en') return;
+async function handleBatchTranslate({ sourceLanguage, targetLanguages, fields }) {
+  if (!activeProposal.value || !targetLanguages || targetLanguages.length === 0) return;
 
-  const targetLang = activeLanguage.value;
-  const targetLabel = getActiveLanguageLabel(targetLang);
-  const enTrans = activeProposal.value.translations?.en || {};
+  const sourceTrans = activeProposal.value.translations?.[sourceLanguage] || {};
+  const texts = {};
+  if (fields.title) texts.title = sourceTrans.title || '';
+  if (fields.content) texts.content = sourceTrans.content || '';
+  if (fields.image_alt) texts.image_alt = sourceTrans.image_alt || '';
 
-  if (!enTrans.title && !enTrans.content) {
+  const hasTextToTranslate = Object.values(texts).some((v) => v && v.trim());
+  if (!hasTextToTranslate) {
     notification.value = {
       type: 'warning',
-      message: 'English proposal title or description is required to generate translations.',
+      message: `Source language (${sourceLanguage}) does not contain text for the selected fields.`,
     };
     return;
-  }
-
-  const existingTarget = activeProposal.value.translations?.[targetLang];
-  if (existingTarget && ((existingTarget.title && existingTarget.title.trim()) || (existingTarget.content && existingTarget.content.trim()))) {
-    if (
-      !confirm(
-        `Note: Using automatic translation will override manual translations for ${targetLabel}. Are you sure you want to proceed?`
-      )
-    ) {
-      return;
-    }
   }
 
   isTranslating.value = true;
   notification.value = null;
 
   try {
-    const payload = {
-      target_language: targetLang,
-      source_language: 'en',
-      texts: {
-        title: enTrans.title || '',
-        content: enTrans.content || '',
-        image_alt: enTrans.image_alt || '',
-      },
-    };
+    const fetchPromises = targetLanguages.map(async (targetLang) => {
+      const payload = {
+        target_language: targetLang,
+        source_language: sourceLanguage,
+        texts,
+      };
 
-    const res = await fetch('/admin/ballot/translate/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      credentials: 'same-origin',
-      body: JSON.stringify(payload),
+      const res = await fetch('/admin/ballot/translate/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || `HTTP ${res.status}`);
+      }
+      return { targetLang, translations: data.translations };
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-      throw new Error(data.error || `HTTP ${res.status}`);
-    }
+    const results = await Promise.allSettled(fetchPromises);
 
     if (!activeProposal.value.translations) {
       activeProposal.value.translations = {};
     }
-    activeProposal.value.translations[targetLang] = {
-      language: targetLang,
-      title: data.translations?.title || '',
-      content: data.translations?.content || '',
-      image_alt: data.translations?.image_alt || '',
-    };
 
-    updateDraftForProposal(activeProposal.value);
+    let successCount = 0;
+    const failedLangs = [];
 
-    notification.value = {
-      type: 'success',
-      message: `Successfully auto-translated proposal into ${targetLabel}! Changes are stored locally; click "Save Changes" to commit.`,
-    };
+    results.forEach((result, idx) => {
+      const targetLang = targetLanguages[idx];
+      if (result.status === 'fulfilled') {
+        const { translations } = result.value;
+        const currentTrans = activeProposal.value.translations[targetLang] || { language: targetLang };
+
+        activeProposal.value.translations[targetLang] = {
+          ...currentTrans,
+          language: targetLang,
+          ...(fields.title && translations?.title !== undefined ? { title: translations.title } : {}),
+          ...(fields.content && translations?.content !== undefined ? { content: translations.content } : {}),
+          ...(fields.image_alt && translations?.image_alt !== undefined ? { image_alt: translations.image_alt } : {}),
+        };
+        successCount++;
+      } else {
+        const targetLabel = getActiveLanguageLabel(targetLang);
+        failedLangs.push(`${targetLabel} (${result.reason?.message || 'Error'})`);
+      }
+    });
+
+    if (successCount > 0) {
+      updateDraftForProposal(activeProposal.value);
+    }
+
+    if (failedLangs.length === 0) {
+      notification.value = {
+        type: 'success',
+        message: `Successfully auto-translated proposal into ${successCount} language(s)! Changes are stored locally; click "Save Changes" to commit.`,
+      };
+      showTranslateModal.value = false;
+    } else if (successCount > 0) {
+      notification.value = {
+        type: 'warning',
+        message: `Translated into ${successCount} language(s), but failed for: ${failedLangs.join(', ')}.`,
+      };
+      showTranslateModal.value = false;
+    } else {
+      notification.value = {
+        type: 'error',
+        message: `Failed to translate proposal: ${failedLangs.join(', ')}.`,
+      };
+    }
   } catch (err) {
-    console.error('Translation error:', err);
+    console.error('Batch translation error:', err);
     notification.value = {
       type: 'error',
-      message: `Failed to translate proposal: ${err.message}`,
+      message: `Failed to execute batch translation: ${err.message}`,
     };
   } finally {
     isTranslating.value = false;
