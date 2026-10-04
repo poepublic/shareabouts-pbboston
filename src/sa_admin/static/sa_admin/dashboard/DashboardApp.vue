@@ -19,7 +19,9 @@
           </template>
         </div>
         <button
-          class="clear-filters"
+          class="button clear-filters"
+          data-variant="secondary"
+          data-size="sm"
           :disabled="!hasActiveFilters"
           @click="onClearFilters"
         >
@@ -29,14 +31,16 @@
 
       <div class="download-buttons actions-wrapper">
         <button
-          class="download download-filtered"
+          class="button download download-filtered"
+          data-variant="secondary"
           :disabled="!hasActiveFilters"
           @click="downloadPlaces(filteredPlaces)"
         >
           Download Filtered (csv)
         </button>
         <button
-          class="download download-all"
+          class="button download download-all"
+          data-variant="primary"
           @click="downloadPlaces(placesModels)"
         >
           Download All (csv)

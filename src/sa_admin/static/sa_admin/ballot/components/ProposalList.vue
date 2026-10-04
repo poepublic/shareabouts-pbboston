@@ -2,7 +2,7 @@
   <aside class="proposal-sidebar">
     <div class="sidebar-header">
       <h2>BALLOT PROPOSALS <span class="badge">{{ proposals.length }}</span></h2>
-      <button class="add-proposal-btn" @click="$emit('add')" :disabled="loading">
+      <button class="button add-proposal-btn" data-variant="ghost-dashed" @click="$emit('add')" :disabled="loading">
         + Add a new ballot proposal
       </button>
     </div>
@@ -39,7 +39,8 @@
         <div class="item-right">
           <span
             v-if="supportedLanguages.length > 0"
-            :class="['trans-indicator', getMissingTranslationsCount(prop) > 0 ? 'missing' : 'complete']"
+            class="pill trans-indicator"
+            :data-state="getMissingTranslationsCount(prop) > 0 ? 'warning' : 'success'"
             :title="getMissingTranslationsCount(prop) > 0 ? `${getMissingTranslationsCount(prop)} language translation(s) missing` : 'All threshold languages translated'"
           >
             {{ getMissingTranslationsCount(prop) > 0 ? '⚠️' : '✓' }} {{ supportedLanguages.length - getMissingTranslationsCount(prop) }}/{{ supportedLanguages.length }}
@@ -155,31 +156,8 @@ function getMissingTranslationsCount(prop) {
   color: #212529;
 }
 
-.badge {
-  background-color: #e9ecef;
-  color: #495057;
-  font-size: 0.75rem;
-  padding: 2px 8px;
-  border-radius: 12px;
-}
-
 .add-proposal-btn {
   width: 100%;
-  padding: 8px 12px;
-  background-color: #ffffff;
-  border: 1px dashed #6c757d;
-  border-radius: 6px;
-  color: #495057;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.add-proposal-btn:hover {
-  background-color: #f8f9fa;
-  border-color: #007bff;
-  color: #007bff;
 }
 
 .sidebar-filter {
@@ -199,7 +177,7 @@ function getMissingTranslationsCount(prop) {
 .sidebar-loading {
   padding: 24px;
   text-align: center;
-  color: #6c757d;
+  color: var(--admin-color-text-muted);
   font-style: italic;
 }
 
@@ -222,12 +200,12 @@ function getMissingTranslationsCount(prop) {
 }
 
 .proposal-list-item:hover {
-  background-color: #f8f9fa;
+  background-color: var(--admin-color-surface-hover);
 }
 
 .proposal-list-item.active {
-  background-color: #e8f4fd;
-  border-left: 4px solid #007bff;
+  background-color: var(--admin-color-primary-subtle);
+  border-left: 4px solid var(--admin-color-primary);
 }
 
 .item-left {
@@ -239,7 +217,7 @@ function getMissingTranslationsCount(prop) {
 }
 
 .selection-indicator {
-  color: #007bff;
+  color: var(--admin-color-primary);
   font-size: 0.8rem;
   opacity: 0;
 }
@@ -249,7 +227,7 @@ function getMissingTranslationsCount(prop) {
 }
 
 .dirty-indicator-dot {
-  color: #f59e0b;
+  color: var(--admin-color-warning-border);
   font-size: 0.85rem;
   margin-left: 2px;
   flex-shrink: 0;
@@ -258,7 +236,7 @@ function getMissingTranslationsCount(prop) {
 .item-title {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #212529;
+  color: var(--admin-color-text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -271,56 +249,35 @@ function getMissingTranslationsCount(prop) {
   flex-shrink: 0;
 }
 
-.trans-indicator {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 2px 5px;
-  border-radius: 4px;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-}
-
-.trans-indicator.missing {
-  background-color: #fef3c7;
-  color: #92400e;
-  border: 1px solid #fde68a;
-}
-
-.trans-indicator.complete {
-  background-color: #d1fae5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
-}
-
 .item-amount {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #28a745;
-  background: #eafaf1;
+  color: var(--admin-color-success-text);
+  background: var(--admin-color-success-bg);
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: var(--admin-radius-sm);
 }
 
 .delete-item-btn {
   background: none;
   border: none;
   font-size: 1.2rem;
-  color: #adb5bd;
+  color: var(--admin-color-text-subtle);
   cursor: pointer;
   padding: 0 4px;
   line-height: 1;
-  border-radius: 4px;
+  border-radius: var(--admin-radius-sm);
 }
 
 .delete-item-btn:hover {
-  color: #dc3545;
-  background-color: #fee;
+  color: var(--admin-color-danger);
+  background-color: var(--admin-color-danger-bg);
 }
 
 .no-proposals {
   padding: 20px;
   text-align: center;
-  color: #6c757d;
+  color: var(--admin-color-text-muted);
   font-size: 0.9rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="ballot-content-manager">
     <!-- Header Notification Banner -->
-    <div v-if="notification" :class="['notification-banner', notification.type]">
+    <div v-if="notification" class="banner" :data-state="notification.type">
       <span>{{ notification.message }}</span>
       <button class="close-notif-btn" @click="notification = null">×</button>
     </div>
@@ -55,7 +55,7 @@
               </div>
             </div>
 
-            <span v-if="isProposalDirty(activeProposal)" class="unsaved-changes-pill">Unsaved Edits</span>
+            <span v-if="isProposalDirty(activeProposal)" class="pill" data-state="warning">Unsaved Edits</span>
             <span v-if="isSaving" class="status-indicator saving">Saving to GitHub...</span>
             <span v-else-if="saveSuccess" class="status-indicator success">Saved ✓</span>
 
@@ -82,7 +82,8 @@
         <div v-if="activeProposal" class="editor-actions">
           <!-- Auto-translate Button (#166 / #175 / Multi-language Translation) -->
           <button
-            class="auto-translate-btn"
+            class="button auto-translate-btn"
+            data-variant="accent"
             :disabled="isTranslating || !hasSourceContent(activeProposal)"
             @click="showTranslateModal = true"
             :title="hasSourceContent(activeProposal) ? 'Auto-translate proposal into multiple languages' : 'Proposal title or description is required to translate'"
@@ -93,7 +94,8 @@
           </button>
 
           <button
-            class="save-btn"
+            class="button save-btn"
+            data-variant="primary"
             :disabled="!canSave"
             @click="saveCurrentProposal"
             :title="saveButtonTitle"
@@ -104,7 +106,8 @@
           <!-- Discard / Reset button (#173) -->
           <button
             v-if="isProposalDirty(activeProposal)"
-            class="reset-btn"
+            class="button reset-btn"
+            data-variant="danger"
             :disabled="isSaving"
             @click="resetCurrentProposal"
             title="Discard unsaved local changes and revert to GitHub version"
@@ -1118,30 +1121,7 @@ onMounted(() => {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Notification banner */
-.notification-banner {
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-.notification-banner.success {
-  background-color: #d4edda;
-  color: #155724;
-  border-bottom: 1px solid #c3e6cb;
-}
-.notification-banner.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-bottom: 1px solid #f5c6cb;
-}
-.notification-banner.warning {
-  background-color: #fff3cd;
-  color: #856404;
-  border-bottom: 1px solid #ffeeba;
-}
+/* Notification banner close button */
 .close-notif-btn {
   background: none;
   border: none;
@@ -1229,50 +1209,31 @@ onMounted(() => {
 }
 
 .lang-select-dropdown:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: var(--admin-color-primary);
+  box-shadow: var(--admin-focus-ring);
 }
 
 .lang-select-dropdown.has-missing {
-  border-color: #f59e0b;
-  background-color: #fffbeb;
-  color: #92400e;
+  border-color: var(--admin-color-warning-border);
+  background-color: var(--admin-color-warning-bg);
+  color: var(--admin-color-warning-text);
 }
 
 .lang-select-dropdown.other-lang-dirty {
-  background-color: #fef9c3;
-  border-color: #f59e0b;
-  color: #78350f;
+  background-color: var(--admin-color-dirty-bg);
+  border-color: var(--admin-color-dirty-border);
+  color: var(--admin-color-dirty-text);
 }
 
-.editor-actions button {
-  width: 100%;
-  padding: 6px 16px;
-  box-sizing: border-box;
-}
-
-.auto-translate-btn {
-  background-color: #7c3aed;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
+.editor-actions {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  transition: background-color 0.2s, opacity 0.2s;
+  gap: 10px;
 }
 
-.auto-translate-btn:hover:not(:disabled) {
-  background-color: #6d28d9;
-}
-
-.auto-translate-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.editor-actions .button {
+  width: 100%;
 }
 
 .magic-icon {
@@ -1295,73 +1256,14 @@ onMounted(() => {
   }
 }
 
-.unsaved-changes-pill {
-  background-color: #fef3c7;
-  color: #92400e;
-  border: 1px solid #fde68a;
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.editor-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
 .status-indicator {
   font-size: 0.85rem;
   font-weight: 500;
 }
 .status-indicator.saving {
-  color: #007bff;
+  color: var(--admin-color-primary);
 }
 .status-indicator.success {
-  color: #28a745;
-}
-
-.reset-btn {
-  background-color: #ffffff;
-  color: #64748b;
-  border: 1px solid #cbd5e1;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.reset-btn:hover:not(:disabled) {
-  background-color: #fee2e2;
-  color: #b91c1c;
-  border-color: #fca5a5;
-}
-
-.save-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: background-color 0.2s;
-}
-
-.save-btn:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-
-.save-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  color: var(--admin-color-success);
 }
 </style>

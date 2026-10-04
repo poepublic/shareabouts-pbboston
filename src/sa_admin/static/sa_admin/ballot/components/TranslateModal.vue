@@ -1,7 +1,7 @@
 <template>
-  <div v-if="show" class="translate-modal-overlay" @click.self="handleOverlayClick">
-    <div class="translate-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="translate-dialog-title">
-      <div class="translate-modal-header">
+  <div v-if="show" class="modal-overlay" @click.self="handleOverlayClick">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="translate-dialog-title">
+      <div class="modal-header">
         <h3 id="translate-dialog-title">
           <span class="magic-icon">✨</span> Translate Proposal
         </h3>
@@ -14,7 +14,7 @@
         >×</button>
       </div>
 
-      <div class="translate-modal-body">
+      <div class="modal-body">
         <!-- 1. Fields to translate -->
         <div class="form-section">
           <label class="section-title">Fields to translate:</label>
@@ -131,10 +131,11 @@
         </div>
       </div>
 
-      <div class="translate-modal-footer">
+      <div class="modal-footer">
         <button
           type="button"
-          class="btn-modal-cancel"
+          class="button"
+          data-variant="secondary"
           :disabled="isTranslating"
           @click="handleClose"
         >
@@ -142,7 +143,8 @@
         </button>
         <button
           type="button"
-          class="btn-modal-translate"
+          class="button"
+          data-variant="primary"
           :disabled="!canTranslate"
           @click="handleTranslate"
         >
@@ -337,75 +339,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.translate-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(3px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 20px;
-}
-
-.translate-modal-dialog {
-  background: #ffffff;
-  border-radius: 12px;
-  max-width: 620px;
-  width: 100%;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  max-height: 90vh;
-}
-
-.translate-modal-header {
-  padding: 16px 20px;
-  background-color: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.translate-modal-header h3 {
-  margin: 0;
-  font-size: 1.15rem;
-  color: #1e293b;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.modal-close-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #64748b;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0 4px;
-}
-.modal-close-btn:hover:not(:disabled) {
-  color: #1e293b;
-}
-.modal-close-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.translate-modal-body {
-  padding: 20px;
-  overflow-y: auto;
-  font-size: 0.95rem;
-  color: #334155;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
 .form-section {
   display: flex;
   flex-direction: column;
@@ -556,12 +489,12 @@ onUnmounted(() => {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  background-color: #fffbeb;
-  border: 1px solid #fef3c7;
-  border-left: 4px solid #f59e0b;
+  background-color: var(--admin-color-warning-bg);
+  border: 1px solid var(--admin-color-warning-border-subtle);
+  border-left: 4px solid var(--admin-color-warning-border);
   padding: 10px 14px;
-  border-radius: 6px;
-  color: #92400e;
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-color-warning-text);
   font-size: 0.88rem;
   line-height: 1.4;
 }
@@ -570,57 +503,6 @@ onUnmounted(() => {
   font-size: 1.05rem;
   flex-shrink: 0;
   margin-top: 1px;
-}
-
-.translate-modal-footer {
-  padding: 14px 20px;
-  background-color: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-}
-
-.btn-modal-cancel {
-  background: #ffffff;
-  color: #475569;
-  border: 1px solid #cbd5e1;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.88rem;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.btn-modal-cancel:hover:not(:disabled) {
-  background-color: #f1f5f9;
-  color: #1e293b;
-}
-.btn-modal-cancel:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.btn-modal-translate {
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.88rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: background-color 0.15s;
-}
-.btn-modal-translate:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-.btn-modal-translate:disabled {
-  background-color: #94a3b8;
-  cursor: not-allowed;
 }
 
 .magic-icon {

@@ -1,0 +1,18 @@
+@import url('/static/css/iia.css');
+
+:root {
+  /* Ideas in Action & Boston Brand Colors */
+  --admin-color-primary: var(--iia-indigo-blue, #1900B0);
+  --admin-color-primary-hover: var(--iia-dark-blue, #0E0E30);
+  --admin-color-primary-subtle: rgba(25, 0, 176, 0.08);
+
+  --admin-color-accent: var(--iia-electric-purple, #B11FFF);
+  --admin-color-accent-hover: var(--iia-electric-purple-alt, #BF49FF);
+}
+
+/* Flavor-specific survey column widths */
+.description-column,
+.benefit-column,
+.location-column {
+  width: 20rem;
+}

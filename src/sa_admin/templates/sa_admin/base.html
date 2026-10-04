@@ -17,6 +17,9 @@
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel='stylesheet' />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
     <link rel="stylesheet" href="{% static 'sa_admin/css/style.css' %}">
+    {% block flavor_admin_styles %}
+    <link rel="stylesheet" href="{% static 'css/admin-custom.css' %}">
+    {% endblock %}
     {% endblock %}
 
     {% vite_hmr_client %}

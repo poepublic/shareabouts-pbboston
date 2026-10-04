@@ -347,26 +347,27 @@ watch(
 .external-field-label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--admin-color-text);
 }
 
 .dirty-tag {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #b45309;
-  background-color: #fef3c7;
+  color: var(--admin-color-dirty-text);
+  background-color: var(--admin-color-dirty-bg);
+  border: 1px solid var(--admin-color-warning-border-subtle);
   padding: 1px 6px;
-  border-radius: 4px;
+  border-radius: var(--admin-radius-sm);
 }
 
 .external-field-input {
   width: 100%;
   padding: 8px 12px;
   font-size: 0.95rem;
-  border: 1px solid #1e293b;
-  border-radius: 4px;
-  background: #ffffff;
-  color: #1e293b;
+  border: 1px solid var(--admin-color-border-subtle);
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-color-surface);
+  color: var(--admin-color-text);
   box-sizing: border-box;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
@@ -377,46 +378,46 @@ watch(
 }
 
 .external-field-input.has-error {
-  border-color: #dc3545 !important;
-  background-color: #fff8f8 !important;
+  border-color: var(--admin-color-danger) !important;
+  background-color: var(--admin-color-danger-bg) !important;
 }
 
 .field-error-message {
   margin-top: 4px;
   font-size: 0.8rem;
-  color: #dc3545;
+  color: var(--admin-color-danger);
   font-weight: 600;
 }
 
 .external-field-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: var(--admin-color-primary);
+  box-shadow: var(--admin-focus-ring);
 }
 
 /* Dirty-State Visual Highlighting (#173) */
 .is-dirty {
-  background-color: #fef9c3 !important;
-  border-color: #f59e0b !important;
+  background-color: var(--admin-color-dirty-bg) !important;
+  border-color: var(--admin-color-dirty-border) !important;
 }
 
 .proposal-title-input.is-dirty,
 .proposal-cost-input.is-dirty,
 .proposal-description-input.is-dirty {
-  background-color: #fef9c3 !important;
-  border: 1px dashed #f59e0b !important;
-  border-radius: 4px;
+  background-color: var(--admin-color-dirty-bg) !important;
+  border: 1px dashed var(--admin-color-dirty-border) !important;
+  border-radius: var(--admin-radius-sm);
 }
 
 .proposal-image-wrapper.is-dirty {
-  box-shadow: 0 0 0 3px #f59e0b !important;
+  box-shadow: 0 0 0 3px var(--admin-color-dirty-border) !important;
 }
 
 /* Ballot Preview Frame (mimics /vote/ballot) */
 .ballot-preview-frame {
   width: 100%;
-  border: 2px solid #0E0E30;
-  border-radius: 4px;
-  background-color: #efeff4;
+  border: 2px solid var(--iia-dark-blue, #0E0E30);
+  border-radius: var(--admin-radius-sm);
+  background-color: var(--iia-fog-grey, #efeff4);
   overflow: hidden;
   display: flex;
   flex-direction: column;
