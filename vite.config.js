@@ -20,6 +20,7 @@ export default defineConfig({
         'sa_admin-detail': djangoStatic('sa_admin/detail/main.js'),
         'sa_admin-report': djangoStatic('sa_admin/report/main.js'),
         'sa_admin-ballot': djangoStatic('sa_admin/ballot/main.js'),
+        'sa_admin-voter-support': djangoStatic('sa_admin/voter_support/main.js'),
         'sa_vote': djangoStatic('sa_vote/main.js'),
       },
       external: ['leaflet'],

@@ -213,51 +213,12 @@ def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
 
     return JsonResponse({'status': 'success', 'message': 'Verification code sent'}, status=201)
 
-
-@process_shareabouts_config
-def admin_generate_code(request: HttpRequestWithConfig) -> HttpResponse:
+def admin_generate_code(request: HttpRequestWithConfig, *args, **kwargs) -> HttpResponse:
     """
-    A view for administrators to generate a voter code with a 7-day TTL.
-    - Requires an authenticated staff/admin user or authenticated Shareabouts admin user.
-    - Generates a UUID to represent the voter and hashes it.
-    - Generates a 6-character hex code and stores it in cache mapped to the UUID hash.
-    - Returns 201 Created with the generated code.
+    Compatibility wrapper delegating to sa_admin.views.admin_generate_code.
     """
-    if request.method != 'POST':
-        return HttpResponse(status=405)
-
-    # Set voter support group either in config.yml, or with SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP environment variable
-    voter_support_group = request.shareabouts_config['ballot']['voter_support_group']
-
-    can_generate_admin_code = False
-
-    config = request.shareabouts_config
-    api = ShareaboutsApi(config, request)
-    try:
-        api_user = api.current_user()
-    except Exception as exc:
-        logger.exception('Failed to retrieve current user information')
-        return JsonResponse({'error': f'Failed to retrieve current user information: {exc}'}, status=502)
-
-    if not api_user:
-        return JsonResponse({'error': 'Unauthenticated'}, status=401)
-
-    groups = [
-        group['name']
-        for group in api_user['groups']
-        if group['dataset'] == api.dataset_root
-    ]
-    can_generate_admin_code = voter_support_group in groups
-
-    if not can_generate_admin_code:
-        return JsonResponse({'error': 'Unauthorized'}, status=403)
-
-    voter_uuid = str(uuid.uuid4())
-    id_hash = hash_voter_id(voter_uuid)
-
-    code = map_voter_code_to_id(id_hash, ADMIN_CODE_TTL_SECONDS)
-
-    return JsonResponse({'status': 'success', 'code': code, 'id_hash': id_hash}, status=201)
+    from sa_admin.views import admin_generate_code as _admin_generate_code
+    return _admin_generate_code(request, *args, **kwargs)
 
 
 @rate_limit_ip(count=10, period=60, key_prefix='verify_code')
