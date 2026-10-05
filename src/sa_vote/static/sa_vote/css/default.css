@@ -745,6 +745,10 @@ summary.survey-select-input,
         margin-right: 10vw;
     }
 
+    /* Auth page */
+    #modal-popup {
+        justify-self: center;
+    }
 
     /* Ballot page */ 
     #ballot-page {
