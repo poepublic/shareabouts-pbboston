@@ -5,16 +5,16 @@
 
 {% block header_intro %}
 <div id="boston-small-screen-lead-in" class="boston-small-screen-lead-in">
-  <img class="boston-logo" alt="City of Boston logo" src="{% static 'css/images/boston-logo-white.png' %}"><br>
+  <img class="boston-logo" alt="{% translate 'City of Boston logo' %}" src="{% static 'css/images/boston-logo-white.png' %}"><br>
   <span class="pb-label">{% translate "Participatory Budgeting" %}</span>
 </div>
 {% endblock %}
 
 {% block site-title %}
 <a href="/{{ config.app.home_path }}" data-internal="true">
-  <img class="boston-icon" alt="Boston icon" src="{% static 'css/images/boston-icon-light.svg' %}">
-  <img class="pb-icon" alt="Participatory Budgeting icon" src="{% static 'css/images/pbboston-icon.svg' %}">
-  <img class="boston-logo" alt="Boston Logo" src="{% static 'css/images/boston-logo.svg' %}">
+  <img class="boston-icon" alt="{% translate 'Boston icon' %}" src="{% static 'css/images/boston-icon-light.svg' %}">
+  <img class="pb-icon" alt="{% translate 'Participatory Budgeting icon' %}" src="{% static 'css/images/pbboston-icon.svg' %}">
+  <img class="boston-logo" alt="{% translate 'Boston Logo' %}" src="{% static 'css/images/boston-logo.svg' %}">
   <span class="pb-label">{% translate "Participatory Budgeting" %}</span>
 </a>
 {% endblock %}
