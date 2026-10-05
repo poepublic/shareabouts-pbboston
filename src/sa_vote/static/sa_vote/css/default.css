@@ -851,52 +851,16 @@ summary.survey-select-input,
         max-width: 15vw;
         max-height: 8vh;
     }
-    
-    .vote-confirm-modal {
-        max-width: 30vw;
-        width: 90%;
-    }
 
-    p, li, .info-text {
-        font-size: 1.25rem;
-    }
-
-
- 
     .menu {
         display: flex;
         flex-direction: row;
         gap: 1rem;
     }
 
-    #home-page {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-
-    .home-header, .ballot-page-header, .faq-page-header, .terms-page-header, .privacy-page-header {
-        font-size: 3rem;
-        text-align: center;
-    }
-
-    .bigger-text {
-        font-size: 4rem;
-    }
-
-    .secondary-emphasis {
-        font-size: 1.5rem;
-    }
-
     .vote-link {
         width: 18vw;
     }
-
-
-
-
-
 }
 
 /* Large screen */
