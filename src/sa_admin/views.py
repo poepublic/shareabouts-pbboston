@@ -168,41 +168,19 @@ def ballot_proposals_api(request, config, api):
         return JsonResponse({'error': str(e)}, status=500)
 
 
-@csrf_exempt
-@ballot_manager_required
-def ballot_proposal_save_api(request, config, api):
+def _prepare_proposal_files(mgr, prop_dict):
     """
-    POST /admin/ballot/proposals/save/
-    Commits proposal modifications directly to GitHub repository.
+    Serializes info.yaml, <lang>.md translation files, and base64 images
+    for a proposal dictionary into repo-relative file paths and content.
+    Returns: (files_to_update, proposal_meta)
     """
-    if request.method != 'POST':
-        return HttpResponseNotAllowed(['POST'])
-
-    try:
-        body = json.loads(request.body.decode('utf-8'))
-    except Exception as e:
-        return JsonResponse({'error': f'Invalid JSON payload: {e}'}, status=400)
-
-    base_sha = body.get('base_sha')
-    if not base_sha:
-        return JsonResponse({'error': 'Missing required base_sha field.'}, status=400)
-
-    slug = body.get('slug')
-    info = body.get('info')
-    translations = body.get('translations', {})
-    files = body.get('files', {})
-    images = body.get('images', [])
-    files_to_delete = body.get('files_to_delete', [])
-    delete_slug = body.get('delete_slug')
-    message = body.get('message')
-
-    original_slug = body.get('original_slug')
-    is_new = body.get('is_new', False)
-    if delete_slug and not message:
-        message = f"Delete proposal {delete_slug}"
-
-    mgr = GitHubContentManager()
     files_to_update = {}
+    slug = prop_dict.get('slug')
+    info = prop_dict.get('info')
+    translations = prop_dict.get('translations', {})
+    images = prop_dict.get('images', [])
+    original_slug = prop_dict.get('original_slug')
+    is_new = prop_dict.get('is_new', False)
 
     if slug:
         if info is not None:
@@ -231,11 +209,61 @@ def ballot_proposal_save_api(request, config, api):
                 img_path = f"{mgr.static_ballot_folder}/{filename}"
                 files_to_update[img_path] = img_bytes
 
-    if files:
-        for path, content in files.items():
+    meta = {
+        'slug': slug,
+        'original_slug': original_slug,
+        'is_new': is_new,
+    }
+    return files_to_update, meta
+
+
+@csrf_exempt
+@ballot_manager_required
+def ballot_proposal_save_api(request, config, api):
+    """
+    POST /admin/ballot/proposals/save/
+    Commits proposal modifications directly to GitHub repository.
+    Supports either a single proposal payload or a batch `proposals: [...]` payload.
+    """
+    if request.method != 'POST':
+        return HttpResponseNotAllowed(['POST'])
+
+    try:
+        body = json.loads(request.body.decode('utf-8'))
+    except Exception as e:
+        return JsonResponse({'error': f'Invalid JSON payload: {e}'}, status=400)
+
+    base_sha = body.get('base_sha')
+    if not base_sha:
+        return JsonResponse({'error': 'Missing required base_sha field.'}, status=400)
+
+    raw_proposals = body.get('proposals')
+    is_batch = raw_proposals is not None
+    proposals_list = raw_proposals if is_batch else [body]
+
+    mgr = GitHubContentManager()
+    files_to_update = {}
+    files_to_delete = list(body.get('files_to_delete', []))
+    proposals_meta = []
+
+    for prop_dict in proposals_list:
+        p_files, p_meta = _prepare_proposal_files(mgr, prop_dict)
+        files_to_update.update(p_files)
+        if p_meta.get('slug'):
+            proposals_meta.append(p_meta)
+
+    # Any extra arbitrary files in payload
+    if body.get('files'):
+        for path, content in body['files'].items():
             files_to_update[path] = content
 
-    if not files_to_update and not files_to_delete and not (original_slug and original_slug != slug):
+    delete_slug = body.get('delete_slug')
+    message = body.get('message')
+    if delete_slug and not message:
+        message = f"Delete proposal {delete_slug}"
+
+    has_renames = any(p.get('original_slug') and p.get('original_slug') != p.get('slug') for p in proposals_meta)
+    if not files_to_update and not files_to_delete and not has_renames and not delete_slug:
         return JsonResponse({'error': 'No files or proposal changes provided to commit.'}, status=400)
 
     user = api.current_user()
@@ -248,10 +276,11 @@ def ballot_proposal_save_api(request, config, api):
             base_sha=base_sha,
             files_to_update=files_to_update,
             files_to_delete=files_to_delete,
-            original_slug=original_slug,
-            is_new=is_new,
+            original_slug=proposals_meta[0]['original_slug'] if len(proposals_meta) == 1 else None,
+            is_new=proposals_meta[0]['is_new'] if len(proposals_meta) == 1 else False,
             message=message,
-            slug=slug or delete_slug,
+            slug=delete_slug or (proposals_meta[0]['slug'] if len(proposals_meta) == 1 else None),
+            proposals_meta=proposals_meta,
             user_sso_id=user_sso_id,
             user_name=user_name,
             user_email=user_email,

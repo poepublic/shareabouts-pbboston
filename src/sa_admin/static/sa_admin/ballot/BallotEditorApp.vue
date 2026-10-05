@@ -13,6 +13,8 @@
         :proposals="proposals"
         :active-proposal="activeProposal"
         :loading="loading"
+        :dirty-count="dirtyCount"
+        :is-saving="isSaving"
         :supported-languages="supportedLanguages"
         :is-proposal-dirty="isProposalDirty"
         :format-number="formatNumber"
@@ -20,6 +22,8 @@
         @select="selectProposal"
         @add="addNewProposal"
         @delete="confirmDeleteProposal"
+        @discard-all="confirmDiscardAll"
+        @save-all="saveAllProposals"
       />
 
       <!-- Right Pane: WYSIWYG Workspace -->
@@ -121,12 +125,14 @@
     <!-- Conflict Resolution Modal (#173 / Task 2.3) -->
     <ConflictModal
       :show="showConflictModal"
+      :conflicts="conflictedQueue"
       :head-proposal="conflictHeadProposal"
       :local-proposal="conflictLocalProposal"
       :format-number="formatNumber"
       @close="showConflictModal = false"
       @use-head="resolveConflictUseHead"
       @keep-local="resolveConflictKeepLocal"
+      @all-resolved="onAllConflictsResolved"
     />
 
     <!-- Multi-Language Translation Modal -->
@@ -178,6 +184,7 @@ const notification = ref(null);
 const showConflictModal = ref(false);
 const conflictHeadProposal = ref(null);
 const conflictLocalProposal = ref(null);
+const conflictedQueue = ref([]);
 
 // Batch translation modal state
 const showTranslateModal = ref(false);
@@ -440,6 +447,12 @@ function isProposalDirty(prop) {
   return false;
 }
 
+const dirtyProposals = computed(() => {
+  return proposals.value.filter((p) => isProposalDirty(p));
+});
+
+const dirtyCount = computed(() => dirtyProposals.value.length);
+
 const canSave = computed(() => {
   if (isSaving.value) return false;
   if (isSlugDuplicate.value) return false;
@@ -505,6 +518,46 @@ function resetCurrentProposal() {
       message: `Reverted "${title}" to the version saved on GitHub.`,
     };
   }
+}
+
+// Discard all unsaved changes across all proposals
+function confirmDiscardAll() {
+  const count = dirtyCount.value;
+  if (count === 0) return;
+
+  const msg = `Are you sure you want to discard unsaved changes across ${count} proposal${count === 1 ? '' : 's'}? This action cannot be undone.`;
+  if (!confirm(msg)) {
+    return;
+  }
+
+  for (const prop of dirtyProposals.value) {
+    if (prop.slug) clearDraftForProposal(prop.slug);
+    if (prop.previous_slug) clearDraftForProposal(prop.previous_slug);
+    if (prop.original_slug) clearDraftForProposal(prop.original_slug);
+  }
+
+  proposals.value = proposals.value.filter((p) => !p.isNew);
+
+  for (let i = 0; i < proposals.value.length; i++) {
+    const prop = proposals.value[i];
+    const server = getServerProposal(prop);
+    if (server) {
+      proposals.value[i] = normalizeProposal(JSON.parse(JSON.stringify(server)));
+    }
+  }
+
+  if (activeProposal.value) {
+    const currentActiveSlug = activeProposal.value.original_slug || activeProposal.value.slug;
+    const restored = proposals.value.find((p) => p.slug === currentActiveSlug);
+    activeProposal.value = restored || proposals.value[0] || null;
+  } else {
+    activeProposal.value = proposals.value[0] || null;
+  }
+
+  notification.value = {
+    type: 'warning',
+    message: `Discarded all unsaved changes across ${count} proposal${count === 1 ? '' : 's'}.`,
+  };
 }
 
 // -------------------------------------------------------------
@@ -867,8 +920,90 @@ async function onImageSelected(file) {
 }
 
 // -------------------------------------------------------------
-// Save Proposal to GitHub & Conflict Handling (Task 2.3 / 3.2)
+// Save Proposal to GitHub & Conflict Handling (Task 2.3 / 3.2 / 4.1)
 // -------------------------------------------------------------
+function serializeProposalPayload(prop) {
+  const translationsPayload = {};
+  const allLangs = new Set([
+    'en',
+    ...Object.keys(prop.translations || {}),
+  ]);
+
+  for (const lang of allLangs) {
+    const t = prop.translations?.[lang];
+    if (t && (t.title || t.content || t.image_alt || lang === 'en')) {
+      translationsPayload[lang] = {
+        language: lang,
+        title: t.title || '',
+        content: t.content || '',
+        image_alt: t.image_alt || '',
+      };
+    }
+  }
+
+  return {
+    slug: prop.slug,
+    original_slug: prop.isNew ? null : prop.original_slug,
+    is_new: !!prop.isNew,
+    info: {
+      amount: parseInt(prop.info.amount, 10) || 0,
+      image: prop.info.image || '',
+    },
+    translations: translationsPayload,
+    images: prop.pendingImage ? [{
+      filename: prop.pendingImage.filename,
+      content_base64: prop.pendingImage.dataUrl,
+    }] : [],
+  };
+}
+
+async function handleSaveConflict(data, attemptedProposals) {
+  try {
+    const freshRes = await fetch('/admin/ballot/proposals/', {
+      headers: { 'Accept': 'application/json' },
+      credentials: 'same-origin',
+    });
+    if (freshRes.ok) {
+      const freshData = await freshRes.json();
+      baseSha.value = freshData.head_sha || freshData.tree_sha;
+      serverProposals.value = (freshData.proposals || []).map(normalizeProposal);
+    }
+  } catch (err) {
+    console.error('Failed to reload proposals during conflict:', err);
+  }
+
+  const conflictingFilePaths = Object.keys(data.conflicting_files || {});
+  let matched = attemptedProposals.filter((p) => {
+    const slug1 = `/${p.slug}/`;
+    const slug2 = p.original_slug ? `/${p.original_slug}/` : null;
+    return conflictingFilePaths.some((fp) => fp.includes(slug1) || (slug2 && fp.includes(slug2)));
+  });
+  if (matched.length === 0) {
+    matched = attemptedProposals;
+  }
+
+  conflictedQueue.value = matched.map((p) => {
+    const originalOrCurrent = p.original_slug || p.slug;
+    const head = serverProposals.value.find((hp) => hp.slug === originalOrCurrent) || null;
+    return {
+      slug: p.slug,
+      title: getProposalTitle(p),
+      localProposal: JSON.parse(JSON.stringify(p)),
+      headProposal: head,
+    };
+  });
+
+  if (conflictedQueue.value.length === 1) {
+    conflictHeadProposal.value = conflictedQueue.value[0].headProposal;
+    conflictLocalProposal.value = conflictedQueue.value[0].localProposal;
+  } else {
+    conflictHeadProposal.value = null;
+    conflictLocalProposal.value = null;
+  }
+
+  showConflictModal.value = true;
+}
+
 async function saveCurrentProposal() {
   if (!activeProposal.value || !canSave.value) return;
 
@@ -886,40 +1021,9 @@ async function saveCurrentProposal() {
 
   try {
     const prop = activeProposal.value;
-
-    // Serialize all language translations that have data (#175)
-    const translationsPayload = {};
-    const allLangs = new Set([
-      'en',
-      ...Object.keys(prop.translations || {}),
-    ]);
-
-    for (const lang of allLangs) {
-      const t = prop.translations?.[lang];
-      if (t && (t.title || t.content || t.image_alt || lang === 'en')) {
-        translationsPayload[lang] = {
-          language: lang,
-          title: t.title || '',
-          content: t.content || '',
-          image_alt: t.image_alt || '',
-        };
-      }
-    }
-
     const payload = {
       base_sha: baseSha.value,
-      slug: prop.slug,
-      original_slug: prop.isNew ? null : prop.original_slug,
-      is_new: !!prop.isNew,
-      info: {
-        amount: parseInt(prop.info.amount, 10) || 0,
-        image: prop.info.image || '',
-      },
-      translations: translationsPayload,
-      images: prop.pendingImage ? [{
-        filename: prop.pendingImage.filename,
-        content_base64: prop.pendingImage.dataUrl,
-      }] : [],
+      ...serializeProposalPayload(prop),
     };
 
     const res = await fetch('/admin/ballot/proposals/save/', {
@@ -934,23 +1038,9 @@ async function saveCurrentProposal() {
 
     const data = await res.json();
 
-    // 409 Conflict Handling (#173 / Task 2.3)
+    // 409 Conflict Handling
     if (res.status === 409) {
-      const currentLocalCopy = JSON.parse(JSON.stringify(prop));
-      conflictLocalProposal.value = currentLocalCopy;
-
-      // Re-fetch current server state
-      const freshRes = await fetch('/admin/ballot/proposals/', {
-        headers: { 'Accept': 'application/json' },
-        credentials: 'same-origin',
-      });
-      if (freshRes.ok) {
-        const freshData = await freshRes.json();
-        baseSha.value = freshData.head_sha || freshData.tree_sha;
-        serverProposals.value = (freshData.proposals || []).map(normalizeProposal);
-        conflictHeadProposal.value = serverProposals.value.find((p) => p.slug === (prop.original_slug || prop.slug)) || null;
-      }
-      showConflictModal.value = true;
+      await handleSaveConflict(data, [prop]);
       return;
     }
 
@@ -1004,30 +1094,155 @@ async function saveCurrentProposal() {
   }
 }
 
-// Conflict Resolution Actions (#173)
-function resolveConflictKeepLocal() {
+async function saveAllProposals() {
+  if (dirtyCount.value === 0 || isSaving.value) return;
+
+  const count = dirtyCount.value;
+  const dirtyList = dirtyProposals.value;
+
+  // 1. Pre-flight validation: check for empty slugs
+  for (const p of dirtyList) {
+    if (!p.slug || !p.slug.trim()) {
+      notification.value = {
+        type: 'error',
+        message: `Cannot save: proposal "${getProposalTitle(p)}" has an empty slug.`,
+      };
+      return;
+    }
+  }
+
+  // 2. Pre-flight validation: check for duplicate slugs across all proposals
+  const allSlugs = proposals.value.map((p) => (p.slug || '').trim().toLowerCase());
+  const slugSet = new Set();
+  let dupSlug = null;
+  for (const s of allSlugs) {
+    if (slugSet.has(s)) {
+      dupSlug = s;
+      break;
+    }
+    slugSet.add(s);
+  }
+  if (dupSlug) {
+    notification.value = {
+      type: 'error',
+      message: `Cannot save: slug "${dupSlug}" is used by more than one proposal.`,
+    };
+    return;
+  }
+
+  isSaving.value = true;
+  saveSuccess.value = false;
+  notification.value = null;
+
+  try {
+    const payload = {
+      base_sha: baseSha.value,
+      proposals: dirtyList.map(serializeProposalPayload),
+    };
+
+    const res = await fetch('/admin/ballot/proposals/save/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+
+    // 409 Conflict Handling
+    if (res.status === 409) {
+      await handleSaveConflict(data, dirtyList);
+      return;
+    }
+
+    if (!res.ok) {
+      throw new Error(data.error || `HTTP ${res.status}`);
+    }
+
+    baseSha.value = data.commit_sha || data.head_sha || baseSha.value;
+
+    for (const prop of dirtyList) {
+      clearDraftForProposal(prop.slug);
+      if (prop.original_slug) clearDraftForProposal(prop.original_slug);
+      if (prop.previous_slug) clearDraftForProposal(prop.previous_slug);
+
+      const oldOriginalSlug = prop.original_slug;
+      prop.isNew = false;
+      prop.original_slug = prop.slug;
+      prop.previous_slug = prop.slug;
+      prop.pendingImage = null;
+
+      const updatedServerCopy = normalizeProposal(JSON.parse(JSON.stringify(prop)));
+      const serverIdx = serverProposals.value.findIndex(
+        (p) => p.slug === prop.slug || (oldOriginalSlug && p.slug === oldOriginalSlug)
+      );
+      if (serverIdx !== -1) {
+        serverProposals.value[serverIdx] = updatedServerCopy;
+      } else {
+        serverProposals.value.unshift(updatedServerCopy);
+      }
+    }
+
+    saveSuccess.value = true;
+    notification.value = {
+      type: 'success',
+      message: `Successfully saved all changes across ${count} proposal${count === 1 ? '' : 's'} to GitHub!`,
+    };
+
+    setTimeout(() => {
+      saveSuccess.value = false;
+    }, 4000);
+  } catch (err) {
+    console.error('Error saving all proposals:', err);
+    notification.value = {
+      type: 'error',
+      message: `Failed to commit batch changes: ${err.message}`,
+    };
+  } finally {
+    isSaving.value = false;
+  }
+}
+
+// Conflict Resolution Actions (#173 / Task 5.2)
+function resolveConflictKeepLocal(conflictItem) {
+  // Local changes are kept, baseSha is already updated to latest HEAD
+}
+
+function resolveConflictUseHead(conflictItem) {
+  const slug = conflictItem?.slug || activeProposal.value?.slug;
+  const head = conflictItem?.headProposal || conflictHeadProposal.value;
+  if (!slug) return;
+
+  const target = proposals.value.find((p) => p.slug === slug || (p.original_slug && p.original_slug === slug));
+  if (target) {
+    if (head) {
+      target.slug = head.slug;
+      target.original_slug = head.slug;
+      target.previous_slug = head.slug;
+      target.info = JSON.parse(JSON.stringify(head.info || {}));
+      target.translations = JSON.parse(JSON.stringify(head.translations || {}));
+      target.pendingImage = null;
+      target.customSlugSet = false;
+    } else {
+      proposals.value = proposals.value.filter((p) => p !== target);
+      if (activeProposal.value === target) {
+        activeProposal.value = proposals.value[0] || null;
+      }
+    }
+    clearDraftForProposal(slug);
+    if (target.original_slug) clearDraftForProposal(target.original_slug);
+    if (target.previous_slug) clearDraftForProposal(target.previous_slug);
+  }
+}
+
+function onAllConflictsResolved() {
   showConflictModal.value = false;
   notification.value = {
     type: 'warning',
-    message: 'Loaded the latest repository state. You kept your local edits; click "Save Changes" to commit them on top of the latest HEAD.',
-  };
-}
-
-function resolveConflictUseHead() {
-  if (conflictHeadProposal.value && activeProposal.value) {
-    const head = conflictHeadProposal.value;
-    activeProposal.value.slug = head.slug;
-    activeProposal.value.original_slug = head.slug;
-    activeProposal.value.previous_slug = head.slug;
-    activeProposal.value.info = JSON.parse(JSON.stringify(head.info || {}));
-    activeProposal.value.translations = JSON.parse(JSON.stringify(head.translations || {}));
-    activeProposal.value.pendingImage = null;
-    clearDraftForProposal(activeProposal.value.slug);
-  }
-  showConflictModal.value = false;
-  notification.value = {
-    type: 'success',
-    message: 'Reverted to the latest version from GitHub.',
+    message: 'Loaded the latest repository state and reviewed conflicts. Click "Save All Changes" (or "Save Changes") to commit on top of HEAD.',
   };
 }
 

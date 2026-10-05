@@ -271,6 +271,7 @@ class GitHubContentManager:
         is_new: bool = False,
         message: Optional[str] = None,
         slug: Optional[str] = None,
+        proposals_meta: Optional[List[Dict[str, Any]]] = None,
         user_sso_id: Optional[str] = None,
         user_name: Optional[str] = None,
         user_email: Optional[str] = None,
@@ -281,17 +282,28 @@ class GitHubContentManager:
         Commits changes to the repository with rebase-and-retry logic for concurrent edits.
         files_to_update: {repo_relative_path: content_str_or_bytes}
         files_to_delete: [repo_relative_path, ...]
+        proposals_meta: Optional list of [{'slug': ..., 'original_slug': ..., 'is_new': ...}]
         """
         repo = self.gh_repo
         current_base_sha = base_sha
         files_to_update = files_to_update or {}
         files_to_delete = list(files_to_delete or [])
 
-        if not allow_empty and not files_to_update and not files_to_delete and not (original_slug and original_slug != slug):
+        # Build list of proposals metadata for validation and messaging
+        proposals_meta = list(proposals_meta or [])
+        if not proposals_meta and slug:
+            proposals_meta = [{
+                'slug': slug,
+                'original_slug': original_slug,
+                'is_new': is_new,
+            }]
+
+        has_renames = any(p.get('original_slug') and p.get('original_slug') != p.get('slug') for p in proposals_meta)
+        if not allow_empty and not files_to_update and not files_to_delete and not has_renames:
             raise ValueError("No changes detected; cannot create an empty commit.")
 
-        # Validate collision and prune old files if renaming or creating a new proposal
-        if slug:
+        # Validate collision and prune old files if renaming or creating new proposals
+        if proposals_meta:
             base_commit = repo.get_git_commit(current_base_sha)
             tree_data = repo.get_git_tree(base_commit.tree.sha, recursive=True)
             ballot_items = [
@@ -299,18 +311,24 @@ class GitHubContentManager:
                 if item.type == "blob" and item.path.startswith(f"{self.ballot_folder}/")
             ]
 
-            # Check collision: if new or renaming to a different slug
-            if is_new or (original_slug and original_slug != slug):
-                new_prefix = f"{self.ballot_folder}/{slug}/"
-                if any(item.path.startswith(new_prefix) for item in ballot_items):
-                    raise ValueError(f"A proposal with slug '{slug}' already exists in the repository.")
+            for p in proposals_meta:
+                p_slug = p.get('slug')
+                p_orig = p.get('original_slug')
+                p_is_new = p.get('is_new', False)
 
-            # If renaming an existing proposal, find all files under original_slug to delete
-            if original_slug and original_slug != slug:
-                old_prefix = f"{self.ballot_folder}/{original_slug}/"
-                for item in ballot_items:
-                    if item.path.startswith(old_prefix) and item.path not in files_to_delete:
-                        files_to_delete.append(item.path)
+                if p_slug:
+                    # Check collision: if new or renaming to a different slug
+                    if p_is_new or (p_orig and p_orig != p_slug):
+                        new_prefix = f"{self.ballot_folder}/{p_slug}/"
+                        if any(item.path.startswith(new_prefix) for item in ballot_items):
+                            raise ValueError(f"A proposal with slug '{p_slug}' already exists in the repository.")
+
+                    # If renaming an existing proposal, find all files under original_slug to delete
+                    if p_orig and p_orig != p_slug:
+                        old_prefix = f"{self.ballot_folder}/{p_orig}/"
+                        for item in ballot_items:
+                            if item.path.startswith(old_prefix) and item.path not in files_to_delete:
+                                files_to_delete.append(item.path)
 
         now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         author = InputGitAuthor(
@@ -324,7 +342,16 @@ class GitHubContentManager:
             date=now_iso,
         )
 
-        default_msg = f"Update proposal {slug}" if slug else "Update ballot content"
+        if len(proposals_meta) > 1:
+            slugs_str = ", ".join([p.get('slug') for p in proposals_meta if p.get('slug')])
+            default_msg = f"Update {len(proposals_meta)} ballot proposals: {slugs_str}"
+        elif slug:
+            default_msg = f"Update proposal {slug}"
+        elif proposals_meta and proposals_meta[0].get('slug'):
+            default_msg = f"Update proposal {proposals_meta[0].get('slug')}"
+        else:
+            default_msg = "Update ballot content"
+
         if user_sso_id:
             commit_msg = f"{message or default_msg} [SSO: {user_sso_id}]"
         else:

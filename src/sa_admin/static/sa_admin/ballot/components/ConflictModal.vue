@@ -1,19 +1,27 @@
 <template>
-  <div v-if="show" class="modal-overlay">
+  <div v-if="show && currentConflict" class="modal-overlay">
     <div class="modal-dialog">
       <div class="modal-header conflict-modal-header">
-        <h3>⚠️ Concurrent Edit Conflict</h3>
+        <h3>
+          ⚠️ Concurrent Edit Conflict
+          <span v-if="totalConflicts > 1" class="conflict-step-badge">
+            ({{ currentIndex + 1 }} of {{ totalConflicts }})
+          </span>
+        </h3>
         <button class="modal-close-btn" @click="$emit('close')">×</button>
       </div>
 
       <div class="modal-body">
         <p class="conflict-notice">
-          Another admin has saved changes since you opened this page. We have loaded the current proposals.
-          Please carefully verify your updates against the current proposals, make any new updates as necessary,
-          and re-save your changes.
+          Another admin has saved changes since you opened this page. We have loaded the current proposals from GitHub.
+          Please verify your updates for <strong v-if="currentConflict.slug">"{{ currentConflict.title || currentConflict.slug }}"</strong>, make any adjustments needed, and resolve the conflict below.
         </p>
 
-        <div class="conflict-comparison" v-if="headProposal && localProposal">
+        <div v-if="!currentHeadProposal" class="banner" data-state="danger">
+          This proposal was removed from GitHub by another administrator. Choosing "Discard My Changes" will remove it from your editor.
+        </div>
+
+        <div class="conflict-comparison" v-else-if="currentHeadProposal && currentLocalProposal">
           <h4>Comparison: Latest on GitHub vs Your Local Changes</h4>
           <div class="diff-table">
             <div class="diff-row diff-header-row">
@@ -25,48 +33,48 @@
             <!-- Title Diff -->
             <div class="diff-row">
               <div class="diff-col field-name">Title</div>
-              <div class="diff-col col-head">{{ headProposal.translations?.en?.title || '—' }}</div>
+              <div class="diff-col col-head">{{ currentHeadProposal.translations?.en?.title || '—' }}</div>
               <div
                 class="diff-col col-local"
-                :class="{ 'has-diff': headProposal.translations?.en?.title !== localProposal.translations?.en?.title }"
+                :class="{ 'has-diff': currentHeadProposal.translations?.en?.title !== currentLocalProposal.translations?.en?.title }"
               >
-                {{ localProposal.translations?.en?.title || '—' }}
+                {{ currentLocalProposal.translations?.en?.title || '—' }}
               </div>
             </div>
 
             <!-- Amount Diff -->
             <div class="diff-row">
               <div class="diff-col field-name">Estimated Cost</div>
-              <div class="diff-col col-head">${{ formatNumber(headProposal.info?.amount || 0) }}</div>
+              <div class="diff-col col-head">${{ formatNumber(currentHeadProposal.info?.amount || 0) }}</div>
               <div
                 class="diff-col col-local"
-                :class="{ 'has-diff': Number(headProposal.info?.amount) !== Number(localProposal.info?.amount) }"
+                :class="{ 'has-diff': Number(currentHeadProposal.info?.amount) !== Number(currentLocalProposal.info?.amount) }"
               >
-                ${{ formatNumber(localProposal.info?.amount || 0) }}
+                ${{ formatNumber(currentLocalProposal.info?.amount || 0) }}
               </div>
             </div>
 
             <!-- Description Diff -->
             <div class="diff-row">
               <div class="diff-col field-name">Description</div>
-              <div class="diff-col col-head">{{ headProposal.translations?.en?.content || '—' }}</div>
+              <div class="diff-col col-head">{{ currentHeadProposal.translations?.en?.content || '—' }}</div>
               <div
                 class="diff-col col-local"
-                :class="{ 'has-diff': headProposal.translations?.en?.content !== localProposal.translations?.en?.content }"
+                :class="{ 'has-diff': currentHeadProposal.translations?.en?.content !== currentLocalProposal.translations?.en?.content }"
               >
-                {{ localProposal.translations?.en?.content || '—' }}
+                {{ currentLocalProposal.translations?.en?.content || '—' }}
               </div>
             </div>
 
             <!-- Image Alt Diff -->
             <div class="diff-row">
               <div class="diff-col field-name">Alt Text</div>
-              <div class="diff-col col-head">{{ headProposal.translations?.en?.image_alt || '—' }}</div>
+              <div class="diff-col col-head">{{ currentHeadProposal.translations?.en?.image_alt || '—' }}</div>
               <div
                 class="diff-col col-local"
-                :class="{ 'has-diff': headProposal.translations?.en?.image_alt !== localProposal.translations?.en?.image_alt }"
+                :class="{ 'has-diff': currentHeadProposal.translations?.en?.image_alt !== currentLocalProposal.translations?.en?.image_alt }"
               >
-                {{ localProposal.translations?.en?.image_alt || '—' }}
+                {{ currentLocalProposal.translations?.en?.image_alt || '—' }}
               </div>
             </div>
           </div>
@@ -78,7 +86,7 @@
           type="button"
           class="button"
           data-variant="danger"
-          @click="$emit('use-head')"
+          @click="onUseHead"
         >
           Discard My Changes & Use Latest HEAD
         </button>
@@ -86,7 +94,7 @@
           type="button"
           class="button"
           data-variant="primary"
-          @click="$emit('keep-local')"
+          @click="onKeepLocal"
         >
           Keep My Local Changes
         </button>
@@ -96,10 +104,16 @@
 </template>
 
 <script setup>
-defineProps({
+import { ref, computed, watch } from 'vue';
+
+const props = defineProps({
   show: {
     type: Boolean,
     default: false,
+  },
+  conflicts: {
+    type: Array,
+    default: () => [],
   },
   headProposal: {
     type: Object,
@@ -115,7 +129,58 @@ defineProps({
   },
 });
 
-defineEmits(['close', 'use-head', 'keep-local']);
+const emit = defineEmits(['close', 'use-head', 'keep-local', 'all-resolved']);
+
+const currentIndex = ref(0);
+
+const activeConflicts = computed(() => {
+  if (props.conflicts && props.conflicts.length > 0) {
+    return props.conflicts;
+  }
+  if (props.headProposal || props.localProposal) {
+    return [{
+      headProposal: props.headProposal,
+      localProposal: props.localProposal,
+      slug: props.localProposal?.slug || props.headProposal?.slug || '',
+      title: props.localProposal?.translations?.en?.title || props.headProposal?.translations?.en?.title || '',
+    }];
+  }
+  return [];
+});
+
+watch(
+  () => props.show,
+  (val) => {
+    if (val) currentIndex.value = 0;
+  }
+);
+
+const totalConflicts = computed(() => activeConflicts.value.length);
+const currentConflict = computed(() => activeConflicts.value[currentIndex.value] || null);
+const currentHeadProposal = computed(() => currentConflict.value?.headProposal || null);
+const currentLocalProposal = computed(() => currentConflict.value?.localProposal || null);
+
+function onUseHead() {
+  const item = currentConflict.value;
+  emit('use-head', item);
+  if (currentIndex.value < totalConflicts.value - 1) {
+    currentIndex.value++;
+  } else {
+    emit('all-resolved');
+    emit('close');
+  }
+}
+
+function onKeepLocal() {
+  const item = currentConflict.value;
+  emit('keep-local', item);
+  if (currentIndex.value < totalConflicts.value - 1) {
+    currentIndex.value++;
+  } else {
+    emit('all-resolved');
+    emit('close');
+  }
+}
 </script>
 
 <style scoped>
@@ -126,6 +191,15 @@ defineEmits(['close', 'use-head', 'keep-local']);
 
 .conflict-modal-header h3 {
   color: var(--admin-color-danger-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.conflict-step-badge {
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.85;
 }
 
 .conflict-modal-header .modal-close-btn {

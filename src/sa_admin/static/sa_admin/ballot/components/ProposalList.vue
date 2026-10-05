@@ -59,6 +59,29 @@
         No proposals found.
       </li>
     </ul>
+
+    <!-- Pinned Footer: Discard All & Save All Actions -->
+    <div class="sidebar-footer actions-wrapper">
+      <button
+        class="button"
+        data-variant="secondary"
+        :disabled="dirtyCount === 0 || isSaving || loading"
+        @click="$emit('discard-all')"
+        title="Discard all unsaved changes across all proposals"
+      >
+        Discard All Changes
+      </button>
+      <button
+        class="button"
+        data-variant="primary"
+        :disabled="dirtyCount === 0 || isSaving || loading"
+        @click="$emit('save-all')"
+        :title="dirtyCount > 0 ? `Save all changes (${dirtyCount} proposal${dirtyCount === 1 ? '' : 's'}) to GitHub` : 'No unsaved changes'"
+      >
+        <span v-if="isSaving" class="spinner-sm"></span>
+        Save All Changes{{ dirtyCount > 0 ? ` (${dirtyCount})` : '' }}
+      </button>
+    </div>
   </aside>
 </template>
 
@@ -75,6 +98,14 @@ const props = defineProps({
     default: null,
   },
   loading: {
+    type: Boolean,
+    default: false,
+  },
+  dirtyCount: {
+    type: Number,
+    default: 0,
+  },
+  isSaving: {
     type: Boolean,
     default: false,
   },
@@ -96,7 +127,7 @@ const props = defineProps({
   },
 });
 
-defineEmits(['select', 'add', 'delete']);
+defineEmits(['select', 'add', 'delete', 'discard-all', 'save-all']);
 
 const searchQuery = ref('');
 
@@ -133,11 +164,12 @@ function getMissingTranslationsCount(prop) {
 .proposal-sidebar {
   width: 380px;
   min-width: 340px;
-  background-color: #ffffff;
-  border-right: 1px solid #dee2e6;
+  background-color: var(--admin-color-surface);
+  border-right: 1px solid var(--admin-color-border);
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  height: 100%;
+  overflow: hidden;
 }
 
 .sidebar-header {
@@ -186,6 +218,7 @@ function getMissingTranslationsCount(prop) {
   margin: 0;
   padding: 0;
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
 }
 
@@ -279,5 +312,38 @@ function getMissingTranslationsCount(prop) {
   text-align: center;
   color: var(--admin-color-text-muted);
   font-size: 0.9rem;
+}
+
+.sidebar-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--admin-color-border);
+  background-color: var(--admin-color-surface);
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sidebar-footer .button {
+  flex: 1;
+  font-size: 0.85rem;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+.spinner-sm {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 4px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
