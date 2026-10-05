@@ -975,7 +975,7 @@ support:
   anonymous_name: _(Someone)
 
 ballot:
-  voter_support_group: admin
+  voter_support_group: voter supporters
   manager_group: ballot managers
   max_selections: 5
 

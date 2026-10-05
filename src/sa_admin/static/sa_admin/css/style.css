@@ -120,6 +120,11 @@ header.admin-header {
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.15s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: inherit;
 }
 
 .admin-tab:hover {
@@ -599,3 +604,68 @@ main, form {
     height: 100%;
   } */
 }
+
+/* ==========================================================================
+   Voter Support Modal & Card
+   ========================================================================== */
+
+.voter-support-intro {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--admin-color-text-muted);
+  line-height: 1.5;
+}
+
+.voter-support-action-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.voter-code-card {
+  background-color: var(--admin-color-surface-subtle);
+  border: 1px solid var(--admin-color-border);
+  border-radius: var(--admin-radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  color: var(--admin-color-text);
+  box-shadow: var(--admin-shadow-sm);
+}
+
+.voter-code-card .code-highlight {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--admin-color-primary);
+  font-family: monospace;
+}
+
+.voter-code-card .voter-link {
+  color: var(--admin-color-primary);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.voter-code-card .voter-expiry {
+  color: var(--admin-color-text-muted);
+  font-size: 0.85rem;
+}
+
+.voter-code-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--admin-color-border-subtle);
+}
+
+.copy-feedback {
+  font-size: 0.85rem;
+  color: var(--admin-color-success);
+  font-weight: 600;
+}
+

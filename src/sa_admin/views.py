@@ -1,21 +1,25 @@
 import base64
+from datetime import timedelta
 import json
 import logging
 from functools import wraps
 import mimetypes
 import os
+import uuid
 from urllib.parse import urlparse
 from django.conf import settings
 from django.contrib.staticfiles import finders
 from django.http import JsonResponse, HttpResponseNotAllowed, HttpResponseForbidden, FileResponse, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 import frontmatter
 import yaml
 
 from sa_util.config import get_shareabouts_config
 from sa_util.api import ShareaboutsApi
+from sa_vote.views import hash_voter_id, map_voter_code_to_id, ADMIN_CODE_TTL_SECONDS
 from .github import GitHubContentManager, GitConflictError
 from .translation import GoogleTranslationService
 
@@ -91,6 +95,54 @@ def ballot_manager_required(viewfunc):
 
         return shareabouts_loggedin(viewfunc, required_group=manager_group)(request, *args, **kwargs)
     return wrapper
+
+
+def voter_support_required(viewfunc):
+    """
+    Decorator for views requiring voter support permissions.
+    Checks config.ballot.voter_support_group (defaults to 'voter supporters').
+    """
+    def wrapper(request, *args, **kwargs):
+        if request.method != 'POST':
+            return HttpResponseNotAllowed(['POST'])
+
+        if hasattr(request, 'META'):
+            request.META['HTTP_ACCEPT'] = 'application/json'
+
+        config = get_shareabouts_config()
+
+        ballot_config = config.get('ballot', {})
+        voter_support_group = ballot_config.get('voter_support_group') or 'voter supporters'
+
+        return shareabouts_loggedin(viewfunc, required_group=voter_support_group)(request, *args, **kwargs)
+    return wrapper
+
+
+@csrf_exempt
+@voter_support_required
+def admin_generate_code(request, config, api):
+    """
+    A view for administrators to generate a voter code with a 7-day TTL.
+    - Requires an authenticated user belonging to the configured voter_support_group.
+    - Generates a UUID to represent the voter and hashes it.
+    - Stores the code mapped to id_hash with a 7-day TTL in cache.
+    - Returns HTTP 201 Created with { status, code, id_hash, expires_at }.
+    """
+    if request.method != 'POST':
+        return HttpResponseNotAllowed(['POST'])
+
+    voter_uuid = str(uuid.uuid4())
+    id_hash = hash_voter_id(voter_uuid)
+
+    code = map_voter_code_to_id(id_hash, ADMIN_CODE_TTL_SECONDS)
+    expires_at = timezone.now() + timedelta(seconds=ADMIN_CODE_TTL_SECONDS)
+
+    return JsonResponse({
+        'status': 'success',
+        'code': code,
+        'id_hash': id_hash,
+        'expires_at': expires_at.isoformat(),
+    }, status=201)
 
 
 @shareabouts_loggedin

@@ -1,11 +1,10 @@
 from django.urls import path
 from . import views
-from sa_vote import views as vote_views
 
 
 urlpatterns = [
     path('', views.admin_home, name='admin_home'),
-    path('generate-code', vote_views.admin_generate_code, name='admin_vote_generate_code'),
+    path('generate-code', views.admin_generate_code, name='admin_vote_generate_code'),
     path('report/', views.report, name='admin_report'),
     path('detail/<int:place_id>/', views.place_detail, name='admin_detail'),
     path('ballot/', views.ballot_editor, name='admin_ballot_editor'),

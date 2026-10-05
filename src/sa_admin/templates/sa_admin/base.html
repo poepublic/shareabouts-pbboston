@@ -34,6 +34,7 @@
           <a href="{% url 'admin_home' %}" class="admin-tab {% if request.resolver_match.url_name == 'admin_home' %}active{% endif %}">Ideas</a>
           <a href="{% url 'admin_report' %}" class="admin-tab {% if request.resolver_match.url_name == 'admin_report' %}active{% endif %}">Votes</a>
           <a href="{% url 'admin_ballot_editor' %}" class="admin-tab {% if request.resolver_match.url_name == 'admin_ballot_editor' %}active{% endif %}">Ballot</a>
+          <button type="button" class="admin-tab voter-support-btn" id="open-voter-support-btn" onclick="window.dispatchEvent(new CustomEvent('open-voter-support'))">Voter Support</button>
         </nav>
       </div>
       <div class="admin-header-user">
@@ -102,6 +103,7 @@
     <script src="{% static 'js/models.js' %}"></script>
 
     {% block vite_assets %}{% endblock %}
+    {% include 'sa_admin/voter_support.html' %}
     {% endblock %}
   </body>
 </html>

@@ -1,7 +1,9 @@
 import base64
 import json
+import os
 from unittest.mock import MagicMock, patch
 
+from django.conf import settings
 from django.test import SimpleTestCase, RequestFactory, override_settings
 
 from github import GithubException
@@ -12,6 +14,8 @@ from sa_admin.views import (
     ballot_proposal_save_api,
     ballot_image_proxy,
     ballot_translate_api,
+    admin_generate_code,
+    voter_support_required,
 )
 from sa_admin.translation import GoogleTranslationService
 from sa_util.config import get_shareabouts_config
@@ -905,6 +909,110 @@ class GoogleTranslationServiceUnitTests(SimpleTestCase):
         with self.assertRaises(ValueError) as cm:
             svc.get_client()
         self.assertIn("credentials not configured", str(cm.exception))
+
+
+class AdminGenerateCodeTests(SimpleTestCase):
+    """Tests for the sa_admin.views.admin_generate_code endpoint and voter_support_required decorator."""
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        from django.core.cache import cache
+        cache.clear()
+
+    def test_non_post_returns_405(self):
+        request = self.factory.get('/admin/generate-code')
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 405)
+
+    def test_anonymous_unauthenticated_user_returns_401(self):
+        request = self.factory.post('/admin/generate-code')
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 401)
+        data = json.loads(response.content)
+        self.assertEqual(data.get('error'), 'Unauthenticated')
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    @patch.dict(os.environ, {
+        'SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP': 'voter supporters',
+    })
+    @override_settings(SHAREABOUTS={
+        **settings.SHAREABOUTS,
+        'DATASET_ROOT': 'http://localtest/api/v2/testowner/datasets/testdataset',
+    })
+    def test_voter_support_user_generates_code_with_expires_at(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'support_staff',
+            'groups': [
+                {
+                    'name': 'voter supporters',
+                    'dataset': 'http://localtest/api/v2/testowner/datasets/testdataset',
+                }
+            ]
+        }
+
+        request = self.factory.post('/admin/generate-code')
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 201)
+        data = json.loads(response.content)
+        self.assertEqual(data.get('status'), 'success')
+        self.assertIsNotNone(data.get('code'))
+        self.assertEqual(len(data.get('code')), 6)
+        self.assertIsNotNone(data.get('id_hash'))
+        self.assertIsNotNone(data.get('expires_at'))
+        from datetime import datetime
+        dt = datetime.fromisoformat(data['expires_at'].replace('Z', '+00:00'))
+        self.assertIsNotNone(dt)
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    @patch.dict(os.environ, {
+        'SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP': 'voter supporters',
+    })
+    @override_settings(SHAREABOUTS={
+        **settings.SHAREABOUTS,
+        'DATASET_ROOT': 'http://localtest/api/v2/testowner/datasets/testdataset',
+    })
+    def test_voter_support_user_other_dataset_returns_403(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'support_staff',
+            'groups': [
+                {
+                    'name': 'voter supporters',
+                    'dataset': 'http://localtest/api/v2/testowner/datasets/otherdataset',
+                }
+            ]
+        }
+
+        request = self.factory.post('/admin/generate-code')
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.content)
+        self.assertEqual(data.get('error'), 'Unauthorized')
+
+    @patch('sa_util.api.ShareaboutsApi.current_user')
+    @patch.dict(os.environ, {
+        'SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP': 'voter supporters',
+    })
+    @override_settings(SHAREABOUTS={
+        **settings.SHAREABOUTS,
+        'DATASET_ROOT': 'http://localtest/api/v2/testowner/datasets/testdataset',
+    })
+    def test_non_voter_support_user_returns_403(self, mock_current_user):
+        mock_current_user.return_value = {
+            'username': 'regular_staff',
+            'groups': [
+                {
+                    'name': 'other_group',
+                    'dataset': 'http://localtest/api/v2/testowner/datasets/testdataset',
+                }
+            ]
+        }
+
+        request = self.factory.post('/admin/generate-code')
+        response = admin_generate_code(request)
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.content)
+        self.assertEqual(data.get('error'), 'Unauthorized')
+
 
 
 
