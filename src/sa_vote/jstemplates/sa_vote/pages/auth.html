@@ -8,7 +8,7 @@
         </header>
 
         <h1>{{#_}}You're all set to vote!{{/_}}</h1>
-        <p>{{#_}}<a href="/vote/ballot" data-internal="true">Vote now</a>.{{/_}}</p>
+        <p>{{#_}}<a href="/vote/ballot" data-internal="true">Vote now.</a>{{/_}}</p>
 
         <button id="unverify-button" class="button button-primary">{{#_}}Un-verify me{{/_}}</button>
     </div>
@@ -55,8 +55,8 @@
         <div class="auth-bottom-container">
             <button id="verify-button" class="button button-primary" type="submit">{{#_}}Continue{{/_}}</button>
 
-            <p>{{#_}}Not eligible to vote but still curious about the ballots? Return to <a href="/vote/ballot"
-                    data-internal="true">ballot</a>{{/_}}</p>
+            <p>{{#_}}Not eligible to vote but still curious about the ballots? <a href="/vote/ballot"
+                    data-internal="true">Return to the ballot.</a>{{/_}}</p>
         </div>
     </form>
 
@@ -70,8 +70,8 @@
             <label for="voter-phone-number-input" class="secondary-emphasis">{{#_}}Enter your phone number to receive a voter code:{{/_}}</label>
             <input type="tel" id="voter-phone-number-input" required data-validation-message="{{#_}}You must provide a phone number to receive a voter code{{/_}}" />
 
-            <p>{{#_}}We will send a one-time voter code to this phone number. Standard messaging rates may apply. Read about how we use your phone number in our <a href="/vote/terms" target="_blank">terms of service</a> and how we handle your data in our <a href="/vote/privacy" target="_blank">privacy policy</a>.{{/_}}</p>
-            <p>{{#_}}If you cannot receive text messages, or do not wish to provide your phone number, you can still request a voter code by contacting <a href="mailto:pb@boston.gov">pb@boston.gov</a>.{{/_}}</p>
+            <p>{{#_}}We will send a one-time voter code to this phone number. Standard messaging rates may apply. <a href="/vote/terms" target="_blank">Read about how we use your phone number in our terms of service.</a> <a href="/vote/privacy" target="_blank">Learn how we handle your data in our privacy policy.</a>{{/_}}</p>
+            <p>{{#_}}If you cannot receive text messages, or do not wish to provide your phone number, you can still request a voter code by contacting the Office of Participatory Budgeting. <a href="mailto:pb@boston.gov">Email pb@boston.gov for a code.</a>{{/_}}</p>
         </div>
 
         <div class="auth-bottom-container">
@@ -94,7 +94,7 @@
             <label for="voter-code-input" class="secondary-emphasis">{{#_}}Enter your voter code:{{/_}}</label>
             <input type="text" id="voter-code-input" autocapitalize="characters" autocomplete="one-time-code" required data-validation-message="{{#_}}You must provide a voter code{{/_}}" />
 
-            <p>{{#_}}Enter the voter code you received via text message. If you did not receive a voter code, or the code you received has expired, you can <a data-internal="true" href="/vote/auth/request-code">request a new one</a> by providing your phone number.{{/_}}</p>
+            <p>{{#_}}Enter the voter code you received via text message. If you did not receive a voter code, or the code you received has expired, you can request a new one by providing your phone number. <a data-internal="true" href="/vote/auth/request-code">Request a new voter code.</a>{{/_}}</p>
         </div>
 
         <div class="auth-bottom-container">
