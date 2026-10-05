@@ -321,7 +321,7 @@ header.admin-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 10000;
   padding: 20px;
 }
 
@@ -636,7 +636,6 @@ main, form {
 }
 
 .voter-code-card .code-highlight {
-  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--admin-color-primary);
@@ -650,8 +649,7 @@ main, form {
 }
 
 .voter-code-card .voter-expiry {
-  color: var(--admin-color-text-muted);
-  font-size: 0.85rem;
+  font-style: italic;
 }
 
 .voter-code-card-actions {
