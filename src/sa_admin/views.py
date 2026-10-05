@@ -1,6 +1,7 @@
 import base64
 import json
 import logging
+from functools import wraps
 import mimetypes
 import os
 from urllib.parse import urlparse
@@ -21,7 +22,17 @@ from .translation import GoogleTranslationService
 logger = logging.getLogger(__name__)
 
 
-def shareabouts_loggedin(viewfunc, required_group=None):
+def shareabouts_loggedin(viewfunc_or_required_group, required_group=None):
+    # If the first argument is not callable, it is assumed to be the required
+    # group. Return a decorator that takes the view function.
+    if not callable(viewfunc_or_required_group):
+        required_group = viewfunc_or_required_group
+        return lambda viewfunc: shareabouts_loggedin(viewfunc, required_group)
+
+    # The first argument is callable, so it is the view function itself.
+    viewfunc = viewfunc_or_required_group
+
+    @wraps(viewfunc)
     def wrapper(request, *args, **kwargs):
         config = get_shareabouts_config()
         api = ShareaboutsApi(config, request)
@@ -75,15 +86,7 @@ def ballot_manager_required(viewfunc):
     def wrapper(request, *args, **kwargs):
         config = get_shareabouts_config()
 
-        ballot_config = {}
-        if hasattr(config, 'get'):
-            ballot_config = config.get('ballot') or {}
-        elif hasattr(config, '__getitem__'):
-            try:
-                ballot_config = config['ballot'] or {}
-            except (KeyError, TypeError):
-                ballot_config = {}
-
+        ballot_config = config.get('ballot', {})
         manager_group = ballot_config.get('manager_group') or 'admin'
 
         return shareabouts_loggedin(viewfunc, required_group=manager_group)(request, *args, **kwargs)
