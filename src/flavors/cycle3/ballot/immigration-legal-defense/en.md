@@ -4,4 +4,4 @@ language: en
 title: Immigrant Legal Defense Fund
 ---
 
-This proposal funds legal services for immigrants facing deportation, prioritizing youth and those detained or at risk.
+This proposal provides grant funding for immigration legal services including consultations, application assistance, and legal representation for immigrants facing detention and deportation. This initiative will prioritize detained immigrants, those at heightened risk of detention, and immigrant youth.
