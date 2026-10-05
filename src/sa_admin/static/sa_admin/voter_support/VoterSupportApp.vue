@@ -1,99 +1,99 @@
 <template>
-  <div v-if="isOpen" class="modal-overlay" @click.self="closeModal">
-    <div
-      class="modal-dialog"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="voter-support-dialog-title"
-    >
-      <div class="modal-header">
-        <h3 id="voter-support-dialog-title">Voter Support</h3>
-        <button
-          type="button"
-          class="modal-close-btn"
-          aria-label="Close"
-          @click="closeModal"
-        >×</button>
+  <dialog
+    ref="dialogRef"
+    class="modal-dialog"
+    closedby="any"
+    aria-labelledby="voter-support-dialog-title"
+    @click="handleBackdropClick"
+    @close="onDialogClose"
+  >
+    <div class="modal-header">
+      <h3 id="voter-support-dialog-title">Voter Support</h3>
+      <button
+        type="button"
+        class="modal-close-btn"
+        aria-label="Close"
+        @click="closeModal"
+      >×</button>
+    </div>
+
+    <div class="modal-body">
+      <div v-if="errorMessage" class="banner" data-state="error" role="alert">
+        {{ errorMessage }}
       </div>
 
-      <div class="modal-body">
-        <div v-if="errorMessage" class="banner" data-state="error" role="alert">
-          {{ errorMessage }}
-        </div>
+      <p class="voter-support-intro">
+        Use the following to provide a code for voters that are not able to receive SMS messages.
+      </p>
 
-        <p class="voter-support-intro">
-          Use the following to provide a code for voters that are not able to receive SMS messages.
-        </p>
-
-        <div class="voter-support-action-row">
-          <button
-            type="button"
-            class="button"
-            data-variant="primary"
-            :disabled="loading"
-            @click="generateCode"
-          >
-            {{ loading ? 'Generating...' : (codeData ? 'Generate New Code' : 'Generate Code') }}
-          </button>
-        </div>
-
-        <div v-if="codeData" class="voter-code-section">
-          <p style="margin: 0.5rem 0 0.35rem; font-weight: 600;">
-            Share the following with the voter:
-          </p>
-          <div class="voter-code-card">
-            <div>
-              Your code to vote in Boston's Ideas in Action is:
-              <strong class="code-highlight">{{ codeData.code.toUpperCase() }}</strong>
-            </div>
-
-            <div>
-              Enter the code at<br>
-              <a :href="voterVerificationUrl" target="_blank" rel="noopener noreferrer" class="voter-link">
-                {{ voterVerificationUrl }}
-              </a>
-            </div>
-
-            <div class="voter-expiry">
-              This code will expire: {{ formattedExpiration }}
-            </div>
-
-            <div class="voter-code-card-actions">
-              <button
-                type="button"
-                class="button"
-                data-variant="secondary"
-                data-size="sm"
-                @click="copyInstructions"
-              >
-                {{ copied ? 'Copied!' : 'Copy Instructions' }}
-              </button>
-              <span v-if="copied" class="copy-feedback">
-                ✓ Copied to clipboard
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
+      <div class="voter-support-action-row">
         <button
           type="button"
           class="button"
-          data-variant="secondary"
-          @click="closeModal"
+          data-variant="primary"
+          :disabled="loading"
+          @click="generateCode"
         >
-          Close
+          {{ loading ? 'Generating...' : (codeData ? 'Generate New Code' : 'Generate Code') }}
         </button>
       </div>
+
+      <div v-if="codeData" class="voter-code-section">
+        <p style="margin: 0.5rem 0 0.35rem; font-weight: 600;">
+          Share the following with the voter:
+        </p>
+        <div class="voter-code-card">
+          <div>
+            Your code to vote in Boston's Ideas in Action is:
+            <strong class="code-highlight">{{ codeData.code.toUpperCase() }}</strong>
+          </div>
+
+          <div>
+            Enter the code at<br>
+            <a :href="voterVerificationUrl" target="_blank" rel="noopener noreferrer" class="voter-link">
+              {{ voterVerificationUrl }}
+            </a>
+          </div>
+
+          <div class="voter-expiry">
+            This code will expire: {{ formattedExpiration }}
+          </div>
+
+          <div class="voter-code-card-actions">
+            <button
+              type="button"
+              class="button"
+              data-variant="secondary"
+              data-size="sm"
+              @click="copyInstructions"
+            >
+              {{ copied ? 'Copied!' : 'Copy Instructions' }}
+            </button>
+            <span v-if="copied" class="copy-feedback">
+              ✓ Copied to clipboard
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="button"
+        data-variant="secondary"
+        @click="closeModal"
+      >
+        Close
+      </button>
+    </div>
+  </dialog>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
-const isOpen = ref(false);
+const dialogRef = ref(null);
 const loading = ref(false);
 const errorMessage = ref(null);
 const codeData = ref(null);
@@ -120,18 +120,29 @@ const formattedExpiration = computed(() => {
 });
 
 function openModal() {
-  isOpen.value = true;
   errorMessage.value = null;
   copied.value = false;
+  dialogRef.value?.showModal();
 }
 
 function closeModal() {
-  isOpen.value = false;
+  dialogRef.value?.close();
+}
+
+function onDialogClose() {
   errorMessage.value = null;
 }
 
-function handleKeyDown(event) {
-  if (event.key === 'Escape' && isOpen.value) {
+function handleBackdropClick(event) {
+  if (event.target !== dialogRef.value) return;
+  const rect = dialogRef.value.getBoundingClientRect();
+  const isInside = (
+    rect.top <= event.clientY &&
+    event.clientY <= rect.top + rect.height &&
+    rect.left <= event.clientX &&
+    event.clientX <= rect.left + rect.width
+  );
+  if (!isInside) {
     closeModal();
   }
 }
@@ -217,12 +228,10 @@ function fallbackCopyText(text) {
 
 onMounted(() => {
   window.addEventListener('open-voter-support', openModal);
-  window.addEventListener('keydown', handleKeyDown);
 });
 
 onUnmounted(() => {
   window.removeEventListener('open-voter-support', openModal);
-  window.removeEventListener('keydown', handleKeyDown);
   if (copyTimeout) clearTimeout(copyTimeout);
 });
 </script>

@@ -337,6 +337,16 @@ header.admin-header {
   max-height: 90vh;
 }
 
+dialog.modal-dialog {
+  padding: 0;
+  border: none;
+}
+
+dialog.modal-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(3px);
+}
+
 .modal-header {
   padding: 16px 20px;
   background-color: var(--admin-color-surface-subtle);
