@@ -197,7 +197,7 @@ summary {
 li.menu-item > a {
   font-weight: 500;
   font-size: 1.25rem;
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: var(--iia-electric-purple);
 }
 
@@ -583,11 +583,18 @@ details[open]
 }
 
 .voter-attestation-label {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--iia-indigo-blue);
   margin: 0;
   padding: 0;
 }
-.voter-attestation-list li {
-  font-weight: 500;
+
+#voter-attestation-checkbox {
+  border: 3px solid var(--iia-indigo-blue);
+  margin-right: 0;
+  height: 18px;
+  width: 18px;
 }
 
 .voter-attestation-list li > label {
@@ -597,8 +604,8 @@ details[open]
 #voter-neighborhood-input {
   width: 90%;
   border: none;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: none;
+  margin-bottom: 1rem;
   border-radius: 1rem;
 }
 
@@ -827,7 +834,6 @@ summary.survey-select-input,
   li,
   .info-text,
   label,
-  select,
   input {
     font-size: 1.5rem;
   }
@@ -885,7 +891,7 @@ summary.survey-select-input,
   .menu {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .vote-link {
@@ -925,10 +931,6 @@ summary.survey-select-input,
 
   .vote-link {
     width: 30vw;
-  }
-
-  .menu {
-    gap: 1.5rem;
   }
 
   .proposal-cost {

@@ -22,7 +22,7 @@
         </header>
 
         <div class="auth-elligibility-attestation-container">
-            <span class="secondary-emphasis">{{#_}}To vote in the 2026 cycle, please confirm the following:{{/_}}</span>
+            <p>{{#_}}To vote in the 2026 cycle, please confirm the following:{{/_}}</p>
 
             <ul class="voter-attestation-list">
                 <li>
@@ -39,10 +39,11 @@
                 <input type="checkbox" id="voter-attestation-checkbox" required data-validation-message="{{#_}}You must meet these eligibility requirements in order to vote{{/_}}" />
                 {{#_}}I confirm that I meet the requirements{{/_}}
             </label>
+            <br>
         </div>
 
         <div class="auth-neighborhood-entry-container">
-            <span class="secondary-emphasis">{{#_}}Select your neighborhood to continue:{{/_}}</span>
+            <p>{{#_}}Select your neighborhood to continue:{{/_}}</p>
 
             <select id="voter-neighborhood-input" required data-validation-message="{{#_}}You must live in one of these neighborhoods in order to vote{{/_}}">
                 <option value="" disabled selected>{{#_}}Select your neighborhood...{{/_}}</option>
