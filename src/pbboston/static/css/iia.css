@@ -4,7 +4,7 @@
   --iia-indigo-blue: #1900B0;
   --iia-fog-grey: #efeff4;
   --iia-vibrant-green: #00cd5f;
-  --iia-vibrant-green-alt: #008940;
+  --iia-vibrant-green-alt: #008940; /* For white backgrounds - minimum contrast with white required by WCAG AAA*/
   --iia-electric-purple: #B11FFF;
   --iia-electric-purple-alt: #BF49FF;
   /* For dark backgrounds */
