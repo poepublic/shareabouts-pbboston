@@ -195,6 +195,9 @@ summary {
 
 /* Menu */
 li.menu-item > a {
+  font-weight: 500;
+  font-size: 1.25rem;
+  text-transform: capitalize;
   color: var(--iia-electric-purple);
 }
 
@@ -540,7 +543,6 @@ details[open]
 #auth-page {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   justify-content: center;
   align-content: center;
 }
@@ -850,8 +852,6 @@ summary.survey-select-input,
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: start;
-    padding-left: 5rem;
-    padding-right: 5rem;
     gap: 10rem;
   }
 
@@ -928,7 +928,7 @@ summary.survey-select-input,
   }
 
   .menu {
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .proposal-cost {
