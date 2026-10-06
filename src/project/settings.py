@@ -158,7 +158,6 @@ MIDDLEWARE = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 SESSION_COOKIE_NAME = 'sa-web-session'
 
 ROOT_URLCONF = 'project.urls'
@@ -274,8 +273,12 @@ if 'REDIS_URL' in env:
         }
     }
 
-    # Django sessions
-    SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+# Allow overriding SESSION_ENGINE via env (defaults to signed_cookies or cache)
+SESSION_ENGINE = env.get(
+    'SESSION_ENGINE',
+    'django.contrib.sessions.backends.cache' if 'REDIS_URL' in env
+    else 'django.contrib.sessions.backends.signed_cookies'
+)
 
 if 'SITE_ROOT' in env:
     SITE_ROOT = env.get('SITE_ROOT')
