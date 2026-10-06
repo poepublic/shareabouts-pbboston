@@ -601,25 +601,21 @@ details[open]
 }
 
 #verify-button,
-#unverify-button {
+#unverify-button,
+#submit-survey {
   background-color: var(--iia-vibrant-green);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 0.5rem;
 }
 
-#unverify-button {
+#unverify-button, #submit-survey {
   background-color: var(--iia-urban-pink-alt);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 /* FAQ page */
@@ -825,6 +821,30 @@ summary.survey-select-input,
     margin-right: 15vw;
   }
 
+  p,
+  li,
+  .info-text,
+  label,
+  select,
+  input {
+    font-size: 1.5rem;
+  }
+
+  #verify-button, #submit-survey {
+    font-size: 1.5rem;
+    width: 20vw;
+    align-self: center;
+  }
+
+  /* Auth */
+  #verify-button {
+    font-size: 1.5rem;
+  }
+
+  .voter-attestation-label {
+    margin-bottom: 1rem !important;
+  }
+
   /* Ballot page */
   .ballot-page-content-container {
     display: grid;
@@ -875,29 +895,41 @@ summary.survey-select-input,
 
 /* Large screen */
 @media (min-width: 1280px) {
+  /* Ballot page */
 
-    h1 {
-        font-size: 3rem;
-      }
+  .selected-proposal {
+    width: 60vw;
+  }
 
-    input[type="checkbox"] {
-        width: 25px;
-        height: 25px;
-        border: 3px solid var(--iia-dark-blue);
-      }
+  .vote-confirm-modal {
+    max-width: 30vw;
+    width: 90%;
+  }
+}
+
+/* Super large screen */
+@media (min-width: 2000px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    border: 3px solid var(--iia-dark-blue);
+  }
+
+  #verify-button, #submit-survey {
+    font-size: 2rem;
+  }
 
   .vote-link {
     width: 30vw;
   }
 
-  /* Home */
-
   .menu {
-    display: flex;
-    flex-direction: row;
     gap: 2rem;
   }
-  /* Ballot page */
 
   .proposal-cost {
     font-size: 2rem;
@@ -909,15 +941,6 @@ summary.survey-select-input,
   .proposal-card-top-left > .proposal-checkbox {
     width: 50px;
     height: 25px;
-  }
-
-  .selected-proposal {
-    width: 60vw;
-  }
-
-  .vote-confirm-modal {
-    max-width: 30vw;
-    width: 90%;
   }
 
   p,
@@ -934,9 +957,6 @@ summary.survey-select-input,
   }
 
   #home-page {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
     gap: 1.5rem;
   }
 
