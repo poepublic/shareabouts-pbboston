@@ -732,7 +732,7 @@ summary.survey-select-input,
 }
 
 /* Tablet */
-@media (min-width: 768px) {
+@media (width >= 768px) {
   #home-page,
   #auth-page,
   #faq-page,
@@ -808,7 +808,7 @@ summary.survey-select-input,
 }
 
 /* Desktop */
-@media (min-width: 960px) {
+@media (width >= 960px) {
   #home-page,
   #auth-page,
   #faq-page,
@@ -894,7 +894,7 @@ summary.survey-select-input,
 }
 
 /* Large screen */
-@media (min-width: 1280px) {
+@media (width >= 1280px) {
   /* Ballot page */
 
   .selected-proposal {
@@ -908,7 +908,7 @@ summary.survey-select-input,
 }
 
 /* Super large screen */
-@media (min-width: 2000px) {
+@media (width >= 2000px) {
   h1 {
     font-size: 3rem;
   }
