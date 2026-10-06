@@ -188,7 +188,7 @@ summary {
 /* Text formatting */
 .secondary-emphasis {
   color: var(--iia-indigo-blue);
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.2rem;
   border-radius: 0.1rem;
 }
@@ -409,7 +409,7 @@ details[open]
 }
 
 .selected-proposal-amount {
-  color: var(--iia-dark-blue);
+  color: var(--iia-vibrant-green-alt);
 }
 
 .selected-proposal-remove:after {
@@ -467,7 +467,7 @@ details[open]
 .proposal-cost {
   font-weight: 600;
   font-size: 1.5rem;
-  color: var(--iia-indigo-blue);
+  color: var(--iia-vibrant-green-alt);
 }
 
 .proposal-description {
