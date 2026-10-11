@@ -8,6 +8,9 @@
       <div id="outline">
         <a v-for="section in sections" :key="section.id" :href="'#' + section.toLowerCase()">{{ section }}</a>
       </div>
+      <div class="download-all-wrapper">
+        <button type="button" class="button" data-variant="primary">Download all data</button>
+      </div>
     </div>
   </div>
 </template>
