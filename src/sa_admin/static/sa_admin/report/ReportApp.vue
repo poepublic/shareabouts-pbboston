@@ -8,7 +8,7 @@
       <div id="outline">
         <a v-for="section in sections" :key="section.id" :href="'#' + section.toLowerCase()">{{ section }}</a>
       </div>
-      <DownloadAllButton :ballots="ballotsCollection" :surveys="surveysCollection.anonymous" :loaded="allDataLoaded" />
+      <DownloadAllButton :ballots="ballotsCollection" :surveys="surveysCollection.anonymous" :loaded="allDataLoaded" :load-percent="loadPercent" />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ import Ethnicity from './components/Ethnicity.vue';
 import Income from './components/Income.vue';
 import Outreach from './components/Outreach.vue';
 import DownloadAllButton from './components/DownloadAllButton.vue';
-import { computed, ref } from 'vue';
+import { computed, reactive } from 'vue';
 
 
 // Non-anonymous Ballot Data
@@ -43,10 +43,7 @@ const ballotsCollection = new window.Shareabouts.SubmissionCollection([], {
 // progress; the `pageSuccess` callback is called after each page is
 // successfully fetched, and the `success` callback is called after all pages
 // have been fetched.)
-const ballotsLoaded = ref(false);
-ballotsCollection.fetchAllPages({
-  success: () => { ballotsLoaded.value = true; },
-});
+const ballotsProgress = fetchAllPagesWithProgress(ballotsCollection);
 
 // Anonymous Ballot Data
 // --------------------
@@ -70,10 +67,7 @@ const surveysCollection = new window.Shareabouts.SubmissionCollection([], {
 surveysCollection.fetchAllPages({
 });
 
-const surveysLoaded = ref(false);
-surveysCollection.anonymous.fetchAllPages({
-  success: () => { surveysLoaded.value = true; },
-});
+const surveysProgress = fetchAllPagesWithProgress(surveysCollection.anonymous);
 
 // Working with the Data
 // ---------------------
@@ -122,6 +116,25 @@ const sectionProps = {
 };
 
 // Download all data
-const allDataLoaded = computed(() => ballotsLoaded.value && surveysLoaded.value);
+function fetchAllPagesWithProgress(collection) {
+  const progress = reactive({ loaded: 0, total: null, done: false });
+  collection.fetchAllPages({
+    pageSuccess: () => {
+      progress.loaded = collection.length;
+      progress.total = collection.metadata.length;
+      if (progress.total === 0) { progress.done = true; }
+    },
+    success: () => { progress.done = true; },
+  });
+  return progress;
+}
+
+const allDataLoaded = computed(() => ballotsProgress.done && surveysProgress.done);
+
+const loadPercent = computed(() => {
+  const loaded = ballotsProgress.loaded + surveysProgress.loaded;
+  const total = (ballotsProgress.total ?? 0) + (surveysProgress.total ?? 0);
+  return total ? Math.min(100, Math.floor((loaded / total) * 100)) : 0;
+});
 
 </script>

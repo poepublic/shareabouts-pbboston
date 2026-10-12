@@ -1,7 +1,7 @@
 <template>
   <div class="download-all-wrapper">
     <button type="button" class="button" data-variant="primary" :disabled="!loaded" @click="downloadAllData">
-      Download all data
+      {{ loaded ? 'Download all data' : `Loading data… ${loadPercent}%` }}
     </button>
   </div>
 </template>
@@ -13,6 +13,7 @@ const props = defineProps({
   ballots: { type: Object, required: true },
   surveys: { type: Object, required: true },
   loaded: { type: Boolean, default: false },
+  loadPercent: { type: Number, default: 0 },
 });
 
 function joinList(value) {
