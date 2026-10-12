@@ -8,11 +8,7 @@
       <div id="outline">
         <a v-for="section in sections" :key="section.id" :href="'#' + section.toLowerCase()">{{ section }}</a>
       </div>
-      <div class="download-all-wrapper">
-        <button type="button" class="button" data-variant="primary" :disabled="!allDataLoaded" @click="downloadAllData">
-          Download all data
-        </button>
-      </div>
+      <DownloadAllButton :ballots="ballotsCollection" :surveys="surveysCollection.anonymous" :loaded="allDataLoaded" />
     </div>
   </div>
 </template>
@@ -24,8 +20,8 @@ import Age from './components/Age.vue';
 import Ethnicity from './components/Ethnicity.vue';
 import Income from './components/Income.vue';
 import Outreach from './components/Outreach.vue';
+import DownloadAllButton from './components/DownloadAllButton.vue';
 import { computed, ref } from 'vue';
-import { downloadCsv } from '../composables/downloadCsv.js';
 
 
 // Non-anonymous Ballot Data
@@ -127,33 +123,5 @@ const sectionProps = {
 
 // Download all data
 const allDataLoaded = computed(() => ballotsLoaded.value && surveysLoaded.value);
-
-function joinList(value) {
-  return Array.isArray(value) ? value.join('; ') : value;
-}
-
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
-function downloadAllData() {
-  const voteRows = ballotsCollection
-    .map(ballot => [ballot.get('created_datetime'), ballot.get('neighborhood')])
-    .sort((a, b) => String(a[0]).localeCompare(String(b[0])));
-  downloadCsv('votes.csv', [['Date', 'Neighborhood'], ...voteRows]);
-
-  // Shuffle to protect anonymity 
-  const surveyRows = shuffle(surveysCollection.anonymous.map(survey => [
-    survey.get('age'),
-    joinList(survey.get('ethnicity')),
-    survey.get('income'),
-    joinList(survey.get('howheard')),
-  ]));
-  downloadCsv('surveys.csv', [['Age', 'Ethnicity', 'Income', 'How heard'], ...surveyRows]);
-}
 
 </script>
