@@ -7,13 +7,25 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { downloadCsv } from '../../composables/downloadCsv.js';
 
 const props = defineProps({
   ballots: { type: Object, required: true },
   surveys: { type: Object, required: true },
-  loaded: { type: Boolean, default: false },
-  loadPercent: { type: Number, default: 0 },
+  ballotsProgress: { type: Object, required: true },
+  surveysProgress: { type: Object, required: true },
+});
+
+const loaded = computed(() => props.ballotsProgress.done && props.surveysProgress.done);
+
+// Stays at 0 until both totals are known. otherwise the denominator grows when
+// the second total arrives and the percentage jumps backwards.
+const loadPercent = computed(() => {
+  const { ballotsProgress: b, surveysProgress: s } = props;
+  if (b.total === null || s.total === null) return 0;
+  const total = b.total + s.total;
+  return total ? Math.min(100, Math.floor(((b.loaded + s.loaded) / total) * 100)) : 0;
 });
 
 function joinList(value) {
