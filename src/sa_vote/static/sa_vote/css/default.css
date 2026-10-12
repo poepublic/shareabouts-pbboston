@@ -252,8 +252,10 @@ li.menu-item > a {
 	display: flex;
   flex-direction: row;
   gap: 5px;
+  padding: 5px;
+  border-radius: 0.5rem;
   margin: 1rem 0;
-  top: 0;
+  top: 0.5rem;
 	position: sticky;
 	z-index: 1000;
   background: white;
@@ -266,6 +268,10 @@ li.menu-item > a {
   width: 50px;
   height: 50px;
   border-radius: 0.5rem;
+}
+
+.ballot-progress-step:hover {
+  background: var(--iia-vibrant-green);
 }
 
 .ballot-banner {
