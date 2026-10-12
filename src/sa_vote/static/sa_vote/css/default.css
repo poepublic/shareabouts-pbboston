@@ -1,7 +1,6 @@
 @import url("/static/css/iia.css");
 
 #home-page,
-#ballot-page,
 #auth-page,
 #faq-page,
 #privacy-page,
@@ -9,6 +8,10 @@
 #survey-page {
   padding: 3rem;
   margin-top: 5vh;
+}
+
+#ballot-page {
+padding: 0 3rem 3rem 3rem;
 }
 
 html {
@@ -245,6 +248,26 @@ li.menu-item > a {
 }
 
 /* Ballot page */
+.ballot-scroll-progress {
+	display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin: 1rem 0;
+  top: 0;
+	position: sticky;
+	z-index: 1000;
+  background: white;
+}
+
+.ballot-progress-step {
+  background: var(--iia-fog-grey);
+  border: solid white 2px;
+  margin: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 0.5rem;
+}
+
 .ballot-banner {
   display: flex;
   flex-direction: column;
@@ -761,7 +784,7 @@ summary.survey-select-input,
 
   /* Ballot page */
   #ballot-page {
-    margin: 7vh 10vw 7vh 10vw;
+    margin: 0 10vw 7vh 10vw;
     display: flex;
     flex-direction: column;
   }
@@ -864,7 +887,7 @@ summary.survey-select-input,
   .ballot-page-content-top {
     /* ballot page left */
     position: sticky;
-    top: 20vh;
+    top: 10vh;
     text-align: center;
   }
 

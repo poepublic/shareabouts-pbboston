@@ -10,6 +10,7 @@ export const BallotView = Backbone.View.extend({
     'click #submit-ballot': 'openVoteConfirmModal',
     'click #vote-confirm-cancel': 'closeVoteConfirmModal',
     'submit form': 'submitVote',
+    'click .ballot-progress-step': 'scrollToStep',
   },
 
   initialize: function (options) {

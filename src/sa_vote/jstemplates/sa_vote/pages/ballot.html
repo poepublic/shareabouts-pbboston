@@ -12,6 +12,7 @@
       <p>{{#_}}For more information about this process, see our FAQ page. <a href="/vote/faq" data-internal="true">Read FAQs.</a>{{/_}}</p>
     </div>
     <div class="proposal-container">
+      {{> sa_vote/includes/ballot-scroll-progress }} 
       {{#each (randomize ballot.proposals)}}
       <label for="checkbox-{{slug}}">
         <div class="proposal-card" id="proposal-card-{{slug}}">
