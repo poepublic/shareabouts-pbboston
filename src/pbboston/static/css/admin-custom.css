@@ -16,3 +16,19 @@
 .location-column {
   width: 20rem;
 }
+
+.admin-header-logos a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 0.7rem;
+    border-right: 2px solid var(--admin-color-primary);
+}
+
+.admin-header-logos img {
+    height: 1.25rem;
+    width: auto;
+    max-height: 1.25rem;
+    display: block;
+    padding-top: 0.4rem;
+}

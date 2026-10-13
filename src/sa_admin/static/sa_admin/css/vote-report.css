@@ -96,20 +96,6 @@ header h1 {
     overflow: hidden;
 }
 
-
-.report-header-logos a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.report-header-logos img {
-    height: 2rem;
-    width: auto;
-    max-height: 2rem;
-    display: block;
-}
-
 .report-header-user {
     display: flex;
     align-items: center;
