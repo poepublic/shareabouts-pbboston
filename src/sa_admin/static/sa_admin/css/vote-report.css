@@ -314,10 +314,6 @@ header h1 {
 }
 
 @media (max-width: 700px) {
-    .report-header-logos .boston-logo {
-        display: none;
-    }
-
     .report-header-user p {
         display: none;
     }
