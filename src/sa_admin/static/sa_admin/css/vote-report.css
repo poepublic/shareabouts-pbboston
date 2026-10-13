@@ -62,6 +62,10 @@ body {
     color: var(--iia-fog-grey);
 }
 
+.report .modal-dialog p {
+    color: var(--admin-color-text-muted);
+}
+
 h1 {
     color: white;
 }
