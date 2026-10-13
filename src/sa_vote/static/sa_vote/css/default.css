@@ -422,7 +422,7 @@ details[open]
   list-style: none;
   width: 70vw;
   color: var(--iia-dark-blue);
-  background: var(--iia-vibrant-green);
+  background: white;
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
