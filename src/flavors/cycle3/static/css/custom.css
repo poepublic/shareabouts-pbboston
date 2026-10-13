@@ -1,3 +1,4 @@
+@import url('/static/css/boston.css');
 @import url('/static/css/iia.css');
 @import url('/static/css/city-wide-ext.css');
 @import url('/static/css/language-picker.css');
@@ -13,81 +14,7 @@
  * NOTE: "With great power comes great responsibility."
  */
 
-:root {
-  --icon-purple-1: #49157e;
-  --icon-purple-2: #e9d3ff;
-  --icon-purple-3: #925dc8;
-
-  --icon-blue-1: #091f2f;
-  --icon-blue-2: #c2d9ed;
-  --icon-blue-3: #288be4;
-
-  /* Boston colors -- from the style guide */
-  --charles-blue: #091f2f;
-  --optimistic-blue: #288be4;
-  --freedom-trail-red: #fb4d42;
-
-  /* --instructions-bg: rgba(248, 208, 8, 0.25); */
-
-  --supporting-red-1: #d22d23;
-  /* This is not in the style guide, but is the bg color of the menu button on boston.gov */
-
-  --supporting-blue-1: #061622;
-  --supporting-blue-2: #0C2639;
-  --supporting-blue-3: #45789C;
-  --supporting-blue-4: #51ACFF;
-  --supporting-blue-5: #1871bd;
-  /* This is not in the style guide, but is the bg color for buttons on boston.gov */
-
-  --supporting-gray-1: #58585B;
-  --supporting-gray-2: #D2D2D2;
-  --supporting-gray-3: #E0E0E0;
-  --supporting-gray-4: #F2F2F2;
-
-  /* Category colors -- chosen for mutual differentiation, contrast with the background, and accessibility */
-  --icon-color-01: #332288;
-  --icon-color-02: #88CCEE;
-  --icon-color-03: #44AA99;
-  --icon-color-04: #117733;
-  --icon-color-05: #CC6677;
-  --icon-color-06: #999933;
-  --icon-color-07: #DDCC77;
-  --icon-color-08: #882255;
-  --icon-color-09: #AA4499;
-  --icon-color-10: #DDDDDD;
-
-  --instructions-bg: var(--iia-fog-grey);
-  --instructions-fg: var(--iia-dark-blue);
-
-  --content-bg: var(--iia-dark-blue);
-  --content-fg: white;
-  --content-line: var(--iia-fog-grey);
-  --content-link: var(--iia-electric-purple-alt);
-  --content-link-hover: var(--iia-urban-pink-alt);
-
-  --attention-bg: var(--iia-callout-blue);
-  --attention-fg: white;
-
-  --selection-bg: var(--iia-electric-purple-alt);
-  --selection-fg: white;
-
-  --hover-bg: var(--iia-callout-blue);
-
-  --map-bg: var(--iia-dark-blue);
-
-  --full-navbar-limit: 1280px;
-  --large-screen-limit: 1024px;
-  --medium-screen-limit: 768px;
-  --landscape-limit: 480px;
-
-  --banner-height: 65px;
-  --pre-banner-height: 60px;
-
-  --header-font: 'Montserrat', sans-serif;
-  --body-font: 'Montserrat', sans-serif;
-}
-
-@media only screen and (width >= 60rem) {
+ @media only screen and (width >= 60rem) {
   /* 960px */
   :root {
     --pre-banner-height: 0px;

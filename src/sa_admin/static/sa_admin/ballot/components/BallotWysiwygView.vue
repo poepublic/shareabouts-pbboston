@@ -81,7 +81,7 @@
             <span class="proposal-card-top-left">
               <span class="proposal-pill-checkbox"></span>
             </span>
-            <div class="proposal-title-container">
+            <div class="proposal-title proposal-title-container">
               <textarea
                 ref="titleInputRef"
                 class="proposal-title-input"
@@ -95,7 +95,7 @@
           </div>
 
           <!-- Proposal Cost (Green bold amount, editable across all languages) -->
-          <div class="proposal-cost-row">
+          <div class="proposal-cost proposal-cost-row">
             <span class="cost-dollar">$</span>
             <input
               type="text"
@@ -110,7 +110,7 @@
           </div>
 
           <!-- Proposal Description (Uppercase bold Montserrat plain text) -->
-          <div class="proposal-description-container">
+          <div class="proposal-description proposal-description-container">
             <textarea
               ref="descInputRef"
               class="proposal-description-input"
@@ -565,15 +565,7 @@ watch(
 
 /* Proposal Card matching sa_vote style */
 .proposal-card {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  background: #ffffff;
-  border-radius: 8px;
-  border: 4px solid #ffffff;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
-  font-family: 'Montserrat', sans-serif;
-  gap: 0.65rem;
+  font-family: var(--header-font);
 }
 
 /* Card Top: Pill and Title */
@@ -585,9 +577,9 @@ watch(
 }
 
 .proposal-card-top-left {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  padding-top: 3px;
+  height: 2.4rem;
 }
 
 .proposal-pill-checkbox {
@@ -604,21 +596,20 @@ watch(
 }
 
 .proposal-title-input {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #0E0E30;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.75em;
   text-transform: uppercase;
-  line-height: 1.2;
   width: 100%;
   border: 1px dashed transparent;
   border-radius: 4px;
   background: transparent;
   resize: none;
   outline: none;
-  padding: 2px 4px;
+  padding: 0;
   box-sizing: border-box;
   overflow: hidden;
+  height: fit-content;
   transition: border-color 0.2s, background-color 0.2s;
 }
 
@@ -637,30 +628,23 @@ watch(
 .proposal-cost-row {
   display: flex;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #00cd5f;
-  line-height: 1.2;
 }
 
 .cost-dollar {
-  font-weight: 700;
-  color: #00cd5f;
   margin-right: 1px;
 }
 
 .proposal-cost-input {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #00cd5f;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
   border: 1px dashed transparent;
   border-radius: 4px;
   background: transparent;
   outline: none;
-  width: 180px;
-  padding: 0 4px;
+  width: 100%;
+  padding: 0;
   transition: border-color 0.2s, background-color 0.2s;
 }
 
@@ -682,12 +666,12 @@ watch(
 }
 
 .proposal-description-input {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0E0E30;
-  text-transform: uppercase;
-  line-height: 1.35;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+  line-height: inherit;
   width: 100%;
   border: 1px dashed transparent;
   border-radius: 4px;
@@ -715,7 +699,6 @@ watch(
 .proposal-image-wrapper {
   position: relative;
   width: 100%;
-  height: 160px;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
@@ -724,10 +707,6 @@ watch(
 }
 
 .proposal-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
   display: block;
 }
 
@@ -751,7 +730,7 @@ watch(
 .placeholder-text {
   font-size: 0.85rem;
   font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--header-font);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
