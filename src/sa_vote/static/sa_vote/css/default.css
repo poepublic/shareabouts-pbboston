@@ -11,7 +11,7 @@
 }
 
 #ballot-page {
-padding: 0 3rem 3rem 3rem;
+padding: 5rem 1.5rem 3rem 1.5rem;
 }
 
 html {
@@ -249,25 +249,24 @@ li.menu-item > a {
 
 /* Ballot page */
 .ballot-scroll-progress {
-	display: flex;
+  display: flex;
   flex-direction: row;
   gap: 5px;
   padding: 5px;
-  border-radius: 0.5rem;
-  margin: 1rem 0;
+  margin: 0 -1.5rem;       
+  border-radius: 0;   
   top: 0.5rem;
-	position: sticky;
-	z-index: 1000;
+  position: sticky;
+  z-index: 1000;
   background: white;
 }
 
 .ballot-progress-step {
-  /* not yet read */
   background: white;
   border: solid var(--iia-fog-grey) 2px;
   margin: 0;
-  width: 50px;
-  height: 50px;
+  height: 35px;
+  width: 100%;
   border-radius: 0.5rem;
   cursor: pointer;
 }
@@ -472,6 +471,10 @@ details[open]
   gap: 1.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.proposal-container > label {
+  margin-right: 0;
 }
 
 .proposal-card {
@@ -806,8 +809,20 @@ summary.survey-select-input,
   /* Ballot page */
   #ballot-page {
     margin: 0 10vw 7vh 10vw;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
+  }
+
+  .ballot-scroll-progress {
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+  }
+
+  .ballot-progress-step {
+    max-width: 50px;
+    height: auto;
+    aspect-ratio: 1;
   }
 
   .ballot-page-content-container {
