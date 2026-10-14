@@ -899,7 +899,7 @@ summary.survey-select-input,
   }
 
   .bigger-text {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   #ballot-page {
@@ -1003,17 +1003,13 @@ summary.survey-select-input,
     font-size: 3.5rem;
   }
 
-  .bigger-text {
-    font-size: 4rem;
-  }
-
   #verify-button, #submit-survey {
     font-size: 1.5rem;
   }
 
   /* Ballot page */
   #ballot-page {
-    margin: 0 15vw 7vh 15vw;
+    margin: 0 10vw 7vh 10vw;
   }
 
   .ballot-page-content-container {
