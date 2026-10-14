@@ -9,6 +9,12 @@ app:
   # Meta author that will show up in Google search results
   meta_author: OpenPlans.org
 
+  # Social sharing text (Used in OpenGraph tags on the vote pages + promotion screen at the bottom of the post-vote survey)
+  share:
+    title: _(What should the City do with $2 million to improve Boston?)
+    description: _(Vote in Boston's Participatory Budgeting by February 15, 2027.)
+    image_alt: "_(Vote: How should Boston spend $2 million to benefit our communities? Read this year's proposals and vote by February 15, 2027.)"
+
 
   # When the map loads, existing places will be loaded in chunks. By default,
   # the size of the chunks will be a reasonable default dictated by the API
