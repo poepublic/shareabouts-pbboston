@@ -688,6 +688,18 @@ details[open] summary.faq-question:after {
   align-content: center;
   justify-content: center;
   gap: 3rem;
+  position: relative;
+  isolation: isolate;
+}
+
+.survey-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  z-index: -1;
   background-image: url(/static/css/images/iia-background-repeat.png);
   background-repeat: repeat;
   background-size: 100% auto;
@@ -715,8 +727,15 @@ details[open] summary.faq-question:after {
   justify-self: center;
 }
 
+#survey-page.survey-page {
+  padding-bottom: 0;
+}
+
 .success-background {
-  width: 100%;
+  display: block;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
 }
 
 input.survey-text-input,
