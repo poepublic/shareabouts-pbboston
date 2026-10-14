@@ -923,6 +923,11 @@ summary.survey-select-input,
   }
 
   /* Ballot page */
+  .ballot-scroll-progress {
+    background: #fadeeb;
+    padding: 5px;
+  }
+
   .ballot-page-content-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
