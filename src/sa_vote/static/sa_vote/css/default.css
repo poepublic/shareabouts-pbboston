@@ -309,7 +309,6 @@ li.menu-item > a {
   font-weight: bold;
 }
 
-/* The ballot-banner-checking background color should pulse between iia-callout-blue and iia-urban-pink */
 @keyframes pulse-checking {
   0% {
     background: var(--iia-callout-blue);
@@ -808,6 +807,14 @@ summary.survey-select-input,
   }
 
   /* Ballot page */
+  .ballot-progress-step {
+    border: solid var(--iia-callout-blue) 2.5px;
+  }
+  
+  .ballot-progress-step.is-current {
+    border: solid var(--iia-dark-blue) 5px;
+  }
+  
   #ballot-page {
     margin: 0 10vw 7vh 10vw;
     padding-top: 0;
@@ -817,8 +824,7 @@ summary.survey-select-input,
 
   .ballot-progress-step {
     max-width: 50px;
-    height: auto;
-    aspect-ratio: 1;
+    height: 50px;
   }
 
   .ballot-page-content-container {
@@ -1008,11 +1014,6 @@ summary.survey-select-input,
 
   .ballot-scroll-progress {
     gap: 8px;
-  }
-
-  .ballot-progress-step {
-    height: 40px;
-    width: 100%;
   }
 
   .ballot-page-content-container {
