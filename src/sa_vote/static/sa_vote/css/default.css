@@ -199,7 +199,7 @@ summary {
 /* Menu */
 li.menu-item > a {
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: var(--iia-electric-purple);
 }
@@ -215,8 +215,8 @@ li.menu-item > a {
   display: flex;
   margin: 0 auto;
   flex-direction: row;
-  height: fit-content;
-  width: 65vw;
+  width: fit-content;
+  max-width: 50vw;
   align-content: center;
   justify-content: center;
   padding: 1rem;
@@ -226,7 +226,7 @@ li.menu-item > a {
 
 .vote-link p {
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 550;
   line-height: 1em;
   align-content: center;
@@ -234,7 +234,7 @@ li.menu-item > a {
 }
 
 .vote-link img {
-  width: 60px;
+  width: 40px;
 }
 
 .vote-link:hover {
@@ -251,11 +251,11 @@ li.menu-item > a {
 .ballot-scroll-progress {
   display: flex;
   flex-direction: row;
-  gap: 5px;
-  padding: 5px;
+  gap: 3px;
+  padding: 3px;
   margin: 0 -1.5rem;       
   border-radius: 0;   
-  top: 0.5rem;
+  top: 4.5rem;
   position: sticky;
   z-index: 1000;
   background: white;
@@ -815,6 +815,7 @@ summary.survey-select-input,
   }
 
   .ballot-scroll-progress {
+    top: 0.5rem;
     margin: 1rem 0;
     border-radius: 0.5rem;
   }
@@ -857,12 +858,12 @@ summary.survey-select-input,
   .faq-page-header,
   .terms-page-header,
   .privacy-page-header {
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
   }
 
   .bigger-text {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   .secondary-emphasis {
@@ -889,25 +890,34 @@ summary.survey-select-input,
     margin-right: 15vw;
   }
 
-  p,
-  li,
-  .info-text,
+  .home-header,
+  .ballot-page-header,
+  .faq-page-header,
+  .terms-page-header,
+  .privacy-page-header {
+    font-size: 3rem;
+  }
+
+  .bigger-text {
+    font-size: 4rem;
+  }
+
+  #ballot-page {
+    margin-left: 3vw;
+  }
+
   label,
   input {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   #verify-button, #submit-survey {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     width: 20vw;
     align-self: center;
   }
 
   /* Auth */
-  #verify-button {
-    font-size: 1.5rem;
-  }
-
   .voter-attestation-label {
     margin-bottom: 1rem !important;
   }
@@ -917,7 +927,7 @@ summary.survey-select-input,
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: start;
-    gap: 10rem;
+    gap: 2rem;
   }
 
   .ballot-page-content-top {
@@ -950,25 +960,59 @@ summary.survey-select-input,
   .menu {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .vote-link {
-    width: 18vw;
+    width: fit-content;
+    max-width: 35vw;
+    margin: 0 auto;
   }
 }
 
 /* Large screen */
 @media (width >= 1280px) {
-  /* Ballot page */
-
-  .selected-proposal {
-    width: 60vw;
+  #home-page,
+  #auth-page,
+  #faq-page,
+  #privacy-page,
+  #terms-page,
+  #survey-page {
+    margin-left: 10vw;
+    margin-right: 10vw;
   }
 
-  .vote-confirm-modal {
-    max-width: 30vw;
-    width: 90%;
+  p,
+  li,
+  .info-text,
+  label,
+  input {
+    font-size: 1.5rem;
+  }
+
+  .home-header,
+  .ballot-page-header,
+  .faq-page-header,
+  .terms-page-header,
+  .privacy-page-header {
+    font-size: 3.5rem;
+  }
+
+  .bigger-text {
+    font-size: 4rem;
+  }
+
+  #verify-button, #submit-survey {
+    font-size: 1.5rem;
+  }
+
+  /* Ballot page */
+  #ballot-page {
+    margin: 0 15vw 7vh 15vw;
+  }
+
+  .ballot-page-content-container {
+    gap: 10rem;
   }
 }
 
@@ -1013,10 +1057,6 @@ summary.survey-select-input,
     font-size: 2rem;
   }
 
-  #verify-button {
-    font-size: 2rem;
-  }
-
   #home-page {
     gap: 1.5rem;
   }
@@ -1027,11 +1067,10 @@ summary.survey-select-input,
   .terms-page-header,
   .privacy-page-header {
     font-size: 5rem;
-    text-align: center;
   }
 
   .bigger-text {
-    font-size: 4rem;
+    font-size: 6.5rem;
   }
 
   .secondary-emphasis {
