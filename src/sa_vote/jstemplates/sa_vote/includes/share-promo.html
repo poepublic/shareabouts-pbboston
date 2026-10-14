@@ -1,0 +1,22 @@
+<section class="share-promo" aria-labelledby="share-promo-header">
+    <h2 id="share-promo-header" class="survey-page-headers">{{#_}}Spread the word!{{/_}}</h2>
+    <p>{{#_}}Help your neighbors have a say in how the City spends $2 million. Share the ballot with your friends and family.{{/_}}</p>
+
+    <div class="share-preview">
+        <img class="share-preview-image" src="{{share.imagePath}}" alt="{{share.imageAlt}}">
+        <div class="share-preview-text">
+            <span class="share-preview-domain">{{share.domain}}</span>
+            <strong class="share-preview-title">{{share.title}}</strong>
+            <span class="share-preview-description">{{share.description}}</span>
+        </div>
+    </div>
+
+    <div class="share-buttons">
+        <a class="share-button" href="{{share.facebookUrl}}" target="_blank" rel="noopener noreferrer">
+            <img src="/static/css/images/facebook-64.png" alt="{{#_}}Share on Facebook{{/_}}">
+        </a>
+        <a class="share-button" href="{{share.xUrl}}" target="_blank" rel="noopener noreferrer">
+            <img src="/static/css/images/twitter-64.png" alt="{{#_}}Share on X{{/_}}">
+        </a>
+    </div>
+</section>
