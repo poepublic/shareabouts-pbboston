@@ -8,8 +8,27 @@ export const SurveyView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(Handlebars.templates['sa_vote/pages/survey'](this.options));
+    const context = _.extend({ share: this.getShareContext() }, this.options);
+    this.$el.html(Handlebars.templates['sa_vote/pages/survey'](context));
     return this;
+  },
+
+  // Share details from OpenGraph tags
+  getShareContext: function () {
+    const meta = (property) => document.querySelector(`meta[property="${property}"]`).content;
+    const url = meta('og:url');
+    const title = meta('og:title');
+
+    return {
+      url: url,
+      title: title,
+      description: meta('og:description'),
+      domain: new URL(url).host,
+      imagePath: new URL(meta('og:image')).pathname,
+      imageAlt: meta('og:image:alt'),
+      facebookUrl: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      xUrl: `https://x.com/intent/post?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
+    };
   },
 
   submitSurvey: async function(evt) {
@@ -54,18 +73,25 @@ export const SurveyView = Backbone.View.extend({
     }
   },
 
-  goToHome: async function () {
+  endVoterSession: async function () {
     await fetch(Shareabouts.bootstrapped.unverifyVoterEndpoint, {
       method: 'POST'
     });
 
     this.app.setVoterVerified(false);
     this.app.clearVoterData();
-    this.app.router.navigate('', { trigger: true });
+  },
+
+  // Stay on the page after the survey is done and scroll to promo screen
+  showSurveyComplete: function () {
+    this.$('#submit-survey').prop('disabled', true);
+    this.$('.survey-submitted-message').prop('hidden', false);
+    this.$('.share-promo')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
   },
 
   onSubmitSurveySuccess: async function (response) {
-    this.goToHome();
+    await this.endVoterSession();
+    this.showSurveyComplete();
   },
 
   onSubmitSurveyClientError: async function (response) {
@@ -81,7 +107,8 @@ export const SurveyView = Backbone.View.extend({
   onSubmitSurveyDuplicateError: async function (response) {
     const data = await response.json();
     alert('It looks like you have already submitted a survey.');
-    this.goToHome();
+    await this.endVoterSession();
+    this.showSurveyComplete();
   },
 
   onSubmitSurveyUnverifiedError: async function (response) {
