@@ -44,7 +44,7 @@ function downloadAllData() {
   const voteRows = props.ballots
     .map(ballot => [ballot.get('created_datetime'), ballot.get('neighborhood')])
     .sort((a, b) => String(a[0]).localeCompare(String(b[0])));
-  downloadCsv('votes.csv', [['Date', 'Neighborhood'], ...voteRows]);
+  downloadCsv('voters.csv', [['Date', 'Neighborhood'], ...voteRows]);
 
   // Shuffle to protect anonymity
   const surveyRows = shuffle(props.surveys.map(survey => [
