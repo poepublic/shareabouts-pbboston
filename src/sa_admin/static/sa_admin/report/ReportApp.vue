@@ -45,7 +45,6 @@ const surveysCollection = new window.Shareabouts.SubmissionCollection([], {
   submissionType: 'surveys'
 });
 
-});
 const voters = ballotsCollection;
 const ballots = ballotsCollection.anonymous;
 const surveys = surveysCollection.anonymous;
