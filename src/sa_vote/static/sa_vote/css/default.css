@@ -1,7 +1,6 @@
 @import url("/static/css/iia.css");
 
 #home-page,
-#ballot-page,
 #auth-page,
 #faq-page,
 #privacy-page,
@@ -9,6 +8,10 @@
 #survey-page {
   padding: 3rem;
   margin-top: 5vh;
+}
+
+#ballot-page {
+padding: 5rem 1.5rem 3rem 1.5rem;
 }
 
 html {
@@ -196,7 +199,7 @@ summary {
 /* Menu */
 li.menu-item > a {
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: var(--iia-electric-purple);
 }
@@ -212,8 +215,8 @@ li.menu-item > a {
   display: flex;
   margin: 0 auto;
   flex-direction: row;
-  height: fit-content;
-  width: 65vw;
+  width: fit-content;
+  max-width: 50vw;
   align-content: center;
   justify-content: center;
   padding: 1rem;
@@ -223,7 +226,7 @@ li.menu-item > a {
 
 .vote-link p {
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 550;
   line-height: 1em;
   align-content: center;
@@ -231,7 +234,7 @@ li.menu-item > a {
 }
 
 .vote-link img {
-  width: 60px;
+  width: 40px;
 }
 
 .vote-link:hover {
@@ -245,6 +248,51 @@ li.menu-item > a {
 }
 
 /* Ballot page */
+.ballot-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.ballot-scroll-progress {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3px;
+  padding: 3px;
+  margin: 0;
+  background: #fadeeb;
+}
+
+.ballot-progress-step {
+  background: white;
+  border: solid var(--iia-callout-blue) 1.5px;
+  margin: 0;
+  height: 35px;
+  width: 100%;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.ballot-progress-step.is-read {
+  background: var(--iia-fog-grey);
+}
+
+.ballot-progress-step.is-selected {
+  background: var(--iia-vibrant-green-alt);
+  border-color: var(--iia-vibrant-green-alt);
+}
+
+.ballot-progress-step.is-current {
+  border: solid var(--iia-dark-blue) 3px;
+}
+
+.ballot-progress-step:hover {
+  background: var(--iia-vibrant-green);
+}
+
 .ballot-banner {
   display: flex;
   flex-direction: column;
@@ -253,11 +301,7 @@ li.menu-item > a {
   box-sizing: border-box;
   padding: 20px;
   text-align: center;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  z-index: 1000;
 }
 
 .ballot-banner-headline {
@@ -265,7 +309,6 @@ li.menu-item > a {
   font-weight: bold;
 }
 
-/* The ballot-banner-checking background color should pulse between iia-callout-blue and iia-urban-pink */
 @keyframes pulse-checking {
   0% {
     background: var(--iia-callout-blue);
@@ -378,7 +421,7 @@ details[open]
   list-style: none;
   width: 70vw;
   color: var(--iia-dark-blue);
-  background: var(--iia-vibrant-green);
+  background: white;
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
@@ -428,6 +471,10 @@ details[open]
   gap: 1.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.proposal-container > label {
+  margin-right: 0;
 }
 
 .proposal-card {
@@ -760,10 +807,24 @@ summary.survey-select-input,
   }
 
   /* Ballot page */
+  .ballot-progress-step {
+    border: solid var(--iia-callout-blue) 2.5px;
+  }
+  
+  .ballot-progress-step.is-current {
+    border: solid var(--iia-dark-blue) 5px;
+  }
+  
   #ballot-page {
-    margin: 7vh 10vw 7vh 10vw;
+    margin: 0 10vw 7vh 10vw;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
+  }
+
+  .ballot-progress-step {
+    max-width: 50px;
+    height: 50px;
   }
 
   .ballot-page-content-container {
@@ -798,12 +859,12 @@ summary.survey-select-input,
   .faq-page-header,
   .terms-page-header,
   .privacy-page-header {
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
   }
 
   .bigger-text {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   .secondary-emphasis {
@@ -830,41 +891,54 @@ summary.survey-select-input,
     margin-right: 15vw;
   }
 
-  p,
-  li,
-  .info-text,
+  .home-header,
+  .ballot-page-header,
+  .faq-page-header,
+  .terms-page-header,
+  .privacy-page-header {
+    font-size: 3rem;
+  }
+
+  .bigger-text {
+    font-size: 3.5rem;
+  }
+
+  #ballot-page {
+    margin: 7vh 15vw 7vw 15vw;
+  }
+
   label,
   input {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   #verify-button, #submit-survey {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     width: 20vw;
     align-self: center;
   }
 
   /* Auth */
-  #verify-button {
-    font-size: 1.5rem;
-  }
-
   .voter-attestation-label {
     margin-bottom: 1rem !important;
   }
 
   /* Ballot page */
+  .ballot-scroll-progress {
+    padding: 5px;
+  }
+
   .ballot-page-content-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: start;
-    gap: 10rem;
+    gap: 2rem;
   }
 
   .ballot-page-content-top {
     /* ballot page left */
     position: sticky;
-    top: 20vh;
+    top: 10vh;
     text-align: center;
   }
 
@@ -891,25 +965,59 @@ summary.survey-select-input,
   .menu {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .vote-link {
-    width: 18vw;
+    width: fit-content;
+    max-width: 35vw;
+    margin: 0 auto;
   }
 }
 
 /* Large screen */
 @media (width >= 1280px) {
-  /* Ballot page */
-
-  .selected-proposal {
-    width: 60vw;
+  #home-page,
+  #auth-page,
+  #faq-page,
+  #privacy-page,
+  #terms-page,
+  #survey-page {
+    margin-left: 10vw;
+    margin-right: 10vw;
   }
 
-  .vote-confirm-modal {
-    max-width: 30vw;
-    width: 90%;
+  p,
+  li,
+  .info-text,
+  label,
+  input {
+    font-size: 1.5rem;
+  }
+
+  .home-header,
+  .ballot-page-header,
+  .faq-page-header,
+  .terms-page-header,
+  .privacy-page-header {
+    font-size: 3.5rem;
+  }
+
+  #verify-button, #submit-survey {
+    font-size: 1.5rem;
+  }
+
+  /* Ballot page */
+  #ballot-page {
+    margin: 7vh 10vw 7vh 10vw;
+  }
+
+  .ballot-scroll-progress {
+    gap: 8px;
+  }
+
+  .ballot-page-content-container {
+    gap: 10rem;
   }
 }
 
@@ -954,10 +1062,6 @@ summary.survey-select-input,
     font-size: 2rem;
   }
 
-  #verify-button {
-    font-size: 2rem;
-  }
-
   #home-page {
     gap: 1.5rem;
   }
@@ -968,11 +1072,10 @@ summary.survey-select-input,
   .terms-page-header,
   .privacy-page-header {
     font-size: 5rem;
-    text-align: center;
   }
 
   .bigger-text {
-    font-size: 4rem;
+    font-size: 6.5rem;
   }
 
   .secondary-emphasis {
