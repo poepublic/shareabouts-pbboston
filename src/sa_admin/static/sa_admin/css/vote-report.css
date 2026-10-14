@@ -58,6 +58,11 @@ body {
     transition: transform 0.25s ease;
 }
 
+.download-all-wrapper {
+    text-align: right;
+    padding: 0 3rem;
+}
+
 .report p {
     color: var(--iia-fog-grey);
 }

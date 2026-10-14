@@ -21,11 +21,11 @@ import { useBackboneCollection } from '../../composables/useBackboneCollection.j
 import CsvDownloadButton from './CsvDownloadButton.vue';
 
 const props = defineProps({
-  ballots: { type: Object, required: true },
+  voters: { type: Object, required: true },
   surveys: { type: Object, required: true },
 });
 
-const ballotModels = useBackboneCollection(props.ballots);
+const voterModels = useBackboneCollection(props.voters);
 const surveyModels = useBackboneCollection(props.surveys);
 
 function isToday(dateString) {
@@ -38,10 +38,10 @@ function isToday(dateString) {
 }
 
 const votesToday = computed(() =>
-  ballotModels.value.filter(ballot => isToday(ballot.get('created_datetime'))).length
+  voterModels.value.filter(voter => isToday(voter.get('created_datetime'))).length
 );
 
-const totalVotes = computed(() => ballotModels.value.length);
+const totalVotes = computed(() => voterModels.value.length);
 
 const surveyResponseRate = computed(() => {
   if (!totalVotes.value) return 0;
@@ -53,8 +53,8 @@ const graphEndDate = '2026-06-30';
 
 const votesByDay = computed(() => {
   const counts = {};
-  ballotModels.value.forEach(ballot => {
-    const created = ballot.get('created_datetime');
+  voterModels.value.forEach(voter => {
+    const created = voter.get('created_datetime');
     if (!created) return;
     const day = created.slice(0, 10);
     if (day > graphEndDate) return;
