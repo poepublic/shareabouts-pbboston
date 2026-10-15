@@ -187,8 +187,8 @@ summary {
 
 /* Text formatting */
 .secondary-emphasis {
-  color: var(--iia-indigo-blue);
-  font-weight: 700;
+  color: var(--iia-vibrant-green-alt);
+  font-weight: 600;
   font-size: 1.2rem;
   border-radius: 0.1rem;
 }
@@ -796,6 +796,7 @@ summary.survey-select-input,
   .home-header,
   .ballot-page-header,
   .faq-page-header,
+  .auth-page-header,
   .terms-page-header,
   .privacy-page-header {
     font-size: 3rem;
@@ -978,4 +979,91 @@ summary.survey-select-input,
   .secondary-emphasis {
     font-size: 2.5rem;
   }
+}
+
+/* Dark mode media query */
+@media (prefers-color-scheme: dark) {
+  #app {
+    background: linear-gradient(45deg, #E90055 0%, #0E0E30 50%, #0E0E30 100%);
+  }
+
+  .info-text > a, p.a, p > a, li > a {
+    color: var(--iia-electric-purple-alt) !important;
+    background: var(--iia-dark-blue);
+  }
+
+  .secondary-emphasis {
+    color: var(--iia-vibrant-green);
+  }
+
+  li.menu-item > a {
+    color: var(--iia-electric-purple-alt);
+    background: none;
+  }
+
+  h1, h2, .info-text, label, select, input {
+    color: white;
+  }
+
+  input, select {
+    background: var(--iia-dark-blue);
+    border: solid 2px var(--iia-electric-purple-alt) !important;
+    color: var(--iia-fog-grey) !important;
+  }
+
+  p, li {
+    color: var(--iia-fog-grey);
+  }
+
+  /* Ballot */
+
+  .ballot-banner {
+    background: var(--iia-urban-pink);
+    color: white;
+  }
+
+  .proposal-card {
+    background: var(--iia-fog-grey);
+  }
+
+  .selected-proposal {
+    background: var(--iia-dark-blue);
+    color: var(--iia-fog-grey);
+  }
+
+  .selected-proposal-amount {
+    color: var(--iia-vibrant-green);
+  }
+
+  .selected-proposal-title {
+    color: var(--iia-fog-grey);
+  }
+
+  button#submit-ballot {
+    background-color: var(--iia-callout-blue);
+  }
+
+  .vote-confirm-modal {
+    background: var(--iia-callout-blue);
+  }
+
+  #vote-confirm-cancel {
+    color: white;
+  }
+
+  .scribble-text.scribble-text-pink.bigger-text {
+    color: var(--iia-urban-pink-alt) !important;
+    background: color-mix(in srgb, var(--iia-dark-blue) 75%, transparent);
+  }
+
+  /* Auth */
+  .voter-attestation-label {
+    color: var(--iia-electric-purple-alt);
+    background: color-mix(in srgb, var(--iia-dark-blue) 50%, transparent);
+  }
+
+  a.already-have-voter-code, a.need-a-voter-code {
+    color: var(--iia-fog-grey);
+  }
+
 }
