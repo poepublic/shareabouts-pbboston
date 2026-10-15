@@ -1062,5 +1062,8 @@ summary.survey-select-input,
     background: color-mix(in srgb, var(--iia-dark-blue) 50%, transparent);
   }
 
+  a.already-have-voter-code {
+    color: var(--iia-fog-grey);
+  }
 
 }
