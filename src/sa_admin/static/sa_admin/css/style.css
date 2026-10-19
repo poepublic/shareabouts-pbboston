@@ -1,4 +1,5 @@
 @import url('/static/sa_admin/css/vote-report.css');
+@import url("/static/sa_vote/css/proposal.css");
 
 :root {
   --content-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
