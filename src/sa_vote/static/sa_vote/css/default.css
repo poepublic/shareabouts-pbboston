@@ -263,7 +263,8 @@ li.menu-item > a {
   gap: 3px;
   padding: 3px;
   margin: 0;
-  background: #fadeeb;
+  background: #fadeeb; /* Fall-back, in case relative colors are not supported. Should be widely available in 2027. */
+  background: hsl(from var(--iia-urban-pink) h s 95);
 }
 
 .ballot-progress-step {
