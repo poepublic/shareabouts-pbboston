@@ -278,12 +278,28 @@ li.menu-item > a {
 }
 
 .ballot-progress-step.is-read {
-  background: var(--iia-fog-grey);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--content-line),
+    var(--content-line) 0.5px,
+    transparent 0.5px,
+    transparent 10px
+  ), var(--iia-fog-grey);
 }
 
 .ballot-progress-step.is-selected {
   background: var(--iia-vibrant-green-alt);
   border-color: var(--iia-vibrant-green-alt);
+}
+
+.ballot-progress-step.is-read.is-selected {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--content-line),
+    var(--content-line) 0.5px,
+    transparent 0.5px,
+    transparent 10px
+  ), var(--iia-vibrant-green-alt);
 }
 
 .ballot-progress-step.is-current {
