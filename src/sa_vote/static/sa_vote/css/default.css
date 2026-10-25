@@ -280,8 +280,8 @@ li.menu-item > a {
 .ballot-progress-step.is-read {
   background: repeating-linear-gradient(
     45deg,
-    var(--content-line),
-    var(--content-line) 0.5px,
+    var(--scroll-progress-line),
+    var(--scroll-progress-line) 0.5px,
     transparent 0.5px,
     transparent 10px
   ), var(--iia-fog-grey);
@@ -295,8 +295,8 @@ li.menu-item > a {
 .ballot-progress-step.is-read.is-selected {
   background: repeating-linear-gradient(
     45deg,
-    var(--content-line),
-    var(--content-line) 0.5px,
+    var(--scroll-progress-line),
+    var(--scroll-progress-line) 0.5px,
     transparent 0.5px,
     transparent 10px
   ), var(--iia-vibrant-green-alt);

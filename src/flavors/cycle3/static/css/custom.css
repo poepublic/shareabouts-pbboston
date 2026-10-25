@@ -64,6 +64,7 @@
   --content-line: var(--iia-fog-grey);
   --content-link: var(--iia-electric-purple-alt);
   --content-link-hover: var(--iia-urban-pink-alt);
+  --scroll-progress-line: black;
 
   --attention-bg: var(--iia-callout-blue);
   --attention-fg: white;
