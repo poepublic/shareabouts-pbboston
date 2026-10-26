@@ -2,6 +2,16 @@
     <h2 id="share-promo-header" class="survey-page-headers">{{#_}}Spread the word!{{/_}}</h2>
     <p>{{#_}}Help your neighbors have a say in how the City spends $2 million. Share the ballot with your friends and family.{{/_}}</p>
 
+    {{#if share.hasMultipleLanguages}}
+    <div class="share-language-toggle" role="group" aria-label="{{#_}}Language of the image to share{{/_}}">
+        {{#each share.languages}}
+        <button type="button" class="share-language-button" lang="{{code}}"
+            aria-pressed="{{#if selected}}true{{else}}false{{/if}}"
+            data-image-path="{{imagePath}}" data-facebook-url="{{facebookUrl}}" data-x-url="{{xUrl}}">{{label}}</button>
+        {{/each}}
+    </div>
+    {{/if}}
+
     <div class="share-preview">
         <img class="share-preview-image" src="{{share.imagePath}}" alt="{{share.imageAlt}}">
         <div class="share-preview-text">
@@ -12,10 +22,10 @@
     </div>
 
     <div class="share-buttons">
-        <a class="share-button" href="{{share.facebookUrl}}" target="_blank" rel="noopener noreferrer">
+        <a class="share-button share-button-facebook" href="{{share.facebookUrl}}" target="_blank" rel="noopener noreferrer">
             <img src="/static/css/images/facebook-64.png" alt="{{#_}}Share on Facebook (opens in a new tab){{/_}}">
         </a>
-        <a class="share-button" href="{{share.xUrl}}" target="_blank" rel="noopener noreferrer">
+        <a class="share-button share-button-x" href="{{share.xUrl}}" target="_blank" rel="noopener noreferrer">
             <img src="/static/css/images/twitter-64.png" alt="{{#_}}Share on X (opens in a new tab){{/_}}">
         </a>
     </div>
