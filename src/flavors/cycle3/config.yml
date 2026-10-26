@@ -14,6 +14,15 @@ app:
     title: _(What should the City do with $2 million to improve Boston?)
     description: _(Vote in Boston's Participatory Budgeting by February 15, 2027.)
     image_alt: "_(Vote: How should Boston spend $2 million to benefit our communities? Read this year's proposals and vote by February 15, 2027.)"
+    # One promo image per language. Codes must match the codes in `languages`.
+    # The first image is the default for languages without their own image.
+    images:
+      - code: 'en'
+        label: 'English'
+        file: 'img/vote-promoter-screen.png'
+      - code: 'es'
+        label: 'Español'
+        file: 'img/vote-promoter-screen-es.png'
 
 
   # When the map loads, existing places will be loaded in chunks. By default,
