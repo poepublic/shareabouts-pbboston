@@ -19,10 +19,13 @@ app:
     images:
       - code: 'en'
         label: 'English'
-        file: 'img/vote-promoter-screen.png'
+        file: 'img/promo_screen/english.png'
       - code: 'es'
         label: 'Español'
-        file: 'img/vote-promoter-screen-es.png'
+        file: 'img/promo_screen/spanish.png'
+      - code: 'ht'
+        label: 'Kreyòl Ayisyen'
+        file: 'img/promo_screen/haitian-creole.png'
 
 
   # When the map loads, existing places will be loaded in chunks. By default,
