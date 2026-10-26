@@ -805,6 +805,31 @@ details[open] summary.faq-question:after {
   height: 48px;
 }
 
+.share-button-copy {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  aspect-ratio: 1;
+  padding: 0;
+  line-height: 1;
+  background: white;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+  border-radius: 0.5rem;
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+.share-copy-status {
+  min-height: 1.5em;
+  margin: 0;
+  text-align: center;
+}
+
 .success-background {
   display: block;
   width: 100vw;

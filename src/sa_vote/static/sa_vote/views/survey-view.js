@@ -2,6 +2,7 @@ export const SurveyView = Backbone.View.extend({
   events: {
     'submit #survey-form': 'submitSurvey',
     'click .share-language-button': 'selectShareLanguage',
+    'click .share-button-copy': 'copyShareLink',
   },
 
   initialize: function(options) {
@@ -36,8 +37,12 @@ export const SurveyView = Backbone.View.extend({
       };
     });
 
+    const copyUrl = new URL(url);
+    copyUrl.search = '';
+
     return {
       url: url,
+      copyUrl: copyUrl.href,
       title: title,
       description: meta('og:description'),
       domain: new URL(url).host,
@@ -68,6 +73,20 @@ export const SurveyView = Backbone.View.extend({
     this.$('.share-preview-image').attr('src', $button.data('image-path'));
     this.$('.share-button-facebook').attr('href', $button.data('facebook-url'));
     this.$('.share-button-x').attr('href', $button.data('x-url'));
+    this.$('.share-copy-status').text('');
+  },
+
+  copyShareLink: async function (evt) {
+    const $status = this.$('.share-copy-status');
+    const url = this.$(evt.currentTarget).data('url');
+
+    try {
+      await navigator.clipboard.writeText(url);
+      $status.text($status.data('copied-message'));
+    } catch (error) {
+      console.error('Error copying share link:', error);
+      $status.text($status.data('failed-message'));
+    }
   },
 
   submitSurvey: async function(evt) {

@@ -28,5 +28,12 @@
         <a class="share-button share-button-x" href="{{share.xUrl}}" target="_blank" rel="noopener noreferrer">
             <img src="/static/css/images/twitter-64.png" alt="{{#_}}Share on X (opens in a new tab){{/_}}">
         </a>
+        <button type="button" class="share-button share-button-copy" data-url="{{share.copyUrl}}"
+            aria-label="{{#_}}Copy link{{/_}}" title="{{#_}}Copy link{{/_}}">
+            <span aria-hidden="true">🔗</span>
+        </button>
     </div>
+    <p class="share-copy-status" role="status"
+        data-copied-message="{{#_}}Link copied!{{/_}}"
+        data-failed-message="{{#_}}Couldn't copy the link. Please copy it from your browser's address bar.{{/_}}"></p>
 </section>
