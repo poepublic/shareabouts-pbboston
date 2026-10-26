@@ -21,27 +21,19 @@ export const SurveyView = Backbone.View.extend({
     const url = meta('og:url');
     const title = meta('og:title');
 
-    // One share option per language image. Each shares a URL that serves that
-    // language's image, so the scraped OpenGraph image matches the preview.
     const languages = (Shareabouts.bootstrapped.shareImages || []).map((image) => ({
-      code: image.code,
-      label: image.label,
-      imagePath: image.path,
-      selected: image.selected,
+      ...image,
       facebookUrl: this.getFacebookUrl(image.url),
       xUrl: this.getXUrl(image.url, title),
     }));
-
-    const copyUrl = new URL(url);
-    copyUrl.search = '';
+    const selected = languages.find((language) => language.selected);
 
     return {
-      url: url,
-      copyUrl: copyUrl.href,
+      copyUrl: url.split('?')[0],
       title: title,
       description: meta('og:description'),
       domain: new URL(url).host,
-      imagePath: new URL(meta('og:image')).pathname,
+      imagePath: selected?.path,
       imageAlt: meta('og:image:alt'),
       facebookUrl: this.getFacebookUrl(url),
       xUrl: this.getXUrl(url, title),
