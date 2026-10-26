@@ -743,6 +743,30 @@ details[open] summary.faq-question:after {
   gap: 1rem;
 }
 
+.share-language-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.share-language-button {
+  background: white;
+  color: inherit;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.share-language-button[aria-pressed="true"] {
+  background-color: var(--iia-urban-pink-alt);
+  border-color: var(--iia-urban-pink-alt);
+  color: white;
+  font-weight: 600;
+}
+
 .share-preview {
   max-width: 24rem;
   align-self: center;
