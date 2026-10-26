@@ -20,12 +20,18 @@ app:
       - code: 'en'
         label: 'English'
         file: 'img/promo_screen/english.png'
+        width: 1080
+        height: 1350
       - code: 'es'
         label: 'Español'
         file: 'img/promo_screen/spanish.png'
+        width: 1080
+        height: 1350
       - code: 'ht'
         label: 'Kreyòl Ayisyen'
         file: 'img/promo_screen/haitian-creole.png'
+        width: 1080
+        height: 1350
 
 
   # When the map loads, existing places will be loaded in chunks. By default,
