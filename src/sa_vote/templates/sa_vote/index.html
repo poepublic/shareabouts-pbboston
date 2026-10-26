@@ -45,19 +45,19 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ config.app.title }}" />
     {% comment %}
-      Include the language in og:url so that Facebook and X scrape (and send
-      people to) the version of the page with that language's promo image.
+      For non-default languages, og:url includes ?language= so that Facebook
+      and X scrape (and send people to) the page with that language's image.
     {% endcomment %}
     {% if share_image %}
-    <meta property="og:url" content="https://participate.boston.gov/vote/?language={{ share_image.code }}" />
+    <meta property="og:url" content="{{ share_image.url }}" />
     {% else %}
     <meta property="og:url" content="https://participate.boston.gov/vote/" />
     {% endif %}
     <meta property="og:title" content="{{ config.app.share.title }}" />
     <meta property="og:description" content="{{ config.app.share.description }}" />
     <meta property="og:image" content="https://participate.boston.gov{% if share_image %}{{ share_image.path }}{% else %}{% static 'img/promo_screen/english.png' %}{% endif %}" />
-    <meta property="og:image:width" content="1080" />
-    <meta property="og:image:height" content="1350" />
+    <meta property="og:image:width" content="{% if share_image %}{{ share_image.width }}{% else %}1080{% endif %}" />
+    <meta property="og:image:height" content="{% if share_image %}{{ share_image.height }}{% else %}1350{% endif %}" />
     <meta property="og:image:alt" content="{{ config.app.share.image_alt }}" />
 
     <!-- X / Twitter -->

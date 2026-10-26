@@ -483,15 +483,27 @@ def index(request, frontend_path=None):
     neighborhoods = load_neighborhoods()
     path_prefix = settings.BASE_URL
 
-    # Promo images for sharing, one per language
+    # Promo images for sharing, one per language. The first (default) language
+    # shares the bare URL so that recipients' own language preference is kept;
+    # other languages add ?language= so the scraped image matches.
+    share_url = 'https://participate.boston.gov/vote/'
     share_images = [
-        {'code': image['code'], 'label': image['label'], 'path': static(image['file'])}
-        for image in request.shareabouts_config.get('app', {}).get('share', {}).get('images', [])
+        {
+            'code': image['code'],
+            'label': image['label'],
+            'path': static(image['file']),
+            'width': image['width'],
+            'height': image['height'],
+            'url': share_url if index == 0 else f'{share_url}?language={image["code"]}',
+        }
+        for index, image in enumerate(request.shareabouts_config.get('app', {}).get('share', {}).get('images', []))
     ]
     share_image = next(
         (image for image in share_images if image['code'] == get_language()),
         share_images[0] if share_images else None,
     )
+    for image in share_images:
+        image['selected'] = image is share_image
 
     context = {'config': request.shareabouts_config,
 

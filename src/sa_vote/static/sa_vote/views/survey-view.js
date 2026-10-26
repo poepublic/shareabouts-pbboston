@@ -20,22 +20,17 @@ export const SurveyView = Backbone.View.extend({
     const meta = (property) => document.querySelector(`meta[property="${property}"]`).content;
     const url = meta('og:url');
     const title = meta('og:title');
-    const selectedCode = new URL(url).searchParams.get('language');
 
-    // One share option per language image. Each shares a URL with its own
-    // language, so the scraped OpenGraph image matches the selected preview.
-    const languages = (Shareabouts.bootstrapped.shareImages || []).map((image) => {
-      const languageUrl = new URL(url);
-      languageUrl.searchParams.set('language', image.code);
-      return {
-        code: image.code,
-        label: image.label,
-        imagePath: image.path,
-        selected: image.code === selectedCode,
-        facebookUrl: this.getFacebookUrl(languageUrl.href),
-        xUrl: this.getXUrl(languageUrl.href, title),
-      };
-    });
+    // One share option per language image. Each shares a URL that serves that
+    // language's image, so the scraped OpenGraph image matches the preview.
+    const languages = (Shareabouts.bootstrapped.shareImages || []).map((image) => ({
+      code: image.code,
+      label: image.label,
+      imagePath: image.path,
+      selected: image.selected,
+      facebookUrl: this.getFacebookUrl(image.url),
+      xUrl: this.getXUrl(image.url, title),
+    }));
 
     const copyUrl = new URL(url);
     copyUrl.search = '';
@@ -73,20 +68,30 @@ export const SurveyView = Backbone.View.extend({
     this.$('.share-preview-image').attr('src', $button.data('image-path'));
     this.$('.share-button-facebook').attr('href', $button.data('facebook-url'));
     this.$('.share-button-x').attr('href', $button.data('x-url'));
-    this.$('.share-copy-status').text('');
+    this.clearCopyStatus();
   },
 
   copyShareLink: async function (evt) {
     const $status = this.$('.share-copy-status');
     const url = this.$(evt.currentTarget).data('url');
 
+    this.clearCopyStatus();
+
     try {
       await navigator.clipboard.writeText(url);
       $status.text($status.data('copied-message'));
+
+      // Hide the success message after a few seconds
+      this.copyStatusTimeout = setTimeout(() => this.clearCopyStatus(), 3000);
     } catch (error) {
       console.error('Error copying share link:', error);
       $status.text($status.data('failed-message'));
     }
+  },
+
+  clearCopyStatus: function () {
+    clearTimeout(this.copyStatusTimeout);
+    this.$('.share-copy-status').text('');
   },
 
   submitSurvey: async function(evt) {
