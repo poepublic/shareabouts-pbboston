@@ -21,6 +21,12 @@ export const SurveyView = Backbone.View.extend({
     const url = meta('og:url');
     const title = meta('og:title');
 
+    // Add the current language to the URL with the `language` query parameter
+    const language = Shareabouts.bootstrapped.languageCode;
+    const urlWithLanguage = new URL(url);
+    urlWithLanguage.searchParams.set('language', language);
+
+    ```
     const languages = (Shareabouts.bootstrapped.shareImages || []).map((image) => ({
       ...image,
       facebookUrl: this.getFacebookUrl(image.url),
