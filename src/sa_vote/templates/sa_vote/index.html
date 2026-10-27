@@ -44,7 +44,7 @@
     <!-- OpenGraph (Facebook and others) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ config.app.title }}" />
-    <meta property="og:url" content="{{ share_image.url|default:'https://participate.boston.gov/vote/' }}" />
+    <meta property="og:url" content="{{ config.app.share.url|default:'https://participate.boston.gov/vote/' }}" />
     <meta property="og:title" content="{{ config.app.share.title }}" />
     <meta property="og:description" content="{{ config.app.share.description }}" />
     {% if share_image %}
