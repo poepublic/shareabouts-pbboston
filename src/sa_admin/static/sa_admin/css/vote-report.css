@@ -10,7 +10,7 @@ body {
     min-height: 100%;
 }
 
-#app {
+.report #app {
     padding: 1rem;
 }
 
