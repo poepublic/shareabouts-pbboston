@@ -41,8 +41,8 @@ export const SurveyView = Backbone.View.extend({
       domain: urlWithLanguage.host,
       imagePath: selected?.path,
       imageAlt: meta('og:image:alt'),
-      facebookUrl: this.getFacebookUrl(url),
-      xUrl: this.getXUrl(url, title),
+      facebookUrl: this.getFacebookUrl(urlWithLanguage.toString()),
+      xUrl: this.getXUrl(urlWithLanguage.toString(), title),
       languages: languages,
       hasMultipleLanguages: languages.length > 1,
     };
