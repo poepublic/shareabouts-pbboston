@@ -21,18 +21,18 @@ import CsvDownloadButton from './CsvDownloadButton.vue';
 
 // Common
 const props = defineProps({
-  ballots: { type: Object, required: true },
+  voters: { type: Object, required: true },
 });
 
-const ballotModels = useBackboneCollection(props.ballots);
+const voterModels = useBackboneCollection(props.voters);
 
-const totalVotes = computed(() => ballotModels.value.length);
+const totalVotes = computed(() => voterModels.value.length);
 
 // Neighborhoods
 const neighborhoodCounts = computed(() => {
   const counts = {};
-  ballotModels.value.forEach(ballot => {
-    const neighborhood = ballot.get('neighborhood');
+  voterModels.value.forEach(voter => {
+    const neighborhood = voter.get('neighborhood');
     if (!neighborhood) return;
     counts[neighborhood] = (counts[neighborhood] || 0) + 1;
   });
@@ -78,8 +78,8 @@ onMounted(async () => {
 });
 
 watchEffect(() => {
-  const ballotCount = ballotModels.value.length;
-  if (!map || !topo.value || !ballotCount) return;
+  const voterCount = voterModels.value.length;
+  if (!map || !topo.value || !voterCount) return;
 
   const counts = neighborhoodCounts.value;
   const top3Names = top3Neighborhoods.value.map(([name]) => name);

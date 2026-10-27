@@ -58,6 +58,11 @@ body {
     transition: transform 0.25s ease;
 }
 
+.download-all-wrapper {
+    text-align: right;
+    padding: 0 3rem;
+}
+
 .report p {
     color: var(--iia-fog-grey);
 }
@@ -94,20 +99,6 @@ header h1 {
     top: 0;
     z-index: 9999;
     overflow: hidden;
-}
-
-
-.report-header-logos a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.report-header-logos img {
-    height: 2rem;
-    width: auto;
-    max-height: 2rem;
-    display: block;
 }
 
 .report-header-user {
@@ -328,10 +319,6 @@ header h1 {
 }
 
 @media (max-width: 700px) {
-    .report-header-logos .boston-logo {
-        display: none;
-    }
-
     .report-header-user p {
         display: none;
     }

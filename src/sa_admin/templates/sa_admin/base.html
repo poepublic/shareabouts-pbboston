@@ -29,6 +29,7 @@
   <body class="{% block body_classes %}{% endblock %}">
     {% block header %}
     <header class="admin-header">
+      {% include 'sa_admin/includes/header_logos.html' %}
       <div class="admin-header-main">
         <h1>{% block heading %}Shareabouts Admin{% endblock %}</h1>
         <nav class="admin-nav-tabs">

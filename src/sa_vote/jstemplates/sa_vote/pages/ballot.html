@@ -8,8 +8,9 @@
           class="bigger-text">Benefit Boston</span>{{/_}}</h1>
 
       <span class="info-text">{{#_}}Read about them and vote by 2/15/2027. <a href="/vote/auth" data-internal="true">Sign up to vote.</a>{{/_}}</span>
-
-      <p>{{#_}}For more information about this process, see our FAQ page. <a href="/vote/faq" data-internal="true">Read FAQs.</a>{{/_}}</p>
+      <br>
+      <br>
+      <span class="info-text">{{#_}}For more information about this process, see our FAQ page. <a href="/vote/faq" data-internal="true">Read FAQs.</a>{{/_}}</span>
     </div>
     <div class="proposal-container">
       {{#each (randomize ballot.proposals)}}
@@ -32,5 +33,8 @@
     </div>
   </div>
 
-  <div class="ballot-banner-container"></div>
+  <div class="ballot-bottom-bar">
+    <div class="ballot-banner-container"></div>
+    {{> sa_vote/includes/ballot-scroll-progress }}
+  </div>
 </form>

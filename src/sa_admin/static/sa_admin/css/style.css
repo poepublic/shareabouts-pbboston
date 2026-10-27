@@ -98,6 +98,7 @@ header.admin-header {
 
 .admin-header-main {
   display: flex;
+  flex-grow: 1;
   align-items: center;
   gap: 1.5rem;
 }
