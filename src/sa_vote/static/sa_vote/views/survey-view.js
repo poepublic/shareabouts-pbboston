@@ -38,7 +38,7 @@ export const SurveyView = Backbone.View.extend({
       copyUrl: url.split('?')[0],
       title: title,
       description: meta('og:description'),
-      domain: new URL(url).host,
+      domain: urlWithLanguage.host,
       imagePath: selected?.path,
       imageAlt: meta('og:image:alt'),
       facebookUrl: this.getFacebookUrl(url),
