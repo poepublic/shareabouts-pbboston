@@ -35,7 +35,7 @@ export const SurveyView = Backbone.View.extend({
     const selected = languages.find((language) => language.selected);
 
     return {
-      copyUrl: url.split('?')[0],
+      copyUrl: urlWithLanguage.toString(),
       title: title,
       description: meta('og:description'),
       domain: urlWithLanguage.host,
