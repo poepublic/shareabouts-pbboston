@@ -2298,8 +2298,8 @@ msgid ""
 "<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">Thanks for voting!<img\n"
 "                class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">"
 msgstr ""
-"<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">谢谢投票！ <img\n"
-" class=&quot;inline-scribble&quot; src=&quot;/static/img/iia/Scribble_Star_Pink.svg&quot;&gt;"
+"<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">谢谢投票！<img\n"
+"                class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:12
 msgid ""
