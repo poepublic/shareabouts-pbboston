@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Mjumbe Poe <mjumbewu@gmail.com>, 2026
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -15,12 +15,11 @@ msgstr ""
 "PO-Revision-Date: 2026-06-09 16:33+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2026\n"
 "Language-Team: Arabic (https://app.transifex.com/mjumbewu/teams/189006/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: src/flavors/cycle1/_config.translations.py:6
 #: src/flavors/cycle2/_config.translations.py:6
@@ -73,11 +72,11 @@ msgstr "الفنون والثقافة"
 #: src/flavors/cycle2/_config.translations.py:11
 #: src/flavors/cycle3/_config.translations.py:14
 msgid ""
-"Project ideas focused on arts and cultural programming that promote cultural "
-"spaces in the City."
+"Project ideas focused on arts and cultural programming that promote cultural"
+" spaces in the City."
 msgstr ""
-"تركز أفكار المشاريع على البرامج الفنية والثقافية التي تعزز المساحات الثقافية "
-"في المدينة."
+"تركز أفكار المشاريع على البرامج الفنية والثقافية التي تعزز المساحات الثقافية"
+" في المدينة."
 
 #: src/flavors/cycle1/_config.translations.py:12
 #: src/flavors/cycle1/_config.translations.py:63
@@ -94,13 +93,13 @@ msgstr "موارد المجتمع"
 #: src/flavors/cycle2/_config.translations.py:13
 #: src/flavors/cycle3/_config.translations.py:16
 msgid ""
-"Project ideas that provide assistance or services to residents in need, such "
-"as programs at community centers, financial or digital literacy, English as "
-"a second language, or GED classes."
+"Project ideas that provide assistance or services to residents in need, such"
+" as programs at community centers, financial or digital literacy, English as"
+" a second language, or GED classes."
 msgstr ""
-"أفكار المشاريع التي تقدم المساعدة أو الخدمات للمقيمين المحتاجين، مثل البرامج "
-"في المراكز المجتمعية، أو محو الأمية المالية أو الرقمية، أو اللغة الإنجليزية "
-"كلغة ثانية، أو دروس GED."
+"أفكار المشاريع التي تقدم المساعدة أو الخدمات للمقيمين المحتاجين، مثل البرامج"
+" في المراكز المجتمعية، أو محو الأمية المالية أو الرقمية، أو اللغة الإنجليزية"
+" كلغة ثانية، أو دروس GED."
 
 #: src/flavors/cycle1/_config.translations.py:14
 #: src/flavors/cycle1/_config.translations.py:64
@@ -122,8 +121,8 @@ msgid ""
 "entrepreneurs."
 msgstr ""
 "أفكار المشاريع التي تعمل على تحسين الوصول إلى وظائف جيدة، والتدريب على "
-"المهارات، والمسارات المهنية، وغيرها من الموارد للعمال وأصحاب الأعمال الصغيرة "
-"ورجال الأعمال."
+"المهارات، والمسارات المهنية، وغيرها من الموارد للعمال وأصحاب الأعمال الصغيرة"
+" ورجال الأعمال."
 
 #: src/flavors/cycle1/_config.translations.py:16
 #: src/flavors/cycle1/_config.translations.py:65
@@ -702,12 +701,9 @@ msgstr "تم بناؤه بواسطة %(PoePublic)s"
 #: src/flavors/cycle2/templates/prelaunch.html:112
 #: src/flavors/cycle3/templates/prelaunch.html:109
 msgid ""
-"Participatory Budgeting (PB) is a democratic process where community "
-"members\n"
-"    directly decide how to spend part of a public budget. The goal of "
-"Participatory\n"
-"    Budgeting in Boston is to empower residents to elevate community "
-"centered\n"
+"Participatory Budgeting (PB) is a democratic process where community members\n"
+"    directly decide how to spend part of a public budget. The goal of Participatory\n"
+"    Budgeting in Boston is to empower residents to elevate community centered\n"
 "    project ideas with an emphasis on social and racial equity."
 msgstr ""
 "الموازنة التشاركية (PB) هي عملية ديمقراطية يشارك فيها أفراد المجتمع\n"
@@ -757,8 +753,8 @@ msgid ""
 "the short form below. Only the information you choose to display will be "
 "made public. "
 msgstr ""
-"<strong>شكرًا لمشاركتك فكرتك معنا!</strong> يُرجى تعبئة النموذج المختصر أدناه. "
-"سيتم نشر المعلومات التي تختار عرضها فقط. "
+"<strong>شكرًا لمشاركتك فكرتك معنا!</strong> يُرجى تعبئة النموذج المختصر "
+"أدناه. سيتم نشر المعلومات التي تختار عرضها فقط. "
 
 #: src/flavors/cycle2/_config.translations.py:43
 #: src/flavors/cycle3/_config.translations.py:47
@@ -788,7 +784,8 @@ msgstr "ابقى على اطلاع!"
 msgid ""
 "Please leave your email to receive updates from the Office of Participatory "
 "Budgeting."
-msgstr "يرجى ترك بريدك الإلكتروني لتلقي التحديثات من مكتب الميزانية التشاركية."
+msgstr ""
+"يرجى ترك بريدك الإلكتروني لتلقي التحديثات من مكتب الميزانية التشاركية."
 
 #: src/flavors/cycle2/_config.translations.py:54
 #: src/flavors/cycle3/_config.translations.py:58
@@ -798,11 +795,11 @@ msgstr "يرجى وصف فكرة مشروعك."
 #: src/flavors/cycle2/_config.translations.py:56
 #: src/flavors/cycle3/_config.translations.py:60
 msgid ""
-"Tell us about the issue you want to address. Why is this idea a priority and "
-"beneficial to the community?"
+"Tell us about the issue you want to address. Why is this idea a priority and"
+" beneficial to the community?"
 msgstr ""
-"أخبرنا عن المشكلة التي ترغب في معالجتها. لماذا تُعدّ هذه الفكرة أولويةً ومفيدةً "
-"للمجتمع؟"
+"أخبرنا عن المشكلة التي ترغب في معالجتها. لماذا تُعدّ هذه الفكرة أولويةً "
+"ومفيدةً للمجتمع؟"
 
 #: src/flavors/cycle2/_config.translations.py:76
 #: src/flavors/cycle3/_config.translations.py:80
@@ -820,8 +817,8 @@ msgid ""
 "Yes, through a community event or activity hosted by <strong>PB Contract "
 "Partner organization</strong>"
 msgstr ""
-"نعم، من خلال حدث أو نشاط مجتمعي تستضيفه <strong>منظمة PB Contract Partner</"
-"strong>"
+"نعم، من خلال حدث أو نشاط مجتمعي تستضيفه <strong>منظمة PB Contract "
+"Partner</strong>"
 
 #: src/flavors/cycle2/_config.translations.py:79
 #: src/flavors/cycle3/_config.translations.py:83
@@ -1015,17 +1012,20 @@ msgstr "أفضل عدم الإجابة"
 
 #: src/flavors/cycle3/_config.translations.py:9
 msgid "What should the City do with $2 million to improve Boston?"
-msgstr ""
+msgstr "ماذا ينبغي على المدينة أن تفعل بمبلغ مليوني دولار لتحسين مدينة بوسطن؟"
 
 #: src/flavors/cycle3/_config.translations.py:10
 msgid "Vote in Boston's Participatory Budgeting by February 15, 2027."
 msgstr ""
+"شارك في التصويت على الميزانية التشاركية في بوسطن بحلول 15 فبراير 2027."
 
 #: src/flavors/cycle3/_config.translations.py:11
 msgid ""
 "Vote: How should Boston spend $2 million to benefit our communities? Read "
 "this year's proposals and vote by February 15, 2027."
 msgstr ""
+"التصويت: كيف ينبغي لمدينة بوسطن إنفاق مليوني دولار لصالح مجتمعاتنا؟ اقرأ "
+"مقترحات هذا العام وصوّت قبل 15 فبراير 2027."
 
 #: src/flavors/cycle3/_config.translations.py:42
 msgid "Citywide ideas apply to the entire City of Boston."
@@ -1094,8 +1094,8 @@ msgstr "شارك في برنامج &quot;الأفكار في العمل&quot; ف
 
 #: src/flavors/cycle3/_config.translations.py:144
 msgid ""
-"Examples include: submitting ideas online, attending a workshop or forum, or "
-"voting for project proposals on the ballot."
+"Examples include: submitting ideas online, attending a workshop or forum, or"
+" voting for project proposals on the ballot."
 msgstr ""
 "وتشمل الأمثلة: تقديم الأفكار عبر الإنترنت، أو حضور ورشة عمل أو منتدى، أو "
 "التصويت على مقترحات المشاريع في الاقتراع."
@@ -1116,41 +1116,47 @@ msgstr "لست متأكداً"
 
 #: src/flavors/cycle3/_config.translations.py:161
 msgid "Voting in this cycle"
-msgstr ""
+msgstr "التصويت في هذه الدورة"
 
 #: src/flavors/cycle3/_config.translations.py:162
 msgid "Who can vote?"
-msgstr ""
+msgstr "من يحق له التصويت؟"
 
 #: src/flavors/cycle3/_config.translations.py:163
 msgid ""
 "All residents of the city of Boston who are 11 years or older are eligible "
 "to participate."
 msgstr ""
+"جميع سكان مدينة بوسطن الذين يبلغون من العمر 11 عامًا أو أكثر مؤهلون "
+"للمشاركة."
 
 #: src/flavors/cycle3/_config.translations.py:164
 msgid "How do I submit my vote?"
-msgstr ""
+msgstr "كيف أدلي بصوتي؟"
 
 #: src/flavors/cycle3/_config.translations.py:165
 msgid ""
 "You can submit your vote online through our secure voting platform. <a "
 "href=\"/vote/auth\" data-internal=\"true\">Click here to vote</a>."
 msgstr ""
+"يمكنك الإدلاء بصوتك عبر الإنترنت من خلال منصة التصويت الآمنة الخاصة بنا. <a "
+"href=\"/vote/auth\" data-internal=\"true\">انقر هنا للتصويت</a> ."
 
 #: src/flavors/cycle3/_config.translations.py:166
 msgid "Can I change my vote after submitting it?"
-msgstr ""
+msgstr "هل يمكنني تغيير تصويتي بعد تقديمه؟"
 
 #: src/flavors/cycle3/_config.translations.py:167
 msgid ""
 "No, once your vote is submitted, it cannot be changed. Please review your "
 "choices carefully before finalizing your vote."
 msgstr ""
+"لا، بمجرد إرسال تصويتك، لا يمكن تغييره. يرجى مراجعة اختياراتك بعناية قبل "
+"تأكيد تصويتك."
 
 #: src/flavors/cycle3/_config.translations.py:168
 msgid "When will the results be announced?"
-msgstr ""
+msgstr "متى سيتم الإعلان عن النتائج؟"
 
 #: src/flavors/cycle3/_config.translations.py:169
 msgid ""
@@ -1158,53 +1164,63 @@ msgid ""
 "Participatory Budgeting's website, newsletter, and the City's social media "
 "accounts."
 msgstr ""
+"سيتم الإعلان عن النتائج في أواخر شهر فبراير على موقع مكتب الميزانية "
+"التشاركية الإلكتروني، ونشرته الإخبارية، وحسابات المدينة على وسائل التواصل "
+"الاجتماعي."
 
 #: src/flavors/cycle3/_config.translations.py:170
 msgid "Is my vote public?"
-msgstr ""
+msgstr "هل صوتي علني؟"
 
 #: src/flavors/cycle3/_config.translations.py:171
 msgid ""
-"No, all votes are confidential and will not be disclosed to the public. Your "
-"privacy is protected throughout the voting process."
+"No, all votes are confidential and will not be disclosed to the public. Your"
+" privacy is protected throughout the voting process."
 msgstr ""
+"لا، جميع الأصوات سرية ولن يتم الكشف عنها للعامة. خصوصيتك محمية طوال عملية "
+"التصويت."
 
 #: src/flavors/cycle3/_config.translations.py:172
 msgid "How many ideas can I vote for?"
-msgstr ""
+msgstr "كم عدد الأفكار التي يمكنني التصويت لها؟"
 
 #: src/flavors/cycle3/_config.translations.py:173
 msgid ""
 "You can vote for up to 5 project ideas. All votes must be submitted at the "
 "same time."
 msgstr ""
+"يمكنك التصويت لما يصل إلى 5 أفكار مشاريع. يجب تقديم جميع الأصوات في نفس "
+"الوقت."
 
 #: src/flavors/cycle3/_config.translations.py:174
 msgid "Can I vote more than once?"
-msgstr ""
+msgstr "هل يمكنني التصويت أكثر من مرة؟"
 
 #: src/flavors/cycle3/_config.translations.py:175
 msgid ""
-"No, each resident can submit just one ballot. After submitting, you will not "
-"be able to vote again this cycle."
+"No, each resident can submit just one ballot. After submitting, you will not"
+" be able to vote again this cycle."
 msgstr ""
+"لا، يحق لكل مقيم تقديم ورقة اقتراع واحدة فقط. بعد تقديمها، لن تتمكن من "
+"التصويت مرة أخرى في هذه الدورة الانتخابية."
 
 #: src/flavors/cycle3/_config.translations.py:176
 msgid "How long is voting open for?"
-msgstr ""
+msgstr "إلى متى سيستمر التصويت؟"
 
 #: src/flavors/cycle3/_config.translations.py:177
 msgid ""
-"The voting phase starts January 15, 2027, and runs through February 15, 2027."
-msgstr ""
+"The voting phase starts January 15, 2027, and runs through February 15, "
+"2027."
+msgstr "تبدأ مرحلة التصويت في 15 يناير 2027، وتستمر حتى 15 فبراير 2027."
 
 #: src/flavors/cycle3/_config.translations.py:178
 msgid "About Ideas in Action (IIA)"
-msgstr ""
+msgstr "حول الأفكار في العمل (IIA)"
 
 #: src/flavors/cycle3/_config.translations.py:179
 msgid "What is Ideas in Action?"
-msgstr ""
+msgstr "ما هي الأفكار في العمل؟"
 
 #: src/flavors/cycle3/_config.translations.py:180
 msgid ""
@@ -1212,10 +1228,13 @@ msgid ""
 "which allows Boston residents to propose and vote on projects to benefit "
 "their communities."
 msgstr ""
+"&quot;الأفكار قيد التنفيذ&quot; هي مبادرة الميزانية التشاركية لمدينة بوسطن، "
+"والتي تسمح لسكان بوسطن باقتراح مشاريع والتصويت عليها بما يعود بالنفع على "
+"مجتمعاتهم."
 
 #: src/flavors/cycle3/_config.translations.py:181
 msgid "How are projects selected for the ballot?"
-msgstr ""
+msgstr "كيف يتم اختيار المشاريع للتصويت؟"
 
 #: src/flavors/cycle3/_config.translations.py:182
 msgid ""
@@ -1224,10 +1243,13 @@ msgid ""
 "rel=\"noopener noreferrer\">ideas submitted</a> by your neighbors into "
 "projects."
 msgstr ""
+"يتم إعداد المقترحات من خلال منتديات المشاركة المجتمعية التي تحول <a "
+"href=\"https://participate.boston.gov/page/about\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">الأفكار التي يقدمها</a> جيرانك إلى مشاريع."
 
 #: src/flavors/cycle3/_config.translations.py:183
 msgid "What is participatory budgeting?"
-msgstr ""
+msgstr "ما هي الميزانية التشاركية؟"
 
 #: src/flavors/cycle3/_config.translations.py:184
 msgid ""
@@ -1236,10 +1258,13 @@ msgid ""
 "projects and initiatives. In Boston, residents decide where $2 million of "
 "Boston's budget goes, so multiple projects will be funded."
 msgstr ""
+"الميزانية التشاركية هي عملية ديمقراطية يقرر فيها أفراد المجتمع مباشرةً كيفية"
+" تخصيص جزء من الميزانية العامة للمشاريع والمبادرات المحلية. في بوسطن، يقرر "
+"السكان وجهة مليوني دولار من ميزانية المدينة، ما يضمن تمويل مشاريع متعددة."
 
 #: src/flavors/cycle3/_config.translations.py:185
 msgid "How can I get involved beyond voting?"
-msgstr ""
+msgstr "كيف يمكنني المشاركة بشكل يتجاوز مجرد التصويت؟"
 
 #: src/flavors/cycle3/_config.translations.py:186
 msgid ""
@@ -1249,23 +1274,33 @@ msgid ""
 "noreferrer\">boston.gov/Participate</a> for updated ways on how to stay "
 "engaged."
 msgstr ""
+"ترقبوا إعلان المشاريع الفائزة في الربيع. سنفتح باب تقديم مقترحات الأفكار "
+"للعام الدراسي 2027-2028 في صيف 2027. تفضلوا بزيارة <a "
+"href=\"https://boston.gov/participate\" target=\"_blank\" rel=\"noopener "
+"noreferrer\">boston.gov/Participate</a> للاطلاع على أحدث طرق المشاركة."
 
 #: src/flavors/cycle3/_config.translations.py:187
 msgid "What projects have been selected in previous years?"
-msgstr ""
+msgstr "ما هي المشاريع التي تم اختيارها في السنوات السابقة؟"
 
 #: src/flavors/cycle3/_config.translations.py:188
 msgid ""
-"Check out projects funded in previous cycles here: <a href=\"https://"
-"boston.gov/departments/participatory-budgeting/ideas-action-project-"
-"implementation\" target=\"_blank\" rel=\"noopener noreferrer\">boston.gov/"
-"departments/participatory-budgeting/ideas-action-project-implementation</a>."
+"Check out projects funded in previous cycles here: <a "
+"href=\"https://boston.gov/departments/participatory-budgeting/ideas-action-"
+"project-implementation\" target=\"_blank\" rel=\"noopener "
+"noreferrer\">boston.gov/departments/participatory-budgeting/ideas-action-"
+"project-implementation</a>."
 msgstr ""
+"يمكنكم الاطلاع على المشاريع الممولة في الدورات السابقة هنا: <a "
+"href=\"https://boston.gov/departments/participatory-budgeting/ideas-action-"
+"project-implementation\" target=\"_blank\" rel=\"noopener "
+"noreferrer\">boston.gov/departments/participatory-budgeting/ideas-action-"
+"project-implementation</a> ."
 
 #: src/flavors/cycle3/jstemplates/activity-list-item.html:1
 msgid ""
-"<strong>{{ submitter_name }}</strong> submitted a city-wide "
-"{{ place_type_label location_type }} idea"
+"<strong>{{ submitter_name }}</strong> submitted a city-wide {{ "
+"place_type_label location_type }} idea"
 msgstr ""
 "قدمت <strong>{{ submitter_name }}</strong> فكرة {{ place_type_label "
 "location_type }} على مستوى المدينة"
@@ -1273,22 +1308,22 @@ msgstr ""
 #: src/flavors/cycle3/jstemplates/activity-list-item.html:2
 msgid ""
 "<strong>{{ submitter_name }}</strong> submitted a {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location }}</"
-"span>"
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
 msgstr ""
 "<strong>{{ submitter_name }}</strong> قدم فكرة {{ place_type_label "
-"location_type }} بالقرب من <span class=\"place-location\">{{ location }}</"
-"span>"
+"location_type }} بالقرب من <span class=\"place-location\">{{ location "
+"}}</span>"
 
 #: src/flavors/cycle3/jstemplates/activity-list-item.html:3
 msgid ""
 "<strong>{{ submitter_name }}</strong> submitted an {{ place_type_label "
-"location_type }} idea near <span class=\"place-location\">{{ location }}</"
-"span>"
+"location_type }} idea near <span class=\"place-location\">{{ location "
+"}}</span>"
 msgstr ""
 "<strong>{{ submitter_name }}</strong> قدم فكرة {{ place_type_label "
-"location_type }} بالقرب من <span class=\"place-location\">{{ location }}</"
-"span>"
+"location_type }} بالقرب من <span class=\"place-location\">{{ location "
+"}}</span>"
 
 #: src/flavors/cycle3/jstemplates/city-hall-info.html:1
 msgid "City-wide Ideas"
@@ -1299,8 +1334,8 @@ msgid ""
 "City-wide ideas apply to all of Boston, not a specific location or "
 "neighborhood."
 msgstr ""
-"تنطبق الأفكار على مستوى المدينة بأكملها على مدينة بوسطن، وليس على موقع أو حي "
-"محدد."
+"تنطبق الأفكار على مستوى المدينة بأكملها على مدينة بوسطن، وليس على موقع أو حي"
+" محدد."
 
 #: src/flavors/cycle3/jstemplates/city-hall-info.html:3
 #: src/sa_web/templates/base.html:114
@@ -1317,8 +1352,8 @@ msgstr "خياري"
 
 #: src/flavors/cycle3/jstemplates/form-field-widget.html:1
 msgid ""
-"Hover over a category to see a description of the types of projects that fit "
-"within that category."
+"Hover over a category to see a description of the types of projects that fit"
+" within that category."
 msgstr ""
 "قم بالتمرير فوق إحدى الفئات لرؤية وصف لأنواع المشاريع التي تناسب تلك الفئة."
 
@@ -1384,16 +1419,17 @@ msgid ""
 "<a href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
 "action#newsletter\" target=\"_blank\">Sign up for our newsletter!</a> For "
 "more information about Participatory Budgeting, please visit <a "
-"href=\"https://boston.gov/participate\" target=\"_blank\">Boston.gov/"
-"participate</a> or contact the Office of Participatory Budgeting at <a "
+"href=\"https://boston.gov/participate\" "
+"target=\"_blank\">Boston.gov/participate</a> or contact the Office of "
+"Participatory Budgeting at <a "
 "href=\"mailto:pb@boston.gov\">pb@boston.gov</a>."
 msgstr ""
 "<a href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
 "action#newsletter\" target=\"_blank\">اشترك في نشرتنا الإخبارية!</a> لمزيد "
-"من المعلومات حول الميزانية التشاركية، يرجى زيارة <a href=\"https://"
-"boston.gov/participate\" target=\"_blank\">Boston.gov/participate</a> أو "
-"الاتصال بمكتب الميزانية التشاركية على <a "
-"href=\"mailto:pb@boston.gov\">pb@boston.gov</a> ."
+"من المعلومات حول الميزانية التشاركية، يرجى زيارة <a "
+"href=\"https://boston.gov/participate\" "
+"target=\"_blank\">Boston.gov/participate</a> أو الاتصال بمكتب الميزانية "
+"التشاركية على <a href=\"mailto:pb@boston.gov\">pb@boston.gov</a> ."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:2
 msgid ""
@@ -1413,21 +1449,22 @@ msgstr "يمكن لجميع سكان مدينة بوسطن، بغض النظر �
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:4
 msgid ""
-"As part of this process, residents inform the City about their priorities to "
-"help decide future budget investments."
+"As part of this process, residents inform the City about their priorities to"
+" help decide future budget investments."
 msgstr ""
 "وكجزء من هذه العملية، يقوم السكان بإبلاغ المدينة بأولوياتهم للمساعدة في "
 "تحديد استثمارات الميزانية المستقبلية."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:5
 msgid ""
-"Decide on the top projects that will appear on the PB Ballot for voting; and,"
+"Decide on the top projects that will appear on the PB Ballot for voting; "
+"and,"
 msgstr "حدد أهم المشاريع التي ستظهر في ورقة اقتراع PB للتصويت؛ و"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:6
 msgid ""
-"Digital literacy classes for senior citizens to learn new skills and promote "
-"social connections;"
+"Digital literacy classes for senior citizens to learn new skills and promote"
+" social connections;"
 msgstr ""
 "دورات محو الأمية الرقمية لكبار السن لتعلم مهارات جديدة وتعزيز الروابط "
 "الاجتماعية؛"
@@ -1459,22 +1496,24 @@ msgstr ""
 msgid ""
 "For an update on the implementation of awarded PB projects, visit: <a "
 "href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
-"action-project-implementation\" target=\"_blank\">Boston.gov/departments/"
-"participatory-budgeting/ideas-action-project-implementation</a>"
+"action-project-implementation\" "
+"target=\"_blank\">Boston.gov/departments/participatory-budgeting/ideas-"
+"action-project-implementation</a>"
 msgstr ""
 "للاطلاع على آخر المستجدات بشأن تنفيذ مشاريع الميزانية التشاركية الممنوحة، "
-"تفضل بزيارة الموقع الإلكتروني التالي: <a href=\"https://www.boston.gov/"
-"departments/participatory-budgeting/ideas-action-project-implementation\" "
+"تفضل بزيارة الموقع الإلكتروني التالي: <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
+"action-project-implementation\" "
 "target=\"_blank\">Boston.gov/departments/participatory-budgeting/ideas-"
 "action-project-implementation</a>"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:12
 msgid ""
 "From August through September 2026, the City will review all the submitted "
-"project ideas. Then, in the fall, the Office of Participatory Budgeting will "
-"host public workshops for residents to review, prioritize, and develop these "
-"ideas into project proposals for the PB ballot. Voting will take place in "
-"January of 2027!"
+"project ideas. Then, in the fall, the Office of Participatory Budgeting will"
+" host public workshops for residents to review, prioritize, and develop "
+"these ideas into project proposals for the PB ballot. Voting will take place"
+" in January of 2027!"
 msgstr ""
 "ستقوم المدينة بمراجعة جميع أفكار المشاريع المقدمة خلال الفترة من أغسطس إلى "
 "سبتمبر 2026. ثم، في الخريف، سيُقيم مكتب الميزانية التشاركية ورش عمل عامة "
@@ -1521,8 +1560,8 @@ msgstr ""
 #: src/flavors/cycle3/jstemplates/pages/overview.html:20
 msgid ""
 "Over the coming months, the Office of Participatory Budgeting will "
-"collaborate with the City’s Data Analytics team to carefully sort and review "
-"all the ideas for eligibility. "
+"collaborate with the City’s Data Analytics team to carefully sort and review"
+" all the ideas for eligibility. "
 msgstr ""
 "على مدار الأشهر المقبلة، سيتعاون مكتب الميزانية التشاركية مع فريق تحليلات "
 "البيانات بالمدينة لفرز ومراجعة جميع الأفكار بعناية للتحقق من أهليتها. "
@@ -1540,8 +1579,8 @@ msgid ""
 "Project ideas containing inappropriate, offensive, or derogatory language "
 "will be removed and not considered from the PB process."
 msgstr ""
-"سيتم إزالة أفكار المشاريع التي تحتوي على لغة غير لائقة أو مسيئة أو مهينة ولن "
-"يتم أخذها في الاعتبار من عملية الميزانية العملية."
+"سيتم إزالة أفكار المشاريع التي تحتوي على لغة غير لائقة أو مسيئة أو مهينة ولن"
+" يتم أخذها في الاعتبار من عملية الميزانية العملية."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:24
 msgid ""
@@ -1564,7 +1603,8 @@ msgstr "إصلاح مبنى مملوك للقطاع الخاص؛"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:27
 msgid "Share project ideas that help advance social and racial equity;"
-msgstr "شارك أفكار المشاريع التي تساعد على تعزيز المساواة الاجتماعية والعرقية؛"
+msgstr ""
+"شارك أفكار المشاريع التي تساعد على تعزيز المساواة الاجتماعية والعرقية؛"
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:28
 msgid ""
@@ -1578,11 +1618,11 @@ msgstr "أخبرنا: كيف ستنفق مليوني دولار لتحقيق ا�
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:30
 msgid ""
-"Thanks to all who submitted project ideas for how to spend $2 million of the "
-"City’s budget! "
+"Thanks to all who submitted project ideas for how to spend $2 million of the"
+" City’s budget! "
 msgstr ""
-"شكراً لجميع من قدموا أفكاراً لمشاريع حول كيفية إنفاق مليوني دولار من ميزانية "
-"المدينة! "
+"شكراً لجميع من قدموا أفكاراً لمشاريع حول كيفية إنفاق مليوني دولار من ميزانية"
+" المدينة! "
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:31
 msgid ""
@@ -1591,6 +1631,9 @@ msgid ""
 "into project proposals for the PB ballot. Voting will take place in January "
 "of 2027! "
 msgstr ""
+"ستستضيف المدينة منتديات لتطوير المقترحات هذا الخريف. ستتيح هذه الاجتماعات "
+"للسكان مراجعة الأفكار التي تم جمعها، وتحديد أولوياتها، وتطويرها إلى مقترحات "
+"مشاريع لعرضها على اقتراع الميزانية العامة. سيُجرى التصويت في يناير 2027! "
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:32
 msgid ""
@@ -1598,25 +1641,25 @@ msgid ""
 "1st and July 31</strong>, you can share project ideas through this website, "
 "over the phone by calling <a href=\"tel:+16176353059\">(617) 635-3059</a>, "
 "or in-person at Boston Public Library Branches, selected BCYF Community "
-"Centers, and through <a href=\"https://www.boston.gov/departments/"
-"participatory-budgeting/idea-collection\" target=\"_blank\">community events "
-"across the City</a>."
-msgstr ""
-"تبدأ الدورة التالية من برنامج &quot;الأفكار قيد التنفيذ&quot; هذا الصيف! بين "
-"<strong>1 يوليو و31 يوليو</strong> ، يمكنك مشاركة أفكار المشاريع من خلال هذا "
-"الموقع الإلكتروني، أو عبر الهاتف عن طريق الاتصال بالرقم <a href=\"tel:"
-"+16176353059\">(617) 635-3059</a> ، أو شخصيًا في فروع مكتبة بوسطن العامة، "
-"ومراكز مجتمعية مختارة تابعة لمؤسسة بوسطن للشباب والعائلات، ومن خلال <a "
+"Centers, and through <a "
 "href=\"https://www.boston.gov/departments/participatory-budgeting/idea-"
-"collection\" target=\"_blank\">الفعاليات المجتمعية في جميع أنحاء المدينة</"
-"a> ."
+"collection\" target=\"_blank\">community events across the City</a>."
+msgstr ""
+"تبدأ الدورة التالية من برنامج &quot;الأفكار قيد التنفيذ&quot; هذا الصيف! بين"
+" <strong>1 يوليو و31 يوليو</strong> ، يمكنك مشاركة أفكار المشاريع من خلال "
+"هذا الموقع الإلكتروني، أو عبر الهاتف عن طريق الاتصال بالرقم <a "
+"href=\"tel:+16176353059\">(617) 635-3059</a> ، أو شخصيًا في فروع مكتبة بوسطن"
+" العامة، ومراكز مجتمعية مختارة تابعة لمؤسسة بوسطن للشباب والعائلات، ومن خلال"
+" <a href=\"https://www.boston.gov/departments/participatory-budgeting/idea-"
+"collection\" target=\"_blank\">الفعاليات المجتمعية في جميع أنحاء المدينة</a>"
+" ."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:33
 msgid ""
 "To stay informed about the latest updates, upcoming meetings, and "
-"opportunities to participate, please <a href=\"https://www.boston.gov/"
-"departments/participatory-budgeting/ideas-action#newsletter\" "
-"target=\"_blank\">sign up for our newsletter.</a>"
+"opportunities to participate, please <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
+"action#newsletter\" target=\"_blank\">sign up for our newsletter.</a>"
 msgstr ""
 "للبقاء على اطلاع بأحدث التحديثات والاجتماعات القادمة وفرص المشاركة، يرجى <a "
 "href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
@@ -1627,7 +1670,8 @@ msgstr ""
 msgid ""
 "Vote on how to spend $2 million of the City’s budget to benefit our "
 "communities."
-msgstr "صوّتوا على كيفية إنفاق مليوني دولار من ميزانية المدينة لصالح مجتمعاتنا."
+msgstr ""
+"صوّتوا على كيفية إنفاق مليوني دولار من ميزانية المدينة لصالح مجتمعاتنا."
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:35
 msgid "Welcome to Ideas in Action!"
@@ -1669,8 +1713,8 @@ msgid ""
 "elligible for consideration. Please move the map to a location within the "
 "City of Boston to submit your idea."
 msgstr ""
-"لا تُقبل الأفكار المتعلقة بمواقع خارج حدود مدينة بوسطن. يُرجى نقل الخريطة إلى "
-"موقع داخل مدينة بوسطن لتقديم فكرتك."
+"لا تُقبل الأفكار المتعلقة بمواقع خارج حدود مدينة بوسطن. يُرجى نقل الخريطة "
+"إلى موقع داخل مدينة بوسطن لتقديم فكرتك."
 
 #: src/flavors/cycle3/jstemplates/place-form-submission-confirmation.html:1
 msgid "Thank you for your submission!"
@@ -1688,14 +1732,18 @@ msgstr ""
 
 #: src/flavors/cycle3/jstemplates/place-form.html:1
 msgid ""
-"How would <img class=\"inline-scribble\" src=\"/static/img/iia/"
-"Scribble_Wavey_04_Pink.svg\"> you spend <span class=\"bigger-text\"><span "
-"class=\"scribble-text scribble-text-pink\">$</span><span class=\"scribble-"
-"underline\">2 million</span></span> to <img class=\"inline-scribble\" src=\"/"
-"static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> benefit our <span "
-"class=\"bigger-text\">communities<span class=\"scribble-text scribble-text-"
-"pink\">?</span></span>"
+"How would <img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> you spend <span "
+"class=\"bigger-text\"><span class=\"scribble-text scribble-text-"
+"pink\">$</span><span class=\"scribble-underline\">2 million</span></span> to"
+" <img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> benefit our "
+"<span class=\"bigger-text\">communities<span class=\"scribble-text scribble-"
+"text-pink\">?</span></span>"
 msgstr ""
+"كيف ستنفق <img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"><img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\">\n"
+"<span class=\"bigger-text\"><span class=\"scribble-underline\"> 2 مليون دولار</span><span class=\"scribble-text scribble-text-pink\">$</span></span>\n"
+"<span class=\"bigger-text\">لخدمة سكاننا<span class=\"scribble-text scribble-text-pink\">?</span></span>"
 
 #: src/flavors/cycle3/jstemplates/place-form.html:2
 msgid "It looks like you didn't set your location yet."
@@ -1784,16 +1832,16 @@ msgstr "إغلاق منتقي اللغة"
 
 #: src/sa_vote/decorators.py:56
 msgid "Too many requests. Please try again later."
-msgstr ""
+msgstr "عدد الطلبات كبير جدًا. يرجى المحاولة مرة أخرى لاحقًا."
 
 #: src/sa_vote/decorators.py:57
 #, python-format
 msgid "Rate limit exceeded. Try again in %(seconds)s seconds."
-msgstr ""
+msgstr "تم تجاوز الحد الأقصى للمعدل. حاول مرة أخرى خلال %(seconds)s ثانية."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-400.html:1
 msgid "Invalid phone number"
-msgstr ""
+msgstr "رقم هاتف غير صالح"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-400.html:2
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-429.html:1
@@ -1803,13 +1851,14 @@ msgstr ""
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-429.html:1
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-check-voted-error.html:2
 msgid "Ok"
-msgstr ""
+msgstr "نعم"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-400.html:3
 msgid ""
 "We weren't able to recognize the phone number. Please check the number and "
 "try again."
 msgstr ""
+"لم نتمكن من التعرف على رقم الهاتف. يرجى التحقق من الرقم والمحاولة مرة أخرى."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-403.html:1
 msgid ""
@@ -1818,221 +1867,241 @@ msgid ""
 "contact the Office of Participatory Budgeting at pb@boston.gov. <a "
 "href=\"mailto:pb@boston.gov\">Send us an email.</a>"
 msgstr ""
+"يبدو أنه قد تم بالفعل تقديم طلب اقتراع لرقم الهاتف "
+"<code>{{phone_number}}</code> . إذا كنت تعتقد أن هذا خطأ، فيُرجى التواصل مع "
+"مكتب الميزانية التشاركية عبر <a href=\"mailto:pb@boston.gov\">البريد "
+"الإلكتروني</a> pb@boston.gov."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-403.html:2
 msgid "Phone number has been used"
-msgstr ""
+msgstr "تم استخدام رقم الهاتف"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-403.html:3
 msgid "Try another number"
-msgstr ""
+msgstr "جرب رقمًا آخر"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-429.html:2
 msgid "Too many requests"
-msgstr ""
+msgstr "طلبات كثيرة جداً"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-429.html:3
 msgid "You have made too many code requests. Please wait before trying again."
 msgstr ""
+"لقد أرسلت عددًا كبيرًا جدًا من طلبات التعليمات البرمجية. يرجى الانتظار قبل "
+"المحاولة مرة أخرى."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-502.html:2
 msgid "Please try again later."
-msgstr ""
+msgstr "يرجى المحاولة مرة أخرى لاحقاً."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-502.html:3
 msgid "Something unexpected went wrong while requesting a voter code:"
-msgstr ""
+msgstr "حدث خطأ غير متوقع أثناء طلب رمز الناخب:"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-502.html:4
 msgid "Something went wrong"
-msgstr ""
+msgstr "حدث خطأ ما"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-400.html:1
 msgid ""
-"It seems that you did not supply a voter code. Please check the code and try "
-"again."
+"It seems that you did not supply a voter code. Please check the code and try"
+" again."
 msgstr ""
+"يبدو أنك لم تُدخل رمز الناخب. يُرجى التحقق من الرمز والمحاولة مرة أخرى."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-400.html:2
 msgid "Missing voter code"
-msgstr ""
+msgstr "رمز الناخب مفقود"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-404.html:1
 msgid "Invalid voter code"
-msgstr ""
+msgstr "رمز ناخب غير صالح"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-404.html:2
 msgid ""
 "It seems that the voter code you entered is invalid, or it has expired. "
 "Please check the code and try again, or request a new code."
 msgstr ""
+"يبدو أن رمز الناخب الذي أدخلته غير صالح أو منتهي الصلاحية. يرجى التحقق من "
+"الرمز والمحاولة مرة أخرى، أو طلب رمز جديد."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-429.html:2
 msgid "Too many attempts"
-msgstr ""
+msgstr "محاولات كثيرة جداً"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-429.html:3
 msgid ""
 "Too many code verification attempts have been made. Please wait before "
 "trying again."
 msgstr ""
+"تم إجراء عدد كبير جدًا من محاولات التحقق من الرمز. يرجى الانتظار قبل "
+"المحاولة مرة أخرى."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:1
 msgid "Checking vote status&hellip;"
-msgstr ""
+msgstr "جارٍ التحقق من حالة التصويت…"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:2
 msgid "Continue to the survey"
-msgstr ""
+msgstr "انتقل إلى الاستطلاع"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:3
 #: src/sa_vote/jstemplates/sa_vote/includes/vote-confirm-modal.html:2
 msgid "Ready to vote?"
-msgstr ""
+msgstr "هل أنت مستعد للتصويت؟"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:4
 msgid "Select up to {{MAX_SELECTIONS}} proposals"
-msgstr ""
+msgstr "اختر ما يصل إلى مقترحات {{MAX_SELECTIONS}}"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:5
 msgid "Submit ballot"
-msgstr ""
+msgstr "قم بتقديم بطاقة الاقتراع"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:6
 msgid "Thank you for voting!"
-msgstr ""
+msgstr "شكراً لتصويتكم!"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:7
 msgid "Vote now!"
-msgstr ""
+msgstr "صوّت الآن!"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:8
 msgid "Vote"
-msgstr ""
+msgstr "تصويت"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:9
 msgid "You may pick up to {{remaining}} more"
-msgstr ""
+msgstr "يمكنك الحصول على ما يصل إلى {{remaining}} المزيد"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:10
 msgid "{{MAX_SELECTIONS}} proposals selected"
-msgstr ""
+msgstr "تم اختيار مقترحات {{MAX_SELECTIONS}}"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:11
 msgid "{{count}} proposal(s) selected"
-msgstr ""
+msgstr "تم اختيار المقترح (المقترحات) {{count}}"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-check-voted-error.html:1
 msgid "Failed to check vote status"
-msgstr ""
+msgstr "فشل التحقق من حالة التصويت"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-check-voted-error.html:3
 msgid ""
-"We could not verify whether you've already voted. Please reload the page and "
-"try again."
+"We could not verify whether you've already voted. Please reload the page and"
+" try again."
 msgstr ""
+"لم نتمكن من التحقق مما إذا كنت قد أدليت بصوتك بالفعل. يرجى إعادة تحميل "
+"الصفحة والمحاولة مرة أخرى."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/ballot-scroll-progress.html:1
 msgid "Jump to the &quot;{{title}}&quot; proposal"
-msgstr ""
+msgstr "انتقل إلى اقتراح &quot; {{title}} &quot;"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/selected-proposal.html:1
 msgid "Remove {{title}}"
-msgstr ""
+msgstr "قم بإزالة {{title}}"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:1
 msgid "Copy link"
-msgstr ""
+msgstr "نسخ الوصلة"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:2
-msgid "Couldn't copy the link. Please copy it from your browser's address bar."
-msgstr ""
+msgid ""
+"Couldn't copy the link. Please copy it from your browser's address bar."
+msgstr "تعذر نسخ الرابط. يرجى نسخه من شريط عنوان المتصفح."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:3
 msgid ""
 "Help your neighbors have a say in how the City spends $2 million. Share the "
 "ballot with your friends and family."
 msgstr ""
+"ساعد جيرانك على إبداء رأيهم في كيفية إنفاق المدينة لمليوني دولار. شارك ورقة "
+"الاقتراع مع أصدقائك وعائلتك."
 
 #: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:4
 msgid "Language of the image to share"
-msgstr ""
+msgstr "لغة الصورة المراد مشاركتها"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:5
 msgid "Link copied!"
-msgstr ""
+msgstr "تم نسخ الرابط!"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:6
 msgid "Share on Facebook (opens in a new tab)"
-msgstr ""
+msgstr "شارك على فيسبوك (يفتح في علامة تبويب جديدة)"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:7
 msgid "Share on X (opens in a new tab)"
-msgstr ""
+msgstr "مشاركة على X (يفتح في علامة تبويب جديدة)"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:8
 msgid "Spread the word!"
-msgstr ""
+msgstr "انشروا الخبر!"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/vote-confirm-modal.html:1
 msgid "Confirm"
-msgstr ""
+msgstr "يتأكد"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/vote-confirm-modal.html:3
 msgid "Take me back to the ballot"
-msgstr ""
+msgstr "أعدني إلى ورقة الاقتراع"
 
 #: src/sa_vote/jstemplates/sa_vote/includes/vote-confirm-modal.html:4
 msgid "Your selections"
-msgstr ""
+msgstr "اختياراتك"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:1
 msgid "<a href=\"/vote/ballot\" data-internal=\"true\">Vote now.</a>"
-msgstr ""
+msgstr "<a href=\"/vote/ballot\" data-internal=\"true\">صوّت الآن.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:2
 msgid "Continue"
-msgstr ""
+msgstr "يكمل"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:3
 msgid ""
-"Enter the voter code you received via text message. If you did not receive a "
-"voter code, or the code you received has expired, you can request a new one "
-"by providing your phone number. <a data-internal=\"true\" href=\"/vote/auth/"
-"request-code\">Request a new voter code.</a>"
+"Enter the voter code you received via text message. If you did not receive a"
+" voter code, or the code you received has expired, you can request a new one"
+" by providing your phone number. <a data-internal=\"true\" "
+"href=\"/vote/auth/request-code\">Request a new voter code.</a>"
 msgstr ""
+"أدخل رمز الناخب الذي استلمته عبر رسالة نصية. إذا لم تستلم رمز الناخب، أو إذا"
+" انتهت صلاحية الرمز الذي استلمته، يمكنك طلب رمز جديد بتزويدنا برقم هاتفك. <a"
+" data-internal=\"true\" href=\"/vote/auth/request-code\">اطلب رمز ناخب "
+"جديد.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:4
 msgid "Enter your phone number to receive a voter code:"
-msgstr ""
+msgstr "أدخل رقم هاتفك لتلقي رمز الناخب:"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:5
 msgid "Enter your voter code:"
-msgstr ""
+msgstr "أدخل رمز الناخب الخاص بك:"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:6
 msgid "I already have a voter code"
-msgstr ""
+msgstr "لدي بالفعل رمز ناخب"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:7
 msgid "I am at least 11 years old or in the 6th grade"
-msgstr ""
+msgstr "عمري 11 عاماً على الأقل أو في الصف السادس"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:8
 msgid "I confirm that I meet the requirements"
-msgstr ""
+msgstr "أؤكد أنني أستوفي الشروط"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:9
 msgid "I have not voted in this year's IIA cycle"
-msgstr ""
+msgstr "لم أدلي بصوتي في دورة IIA لهذا العام"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:10
 msgid "I live in the City of Boston"
-msgstr ""
+msgstr "أعيش في مدينة بوسطن"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:11
 msgid "I need a voter code"
-msgstr ""
+msgstr "أحتاج إلى رمز الناخب"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:12
 msgid ""
@@ -2041,158 +2110,193 @@ msgid ""
 "Participatory Budgeting. <a href=\"mailto:pb@boston.gov\">Email "
 "pb@boston.gov for a code.</a>"
 msgstr ""
+"إذا لم تتمكن من استقبال الرسائل النصية، أو كنت لا ترغب في تقديم رقم هاتفك، "
+"فلا يزال بإمكانك طلب رمز الناخب عن طريق التواصل مع مكتب الميزانية التشاركية."
+" <a href=\"mailto:pb@boston.gov\">راسلهم عبر البريد الإلكتروني pb@boston.gov"
+" للحصول على الرمز.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:13
 msgid ""
-"Not eligible to vote but still curious about the ballots? <a href=\"/vote/"
-"ballot\"\n"
+"Not eligible to vote but still curious about the ballots? <a href=\"/vote/ballot\"\n"
 "                    data-internal=\"true\">Return to the ballot.</a>"
 msgstr ""
+"غير مؤهل للتصويت ولكنك ما زلت مهتمًا بمعرفة المزيد عن أوراق الاقتراع؟ <a href=\"/vote/ballot\"\n"
+"data-internal=&quot;true&quot;&gt;العودة إلى ورقة الاقتراع.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:15
 msgid "Request a voter code&hellip;"
-msgstr ""
+msgstr "اطلب رمز الناخب…"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:16
 msgid "Select your neighborhood to continue:"
-msgstr ""
+msgstr "اختر منطقتك للمتابعة:"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:17
 msgid "Select your neighborhood..."
-msgstr ""
+msgstr "اختر منطقتك..."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:18
 msgid "Send me a code"
-msgstr ""
+msgstr "أرسل لي رمزًا"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:19
 msgid "Sending..."
-msgstr ""
+msgstr "إرسال..."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:20
 msgid "Sign up to vote!"
-msgstr ""
+msgstr "سجل للتصويت!"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:21
 msgid "To vote in the 2026 cycle, please confirm the following:"
-msgstr ""
+msgstr "للتصويت في دورة عام 2026، يرجى تأكيد ما يلي:"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:22
 msgid "Un-verify me"
-msgstr ""
+msgstr "ألغِ التحقق من حسابي"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:23
 msgid "Verify my code"
-msgstr ""
+msgstr "تحقق من الكود الخاص بي"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:24
 msgid "Verify your voter code&hellip;"
-msgstr ""
+msgstr "تحقق من رمز الناخب الخاص بك..."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:25
 msgid "Verifying..."
-msgstr ""
+msgstr "تحقق..."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:26
 msgid ""
 "We will send a one-time voter code to this phone number. Standard messaging "
-"rates may apply. <a href=\"/vote/terms\" target=\"_blank\">Read about how we "
-"use your phone number in our terms of service.</a> <a href=\"/vote/privacy\" "
-"target=\"_blank\">Learn how we handle your data in our privacy policy.</a>"
+"rates may apply. <a href=\"/vote/terms\" target=\"_blank\">Read about how we"
+" use your phone number in our terms of service.</a> <a "
+"href=\"/vote/privacy\" target=\"_blank\">Learn how we handle your data in "
+"our privacy policy.</a>"
 msgstr ""
+"سنرسل رمزًا للتصويت لمرة واحدة إلى هذا الرقم. قد تُطبق رسوم الرسائل النصية "
+"المعتادة. <a href=\"/vote/terms\" target=\"_blank\">اقرأ المزيد حول كيفية "
+"استخدامنا لرقم هاتفك في شروط الخدمة.</a> <a href=\"/vote/privacy\" "
+"target=\"_blank\">تعرّف على كيفية تعاملنا مع بياناتك في سياسة الخصوصية.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:27
 msgid "You must live in one of these neighborhoods in order to vote"
-msgstr ""
+msgstr "يجب أن تسكن في أحد هذه الأحياء لكي تتمكن من التصويت"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:28
 msgid "You must meet these eligibility requirements in order to vote"
-msgstr ""
+msgstr "يجب عليك استيفاء شروط الأهلية هذه لكي تتمكن من التصويت"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:29
 msgid "You must provide a phone number to receive a voter code"
-msgstr ""
+msgstr "يجب عليك تقديم رقم هاتف لتلقي رمز الناخب"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:30
 msgid "You must provide a voter code"
-msgstr ""
+msgstr "يجب عليك تقديم رمز الناخب"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:31
 msgid "You're all set to vote!"
-msgstr ""
+msgstr "أنت جاهز تمامًا للتصويت!"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/ballot.html:1
 msgid ""
-"For more information about this process, see our FAQ page. <a href=\"/vote/"
-"faq\" data-internal=\"true\">Read FAQs.</a>"
+"For more information about this process, see our FAQ page. <a "
+"href=\"/vote/faq\" data-internal=\"true\">Read FAQs.</a>"
 msgstr ""
+"للمزيد من المعلومات حول هذه العملية، راجع صفحة الأسئلة الشائعة. <a "
+"href=\"/vote/faq\" data-internal=\"true\">اقرأ الأسئلة الشائعة.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/ballot.html:2
 msgid ""
 "Read about them and vote by 2/15/2027. <a href=\"/vote/auth\" data-"
 "internal=\"true\">Sign up to vote.</a>"
 msgstr ""
+"اقرأ عنهم وصوّت قبل 15/2/2027. <a href=\"/vote/auth\" data-"
+"internal=\"true\">سجّل للتصويت.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/ballot.html:3
 msgid ""
 "This year, your <img class=\"inline-scribble\"\n"
-"          src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"><span "
-"class=\"bigger-text\">neighbors</span> came up with <span\n"
-"          class=\"scribble-text scribble-text-pink bigger-"
-"text\">{{ballot.proposals.length}} projects</span> to <img\n"
-"          class=\"inline-scribble\" src=\"/static/img/iia/"
-"Scribble_Arrow_02_Pink.svg\" alt=\"\"><span\n"
+"          src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"><span class=\"bigger-text\">neighbors</span> came up with <span\n"
+"          class=\"scribble-text scribble-text-pink bigger-text\">{{ballot.proposals.length}} projects</span> to <img\n"
+"          class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"><span\n"
 "          class=\"bigger-text\">Benefit Boston</span>"
 msgstr ""
+"هذا العام، أنت <img class=\"inline-scribble\"\n"
+" src=&quot;/static/img/iia/Scribble_Wavey_04_Pink.svg&quot;&gt; توصل <span class=\"bigger-text\">الجيران إلى <span\n"
+" class=&quot;scribble-text scribble-text-pink bigger-text&quot;&gt; {{ballot.proposals.length}} projects to <img\n"
+" class=&quot;inline-scribble&quot; src=&quot;/static/img/iia/Scribble_Arrow_02_Pink.svg&quot; alt=&quot;&quot;&gt; <span\n"
+" class=&quot;bigger-text&quot;&gt;Benefit Boston"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/faq.html:1
 msgid "Frequently asked questions"
-msgstr ""
+msgstr "الأسئلة الشائعة"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/faq.html:2
 msgid ""
 "Not sure how voting works or want to learn more about this initiative? This "
 "guide will help get you started."
 msgstr ""
+"لست متأكدًا من كيفية عمل التصويت أو ترغب في معرفة المزيد عن هذه المبادرة؟ "
+"سيساعدك هذا الدليل على البدء."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/faq.html:3
 msgid ""
 "Ready to get started? <a href=\"/vote/ballot\" data-internal=\"true\">Read "
 "this year's ballot.</a>"
 msgstr ""
+"هل أنت مستعد للبدء؟ <a href=\"/vote/ballot\" data-internal=\"true\">اقرأ "
+"ورقة الاقتراع لهذا العام.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/home.html:1
 msgid ""
 "<span class=\"scribble-text scribble-text-pink bigger-text\">VOTE:</span> "
-"How should <img class=\"inline-scribble\" src=\"/static/img/iia/"
-"Scribble_Wavey_04_Pink.svg\">Boston spend <span class=\"bigger-text\"><span "
-"class=\"scribble-text scribble-text-pink\">$</span><span class=\"scribble-"
-"underline\">2 million</span></span> to<img class=\"inline-scribble\" src=\"/"
-"static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\">benefit our <span "
-"class=\"bigger-text\">communities<span class=\"scribble-text scribble-text-"
-"pink\">?</span></span>"
+"How should <img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\">Boston spend <span "
+"class=\"bigger-text\"><span class=\"scribble-text scribble-text-"
+"pink\">$</span><span class=\"scribble-underline\">2 million</span></span> "
+"to<img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\">benefit our "
+"<span class=\"bigger-text\">communities<span class=\"scribble-text scribble-"
+"text-pink\">?</span></span>"
 msgstr ""
+"<span class=\"scribble-text scribble-text-pink bigger-text\">التصويت: كيف "
+"ينبغي<img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> أنفقت بوسطن <span "
+"class=\"bigger-text\"><span class=\"scribble-underline\">مليوني <span "
+"class=\"scribble-text scribble-text-pink\">دولار لـ<img class=\"inline-"
+"scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> هل "
+"يفيد ذلك <span class=\"bigger-text\">مجتمعاتنا <span class=\"scribble-text "
+"scribble-text-pink\">؟"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/home.html:2
 msgid "Tell us by February 15, 2027."
-msgstr ""
+msgstr "أخبرنا بحلول 15 فبراير 2027."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/home.html:3
 msgid ""
-"To learn more about voting in this cycle, visit our FAQ page. <a href=\"/"
-"vote/faq\" data-internal=\"true\">Read FAQs.</a>"
+"To learn more about voting in this cycle, visit our FAQ page. <a "
+"href=\"/vote/faq\" data-internal=\"true\">Read FAQs.</a>"
 msgstr ""
+"للمزيد من المعلومات حول التصويت في هذه الدورة، تفضل بزيارة صفحة الأسئلة "
+"الشائعة. <a href=\"/vote/faq\" data-internal=\"true\">اقرأ الأسئلة "
+"الشائعة.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/home.html:4
 msgid "VOTE NOW"
-msgstr ""
+msgstr "صوّت الآن"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/home.html:5
 msgid ""
-"You can also explore this year's idea submission cycle. <a href=\"https://"
-"participate.boston.gov/page/about\" target=\"_blank\" rel=\"noopener "
-"noreferrer\">Explore 2026 idea submissions.</a>"
+"You can also explore this year's idea submission cycle. <a "
+"href=\"https://participate.boston.gov/page/about\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">Explore 2026 idea submissions.</a>"
 msgstr ""
+"يمكنك أيضًا الاطلاع على دورة تقديم الأفكار لهذا العام. <a "
+"href=\"https://participate.boston.gov/page/about\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">استكشف تقديمات الأفكار لعام 2026.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:1
 msgid ""
@@ -2200,13 +2304,19 @@ msgid ""
 "number in plain text. We only store an encrypted hashed version of your "
 "phone number to uniquely identify voters."
 msgstr ""
+"<strong>لا يتم تخزين رقم هاتفك كنص عادي:</strong> لن نقوم أبدًا بتخزين رقم "
+"هاتفك كنص عادي. نخزن فقط نسخة مشفرة ومجزأة من رقم هاتفك لتمييز الناخبين بشكل"
+" فريد."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:2
 msgid ""
-"<strong>No third-party marketing:</strong> We will not share, sell, rent, or "
-"trade your phone number or mobile messaging data with third parties or "
+"<strong>No third-party marketing:</strong> We will not share, sell, rent, or"
+" trade your phone number or mobile messaging data with third parties or "
 "affiliates for marketing or promotional purposes."
 msgstr ""
+"<strong>لا تسويق من طرف ثالث:</strong> لن نقوم بمشاركة أو بيع أو تأجير أو "
+"تبادل رقم هاتفك أو بيانات الرسائل النصية الخاصة بك مع أطراف ثالثة أو شركات "
+"تابعة لأغراض التسويق أو الترويج."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:3
 msgid ""
@@ -2214,24 +2324,28 @@ msgid ""
 "verification code by text message so you can vote. We will not send any "
 "further text message communication."
 msgstr ""
+"<strong>رمز التحقق لمرة واحدة:</strong> سنرسل إليك رمز تحقق واحد عبر رسالة "
+"نصية لتتمكن من التصويت. لن نرسل إليك أي رسائل نصية أخرى."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:4
 msgid ""
 "After you vote, you can complete a short demographic survey. This survey is "
 "completely optional."
 msgstr ""
+"بعد التصويت، يمكنك إكمال استبيان ديموغرافي قصير. هذا الاستبيان اختياري "
+"تمامًا."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:5
 msgid "Ballot Choices"
-msgstr ""
+msgstr "خيارات الاقتراع"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:6
 msgid "Demographic Survey"
-msgstr ""
+msgstr "المسح الديموغرافي"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:7
 msgid "Email Addresses"
-msgstr ""
+msgstr "عناوين البريد الإلكتروني"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:8
 msgid ""
@@ -2239,6 +2353,10 @@ msgid ""
 "Office of Participatory Budgeting by email at pb@boston.gov. <a "
 "href=\"mailto:pb@boston.gov\">Send us an email.</a>"
 msgstr ""
+"إذا كانت لديكم أي استفسارات حول سياسة الخصوصية هذه، يُرجى التواصل مع مكتب "
+"الميزانية التشاركية في بوسطن عبر البريد الإلكتروني على العنوان "
+"pb@boston.gov. <a href=\"mailto:pb@boston.gov\">راسلونا عبر البريد "
+"الإلكتروني.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:9
 msgid ""
@@ -2248,26 +2366,34 @@ msgid ""
 "target=\"_blank\" rel=\"noopener noreferrer\">Learn about the Office of "
 "Participatory Budgeting.</a>"
 msgstr ""
+"إذا شاركتنا عنوان بريدك الإلكتروني، فإننا نشاركه فقط مع مكتب الميزانية "
+"التشاركية في بوسطن لأغراض قائمة البريد. <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">تعرف على المزيد حول مكتب "
+"الميزانية التشاركية.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:10
 msgid "Phone Numbers and Text Messages"
-msgstr ""
+msgstr "أرقام الهواتف والرسائل النصية"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:11
 #: src/sa_vote/templates/sa_vote/base.html:87
 msgid "Privacy Policy"
-msgstr ""
+msgstr "سياسة الخصوصية"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:12
 msgid "Questions and Contact"
-msgstr ""
+msgstr "للاستفسارات والتواصل"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:13
 msgid ""
-"Ready to vote? <a href=\"/vote/ballot\" data-internal=\"true\">Return to the "
-"ballot.</a> Not sure yet? <a href=\"/vote/faq\" data-internal=\"true\">Read "
-"our frequently asked questions page.</a>"
+"Ready to vote? <a href=\"/vote/ballot\" data-internal=\"true\">Return to the"
+" ballot.</a> Not sure yet? <a href=\"/vote/faq\" data-internal=\"true\">Read"
+" our frequently asked questions page.</a>"
 msgstr ""
+"هل أنت مستعد للتصويت؟ <a href=\"/vote/ballot\" data-internal=\"true\">ارجع "
+"إلى ورقة الاقتراع.</a> لست متأكدًا بعد؟ <a href=\"/vote/faq\" data-"
+"internal=\"true\">اقرأ صفحة الأسئلة الشائعة.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:14
 msgid ""
@@ -2275,31 +2401,41 @@ msgid ""
 "every step. This policy explains how we collect, use, and protect your "
 "information when you take part in Boston's participatory budgeting vote."
 msgstr ""
+"صممنا عملية التصويت في برنامج &quot;الأفكار قيد التنفيذ&quot; لحماية خصوصيتك"
+" في كل خطوة. توضح هذه السياسة كيفية جمعنا لمعلوماتك واستخدامها وحمايتها عند "
+"مشاركتك في التصويت على الميزانية التشاركية في بوسطن."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:15
 msgid ""
 "We use your votes only to determine which ballot proposals to fund in this "
 "cycle."
 msgstr ""
+"نستخدم أصواتكم فقط لتحديد مقترحات الاقتراع التي سيتم تمويلها في هذه الدورة."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:16
 msgid ""
 "We will never link your email address to your ballot choices or your survey "
 "responses."
 msgstr ""
+"لن نربط عنوان بريدك الإلكتروني أبداً بخياراتك في الاقتراع أو إجاباتك على "
+"الاستبيان."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:17
 msgid ""
-"When you register to vote, we ask for your mobile phone number. We use phone "
-"numbers only to verify voter uniqueness and make sure each voter casts only "
-"one ballot."
+"When you register to vote, we ask for your mobile phone number. We use phone"
+" numbers only to verify voter uniqueness and make sure each voter casts only"
+" one ballot."
 msgstr ""
+"عند تسجيلك للتصويت، نطلب رقم هاتفك الجوال. نستخدم أرقام الهواتف فقط للتحقق "
+"من هوية الناخب والتأكد من أن كل ناخب يدلي بصوته مرة واحدة فقط."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:18
 msgid ""
-"Your ballot choices are completely anonymous. We never connect your votes to "
-"your phone number, name, or identity."
+"Your ballot choices are completely anonymous. We never connect your votes to"
+" your phone number, name, or identity."
 msgstr ""
+"خياراتك في الاقتراع سرية تماماً. لا نربط أصواتك برقم هاتفك أو اسمك أو هويتك "
+"مطلقاً."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:19
 msgid ""
@@ -2308,135 +2444,163 @@ msgid ""
 "Action process, and to make sure all Bostonians are represented. You can "
 "skip any questions you do not want to answer."
 msgstr ""
+"إجاباتك على الاستبيان مجهولة المصدر وتُحفظ بشكل منفصل عن بطاقة اقتراعك. "
+"نستخدم هذه البيانات فقط لفهم كيفية تفاعل الناس مع عملية &quot;الأفكار قيد "
+"التنفيذ&quot;، ولضمان تمثيل جميع سكان بوسطن. يمكنك تخطي أي أسئلة لا ترغب في "
+"الإجابة عليها."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:7
 msgid ""
-"<img class=\"inline-scribble\" src=\"/static/img/iia/"
-"Scribble_Star_Pink.svg\">Thanks for voting!<img\n"
-"                class=\"inline-scribble\" src=\"/static/img/iia/"
-"Scribble_Star_Pink.svg\">"
+"<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">Thanks for voting!<img\n"
+"                class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">"
 msgstr ""
+"<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">شكراً لتصويتك! <img\n"
+" class=&quot;inline-scribble&quot; src=&quot;/static/img/iia/Scribble_Star_Pink.svg&quot;&gt;"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:12
 msgid ""
-"Check all that apply. Some choices below may not be perfect for you, but "
-"please answer as best\n"
-"                    you can. Use the write-in option to add more details or "
-"add another group you identify with."
+"Check all that apply. Some choices below may not be perfect for you, but please answer as best\n"
+"                    you can. Use the write-in option to add more details or add another group you identify with."
 msgstr ""
+"حدد جميع الخيارات التي تنطبق عليك. قد لا تكون بعض الخيارات أدناه مثالية لك، ولكن يُرجى الإجابة بأفضل ما لديك.\n"
+" بإمكانك ذلك. استخدم خيار الكتابة لإضافة المزيد من التفاصيل أو إضافة مجموعة أخرى تنتمي إليها."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:14
 msgid ""
 "Do you identify with any of the following in terms of your race\n"
 "                    and/or ethnicity?"
 msgstr ""
+"هل تُعرّف نفسك بأي من الفئات التالية فيما يتعلق بعرقك؟\n"
+" و/أو العرق؟"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:16
 msgid ""
-"Examples include: submitting ideas online, attending a workshop or forum, or "
-"voting for project\n"
+"Examples include: submitting ideas online, attending a workshop or forum, or voting for project\n"
 "                    proposals on the ballot."
 msgstr ""
+"وتشمل الأمثلة: تقديم الأفكار عبر الإنترنت، أو حضور ورشة عمل أو منتدى، أو التصويت للمشروع\n"
+" المقترحات المطروحة على الاقتراع."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:18
 msgid ""
 "Have you participated in Ideas in Action in the\n"
 "                    past?"
 msgstr ""
+"هل شاركت في برنامج &quot;الأفكار في العمل&quot;؟\n"
+" ماضي؟"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:22
 msgid ""
 "If you are interested in receiving our newsletter with important PB\n"
-"            updates, share your email address below. Your email address will "
-"not be connected with your vote or\n"
+"            updates, share your email address below. Your email address will not be connected with your vote or\n"
 "            your answers to the questions above."
 msgstr ""
+"إذا كنت مهتمًا بتلقي نشرتنا الإخبارية التي تتضمن معلومات مهمة عن نقاط القوة الشخصية\n"
+" للحصول على التحديثات، شارك عنوان بريدك الإلكتروني أدناه. لن يتم ربط عنوان بريدك الإلكتروني بتصويتك أو\n"
+" إجاباتك على الأسئلة أعلاه."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:26
 msgid ""
 "Native Hawaiian or other Pacific\n"
 "                            Islander"
 msgstr ""
+"سكان هاواي الأصليون أو غيرهم من سكان المحيط الهادئ\n"
+" أحد سكان الجزيرة"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:30
 msgid "Optional Survey"
-msgstr ""
+msgstr "استطلاع اختياري"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:32
 msgid ""
-"Please answer a few short questions to help the City of Boston understand "
-"who is participating and how.\n"
-"            Your responses to the questions below will be anonymous. "
-"<strong>You can skip any questions you do not want\n"
+"Please answer a few short questions to help the City of Boston understand who is participating and how.\n"
+"            Your responses to the questions below will be anonymous. <strong>You can skip any questions you do not want\n"
 "                to answer.</strong>"
 msgstr ""
+"يرجى الإجابة على بعض الأسئلة القصيرة لمساعدة مدينة بوسطن على فهم من يشارك وكيف.\n"
+" ستكون إجاباتك على الأسئلة أدناه مجهولة المصدر. <strong>يمكنك تخطي أي سؤال لا ترغب في الإجابة عليه.\n"
+" للإجابة.</strong>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:36
 msgid "Race or ethnicity not listed here"
-msgstr ""
+msgstr "العرق أو الأصل الإثني غير مدرج هنا"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:37
 msgid "Select an option"
-msgstr ""
+msgstr "اختر خيارًا"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:40
 msgid "Thank you! Your survey has been submitted."
-msgstr ""
+msgstr "شكراً لك! تم إرسال استبيانك."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:41
 msgid "What is your age (in years)?"
-msgstr ""
+msgstr "كم عمرك (بالسنوات)؟"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:42
 msgid ""
 "What was your household income in the past 12 months? Choose\n"
 "                    one:"
 msgstr ""
+"ما هو دخل أسرتك خلال الاثني عشر شهرًا الماضية؟ اختر\n"
+" واحد:"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:45
 msgid ""
 "Yes, I have participated in the\n"
 "                        past"
 msgstr ""
+"نعم، لقد شاركت في\n"
+" ماضي"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:47
 msgid "Your email address:"
-msgstr ""
+msgstr "عنوان بريدك  الإلكتروني:"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:48
 msgid "Your vote has been counted."
-msgstr ""
+msgstr "تم احتساب صوتك."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:1
 msgid ""
 "<strong>Carrier liability:</strong> Mobile carriers are not liable for "
 "delayed or undelivered messages."
 msgstr ""
+"<strong>مسؤولية شركات الاتصالات:</strong> لا تتحمل شركات الاتصالات مسؤولية "
+"الرسائل المتأخرة أو غير المسلمة."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:2
 msgid ""
 "<strong>Help instructions:</strong> If you need help, you can email us at "
 "pb@boston.gov. <a href=\"mailto:pb@boston.gov\">Send us an email.</a>"
 msgstr ""
+"<strong>تعليمات المساعدة:</strong> إذا كنت بحاجة إلى مساعدة، يمكنك مراسلتنا "
+"عبر البريد الإلكتروني على pb@boston.gov. <a "
+"href=\"mailto:pb@boston.gov\">أرسل لنا بريدًا إلكترونيًا.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:3
 msgid ""
 "<strong>Message frequency:</strong> You will get one text message with a "
-"verification code each time you request one. We won't send you any more text "
-"messages unless you ask for a new code."
+"verification code each time you request one. We won't send you any more text"
+" messages unless you ask for a new code."
 msgstr ""
+"<strong>عدد الرسائل:</strong> ستتلقى رسالة نصية واحدة تحتوي على رمز التحقق "
+"في كل مرة تطلب فيها رمزًا. لن نرسل إليك أي رسائل نصية أخرى إلا إذا طلبت "
+"رمزًا جديدًا."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:4
 msgid "<strong>Pricing:</strong> Message and data rates may apply."
-msgstr ""
+msgstr "<strong>الأسعار:</strong> قد يتم تطبيق رسوم الرسائل والبيانات."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:5
 msgid "<strong>Program name:</strong> Ideas in Action Voter Verification"
 msgstr ""
+"<strong>اسم البرنامج:</strong> التحقق من صحة بيانات الناخبين في إطار الأفكار"
+" العملية"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:6
 msgid "Contact us"
-msgstr ""
+msgstr "اتصل بنا"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:7
 msgid ""
@@ -2444,32 +2608,40 @@ msgid ""
 "contact Boston's Office of Participatory Budgeting at pb@boston.gov. <a "
 "href=\"mailto:pb@boston.gov\">Send us an email.</a>"
 msgstr ""
+"إذا كانت لديكم أي استفسارات حول هذه الشروط أو عملية التصويت، يرجى التواصل مع"
+" مكتب الميزانية التشاركية في بوسطن عبر البريد الإلكتروني pb@boston.gov. <a "
+"href=\"mailto:pb@boston.gov\">أرسلوا لنا بريداً إلكترونياً.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:8
 msgid "Privacy and data handling"
-msgstr ""
+msgstr "الخصوصية ومعالجة البيانات"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:9
 msgid ""
-"Ready to vote? <a href=\"/vote/ballot\" data-internal=\"true\">Return to the "
-"ballot.</a> Want to learn more? <a href=\"/vote/faq\" data-"
+"Ready to vote? <a href=\"/vote/ballot\" data-internal=\"true\">Return to the"
+" ballot.</a> Want to learn more? <a href=\"/vote/faq\" data-"
 "internal=\"true\">Read our frequently asked questions page.</a>"
 msgstr ""
+"هل أنت مستعد للتصويت؟ <a href=\"/vote/ballot\" data-internal=\"true\">ارجع "
+"إلى ورقة الاقتراع.</a> هل ترغب بمعرفة المزيد؟ <a href=\"/vote/faq\" data-"
+"internal=\"true\">اقرأ صفحة الأسئلة الشائعة.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:10
 #: src/sa_vote/templates/sa_vote/base.html:90
 msgid "Terms of Service"
-msgstr ""
+msgstr "شروط الخدمة"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:11
 msgid "Text message verification"
-msgstr ""
+msgstr "التحقق من الرسالة النصية"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:12
 msgid ""
-"These terms of service cover your use of the Ideas in Action voting platform "
-"and the text message verification service."
+"These terms of service cover your use of the Ideas in Action voting platform"
+" and the text message verification service."
 msgstr ""
+"تغطي شروط الخدمة هذه استخدامك لمنصة التصويت &quot;أفكار في العمل&quot; وخدمة"
+" التحقق عبر الرسائل النصية."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:13
 msgid ""
@@ -2477,76 +2649,83 @@ msgid ""
 "please read our privacy policy. <a href=\"/vote/privacy\" "
 "target=\"_blank\">See our privacy policy.</a>"
 msgstr ""
+"لمعرفة المزيد حول كيفية جمعنا لمعلوماتك واستخدامها وحمايتها، يرجى قراءة "
+"سياسة الخصوصية الخاصة بنا. <a href=\"/vote/privacy\" target=\"_blank\">اطلع "
+"على سياسة الخصوصية الخاصة بنا.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:14
 msgid ""
-"We use phone numbers to make sure each person only votes once. By entering "
-"your phone number on our website, you agree to get a voter verification "
-"code\n"
+"We use phone numbers to make sure each person only votes once. By entering your phone number on our website, you agree to get a voter verification code\n"
 "  by text message."
 msgstr ""
+"نستخدم أرقام الهواتف للتأكد من أن كل شخص يصوت مرة واحدة فقط. بإدخال رقم هاتفك على موقعنا الإلكتروني، فإنك توافق على الحصول على رمز التحقق من الناخب.\n"
+" عن طريق رسالة نصية."
 
 #: src/sa_vote/jstemplates/sa_vote/pages/terms.html:16
 msgid ""
 "Your privacy is extremely important to us. We will never store your phone "
 "number in plain text. We will not share, sell, rent, or trade your phone "
-"number or mobile messaging consent data with third parties or affiliates for "
-"marketing or promotional purposes."
+"number or mobile messaging consent data with third parties or affiliates for"
+" marketing or promotional purposes."
 msgstr ""
+"خصوصيتك تهمنا للغاية. لن نقوم أبدًا بتخزين رقم هاتفك كنص عادي. ولن نشارك أو "
+"نبيع أو نؤجر أو نتاجر برقم هاتفك أو بيانات موافقتك على الرسائل النصية مع أي "
+"جهات خارجية أو تابعة لأغراض التسويق أو الترويج."
 
 #: src/sa_vote/templates/sa_vote/base.html:75
 msgid "Vote app navigation"
-msgstr ""
+msgstr "التنقل في تطبيق التصويت"
 
 #: src/sa_vote/templates/sa_vote/base.html:78
 msgid "Home"
-msgstr ""
+msgstr "بيت"
 
 #: src/sa_vote/templates/sa_vote/base.html:81
 msgid "Sign up to vote"
-msgstr ""
+msgstr "سجل للتصويت"
 
 #: src/sa_vote/templates/sa_vote/base.html:84
 msgid "FAQ"
-msgstr ""
+msgstr "التعليمات"
 
 #: src/sa_vote/templates/sa_vote/sms_verification_message.txt:8
 #, python-format
 msgid ""
 "\n"
-"Hi, it's Poe Public on behalf of Ideas in Action! Your voter code is: "
-"%(code)s. This code will expire in 30 minutes.\n"
+"Hi, it's Poe Public on behalf of Ideas in Action! Your voter code is: %(code)s. This code will expire in 30 minutes.\n"
 msgstr ""
+"\n"
+"مرحباً، معكم بو بابليك نيابةً عن مبادرة &quot;أفكار في العمل&quot;! رمز الناخب الخاص بكم هو: %(code)s . سينتهي صلاحية هذا الرمز خلال 30 دقيقة.\n"
 
 #: src/sa_vote/views.py:188
 msgid "Failed to query API server"
-msgstr ""
+msgstr "فشل الاستعلام من خادم واجهة برمجة التطبيقات"
 
 #: src/sa_vote/views.py:195
 msgid "Failed to find ballots on API server"
-msgstr ""
+msgstr "تعذر العثور على أوراق الاقتراع على خادم واجهة برمجة التطبيقات (API)."
 
 #: src/sa_vote/views.py:212
 #, python-format
 msgid "Failed to send verification SMS to %(phone_number)s"
-msgstr ""
+msgstr "فشل إرسال رسالة التحقق النصية إلى %(phone_number)s"
 
 #: src/sa_vote/views.py:315
 msgid "Must select between 1 and 5 proposals"
-msgstr ""
+msgstr "يجب اختيار ما بين مقترح واحد وخمسة مقترحات"
 
 #: src/sa_vote/views.py:318
 msgid "Proposals must not contain duplicate selections"
-msgstr ""
+msgstr "يجب ألا تحتوي المقترحات على اختيارات مكررة"
 
 #: src/sa_vote/views.py:324
 #, python-format
 msgid "Proposal not found: %(slug)s"
-msgstr ""
+msgstr "لم يتم العثور على الاقتراح: %(slug)s"
 
 #: src/sa_vote/views.py:347
 msgid "It appears that you have already submitted a ballot."
-msgstr ""
+msgstr "يبدو أنك قد قدمت بالفعل بطاقة اقتراع."
 
 #: src/sa_web/jstemplates/auth-nav.html:2
 msgid "Sign In"
@@ -2575,8 +2754,7 @@ msgstr "حول {{ pretty_created_datetime }}"
 #: src/sa_web/jstemplates/place-moderation-bar.html:1
 msgid ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>only visible to "
-"moderators</strong>."
+"      This {{ place_config.response_name }} is <strong>only visible to moderators</strong>."
 msgstr ""
 "<span class=\"visibility-icon invisible-icon\">👁</span>\n"
 " هذا {{ place_config.response_name }} <strong>مرئي للمشرفين فقط</strong> ."
@@ -2584,8 +2762,7 @@ msgstr ""
 #: src/sa_web/jstemplates/place-moderation-bar.html:3
 msgid ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
-"      This {{ place_config.response_name }} is <strong>visible to everyone</"
-"strong>."
+"      This {{ place_config.response_name }} is <strong>visible to everyone</strong>."
 msgstr ""
 "<span class=\"visibility-icon visible-icon\">👁</span>\n"
 " هذا {{ place_config.response_name }} <strong>مرئي للجميع</strong> ."
@@ -2617,18 +2794,15 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        %(config.app.name)s is great but it needs something called "
-"JavaScript to work\n"
+"        %(config.app.name)s is great but it needs something called JavaScript to work\n"
 "        properly. But fear not, it's really easy to turn on. Click\n"
-"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> "
-"for simple instructions!\n"
+"        <a href=\"http://enable-javascript.com/\" target=\"_blank\">here</a> for simple instructions!\n"
 "        "
 msgstr ""
 "\n"
 "%(config.app.name)s رائع ولكنه يحتاج إلى شيء يسمى JavaScript حتى يعمل\n"
 " على وجه صحيح. لكن لا تخف، فمن السهل حقًا تشغيله. انقر\n"
-" <a href=\"http://enable-javascript.com/\" target=\"_blank\">هنا</a> للحصول "
-"على تعليمات بسيطة!\n"
+" <a href=\"http://enable-javascript.com/\" target=\"_blank\">هنا</a> للحصول على تعليمات بسيطة!\n"
 "        "
 
 #: src/sa_web/templates/base.html:108
@@ -2636,62 +2810,3 @@ msgid ""
 "We can't connect to the server at the moment. Hang tight while we re-"
 "establish communication."
 msgstr "لا يمكننا الاتصال بالخادم في الوقت الحالي. انتظر حتى نعيد الاتصال."
-
-#, fuzzy
-#~| msgid "How they heard about Ideas in Action"
-#~ msgid "Highlights from the Inaugural Year of Ideas in Action:"
-#~ msgstr "كيف سمعوا عن الأفكار في العمل"
-
-#, fuzzy
-#~| msgid ""
-#~| "For an update on the implementation of awarded PB projects, visit: <a "
-#~| "href=\"https://www.boston.gov/departments/participatory-budgeting/ideas-"
-#~| "action-project-implementation\" target=\"_blank\">Boston.gov/departments/"
-#~| "participatory-budgeting/ideas-action-project-implementation</a>"
-#~ msgid ""
-#~ "See a list of winning projects funded in Cycle One <a href=\"https://"
-#~ "www.boston.gov/departments/participatory-budgeting/ideas-action-project-"
-#~ "implementation\" target=\"_blank\">here</a>."
-#~ msgstr ""
-#~ "للاطلاع على آخر المستجدات بشأن تنفيذ مشاريع الميزانية التشاركية الممنوحة، "
-#~ "تفضل بزيارة الموقع الإلكتروني التالي: <a href=\"https://www.boston.gov/"
-#~ "departments/participatory-budgeting/ideas-action-project-implementation\" "
-#~ "target=\"_blank\">Boston.gov/departments/participatory-budgeting/ideas-"
-#~ "action-project-implementation</a>"
-
-#, fuzzy
-#~| msgid "City of Boston Participatory Budgeting"
-#~ msgid "The City of Boston’s First Participatory Budgeting Cycle"
-#~ msgstr "مدينة بوسطن الموازنة التشاركية"
-
-#, fuzzy
-#~| msgid "Show the Map"
-#~ msgid "Site Maps"
-#~ msgstr "عرض الخريطة"
-
-#, fuzzy
-#~| msgid "Enter a location…"
-#~ msgid "Enter a valid duration."
-#~ msgstr "أدخل موقعا..."
-
-#, fuzzy
-#~| msgid "Search"
-#~ msgid "March"
-#~ msgstr "يبحث"
-
-#, fuzzy
-#~| msgid "Search"
-#~ msgctxt "abbrev. month"
-#~ msgid "March"
-#~ msgstr "يبحث"
-
-#, fuzzy
-#~| msgid "Search"
-#~ msgctxt "alt. month"
-#~ msgid "March"
-#~ msgstr "يبحث"
-
-#, fuzzy
-#~| msgid "optional"
-#~ msgid "optional arguments"
-#~ msgstr "خياري"
