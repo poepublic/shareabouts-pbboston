@@ -378,7 +378,7 @@ details[open]
   list-style: none;
   width: 70vw;
   color: var(--iia-dark-blue);
-  background: var(--iia-vibrant-green);
+  background: white;
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
@@ -1016,28 +1016,19 @@ summary.survey-select-input,
   }
 
   /* Ballot */
-
-  .ballot-banner {
-    background: var(--iia-urban-pink);
-    color: white;
-  }
-
   .proposal-card {
     background: var(--iia-fog-grey);
   }
-
   .selected-proposal {
-    background: var(--iia-dark-blue);
-    color: var(--iia-fog-grey);
+    background: var(--iia-fog-grey);
   }
-
   .selected-proposal-amount {
-    color: var(--iia-vibrant-green);
+    background: var(--iia-fog-grey);
   }
 
   .selected-proposal-title {
-    color: var(--iia-fog-grey);
-  }
+    background: var(--iia-fog-grey);
+  } 
 
   button#submit-ballot {
     background-color: var(--iia-callout-blue);
