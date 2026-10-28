@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-28 21:46-0400\n"
+"POT-Creation-Date: 2026-10-28 01:00-0400\n"
 "PO-Revision-Date: 2026-06-09 16:33+0000\n"
 "Last-Translator: Mjumbe Poe <mjumbewu@gmail.com>, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/mjumbewu/teams/189006/zh/)\n"
@@ -36,6 +36,8 @@ msgstr "波士顿市参与式预算"
 #: src/flavors/cycle3/_config.translations.py:7
 #: src/flavors/cycle3/templates/index.html:8
 #: src/flavors/cycle3/templates/index.html:17
+#: src/sa_vote/templates/sa_vote/index.html:10
+#: src/sa_vote/templates/sa_vote/index.html:19
 msgid "Participatory Budgeting"
 msgstr "参与式预算"
 
@@ -49,7 +51,7 @@ msgstr "Shareabouts 是一款地图工具，用于收集众包公众意见。您
 
 #: src/flavors/cycle1/_config.translations.py:9
 #: src/flavors/cycle2/_config.translations.py:9
-#: src/flavors/cycle3/_config.translations.py:9
+#: src/flavors/cycle3/_config.translations.py:12
 msgid "Enter a location…"
 msgstr "输入位置..."
 
@@ -59,14 +61,14 @@ msgstr "输入位置..."
 #: src/flavors/cycle2/_config.translations.py:10
 #: src/flavors/cycle2/_config.translations.py:66
 #: src/flavors/cycle2/_config.translations.py:145
-#: src/flavors/cycle3/_config.translations.py:10
-#: src/flavors/cycle3/_config.translations.py:67
+#: src/flavors/cycle3/_config.translations.py:13
+#: src/flavors/cycle3/_config.translations.py:70
 msgid "Arts & Culture"
 msgstr "艺术与文化"
 
 #: src/flavors/cycle1/_config.translations.py:11
 #: src/flavors/cycle2/_config.translations.py:11
-#: src/flavors/cycle3/_config.translations.py:11
+#: src/flavors/cycle3/_config.translations.py:14
 msgid ""
 "Project ideas focused on arts and cultural programming that promote cultural"
 " spaces in the City."
@@ -78,14 +80,14 @@ msgstr "项目理念侧重于促进城市文化空间发展的艺术和文化项
 #: src/flavors/cycle2/_config.translations.py:12
 #: src/flavors/cycle2/_config.translations.py:67
 #: src/flavors/cycle2/_config.translations.py:146
-#: src/flavors/cycle3/_config.translations.py:12
-#: src/flavors/cycle3/_config.translations.py:68
+#: src/flavors/cycle3/_config.translations.py:15
+#: src/flavors/cycle3/_config.translations.py:71
 msgid "Community Resources"
 msgstr "社区资源"
 
 #: src/flavors/cycle1/_config.translations.py:13
 #: src/flavors/cycle2/_config.translations.py:13
-#: src/flavors/cycle3/_config.translations.py:13
+#: src/flavors/cycle3/_config.translations.py:16
 msgid ""
 "Project ideas that provide assistance or services to residents in need, such"
 " as programs at community centers, financial or digital literacy, English as"
@@ -98,14 +100,14 @@ msgstr "为有需要的居民提供援助或服务的项目构想，例如社区
 #: src/flavors/cycle2/_config.translations.py:14
 #: src/flavors/cycle2/_config.translations.py:68
 #: src/flavors/cycle2/_config.translations.py:147
-#: src/flavors/cycle3/_config.translations.py:14
-#: src/flavors/cycle3/_config.translations.py:69
+#: src/flavors/cycle3/_config.translations.py:17
+#: src/flavors/cycle3/_config.translations.py:72
 msgid "Local Economy & Worker Empowerment"
 msgstr "地方经济与工人赋权"
 
 #: src/flavors/cycle1/_config.translations.py:15
 #: src/flavors/cycle2/_config.translations.py:15
-#: src/flavors/cycle3/_config.translations.py:15
+#: src/flavors/cycle3/_config.translations.py:18
 msgid ""
 "Project ideas that improve access to quality jobs, skills training, career "
 "pipelines, and other resources for workers, small business owners, and "
@@ -120,7 +122,7 @@ msgstr "教育、青年与家庭"
 
 #: src/flavors/cycle1/_config.translations.py:17
 #: src/flavors/cycle2/_config.translations.py:17
-#: src/flavors/cycle3/_config.translations.py:17
+#: src/flavors/cycle3/_config.translations.py:20
 msgid ""
 "Project ideas related to education for all ages, as well as proposals that "
 "meet the needs of Boston’s youth, senior citizens, and families."
@@ -132,14 +134,14 @@ msgstr "与各年龄段教育相关的项目构想，以及满足波士顿青少
 #: src/flavors/cycle2/_config.translations.py:18
 #: src/flavors/cycle2/_config.translations.py:70
 #: src/flavors/cycle2/_config.translations.py:149
-#: src/flavors/cycle3/_config.translations.py:18
-#: src/flavors/cycle3/_config.translations.py:71
+#: src/flavors/cycle3/_config.translations.py:21
+#: src/flavors/cycle3/_config.translations.py:74
 msgid "Environment, Sustainability, and Food Access"
 msgstr "环境、可持续性和粮食获取"
 
 #: src/flavors/cycle1/_config.translations.py:19
 #: src/flavors/cycle2/_config.translations.py:19
-#: src/flavors/cycle3/_config.translations.py:19
+#: src/flavors/cycle3/_config.translations.py:22
 msgid ""
 "Project ideas that help increase access to healthy and affordable food, "
 "promote environmental justice, and help increase the quality of life in "
@@ -148,13 +150,13 @@ msgstr "项目理念有助于增加人们获得健康且负担得起的食品的
 
 #: src/flavors/cycle1/_config.translations.py:20
 #: src/flavors/cycle2/_config.translations.py:20
-#: src/flavors/cycle3/_config.translations.py:20
+#: src/flavors/cycle3/_config.translations.py:23
 msgid "Facilities, Parks & Recreation"
 msgstr "设施、公园和娱乐"
 
 #: src/flavors/cycle1/_config.translations.py:21
 #: src/flavors/cycle2/_config.translations.py:21
-#: src/flavors/cycle3/_config.translations.py:21
+#: src/flavors/cycle3/_config.translations.py:24
 msgid ""
 "Project ideas that Invest in clean, green, safe and accessible open space, "
 "facilities, and programming for residents and neighborhoods."
@@ -166,14 +168,14 @@ msgstr "项目理念是投资于为居民和社区提供清洁、绿色、安全
 #: src/flavors/cycle2/_config.translations.py:22
 #: src/flavors/cycle2/_config.translations.py:72
 #: src/flavors/cycle2/_config.translations.py:151
-#: src/flavors/cycle3/_config.translations.py:22
-#: src/flavors/cycle3/_config.translations.py:73
+#: src/flavors/cycle3/_config.translations.py:25
+#: src/flavors/cycle3/_config.translations.py:76
 msgid "Health & Well-being"
 msgstr "健康与福祉"
 
 #: src/flavors/cycle1/_config.translations.py:23
 #: src/flavors/cycle2/_config.translations.py:23
-#: src/flavors/cycle3/_config.translations.py:23
+#: src/flavors/cycle3/_config.translations.py:26
 msgid ""
 "Project ideas that promote the physical and mental health of Boston "
 "residents of all ages."
@@ -185,14 +187,14 @@ msgstr "促进波士顿各年龄段居民身心健康的项目理念。"
 #: src/flavors/cycle2/_config.translations.py:24
 #: src/flavors/cycle2/_config.translations.py:73
 #: src/flavors/cycle2/_config.translations.py:152
-#: src/flavors/cycle3/_config.translations.py:24
-#: src/flavors/cycle3/_config.translations.py:74
+#: src/flavors/cycle3/_config.translations.py:27
+#: src/flavors/cycle3/_config.translations.py:77
 msgid "Public Safety"
 msgstr "公安"
 
 #: src/flavors/cycle1/_config.translations.py:25
 #: src/flavors/cycle2/_config.translations.py:25
-#: src/flavors/cycle3/_config.translations.py:25
+#: src/flavors/cycle3/_config.translations.py:28
 msgid ""
 "Project ideas that advance safety and increase justice in the City, such as "
 "community violence prevention programs and initiatives for healing and "
@@ -205,14 +207,14 @@ msgstr "提出一些促进城市安全和加强公正的项目理念，例如社
 #: src/flavors/cycle2/_config.translations.py:26
 #: src/flavors/cycle2/_config.translations.py:74
 #: src/flavors/cycle2/_config.translations.py:153
-#: src/flavors/cycle3/_config.translations.py:26
-#: src/flavors/cycle3/_config.translations.py:75
+#: src/flavors/cycle3/_config.translations.py:29
+#: src/flavors/cycle3/_config.translations.py:78
 msgid "Streets & Sidewalks"
 msgstr "街道和人行道"
 
 #: src/flavors/cycle1/_config.translations.py:27
 #: src/flavors/cycle2/_config.translations.py:27
-#: src/flavors/cycle3/_config.translations.py:27
+#: src/flavors/cycle3/_config.translations.py:30
 msgid ""
 "Project ideas to improve City streets and sidewalks and promote safety and "
 "accessibility."
@@ -224,27 +226,27 @@ msgstr "改善城市街道和人行道并提高安全性和可达性的项目构
 #: src/flavors/cycle2/_config.translations.py:28
 #: src/flavors/cycle2/_config.translations.py:75
 #: src/flavors/cycle2/_config.translations.py:154
-#: src/flavors/cycle3/_config.translations.py:28
-#: src/flavors/cycle3/_config.translations.py:76
+#: src/flavors/cycle3/_config.translations.py:31
+#: src/flavors/cycle3/_config.translations.py:79
 msgid "Other / Not Sure"
 msgstr "其他/不确定"
 
 #: src/flavors/cycle1/_config.translations.py:29
 #: src/flavors/cycle2/_config.translations.py:29
-#: src/flavors/cycle3/_config.translations.py:29
+#: src/flavors/cycle3/_config.translations.py:32
 msgid ""
 "Other community centered ideas that may not fit in the previous categories."
 msgstr "其他以社区为中心的想法可能不适合前面的类别。"
 
 #: src/flavors/cycle1/_config.translations.py:30
 #: src/flavors/cycle2/_config.translations.py:30
-#: src/flavors/cycle3/_config.translations.py:30
+#: src/flavors/cycle3/_config.translations.py:33
 msgid "idea"
 msgstr "主意"
 
 #: src/flavors/cycle1/_config.translations.py:31
 #: src/flavors/cycle2/_config.translations.py:31
-#: src/flavors/cycle3/_config.translations.py:31
+#: src/flavors/cycle3/_config.translations.py:34
 msgid "ideas"
 msgstr "想法"
 
@@ -255,37 +257,38 @@ msgstr "提出建议"
 
 #: src/flavors/cycle1/_config.translations.py:33
 #: src/flavors/cycle2/_config.translations.py:33
-#: src/flavors/cycle3/_config.translations.py:33
+#: src/flavors/cycle3/_config.translations.py:36
 msgid "List All Ideas"
 msgstr "列出所有想法"
 
 #: src/flavors/cycle1/_config.translations.py:34
 #: src/flavors/cycle2/_config.translations.py:34
-#: src/flavors/cycle3/_config.translations.py:34
+#: src/flavors/cycle3/_config.translations.py:37
 msgid "Show the Map"
 msgstr "显示地图"
 
 #: src/flavors/cycle1/_config.translations.py:35
 #: src/flavors/cycle2/_config.translations.py:35
-#: src/flavors/cycle3/_config.translations.py:35
+#: src/flavors/cycle3/_config.translations.py:38
 msgid "submitted"
 msgstr "已提交"
 
 #: src/flavors/cycle1/_config.translations.py:36
 #: src/flavors/cycle2/_config.translations.py:36
-#: src/flavors/cycle3/_config.translations.py:36
+#: src/flavors/cycle3/_config.translations.py:39
 msgid "How would you spend $2 million to benefit your community?"
 msgstr "您会如何花费 200 万美元来造福您的社区？"
 
 #: src/flavors/cycle1/_config.translations.py:37
 #: src/flavors/cycle2/_config.translations.py:37
-#: src/flavors/cycle3/_config.translations.py:37
+#: src/flavors/cycle3/_config.translations.py:40
 msgid "Your neighbor"
 msgstr "你的邻居"
 
 #: src/flavors/cycle1/_config.translations.py:38
 #: src/flavors/cycle2/_config.translations.py:38
-#: src/flavors/cycle3/_config.translations.py:38
+#: src/flavors/cycle3/_config.translations.py:41
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:39
 msgid "Submit"
 msgstr "提交"
 
@@ -296,13 +299,13 @@ msgstr "全市多个地点"
 
 #: src/flavors/cycle1/_config.translations.py:40
 #: src/flavors/cycle2/_config.translations.py:40
-#: src/flavors/cycle3/_config.translations.py:41
+#: src/flavors/cycle3/_config.translations.py:44
 msgid "Please use the map's search box or drag the map to set the location."
 msgstr "请使用地图的搜索框或拖动地图来设置位置。"
 
 #: src/flavors/cycle1/_config.translations.py:41
 #: src/flavors/cycle2/_config.translations.py:41
-#: src/flavors/cycle3/_config.translations.py:42
+#: src/flavors/cycle3/_config.translations.py:45
 msgid "Thank you!"
 msgstr "谢谢你！"
 
@@ -314,43 +317,43 @@ msgstr "感谢您与我们分享您的想法！请填写下方的简短表格。
 
 #: src/flavors/cycle1/_config.translations.py:43
 #: src/flavors/cycle2/_config.translations.py:47
-#: src/flavors/cycle3/_config.translations.py:48
+#: src/flavors/cycle3/_config.translations.py:51
 msgid "Is your idea for a specific location or for the entire city?"
 msgstr "您的想法是针对特定地点还是针对整个城市？"
 
 #: src/flavors/cycle1/_config.translations.py:44
 #: src/flavors/cycle2/_config.translations.py:48
-#: src/flavors/cycle3/_config.translations.py:49
+#: src/flavors/cycle3/_config.translations.py:52
 msgid "City wide?"
 msgstr "全市？"
 
 #: src/flavors/cycle1/_config.translations.py:45
 #: src/flavors/cycle2/_config.translations.py:49
-#: src/flavors/cycle3/_config.translations.py:50
+#: src/flavors/cycle3/_config.translations.py:53
 msgid "Location-specific"
 msgstr "特定地点"
 
 #: src/flavors/cycle1/_config.translations.py:46
 #: src/flavors/cycle2/_config.translations.py:50
-#: src/flavors/cycle3/_config.translations.py:51
+#: src/flavors/cycle3/_config.translations.py:54
 msgid "City-wide"
 msgstr "全市"
 
 #: src/flavors/cycle1/_config.translations.py:47
 #: src/flavors/cycle2/_config.translations.py:51
-#: src/flavors/cycle3/_config.translations.py:52
+#: src/flavors/cycle3/_config.translations.py:55
 msgid "Approximately where would your idea be?"
 msgstr "您的想法大概是什么？"
 
 #: src/flavors/cycle1/_config.translations.py:48
 #: src/flavors/cycle2/_config.translations.py:52
-#: src/flavors/cycle3/_config.translations.py:53
+#: src/flavors/cycle3/_config.translations.py:56
 msgid "Approximate location…"
 msgstr "大概位置…"
 
 #: src/flavors/cycle1/_config.translations.py:49
 #: src/flavors/cycle2/_config.translations.py:53
-#: src/flavors/cycle3/_config.translations.py:54
+#: src/flavors/cycle3/_config.translations.py:57
 msgid "Drag the map to set the location."
 msgstr "拖动地图来设置位置。"
 
@@ -360,7 +363,7 @@ msgstr "请简要描述一下项目构想。"
 
 #: src/flavors/cycle1/_config.translations.py:51
 #: src/flavors/cycle2/_config.translations.py:55
-#: src/flavors/cycle3/_config.translations.py:56
+#: src/flavors/cycle3/_config.translations.py:59
 msgid "My idea is to…"
 msgstr "我的想法是……"
 
@@ -372,32 +375,32 @@ msgstr "确保您的描述简短而清晰。"
 #: src/flavors/cycle1/_config.translations.py:58
 #: src/flavors/cycle2/_config.translations.py:57
 #: src/flavors/cycle2/_config.translations.py:62
-#: src/flavors/cycle3/_config.translations.py:58
-#: src/flavors/cycle3/_config.translations.py:63
+#: src/flavors/cycle3/_config.translations.py:61
+#: src/flavors/cycle3/_config.translations.py:66
 msgid "Try to keep it to 50 words or less…"
 msgstr "尽量控制在 50 个字以内……"
 
 #: src/flavors/cycle1/_config.translations.py:54
 #: src/flavors/cycle2/_config.translations.py:58
-#: src/flavors/cycle3/_config.translations.py:59
+#: src/flavors/cycle3/_config.translations.py:62
 msgid "How does your project advance social and racial equity?"
 msgstr "您的项目如何促进社会和种族平等？"
 
 #: src/flavors/cycle1/_config.translations.py:55
 #: src/flavors/cycle2/_config.translations.py:59
-#: src/flavors/cycle3/_config.translations.py:60
+#: src/flavors/cycle3/_config.translations.py:63
 msgid "This idea would advance social and racial equity by…"
 msgstr "这个想法将通过以下方式促进社会和种族平等……"
 
 #: src/flavors/cycle1/_config.translations.py:56
 #: src/flavors/cycle2/_config.translations.py:60
-#: src/flavors/cycle3/_config.translations.py:61
+#: src/flavors/cycle3/_config.translations.py:64
 msgid "Make sure you keep it short and clear."
 msgstr "确保简短、清晰。"
 
 #: src/flavors/cycle1/_config.translations.py:57
 #: src/flavors/cycle2/_config.translations.py:61
-#: src/flavors/cycle3/_config.translations.py:62
+#: src/flavors/cycle3/_config.translations.py:65
 msgid ""
 "\"Social and racial equity\" is defined as the just and fair inclusion of "
 "people of any social and racial background into society, so they can "
@@ -406,19 +409,19 @@ msgstr "“社会和种族平等”的定义是公正、公平地将任何社会
 
 #: src/flavors/cycle1/_config.translations.py:59
 #: src/flavors/cycle2/_config.translations.py:63
-#: src/flavors/cycle3/_config.translations.py:64
+#: src/flavors/cycle3/_config.translations.py:67
 msgid "Which category does your idea fall into?"
 msgstr "您的想法属于哪一类？"
 
 #: src/flavors/cycle1/_config.translations.py:60
 #: src/flavors/cycle2/_config.translations.py:64
-#: src/flavors/cycle3/_config.translations.py:65
+#: src/flavors/cycle3/_config.translations.py:68
 msgid "Category"
 msgstr "类别"
 
 #: src/flavors/cycle1/_config.translations.py:61
 #: src/flavors/cycle2/_config.translations.py:65
-#: src/flavors/cycle3/_config.translations.py:66
+#: src/flavors/cycle3/_config.translations.py:69
 msgid "Choose the category that most closely describes your project."
 msgstr "选择最能描述您的项目的类别。"
 
@@ -426,7 +429,7 @@ msgstr "选择最能描述您的项目的类别。"
 #: src/flavors/cycle1/_config.translations.py:118
 #: src/flavors/cycle2/_config.translations.py:71
 #: src/flavors/cycle2/_config.translations.py:150
-#: src/flavors/cycle3/_config.translations.py:72
+#: src/flavors/cycle3/_config.translations.py:75
 msgid "Facilities, Parks & Recreation  "
 msgstr "设施、公园和娱乐  "
 
@@ -460,55 +463,55 @@ msgstr "提交者姓名"
 
 #: src/flavors/cycle1/_config.translations.py:78
 #: src/flavors/cycle2/_config.translations.py:87
-#: src/flavors/cycle3/_config.translations.py:88
+#: src/flavors/cycle3/_config.translations.py:91
 msgid "Your first name…"
 msgstr "您的名字…"
 
 #: src/flavors/cycle1/_config.translations.py:81
 #: src/flavors/cycle2/_config.translations.py:90
-#: src/flavors/cycle3/_config.translations.py:91
+#: src/flavors/cycle3/_config.translations.py:94
 msgid "Your last name…"
 msgstr "您的姓氏…"
 
 #: src/flavors/cycle1/_config.translations.py:82
 #: src/flavors/cycle2/_config.translations.py:91
-#: src/flavors/cycle3/_config.translations.py:92
+#: src/flavors/cycle3/_config.translations.py:95
 msgid "How should we display your name next to your idea?"
 msgstr "我们应该如何在您的想法旁边显示您的名字？"
 
 #: src/flavors/cycle1/_config.translations.py:83
 #: src/flavors/cycle2/_config.translations.py:92
-#: src/flavors/cycle3/_config.translations.py:93
+#: src/flavors/cycle3/_config.translations.py:96
 msgid "Use my full name"
 msgstr "使用我的全名"
 
 #: src/flavors/cycle1/_config.translations.py:84
 #: src/flavors/cycle2/_config.translations.py:93
-#: src/flavors/cycle3/_config.translations.py:94
+#: src/flavors/cycle3/_config.translations.py:97
 msgid "Only use my first name"
 msgstr "仅使用我的名字"
 
 #: src/flavors/cycle1/_config.translations.py:85
 #: src/flavors/cycle2/_config.translations.py:94
-#: src/flavors/cycle3/_config.translations.py:95
+#: src/flavors/cycle3/_config.translations.py:98
 msgid "Do not display my name"
 msgstr "不要显示我的名字"
 
 #: src/flavors/cycle1/_config.translations.py:86
 #: src/flavors/cycle2/_config.translations.py:95
-#: src/flavors/cycle3/_config.translations.py:96
+#: src/flavors/cycle3/_config.translations.py:99
 msgid "Your Neighborhood"
 msgstr "你的邻居"
 
 #: src/flavors/cycle1/_config.translations.py:87
 #: src/flavors/cycle2/_config.translations.py:96
-#: src/flavors/cycle3/_config.translations.py:97
+#: src/flavors/cycle3/_config.translations.py:100
 msgid "Submitter's Neighborhood"
 msgstr "提交者的邻居"
 
 #: src/flavors/cycle1/_config.translations.py:88
 #: src/flavors/cycle2/_config.translations.py:97
-#: src/flavors/cycle3/_config.translations.py:98
+#: src/flavors/cycle3/_config.translations.py:101
 msgid "Select a neighborhood…"
 msgstr "选择一个社区..."
 
@@ -516,8 +519,8 @@ msgstr "选择一个社区..."
 #: src/flavors/cycle1/_config.translations.py:90
 #: src/flavors/cycle2/_config.translations.py:98
 #: src/flavors/cycle2/_config.translations.py:99
-#: src/flavors/cycle3/_config.translations.py:99
-#: src/flavors/cycle3/_config.translations.py:100
+#: src/flavors/cycle3/_config.translations.py:102
+#: src/flavors/cycle3/_config.translations.py:103
 msgid "Your Zip Code"
 msgstr "您的邮政编码"
 
@@ -525,8 +528,8 @@ msgstr "您的邮政编码"
 #: src/flavors/cycle1/_config.translations.py:92
 #: src/flavors/cycle2/_config.translations.py:125
 #: src/flavors/cycle2/_config.translations.py:126
-#: src/flavors/cycle3/_config.translations.py:145
-#: src/flavors/cycle3/_config.translations.py:146
+#: src/flavors/cycle3/_config.translations.py:148
+#: src/flavors/cycle3/_config.translations.py:149
 msgid "Your Email"
 msgstr "您的电子邮件地址"
 
@@ -537,19 +540,19 @@ msgstr "您的首选语言"
 
 #: src/flavors/cycle1/_config.translations.py:95
 #: src/flavors/cycle2/_config.translations.py:127
-#: src/flavors/cycle3/_config.translations.py:147
+#: src/flavors/cycle3/_config.translations.py:150
 msgid "comment"
 msgstr "评论"
 
 #: src/flavors/cycle1/_config.translations.py:96
 #: src/flavors/cycle2/_config.translations.py:128
-#: src/flavors/cycle3/_config.translations.py:148
+#: src/flavors/cycle3/_config.translations.py:151
 msgid "comments"
 msgstr "评论"
 
 #: src/flavors/cycle1/_config.translations.py:97
 #: src/flavors/cycle2/_config.translations.py:129
-#: src/flavors/cycle3/_config.translations.py:149
+#: src/flavors/cycle3/_config.translations.py:152
 msgid "commented on"
 msgstr "评论了"
 
@@ -557,8 +560,8 @@ msgstr "评论了"
 #: src/flavors/cycle1/_config.translations.py:105
 #: src/flavors/cycle2/_config.translations.py:130
 #: src/flavors/cycle2/_config.translations.py:137
-#: src/flavors/cycle3/_config.translations.py:150
-#: src/flavors/cycle3/_config.translations.py:157
+#: src/flavors/cycle3/_config.translations.py:153
+#: src/flavors/cycle3/_config.translations.py:160
 msgid "Someone"
 msgstr "某人"
 
@@ -566,56 +569,56 @@ msgstr "某人"
 #: src/flavors/cycle1/_config.translations.py:100
 #: src/flavors/cycle2/_config.translations.py:131
 #: src/flavors/cycle2/_config.translations.py:132
-#: src/flavors/cycle3/_config.translations.py:151
-#: src/flavors/cycle3/_config.translations.py:152
+#: src/flavors/cycle3/_config.translations.py:154
+#: src/flavors/cycle3/_config.translations.py:155
 msgid "Leave a Comment"
 msgstr "发表评论"
 
 #: src/flavors/cycle1/_config.translations.py:101
 #: src/flavors/cycle2/_config.translations.py:133
-#: src/flavors/cycle3/_config.translations.py:153
+#: src/flavors/cycle3/_config.translations.py:156
 msgid "Comment"
 msgstr "评论"
 
 #: src/flavors/cycle1/_config.translations.py:102
 #: src/flavors/cycle2/_config.translations.py:134
-#: src/flavors/cycle3/_config.translations.py:154
+#: src/flavors/cycle3/_config.translations.py:157
 msgid "Support"
 msgstr "支持"
 
 #: src/flavors/cycle1/_config.translations.py:103
 #: src/flavors/cycle2/_config.translations.py:135
-#: src/flavors/cycle3/_config.translations.py:155
+#: src/flavors/cycle3/_config.translations.py:158
 msgid "support"
 msgstr "支持"
 
 #: src/flavors/cycle1/_config.translations.py:104
 #: src/flavors/cycle2/_config.translations.py:136
-#: src/flavors/cycle3/_config.translations.py:156
+#: src/flavors/cycle3/_config.translations.py:159
 msgid "supports"
 msgstr "支持"
 
 #: src/flavors/cycle1/_config.translations.py:106
 #: src/flavors/cycle2/_config.translations.py:138
-#: src/flavors/cycle3/_config.translations.py:158
+#: src/flavors/cycle3/_config.translations.py:189
 msgid "About"
 msgstr "关于"
 
 #: src/flavors/cycle1/_config.translations.py:107
 #: src/flavors/cycle2/_config.translations.py:139
-#: src/flavors/cycle3/_config.translations.py:159
+#: src/flavors/cycle3/_config.translations.py:190
 msgid "Past PB Cycles"
 msgstr "过去的 PB 周期"
 
 #: src/flavors/cycle1/_config.translations.py:108
 #: src/flavors/cycle2/_config.translations.py:140
-#: src/flavors/cycle3/_config.translations.py:160
+#: src/flavors/cycle3/_config.translations.py:191
 msgid "Cycle 2 (2025)"
 msgstr "第二周期（2025 年）"
 
 #: src/flavors/cycle1/_config.translations.py:109
 #: src/flavors/cycle2/_config.translations.py:141
-#: src/flavors/cycle3/_config.translations.py:161
+#: src/flavors/cycle3/_config.translations.py:192
 msgid "Cycle 1 (2024)"
 msgstr "第一周期（2024年）"
 
@@ -623,8 +626,8 @@ msgstr "第一周期（2024年）"
 #: src/flavors/cycle1/templates/prelaunch.html:86
 #: src/flavors/cycle2/_config.translations.py:142
 #: src/flavors/cycle2/templates/prelaunch.html:86
-#: src/flavors/cycle3/_config.translations.py:162
-#: src/flavors/cycle3/templates/prelaunch.html:86
+#: src/flavors/cycle3/_config.translations.py:193
+#: src/flavors/cycle3/templates/prelaunch.html:83
 msgid "Boston PB Home"
 msgstr "波士顿 PB 之家"
 
@@ -653,6 +656,7 @@ msgstr "仅限全市"
 #: src/flavors/cycle1/templates/index.html:83
 #: src/flavors/cycle2/templates/index.html:83
 #: src/flavors/cycle3/templates/index.html:83
+#: src/sa_vote/templates/sa_vote/index.html:78
 #, python-format
 msgid "Powered by %(Shareabouts)s"
 msgstr "由%(Shareabouts)s提供支持"
@@ -660,13 +664,14 @@ msgstr "由%(Shareabouts)s提供支持"
 #: src/flavors/cycle1/templates/index.html:84
 #: src/flavors/cycle2/templates/index.html:84
 #: src/flavors/cycle3/templates/index.html:84
+#: src/sa_vote/templates/sa_vote/index.html:79
 #, python-format
 msgid "built by %(PoePublic)s"
 msgstr "由%(PoePublic)s构建"
 
 #: src/flavors/cycle1/templates/prelaunch.html:112
 #: src/flavors/cycle2/templates/prelaunch.html:112
-#: src/flavors/cycle3/templates/prelaunch.html:112
+#: src/flavors/cycle3/templates/prelaunch.html:109
 msgid ""
 "Participatory Budgeting (PB) is a democratic process where community members\n"
 "    directly decide how to spend part of a public budget. The goal of Participatory\n"
@@ -680,7 +685,7 @@ msgstr ""
 
 #: src/flavors/cycle1/templates/prelaunch.html:117
 #: src/flavors/cycle2/templates/prelaunch.html:117
-#: src/flavors/cycle3/templates/prelaunch.html:117
+#: src/flavors/cycle3/templates/prelaunch.html:114
 msgid ""
 "By engaging in Participatory Budgeting, Bostonians of all ages and\n"
 "    backgrounds can help inform priorities and future investments for the\n"
@@ -692,7 +697,7 @@ msgstr ""
 
 #: src/flavors/cycle1/templates/prelaunch.html:121
 #: src/flavors/cycle2/templates/prelaunch.html:121
-#: src/flavors/cycle3/templates/prelaunch.html:121
+#: src/flavors/cycle3/templates/prelaunch.html:118
 #, python-format
 msgid "Come back on %(return_date)s to submit your project ideas!"
 msgstr "回到%(return_date)s提交您的项目想法！"
@@ -700,20 +705,21 @@ msgstr "回到%(return_date)s提交您的项目想法！"
 #: src/flavors/cycle2/_config.translations.py:16
 #: src/flavors/cycle2/_config.translations.py:69
 #: src/flavors/cycle2/_config.translations.py:148
-#: src/flavors/cycle3/_config.translations.py:16
-#: src/flavors/cycle3/_config.translations.py:70
+#: src/flavors/cycle3/_config.translations.py:19
+#: src/flavors/cycle3/_config.translations.py:73
 msgid "Education, Youth, Families, & Older Adults"
 msgstr "教育、青年、家庭和老年人"
 
 #: src/flavors/cycle2/_config.translations.py:32
 #: src/flavors/cycle2/templates/index.html:57
-#: src/flavors/cycle3/_config.translations.py:32
+#: src/flavors/cycle3/_config.translations.py:35
+#: src/flavors/cycle3/jstemplates/content-suggest-button.html:1
 #: src/flavors/cycle3/templates/index.html:57
 msgid "Share an Idea"
 msgstr "分享想法"
 
 #: src/flavors/cycle2/_config.translations.py:42
-#: src/flavors/cycle3/_config.translations.py:43
+#: src/flavors/cycle3/_config.translations.py:46
 msgid ""
 "<strong>Thank you for sharing your idea with us!</strong> Please fill out "
 "the short form below. Only the information you choose to display will be "
@@ -721,12 +727,12 @@ msgid ""
 msgstr "<strong>感谢您与我们分享您的想法！</strong>请填写下方的简短表格。只有您选择显示的信息才会公开。 "
 
 #: src/flavors/cycle2/_config.translations.py:43
-#: src/flavors/cycle3/_config.translations.py:44
+#: src/flavors/cycle3/_config.translations.py:47
 msgid "Optional Demographic Survey"
 msgstr "可选人口统计调查"
 
 #: src/flavors/cycle2/_config.translations.py:44
-#: src/flavors/cycle3/_config.translations.py:45
+#: src/flavors/cycle3/_config.translations.py:48
 msgid ""
 "The demographic questions below are designed to assist the Office of "
 "Participatory Budgeting in obtaining a more accurate understanding of "
@@ -736,302 +742,496 @@ msgstr ""
 "以下人口统计问题旨在帮助参与式预算办公室更准确地了解参与者。您的回答将保持匿名和保密。<strong>请注意，所有问题均为选答。</strong>"
 
 #: src/flavors/cycle2/_config.translations.py:45
-#: src/flavors/cycle3/_config.translations.py:46
+#: src/flavors/cycle3/_config.translations.py:49
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:38
 msgid "Stay updated!"
 msgstr "保持更新！"
 
 #: src/flavors/cycle2/_config.translations.py:46
-#: src/flavors/cycle3/_config.translations.py:47
+#: src/flavors/cycle3/_config.translations.py:50
 msgid ""
 "Please leave your email to receive updates from the Office of Participatory "
 "Budgeting."
 msgstr "请留下您的电子邮件以接收参与式预算办公室的最新消息。"
 
 #: src/flavors/cycle2/_config.translations.py:54
-#: src/flavors/cycle3/_config.translations.py:55
+#: src/flavors/cycle3/_config.translations.py:58
 msgid "Please describe your project idea."
 msgstr "请描述您的项目想法。"
 
 #: src/flavors/cycle2/_config.translations.py:56
-#: src/flavors/cycle3/_config.translations.py:57
+#: src/flavors/cycle3/_config.translations.py:60
 msgid ""
 "Tell us about the issue you want to address. Why is this idea a priority and"
 " beneficial to the community?"
 msgstr "告诉我们你想解决的问题。为什么这个想法值得优先考虑，并且对社区有益？"
 
 #: src/flavors/cycle2/_config.translations.py:76
-#: src/flavors/cycle3/_config.translations.py:77
+#: src/flavors/cycle3/_config.translations.py:80
 msgid "Are you submitting this idea through a community event or activity?"
 msgstr "您是通过社区活动提交这个想法吗？"
 
 #: src/flavors/cycle2/_config.translations.py:77
-#: src/flavors/cycle3/_config.translations.py:78
+#: src/flavors/cycle3/_config.translations.py:81
 msgid "No; I am submitting this idea on my own"
 msgstr "不；我自己提交了这个想法"
 
 #: src/flavors/cycle2/_config.translations.py:78
-#: src/flavors/cycle3/_config.translations.py:79
+#: src/flavors/cycle3/_config.translations.py:82
 msgid ""
 "Yes, through a community event or activity hosted by <strong>PB Contract "
 "Partner organization</strong>"
 msgstr "是的，通过社区活动或<strong>PB 合同合作伙伴组织</strong>主办的活动"
 
 #: src/flavors/cycle2/_config.translations.py:79
-#: src/flavors/cycle3/_config.translations.py:80
+#: src/flavors/cycle3/_config.translations.py:83
 msgid ""
 "Yes, through an event or activity hosted by a <strong>Non-PB Contract "
 "Partner</strong>"
 msgstr "是的，通过<strong>非 PB 合同合作伙伴</strong>主办的活动"
 
 #: src/flavors/cycle2/_config.translations.py:80
-#: src/flavors/cycle3/_config.translations.py:81
+#: src/flavors/cycle3/_config.translations.py:84
 msgid "Which partner organization hosted the event?"
 msgstr "哪个合作组织主办了此次活动？"
 
 #: src/flavors/cycle2/_config.translations.py:81
 #: src/flavors/cycle2/_config.translations.py:84
-#: src/flavors/cycle3/_config.translations.py:82
 #: src/flavors/cycle3/_config.translations.py:85
+#: src/flavors/cycle3/_config.translations.py:88
 msgid "Organization name"
 msgstr "组织名称"
 
 #: src/flavors/cycle2/_config.translations.py:82
-#: src/flavors/cycle3/_config.translations.py:83
+#: src/flavors/cycle3/_config.translations.py:86
 msgid "Select an organization…"
 msgstr "选择一个组织..."
 
 #: src/flavors/cycle2/_config.translations.py:83
-#: src/flavors/cycle3/_config.translations.py:84
+#: src/flavors/cycle3/_config.translations.py:87
 msgid "What is the name of the organization that hosted the event?'"
 msgstr "举办此次活动的组织名称是什么？&#39;"
 
 #: src/flavors/cycle2/_config.translations.py:85
-#: src/flavors/cycle3/_config.translations.py:86
+#: src/flavors/cycle3/_config.translations.py:89
 msgid "Your First Name"
 msgstr "您的名字"
 
 #: src/flavors/cycle2/_config.translations.py:86
-#: src/flavors/cycle3/_config.translations.py:87
+#: src/flavors/cycle3/_config.translations.py:90
 msgid "Submitter's First Name"
 msgstr "提交者的名字"
 
 #: src/flavors/cycle2/_config.translations.py:88
-#: src/flavors/cycle3/_config.translations.py:89
+#: src/flavors/cycle3/_config.translations.py:92
 msgid "Your Last Name"
 msgstr "您的姓氏"
 
 #: src/flavors/cycle2/_config.translations.py:89
-#: src/flavors/cycle3/_config.translations.py:90
+#: src/flavors/cycle3/_config.translations.py:93
 msgid "Submitter's Last Name"
 msgstr "提交人的姓氏"
 
 #: src/flavors/cycle2/_config.translations.py:100
-#: src/flavors/cycle3/_config.translations.py:101
+#: src/flavors/cycle3/_config.translations.py:104
 msgid "What is your age in years?"
 msgstr "您的年龄是多少岁？"
 
 #: src/flavors/cycle2/_config.translations.py:101
-#: src/flavors/cycle3/_config.translations.py:102
+#: src/flavors/cycle3/_config.translations.py:105
 msgid "Age"
 msgstr "年龄"
 
 #: src/flavors/cycle2/_config.translations.py:102
-#: src/flavors/cycle3/_config.translations.py:103
+#: src/flavors/cycle3/_config.translations.py:106
 msgid "What is your race and/or ethnicity?"
 msgstr "您的种族和/或民族是什么？"
 
 #: src/flavors/cycle2/_config.translations.py:103
-#: src/flavors/cycle3/_config.translations.py:104
+#: src/flavors/cycle3/_config.translations.py:107
 msgid "Race and/or Ethnicity"
 msgstr "种族和/或民族"
 
 #: src/flavors/cycle2/_config.translations.py:104
-#: src/flavors/cycle3/_config.translations.py:105
-#: src/flavors/cycle3/_config.translations.py:128
+#: src/flavors/cycle3/_config.translations.py:108
+#: src/flavors/cycle3/_config.translations.py:131
 msgid "Select all that apply."
 msgstr "选择所有适用项。"
 
 #: src/flavors/cycle2/_config.translations.py:105
-#: src/flavors/cycle3/_config.translations.py:106
+#: src/flavors/cycle3/_config.translations.py:109
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:9
 msgid "American Indian or Alaska Native"
 msgstr "美国印第安人或阿拉斯加原住民"
 
 #: src/flavors/cycle2/_config.translations.py:106
-#: src/flavors/cycle3/_config.translations.py:107
+#: src/flavors/cycle3/_config.translations.py:110
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:10
 msgid "Asian"
 msgstr "亚洲"
 
 #: src/flavors/cycle2/_config.translations.py:107
-#: src/flavors/cycle3/_config.translations.py:108
+#: src/flavors/cycle3/_config.translations.py:111
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:11
 msgid "Black or African American"
 msgstr "黑人或非裔美国人"
 
 #: src/flavors/cycle2/_config.translations.py:108
-#: src/flavors/cycle3/_config.translations.py:109
+#: src/flavors/cycle3/_config.translations.py:112
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:20
 msgid "Hispanic or Latino/-a/-e/-x"
 msgstr "西班牙裔或拉丁裔/-a/-e/-x"
 
 #: src/flavors/cycle2/_config.translations.py:109
-#: src/flavors/cycle3/_config.translations.py:110
+#: src/flavors/cycle3/_config.translations.py:113
 msgid "Native Hawaiian or other Pacific Islander"
 msgstr "夏威夷原住民或其他太平洋岛民"
 
 #: src/flavors/cycle2/_config.translations.py:110
-#: src/flavors/cycle3/_config.translations.py:111
+#: src/flavors/cycle3/_config.translations.py:114
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:44
 msgid "White"
 msgstr "白色的"
 
 #: src/flavors/cycle2/_config.translations.py:111
-#: src/flavors/cycle3/_config.translations.py:112
+#: src/flavors/cycle3/_config.translations.py:115
 msgid "Other"
 msgstr "其他"
 
 #: src/flavors/cycle2/_config.translations.py:112
-#: src/flavors/cycle3/_config.translations.py:113
+#: src/flavors/cycle3/_config.translations.py:116
 msgid "Please tell us what other race/ethnicity"
 msgstr "请告诉我们其他种族/民族"
 
 #: src/flavors/cycle2/_config.translations.py:113
-#: src/flavors/cycle3/_config.translations.py:114
+#: src/flavors/cycle3/_config.translations.py:117
 msgid "What was your household income in the past 12 months?"
 msgstr "过去 12 个月您的家庭收入是多少？"
 
 #: src/flavors/cycle2/_config.translations.py:114
-#: src/flavors/cycle3/_config.translations.py:115
+#: src/flavors/cycle3/_config.translations.py:118
 msgid "Household Income"
 msgstr "家庭收入"
 
 #: src/flavors/cycle2/_config.translations.py:115
-#: src/flavors/cycle3/_config.translations.py:116
+#: src/flavors/cycle3/_config.translations.py:119
 msgid "Select an option…"
 msgstr "选择一个选项..."
 
 #: src/flavors/cycle2/_config.translations.py:116
-#: src/flavors/cycle3/_config.translations.py:117
+#: src/flavors/cycle3/_config.translations.py:120
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:25
 msgid "Less than $14,999"
 msgstr "低于 14,999 美元"
 
 #: src/flavors/cycle2/_config.translations.py:117
-#: src/flavors/cycle3/_config.translations.py:118
+#: src/flavors/cycle3/_config.translations.py:121
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:2
 msgid "$15,000 to $34,999"
 msgstr "15,000美元至34,999美元"
 
 #: src/flavors/cycle2/_config.translations.py:118
-#: src/flavors/cycle3/_config.translations.py:119
+#: src/flavors/cycle3/_config.translations.py:122
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:4
 msgid "$35,000 to $49,999"
 msgstr "35,000美元至49,999美元"
 
 #: src/flavors/cycle2/_config.translations.py:119
-#: src/flavors/cycle3/_config.translations.py:120
+#: src/flavors/cycle3/_config.translations.py:123
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:5
 msgid "$50,000 to $74,999"
 msgstr "50,000美元至74,999美元"
 
 #: src/flavors/cycle2/_config.translations.py:120
-#: src/flavors/cycle3/_config.translations.py:121
+#: src/flavors/cycle3/_config.translations.py:124
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:6
 msgid "$75,000 to $99,999"
 msgstr "75,000美元至99,999美元"
 
 #: src/flavors/cycle2/_config.translations.py:121
-#: src/flavors/cycle3/_config.translations.py:122
+#: src/flavors/cycle3/_config.translations.py:125
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:1
 msgid "$100,000 to $149,999"
 msgstr "100,000美元至149,999美元"
 
 #: src/flavors/cycle2/_config.translations.py:122
-#: src/flavors/cycle3/_config.translations.py:123
+#: src/flavors/cycle3/_config.translations.py:126
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:3
 msgid "$150,000 or more"
 msgstr "15万美元或以上"
 
 #: src/flavors/cycle2/_config.translations.py:123
-#: src/flavors/cycle3/_config.translations.py:124
+#: src/flavors/cycle3/_config.translations.py:127
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:21
 msgid "I don't know"
 msgstr "我不知道"
 
 #: src/flavors/cycle2/_config.translations.py:124
-#: src/flavors/cycle3/_config.translations.py:125
+#: src/flavors/cycle3/_config.translations.py:128
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:35
 msgid "Prefer not to answer"
 msgstr "不想回答"
 
-#: src/flavors/cycle3/_config.translations.py:39
+#: src/flavors/cycle3/_config.translations.py:9
+msgid "What should the City do with $2 million to improve Boston?"
+msgstr "市政府应该如何使用这200万美元来改善波士顿的状况？"
+
+#: src/flavors/cycle3/_config.translations.py:10
+msgid "Vote in Boston's Participatory Budgeting by February 15, 2027."
+msgstr "请在 2027 年 2 月 15 日前参与波士顿的参与式预算投票。"
+
+#: src/flavors/cycle3/_config.translations.py:11
+msgid ""
+"Vote: How should Boston spend $2 million to benefit our communities? Read "
+"this year's proposals and vote by February 15, 2027."
+msgstr "投票：波士顿应该如何使用这200万美元来造福我们的社区？请阅读今年的提案，并在2027年2月15日前投票。"
+
+#: src/flavors/cycle3/_config.translations.py:42
 msgid "Citywide ideas apply to the entire City of Boston."
 msgstr "全市范围的理念适用于整个波士顿市。"
 
-#: src/flavors/cycle3/_config.translations.py:40
+#: src/flavors/cycle3/_config.translations.py:43
 msgid "Your idea will appear at City Hall."
 msgstr "您的想法将会在市政厅公布。"
 
-#: src/flavors/cycle3/_config.translations.py:126
+#: src/flavors/cycle3/_config.translations.py:129
 msgid "How did you hear about Ideas in Action?"
 msgstr "您是如何了解到“行动中的创意”这个项目的？"
 
-#: src/flavors/cycle3/_config.translations.py:127
+#: src/flavors/cycle3/_config.translations.py:130
 msgid "How they heard about Ideas in Action"
 msgstr "他们是如何了解到“行动中的理念”的？"
 
-#: src/flavors/cycle3/_config.translations.py:129
+#: src/flavors/cycle3/_config.translations.py:132
 msgid "City of Boston newsletter, event, or public official"
 msgstr "波士顿市政府新闻简报、活动或公职人员"
 
-#: src/flavors/cycle3/_config.translations.py:130
+#: src/flavors/cycle3/_config.translations.py:133
 msgid "Local community organization or event"
 msgstr "当地社区组织或活动"
 
-#: src/flavors/cycle3/_config.translations.py:131
+#: src/flavors/cycle3/_config.translations.py:134
 msgid "Boston Public Library"
 msgstr "波士顿公共图书馆"
 
-#: src/flavors/cycle3/_config.translations.py:132
+#: src/flavors/cycle3/_config.translations.py:135
 msgid "Boston Centers for Youth and Families (BCYF)"
 msgstr "波士顿青少年及家庭中心（BCYF）"
 
-#: src/flavors/cycle3/_config.translations.py:133
+#: src/flavors/cycle3/_config.translations.py:136
 msgid "Boston Public Schools"
 msgstr "波士顿公立学校"
 
-#: src/flavors/cycle3/_config.translations.py:134
+#: src/flavors/cycle3/_config.translations.py:137
 msgid "Social Media (examples: Facebook, Instagram, Twitter X)"
 msgstr "社交媒体（例如：Facebook、Instagram、Twitter X）"
 
-#: src/flavors/cycle3/_config.translations.py:135
+#: src/flavors/cycle3/_config.translations.py:138
 msgid "Word of mouth (family, friends, neighbors)"
 msgstr "口口相传（家人、朋友、邻居）"
 
-#: src/flavors/cycle3/_config.translations.py:136
+#: src/flavors/cycle3/_config.translations.py:139
 msgid "Newspaper, radio, billboard, or bus advertisement"
 msgstr "报纸、广播、广告牌或公交车广告"
 
-#: src/flavors/cycle3/_config.translations.py:137
+#: src/flavors/cycle3/_config.translations.py:140
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:31
 msgid "Other (write-in)"
 msgstr "其他（请填写）"
 
-#: src/flavors/cycle3/_config.translations.py:138
+#: src/flavors/cycle3/_config.translations.py:141
 msgid "Please specify"
 msgstr "请具体说明"
 
-#: src/flavors/cycle3/_config.translations.py:139
+#: src/flavors/cycle3/_config.translations.py:142
 msgid "Have you participated in Ideas in Action in the past?"
 msgstr "你过去参加过“创意付诸行动”活动吗？"
 
-#: src/flavors/cycle3/_config.translations.py:140
+#: src/flavors/cycle3/_config.translations.py:143
 msgid "Participated in Ideas in Action in the past"
 msgstr "过去曾参与“理念付诸行动”项目"
 
-#: src/flavors/cycle3/_config.translations.py:141
+#: src/flavors/cycle3/_config.translations.py:144
 msgid ""
 "Examples include: submitting ideas online, attending a workshop or forum, or"
 " voting for project proposals on the ballot."
 msgstr "例如：在线提交想法、参加研讨会或论坛，或在投票表决中对项目提案进行投票。"
 
-#: src/flavors/cycle3/_config.translations.py:142
+#: src/flavors/cycle3/_config.translations.py:145
 msgid "Yes, I have participated in the past"
 msgstr "是的，我过去曾参与过。"
 
-#: src/flavors/cycle3/_config.translations.py:143
+#: src/flavors/cycle3/_config.translations.py:146
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:28
 msgid "No, this is my first time"
 msgstr "不，这是我第一次"
 
-#: src/flavors/cycle3/_config.translations.py:144
+#: src/flavors/cycle3/_config.translations.py:147
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:29
 msgid "Not sure"
 msgstr "没有把握"
+
+#: src/flavors/cycle3/_config.translations.py:161
+msgid "Voting in this cycle"
+msgstr "本轮投票"
+
+#: src/flavors/cycle3/_config.translations.py:162
+msgid "Who can vote?"
+msgstr "谁有投票权？"
+
+#: src/flavors/cycle3/_config.translations.py:163
+msgid ""
+"All residents of the city of Boston who are 11 years or older are eligible "
+"to participate."
+msgstr "波士顿市所有年满 11 周岁的居民均有资格参加。"
+
+#: src/flavors/cycle3/_config.translations.py:164
+msgid "How do I submit my vote?"
+msgstr "我该如何投票？"
+
+#: src/flavors/cycle3/_config.translations.py:165
+msgid ""
+"You can submit your vote online through our secure voting platform. <a "
+"href=\"/vote/auth\" data-internal=\"true\">Click here to vote</a>."
+msgstr ""
+"您可以通过我们安全的在线投票平台提交您的投票。<a href=\"/vote/auth\" data-"
+"internal=\"true\">点击此处投票</a>。"
+
+#: src/flavors/cycle3/_config.translations.py:166
+msgid "Can I change my vote after submitting it?"
+msgstr "提交投票后可以更改吗？"
+
+#: src/flavors/cycle3/_config.translations.py:167
+msgid ""
+"No, once your vote is submitted, it cannot be changed. Please review your "
+"choices carefully before finalizing your vote."
+msgstr "不，投票提交后无法更改。请在最终投票前仔细核对您的选择。"
+
+#: src/flavors/cycle3/_config.translations.py:168
+msgid "When will the results be announced?"
+msgstr "何时公布结果？"
+
+#: src/flavors/cycle3/_config.translations.py:169
+msgid ""
+"The results will be announced in late February on the Office of "
+"Participatory Budgeting's website, newsletter, and the City's social media "
+"accounts."
+msgstr "结果将于二月下旬在参与式预算办公室的网站、简报和市政府的社交媒体账户上公布。"
+
+#: src/flavors/cycle3/_config.translations.py:170
+msgid "Is my vote public?"
+msgstr "我的投票是公开的吗？"
+
+#: src/flavors/cycle3/_config.translations.py:171
+msgid ""
+"No, all votes are confidential and will not be disclosed to the public. Your"
+" privacy is protected throughout the voting process."
+msgstr "不，所有投票均保密，不会向公众公开。在整个投票过程中，您的隐私都将受到保护。"
+
+#: src/flavors/cycle3/_config.translations.py:172
+msgid "How many ideas can I vote for?"
+msgstr "我可以给多少个想法投票？"
+
+#: src/flavors/cycle3/_config.translations.py:173
+msgid ""
+"You can vote for up to 5 project ideas. All votes must be submitted at the "
+"same time."
+msgstr "您最多可以为 5 个项目创意投票。所有投票必须同时提交。"
+
+#: src/flavors/cycle3/_config.translations.py:174
+msgid "Can I vote more than once?"
+msgstr "我可以投多次票吗？"
+
+#: src/flavors/cycle3/_config.translations.py:175
+msgid ""
+"No, each resident can submit just one ballot. After submitting, you will not"
+" be able to vote again this cycle."
+msgstr "不，每位居民只能提交一张选票。提交后，您将无法在本轮选举中再次投票。"
+
+#: src/flavors/cycle3/_config.translations.py:176
+msgid "How long is voting open for?"
+msgstr "投票持续多久？"
+
+#: src/flavors/cycle3/_config.translations.py:177
+msgid ""
+"The voting phase starts January 15, 2027, and runs through February 15, "
+"2027."
+msgstr "投票阶段从 2027 年 1 月 15 日开始，一直持续到 2027 年 2 月 15 日。"
+
+#: src/flavors/cycle3/_config.translations.py:178
+msgid "About Ideas in Action (IIA)"
+msgstr "关于行动中的理念（IIA）"
+
+#: src/flavors/cycle3/_config.translations.py:179
+msgid "What is Ideas in Action?"
+msgstr "什么是“行动中的理念”？"
+
+#: src/flavors/cycle3/_config.translations.py:180
+msgid ""
+"Ideas in Action is the City of Boston's Participatory Budgeting initiative, "
+"which allows Boston residents to propose and vote on projects to benefit "
+"their communities."
+msgstr "“行动中的理念”是波士顿市政府的参与式预算倡议，它允许波士顿居民提出并投票表决有利于他们社区的项目。"
+
+#: src/flavors/cycle3/_config.translations.py:181
+msgid "How are projects selected for the ballot?"
+msgstr "如何选出项目进入投票环节？"
+
+#: src/flavors/cycle3/_config.translations.py:182
+msgid ""
+"Proposals are constructed through community engagement forums that turn <a "
+"href=\"https://participate.boston.gov/page/about\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">ideas submitted</a> by your neighbors into "
+"projects."
+msgstr ""
+"提案是通过社区参与论坛制定的，将邻居们<a href=\"https://participate.boston.gov/page/about\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">提交的想法</a>转化为项目。"
+
+#: src/flavors/cycle3/_config.translations.py:183
+msgid "What is participatory budgeting?"
+msgstr "什么是参与式预算？"
+
+#: src/flavors/cycle3/_config.translations.py:184
+msgid ""
+"Participatory budgeting is a democratic process in which community members "
+"directly decide how to allocate a portion of the public budget for local "
+"projects and initiatives. In Boston, residents decide where $2 million of "
+"Boston's budget goes, so multiple projects will be funded."
+msgstr ""
+"参与式预算是一种民主程序，社区成员直接决定如何将部分公共预算分配给当地项目和计划。在波士顿，居民决定波士顿200万美元预算的用途，从而资助多个项目。"
+
+#: src/flavors/cycle3/_config.translations.py:185
+msgid "How can I get involved beyond voting?"
+msgstr "除了投票之外，我还能如何参与其中？"
+
+#: src/flavors/cycle3/_config.translations.py:186
+msgid ""
+"Stay tuned for an announcement of winning projects in the spring. We will "
+"reopen for 2027-28 year idea proposals in the summer of 2027. Check out <a "
+"href=\"https://boston.gov/participate\" target=\"_blank\" rel=\"noopener "
+"noreferrer\">boston.gov/Participate</a> for updated ways on how to stay "
+"engaged."
+msgstr ""
+"敬请关注春季公布的获奖项目名单。我们将于2027年夏季重新开放2027-2028年度的创意提案征集。请访问<a "
+"href=\"https://boston.gov/participate\" target=\"_blank\" rel=\"noopener "
+"noreferrer\">boston.gov/Participate</a>了解最新的参与方式。"
+
+#: src/flavors/cycle3/_config.translations.py:187
+msgid "What projects have been selected in previous years?"
+msgstr "往年都入选了哪些项目？"
+
+#: src/flavors/cycle3/_config.translations.py:188
+msgid ""
+"Check out projects funded in previous cycles here: <a "
+"href=\"https://boston.gov/departments/participatory-budgeting/ideas-action-"
+"project-implementation\" target=\"_blank\" rel=\"noopener "
+"noreferrer\">boston.gov/departments/participatory-budgeting/ideas-action-"
+"project-implementation</a>."
+msgstr ""
+"查看之前几轮资助的项目： <a href=\"https://boston.gov/departments/participatory-"
+"budgeting/ideas-action-project-implementation\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">boston.gov/departments/participatory-"
+"budgeting/ideas-action-project-implementation</a> 。"
 
 #: src/flavors/cycle3/jstemplates/activity-list-item.html:1
 msgid ""
@@ -1333,7 +1533,8 @@ msgid ""
 "into project proposals for the PB ballot. Voting will take place in January "
 "of 2027! "
 msgstr ""
-"市政府将于今年秋季举办提案发展论坛。这些会议将使居民能够审查、确定优先顺序，并将收集到的想法发展成项目提案，用于PB投票。投票将于2027年1月进行！ "
+"市政府将于今年秋季举办提案开发论坛。这些会议将让居民们有机会审阅、确定优先顺序，并将收集到的想法发展成项目提案，提交给公共预算投票。投票将于2027年1月举行！"
+" "
 
 #: src/flavors/cycle3/jstemplates/pages/overview.html:32
 msgid ""
@@ -1523,6 +1724,838 @@ msgstr "选择语言"
 #: src/pbboston/templates/language_picker.html:18
 msgid "Close language picker"
 msgstr "关闭语言选择器"
+
+#: src/sa_vote/decorators.py:56
+msgid "Too many requests. Please try again later."
+msgstr "请求次数过多，请稍后再试。"
+
+#: src/sa_vote/decorators.py:57
+#, python-format
+msgid "Rate limit exceeded. Try again in %(seconds)s seconds."
+msgstr "超出速率限制。请在%(seconds)s秒后重试。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-400.html:1
+msgid "Invalid phone number"
+msgstr "无效的电话号码"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-400.html:2
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-429.html:1
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-502.html:1
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-400.html:3
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-404.html:3
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-429.html:1
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-check-voted-error.html:2
+msgid "Ok"
+msgstr "好的"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-400.html:3
+msgid ""
+"We weren't able to recognize the phone number. Please check the number and "
+"try again."
+msgstr "我们无法识别该电话号码。请检查号码并重试。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-403.html:1
+msgid ""
+"It looks like a ballot has already been submitted for the phone number "
+"<code>{{phone_number}}</code>. If you believe this is an error, please "
+"contact the Office of Participatory Budgeting at pb@boston.gov. <a "
+"href=\"mailto:pb@boston.gov\">Send us an email.</a>"
+msgstr ""
+"似乎已经有人提交了针对电话号码<code>{{phone_number}}</code>的投票。如果您认为这是一个错误，请联系参与式预算办公室，邮箱地址为"
+" pb@boston.gov。<a href=\"mailto:pb@boston.gov\">请给我们发送电子邮件。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-403.html:2
+msgid "Phone number has been used"
+msgstr "电话号码已被使用"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-403.html:3
+msgid "Try another number"
+msgstr "请尝试其他号码"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-429.html:2
+msgid "Too many requests"
+msgstr "请求过多"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-429.html:3
+msgid "You have made too many code requests. Please wait before trying again."
+msgstr "您提交的代码请求次数过多，请稍候后再试。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-502.html:2
+msgid "Please try again later."
+msgstr "请稍后再试。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-502.html:3
+msgid "Something unexpected went wrong while requesting a voter code:"
+msgstr "申请选民代码时发生意外错误："
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-request-code-502.html:4
+msgid "Something went wrong"
+msgstr "出问题了"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-400.html:1
+msgid ""
+"It seems that you did not supply a voter code. Please check the code and try"
+" again."
+msgstr "您似乎没有提供选民代码。请检查代码并重试。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-400.html:2
+msgid "Missing voter code"
+msgstr "缺少选民代码"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-404.html:1
+msgid "Invalid voter code"
+msgstr "无效的选民代码"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-404.html:2
+msgid ""
+"It seems that the voter code you entered is invalid, or it has expired. "
+"Please check the code and try again, or request a new code."
+msgstr "您输入的投票代码似乎无效或已过期。请检查代码并重试，或申请新的代码。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-429.html:2
+msgid "Too many attempts"
+msgstr "尝试次数过多"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/auth-verify-code-429.html:3
+msgid ""
+"Too many code verification attempts have been made. Please wait before "
+"trying again."
+msgstr "代码验证尝试次数过多，请稍候后再试。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:1
+msgid "Checking vote status&hellip;"
+msgstr "正在查询投票状态……"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:2
+msgid "Continue to the survey"
+msgstr "继续参与调查"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:3
+#: src/sa_vote/jstemplates/sa_vote/includes/vote-confirm-modal.html:2
+msgid "Ready to vote?"
+msgstr "准备好投票了吗？"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:4
+msgid "Select up to {{MAX_SELECTIONS}} proposals"
+msgstr "最多选择{{MAX_SELECTIONS}}提案"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:5
+msgid "Submit ballot"
+msgstr "提交选票"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:6
+msgid "Thank you for voting!"
+msgstr "感谢您的投票！"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:7
+msgid "Vote now!"
+msgstr "立即投票！"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:8
+msgid "Vote"
+msgstr "投票"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:9
+msgid "You may pick up to {{remaining}} more"
+msgstr "您可以选择{{remaining}}更多信息"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:10
+msgid "{{MAX_SELECTIONS}} proposals selected"
+msgstr "已选择{{MAX_SELECTIONS}}提案"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-banner.html:11
+msgid "{{count}} proposal(s) selected"
+msgstr "已选择{{count}}提案"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-check-voted-error.html:1
+msgid "Failed to check vote status"
+msgstr "未能检查投票状态"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-check-voted-error.html:3
+msgid ""
+"We could not verify whether you've already voted. Please reload the page and"
+" try again."
+msgstr "我们无法确认您是否已投票。请刷新页面后重试。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/ballot-scroll-progress.html:1
+msgid "Jump to the &quot;{{title}}&quot; proposal"
+msgstr "跳转至“ {{title}} ”提案"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/selected-proposal.html:1
+msgid "Remove {{title}}"
+msgstr "移除{{title}}"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:1
+msgid "Copy link"
+msgstr "复制链接"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:2
+msgid ""
+"Couldn't copy the link. Please copy it from your browser's address bar."
+msgstr "无法复制链接。请从浏览器地址栏复制链接。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:3
+msgid ""
+"Help your neighbors have a say in how the City spends $2 million. Share the "
+"ballot with your friends and family."
+msgstr "帮助你的邻居们对市政府如何使用200万美元发表意见。请将选票分享给你的朋友和家人。"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:4
+msgid "Language of the image to share"
+msgstr "分享图像的语言"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:5
+msgid "Link copied!"
+msgstr "链接已复制！"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:6
+msgid "Share on Facebook (opens in a new tab)"
+msgstr "分享到 Facebook（在新标签页中打开）"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:7
+msgid "Share on X (opens in a new tab)"
+msgstr "分享到 X（在新标签页中打开）"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/share-promo.html:8
+msgid "Spread the word!"
+msgstr "广而告之！"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/vote-confirm-modal.html:1
+msgid "Confirm"
+msgstr "确认"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/vote-confirm-modal.html:3
+msgid "Take me back to the ballot"
+msgstr "带我回到投票页面"
+
+#: src/sa_vote/jstemplates/sa_vote/includes/vote-confirm-modal.html:4
+msgid "Your selections"
+msgstr "您的选择"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:1
+msgid "<a href=\"/vote/ballot\" data-internal=\"true\">Vote now.</a>"
+msgstr "<a href=\"/vote/ballot\" data-internal=\"true\">立即投票。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:2
+msgid "Continue"
+msgstr "继续"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:3
+msgid ""
+"Enter the voter code you received via text message. If you did not receive a"
+" voter code, or the code you received has expired, you can request a new one"
+" by providing your phone number. <a data-internal=\"true\" "
+"href=\"/vote/auth/request-code\">Request a new voter code.</a>"
+msgstr ""
+"请输入您通过短信收到的投票验证码。如果您未收到投票验证码，或收到的验证码已过期，您可以提供您的手机号码申请新的验证码。<a data-"
+"internal=\"true\" href=\"/vote/auth/request-code\">申请新的投票验证码。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:4
+msgid "Enter your phone number to receive a voter code:"
+msgstr "请输入您的手机号码以获取投票代码："
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:5
+msgid "Enter your voter code:"
+msgstr "请输入您的选民代码："
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:6
+msgid "I already have a voter code"
+msgstr "我已经有投票代码了。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:7
+msgid "I am at least 11 years old or in the 6th grade"
+msgstr "我至少11岁，或者至少上六年级。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:8
+msgid "I confirm that I meet the requirements"
+msgstr "我确认我符合这些要求。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:9
+msgid "I have not voted in this year's IIA cycle"
+msgstr "我没有参加今年的IIA选举投票。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:10
+msgid "I live in the City of Boston"
+msgstr "我住在波士顿市。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:11
+msgid "I need a voter code"
+msgstr "我需要一个选民代码"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:12
+msgid ""
+"If you cannot receive text messages, or do not wish to provide your phone "
+"number, you can still request a voter code by contacting the Office of "
+"Participatory Budgeting. <a href=\"mailto:pb@boston.gov\">Email "
+"pb@boston.gov for a code.</a>"
+msgstr ""
+"如果您无法接收短信，或不想提供您的电话号码，您仍然可以通过联系参与式预算办公室申请选民代码。<a "
+"href=\"mailto:pb@boston.gov\">请发送电子邮件至 pb@boston.gov 获取代码。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:13
+msgid ""
+"Not eligible to vote but still curious about the ballots? <a href=\"/vote/ballot\"\n"
+"                    data-internal=\"true\">Return to the ballot.</a>"
+msgstr ""
+"没有投票资格但仍然对选票感兴趣？ <a href=\"/vote/ballot\"\n"
+"data-internal=&quot;true&quot;&gt;返回选票。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:15
+msgid "Request a voter code&hellip;"
+msgstr "申请选民代码……"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:16
+msgid "Select your neighborhood to continue:"
+msgstr "请选择您所在的社区继续："
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:17
+msgid "Select your neighborhood..."
+msgstr "选择您所在的社区……"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:18
+msgid "Send me a code"
+msgstr "给我发送验证码"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:19
+msgid "Sending..."
+msgstr "正在发送..."
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:20
+msgid "Sign up to vote!"
+msgstr "报名投票！"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:21
+msgid "To vote in the 2026 cycle, please confirm the following:"
+msgstr "如需参加2026年选举投票，请确认以下事项："
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:22
+msgid "Un-verify me"
+msgstr "取消我的认证"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:23
+msgid "Verify my code"
+msgstr "验证我的代码"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:24
+msgid "Verify your voter code&hellip;"
+msgstr "请核对您的选民代码……"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:25
+msgid "Verifying..."
+msgstr "正在核实……"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:26
+msgid ""
+"We will send a one-time voter code to this phone number. Standard messaging "
+"rates may apply. <a href=\"/vote/terms\" target=\"_blank\">Read about how we"
+" use your phone number in our terms of service.</a> <a "
+"href=\"/vote/privacy\" target=\"_blank\">Learn how we handle your data in "
+"our privacy policy.</a>"
+msgstr ""
+"我们将向此手机号码发送一次性投票验证码。可能适用标准短信费用。<a href=\"/vote/terms\" "
+"target=\"_blank\">请阅读我们的服务条款，了解我们如何使用您的手机号码。</a>请阅读<a href=\"/vote/privacy\""
+" target=\"_blank\">我们的隐私政策，了解我们如何处理您的数据。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:27
+msgid "You must live in one of these neighborhoods in order to vote"
+msgstr "你必须居住在这些社区之一才有资格投票。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:28
+msgid "You must meet these eligibility requirements in order to vote"
+msgstr "您必须符合以下资格要求才能投票。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:29
+msgid "You must provide a phone number to receive a voter code"
+msgstr "您必须提供电话号码才能收到选民代码。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:30
+msgid "You must provide a voter code"
+msgstr "您必须提供选民代码。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/auth.html:31
+msgid "You're all set to vote!"
+msgstr "你已经准备好投票了！"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/ballot.html:1
+msgid ""
+"For more information about this process, see our FAQ page. <a "
+"href=\"/vote/faq\" data-internal=\"true\">Read FAQs.</a>"
+msgstr ""
+"如需了解更多相关信息，请参阅我们的常见问题解答页面。<a href=\"/vote/faq\" data-"
+"internal=\"true\">阅读常见问题解答。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/ballot.html:2
+msgid ""
+"Read about them and vote by 2/15/2027. <a href=\"/vote/auth\" data-"
+"internal=\"true\">Sign up to vote.</a>"
+msgstr ""
+"请阅读相关信息并于2027年2月15日前投票。<a href=\"/vote/auth\" data-"
+"internal=\"true\">立即注册投票。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/ballot.html:3
+msgid ""
+"This year, your <img class=\"inline-scribble\"\n"
+"          src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"><span class=\"bigger-text\">neighbors</span> came up with <span\n"
+"          class=\"scribble-text scribble-text-pink bigger-text\">{{ballot.proposals.length}} projects</span> to <img\n"
+"          class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"><span\n"
+"          class=\"bigger-text\">Benefit Boston</span>"
+msgstr ""
+"今年，你的<img class=\"inline-scribble\"\n"
+" src=&quot;/static/img/iia/Scribble_Wavey_04_Pink.svg&quot;&gt;<span class=\"bigger-text\">邻居们想出了<span\n"
+" class=&quot;scribble-text scribble-text-pink bigger-text&quot;&gt; {{ballot.proposals.length}}项目到<img\n"
+" class=&quot;inline-scribble&quot; src=&quot;/static/img/iia/Scribble_Arrow_02_Pink.svg&quot; alt=&quot;&quot;&gt; <span\n"
+" class=&quot;bigger-text&quot;&gt;波士顿福利"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/faq.html:1
+msgid "Frequently asked questions"
+msgstr "常见问题解答"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/faq.html:2
+msgid ""
+"Not sure how voting works or want to learn more about this initiative? This "
+"guide will help get you started."
+msgstr "不确定投票流程或想了解更多关于这项倡议的信息？本指南将帮助您入门。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/faq.html:3
+msgid ""
+"Ready to get started? <a href=\"/vote/ballot\" data-internal=\"true\">Read "
+"this year's ballot.</a>"
+msgstr "准备好了吗？<a href=\"/vote/ballot\" data-internal=\"true\">请阅读今年的选票。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/home.html:1
+msgid ""
+"<span class=\"scribble-text scribble-text-pink bigger-text\">VOTE:</span> "
+"How should <img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\">Boston spend <span "
+"class=\"bigger-text\"><span class=\"scribble-text scribble-text-"
+"pink\">$</span><span class=\"scribble-underline\">2 million</span></span> "
+"to<img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\">benefit our "
+"<span class=\"bigger-text\">communities<span class=\"scribble-text scribble-"
+"text-pink\">?</span></span>"
+msgstr ""
+"<span class=\"scribble-text scribble-text-pink bigger-text\">投票：应该如何投票<img "
+"class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\">波士顿花费<span "
+"class=\"bigger-text\"><span class=\"scribble-underline\">200万<span "
+"class=\"scribble-text scribble-text-pink\">美元<img class=\"inline-scribble\" "
+"src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> 造福我们的<span "
+"class=\"bigger-text\">社区<span class=\"scribble-text scribble-text-pink\">？"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/home.html:2
+msgid "Tell us by February 15, 2027."
+msgstr "请在2027年2月15日前告知我们。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/home.html:3
+msgid ""
+"To learn more about voting in this cycle, visit our FAQ page. <a "
+"href=\"/vote/faq\" data-internal=\"true\">Read FAQs.</a>"
+msgstr ""
+"想了解更多关于本次投票的信息，请访问我们的常见问题解答页面。<a href=\"/vote/faq\" data-"
+"internal=\"true\">阅读常见问题解答。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/home.html:4
+msgid "VOTE NOW"
+msgstr "立即投票"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/home.html:5
+msgid ""
+"You can also explore this year's idea submission cycle. <a "
+"href=\"https://participate.boston.gov/page/about\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">Explore 2026 idea submissions.</a>"
+msgstr ""
+"您还可以浏览今年的创意征集周期。<a href=\"https://participate.boston.gov/page/about\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">查看2026年的创意征集。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:1
+msgid ""
+"<strong>No plain text storage:</strong> We will never store your phone "
+"number in plain text. We only store an encrypted hashed version of your "
+"phone number to uniquely identify voters."
+msgstr ""
+"<strong>绝不以明文形式存储：</strong>我们绝不会以明文形式存储您的电话号码。我们只会存储您电话号码的加密哈希版本，用于唯一识别选民身份。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:2
+msgid ""
+"<strong>No third-party marketing:</strong> We will not share, sell, rent, or"
+" trade your phone number or mobile messaging data with third parties or "
+"affiliates for marketing or promotional purposes."
+msgstr ""
+"<strong>禁止第三方营销：</strong>我们不会出于营销或推广目的与第三方或关联公司共享、出售、出租或交易您的电话号码或手机短信数据。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:3
+msgid ""
+"<strong>One-time verification code:</strong> We send you a single "
+"verification code by text message so you can vote. We will not send any "
+"further text message communication."
+msgstr "<strong>一次性验证码：</strong>我们会通过短信向您发送一次验证码，以便您进行投票。之后我们不会再发送任何其他短信。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:4
+msgid ""
+"After you vote, you can complete a short demographic survey. This survey is "
+"completely optional."
+msgstr "投票结束后，您可以填写一份简短的人口统计调查问卷。此问卷完全自愿填写。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:5
+msgid "Ballot Choices"
+msgstr "投票选项"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:6
+msgid "Demographic Survey"
+msgstr "人口调查"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:7
+msgid "Email Addresses"
+msgstr "电子邮件地址"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:8
+msgid ""
+"If you have questions about this privacy policy, please contact Boston's "
+"Office of Participatory Budgeting by email at pb@boston.gov. <a "
+"href=\"mailto:pb@boston.gov\">Send us an email.</a>"
+msgstr ""
+"如果您对本隐私政策有任何疑问，请通过电子邮件联系波士顿参与式预算办公室，邮箱地址为pb@boston.gov。<a "
+"href=\"mailto:pb@boston.gov\">给我们发送电子邮件。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:9
+msgid ""
+"If you share your email address with us, we only share it with Boston's "
+"Office of Participatory Budgeting for mailing list purposes. <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">Learn about the Office of "
+"Participatory Budgeting.</a>"
+msgstr ""
+"如果您与我们分享您的电子邮件地址，我们仅会将其分享给波士顿参与式预算办公室，用于邮件列表用途。 <a "
+"href=\"https://www.boston.gov/departments/participatory-budgeting\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">了解更多关于参与式预算办公室的信息。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:10
+msgid "Phone Numbers and Text Messages"
+msgstr "电话号码和短信"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:11
+#: src/sa_vote/templates/sa_vote/base.html:87
+msgid "Privacy Policy"
+msgstr "隐私政策"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:12
+msgid "Questions and Contact"
+msgstr "如有任何疑问或需要联系，请联系我们。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:13
+msgid ""
+"Ready to vote? <a href=\"/vote/ballot\" data-internal=\"true\">Return to the"
+" ballot.</a> Not sure yet? <a href=\"/vote/faq\" data-internal=\"true\">Read"
+" our frequently asked questions page.</a>"
+msgstr ""
+"准备好投票了吗？<a href=\"/vote/ballot\" data-internal=\"true\">返回投票页面。</a>还没决定？<a "
+"href=\"/vote/faq\" data-internal=\"true\">请阅读我们的常见问题解答页面。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:14
+msgid ""
+"We designed the Ideas in Action voting process to protect your privacy at "
+"every step. This policy explains how we collect, use, and protect your "
+"information when you take part in Boston's participatory budgeting vote."
+msgstr ""
+"我们精心设计了“行动中的理念”投票流程，旨在全程保护您的隐私。本政策解释了当您参与波士顿的参与式预算投票时，我们如何收集、使用和保护您的信息。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:15
+msgid ""
+"We use your votes only to determine which ballot proposals to fund in this "
+"cycle."
+msgstr "我们仅使用您的投票来决定本轮选举周期中资助哪些提案。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:16
+msgid ""
+"We will never link your email address to your ballot choices or your survey "
+"responses."
+msgstr "我们绝不会将您的电子邮件地址与您的投票选择或调查回复关联起来。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:17
+msgid ""
+"When you register to vote, we ask for your mobile phone number. We use phone"
+" numbers only to verify voter uniqueness and make sure each voter casts only"
+" one ballot."
+msgstr "当您登记投票时，我们会要求您提供手机号码。我们使用手机号码仅用于验证选民身份，并确保每位选民只投一票。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:18
+msgid ""
+"Your ballot choices are completely anonymous. We never connect your votes to"
+" your phone number, name, or identity."
+msgstr "您的投票选择完全匿名。我们绝不会将您的投票与您的电话号码、姓名或身份信息关联起来。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/privacy.html:19
+msgid ""
+"Your survey responses are anonymous and stored separately from your ballot. "
+"We use this data only to understand how people connect with the Ideas in "
+"Action process, and to make sure all Bostonians are represented. You can "
+"skip any questions you do not want to answer."
+msgstr ""
+"您的调查回复将匿名处理，并与您的投票记录分开存储。我们仅使用这些数据来了解人们如何参与“行动中的理念”项目，并确保所有波士顿市民的意见都能得到体现。您可以跳过任何您不想回答的问题。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:7
+msgid ""
+"<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">Thanks for voting!<img\n"
+"                class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">"
+msgstr ""
+"<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">谢谢投票！ <img\n"
+" class=&quot;inline-scribble&quot; src=&quot;/static/img/iia/Scribble_Star_Pink.svg&quot;&gt;"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:12
+msgid ""
+"Check all that apply. Some choices below may not be perfect for you, but please answer as best\n"
+"                    you can. Use the write-in option to add more details or add another group you identify with."
+msgstr ""
+"请勾选所有适用项。以下部分选项可能并不完全符合您的需求，但请尽力作答。\n"
+"可以。使用填写选项添加更多详细信息，或添加您认同的其他群体。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:14
+msgid ""
+"Do you identify with any of the following in terms of your race\n"
+"                    and/or ethnicity?"
+msgstr ""
+"就种族而言，您是否认同以下任何一项？\n"
+"种族？"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:16
+msgid ""
+"Examples include: submitting ideas online, attending a workshop or forum, or voting for project\n"
+"                    proposals on the ballot."
+msgstr ""
+"例如：在线提交想法、参加研讨会或论坛，或为项目投票。\n"
+"选票上的提案。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:18
+msgid ""
+"Have you participated in Ideas in Action in the\n"
+"                    past?"
+msgstr ""
+"您是否参加过“创意付诸行动”项目？\n"
+"过去的？"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:22
+msgid ""
+"If you are interested in receiving our newsletter with important PB\n"
+"            updates, share your email address below. Your email address will not be connected with your vote or\n"
+"            your answers to the questions above."
+msgstr ""
+"如果您有兴趣接收我们包含重要PB信息的简讯，请联系我们。\n"
+"如有更新，请在下方分享您的电子邮件地址。您的电子邮件地址不会与您的投票或任何其他信息关联。\n"
+"请回答以上问题。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:26
+msgid ""
+"Native Hawaiian or other Pacific\n"
+"                            Islander"
+msgstr ""
+"夏威夷原住民或其他太平洋岛民\n"
+"岛民"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:30
+msgid "Optional Survey"
+msgstr "可选调查"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:32
+msgid ""
+"Please answer a few short questions to help the City of Boston understand who is participating and how.\n"
+"            Your responses to the questions below will be anonymous. <strong>You can skip any questions you do not want\n"
+"                to answer.</strong>"
+msgstr ""
+"请回答几个简短的问题，以帮助波士顿市政府了解谁在参与以及如何参与。\n"
+"您对以下问题的回答将完全匿名。<strong>您可以跳过任何您不想回答的问题。\n"
+"回答。</strong>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:36
+msgid "Race or ethnicity not listed here"
+msgstr "此处未列出种族或民族"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:37
+msgid "Select an option"
+msgstr "选择一个选项"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:40
+msgid "Thank you! Your survey has been submitted."
+msgstr "谢谢！您的调查问卷已提交。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:41
+msgid "What is your age (in years)?"
+msgstr "您的年龄是多少岁？"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:42
+msgid ""
+"What was your household income in the past 12 months? Choose\n"
+"                    one:"
+msgstr ""
+"您家过去 12 个月的收入是多少？请选择\n"
+"一："
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:45
+msgid ""
+"Yes, I have participated in the\n"
+"                        past"
+msgstr ""
+"是的，我参加过。\n"
+"过去的"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:47
+msgid "Your email address:"
+msgstr "您的电子邮件地址："
+
+#: src/sa_vote/jstemplates/sa_vote/pages/survey.html:48
+msgid "Your vote has been counted."
+msgstr "您的投票已计入。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:1
+msgid ""
+"<strong>Carrier liability:</strong> Mobile carriers are not liable for "
+"delayed or undelivered messages."
+msgstr "<strong>运营商责任：</strong>移动运营商不对延迟或未送达的信息承担责任。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:2
+msgid ""
+"<strong>Help instructions:</strong> If you need help, you can email us at "
+"pb@boston.gov. <a href=\"mailto:pb@boston.gov\">Send us an email.</a>"
+msgstr ""
+"<strong>帮助说明：</strong>如果您需要帮助，可以发送电子邮件至 pb@boston.gov。<a "
+"href=\"mailto:pb@boston.gov\">给我们发送电子邮件。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:3
+msgid ""
+"<strong>Message frequency:</strong> You will get one text message with a "
+"verification code each time you request one. We won't send you any more text"
+" messages unless you ask for a new code."
+msgstr ""
+"<strong>短信发送频率：</strong>每次您请求验证码时，您都会收到一条包含验证码的短信。除非您再次请求验证码，否则我们不会再向您发送任何短信。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:4
+msgid "<strong>Pricing:</strong> Message and data rates may apply."
+msgstr "<strong>收费标准：</strong>可能收取短信和数据流量费用。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:5
+msgid "<strong>Program name:</strong> Ideas in Action Voter Verification"
+msgstr "<strong>项目名称：</strong>行动中的理念选民核查"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:6
+msgid "Contact us"
+msgstr "联系我们"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:7
+msgid ""
+"If you have any questions about these terms or the voting process, please "
+"contact Boston's Office of Participatory Budgeting at pb@boston.gov. <a "
+"href=\"mailto:pb@boston.gov\">Send us an email.</a>"
+msgstr ""
+"如果您对这些条款或投票过程有任何疑问，请联系波士顿参与式预算办公室，邮箱地址为pb@boston.gov。<a "
+"href=\"mailto:pb@boston.gov\">给我们发送电子邮件。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:8
+msgid "Privacy and data handling"
+msgstr "隐私和数据处理"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:9
+msgid ""
+"Ready to vote? <a href=\"/vote/ballot\" data-internal=\"true\">Return to the"
+" ballot.</a> Want to learn more? <a href=\"/vote/faq\" data-"
+"internal=\"true\">Read our frequently asked questions page.</a>"
+msgstr ""
+"准备投票了吗？<a href=\"/vote/ballot\" data-internal=\"true\">返回投票页面。</a>想了解更多信息？<a"
+" href=\"/vote/faq\" data-internal=\"true\">请阅读我们的常见问题解答页面。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:10
+#: src/sa_vote/templates/sa_vote/base.html:90
+msgid "Terms of Service"
+msgstr "服务条款"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:11
+msgid "Text message verification"
+msgstr "短信验证"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:12
+msgid ""
+"These terms of service cover your use of the Ideas in Action voting platform"
+" and the text message verification service."
+msgstr "这些服务条款涵盖您对“行动中的创意”投票平台和短信验证服务的使用。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:13
+msgid ""
+"To learn more about how we collect, use, and protect your information, "
+"please read our privacy policy. <a href=\"/vote/privacy\" "
+"target=\"_blank\">See our privacy policy.</a>"
+msgstr ""
+"如需了解我们如何收集、使用和保护您的信息，请阅读我们的隐私政策。<a href=\"/vote/privacy\" "
+"target=\"_blank\">查看我们的隐私政策。</a>"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:14
+msgid ""
+"We use phone numbers to make sure each person only votes once. By entering your phone number on our website, you agree to get a voter verification code\n"
+"  by text message."
+msgstr ""
+"我们使用电话号码来确保每人只能投票一次。在我们的网站上输入您的电话号码，即表示您同意接收选民验证码。\n"
+"通过短信。"
+
+#: src/sa_vote/jstemplates/sa_vote/pages/terms.html:16
+msgid ""
+"Your privacy is extremely important to us. We will never store your phone "
+"number in plain text. We will not share, sell, rent, or trade your phone "
+"number or mobile messaging consent data with third parties or affiliates for"
+" marketing or promotional purposes."
+msgstr ""
+"您的隐私对我们至关重要。我们绝不会以明文形式存储您的电话号码。我们不会出于营销或推广目的与第三方或关联公司共享、出售、出租或交换您的电话号码或移动短信许可数据。"
+
+#: src/sa_vote/templates/sa_vote/base.html:75
+msgid "Vote app navigation"
+msgstr "投票应用导航"
+
+#: src/sa_vote/templates/sa_vote/base.html:78
+msgid "Home"
+msgstr "家"
+
+#: src/sa_vote/templates/sa_vote/base.html:81
+msgid "Sign up to vote"
+msgstr "登记投票"
+
+#: src/sa_vote/templates/sa_vote/base.html:84
+msgid "FAQ"
+msgstr "常问问题"
+
+#: src/sa_vote/templates/sa_vote/sms_verification_message.txt:8
+#, python-format
+msgid ""
+"\n"
+"Hi, it's Poe Public on behalf of Ideas in Action! Your voter code is: %(code)s. This code will expire in 30 minutes.\n"
+msgstr ""
+"\n"
+"您好，这里是 Poe Public，代表 Ideas in Action！您的投票代码是： %(code)s 。此代码将在 30 分钟后过期。\n"
+
+#: src/sa_vote/views.py:188
+msgid "Failed to query API server"
+msgstr "查询 API 服务器失败"
+
+#: src/sa_vote/views.py:195
+msgid "Failed to find ballots on API server"
+msgstr "API 服务器上找不到选票"
+
+#: src/sa_vote/views.py:212
+#, python-format
+msgid "Failed to send verification SMS to %(phone_number)s"
+msgstr "向%(phone_number)s发送验证短信失败"
+
+#: src/sa_vote/views.py:315
+msgid "Must select between 1 and 5 proposals"
+msgstr "必须从 1 到 5 个提案中选择"
+
+#: src/sa_vote/views.py:318
+msgid "Proposals must not contain duplicate selections"
+msgstr "提案中不得包含重复选项。"
+
+#: src/sa_vote/views.py:324
+#, python-format
+msgid "Proposal not found: %(slug)s"
+msgstr "未找到提案： %(slug)s"
+
+#: src/sa_vote/views.py:347
+msgid "It appears that you have already submitted a ballot."
+msgstr "您似乎已经提交过选票。"
 
 #: src/sa_web/jstemplates/auth-nav.html:2
 msgid "Sign In"
