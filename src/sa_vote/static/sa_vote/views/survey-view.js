@@ -26,7 +26,6 @@ export const SurveyView = Backbone.View.extend({
     const urlWithLanguage = new URL(url);
     urlWithLanguage.searchParams.set('language', language);
 
-    ```
     const languages = (Shareabouts.bootstrapped.shareImages || []).map((image) => ({
       ...image,
       facebookUrl: this.getFacebookUrl(image.url),
