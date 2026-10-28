@@ -2242,8 +2242,8 @@ msgid ""
 msgstr ""
 "Ane sa a, ou <img class=\"inline-scribble\"\n"
 "          src=\"/static/img/iia/Scribble_Wavey_04_Pink.svg\"> <span class=\"bigger-text\">vwazen yo te vini ak <span\n"
-"          class=\"scribble-text scribble-text-pink bigger-text\"> pwojè {{ballot.proposals.length}}</span> pou  <img\n"
-"          class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"><span\n"
+"          class=\"scribble-text scribble-text-pink bigger-text\"> pwojè {{ballot.proposals.length}}</span> pou <img\n"
+"          class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> <span\n"
 "          class=\"bigger-text\">Benefis Boston</span>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/faq.html:1
