@@ -33,6 +33,31 @@ app:
         file: 'img/promo_screen/haitian-creole.png'
         width: 1080
         height: 1350
+      - code: 'zh-hans'
+        label: '简体中文'
+        file: 'img/promo_screen/simplified-chinese.png'
+        width: 1080
+        height: 1350
+      - code: 'ar'
+        label: 'العربية'
+        file: 'img/promo_screen/arabic.png'
+        width: 1080
+        height: 1350
+      - code: 'pt-br'
+        label: 'Português'
+        file: 'img/promo_screen/portuguese.png'
+        width: 1080
+        height: 1350
+      - code: 'so'
+        label: 'Soomaali'
+        file: 'img/promo_screen/somali.png'
+        width: 1080
+        height: 1350
+      - code: 'vi'
+        label: 'Tiếng Việt'
+        file: 'img/promo_screen/vietnamese.png'
+        width: 1080
+        height: 1350
 
 
   # When the map loads, existing places will be loaded in chunks. By default,
