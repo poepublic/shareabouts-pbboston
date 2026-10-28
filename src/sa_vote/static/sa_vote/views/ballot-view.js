@@ -2,6 +2,26 @@ import { showModalPopup } from './modal-popup-view';
 
 const MAX_SELECTIONS = Shareabouts.config.ballot.max_selections;
 
+/**
+ * Shuffle an array using the Fisher-Yates algorithm.
+ * Returns a new array with the elements in random order.
+ * @param {Array} array - The array to shuffle.
+ * @returns {Array} A new array with the elements in random order.
+ */
+function shuffle(array) {
+  if (!Array.isArray(array)) {
+    return array;
+  }
+
+  const shuffled = array.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) { //
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
 export const BallotView = Backbone.View.extend({
   events: {
     'change .proposal-checkbox': 'updateBannerSummary',
@@ -47,8 +67,19 @@ export const BallotView = Backbone.View.extend({
     }, this);
   },
 
+  getTemplateContext: function() {
+    return {
+      ...this.options,
+      ballot: {
+        ...this.options.ballot,
+        proposals: shuffle(this.options.ballot.proposals)
+      }
+    };
+  },
+
   render: function () {
-    this.$el.html(Handlebars.templates['sa_vote/pages/ballot'](this.options));
+    const context = this.getTemplateContext();
+    this.$el.html(Handlebars.templates['sa_vote/pages/ballot'](context));
     this.updateBannerSummary();
     this.setupScrollProgress();
     return this;
