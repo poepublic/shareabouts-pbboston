@@ -11,6 +11,7 @@ from django.core.cache import cache
 from django.core.exceptions import ImproperlyConfigured
 from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.templatetags.static import static
 from django.template.loader import render_to_string
 from django.utils.translation import get_language, gettext as _
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -482,6 +483,23 @@ def index(request, frontend_path=None):
     neighborhoods = load_neighborhoods()
     path_prefix = settings.BASE_URL
 
+    # Each language's share link opens the page in that language.
+    share_url = 'https://participate.boston.gov/vote/'
+    share_images = [
+        {
+            **image,
+            'path': static(image['file']),
+            'url': f'{share_url}?language={image["code"]}',
+        }
+        for image in request.shareabouts_config.get('app', {}).get('share', {}).get('images', [])
+    ]
+    share_image = next(
+        (image for image in share_images if image['code'] == get_language()),
+        share_images[0] if share_images else None,
+    )
+    for image in share_images:
+        image['selected'] = image is share_image
+
     context = {'config': request.shareabouts_config,
 
                'ballot_config': ballot_config,
@@ -503,6 +521,10 @@ def index(request, frontend_path=None):
 
                # Ballot proposal data
                'ballot_json': ballot_json,
+
+               # Promo images for sharing
+               'share_images': share_images,
+               'share_image': share_image,
 
                # Site root useful for automatic translation
                'site_root': settings.SITE_ROOT,

@@ -9,6 +9,56 @@ app:
   # Meta author that will show up in Google search results
   meta_author: OpenPlans.org
 
+  # Social sharing text (Used in OpenGraph tags on the vote pages + promotion screen at the bottom of the post-vote survey)
+  share:
+    url: https://participate.boston.gov/vote/
+    title: _(What should the City do with $2 million to improve Boston?)
+    description: _(Vote in Boston's Participatory Budgeting by February 15, 2027.)
+    image_alt: "_(Vote: How should Boston spend $2 million to benefit our communities? Read this year's proposals and vote by February 15, 2027.)"
+    # One promo image per language. Codes must match the codes in `languages`.
+    # The first image is the default for languages without their own image.
+    images:
+      - code: 'en'
+        label: 'English'
+        file: 'img/promo_screen/english.png'
+        width: 1080
+        height: 1350
+      - code: 'es'
+        label: 'Español'
+        file: 'img/promo_screen/spanish.png'
+        width: 1080
+        height: 1350
+      - code: 'ht'
+        label: 'Kreyòl Ayisyen'
+        file: 'img/promo_screen/haitian-creole.png'
+        width: 1080
+        height: 1350
+      - code: 'zh-hans'
+        label: '简体中文'
+        file: 'img/promo_screen/simplified-chinese.png'
+        width: 1080
+        height: 1350
+      - code: 'ar'
+        label: 'العربية'
+        file: 'img/promo_screen/arabic.png'
+        width: 1080
+        height: 1350
+      - code: 'pt-br'
+        label: 'Português'
+        file: 'img/promo_screen/portuguese.png'
+        width: 1080
+        height: 1350
+      - code: 'so'
+        label: 'Soomaali'
+        file: 'img/promo_screen/somali.png'
+        width: 1080
+        height: 1350
+      - code: 'vi'
+        label: 'Tiếng Việt'
+        file: 'img/promo_screen/vietnamese.png'
+        width: 1080
+        height: 1350
+
 
   # When the map loads, existing places will be loaded in chunks. By default,
   # the size of the chunks will be a reasonable default dictated by the API

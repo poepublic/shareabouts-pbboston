@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load static %}
 {% load django_vite %}
+{% load shareabouts_utils %}
 
 {% block header_intro %}
 <div id="boston-small-screen-lead-in" class="boston-small-screen-lead-in">
@@ -40,15 +41,27 @@
     <meta name="og:image" content="{{ attachment.file }}">
     {% endwith %}
   {% else %}
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{ config.app.title }}">
-    <meta name="twitter:description" content="{{ config.app.meta_description }}">
-
-    <!-- Facebook -->
+    <!-- OpenGraph (Facebook and others) -->
+    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ config.app.title }}" />
-    <meta property="og:title" content="{{ config.app.title }}" />
-    <meta property="og:description" content="{{ config.app.meta_description }}" />
+    <meta property="og:url" content="{{ config.app.share.url|default:'https://participate.boston.gov/vote/' }}" />
+    <meta property="og:title" content="{{ config.app.share.title }}" />
+    <meta property="og:description" content="{{ config.app.share.description }}" />
+    {% if share_image %}
+    <meta property="og:image" content="https://participate.boston.gov{{ share_image.path }}" />
+    <meta property="og:image:width" content="{{ share_image.width }}" />
+    <meta property="og:image:height" content="{{ share_image.height }}" />
+    {% endif %}
+    <meta property="og:image:alt" content="{{ config.app.share.image_alt }}" />
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ config.app.share.title }}">
+    <meta name="twitter:description" content="{{ config.app.share.description }}">
+    {% if share_image %}
+    <meta name="twitter:image" content="https://participate.boston.gov{{ share_image.path }}">
+    {% endif %}
+    <meta name="twitter:image:alt" content="{{ config.app.share.image_alt }}">
   {% endif%}
 {% endblock %}
 
@@ -72,6 +85,7 @@
 <script>
   Shareabouts.bootstrapped.neighborhoods = {{ neighborhoods|safe }};
   Shareabouts.bootstrapped.site_root = '{{ site_root }}';
+  Shareabouts.bootstrapped.shareImages = {{ share_images|as_json }};
 </script>
 
 <script src="{% static 'js/language-picker.js' %}"></script>
