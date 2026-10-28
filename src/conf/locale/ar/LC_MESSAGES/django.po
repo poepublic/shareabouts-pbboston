@@ -2121,7 +2121,8 @@ msgid ""
 "                    data-internal=\"true\">Return to the ballot.</a>"
 msgstr ""
 "غير مؤهل للتصويت ولكنك ما زلت مهتمًا بمعرفة المزيد عن أوراق الاقتراع؟ <a href=\"/vote/ballot\"\n"
-"data-internal=&quot;true&quot;&gt;العودة إلى ورقة الاقتراع.</a>"
+"<a href=\"/vote/ballot\"\n"
+"                    data-internal=\"true\">العودة إلى ورقة الاقتراع.</a>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/auth.html:15
 msgid "Request a voter code&hellip;"
