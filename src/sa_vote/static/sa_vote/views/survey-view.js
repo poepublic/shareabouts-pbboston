@@ -33,15 +33,18 @@ export const SurveyView = Backbone.View.extend({
     }));
     const selected = languages.find((language) => language.selected);
 
+    // Share the selected image's language link, so it matches the toggle
+    const shareUrl = selected?.url || urlWithLanguage.toString();
+
     return {
-      copyUrl: urlWithLanguage.toString(),
+      copyUrl: shareUrl,
       title: title,
       description: meta('og:description'),
       domain: urlWithLanguage.host,
       imagePath: selected?.path,
       imageAlt: meta('og:image:alt'),
-      facebookUrl: this.getFacebookUrl(urlWithLanguage.toString()),
-      xUrl: this.getXUrl(urlWithLanguage.toString(), title),
+      facebookUrl: this.getFacebookUrl(shareUrl),
+      xUrl: this.getXUrl(shareUrl, title),
       languages: languages,
       hasMultipleLanguages: languages.length > 1,
     };
@@ -65,6 +68,7 @@ export const SurveyView = Backbone.View.extend({
     this.$('.share-preview-image').attr('src', $button.data('image-path'));
     this.$('.share-button-facebook').attr('href', $button.data('facebook-url'));
     this.$('.share-button-x').attr('href', $button.data('x-url'));
+    this.$('.share-button-copy').data('url', $button.data('url'));
     this.clearCopyStatus();
   },
 

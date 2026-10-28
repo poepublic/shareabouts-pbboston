@@ -483,16 +483,15 @@ def index(request, frontend_path=None):
     neighborhoods = load_neighborhoods()
     path_prefix = settings.BASE_URL
 
-    # The default (first) language shares the bare URL so recipients keep their
-    # own language preference.
+    # Each language's share link opens the page in that language.
     share_url = 'https://participate.boston.gov/vote/'
     share_images = [
         {
             **image,
             'path': static(image['file']),
-            'url': share_url if index == 0 else f'{share_url}?language={image["code"]}',
+            'url': f'{share_url}?language={image["code"]}',
         }
-        for index, image in enumerate(request.shareabouts_config.get('app', {}).get('share', {}).get('images', []))
+        for image in request.shareabouts_config.get('app', {}).get('share', {}).get('images', [])
     ]
     share_image = next(
         (image for image in share_images if image['code'] == get_language()),

@@ -7,7 +7,7 @@
         {{#each share.languages}}
         <button type="button" class="share-language-button" lang="{{code}}"
             aria-pressed="{{#if selected}}true{{else}}false{{/if}}"
-            data-image-path="{{path}}" data-facebook-url="{{facebookUrl}}" data-x-url="{{xUrl}}">{{label}}</button>
+            data-image-path="{{path}}" data-url="{{url}}" data-facebook-url="{{facebookUrl}}" data-x-url="{{xUrl}}">{{label}}</button>
         {{/each}}
     </div>
     {{/if}}
