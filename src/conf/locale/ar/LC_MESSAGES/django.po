@@ -2120,7 +2120,7 @@ msgid ""
 "Not eligible to vote but still curious about the ballots? <a href=\"/vote/ballot\"\n"
 "                    data-internal=\"true\">Return to the ballot.</a>"
 msgstr ""
-"غير مؤهل للتصويت ولكنك ما زلت مهتمًا بمعرفة المزيد عن أوراق الاقتراع؟ <a href=\"/vote/ballot\"\n"
+"غير مؤهل للتصويت ولكنك ما زلت مهتمًا بمعرفة المزيد عن أوراق الاقتراع؟ \n"
 "<a href=\"/vote/ballot\"\n"
 "                    data-internal=\"true\">العودة إلى ورقة الاقتراع.</a>"
 
