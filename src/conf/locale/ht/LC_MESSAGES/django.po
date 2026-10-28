@@ -2471,8 +2471,8 @@ msgid ""
 "<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">Thanks for voting!<img\n"
 "                class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">"
 msgstr ""
-"<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">Mèsi paske ou te vote! <img\n"
-" klas=&quot;anliy-gribouyaj&quot; src=&quot;/static/img/iia/Scribble_Star_Pink.svg&quot;&gt;"
+"<img class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">Mèsi paske ou te vote!<img\n"
+"                class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Star_Pink.svg\">"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/survey.html:12
 msgid ""
