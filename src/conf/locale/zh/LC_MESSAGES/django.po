@@ -2102,9 +2102,9 @@ msgid ""
 msgstr ""
 "今年，你的<img class=\"inline-scribble\"\n"
 " src=&quot;/static/img/iia/Scribble_Wavey_04_Pink.svg&quot;&gt;<span class=\"bigger-text\">邻居们想出了<span\n"
-" class=&quot;scribble-text scribble-text-pink bigger-text&quot;&gt; {{ballot.proposals.length}}项目到<img\n"
-" class=&quot;inline-scribble&quot; src=&quot;/static/img/iia/Scribble_Arrow_02_Pink.svg&quot; alt=&quot;&quot;&gt; <span\n"
-" class=&quot;bigger-text&quot;&gt;波士顿福利"
+"          class=\"scribble-text scribble-text-pink bigger-text\"> {{ballot.proposals.length}}项目</span>到<img\n"
+"          class=\"inline-scribble\" src=\"/static/img/iia/Scribble_Arrow_02_Pink.svg\" alt=\"\"> <span\n"
+"          class=\"bigger-text\">波士顿福利</span>"
 
 #: src/sa_vote/jstemplates/sa_vote/pages/faq.html:1
 msgid "Frequently asked questions"
