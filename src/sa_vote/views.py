@@ -223,7 +223,8 @@ def admin_generate_code(request: HttpRequestWithConfig, *args, **kwargs) -> Http
 
 
 @rate_limit_ip(count=10, period=60, key_prefix='verify_code')
-def verify_code(request: HttpRequest) -> HttpResponse:
+@process_shareabouts_config
+def verify_code(request: HttpRequestWithConfig) -> HttpResponse:
     """
     A view to verify a voter code. Accepts code via POST. If code is valid
     should set the voter_id_hash and voter_verified in the session and return a
@@ -237,7 +238,14 @@ def verify_code(request: HttpRequest) -> HttpResponse:
     except ValueError as exc:
         return JsonResponse({'error': str(exc)}, status=400)
 
-    id_hash = get_mapped_voter_id(code)
+    # If a skeleton code is provided, it can be used indefinitely.
+    if code == request.shareabouts_config.get('app', {}).get('skeleton_code'):
+        # Generate a uuid hash.
+        voter_id = str(uuid.uuid4())
+        id_hash = hash_voter_id(voter_id)
+    else:
+        id_hash = get_mapped_voter_id(code)
+
     if not id_hash:
         return JsonResponse({'error': 'Invalid or expired code'}, status=404)
 
