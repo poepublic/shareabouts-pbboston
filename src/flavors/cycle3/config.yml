@@ -9,6 +9,56 @@ app:
   # Meta author that will show up in Google search results
   meta_author: OpenPlans.org
 
+  # Social sharing text (Used in OpenGraph tags on the vote pages + promotion screen at the bottom of the post-vote survey)
+  share:
+    url: https://participate.boston.gov/vote/
+    title: _(What should the City do with $2 million to improve Boston?)
+    description: _(Vote in Boston's Participatory Budgeting by February 15, 2027.)
+    image_alt: "_(Vote: How should Boston spend $2 million to benefit our communities? Read this year's proposals and vote by February 15, 2027.)"
+    # One promo image per language. Codes must match the codes in `languages`.
+    # The first image is the default for languages without their own image.
+    images:
+      - code: 'en'
+        label: 'English'
+        file: 'img/promo_screen/english.png'
+        width: 1080
+        height: 1350
+      - code: 'es'
+        label: 'Español'
+        file: 'img/promo_screen/spanish.png'
+        width: 1080
+        height: 1350
+      - code: 'ht'
+        label: 'Kreyòl Ayisyen'
+        file: 'img/promo_screen/haitian-creole.png'
+        width: 1080
+        height: 1350
+      - code: 'zh-hans'
+        label: '简体中文'
+        file: 'img/promo_screen/simplified-chinese.png'
+        width: 1080
+        height: 1350
+      - code: 'ar'
+        label: 'العربية'
+        file: 'img/promo_screen/arabic.png'
+        width: 1080
+        height: 1350
+      - code: 'pt-br'
+        label: 'Português'
+        file: 'img/promo_screen/portuguese.png'
+        width: 1080
+        height: 1350
+      - code: 'so'
+        label: 'Soomaali'
+        file: 'img/promo_screen/somali.png'
+        width: 1080
+        height: 1350
+      - code: 'vi'
+        label: 'Tiếng Việt'
+        file: 'img/promo_screen/vietnamese.png'
+        width: 1080
+        height: 1350
+
 
   # When the map loads, existing places will be loaded in chunks. By default,
   # the size of the chunks will be a reasonable default dictated by the API
@@ -863,9 +913,9 @@ place:
         - label: _(Less than $14,999)
           value: 'under_15000'
         - label: _($15,000 to $34,999)
-          value: '25000-49999'
+          value: '15000-34999'
         - label: _($35,000 to $49,999)
-          value: '50000-74999'
+          value: '35000-49999'
         - label: _($50,000 to $74,999)
           value: '50000-74999'
         - label: _($75,000 to $99,999)
@@ -886,11 +936,14 @@ place:
       help_text: >-
         _(Select all that apply.)
       type: checkboxgroup
+      # `icon` is shown next to the option in the admin report's outreach section.
       options:
         - label: _(City of Boston newsletter, event, or public official)
           value: city_of_boston
+          icon: 🏛️
         - label: _(Local community organization or event)
           value: local_community_organization
+          icon: 🏘️
         - label: _(Boston Public Library)
           value: boston_public_library
         - label: _(Boston Centers for Youth and Families (BCYF))
@@ -901,10 +954,12 @@ place:
           value: social_media
         - label: _(Word of mouth (family, friends, neighbors))
           value: word_of_mouth
+          icon: 🗣️
         - label: _(Newspaper, radio, billboard, or bus advertisement)
           value: newspaper_radio_billboard_bus
         - label: _(Other (write-in))
           value: other_write_in
+          icon: ✍️
       attrs:
         - key: data-has-children
     - prompt: _(Please specify)
@@ -970,8 +1025,53 @@ support:
   anonymous_name: _(Someone)
 
 ballot:
-  voter_support_group: admin
+  voter_support_group: voter supporters
+  manager_group: ballot managers
   max_selections: 5
+
+faq:
+  sections:
+    - title: _(Voting in this cycle)
+      questions:
+        - question: _(Who can vote?)
+          answer: _(All residents of the city of Boston who are 11 years or older are eligible to participate.)
+        - question: _(How do I submit my vote?)
+          answer: >-
+            _(You can submit your vote online through our secure voting platform.
+            <a href="/vote/auth" data-internal="true">Click here to vote</a>.)
+        - question: _(Can I change my vote after submitting it?)
+          answer: _(No, once your vote is submitted, it cannot be changed. Please review your choices carefully before finalizing your vote.)
+        - question: _(When will the results be announced?)
+          answer: _(The results will be announced in late February on the Office of Participatory Budgeting's website, newsletter, and the City's social media accounts.)
+        - question: _(Is my vote public?)
+          answer: _(No, all votes are confidential and will not be disclosed to the public. Your privacy is protected throughout the voting process.)
+        - question: _(How many ideas can I vote for?)
+          answer: _(You can vote for up to 5 project ideas. All votes must be submitted at the same time.)
+        - question: _(Can I vote more than once?)
+          answer: _(No, each resident can submit just one ballot. After submitting, you will not be able to vote again this cycle.)
+        - question: _(How long is voting open for?)
+          answer: _(The voting phase starts January 15, 2027, and runs through February 15, 2027.)
+    - title: _(About Ideas in Action (IIA))
+      questions:
+        - question: _(What is Ideas in Action?)
+          answer: _(Ideas in Action is the City of Boston's Participatory Budgeting initiative, which allows Boston residents to propose and vote on projects to benefit their communities.)
+        - question: _(How are projects selected for the ballot?)
+          answer: >-
+            _(Proposals are constructed through community engagement forums that turn
+            <a href="https://participate.boston.gov/page/about" target="_blank"
+            rel="noopener noreferrer">ideas submitted</a> by your neighbors into projects.)
+        - question: _(What is participatory budgeting?)
+          answer: _(Participatory budgeting is a democratic process in which community members directly decide how to allocate a portion of the public budget for local projects and initiatives. In Boston, residents decide where $2 million of Boston's budget goes, so multiple projects will be funded.)
+        - question: _(How can I get involved beyond voting?)
+          answer: >-
+            _(Stay tuned for an announcement of winning projects in the spring. We will reopen for 2027-28 year idea
+            proposals in the summer of 2027. Check out <a href="https://boston.gov/participate" target="_blank"
+            rel="noopener noreferrer">boston.gov/Participate</a> for updated ways on how to stay engaged.)
+        - question: _(What projects have been selected in previous years?)
+          answer: >-
+            _(Check out projects funded in previous cycles here:
+            <a href="https://boston.gov/departments/participatory-budgeting/ideas-action-project-implementation" target="_blank"
+            rel="noopener noreferrer">boston.gov/departments/participatory-budgeting/ideas-action-project-implementation</a>.)
 
 # Admin report configuration options
 report:
@@ -983,6 +1083,13 @@ report:
       anonymous_fields:
         - age_range
         - neighborhood
+  sections:
+    - Overview
+    - Neighborhood
+    - Age
+    - Ethnicity
+    - Income
+    - Outreach
 
 pages:
   - title: _(About)

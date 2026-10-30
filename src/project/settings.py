@@ -158,7 +158,6 @@ MIDDLEWARE = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 SESSION_COOKIE_NAME = 'sa-web-session'
 
 ROOT_URLCONF = 'project.urls'
@@ -274,8 +273,12 @@ if 'REDIS_URL' in env:
         }
     }
 
-    # Django sessions
-    SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+# Allow overriding SESSION_ENGINE via env (defaults to signed_cookies or cache)
+SESSION_ENGINE = env.get(
+    'SESSION_ENGINE',
+    'django.contrib.sessions.backends.cache' if 'REDIS_URL' in env
+    else 'django.contrib.sessions.backends.signed_cookies'
+)
 
 if 'SITE_ROOT' in env:
     SITE_ROOT = env.get('SITE_ROOT')
@@ -295,6 +298,18 @@ if 'SHAREABOUTS_BALLOTBOX_ID' in env:
     SHAREABOUTS['BALLOTBOX_ID'] = env.get('SHAREABOUTS_BALLOTBOX_ID')
 if 'SHAREABOUTS_BALLOTBOX_KEY' in env:
     SHAREABOUTS['BALLOTBOX_KEY'] = env.get('SHAREABOUTS_BALLOTBOX_KEY')
+
+GITHUB_APP_ID = env.get('GITHUB_APP_ID')
+GITHUB_APP_INSTALLATION_ID = env.get('GITHUB_APP_INSTALLATION_ID')
+GITHUB_APP_PRIVATE_KEY_PATH = env.get('GITHUB_APP_PRIVATE_KEY_PATH')
+GITHUB_APP_PRIVATE_KEY = env.get('GITHUB_APP_PRIVATE_KEY')
+GITHUB_TOKEN = env.get('GITHUB_TOKEN')
+GITHUB_REPO = env.get('GITHUB_REPO')
+GITHUB_BRANCH = env.get('GITHUB_BRANCH')
+
+GOOGLE_TRANSLATE_API_KEY = env.get('GOOGLE_TRANSLATE_API_KEY') or env.get('GOOGLE_API_KEY')
+GOOGLE_TRANSLATE_PROJECT_ID = env.get('GOOGLE_TRANSLATE_PROJECT_ID') or env.get('GOOGLE_CLOUD_PROJECT')
+GOOGLE_TRANSLATE_ACCESS_TOKEN = env.get('GOOGLE_TRANSLATE_ACCESS_TOKEN')
 
 if all([key in env for key in ('SHAREABOUTS_AWS_KEY',
                                    'SHAREABOUTS_AWS_SECRET',

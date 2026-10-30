@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Admin Flavor Customization Template (admin-custom.css)
+   ==========================================================================
+   This stylesheet allows flavors to brand and customize the Shareabouts admin
+   interface without modifying core application files.
+   
+   To customize your flavor's admin appearance:
+   1. Place a copy of this file in your flavor directory:
+      src/flavors/<flavor-name>/static/css/admin-custom.css
+      (or src/<project-app>/static/css/admin-custom.css)
+   2. Override any of the semantic CSS custom properties or layout rules below.
+   ========================================================================== */
+
+:root {
+  /* --- Brand / Primary Colors --- */
+  /* --admin-color-primary: #007bff; */
+  /* --admin-color-primary-hover: #0056b3; */
+  /* --admin-color-primary-subtle: #e8f4fd; */
+
+  /* --- Accent Colors (e.g. AI / Action buttons) --- */
+  /* --admin-color-accent: #7c3aed; */
+  /* --admin-color-accent-hover: #6d28d9; */
+
+  /* --- Semantic States --- */
+  /* --admin-color-warning-bg: #fffbeb; */
+  /* --admin-color-warning-border: #f59e0b; */
+  /* --admin-color-danger: #dc2626; */
+  /* --admin-color-success: #16a34a; */
+}
+
+/* --- Flavor-Specific Table Column Widths ---
+   Override column dimensions for custom flavor fields in the idea list table:
+   .my-custom-column { width: 18rem; }
+*/

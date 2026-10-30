@@ -2,6 +2,26 @@ import { showModalPopup } from './modal-popup-view';
 
 const MAX_SELECTIONS = Shareabouts.config.ballot.max_selections;
 
+/**
+ * Shuffle an array using the Fisher-Yates algorithm.
+ * Returns a new array with the elements in random order.
+ * @param {Array} array - The array to shuffle.
+ * @returns {Array} A new array with the elements in random order.
+ */
+function shuffle(array) {
+  if (!Array.isArray(array)) {
+    return array;
+  }
+
+  const shuffled = array.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) { //
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
 export const BallotView = Backbone.View.extend({
   events: {
     'change .proposal-checkbox': 'updateBannerSummary',
@@ -10,6 +30,7 @@ export const BallotView = Backbone.View.extend({
     'click #submit-ballot': 'openVoteConfirmModal',
     'click #vote-confirm-cancel': 'closeVoteConfirmModal',
     'submit form': 'submitVote',
+    'click .ballot-progress-step': 'scrollToStep',
   },
 
   initialize: function (options) {
@@ -46,10 +67,77 @@ export const BallotView = Backbone.View.extend({
     }, this);
   },
 
+  getTemplateContext: function() {
+    return {
+      ...this.options,
+      ballot: {
+        ...this.options.ballot,
+        proposals: shuffle(this.options.ballot.proposals)
+      }
+    };
+  },
+
   render: function () {
-    this.$el.html(Handlebars.templates['sa_vote/pages/ballot'](this.options));
+    const context = this.getTemplateContext();
+    this.$el.html(Handlebars.templates['sa_vote/pages/ballot'](context));
     this.updateBannerSummary();
+    this.setupScrollProgress();
     return this;
+  },
+
+  // Track which proposal card is in the middle of the viewport and reflect it in the scroll progress bar.
+  // Steps are positional (step N = Nth card on the page), since the cards are shuffled on render.
+  setupScrollProgress: function () {
+    if (this.progressObserver) { this.progressObserver.disconnect(); }
+    this.currentStep = undefined;
+
+    this.cards = this.$('.proposal-card').toArray();
+    this.steps = this.$('.ballot-progress-step').toArray();
+
+    this.progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          this.setCurrentStep(this.cards.indexOf(entry.target));
+        }
+      });
+    }, {
+      // Only a band from 40% to 50% down the viewport counts; the card in it is "current"
+      rootMargin: '-40% 0px -50% 0px',
+    });
+
+    this.cards.forEach((card) => this.progressObserver.observe(card));
+    this.setCurrentStep(0);
+  },
+
+  setCurrentStep: function (index) {
+    if (index === this.currentStep) { return; }
+    this.currentStep = index;
+
+    this.steps.forEach((step, i) => {
+      step.classList.toggle('is-read', i < index);
+      step.classList.toggle('is-current', i === index);
+      if (i === index) { step.setAttribute('aria-current', 'step'); }
+      else { step.removeAttribute('aria-current'); }
+    });
+  },
+
+  // Mark the progress steps whose proposal cards are checked
+  updateSelectedSteps: function () {
+    const $steps = this.$('.ballot-progress-step');
+    this.$('.proposal-card').each(function (i) {
+      const checked = $(this).find('.proposal-checkbox').is(':checked');
+      $steps.eq(i).toggleClass('is-selected', checked);
+    });
+  },
+
+  scrollToStep: function (evt) {
+    const index = $(evt.currentTarget).data('index');
+    this.cards[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  },
+
+  remove: function () {
+    if (this.progressObserver) { this.progressObserver.disconnect(); }
+    return Backbone.View.prototype.remove.apply(this, arguments);
   },
 
   getSelectedProposals: function () {
@@ -89,6 +177,8 @@ export const BallotView = Backbone.View.extend({
   updateBannerSummary: function () {
     const count = this.$('.proposal-checkbox:checked').length;
     const remaining = MAX_SELECTIONS - count;
+
+    this.updateSelectedSteps();
 
     // Disable unchecked checkboxes if maximum proposals selected
     if (this.options.verified) {

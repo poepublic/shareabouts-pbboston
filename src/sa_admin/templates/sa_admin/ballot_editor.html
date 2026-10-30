@@ -1,0 +1,16 @@
+{% extends 'sa_admin/base.html' %}
+{% load static %}
+{% load django_vite %}
+
+{% block title %}Ballot Proposals - Shareabouts Admin{% endblock %}
+
+{% block body_classes %}ballot-editor-page{% endblock %}
+
+{% block heading %}Ballot Content Manager{% endblock %}
+
+{% block vite_assets %}
+  {% vite_asset 'sa_admin/ballot/main.js' %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}

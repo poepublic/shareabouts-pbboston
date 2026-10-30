@@ -11,6 +11,7 @@ from django.core.cache import cache
 from django.core.exceptions import ImproperlyConfigured
 from django.http import Http404, HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.templatetags.static import static
 from django.template.loader import render_to_string
 from django.utils.translation import get_language, gettext as _
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -213,55 +214,17 @@ def generate_code(request: HttpRequestWithConfig) -> HttpResponse:
 
     return JsonResponse({'status': 'success', 'message': 'Verification code sent'}, status=201)
 
-
-@process_shareabouts_config
-def admin_generate_code(request: HttpRequestWithConfig) -> HttpResponse:
+def admin_generate_code(request: HttpRequestWithConfig, *args, **kwargs) -> HttpResponse:
     """
-    A view for administrators to generate a voter code with a 7-day TTL.
-    - Requires an authenticated staff/admin user or authenticated Shareabouts admin user.
-    - Generates a UUID to represent the voter and hashes it.
-    - Generates a 6-character hex code and stores it in cache mapped to the UUID hash.
-    - Returns 201 Created with the generated code.
+    Compatibility wrapper delegating to sa_admin.views.admin_generate_code.
     """
-    if request.method != 'POST':
-        return HttpResponse(status=405)
-
-    # Set voter support group either in config.yml, or with SHAREABOUTS__BALLOT__VOTER_SUPPORT_GROUP environment variable
-    voter_support_group = request.shareabouts_config['ballot']['voter_support_group']
-
-    can_generate_admin_code = False
-
-    config = request.shareabouts_config
-    api = ShareaboutsApi(config, request)
-    try:
-        api_user = api.current_user()
-    except Exception as exc:
-        logger.exception('Failed to retrieve current user information')
-        return JsonResponse({'error': f'Failed to retrieve current user information: {exc}'}, status=502)
-
-    if not api_user:
-        return JsonResponse({'error': 'Unauthenticated'}, status=401)
-
-    groups = [
-        group['name']
-        for group in api_user['groups']
-        if group['dataset'] == api.dataset_root
-    ]
-    can_generate_admin_code = voter_support_group in groups
-
-    if not can_generate_admin_code:
-        return JsonResponse({'error': 'Unauthorized'}, status=403)
-
-    voter_uuid = str(uuid.uuid4())
-    id_hash = hash_voter_id(voter_uuid)
-
-    code = map_voter_code_to_id(id_hash, ADMIN_CODE_TTL_SECONDS)
-
-    return JsonResponse({'status': 'success', 'code': code, 'id_hash': id_hash}, status=201)
+    from sa_admin.views import admin_generate_code as _admin_generate_code
+    return _admin_generate_code(request, *args, **kwargs)
 
 
 @rate_limit_ip(count=10, period=60, key_prefix='verify_code')
-def verify_code(request: HttpRequest) -> HttpResponse:
+@process_shareabouts_config
+def verify_code(request: HttpRequestWithConfig) -> HttpResponse:
     """
     A view to verify a voter code. Accepts code via POST. If code is valid
     should set the voter_id_hash and voter_verified in the session and return a
@@ -275,7 +238,14 @@ def verify_code(request: HttpRequest) -> HttpResponse:
     except ValueError as exc:
         return JsonResponse({'error': str(exc)}, status=400)
 
-    id_hash = get_mapped_voter_id(code)
+    # If a skeleton code is provided, it can be used indefinitely.
+    if code == request.shareabouts_config.get('app', {}).get('skeleton_code'):
+        # Generate a uuid hash.
+        voter_id = str(uuid.uuid4())
+        id_hash = hash_voter_id(voter_id)
+    else:
+        id_hash = get_mapped_voter_id(code)
+
     if not id_hash:
         return JsonResponse({'error': 'Invalid or expired code'}, status=404)
 
@@ -521,6 +491,23 @@ def index(request, frontend_path=None):
     neighborhoods = load_neighborhoods()
     path_prefix = settings.BASE_URL
 
+    # Each language's share link opens the page in that language.
+    share_url = 'https://participate.boston.gov/vote/'
+    share_images = [
+        {
+            **image,
+            'path': static(image['file']),
+            'url': f'{share_url}?language={image["code"]}',
+        }
+        for image in request.shareabouts_config.get('app', {}).get('share', {}).get('images', [])
+    ]
+    share_image = next(
+        (image for image in share_images if image['code'] == get_language()),
+        share_images[0] if share_images else None,
+    )
+    for image in share_images:
+        image['selected'] = image is share_image
+
     context = {'config': request.shareabouts_config,
 
                'ballot_config': ballot_config,
@@ -542,6 +529,10 @@ def index(request, frontend_path=None):
 
                # Ballot proposal data
                'ballot_json': ballot_json,
+
+               # Promo images for sharing
+               'share_images': share_images,
+               'share_image': share_image,
 
                # Site root useful for automatic translation
                'site_root': settings.SITE_ROOT,

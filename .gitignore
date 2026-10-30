@@ -40,6 +40,7 @@ src/project/local_settings.py
 src/project/config.yml
 .env
 .env.*
+keys/
 
 # sqlite database
 *.db
