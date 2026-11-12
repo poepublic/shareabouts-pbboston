@@ -18,7 +18,7 @@
     <form class="auth-step auth-attestation-container" data-state="attesting">
         <header class="auth-header-container">
             <img class="success-icon" src="/static/img/iia/ProcessIcon_05_Black.svg" alt="">
-            <h1>{{#_}}Sign up to vote!{{/_}}</h1>
+            <h1 class="auth-page-header">{{#_}}Sign up to vote!{{/_}}</h1>
         </header>
 
         <div class="auth-elligibility-attestation-container">
@@ -81,7 +81,7 @@
                 <span class="disabled-label">{{#_}}Sending...{{/_}}</span>
             </button>
 
-            <a data-internal="true" href="/vote/auth/verify-code">{{#_}}I already have a voter code{{/_}}</a>
+            <a data-internal="true" href="/vote/auth/verify-code" class="already-have-voter-code">{{#_}}I already have a voter code{{/_}}</a>
         </div>
     </form>
 
@@ -104,7 +104,7 @@
                 <span class="disabled-label">{{#_}}Verifying...{{/_}}</span>
             </button>
 
-            <a data-internal="true" href="/vote/auth/request-code">{{#_}}I need a voter code{{/_}}</a>
+            <a data-internal="true" href="/vote/auth/request-code" class="need-a-voter-code">{{#_}}I need a voter code{{/_}}</a>
         </div>
     </form>
 
