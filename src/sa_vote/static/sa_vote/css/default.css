@@ -162,7 +162,7 @@ input[type="checkbox"]:checked {
 
 .btn,
 .btn-primary {
-  border-radius: 1rem !important;
+  border-radius: 1rem;
 }
 
 button .disabled-label {
@@ -1007,12 +1007,6 @@ summary.survey-select-input,
     max-height: 8vh;
   }
 
-  .menu {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-  }
-
   .vote-link {
     width: fit-content;
     max-width: 35vw;
@@ -1052,6 +1046,12 @@ summary.survey-select-input,
   .terms-page-header,
   .privacy-page-header {
     font-size: 3.5rem;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
   }
 
   #verify-button, #submit-survey {

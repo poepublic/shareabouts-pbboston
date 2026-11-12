@@ -1829,7 +1829,11 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
   .access {
     font-size: 0.875em;
     display: none;
-    position: static;
+    position: absolute;
+    top: var(--banner-height);
+    left: 0;
+    margin-top: 0;
+    max-width: 20rem;
   }
 
   .access li {
@@ -1985,10 +1989,12 @@ body[data-city_wide="true"] .location-field-label .regular-prompt { display: non
 
   .access {
     display: block;
+    position: static;
     top: 0;
     margin: 0;
     background: none;
     height: 100%;
+    max-width: initial;
   }
 
   .access .menu {
